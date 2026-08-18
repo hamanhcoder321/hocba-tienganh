@@ -1,0 +1,70 @@
+---
+import hocbaQAImg from '@/assets/images/home/hocba-qa.png';
+import IconMb from '@/assets/images/home/icon-maybay.png';
+import QAAccordion from '@/components/features/home/advisor-qa/QAAccordion.astro';
+import CommitmentBadge from '@/components/features/home/ui/CommitmentBadge';
+import { Image } from 'astro:assets';
+
+const qaData = [
+  {
+    id: 'item-1',
+    question: '1. Học phí cho mỗi khóa học tại Học Bá là bao nhiêu?',
+    answer:
+      'Học phí các khóa học tại Học Bá dao động từ 3 – 15 triệu, tùy theo cấp độ. Để nhận tư vấn chi tiết và lộ trình phù hợp với mục tiêu cá nhân, hãy để lại thông tin, Học Bá sẽ hỗ trợ bạn 1:1.',
+  },
+  {
+    id: 'item-2',
+    question: '2. Lộ trình học tại Học Bá như thế nào?',
+    answer:
+      'Lộ trình ôn thi tại Học Bá được thiết kế cá nhân hóa, tập trung vào các kiến thức trọng tâm để học viên không lãng phí thời gian vào nội dung không cần thiết. Kết hợp cùng phương pháp học thông minh và tài liệu ôn luyện cập nhật theo chuẩn Tiếng Trung mới nhất, Học Bá giúp bạn tiếp thu nhanh, hiệu quả và tiết kiệm tối đa thời gian.',
+  },
+  {
+    id: 'item-3',
+    question: '3. Học Bá có cam kết chất lượng đầu ra không?',
+    answer:
+      'Có! Học Bá cam kết đầu ra rõ ràng cho từng khóa học. Nếu học viên tuân thủ đúng lộ trình học tập và hướng dẫn từ giáo viên nhưng không đạt kết quả như mong muốn, chúng tôi sẽ hỗ trợ học lại miễn phí hoặc có giải pháp bù đắp phù hợp.',
+  },
+  {
+    id: 'item-4',
+    question: '4. Người mới bắt đầu học Tiếng Trung cần tối thiểu bao lâu để giao tiếp cơ bản tiếng Trung?',
+    answer:
+      'Thời gian để một người mới bắt đầu có thể giao tiếp cơ bản bằng Tiếng Trung phụ thuộc vào lộ trình học và mức độ tập trung của từng học viên. Với phương pháp giảng dạy tại Học Bá, nếu học viên học đúng lộ trình và thực hành đều đặn, chỉ sau 2-3 tháng, bạn đã có thể nắm vững các mẫu câu giao tiếp thông dụng và tự tin trao đổi trong những tình huống hàng ngày.',
+  },
+];
+---
+
+<section
+  id="advisor-qa"
+  class="relative mx-auto max-w-[1493px] bg-[linear-gradient(180deg,rgba(255,251,247,0)_0%,#FFF7EF_31.25%,rgba(255,249,249,0)_100%)]"
+>
+  <div class="relative z-10 mx-auto max-w-[1212px] max-lg:px-9">
+    <div class="mb-6 md:mb-7">
+      <div class="flex items-center">
+        <span class="text-[67px] font-black text-primary md:text-[109px]">?</span>
+        <div>
+          <h2 class="py-4 text-xl font-black text-primary md:text-[24px] lg:text-[42px]">Giải Đáp 1:1</h2>
+          <CommitmentBadge className="rounded-sm px-4 text-[20px] font-bold md:text-[32px]">
+            CÙNG CỐ VẤN HỌC TẬP
+          </CommitmentBadge>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col items-center gap-8 lg:flex-row">
+      <div class="w-full lg:w-[55%]">
+        <QAAccordion {qaData} />
+      </div>
+      <div class="relative w-full lg:w-[45%]">
+        <div class="absolute top-0 translate-x-1/2 lg:-top-20 lg:right-1/2">
+          <Image
+            src={IconMb}
+            alt="Icon may bay"
+            width={87}
+            height={54}
+            class="h-auto w-[58px] object-contain md:w-[87px]"
+          />
+        </div>
+        <Image src={hocbaQAImg} alt="Advisor QA" class="h-auto w-full object-contain" />
+      </div>
+    </div>
+  </div>
+</section>

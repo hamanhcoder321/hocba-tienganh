@@ -1,0 +1,47 @@
+---
+import { cn } from '@/lib/utils';
+import { Image } from 'astro:assets';
+
+type Props = {
+  avatars: ImageMetadata[];
+  classContent?: string;
+  classTarget?: string;
+  link: string;
+};
+
+const { avatars = [], classContent, classTarget, link } = Astro.props as Props;
+---
+
+<a
+  href={link}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="mt-3 flex h-14 w-fit cursor-pointer items-center px-[10px] py-[10px] md:h-20 md:px-4 md:py-4"
+>
+  <div class="flex items-center">
+    {
+      avatars.slice(0, 3).map((avatar, index) => (
+        <div
+          class={`relative z-10 size-9 rounded-full border-2 border-white md:size-[50px] ${index !== 0 ? '-ml-2' : ''}`}
+        >
+          <Image
+            src={avatar}
+            width={50}
+            height={50}
+            alt={`avatar-${index}`}
+            densities={[1, 2]}
+            loading="lazy"
+            class="h-full w-full rounded-full object-cover object-top"
+          />
+        </div>
+      ))
+    }
+  </div>
+
+  <div class={cn('relative z-10 ml-2 md:ml-4', classContent)}>
+    <p class="flex items-center text-xs font-medium">
+      <span class={cn('mr-1 text-lg font-black text-primary', classTarget)}>28.000 +</span> Học viên
+    </p>
+    <p class="text-xs font-medium">Đã và đang học tại Học Bá</p>
+  </div>
+</a>

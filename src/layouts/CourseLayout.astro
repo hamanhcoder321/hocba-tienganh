@@ -1,0 +1,117 @@
+---
+import "@/styles/globals.css";
+import { SITE_SETTINGS } from "@/lib/constants/site-config";
+import Footer from '@/components/common/footer/Footer.astro';
+import ToasterProvider from '@/components/common/ToasterProvider';
+import Header from '@/components/common/header/Header.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  keywords?: string[];
+  noindex?: boolean;
+  breadcrumbName?: string;
+  courseCategory?: string;
+  categoryId?: number;
+  hasCommitment?: boolean;
+  breadcrumbs?: Array<{ label: string; href: string }>;
+}
+
+const {
+  title: propTitle,
+  description: propDescription,
+  image: propImage,
+  keywords: propKeywords,
+  noindex = false,
+  breadcrumbName,
+  categoryId,
+  hasCommitment = false,
+} = Astro.props;
+
+const title = propTitle || `${breadcrumbName || 'Khóa học'} - ${SITE_SETTINGS.site_name}`;
+const description = propDescription || SITE_SETTINGS.meta_description;
+const keywords = propKeywords || SITE_SETTINGS.meta_keywords;
+const ogImage = propImage || SITE_SETTINGS.site_logo_meta;
+
+const { site_name, site_url, google_analytics_tracking_id } = SITE_SETTINGS;
+
+const normalizedPath =
+  Astro.url.pathname.replace(/(.+)\/$/, "$1") || "/";
+
+const canonicalURL = new URL(normalizedPath, site_url).href;
+
+const keywordsString = Array.isArray(keywords) ? keywords.join(", ") : String(keywords);
+
+const courseSchema = breadcrumbName ? {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": breadcrumbName,
+  "description": description,
+  "provider": {
+    "@type": "Organization",
+    "name": site_name,
+    "url": site_url
+  }
+} : null;
+---
+
+<!doctype html>
+<html lang="vi" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywordsString} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    
+    <link rel="canonical" href={canonicalURL} />
+    
+    <link rel="icon" type="image/png" href={SITE_SETTINGS.site_fav_icon.src} />
+    <link rel="apple-touch-icon" href={SITE_SETTINGS.site_fav_icon.src} />
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content={site_name} />
+    <meta property="og:locale" content="vi_VN" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    
+    {courseSchema && (
+      <script type="application/ld+json" set:html={JSON.stringify(courseSchema)} />
+    )}
+    
+    {google_analytics_tracking_id && (
+      <>
+        <script is:inline type="text/partytown" src={`https://www.googletagmanager.com/gtag/js?id=${google_analytics_tracking_id}`}></script>
+        <script is:inline type="text/partytown" define:vars={{ gaId: google_analytics_tracking_id }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', gaId);
+        </script>
+      </>
+    )}
+  </head>
+  <body class="antialiased font-gilroy">
+    <div class="flex flex-col min-h-screen">
+      <Header />
+      <main class="max-w-[1920px] bg-white flex-1">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+    <ToasterProvider client:only="react" />
+  </body>
+</html>

@@ -1,0 +1,21 @@
+---
+import { SITE_SETTINGS } from '@/lib/constants/site-config';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE_SETTINGS.site_legal_name,
+  url: SITE_SETTINGS.site_url,
+  logo: new URL(typeof SITE_SETTINGS.site_logo === 'string' ? SITE_SETTINGS.site_logo : SITE_SETTINGS.site_logo.src, SITE_SETTINGS.site_url).href,
+  description: SITE_SETTINGS.meta_description,
+  sameAs: [SITE_SETTINGS.social_facebook_education, SITE_SETTINGS.social_zalo],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: SITE_SETTINGS.site_phone.replace('+84', '0'),
+    contactType: 'customer service',
+    availableLanguage: ['vi', 'zh'],
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

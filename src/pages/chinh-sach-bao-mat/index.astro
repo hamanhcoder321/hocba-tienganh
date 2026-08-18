@@ -1,0 +1,675 @@
+---
+import JsonLd from '@/components/common/JsonLd.astro';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { CONTACTS } from '@/lib/constants';
+import { baseUrl } from '@/lib/constants/api';
+import type { Graph } from 'schema-dts';
+
+// export const prerender = true;
+
+const data = [
+  {
+    intro: true,
+    content: [
+      'Học Bá Education cam kết tôn trọng và bảo vệ quyền riêng tư của người dùng. Chính sách Bảo mật này được xây dựng nhằm giải thích rõ ràng cách chúng tôi thu thập, sử dụng, lưu trữ và bảo vệ dữ liệu cá nhân của người truy cập và học viên trong quá trình sử dụng các sản phẩm và dịch vụ thuộc Học Bá Education.',
+      'Chúng tôi khuyến nghị bạn đọc kỹ toàn bộ nội dung trước khi tiếp tục sử dụng website hoặc bất kỳ dịch vụ nào liên quan.',
+    ],
+  },
+  {
+    title: 'Phạm vi áp dụng của Chính sách bảo mật',
+    content: ['Chính sách Bảo mật này áp dụng đối với:'],
+    list: [
+      'Người truy cập website https://hoc-ba.edu.vn/.',
+      'Học viên đăng ký các chương trình học tại Học Bá Education.',
+      'Người dùng điền form nhận tài liệu, form tư vấn, form khai báo thông tin hoặc bất kỳ biểu mẫu nào thuộc hệ thống của Học Bá Education.',
+      'Người sử dụng các nền tảng/ứng dụng/hệ thống thuộc Học Bá, bao gồm:',
+    ],
+    sublist: [
+      'Website, landing page.',
+      'Nền tảng học trực tuyến (LMS).',
+      'Hệ thống luyện thi HSK Online 3.0 - Học Bá HSK.',
+      'Chương trình Tiếng Trung cho người đi làm - Học Bá Chinese.',
+      'Các sản phẩm trong hệ sinh thái giáo dục tiếng Trung của Học Bá Education.',
+    ],
+    footer: [
+      'Bằng việc tiếp tục sử dụng website hoặc gửi thông tin cho Học Bá, bạn được xem như đã đồng ý với các nội dung của Chính sách này.',
+    ],
+  },
+  {
+    title: 'Học Bá Education thu thập những loại thông tin nào?',
+    sections: [
+      {
+        subtitle: 'Thông tin do người dùng tự cung cấp',
+        content: ['Học Bá Education có thể thu thập các loại thông tin mà bạn chủ động cung cấp, bao gồm:'],
+        list: [
+          'Họ và tên.',
+          'Số điện thoại, email.',
+          'Tài khoản mạng xã hội (khi đăng nhập qua Google/Facebook, nếu có).',
+          'Thông tin học tập: trình độ tiếng Trung, mục tiêu HSK, nhu cầu khóa học.',
+          'Nội dung tin nhắn, câu hỏi hoặc yêu cầu tư vấn mà người dùng gửi cho Học Bá Education.',
+        ],
+      },
+      {
+        subtitle: 'Thông tin thu thập tự động khi truy cập website',
+        content: ['Khi bạn truy cập hệ thống của Học Bá, chúng tôi có thể tự động thu thập:'],
+        list: [
+          'Địa chỉ IP.',
+          'Loại trình duyệt, thiết bị.',
+          'Cookie, định danh theo dõi (ví dụ: Google Analytics, Facebook Pixel, nếu được sử dụng).',
+          'Lịch sử duyệt trang, hành vi và mức độ tương tác trên website.',
+        ],
+      },
+      {
+        subtitle: 'Thông tin từ bên thứ ba',
+        content: [
+          'Trong trường hợp website hoặc dịch vụ của Học Bá Education kết nối với các nền tảng khác như hệ thống thanh toán, LMS hoặc mạng xã hội, chúng tôi có thể nhận một số thông tin theo chính sách và thỏa thuận mà bạn đã chấp nhận với các bên đó.',
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Mục đích Học Bá Education sử dụng thông tin',
+    content: ['Học Bá Education sử dụng dữ liệu cá nhân của bạn nhằm:'],
+    list: [
+      'Liên hệ, tư vấn và hỗ trợ bạn trong quá trình đăng ký khóa học.',
+      'Gửi tài liệu học tập, đề thi, ebook hoặc các thông tin mà bạn yêu cầu.',
+      'Gửi thông báo liên quan đến lịch học, thay đổi lịch, điểm danh, nhắc học hoặc kết quả học tập (nếu áp dụng).',
+      'Cải thiện chất lượng khóa học, dịch vụ chăm sóc học viên và trải nghiệm khi sử dụng website.',
+      'Gửi email/SMS về chương trình khuyến mãi, ưu đãi hoặc sự kiện của Học Bá (khi bạn đồng ý).',
+      'Thực hiện nghĩa vụ theo yêu cầu của cơ quan nhà nước có thẩm quyền.',
+    ],
+  },
+  {
+    title: 'Căn cứ để Học Bá Education xử lý dữ liệu cá nhân',
+    content: ['Học Bá Education xử lý thông tin cá nhân dựa trên các căn cứ sau:'],
+    definitions: [
+      {
+        term: 'Sự đồng ý của người dùng',
+        description: 'Khi bạn điền form, đánh dấu chấp thuận, cung cấp thông tin hoặc tiếp tục sử dụng website.',
+      },
+      {
+        term: 'Nhu cầu thực hiện dịch vụ',
+        description:
+          'Dữ liệu cần thiết để tư vấn, mở lớp, thực hiện ghi danh học viên hoặc cung cấp dịch vụ bạn đăng ký.',
+      },
+      {
+        term: 'Yêu cầu pháp lý',
+        description: 'Trong trường hợp cơ quan có thẩm quyền yêu cầu theo đúng quy định hiện hành.',
+      },
+    ],
+  },
+  {
+    title: 'Thời gian lưu trữ thông tin',
+    content: [
+      'Dữ liệu được lưu trữ trong suốt thời gian người dùng là học viên/khách hàng của Học Bá.',
+      'Sau khi hoàn tất khóa học/hợp đồng, thông tin có thể tiếp tục được lưu trong một thời gian hợp lý nhằm:',
+    ],
+    list: ['Hỗ trợ cấp lại chứng nhận, lịch sử học tập.', 'Giải quyết khiếu nại hoặc tranh chấp (nếu có).'],
+    footer: [
+      'Khi không còn mục đích sử dụng, Học Bá Education sẽ xóa, ẩn hoặc ẩn danh dữ liệu theo quy định pháp luật.',
+    ],
+  },
+  {
+    title: 'Chia sẻ thông tin với bên thứ ba:',
+    sections: [
+      {
+        subtitle: 'Các trường hợp có thể chia sẻ',
+        content: ['Học Bá Education có thể chia sẻ dữ liệu cá nhân trong các trường hợp sau:'],
+        list: [
+          'Đối tác cung cấp hệ thống học trực tuyến (LMS), nền tảng thanh toán, đơn vị gửi SMS/email marketing',
+          'Đối tác công nghệ phục vụ vận hành sản phẩm:',
+        ],
+        sublist: [
+          'Học Bá HSK (Luyện thi HSK Online 3.0).',
+          'Học Bá Chinese (Tiếng Trung cho người đi làm).',
+          'Hệ sinh thái Học Bá Plus.',
+        ],
+        extraList: ['Cơ quan nhà nước có thẩm quyền theo quy định pháp luật.'],
+      },
+      {
+        subtitle: 'Những điều Học Bá Education cam kết',
+        list: [
+          'Không mua bán, trao đổi dữ liệu cá nhân cho bên thứ ba vì mục đích thương mại trái phép.',
+          'Các đối tác được chia sẻ dữ liệu (nếu có) đều phải tuân thủ yêu cầu bảo mật tương đương.',
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Biện pháp bảo mật thông tin',
+    content: [
+      'Học Bá Education áp dụng các biện pháp kỹ thuật và tổ chức nhằm bảo vệ thông tin của người dùng, bao gồm:',
+    ],
+    list: [
+      'Phân quyền truy cập hệ thống cho nhân sự.',
+      'Mật khẩu bảo vệ, thay đổi định kỳ.',
+      'Kiểm soát truy cập và giám sát an toàn dữ liệu.',
+      'Hệ thống công nghệ LMS hiện đại.',
+      'Giải pháp chống truy cập trái phép và thất thoát dữ liệu.',
+    ],
+    footer: [
+      'Tuy nhiên, chúng tôi lưu ý rằng **không có phương thức truyền tải hoặc lưu trữ nào trên Internet an toàn tuyệt đối 100%**. Học Bá Education luôn nỗ lực tối đa để đảm bảo an toàn cho dữ liệu cá nhân của bạn.',
+    ],
+  },
+  {
+    title: 'Quyền của người dùng',
+    content: ['Bạn có các quyền sau liên quan đến dữ liệu cá nhân:'],
+    definitions: [
+      {
+        term: 'Quyền được biết',
+        description: 'Hiểu rõ Học Bá Education đang thu thập và sử dụng dữ liệu gì.',
+      },
+      {
+        term: 'Quyền truy cập/cập nhật',
+        description: 'Yêu cầu Học Bá Education xem, chỉnh sửa, cập nhật thông tin cá nhân chưa chính xác.',
+      },
+      {
+        term: 'Quyền rút lại sự đồng ý',
+        description:
+          'Người dùng có thể yêu cầu dừng nhận email/sms marketing, dừng sử dụng dữ liệu cho một số mục đích.',
+      },
+      {
+        term: 'Quyền yêu cầu xóa dữ liệu',
+        description:
+          'Trong những trường hợp hợp lý, người dùng có thể đề nghị Học Bá Education xóa hoặc ẩn dữ liệu cá nhân.',
+      },
+      {
+        term: 'Quyền khiếu nại',
+        description:
+          'Nếu cho rằng dữ liệu bị sử dụng sai mục đích, người dùng có thể khiếu nại trực tiếp tới Học Bá Education hoặc cơ quan có thẩm quyền.',
+      },
+    ],
+    footer: [
+      'Để thực hiện các quyền trên, người dùng có thể liên hệ trực tiếp với Học Bá qua email hoặc hotline trong phần cuối trang.',
+    ],
+  },
+  {
+    title: 'Cookie và các công cụ theo dõi',
+    content: [
+      'Cookie là các tệp nhỏ được lưu vào trình duyệt nhằm cải thiện trải nghiệm người dùng.',
+      'Học Bá Education sử dụng cookie để:',
+    ],
+    list: [
+      'Ghi nhớ tùy chọn cá nhân của người dùng.',
+      'Phân tích hành vi truy cập nhằm tối ưu nội dung và giao diện website.',
+    ],
+    footer: [
+      'Người dùng có thể xóa hoặc chặn cookie trong cài đặt trình duyệt. Tuy nhiên, một số tính năng có thể hoạt động không đầy đủ nếu cookie bị tắt.',
+    ],
+  },
+  {
+    title: 'Liên kết đến website bên thứ ba',
+    content: [
+      'Website của Học Bá Education có thể chứa các liên kết dẫn đến trang web của bên thứ ba (ví dụ: nền tảng thanh toán, mạng xã hội).',
+      'Học Bá Education không chịu trách nhiệm về nội dung, bảo mật hoặc cách thu thập dữ liệu của các trang web đó.',
+      'Chúng tôi khuyến nghị người dùng đọc chính sách riêng của từng đơn vị trước khi cung cấp thông tin.',
+    ],
+  },
+  {
+    title: 'Liên kết đến website bên thứ ba',
+    content: [
+      'Website của Học Bá Education có thể chứa các liên kết dẫn đến trang web của bên thứ ba (ví dụ: nền tảng thanh toán, mạng xã hội).',
+      'Học Bá Education **không chịu trách nhiệm** về nội dung, bảo mật hoặc cách thu thập dữ liệu của các trang web đó.',
+      'Chúng tôi khuyến nghị người dùng đọc chính sách riêng của từng đơn vị trước khi cung cấp thông tin.',
+    ],
+  },
+  {
+    title: 'Cập nhật Chính sách bảo mật',
+    content: [
+      'Học Bá Education có thể điều chỉnh hoặc cập nhật Chính sách Bảo mật theo từng thời điểm.',
+      'Các thay đổi sẽ được công bố trên website và ghi rõ **ngày hiệu lực**.',
+      'Việc bạn tiếp tục sử dụng dịch vụ sau khi chính sách được cập nhật đồng nghĩa với việc bạn đồng ý với nội dung mới.',
+    ],
+  },
+  {
+    title: 'Thông tin liên hệ',
+    sections: [
+      {
+        subtitle: 'Tên doanh nghiệp:',
+        list: ['Công ty Cổ phần Giáo dục & Đào tạo Học Bá', 'Tên viết tắt: Học Bá Education', 'Mã số thuế: 0110883975'],
+      },
+      {
+        subtitle: 'Địa chỉ:',
+        list: [CONTACTS.address.label],
+      },
+    ],
+    contacts: [
+      { label: 'Hotline', value: CONTACTS.hotline },
+      { label: 'Email hỗ trợ', value: CONTACTS.email },
+      { label: 'Website', value: CONTACTS.linkWeb },
+      { label: 'Giờ làm việc', value: '8:00 – 18:30 (Thứ Hai – Thứ Bảy)' },
+    ],
+    socialLinks: [
+      { label: 'Học Bá HSK', value: CONTACTS.facebookHskUrl },
+      {
+        label: 'Học Bá Chinese',
+        value: CONTACTS.facebookChineseUrl,
+      },
+      { label: 'TikTok', value: CONTACTS.tiktokUrl },
+      { label: 'Instagram', value: CONTACTS.igUrl },
+      {
+        label: 'Google Maps',
+        value: CONTACTS.address.value,
+      },
+    ],
+    footer: [
+      'Nếu bạn có bất kỳ câu hỏi nào về cách Học Bá Education thu thập, xử lý hoặc bảo vệ thông tin, vui lòng liên hệ với chúng tôi. Học Bá Education luôn sẵn sàng giải thích rõ ràng và hỗ trợ bạn trong mọi vấn đề liên quan đến dữ liệu cá nhân.',
+    ],
+  },
+];
+
+const jsonLd: Graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Trang chủ',
+          item: baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Chính sách bảo mật',
+          item: `${baseUrl}/chinh-sach-bao-mat`,
+        },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout>
+  <JsonLd data={jsonLd} />
+  <div>
+    <div class="container px-4 pb-8 text-black">
+      <div class="z-10 -mx-4 bg-transparent px-4 pb-4 pt-8">
+        <Breadcrumb className="container px-4 md:px-0">
+          <BreadcrumbList className="text-foreground text-xs md:text-lg">
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <a href="/" class={'hover:underline hover:text-primary'}> Trang chủ </a>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Chính sách bảo mật</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+
+        <nav class="mt-2 overflow-x-auto border-b border-gray-200 pb-2 lg:hidden">
+          <ul class="flex min-w-max gap-1">
+            {
+              data.map((item: any, i: number) =>
+                item.title ? (
+                  <li>
+                    <a
+                      href={`#section-${i}`}
+                      class="toc-link hover:border-primary/40 block whitespace-nowrap rounded-full border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 transition-colors hover:text-primary"
+                      data-section={`section-${i}`}
+                    >
+                      {item.title}
+                    </a>
+                  </li>
+                ) : null,
+              )
+            }
+          </ul>
+        </nav>
+      </div>
+
+      <h1 class="mb-6 mt-4 text-center text-2xl font-bold uppercase">Chính sách bảo mật</h1>
+
+      <div class="flex gap-8">
+        <aside class="hidden w-72 flex-shrink-0 lg:block">
+          <nav
+            class="sticky top-[112px] max-h-[calc(100vh-150px)] overflow-y-auto rounded-xl border border-gray-200 p-3"
+          >
+            <p class="mb-2 px-2 text-[11px] font-semibold uppercase tracking-widest text-gray-400">Nội dung</p>
+            <ul class="space-y-0.5">
+              {
+                data.map((item: any, i: number) =>
+                  item.title ? (
+                    <li>
+                      <a
+                        href={`#section-${i}`}
+                        class="toc-link hover:bg-primary/5 block rounded-lg px-2 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:text-primary"
+                        data-section={`section-${i}`}
+                      >
+                        {item.title}
+                      </a>
+                      {item.sections && (
+                        <ul class="mb-1 ml-2 mt-0.5 space-y-0.5 border-l-2 border-gray-100 pl-3">
+                          {item.sections.map((sub: any, j: number) => (
+                            <li>
+                              <a
+                                href={`#section-${i}-sub-${j}`}
+                                class="toc-link hover:bg-primary/5 block rounded-lg px-2 py-1 text-xs text-gray-500 transition-colors hover:text-primary"
+                                data-section={`section-${i}-sub-${j}`}
+                              >
+                                {sub.subtitle}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ) : null,
+                )
+              }
+            </ul>
+          </nav>
+        </aside>
+
+        <div class="min-w-0 flex-1">
+          {
+            data.map((item: any, i: number) => (
+              <div id={item.title ? `section-${i}` : undefined} class={`mb-8${item.title ? ' scroll-mt-24' : ''}`}>
+                {/* Intro section without title */}
+                {item.intro && (
+                  <>
+                    {item.content.map((text: string) => (
+                      <p class="mb-3 flex items-start space-x-2 pl-4 text-black">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="2"
+                          stroke="currentColor"
+                          aria-hidden="true"
+                          width="15"
+                          class="mt-1 flex-shrink-0"
+                        >
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                        </svg>
+                        <span>{text}</span>
+                      </p>
+                    ))}
+                  </>
+                )}
+
+                {/* Regular sections with title */}
+                {!item.intro && item.title && (
+                  <>
+                    <h2 class="mb-4 text-xl font-medium text-black dark:text-slate-300 md:text-2xl">{item.title}</h2>
+
+                    {item.content &&
+                      item.content.map((text: string) => {
+                        let content = text.replace(
+                          /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi,
+                          '<a href="mailto:$1" class="text-primary hover:underline">$1</a>',
+                        );
+
+                        content = content.replace(
+                          /(\+?\d{1,3}[\s-]?\(?\d{1,4}\)?[\s-]?\d{3}[\s-]?\d{3,4})/g,
+                          '<a href="tel:$1" class="text-primary hover:underline">$1</a>',
+                        );
+
+                        if (text.includes('Tầng 2, Tòa nhà HH1 Imperia Plaza') || text.includes('360 Giải Phóng')) {
+                          content = content.replace(
+                            /(Tầng 2, Tòa nhà HH1 Imperia Plaza[^\.]*)/gi,
+                            '<a href="https://maps.app.goo.gl/kMGiEXyvfdGzYEVB8" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">$1</a>',
+                          );
+                        }
+
+                        return (
+                          <p class="mb-2 flex items-start space-x-2 pl-4 text-black">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke-width="2"
+                              stroke="currentColor"
+                              aria-hidden="true"
+                              width="15"
+                              class="mt-1 flex-shrink-0"
+                            >
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                            </svg>
+                            <span set:html={content} />
+                          </p>
+                        );
+                      })}
+
+                    {item.definitions && (
+                      <div class="mb-3 pl-10">
+                        {item.definitions.map((def: { term: string; description: string }) => (
+                          <p class="mb-2 flex items-center space-x-2">
+                            <span class={'block size-[6px] rounded-full bg-black'} />
+                            <span>
+                              <strong>{def.term}:</strong> {def.description}
+                            </span>
+                          </p>
+                        ))}
+                      </div>
+                    )}
+
+                    {item.sections &&
+                      item.sections.map((section: any, j: number) => (
+                        <div id={`section-${i}-sub-${j}`} class="mb-4 scroll-mt-24">
+                          <h3 class="mb-3 pl-4 text-lg font-medium text-black dark:text-slate-300">
+                            {section.subtitle}
+                          </h3>
+                          {section.content &&
+                            section.content.map((text: string) => (
+                              <p class="mb-2 flex items-start space-x-2 pl-8 text-black">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke-width="2"
+                                  stroke="currentColor"
+                                  aria-hidden="true"
+                                  width="15"
+                                  class="mt-1 flex-shrink-0"
+                                >
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                                </svg>
+                                <span>{text}</span>
+                              </p>
+                            ))}
+                          {section.list && (
+                            <div class="pl-14">
+                              {section.list.map((listItem: string) => (
+                                <p class="mb-2 flex items-center space-x-2">
+                                  <span class={'block size-[6px] rounded-full bg-black'} />
+                                  <span>{listItem}</span>
+                                </p>
+                              ))}
+                            </div>
+                          )}
+                          {section.sublist && (
+                            <div class="pl-20">
+                              {section.sublist.map((subItem: string) => (
+                                <p class="mb-2 flex items-center space-x-2">
+                                  <span class={'block size-[4px] rounded-full bg-black'} />
+                                  <span>{subItem}</span>
+                                </p>
+                              ))}
+                            </div>
+                          )}
+                          {section.extraList && (
+                            <div class="pl-14">
+                              {section.extraList.map((extraItem: string) => (
+                                <p class="mb-2 flex items-center space-x-2">
+                                  <span class={'block size-[6px] rounded-full bg-black'} />
+                                  <span>{extraItem}</span>
+                                </p>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+
+                    {item.list && (
+                      <div class="mb-3 pl-10">
+                        {item.list.map((listItem: string) => (
+                          <p class="mb-2 flex items-center space-x-2">
+                            <span class={'block size-[6px] rounded-full bg-black'} />
+                            <span>{listItem}</span>
+                          </p>
+                        ))}
+                      </div>
+                    )}
+
+                    {item.sublist && (
+                      <div class="mb-3 pl-14">
+                        {item.sublist.map((subItem: string) => (
+                          <p class="mb-2 flex items-center space-x-2">
+                            <span class={'block size-[4px] rounded-full bg-black'} />
+                            <span>{subItem}</span>
+                          </p>
+                        ))}
+                      </div>
+                    )}
+
+                    {item.contacts && (
+                      <div class="mb-3 pl-4">
+                        {item.contacts.map((contact: any) => {
+                          let value = contact.value;
+
+                          if (contact.label === 'Email hỗ trợ') {
+                            value = `<a href="mailto:${contact.value}" class="text-primary hover:underline">${contact.value}</a>`;
+                          }
+
+                          if (contact.label === 'Hotline') {
+                            value = `<a href="tel:${contact.value}" class="text-primary hover:underline">${contact.value}</a>`;
+                          }
+
+                          if (contact.label === 'Website') {
+                            value = `<a href="${contact.value}" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">${contact.value}</a>`;
+                          }
+
+                          return (
+                            <p class="mb-2 flex items-start space-x-2">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="2"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                                width="15"
+                                class="mt-1 flex-shrink-0"
+                              >
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                              </svg>
+                              <span>
+                                <strong>{contact.label}:</strong> <span set:html={value} />
+                              </span>
+                            </p>
+                          );
+                        })}
+                      </div>
+                    )}
+
+                    {item.socialLinks && (
+                      <div class="mb-3 pl-4">
+                        <p class="mb-2 font-medium">Hệ thống fanpage:</p>
+                        {item.socialLinks.map((link: any) => {
+                          const linkHtml = `<a href="${link.value}" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">${link.value}</a>`;
+
+                          return (
+                            <p class="mb-2 flex items-start space-x-2 pl-4">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="2"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                                width="15"
+                                class="mt-1 flex-shrink-0"
+                              >
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                              </svg>
+                              <span>
+                                <strong>{link.label}:</strong> <span set:html={linkHtml} />
+                              </span>
+                            </p>
+                          );
+                        })}
+                      </div>
+                    )}
+
+                    {item.footer &&
+                      item.footer.map((text: string) => (
+                        <p class="mb-3 flex items-start space-x-2 pl-4 text-black">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                            width="15"
+                            class="mt-1 flex-shrink-0"
+                          >
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                          </svg>
+                          <span set:html={text} />
+                        </p>
+                      ))}
+                  </>
+                )}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  .toc-link.active {
+    color: hsl(var(--primary));
+    background-color: hsl(var(--primary) / 0.08);
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  const tocLinks = document.querySelectorAll<HTMLAnchorElement>('.toc-link');
+
+  const allSectionIds: string[] = [];
+  document.querySelectorAll("[id^='section-']").forEach((el) => {
+    allSectionIds.push(el.id);
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach((link) => {
+            link.classList.remove('active');
+            if (link.dataset.section === entry.target.id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    },
+    { rootMargin: '-20% 0px -70% 0px', threshold: 0 },
+  );
+
+  allSectionIds.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+</script>

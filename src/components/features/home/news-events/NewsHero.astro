@@ -1,0 +1,160 @@
+---
+import { ChevronRight } from 'lucide-react';
+import { PlaySolidIcon } from '@/components/common/icons';
+import { IMAGES } from '@/lib/constants/images';
+import { NEWS_SLUGS } from '@/lib/constants/content';
+---
+
+<section
+  class="relative w-full overflow-hidden bg-gradient-to-r from-[#7D1900] to-[#B90E0A] max-[767px]:h-[435px] md:h-[550px] lg:h-[600px] xl:h-[478px] 2xl:h-[600px] 3xl:h-[718px]"
+>
+  {/* Decorative Layer */}
+  <img
+    src={IMAGES.news.newsLayer.src}
+    class="pointer-events-none absolute z-0 max-[767px]:left-[-70px] max-[767px]:top-[-37px] max-[767px]:h-[208.2px] max-[767px]:w-[208.2px] md:-left-[1px] md:-top-[10px] md:h-[280px] md:w-[280px] lg:h-[320px] lg:w-[320px] xl:-left-[1px] xl:-top-[53px] xl:h-[292px] xl:w-[292px] 2xl:-left-[2px] 2xl:-top-[64px] 2xl:h-[350px] 2xl:w-[350px] 3xl:-left-[2px] 3xl:-top-[80px] 3xl:h-[438px] 3xl:w-[438px]"
+    alt=""
+    aria-hidden="true"
+  />
+  {/* Second Decorative Layer */}
+  <img
+    src={IMAGES.news.newsLayer.src}
+    class="pointer-events-none absolute z-0 hidden md:left-[380px] md:top-[320px] md:block md:h-[300px] md:w-[300px] lg:left-[480px] lg:top-[365px] lg:h-[350px] lg:w-[350px] xl:left-[496px] xl:top-[287px] xl:h-[233px] xl:w-[233px] 2xl:left-[596px] 2xl:top-[345px] 2xl:h-[280px] 2xl:w-[280px] 3xl:left-[745px] 3xl:top-[431px] 3xl:h-[350px] 3xl:w-[350px]"
+    alt=""
+    aria-hidden="true"
+  />
+  <div class="flex h-full flex-col md:flex-row">
+    {/* Left Content */}
+    <div
+      class="relative z-10 flex h-[435px] w-full flex-col items-center justify-center px-6 py-16 text-center max-[767px]:!w-full max-[767px]:justify-start max-[767px]:pb-8 max-[767px]:pt-16 md:h-full md:items-start md:px-12 md:text-left xl:flex-[0_0_535px] 2xl:flex-[0_0_700px] 3xl:flex-[0_0_802px]"
+      style="width: clamp(320px, calc(106px + 36.25vw), 802px);"
+    >
+      {/* Breadcrumbs */}
+      <nav
+        class="absolute left-[22px] top-[10px] z-20 flex h-[18px] w-[148px] items-center justify-start gap-2 whitespace-nowrap text-sm font-medium text-white/80 max-[767px]:!left-[26px] max-[767px]:!top-[20px] max-[767px]:h-auto max-[767px]:w-max md:m-0 md:h-auto md:w-auto xl:!left-[199px] xl:!top-[40px] 2xl:!left-[238px] 2xl:!top-[50px] 3xl:!left-[298px] 3xl:!top-[60px]"
+        style="left: clamp(22px, calc(-416px + 37.18vw), 298px); top: clamp(10px, calc(0px + 3.125vw), 60px);"
+      >
+        <a
+          href="/"
+          class="flex h-[8px] items-center font-gilroy text-[11px] font-medium leading-[150%] text-white md:h-auto md:text-base md:leading-normal lg:text-[18px]"
+        >
+          Trang chủ
+        </a>
+        <ChevronRight
+          className="h-[18px] w-[18px] stroke-[1.8px] md:h-[18px] md:w-[18px] md:stroke-[2.5px] lg:h-[20px] lg:w-[20px]"
+        />
+        <span
+          class="flex h-[8px] items-center font-gilroy text-[11px] font-medium leading-[150%] text-white md:h-auto md:text-base md:leading-normal lg:text-[18px]"
+        >
+          Tin tức & sự kiện
+        </span>
+      </nav>
+
+      {/* Title Section */}
+      <div
+        class="relative mb-8 flex w-fit flex-col items-center gap-4 max-[767px]:absolute max-[767px]:!left-0 max-[767px]:!right-0 max-[767px]:!top-[60px] max-[767px]:m-0 max-[767px]:mx-auto max-[767px]:h-[82px] max-[767px]:!w-max max-[767px]:flex-row max-[767px]:items-start max-[767px]:justify-center max-[767px]:gap-[6px] md:absolute md:m-0 md:flex-row md:gap-[30px] xl:!left-[200px] xl:!top-[120px] 2xl:!left-[240px] 2xl:!top-[162px] 3xl:!left-[300px] 3xl:!top-[180px]"
+        style="left: clamp(46px, calc(-340px + 31.25vw), 260px); top: clamp(15px, calc(10px + 11vw), 120px); transform: rotate(-0.05deg);"
+      >
+        {/* Left Corner Decoration */}
+        <div
+          class="absolute -left-[15px] -top-[6px] md:-left-[40px] md:top-0 xl:-left-[26px] 2xl:-left-[32px] 3xl:-left-[40px]"
+        >
+          <img
+            src={IMAGES.schedule.decorCorner.src}
+            class="h-[14.74px] w-[14.42px] md:h-[24px] md:w-[23px] lg:h-[31px] lg:w-[30.33px] xl:h-[21px] xl:w-[20px] 2xl:h-[25px] 2xl:w-[24px] 3xl:h-[31px] 3xl:w-[30.33px]"
+            style="filter: brightness(0) invert(1);"
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
+
+        <h1
+          class="flex flex-col text-5xl font-black uppercase leading-tight text-white max-[767px]:h-[41px] max-[767px]:!w-auto max-[767px]:flex-row max-[767px]:items-center max-[767px]:justify-center max-[767px]:gap-[6px] max-[767px]:font-gilroy max-[767px]:text-[38.03px] max-[767px]:font-[1000] max-[767px]:leading-[40.4px] md:text-6xl lg:text-7xl xl:-mt-[13px] xl:ml-[17px] xl:font-gilroy xl:text-[53px] xl:font-[1000] xl:leading-[56px] 2xl:-mt-[18px] 2xl:ml-[23px] 2xl:text-[80px] 2xl:leading-[85px] 3xl:-mt-[20px] 3xl:ml-[26px] 3xl:text-[80px] 3xl:leading-[85px]"
+        >
+          <span class="relative w-fit">
+            TIN TỨC
+            {/* Decorative Stars pinned to text */}
+            <img
+              src={IMAGES.schedule.starSmall.src}
+              class="absolute -top-[25px] left-[260px] h-[9.81px] w-[9.81px] md:left-auto md:right-[-24px] md:top-2 md:h-[16px] md:w-[16px] md:rotate-0 lg:-right-8 lg:top-4 lg:h-[20.63px] lg:w-[20.63px] xl:-right-[21px] xl:top-[11px] xl:h-[13.7px] xl:w-[13.7px] 2xl:-right-[26px] 2xl:top-[13px] 2xl:h-[16.5px] 2xl:w-[16.5px] 3xl:-right-8 3xl:top-4 3xl:h-[20.63px] 3xl:w-[20.63px]"
+              style="filter: brightness(0) invert(1);"
+              alt=""
+              aria-hidden="true"
+            />
+            <img
+              src={IMAGES.schedule.starLarge.src}
+              class="absolute -top-[45px] left-[268px] h-[24.6px] w-[24.6px] md:-top-4 md:left-auto md:right-[-56px] md:h-[36px] md:w-[36px] md:rotate-0 lg:-right-20 lg:-top-6 lg:h-[51.75px] lg:w-[51.75px] xl:-right-[53px] xl:-top-[16px] xl:h-[34.4px] xl:w-[34.4px] 2xl:-right-[64px] 2xl:-top-[19px] 2xl:h-[41.4px] 2xl:w-[41.4px] 3xl:-right-20 3xl:-top-6 3xl:h-[51.75px] 3xl:w-[51.75px]"
+              style="filter: brightness(0) invert(1);"
+              alt=""
+              aria-hidden="true"
+            />
+          </span>
+          <span>& SỰ KIỆN</span>
+        </h1>
+      </div>
+
+      <p
+        class="mb-12 max-w-lg text-center text-lg font-medium leading-relaxed text-white/90 max-[767px]:absolute max-[767px]:!left-0 max-[767px]:!right-0 max-[767px]:!top-[140px] max-[767px]:m-0 max-[767px]:mx-auto max-[767px]:h-[77px] max-[767px]:w-[286px] max-[767px]:font-gilroy max-[767px]:text-[14px] max-[767px]:font-normal max-[767px]:leading-[120%] md:absolute md:max-w-[450px] md:text-justify lg:max-w-none xl:!left-[201px] xl:!top-[260px] xl:h-[107px] xl:w-[364px] xl:font-gilroy xl:text-[15px] xl:font-normal xl:leading-[19px] 2xl:!left-[242px] 2xl:!top-[351px] 2xl:h-[145px] 2xl:w-[491px] 2xl:text-[22px] 2xl:leading-[28px] 3xl:!left-[302px] 3xl:!top-[390px] 3xl:h-[161px] 3xl:w-[546px] 3xl:text-[22px] 3xl:leading-[28px]"
+        style="left: clamp(60px, calc(-424px + 37.81vw), 302px); top: clamp(270px, calc(195px + 9.8vw), 320px);"
+      >
+        Nơi cập nhật tin tức mới nhất về hoạt động và sự kiện nổi bật mà Học Bá Education tham gia, đồng hành.
+      </p>
+
+      <div class="mt-12 w-full md:static">
+        <a
+          href={`/${NEWS_SLUGS[0]}`}
+          class="group relative flex w-full animate-[pulse-shadow_0.4s_ease-in-out_infinite_alternate] items-center justify-center overflow-hidden rounded-full border-white bg-gradient-to-r from-[#7D1900] to-[#B90E0A] max-[767px]:absolute max-[767px]:!left-1/2 max-[767px]:!top-[231px] max-[767px]:!h-[30.78px] max-[767px]:!w-[156px] max-[767px]:!-translate-x-1/2 max-[767px]:rounded-[47.76px] max-[767px]:border-[1.67px] max-[767px]:p-[6.39px] sm:w-fit md:absolute md:!left-[clamp(60px,calc(-416px+37.18vw),298px)] md:!top-[clamp(430px,calc(383px+6vw),460px)] md:h-[52px] md:w-[250px] md:justify-center md:rounded-[86px] md:border-[2.5px] md:p-[9px] lg:h-[58px] lg:w-[280px] lg:border-[2.5px] lg:p-[10px] xl:!left-[198px] xl:!top-[364px] xl:h-[62px] xl:w-[300px] xl:border-[3px] xl:p-[11px] 2xl:!left-[238px] 2xl:!top-[491px] 2xl:h-[66px] 2xl:w-[315px] 2xl:border-[3px] 2xl:p-[11.5px] 3xl:!left-[298px] 3xl:!top-[546px]"
+        >
+          {/* Auto Pulsing Gradient Effect */}
+          <div
+            class="absolute inset-0 z-0 h-full w-full animate-[pulse-gradient_0.4s_ease-in-out_infinite_alternate] bg-gradient-to-r from-[#F3C650] to-[#B90E0A]"
+          >
+          </div>
+
+          <div class="relative z-10 flex items-center gap-[6px] max-[767px]:gap-[3.33px]">
+            <PlaySolidIcon
+              className="fill-white max-[767px]:h-[13.33px] max-[767px]:w-[13.33px] md:h-[18px] md:w-[18px] md:-translate-y-[1px] lg:h-[20px] lg:w-[20px] xl:h-[22px] xl:w-[22px] 2xl:h-[24px] 2xl:w-[24px]"
+            />
+            <span
+              class="-translate-y-[1px] whitespace-nowrap font-gilroy font-black leading-none text-white max-[767px]:text-[14px] max-[767px]:leading-[17.77px] md:-translate-y-[2px] md:text-[20px] lg:text-[22px] xl:text-[24px] 2xl:text-[28px]"
+            >
+              Khám phá ngay
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    {/* Right Photo Collage */}
+    <div
+      class="relative h-[350px] w-full overflow-hidden max-[767px]:absolute max-[767px]:left-[-145px] max-[767px]:top-[295px] max-[767px]:h-[211px] max-[767px]:w-[716px] md:h-full md:flex-1"
+    >
+      <img
+        src={IMAGES.news.newsHeroCollage1.src}
+        class="block h-full w-full origin-top-left scale-105 object-cover object-left"
+        alt="Tin tức & Sự kiện"
+      />
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  @keyframes pulse-shadow {
+    0%,
+    15% {
+      box-shadow: 0 0 20px rgba(255, 184, 0, 0.2);
+    }
+    100% {
+      box-shadow: 3px 4px 30px rgba(243, 198, 80, 0.6);
+    }
+  }
+
+  @keyframes pulse-gradient {
+    0%,
+    15% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+</style>

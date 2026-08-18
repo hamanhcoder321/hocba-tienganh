@@ -1,0 +1,159 @@
+---
+import { IMAGES } from '@/lib/constants/images';
+import StudentExperienceCard from './StudentExperienceCard.astro';
+import { Image } from 'astro:assets';
+
+const testimonials = [
+  {
+    name: 'Hoàng Tú Anh',
+    role: 'Nhân viên văn phòng',
+    location: 'TP HCM',
+    rating: 5,
+    hskLevel: 'HSK 4',
+    timeSpent: 'Sau 9 tháng',
+    content:
+      'Review qua 2 khoá H2-3 rồi lên H4 nha. Mình dân tiếng Anh qua học tiếng Trung. Lúc đầu mấy bạn tư vấn bên Học Bá này mình thấy oke, hỏi han đầy đủ rõ ràng mục tiêu học học rõ ràng... Mình cũng có thử qua 1 số hệ thống LMS khác của tiếng Anh thì bên này làm rất oke, giống form của nước ngoài. Cho nội dung trên LS để HV học trước, sau đó lên lớp thì GV phân tích, sau đó thì mình sẽ làm bt, bt thì có bt trong sách và bt mở rộng từ vựng và ngữ pháp 3.0 tự soạn. Nếu HV không làm bt thì có Mentor lắp nhắc làm, không làm bị phạt... Học ở đây rất hiệu quả!',
+    likes: 348,
+    shares: 67,
+    avatar: IMAGES.home.HoangTuAnh,
+    hasOwlSticker: false,
+  },
+  {
+    name: 'Lê Thương',
+    role: 'Học sinh lớp 12',
+    location: 'Hà Nội',
+    rating: 5,
+    hskLevel: 'HSK3',
+    timeSpent: 'Từ mất gốc',
+    content:
+      'Mình đang học lớp HSK3 cô Tâm học vui lắm ạ, nhma cnhan học Tiếng Trung siêu khó nha xdinh là áp lực nếu lười :))) còn mình học thì có mentor nhắc bài với chấm chữa bt siêu kĩ nên học thấy tiến bộ đều rõ nha. Học phí k rẻ cũng k đắt mà so với thị trg là xứng đáng, highly rcm nhaaaa bác ơi',
+    likes: 128,
+    shares: 23,
+    avatar: IMAGES.home.LeThuong,
+    hasOwlSticker: true,
+  },
+  {
+    name: 'Tiến Vũ',
+    role: 'Nhân viên IT ',
+    location: 'Đà Nẵng',
+    rating: 5,
+    hskLevel: 'HSK 6',
+    timeSpent: 'Sau 7+ tháng',
+    content:
+      'Mình đã đi làm nên quỹ thời gian hạn chế. Tình cờ biết đến Học Bá có lớp online 100% thời gian linh động nên đăng ký học luôn. Mình học H6 trong thời gian cam kết 6 tháng của trung tâm cùng với ctrinh H6 học 100% với giáo viên bản xứ .Ở đây cách học Project Based Learning mình thấy hiệu quả, học qua project nên dễ hiểu, áp dụng nhanh, dù kiến thức HSK6 khá nặng & khó.Giảng viên bản xứ cực kỳ nhiệt tình, theo sát từng buổi, giúp mình tiến bộ rõ rệt Kết quả là mình đỗ HSK6 đợt thi tháng 9 / 2025. Rất cảm ơn trung tâm và cô Junchi đã support hết mình.',
+    likes: 298,
+    shares: 68,
+    avatar: IMAGES.home.TienVu,
+    hasOwlSticker: false,
+  },
+  {
+    name: 'Khánh Ly',
+    role: '26 tuổi',
+    location: 'Đà Nẵng',
+    rating: 5,
+    hskLevel: 'HSK 4',
+    timeSpent: 'Từ mất gốc',
+    content:
+      'Bên này thì công tâm mà nói ko rẻ nha. Nhưng học thì đc care khá là sát. GV cũng cũng nha, học tới đâu mà phần nào k hiểu cũng hỏi lại học viên luôn để giảng lại. Đã học và tự tin lấy H4 nên rcm mấy bạn muốn học đạt hiệu quả tốt. Mà ai ngại nói tiếng trung thì vào lớp nói hoài luôn nhé :))) đăng ký học Hsk xong vào lớp thầy luyện cả hskk đi thi đỡ bỡ ngỡ hẳn, với bên này có cái LMS ổn áp á, học liệu trên đấy đa dạng nha. Tuy nhiên sẽ bị nản thời gian đầu vì nhiều task bài tập lắm mn ạ, cố vượt qua thì mới quen được nhịp độ lớp ý.',
+    likes: 98,
+    shares: 12,
+    avatar: IMAGES.home.KhanhLy,
+    hasOwlSticker: false,
+  },
+  {
+    name: 'Vũ Hải My',
+    role: 'Sinh viên',
+    location: 'Hà Nội',
+    rating: 5,
+    hskLevel: 'HSK 3',
+    timeSpent: 'Sau 6+ tháng',
+    content:
+      'Lúc đầu tìm hiểu thì thấy đắt hơn bên khác, cơ mà thấy LMS thấy lạ lạ, nên đăng kí thử đến h3 thui, mà học được với gv cute cũng khá okee. mình vừa học xong H3 trộm vía qua test, vừa gia hạn H4 á, mà sắp tết rồi bận quá nên là đk trước để sau sắp xếp đc lại học tiếp. không biết lên h4 khó hơn không nhưng h3 thấy ổn',
+    likes: 68,
+    shares: 3,
+    avatar: IMAGES.home.VuHaiMy,
+    hasOwlSticker: false,
+  },
+  {
+    name: 'Thanh Hải',
+    role: 'Nhân viên Logistic',
+    location: 'Đà Nẵng',
+    rating: 5,
+    hskLevel: 'LỚP GT2',
+    timeSpent: 'Sau 6+ tháng',
+    content:
+      'Khoá học chất lượng, lộ trình rõ ràng và được hỗ trợ nhiệt tình từ giảng viên và mentor. Cảm ơn Học Bá đã giúp mình đạt mục tiêu HSK sớm hơn dự kiến!',
+    likes: 36,
+    shares: 12,
+    avatar: IMAGES.home.TienVu,
+    hasOwlSticker: false,
+  },
+];
+---
+
+<section class="relative overflow-hidden bg-white pb-10 pt-0 md:-mt-8 lg:-mt-8 xl:-mt-12 2xl:-mt-8 3xl:-mt-8">
+  {/* Background Patterns */}
+  <div
+    class="absolute left-[-43px] top-[23px] z-0 h-[138px] w-[138px] opacity-80 md:left-[-8%] md:top-[10%] md:h-[280px] md:w-[280px] lg:left-[-12%] lg:h-[397px] lg:w-[397px] xl:left-[-2%] 2xl:left-[0%] 3xl:left-[8%]"
+  >
+    <img src={IMAGES.khoaChinese.gridRedChinese.src} alt="" class="h-full w-full object-contain" />
+  </div>
+  <div
+    class="absolute left-[255px] top-[673px] z-0 h-[187px] w-[186px] opacity-80 md:bottom-[2%] md:left-auto md:right-[-9%] md:top-auto md:h-[280px] md:w-[280px] lg:bottom-[2%] lg:right-[-8%] lg:h-[362px] lg:w-[362px] xl:right-[-6%] 2xl:right-[0%] 3xl:right-[9%]"
+  >
+    <img src={IMAGES.khoaChinese.gridRedChinese.src} alt="" class="h-full w-full object-contain" />
+  </div>
+
+  <div
+    class="container relative z-10 mx-auto px-2 md:max-w-[710px] md:px-0 lg:max-w-[984px] lg:px-0 xl:max-w-[1280px] 2xl:max-w-[1182px] 2xl:px-0 3xl:max-w-[1182px] 3xl:px-0"
+  >
+    {/* Title Section */}
+    <div class="mb-[26px] flex flex-col items-center text-center md:mb-16">
+      <div class="flex items-center justify-center gap-[9.17px] md:gap-3">
+        <Image
+          src={IMAGES.schedule.chatPencil}
+          alt="Notebook Icon"
+          width={75}
+          height={75}
+          class="h-[34.38px] w-[34.38px] object-contain md:h-[75px] md:w-[75px]"
+        />
+        <h2
+          class="bg-gradient-to-r from-[#7D1900] to-[#B90E0A] bg-clip-text font-gilroy text-[18px] font-[1000] uppercase leading-[29.33px] text-transparent md:text-[42px] md:leading-[64px]"
+        >
+          CHIA SẺ TỪ “BÁ SINH”
+        </h2>
+      </div>
+      <p
+        class="mx-auto mt-[9.17px] max-w-[299px] text-center font-gilroy text-[12px] font-[700] not-italic leading-[1.2] text-[#000000] md:mt-4 md:max-w-[547px] md:text-[18px] md:font-[300] md:italic"
+      >
+        Tổng hợp những tâm tình của “Bá sinh”, từ cảm nhận về Học Bá Education, review sau mỗi kỳ thi đến những tip học
+        tập hiệu quả – bản hoà ca niềm vui nhỏ bé mà Học Bá nâng niu mỗi ngày.
+      </p>
+    </div>
+
+    {/* Cards Grid */}
+    <div
+      class="mx-auto grid h-[654.65px] w-[360px] max-w-full grid-cols-2 gap-x-4 gap-y-4 md:h-auto md:w-auto md:max-w-none md:grid-cols-2 lg:grid-cols-3 xl:gap-8 2xl:gap-x-[72px] 2xl:gap-y-[35px] 3xl:gap-x-[72px] 3xl:gap-y-[35px]"
+    >
+      {testimonials.map((item) => <StudentExperienceCard item={item} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 360px) {
+    :global(.experience-card) {
+      width: 164px !important;
+    }
+  }
+  @media (max-width: 344px) {
+    :global(.experience-card) {
+      width: 160px !important;
+    }
+  }
+  @media (max-width: 320px) {
+    :global(.experience-card) {
+      width: 142px !important;
+    }
+  }
+</style>

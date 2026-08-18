@@ -1,0 +1,220 @@
+---
+import AnimatedArrow from '@/components/common/AnimatedArrow';
+import { VectorArrow } from '@/components/common/icons';
+import JsonLd from '@/components/common/JsonLd.astro';
+import SimpleFormRegister from '@/components/common/SimpleFormRegister.astro';
+import LecturerPageClient from '@/components/features/lecturer/LecturerPageClient';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { DATA_VALUE } from '@/lib/constants/enums';
+import { IMAGES } from '@/lib/constants/images';
+import { fetchTeacherListV2 } from '@/lib/static-data';
+import { Image, getImage } from 'astro:assets';
+import type { Graph } from 'schema-dts';
+// --- Metadata cho SEO ---
+const title = 'Đội ngũ giảng viên | Học Bá Education';
+const description =
+  'Câu chuyện hình thành, sứ mệnh và đội ngũ đằng sau [Tên Thương Hiệu]. Chúng tôi cung cấp giải pháp [Lĩnh vực của bạn] uy tín và chất lượng.';
+
+const baseUrl = import.meta.env.PUBLIC_CLIENT_URL ?? 'https://hoc-ba.edu.vn';
+
+const jsonLd: Graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Trang chủ',
+          item: baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Đội ngũ giảng viên',
+          item: `${baseUrl}/doi-ngu-giang-vien`,
+        },
+      ],
+    },
+  ],
+};
+
+const heroData = [
+  {
+    id: 1,
+    title: '200+ Giảng viên',
+    description: 'Trình độ cao',
+    image: IMAGES.lectuter.hero1,
+  },
+  {
+    id: 2,
+    title: '100% Đạt chuẩn',
+    description: 'HSK6/HSKK/TOCFL',
+    image: IMAGES.lectuter.hero2,
+  },
+  {
+    id: 3,
+    title: '5 -> 10+ Năm kinh',
+    description: 'Nghiệm sư phạm',
+    image: IMAGES.lectuter.hero3,
+  },
+  {
+    id: 4,
+    title: '+10.000 Học viên',
+    description: 'Đào tạo mỗi năm',
+    image: IMAGES.lectuter.hero4,
+  },
+];
+
+// Initial fetch for SSR - will be replaced by client-side filtering
+const teacherData = await fetchTeacherListV2({ page: 1, limit: 100 });
+const teachers = teacherData?.list ?? [];
+
+const initialLecturers = await Promise.all(
+  teachers.map(async (teacher) => {
+    const AVATAR_WIDTH = 700;
+    const AVATAR_HEIGHT = 900;
+    // 1. Tối ưu Avatar chính
+    const rawAvatar = teacher?.avatar_url?.file_path || IMAGES.course.profilePic;
+
+    const optimizedAvatar = await getImage({
+      src: rawAvatar,
+      width: AVATAR_WIDTH,
+      height: AVATAR_HEIGHT,
+      format: 'webp',
+      quality: 80,
+      position: 'top',
+    });
+
+    return {
+      ...teacher,
+      optimizedAvatar: optimizedAvatar.src,
+    };
+  }),
+);
+---
+
+<BaseLayout {title} {description}>
+  <JsonLd data={jsonLd} />
+  <div class="relative">
+    <section class="relative flex h-[854px] w-full flex-col overflow-hidden bg-[#FFF8F8]">
+      <div class="relative z-10 flex h-auto flex-col md:h-[688px] md:px-0">
+        <Breadcrumb className="container mt-6 px-4 md:mt-12 md:px-0">
+          <BreadcrumbList className="text-foreground text-xs md:text-lg">
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <a href="/" class="hover:text-primary hover:underline">Trang chủ</a>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Đội ngũ giảng viên</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+        <Image
+          src={IMAGES.lectuter.headBanner2}
+          width={668}
+          height={668}
+          alt={'headBanner2'}
+          class={'absolute top-1/2 -translate-y-1/2 md:-left-[10%] 3xl:left-0 -translate-x-1/2 z-10'}
+          densities={[1, 2]}
+        />
+        <div class="container z-50 px-4">
+          <div class="w-full md:w-[600px]">
+            <h1 class="mt-6 font-black uppercase leading-tight md:mt-14">
+              <p class="text-[28px] md:text-[52px]">Đội ngũ giảng viên</p>
+              <p class="text-[24px] text-primary md:text-[52px]">Tại học bá education</p>
+            </h1>
+            <div
+              class="mt-6 flex h-auto w-full flex-col gap-4 rounded-[20px] bg-gradient-to-r from-[#FFD3D3] to-[#FFF8F800] px-5 py-5 text-[15px] md:mt-14 md:px-9 md:py-6 md:text-[20px]"
+            >
+              <p class="font-medium">
+                Học Bá Education sở hữu đội ngũ hơn 200 giảng viên chất lượng cao trên toàn quốc - đều có chứng chỉ HSK
+                6, HSKK, TOCFL hoặc văn bằng chuyên môn về tiếng Trung, cùng nhiều năm kinh nghiệm giảng dạy.
+              </p>
+              <p class="font-medium">
+                Mỗi giảng viên đều được đào tạo phương pháp giảng dạy độc quyền của Học Bá và đồng hành cùng học viên
+                trong suốt quá trình học để đảm bảo kết quả thực học - thực dùng.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="relative z-10 mt-auto flex h-auto flex-col justify-center bg-[#AF1F23] px-4 md:h-[166px] xl:px-0">
+        <div class="mx-auto grid w-full grid-cols-2 gap-4 py-3 pl-0 md:w-[1264px] md:grid-cols-4 md:py-0">
+          {
+            heroData.map((item) => (
+              <div class="col-span-1 flex gap-3">
+                <div class="flex size-12 items-center justify-center rounded-xl bg-white md:size-[86px] md:rounded-3xl">
+                  <Image
+                    src={item.image}
+                    width={80}
+                    height={80}
+                    alt={`hero${item.id}`}
+                    class={'size-11 object-cover md:size-20'}
+                    densities={[1, 2]}
+                  />
+                </div>
+                <div class="mt-2 flex flex-col gap-1 text-xs font-bold uppercase text-white md:gap-3 md:text-[20px]">
+                  <p>{item.title}</p>
+                  <p>{item.description}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <Image
+        src={IMAGES.lectuter.headBanner}
+        width={944}
+        height={643}
+        alt={'headBanner2'}
+        class={'absolute top-[68%] md:top-[49%] 3xl:top-[43%] -translate-y-1/2 right-0 md:translate-x-[13%] h-[290px] md:h-[550px] 3xl:right-[6%] 3xl:h-[643px] w-auto'}
+        densities={[1, 2]}
+      />
+    </section>
+
+    <section class="relative w-full overflow-clip bg-[#F6F6F6] px-4 md:px-0">
+      <Image
+        src={IMAGES.introduce.bg_nen}
+        alt={'gs_hbc'}
+        width={993}
+        height={994}
+        class={'object-cover w-auto mb-auto absolute scale-75 -top-[18%] -right-[50%] md:-top-[45%] md:-right-[22%] 2xl:-top-[16%] md:-right-[50%] 2xl:-right-[22%] 3xl:-top-[18%] 3xl:-right-[16%] z-0'}
+      />
+      <div class="h-audo relative z-10 mx-auto flex w-full flex-col pt-4 md:px-10 md:pt-20 2xl:w-[1362px]">
+        <div
+          class="relative mx-auto flex h-14 w-fit items-center gap-6 px-4 text-lg font-black uppercase text-primary md:ml-20 md:h-[64px] md:px-10 md:text-[42px]"
+        >
+          <AnimatedArrow
+            toColor="#AF0000"
+            fromColor="#AF0000"
+            className={'absolute -left-1 top-2 size-4 object-cover md:-top-4 md:left-2 md:size-8'}
+            client:load
+          />
+          <div>Tìm hiểu giảng viên tại Học bá</div>
+          <VectorArrow
+            toColor="#AF0000"
+            fromColor="#AF0000"
+            className={'absolute -right-1 bottom-2 size-4 rotate-180 object-cover md:-bottom-4 md:right-2 md:size-8'}
+          />
+        </div>
+        <LecturerPageClient {initialLecturers} client:load />
+      </div>
+    </section>
+    <div class="relative z-0">
+      <SimpleFormRegister dataInput={DATA_VALUE.LECTURER} isSimpleForm />
+    </div>
+  </div>
+</BaseLayout>

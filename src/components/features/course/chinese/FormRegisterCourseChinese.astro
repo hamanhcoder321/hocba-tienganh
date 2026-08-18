@@ -1,0 +1,235 @@
+---
+import { ArrowIcon, BgRegisterChineseIcon } from '@/components/common/icons';
+import ContactAdvisorRegistrationForm from '@/components/features/contact/ContactAdvisorRegistrationForm';
+import { IMAGES } from '@/lib/constants/images';
+import { cn } from '@/lib/utils';
+import { getImage, Image } from 'astro:assets';
+
+const optimizedNoteBook = await getImage({
+  width: 80,
+  height: 80,
+  densities: [1, 2],
+  src: IMAGES.contact.noteBook,
+  format: 'webp',
+});
+
+const { dataInput } = Astro.props;
+---
+
+<section
+  class={cn(
+    'w-full overflow-hidden bg-gradient-to-l xl:bg-gradient-to-b from-[#B90E0A] to-[#7D1900] xl:from-[#780000] xl:to-[#AF0000] h-auto md:h-auto pb-5',
+  )}
+>
+  <div class="mx-auto w-full max-w-full md:max-w-[1354px]">
+    <div class="grid grid-cols-1 px-4 pt-8 md:grid-cols-2 md:py-0">
+      <div class="col-span-1">
+        <div class="mt-0 flex h-[50px] items-center gap-2 pl-6 md:h-[90px] md:gap-4 md:pl-0 xl:mt-6">
+          <div class="size-11 xl:size-20">
+            <Image
+              src={IMAGES.khoaChinese.registerIconChinese}
+              width={90}
+              height={80}
+              alt={'registerIconChinese'}
+              densities={[1, 2]}
+              class={'w-full h-auto object-cover -scale-x-100'}
+            />
+          </div>
+          <div class="relative flex flex-col gap-2 md:gap-4">
+            <div class="text-lg font-black uppercase text-white md:text-[42px]">Đăng ký tư vấn ngay!</div>
+            <div class="absolute -right-[65px] bottom-0 md:-bottom-28 md:-right-[34%]">
+              <ArrowIcon className="h-[34px] w-[52px] md:h-[88px] md:w-[125px]" />
+            </div>
+          </div>
+        </div>
+        <div class="mt-2 md:mt-6">
+          <ContactAdvisorRegistrationForm
+            className="w-full md:w-[502px]"
+            icons={{ noteBook: optimizedNoteBook.src }}
+            client:load
+            {dataInput}
+            isSimpleForm
+            isCourseChinese
+          />
+        </div>
+      </div>
+      <div class="col-span-1">
+        <div class="mt-6 flex flex-col items-center md:mt-[84px] xl:mt-[30px]">
+          <div class="text-sm font-black uppercase text-white md:text-[22px]">Nhận ưu đãi lên tới</div>
+          <div
+            class="text-[28px] font-black uppercase text-[#F3C650] md:mt-1 md:text-[42px]"
+            style="text-shadow: 5px 14px 25px #FF6969;"
+          >
+            6.000.000 VNĐ
+          </div>
+          <div
+            class="mt-2 h-[42px] w-[232px] rounded-[74px] border border-[#FFFFFF33] px-4 text-center text-[12px] font-medium text-white xl:h-auto xl:w-[370px] xl:px-4 xl:py-1 xl:text-[20px]"
+          >
+            Khi đăng ký lộ trình học Tiếng Trung Giao tiếp <strong>từ 6 tháng+</strong>
+          </div>
+        </div>
+        <div class="relative mx-auto -mb-5 mt-2 flex w-full justify-center xl:mt-0 xl:h-[519px] xl:w-[597px]">
+          <Image
+            src={IMAGES.khoaChinese.bgRegisterChinese}
+            alt={'hskPgsHbc'}
+            width={597}
+            height={519}
+            densities={[1, 2]}
+            class={'object-contain w-full h-full relative z-10 -mr-6 xl:mr-0'}
+          />
+          <BgRegisterChineseIcon
+            className="absolute -bottom-2 left-1/2 z-0 ml-1 h-[234px] w-[365px] max-lg:-translate-x-1/2 xl:-bottom-3 xl:-left-4 xl:h-[373px] xl:w-[582px]"
+          />
+          <div class="absolute left-[4%] top-[12%] h-[42px] w-[71px] xl:left-[10%] xl:top-[14%] xl:h-12 xl:w-20">
+            <Image
+              src={IMAGES.khoaChinese.registerIcon1Chinese}
+              alt={'registerIcon1Chinese'}
+              width={82}
+              height={48}
+              densities={[1, 2]}
+              class={'object-contain w-full h-full relative z-10'}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes moveBCT {
+    0%,
+    16.67% {
+      top: 2rem;
+      left: -27%;
+      height: 80px;
+      transform: rotate(-12deg);
+    }
+    25%,
+    58.33% {
+      top: 4.5rem;
+      left: -30%;
+      height: 56px;
+      transform: rotate(0deg);
+    }
+    66.67%,
+    100% {
+      top: 2rem;
+      left: -27%;
+      height: 80px;
+      transform: rotate(-12deg);
+    }
+  }
+
+  @keyframes moveHSK {
+    0%,
+    16.67% {
+      bottom: 39%;
+      right: 0;
+      height: 2.5rem;
+      transform: rotate(12deg);
+    }
+    25%,
+    58.33% {
+      bottom: 56%;
+      right: 17px;
+      height: 56px;
+      transform: rotate(0deg);
+    }
+    66.67%,
+    100% {
+      bottom: 39%;
+      right: 0;
+      height: 2.5rem;
+      transform: rotate(12deg);
+    }
+  }
+
+  @keyframes moveCU {
+    0%,
+    16.67%,
+    66.67%,
+    100% {
+      transform: translateX(0);
+    }
+    25%,
+    58.33% {
+      transform: translateX(-1.5rem);
+    }
+  }
+
+  @media (min-width: 768px) {
+    @keyframes moveBCT {
+      0%,
+      16.67% {
+        top: 2rem;
+        left: -27%;
+        height: 137px;
+        transform: rotate(-12deg);
+      }
+      25%,
+      58.33% {
+        top: 9rem;
+        left: -24%;
+        height: 84px;
+        transform: rotate(0deg);
+      }
+      66.67%,
+      100% {
+        top: 2rem;
+        left: -27%;
+        height: 137px;
+        transform: rotate(-12deg);
+      }
+    }
+
+    @keyframes moveHSK {
+      0%,
+      16.67% {
+        bottom: 39%;
+        right: -12px;
+        height: 70px;
+        transform: rotate(12deg);
+      }
+      25%,
+      58.33% {
+        bottom: 56%;
+        right: 17px;
+        height: 100px;
+        transform: rotate(-12deg);
+      }
+      66.67%,
+      100% {
+        bottom: 39%;
+        right: -12px;
+        height: 70px;
+        transform: rotate(12deg);
+      }
+    }
+
+    @keyframes moveCU {
+      0%,
+      16.67%,
+      66.67%,
+      100% {
+        transform: translateX(0);
+      }
+      25%,
+      58.33% {
+        transform: translateX(-2.5rem);
+      }
+    }
+  }
+
+  .icon-bct {
+    animation: moveBCT 12s ease-in-out 3s infinite;
+  }
+
+  .icon-hsk {
+    animation: moveHSK 12s ease-in-out 3s infinite;
+  }
+
+  .icon-cu {
+    animation: moveCU 12s ease-in-out 3s infinite;
+  }
+</style>

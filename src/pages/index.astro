@@ -1,0 +1,185 @@
+---
+// export const prerender = true;
+
+import SimpleFormRegister from '@/components/common/SimpleFormRegister.astro';
+import AboutUs from '@/components/features/home/AboutUs.astro';
+import AdvisorQA from '@/components/features/home/advisor-qa/AdvisorQA.astro';
+import Detection from '@/components/features/home/detection/Detection.astro';
+import HeroSession from '@/components/features/home/HeroSession.astro';
+import LearningEcosystem from '@/components/features/home/LearningEcosystem.astro';
+import QualityExpert from '@/components/features/home/quality-expert/QualityExpert.astro';
+import Roadmap from '@/components/features/home/roadmap/Roadmap.astro';
+import StudentSuccess from '@/components/features/home/student-success/StudentSuccess.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { IMAGES } from '@/lib/constants/images';
+import { getImage } from 'astro:assets';
+
+// Precompute hero image srcset for preload link (improves LCP)
+const optimizedHeroClass = await getImage({
+  src: IMAGES.home.heroClass,
+  widths: [643, 1011, 1280],
+  format: 'webp',
+  quality: 75,
+});
+---
+
+<BaseLayout disableDefaultSchema={false}>
+  <link
+    slot="head"
+    rel="preload"
+    as="image"
+    href={optimizedHeroClass.src}
+    imagesrcset={optimizedHeroClass.srcSet?.attribute}
+    imagesizes="(max-width: 768px) 643px, 1011px"
+    fetchpriority="high"
+  />
+  <main class="mx-auto max-w-[1920px] overflow-hidden bg-white font-gilroy">
+    <HeroSession />
+    <AboutUs />
+    <Detection />
+    <LearningEcosystem />
+    <QualityExpert />
+    <StudentSuccess />
+    <Roadmap />
+    <SimpleFormRegister dataInput="Trang chủ" isSimpleForm />
+    <AdvisorQA />
+  </main>
+</BaseLayout>
+
+<style>
+  @keyframes moveBCT {
+    0%,
+    16.67% {
+      top: 2rem;
+      left: -27%;
+      height: 80px;
+      transform: rotate(-12deg);
+    }
+    25%,
+    58.33% {
+      top: 4.5rem;
+      left: -30%;
+      height: 56px;
+      transform: rotate(0deg);
+    }
+    66.67%,
+    100% {
+      top: 2rem;
+      left: -27%;
+      height: 80px;
+      transform: rotate(-12deg);
+    }
+  }
+
+  @keyframes moveHSK {
+    0%,
+    16.67% {
+      bottom: 39%;
+      right: 0;
+      height: 2.5rem;
+      transform: rotate(12deg);
+    }
+    25%,
+    58.33% {
+      bottom: 56%;
+      right: 17px;
+      height: 56px;
+      transform: rotate(0deg);
+    }
+    66.67%,
+    100% {
+      bottom: 39%;
+      right: 0;
+      height: 2.5rem;
+      transform: rotate(12deg);
+    }
+  }
+
+  @keyframes moveCU {
+    0%,
+    16.67%,
+    66.67%,
+    100% {
+      transform: translateX(0);
+    }
+    25%,
+    58.33% {
+      transform: translateX(-1.5rem);
+    }
+  }
+
+  @media (min-width: 768px) {
+    @keyframes moveBCT {
+      0%,
+      16.67% {
+        top: 2rem;
+        left: -27%;
+        height: 137px;
+        transform: rotate(-12deg);
+      }
+      25%,
+      58.33% {
+        top: 9rem;
+        left: -24%;
+        height: 84px;
+        transform: rotate(0deg);
+      }
+      66.67%,
+      100% {
+        top: 2rem;
+        left: -27%;
+        height: 137px;
+        transform: rotate(-12deg);
+      }
+    }
+
+    @keyframes moveHSK {
+      0%,
+      16.67% {
+        bottom: 39%;
+        right: -12px;
+        height: 70px;
+        transform: rotate(12deg);
+      }
+      25%,
+      58.33% {
+        bottom: 56%;
+        right: 17px;
+        height: 100px;
+        transform: rotate(-12deg);
+      }
+      66.67%,
+      100% {
+        bottom: 39%;
+        right: -12px;
+        height: 70px;
+        transform: rotate(12deg);
+      }
+    }
+
+    @keyframes moveCU {
+      0%,
+      16.67%,
+      66.67%,
+      100% {
+        transform: translateX(0);
+      }
+      25%,
+      58.33% {
+        transform: translateX(-2.5rem);
+      }
+    }
+  }
+
+  .icon-bct {
+    animation: moveBCT 12s ease-in-out 3s infinite;
+  }
+
+  .icon-hsk {
+    animation: moveHSK 12s ease-in-out 3s infinite;
+  }
+
+  .icon-cu {
+    animation: moveCU 12s ease-in-out 3s infinite;
+  }
+</style>

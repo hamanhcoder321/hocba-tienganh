@@ -1,0 +1,607 @@
+---
+import {
+  CourseDetailsContentNew,
+  CourseDetailsDocumentNew,
+  CourseDetailsTarget,
+  CourseDetailsWho,
+  PlaySolidIcon,
+  ChineseHeroBgCorner1,
+  ChineseHeroBgCorner2,
+  HskHeroBgCorner1Mobile,
+  CourseDetailsBullet,
+  CourseDetailsCheck,
+  PrivilegeLightning,
+  PrivilegeShieldCheck,
+  PrivilegeAiStar,
+  PrivilegeGift,
+  PrivilegeHeart,
+} from '@/components/common/icons';
+import JsonLd from '@/components/common/JsonLd.astro';
+import { formatDescription, formatTargets } from '@/lib/utils';
+import SimpleFormRegister from '@/components/common/SimpleFormRegister.astro';
+import ScheduleTableNew from '@/components/features/schedule/ScheduleTableNew';
+import LecturerShowcase from '@/components/features/lecturer/LecturerShowcase';
+import CourseRegistrationForm from '@/components/features/course/CourseRegistrationForm';
+import CourseSectionAccordion from '@/components/features/course/CourseSectionAccordion';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { HOME_CATEGORIES } from '@/lib/constants/content';
+import { CATEGORY_TYPES } from '@/lib/constants/enums';
+import { IMAGES } from '@/lib/constants/images';
+import { fetchClassesList, fetchCourseDetail, fetchTeacherList, fetchCourseListHeader } from '@/lib/static-data';
+import { CalendarCheck, Clock, MonitorSmartphone } from 'lucide-react';
+import type { Graph } from 'schema-dts';
+import type { TClasses } from '@/types/schedule';
+
+const { slugCourse } = Astro.params;
+
+// Fetch course detail by slug
+const course = await fetchCourseDetail(slugCourse || '');
+
+if (!slugCourse || !course) {
+  Astro.response.status = 404;
+  Astro.response.statusText = 'Not Found';
+  return Astro.rewrite('/404');
+}
+
+const baseUrl = import.meta.env.PUBLIC_CLIENT_URL ?? 'https://hoc-ba.edu.vn';
+const url = `${baseUrl}/khoa-hoc-hsk/${course?.slug}`;
+
+const title = course?.meta_title || `${course?.name} | Học Bá Education`;
+const description = course?.meta_description || `Khoá học ${course?.name} tại Tiếng Trung Học Bá`;
+const keywords =
+  course && course?.meta_keyword
+    ? course?.meta_keyword.split(',').map((k) => k.trim())
+    : ['tiếng trung', 'HSK', course ? course.name : ''];
+
+// Find theme color based on category
+const themeColor =
+  HOME_CATEGORIES.find((category) => category.id === CATEGORY_TYPES.TIENG_TRUNG_CHO_NGUOI_DI_LAM) || HOME_CATEGORIES[0]; // Default to HSK theme
+
+// Get all courses in the same category using the header endpoint
+let coursesInCategory: TCourse[] = [];
+const headerCoursesData = await fetchCourseListHeader({
+  page: 1,
+  limit: 100,
+});
+
+if (headerCoursesData?.list) {
+  const currentCategoryId = course?.category_id ?? CATEGORY_TYPES.TIENG_TRUNG_CHO_NGUOI_DI_LAM;
+  coursesInCategory = (headerCoursesData.list as TCourse[]).filter(
+    (item) => item.category_id === currentCategoryId
+  );
+}
+
+const categoryName = themeColor.title || 'HSK';
+const categoryLink = themeColor.link;
+const isShortTitle = (course?.name || '').length < 20;
+
+// Fetch teachers
+let dataTeacher: TLecturer[] = [];
+const teachersData = await fetchTeacherList({ page: 0, limit: 20 });
+
+if (teachersData?.list) {
+  dataTeacher = teachersData.list as TLecturer[];
+}
+
+// Fetch classes schedule
+let classesSchedule: TResponsePagination<TClasses[]> | null = null;
+const today = new Date();
+const schedulesData = await fetchClassesList({
+  limit: 10,
+  page: 1,
+  month: today.getMonth() + 1,
+  year: today.getFullYear(),
+  course_id: course?.id,
+  start_date_order: 'asc',
+});
+
+if (schedulesData) {
+  classesSchedule = schedulesData as TResponsePagination<TClasses[]>;
+}
+
+// Tối ưu hóa mảng giáo viên
+const optimizedTeachers = dataTeacher.map((teacher) => {
+  const rawAvatar = teacher?.avatar_url?.file_path || (typeof IMAGES.course?.profilePic === 'string' ? IMAGES.course?.profilePic : IMAGES.course?.profilePic?.src);
+
+  const optimizedAlbum = Array.isArray(teacher.album_url)
+    ? teacher.album_url.map((img) => img.file_path)
+    : [];
+
+  let highlights: TLecturer['teacherHighlights'] = [];
+  try {
+    if (teacher.qualification && Array.isArray(teacher.qualification) && teacher.qualification.length > 0) {
+      highlights = teacher.qualification.map((q: TQualification, index: number) => ({
+        id: index,
+        teacher_id: 0,
+        section: q.name || '',
+        content: q.description || '',
+      }));
+    } else if (typeof teacher.qualification_info === 'string') {
+      const info = JSON.parse(teacher.qualification_info) as { title: string }[];
+      highlights = info.map((i: { title: string }, index: number) => ({
+        id: index,
+        teacher_id: 0,
+        section: '',
+        content: i.title,
+      }));
+    }
+  } catch (e) {
+    console.error('Error parsing teacher highlights:', e);
+  }
+
+  return {
+    ...teacher,
+    optimizedAvatar: rawAvatar,
+    optimizedAlbum: optimizedAlbum,
+    teacherHighlights: highlights,
+  };
+});
+
+const imagesCourseTeacher = {
+  profilePic: typeof IMAGES.course?.profilePic === 'string' ? IMAGES.course?.profilePic : IMAGES.course?.profilePic?.src,
+};
+
+// ==========================
+// 3. JSON-LD (SEO)
+// ==========================
+const jsonLd: Graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Trang chủ',
+          item: baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Khoá học Học Bá Chinese',
+          item: `${baseUrl}/tieng-trung-cho-nguoi-di-lam`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: course?.name,
+          item: `${baseUrl}/tieng-trung-cho-nguoi-di-lam/${course?.slug}`,
+        },
+      ],
+    },
+    {
+      '@type': 'Course',
+      name: `${course?.name}`,
+      description: description,
+      provider: {
+        '@type': 'Organization',
+        name: 'Học Bá Education',
+        sameAs: baseUrl,
+      },
+    },
+  ],
+};
+
+const formatCourseLabel = (name: string) => {
+  return name.trim();
+};
+
+const formatCourseTitle = (name: string) => {
+  return name.trim();
+};
+
+const normalizeCourseName = (name: string) =>
+  name
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/đ/g, 'd')
+    .replace(/Đ/g, 'D')
+    .toLowerCase()
+    .replace(/&/g, ' ')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim();
+
+const chineseHeroImages: Record<string, (typeof IMAGES.khoaHsk)[keyof typeof IMAGES.khoaHsk]> = {
+  'tieng trung giao tiep co ban': IMAGES.khoaHsk.heroChineseBasic,
+  'tieng trung van phong cong so': IMAGES.khoaHsk.heroChineseOffice,
+  'tieng trung thuong mai': IMAGES.khoaHsk.heroChineseCommerce,
+  'tieng trung thuong mai chuyen sau': IMAGES.khoaHsk.heroChineseAdvancedCommerce,
+  'tieng trung doanh nhan': IMAGES.khoaHsk.heroChineseBusiness,
+  'tieng trung giao tiep doanh nhan': IMAGES.khoaHsk.heroChineseBusiness,
+  'tieng trung cong xuong': IMAGES.khoaHsk.heroChineseFactory,
+};
+
+const courseHeroImage =
+  chineseHeroImages[normalizeCourseName(course.name)] || IMAGES.khoaHsk.heroChineseBasic;
+const courseHeroImageSrc = typeof courseHeroImage === 'string' ? courseHeroImage : courseHeroImage.src;
+---
+
+<BaseLayout {title} {description} {keywords} image={course?.cover_image_link || course?.thumbnail_link}>
+  <JsonLd data={jsonLd} />
+
+  <div class="mx-auto w-full max-w-[1920px] bg-white">
+    <section class="relative font-primary w-full overflow-hidden bg-gradient-to-r from-white via-white to-[#FFE1E1] pt-[18px] pb-[32px] md:pb-0 h-auto md:py-0 md:min-h-[390px] lg:min-h-[500px] xl:min-h-[580px] 2xl:min-h-[610px] 3xl:h-[718px] flex items-start md:items-stretch">
+      <div class="pointer-events-none absolute z-0 hidden md:block md:top-[20px] md:bottom-[-2px] md:right-[310px] md:w-[220px] md:h-auto min-[900px]:max-[1023px]:top-[20px] min-[900px]:max-[1023px]:bottom-[-2px] min-[900px]:max-[1023px]:right-[335px] min-[900px]:max-[1023px]:w-[235px] min-[900px]:max-[1023px]:h-auto lg:top-[10px] lg:bottom-[-2px] lg:right-[460px] lg:w-[380px] lg:h-auto xl:top-[15px] xl:bottom-[-2px] xl:right-[682px] xl:w-[345px] xl:h-auto 2xl:top-[17px] 2xl:bottom-[-2px] 2xl:right-[712px] 2xl:w-[387px] 2xl:h-auto 3xl:top-[19px] 3xl:bottom-[-2px] 3xl:right-[907px] 3xl:w-[422px] 3xl:h-auto">
+        <ChineseHeroBgCorner1 className="w-full h-full" />
+      </div>
+      <div class="absolute bottom-[-2px] left-0 w-[30px] h-[396px] md:hidden z-0 pointer-events-none overflow-visible">
+        <HskHeroBgCorner1Mobile className="w-full h-full" />
+      </div>
+      <div class="pointer-events-none absolute z-0 w-[408.81px] h-[338.02px] bottom-[-2px]  left-[24px] min-[540px]:right-0 min-[540px]:w-auto min-[540px]:h-[347px] md:left-auto md:top-[8px] md:bottom-[-20px] md:right-[-140px] md:w-[480px] md:h-auto min-[900px]:max-[1023px]:top-[3px] min-[900px]:max-[1023px]:bottom-[-20px] min-[900px]:max-[1023px]:right-[-125px] min-[900px]:max-[1023px]:w-[515px] min-[900px]:max-[1023px]:h-auto lg:top-[20px] lg:bottom-[-20px] lg:right-[-80px] lg:w-[540px] lg:h-auto xl:top-[3px] xl:bottom-[-20px] xl:right-[-56px] xl:w-[738px] xl:h-auto 2xl:top-[4px] 2xl:bottom-[-2px] 2xl:right-[-114px] 2xl:w-[827px] 2xl:h-auto 3xl:top-[4px] 3xl:bottom-[-20px] 3xl:right-0 3xl:w-[907px] 3xl:h-auto">
+        <ChineseHeroBgCorner2 className="w-full h-full" />
+      </div>
+
+      <div class="w-full max-w-[1920px] mx-auto relative z-10 md:h-full flex flex-col md:flex-row md:justify-between">
+        <div class="flex flex-col items-center md:items-start text-center md:text-left space-y-3 md:space-y-2 lg:space-y-3 xl:space-y-3 2xl:space-y-2 3xl:space-y-3 px-4 md:px-0 md:pl-[calc(4vw+10px)] min-[900px]:max-[1023px]:pl-[75px] lg:pl-[calc(8vw+10px)] xl:pl-[calc(11vw+10px)] 2xl:pl-[calc(12vw+10px)] 3xl:pl-[298px] pt-[15px] pb-[32px] md:pt-[15px] md:pb-[15px] lg:pt-[15px] lg:pb-[12px] xl:pt-[20px] xl:pb-[20px] 2xl:pt-[10px] 2xl:pb-[12px] 3xl:pt-[24px] 3xl:pb-[24px] w-full md:w-[55%] lg:w-[55%] xl:w-[60%] md:max-w-[618px] lg:max-w-[520px] xl:max-w-[580px] 2xl:max-w-[780px] 3xl:max-w-[900px] z-10 md:justify-center">
+          <div class="flex flex-col items-center md:items-start space-y-[10px] md:space-y-2 lg:space-y-3 xl:space-y-3 2xl:space-y-2 3xl:space-y-3 md:h-[264px] lg:h-[282px] xl:h-[297px] 2xl:h-[306px] 3xl:h-[322px] w-full shrink-0">
+            <div class="w-fit rounded-[15.3px] md:rounded-[30px] bg-gradient-to-r from-[#FFF8F8] to-[#D9D9D9] px-[16.32px] py-[6.12px] md:px-[20px] md:py-[6px] lg:px-[24px] lg:py-[10px] 3xl:px-[32px] 3xl:py-[12px] h-[29px] md:h-[38px] lg:h-[48px] 3xl:h-[56px] flex items-center justify-center shadow-[0_2.04px_3.06px_0_rgba(150,150,150,0.4)] md:shadow-[0_4px_6px_0_rgba(150,150,150,0.4)]">
+              <span class="font-svn-gilroy text-[12px] md:text-[13px] lg:text-[15px] 3xl:text-[18px] font-[800] leading-none text-[#373737]">
+                Khoá học Học Bá Chinese
+              </span>
+            </div>
+
+            <div class="flex items-center justify-center md:justify-start md:items-start gap-2 md:mt-0 w-full shrink-0">
+              <h1 class="font-svn-gilroy text-[24px] font-[1000] leading-[32px] uppercase md:text-[40px] md:leading-[50px] 2xl:text-[50px] 2xl:leading-[65px] bg-gradient-to-r from-[#7D1900] to-[#B90E0A] bg-clip-text text-transparent pb-2 md:pb-3 max-w-[280px] md:max-w-none mx-auto md:mx-0">
+                {formatCourseTitle(course?.name || '')}
+              </h1>
+            </div>
+            <div class:list={[
+              "font-svn-gilroy font-normal text-[14px] leading-[140%] text-[#373737] text-justify max-w-[350px] mx-auto md:mt-0 md:text-[13px] md:leading-[140%] lg:text-[15px] lg:leading-[140%] xl:text-[17px] xl:leading-[140%] 2xl:text-[20px] 2xl:leading-[140%] 3xl:text-[20px] 3xl:leading-[140%] md:text-justify md:w-full md:max-w-[420px] lg:max-w-[480px] xl:max-w-[520px] 2xl:max-w-[550px] 3xl:max-w-[618px] md:h-[110px] lg:h-[110px] xl:h-[125px] 2xl:h-[112px] md:overflow-y-auto md:custom-scrollbar md:pr-2 md:mx-0 w-full shrink-0 [&_p]:m-0",
+              { "2xl:!mt-[24px] 3xl:!mt-[32px]": isShortTitle }
+            ]} set:html={course?.short_description || ''} />
+          </div>
+          <div class="max-w-[350px] mx-auto w-full md:max-w-none md:mx-0 2xl:!-mt-[0px] 3xl:!mt-0">
+            <div class="flex flex-nowrap md:flex-wrap justify-start gap-3 pt-[12px] md:pt-4 lg:pt-3 xl:pt-4 2xl:pt-[16px] 3xl:pt-4 w-full overflow-x-auto md:overflow-x-visible custom-mobile-scrollbar pb-[10px] md:pb-0">
+              {
+                coursesInCategory.map((item) =>
+                  item.id === course?.id ? (
+                    <div class="font-svn-gilroy cursor-default text-nowrap rounded-[25.92px] md:rounded-[37px] bg-[#780000] px-[16.82px] py-[3.5px] md:px-[10px] md:py-[5px] lg:px-[14px] xl:px-[24px] text-[12px] md:text-[12px] lg:text-[13px] xl:text-[16px] font-bold leading-[1.5] text-white border-[0.35px] md:border-[0.5px] border-transparent h-[24.01px] md:h-[26px] lg:h-[30px] xl:h-[34px] flex items-center justify-center shrink-0">
+                      {formatCourseLabel(item.name)}
+                    </div>
+                  ) : (
+                    <a href={`${categoryLink}/${item.slug}`} class="block shrink-0">
+                      <div class="font-svn-gilroy cursor-pointer text-nowrap rounded-[25.92px] md:rounded-[37px] bg-white px-[16.82px] py-[3.5px] md:px-[10px] md:py-[5px] lg:px-[14px] xl:px-[24px] text-[12px] md:text-[12px] lg:text-[13px] xl:text-[16px] font-bold leading-[1.5] text-[#373737]/50 border-[0.35px] md:border-[0.5px] border-[#969696] h-[24.01px] md:h-[26px] lg:h-[30px] xl:h-[34px] flex items-center justify-center shrink-0 hover:bg-[#780000] hover:text-white hover:border-transparent transition-all duration-300">
+                        {formatCourseLabel(item.name)}
+                      </div>
+                    </a>
+                  )
+                )
+              }
+            </div>
+          </div>
+
+          <!-- Main CTA & Avatars Area -->
+          <div class="flex flex-col items-center md:items-start space-y-3 pt-[6px] md:pt-4 w-full">
+            <!-- CTA Button Wrapper for Mascot Badge positioning -->
+            <div class="relative w-full max-w-[320px] md:max-w-[180px] lg:max-w-[320px] xl:max-w-[310px] 2xl:max-w-[400px] 3xl:max-w-[400px] shrink-0 mx-auto md:mx-0 flex justify-center md:block">
+              <button
+                onclick="document.getElementById('simple-register-form')?.scrollIntoView({ behavior: 'smooth' })"
+                class="animate-outline-pulse transition-all relative flex items-center justify-center gap-[3.33px] md:gap-[3px] lg:gap-0 rounded-[47.76px] bg-gradient-to-r from-[#7D1900] to-[#B90E0A] border-[1.67px] border-white w-[156px] h-[30.78px] md:w-full md:h-[36px] lg:h-[50px] xl:h-[46px] 2xl:h-[60px] 3xl:h-[60px] md:rounded-[86px] md:border-0 font-gilroy text-white shadow-lg md:mt-0 lg:mt-0 xl:mt-0 2xl:mt-0 3xl:mt-0"
+              >
+                <div
+                  class="animate-pulse-custom absolute inset-0 z-0 rounded-[47.76px] bg-gradient-to-r from-[#F3C650] to-[#B90E0A] opacity-0 transition-opacity duration-1000 md:rounded-[86px] pointer-events-none"
+                >
+                </div>
+                <PlaySolidIcon className="relative z-10 w-[12px] h-[12px] md:w-[12px] md:h-[12px] lg:w-[24px] lg:h-[24px] fill-white shrink-0 mr-0 md:mr-[2px] lg:mr-0 lg:absolute lg:left-[26px]" />
+                <span class="relative z-10 text-[13px] md:text-[11px] lg:text-[18px] xl:text-[20px] 2xl:text-[28px] 3xl:text-[28px] font-[900] leading-none md:leading-[32px] uppercase lg:w-full lg:text-center lg:pl-[10px] xl:pl-[36px] 2xl:pl-[30px] 3xl:pl-[30px]">
+                  <span class="block md:hidden">ĐĂNG KÝ NGAY</span>
+                  <span class="hidden md:block">NHẬN TƯ VẤN LỘ TRÌNH</span>
+                </span>
+              </button>
+            </div>
+
+            <!-- Avatars & Social Proof -->
+            <a
+              href="https://www.facebook.com/groups/hocbahsk/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex w-fit items-center gap-[14.5px] md:gap-[6px] lg:gap-[14.51px] rounded-[18px] 2xl:rounded-[18.13px] p-[14.5px] md:p-1 lg:p-[14.51px] !mt-0 md:!mt-1 lg:!mt-1 xl:!mt-2 2xl:!mt-1 3xl:!mt-2 mx-auto md:mx-0 md:pl-6 lg:pl-[30px] xl:pl-[40px] 2xl:pl-[60px] 3xl:pl-[60px]"
+            >
+              <div class="flex -space-x-[4.95px] md:-space-x-3 lg:-space-x-4">
+                <div
+                  class="h-[34.59px] w-[34.59px] overflow-hidden rounded-full border-[1.24px] border-white shadow-md md:h-[40px] md:w-[40px] md:border-[1.5px] lg:h-[50.78px] lg:w-[50.78px] lg:border-[1.81px]"
+                >
+                  <img
+                    src={typeof IMAGES.detailLectuter.outstandingStudent1 === 'string' ? IMAGES.detailLectuter.outstandingStudent1 : IMAGES.detailLectuter.outstandingStudent1.src}
+                    alt="Học viên tiêu biểu tại Học Bá Education"
+                    class="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div
+                  class="h-[34.59px] w-[34.59px] overflow-hidden rounded-full border-[1.24px] border-white shadow-md md:h-[40px] md:w-[40px] md:border-[1.5px] lg:h-[50.78px] lg:w-[50.78px] lg:border-[1.81px]"
+                >
+                  <img
+                    src={typeof IMAGES.khoaHsk.target4Hsk === 'string' ? IMAGES.khoaHsk.target4Hsk : IMAGES.khoaHsk.target4Hsk.src}
+                    alt="Học viên tiêu biểu tại Học Bá Education"
+                    class="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div
+                  class="h-[34.59px] w-[34.59px] overflow-hidden rounded-full border-[1.24px] border-white shadow-md md:h-[40px] md:w-[40px] md:border-[1.5px] lg:h-[50.78px] lg:w-[50.78px] lg:border-[1.81px]"
+                >
+                  <img
+                    src={typeof IMAGES.khoaHsk.avatarHsk1 === 'string' ? IMAGES.khoaHsk.avatarHsk1 : IMAGES.khoaHsk.avatarHsk1.src}
+                    alt="Học viên tiêu biểu tại Học Bá Education"
+                    class="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <div class="flex flex-col">
+                <div class="flex items-center gap-1 whitespace-nowrap">
+                  <span class="font-svn-gilroy text-[12.35px] md:text-[14px] lg:text-[18.13px] font-[1000] leading-[150%] text-[#AF0000]">28.000 +</span>
+                  <span class="font-svn-gilroy text-[8.65px] md:text-[10px] lg:text-[12.69px] font-semibold leading-[150%] text-[#414D60] whitespace-nowrap">Học viên</span>
+                </div>
+                <span class="font-svn-gilroy text-[8.65px] md:text-[10px] lg:text-[12.69px] font-semibold leading-[150%] text-[#414D60] whitespace-nowrap">Đã và đang học tại Học Bá</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Section: Visual Graphic -->
+        <div class="relative mx-auto mt-[-25px] bottom-0 w-[281px] h-[302px] md:absolute md:top-0 md:bottom-0 md:my-auto md:right-[25px] md:left-auto md:max-w-none flex justify-center items-end z-10 md:w-[325px] md:h-[320px] min-[900px]:max-[1023px]:top-0 min-[900px]:max-[1023px]:bottom-0 min-[900px]:max-[1023px]:my-auto min-[900px]:max-[1023px]:right-[40px] min-[900px]:max-[1023px]:left-auto min-[900px]:max-[1023px]:w-[350px] min-[900px]:max-[1023px]:h-[345px] lg:top-0 lg:bottom-0 lg:my-auto lg:right-[40px] lg:left-auto lg:w-[428px] lg:h-[421px] xl:top-[83px] xl:bottom-auto xl:right-[120px] xl:left-auto xl:w-[494px] xl:h-[486px] 2xl:top-[63px] 2xl:bottom-auto 2xl:right-[105px] 2xl:left-auto 2xl:w-[560px] 2xl:h-[551px] 3xl:top-[63px] 3xl:bottom-auto 3xl:right-[234px] 3xl:left-auto 3xl:w-[659px] 3xl:h-[649px]">
+          <img
+            src={courseHeroImageSrc}
+            alt={`Ảnh minh họa khóa học ${course.name}`}
+            class="h-auto w-full object-contain md:hidden translate-y-[25px]"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+          <img
+            src={courseHeroImageSrc}
+            alt={`Ảnh minh họa khóa học ${course.name}`}
+            class="hidden md:block h-full w-full object-contain"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </section>
+
+    <div class="bg-[#F4F4F4] w-full max-w-[1920px] mx-auto px-4 md:px-0 md:pl-[calc(4vw+10px)] min-[900px]:max-[1023px]:pl-[75px] lg:pl-[calc(8vw+10px)] xl:pl-[calc(11vw+10px)] 2xl:pl-[calc(12vw+10px)] 3xl:pl-[299px] py-[10px]">
+      <Breadcrumb client:load>
+        <BreadcrumbList className="font-svn-gilroy text-[11px] md:font-gilroy md:text-[16px] font-medium leading-[150%] text-[#373737] flex items-center flex-wrap gap-1 sm:gap-1.5">
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/" className="text-[#373737] hover:text-[#373737]/80 hover:underline">
+              Trang chủ
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator className="text-[#373737] [&>svg]:h-[11px] [&>svg]:w-[11px] md:[&>svg]:h-4 md:[&>svg]:w-4" />
+          <BreadcrumbItem>
+            <BreadcrumbLink href={categoryLink} className="breadcrumb-category-link text-[#373737] hover:text-[#373737]/80 hover:underline">
+              Khoá học Học Bá Chinese
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator className="text-[#373737] [&>svg]:h-[11px] [&>svg]:w-[11px] md:[&>svg]:h-4 md:[&>svg]:w-4" />
+          <BreadcrumbItem>
+            <BreadcrumbPage className="text-[#373737] font-medium font-svn-gilroy text-[11px] md:font-gilroy md:text-[16px] leading-[150%]">
+              {course?.name}
+            </BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+    </div>
+
+    <section class="w-full max-w-[1920px] mx-auto bg-gradient-to-b from-[#F4F4F4] to-[#FFFFFF] px-4 md:px-0 md:pl-[calc(4vw+10px)] min-[900px]:max-[1023px]:pl-[75px] lg:pl-[calc(8vw+10px)] xl:pl-[calc(11vw+10px)] 2xl:pl-[calc(12vw+10px)] 3xl:pl-[299px] md:pr-[calc(4vw+10px)] lg:pr-[calc(4vw+10px)] xl:pr-[calc(5vw+10px)] 2xl:pr-[calc(6vw+10px)] 3xl:pr-[299px]">
+      <div class="w-full">
+        <div class="relative flex w-full flex-wrap lg:flex-nowrap justify-between gap-y-5 pt-[10px] pb-0 lg:py-10">
+          <div class="w-full space-y-[18.36px] lg:space-y-8 lg:max-w-[500px] xl:max-w-[550px] 2xl:max-w-[600px] 3xl:max-w-[689px]">
+            {
+              course?.description ? (
+                <div>
+                  <div class="flex items-center gap-2 pb-2 lg:pb-4">
+                    <CourseDetailsWho className="w-[18.36px] h-[18.36px] lg:w-[36px] lg:h-[36px]" />
+                    <h2 class="font-gilroy text-[15px] font-bold leading-[20px] lg:leading-[64px] text-[#373737] lg:text-[28px]">
+                      Khóa học này dành cho ai
+                    </h2>
+                  </div>
+                  <ul class="space-y-[9.18px] lg:space-y-[18px] pl-4 md:px-4 xl:pl-8 xl:pr-0">
+                    {formatDescription(course?.description).map((line) => (
+                      <li class="flex items-start gap-2">
+                        <CourseDetailsBullet className="w-[10px] h-[9px] lg:w-[18px] lg:h-[18px] mt-[5.5px] lg:mt-[5px] shrink-0" />
+                        <span class="font-gilroy font-medium text-[14px] lg:text-[18px] leading-[140%] text-[#000000]" set:html={line} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null
+            }
+            {
+              course?.targets ? (
+                <div>
+                  <div class="flex items-center gap-2 pb-2 lg:pb-4">
+                    <CourseDetailsTarget className="w-[18.36px] h-[18.36px] lg:w-[36px] lg:h-[36px]" />
+                    <h2 class="font-gilroy text-[15px] font-bold leading-[20px] lg:leading-[64px] text-[#373737] lg:text-[28px]">
+                      Mục tiêu khóa học
+                    </h2>
+                  </div>
+                  <ul class="space-y-[9.18px] lg:space-y-[18px] pl-4 md:px-4 xl:pl-8 xl:pr-0">
+                    {formatTargets(course?.targets).map((line) => (
+                      <li class="flex items-center lg:items-start gap-2">
+                        <CourseDetailsCheck className="w-[12.24px] h-[12.24px] lg:w-[24px] lg:h-[24px] lg:mt-[4px] shrink-0" />
+                        <span class="font-gilroy font-medium text-[14px] lg:text-[18px] leading-[140%] text-[#000000]" set:html={line} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null
+            }
+            {
+              course?.Section ? (
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2 pb-2 lg:pb-4">
+                    <CourseDetailsContentNew className="w-[18.36px] h-[18.36px] lg:w-[36px] lg:h-[36px]" />
+                    <h2 class="font-gilroy text-[15px] font-bold leading-[20px] lg:leading-[64px] text-[#373737] lg:text-[28px]">
+                      Nội dung chương trình
+                    </h2>
+                  </div>
+                  <CourseSectionAccordion sections={course?.Section} activeBgClass="bg-[#F4F4F4]" client:load />
+                </div>
+              ) : null
+            }
+            {
+              course?.documents ? (
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2 pb-2 lg:pb-4">
+                    <CourseDetailsDocumentNew className="w-[18.36px] h-[18.36px] lg:w-[36px] lg:h-[36px]" />
+                    <h2 class="font-gilroy text-[15px] font-bold leading-[20px] lg:leading-[64px] text-[#373737] lg:text-[28px]">
+                      Giáo trình & Tài liệu khóa học
+                    </h2>
+                  </div>
+                  <ul class="space-y-[9.18px] lg:space-y-[18px] pl-4 md:px-4 xl:pl-8 xl:pr-0">
+                    {formatTargets(course?.documents).map((line) => (
+                      <li class="flex items-start gap-2">
+                        <CourseDetailsBullet className="w-[10px] h-[9px] lg:w-[18px] lg:h-[18px] mt-[5.5px] lg:mt-[5px] shrink-0" />
+                        <span class="font-gilroy font-medium text-[14px] lg:text-[18px] leading-[140%] text-[#000000]" set:html={line} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null
+            }
+          </div>
+          <div class="mb-5 w-full lg:mb-0 lg:w-[425px] lg:pl-0 ml-auto shrink-0">
+            <div class="sticky top-[160px] z-10 w-full rounded-[12px] border border-[#F0F0F0] bg-[#780000] text-white p-[28px] shadow-[9px_9px_16.6px_0px_rgba(175,0,0,0.15)] 3xl:top-[190px]">
+              <div class="space-y-2">
+                <div class="mb-4 text-center text-white">
+                  <span class="block font-svn-gilroy font-medium text-[18px] lg:text-[24px] leading-[130%]">Thông tin khoá</span>
+                  <span class="block font-svn-gilroy font-[1000] text-[18px] lg:text-[24px] leading-[130%] uppercase">{course?.name}</span>
+                </div>
+                <div class="flex gap-2">
+                  <CalendarCheck />
+                  <p class="text-nowrap">Thời lượng:</p>
+                  <p class="font-bold">{course?.duration || 0} buổi</p>
+                </div>
+                <div class="flex gap-2">
+                  <Clock />
+                  <p class="text-nowrap">Giờ học:</p>
+                  <p class="font-bold">
+                    {course?.study_time} phút/buổi (Tổng{' '}
+                    {(Number(course?.study_time || 0) * Number(course?.duration) || 0) / 60}{' '}
+                    giờ)
+                  </p>
+                </div>
+                <div class="flex gap-2">
+                  <MonitorSmartphone />
+                  <p class="text-nowrap">Hình thức:</p>
+                  <p class="font-bold">Online</p>
+                </div>
+              </div>
+
+              <div class="my-6 space-y-3">
+                <div class="flex items-center justify-center gap-1.5 text-[#FFE6A3] font-svn-gilroy font-[800] text-[15px] lg:text-[18px] leading-[130%] uppercase">
+                  <PrivilegeLightning className="w-[20px] h-[20px] lg:w-[14px] lg:h-[19px] shrink-0" secondaryColor="#AF0000" />
+                  <span>Đặc quyền chỉ có tại Học Bá</span>
+                </div>
+                <div class="rounded-[12px] bg-white py-3 pl-4 pr-3 space-y-2.5">
+                  <!-- Item 1 -->
+                  <div class="flex items-start gap-3">
+                    <PrivilegeShieldCheck className="w-[16px] h-[16px] lg:w-[20px] lg:h-[20px] mt-[-1px] lg:mt-[-1px] shrink-0" />
+                    <span class="font-gilroy font-normal text-[12.05px] lg:text-[16px] text-[#AF0000] leading-[110%]">Đảm bảo đầu ra</span>
+                  </div>
+                  <!-- Item 2 -->
+                  <div class="flex items-start gap-3">
+                    <PrivilegeAiStar className="w-[16px] h-[16px] lg:w-[20px] lg:h-[20px] mt-[-1px] lg:mt-[-1px] shrink-0" />
+                    <span class="font-gilroy font-normal text-[12.05px] lg:text-[16px] text-[#AF0000] leading-[110%]">Sử dụng công nghệ độc quyền LMS AI</span>
+                  </div>
+                  <!-- Item 3 -->
+                  <div class="flex items-start gap-3">
+                    <PrivilegeGift className="w-[16px] h-[16px] lg:w-[20px] lg:h-[20px] mt-[-1px] lg:mt-[-1px] shrink-0" />
+                    <span class="font-gilroy font-normal text-[12.05px] lg:text-[16px] text-[#AF0000] leading-[110%]">Tài khoản LMS học tập miễn phí 1 năm trị giá 3.990k</span>
+                  </div>
+                  <!-- Item 4 -->
+                  <div class="flex items-start gap-3">
+                    <PrivilegeHeart className="w-[16px] h-[16px] lg:w-[20px] lg:h-[20px] mt-[-1px] lg:mt-[-1px] shrink-0" />
+                    <span class="font-gilroy font-normal text-[12.05px] lg:text-[16px] text-[#AF0000] leading-[110%]">Mentor hỗ trợ học tập sát sao</span>
+                  </div>
+                </div>
+              </div>
+
+              <CourseRegistrationForm client:load courseName={course?.name || ''} isDarkRed={true} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <LecturerShowcase lecturers={optimizedTeachers} bgClass="bg-white" client:load />
+
+  <ScheduleTableNew client:load courseId={course?.id as number} bgGradientClass="from-[#F3F3F3] to-[#FFFFFF]" />
+
+  <SimpleFormRegister dataInput={`Khóa học ${course?.name}`} isSimpleForm />
+</BaseLayout>
+
+<script define:vars={{ categoryTitle: themeColor.title }}>
+  // Save category to localStorage when breadcrumb link is clicked
+  document.addEventListener('DOMContentLoaded', () => {
+    const breadcrumbLinks = document.querySelectorAll('.breadcrumb-category-link');
+    breadcrumbLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        if (categoryTitle) {
+          localStorage.setItem('selectedCategory', categoryTitle);
+        }
+      });
+    });
+  });
+</script>
+
+<style is:global>
+  .animate-pulse-custom {
+    animation: pulse-left 1s infinite;
+  }
+  .animate-outline-pulse {
+    animation: pulse-outline 1s infinite;
+  }
+  @keyframes pulse-outline {
+    0%,
+    100% {
+      box-shadow: 3px 4px 30px rgba(243, 198, 80, 0);
+    }
+    50% {
+      box-shadow: 3px 4px 30px rgba(243, 198, 80, 0.6);
+    }
+  }
+  @keyframes pulse-left {
+    0%,
+    100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.85;
+    }
+  }
+
+  /* Custom thin gray scrollbar for mobile */
+  .custom-mobile-scrollbar::-webkit-scrollbar {
+    height: 3px;
+  }
+  .custom-mobile-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-mobile-scrollbar::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 10px;
+    border-left: 90px solid transparent;
+    border-right: 90px solid transparent;
+    background-clip: padding-box;
+  }
+  .custom-mobile-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db transparent;
+    -webkit-overflow-scrolling: touch;
+  }
+</style>

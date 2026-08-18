@@ -1,0 +1,150 @@
+---
+import blogApi from '@/lib/api/blog';
+import { DoubleChevronRight } from '@/components/common/icons';
+import { IMAGES } from '@/lib/constants/images';
+import { format } from 'date-fns';
+import { NEWS_SLUGS } from '@/lib/constants/content';
+
+let categories: TBlogCategory[] = [];
+try {
+  const categoriesRes = (await blogApi.getBlogCategoryList()) as TResponse<TBlogCategory[]>;
+  categories = categoriesRes?.data || [];
+} catch (error) {
+  console.error('Failed to fetch blog categories:', error);
+}
+
+const category = categories.find((c) => c.slug === NEWS_SLUGS[0]);
+
+let newsList: TBlogBase[] = [];
+if (category) {
+  try {
+    const newsRes = (await blogApi.getBlogList({
+      page: 1,
+      limit: 4,
+      queryParams: `blog_category_id=${category.id}`,
+    })) as TResponse<TResponsePagination<TBlogBase[]>>;
+    newsList = newsRes?.data?.list || [];
+  } catch (error) {
+    console.error('Failed to fetch news list:', error);
+  }
+}
+---
+
+<section class="bg-white pt-8 font-gilroy md:pt-16">
+  <div
+    class="relative mx-auto w-full max-w-[1920px] overflow-hidden rounded-[12px] bg-[#FBFAFA] px-4 pb-12 pt-8 md:px-8 xl:min-h-[789px] xl:pt-[55px]"
+  >
+    {/* Decorative Background Images - Desktop only */}
+    <div class="pointer-events-none absolute inset-0 z-0 hidden xl:mx-auto xl:block xl:w-full xl:max-w-[1526.08px]">
+      <img
+        src={IMAGES.khoaChinese.gridRedChinese.src}
+        class="absolute opacity-50"
+        style="width: 438px; height: 438px; top: -70px; right: -250px;"
+        alt=""
+      />
+      <img
+        src={IMAGES.khoaChinese.gridRedChinese.src}
+        class="absolute opacity-50"
+        style="width: 438px; height: 438px; bottom: -150px; left: -280px;"
+        alt=""
+      />
+    </div>
+
+    {/* Decorative Background Image - Mobile only, bottom-left */}
+    <img
+      src={IMAGES.khoaChinese.gridRedChinese.src}
+      class="pointer-events-none absolute bottom-0 left-[-75px] z-0 h-[208.2px] w-[208.2px] opacity-50 xl:hidden"
+      alt=""
+    />
+
+    <div class="relative z-10">
+      {/* Header Section */}
+      <div class="mb-6 flex items-center md:mb-10 xl:mx-auto xl:w-full xl:max-w-[1526.08px] xl:pl-[30px]">
+        <div class="relative flex items-center gap-3 pl-[37.41px] md:gap-[25px] md:pl-0">
+          {/* Vertical Bar */}
+          <div
+            class="absolute left-[23px] h-[23.77px] w-[2.85px] shrink-0 bg-[#373737] md:static md:h-[54px] md:w-[5px] xl:h-[50px] xl:w-[6px]"
+          >
+          </div>
+          <h2
+            class="max-w-[306.59px] font-gilroy text-[18px] font-[900] leading-[120%] text-[#373737] md:max-w-none md:text-[36px] md:leading-[44px] lg:text-[32px] lg:leading-[40px] xl:text-[38px] xl:leading-[120%] 2xl:text-[42px]"
+          >
+            Tin tức khác về Học Bá Education
+          </h2>
+        </div>
+      </div>
+
+      {/* Grid Section */}
+      <div
+        class="mx-auto mt-[32px] grid min-h-[400px] w-full max-w-full grid-cols-1 gap-[24px] md:mt-10 lg:grid-cols-2 lg:gap-6 xl:mt-[50px] xl:max-w-[1526.08px] xl:gap-[36px]"
+      >
+        {
+          newsList.length === 0 ? (
+            <div class="col-span-full py-10 text-center text-gray-500">
+              <p>Hiện tại chưa có tin tức nào trong mục này.</p>
+            </div>
+          ) : (
+            newsList.map((news) => (
+              <a
+                href={`/${news.BlogCategory?.slug || 'tin-tuc-su-kien'}/${news.slug}`}
+                class="group flex h-auto min-h-[136px] w-full flex-row overflow-hidden border-[0.55px] border-[#F0F0F0] bg-white transition-all duration-700 md:h-[195px] lg:h-[225px] xl:h-[250px] xl:max-w-[737.04px] xl:hover:border-[#FFDFDF] xl:hover:shadow-[0px_4.51px_14.79px_0px_#FFDFDF]"
+              >
+                {/* Thumbnail */}
+                <div class="h-full w-[124px] shrink-0 overflow-hidden md:h-full md:w-[160px] lg:w-[220px] xl:h-[250px] xl:w-[251.7px]">
+                  <img
+                    src={news.thumbnail_link?.file_path || 'https://placehold.co/400x400'}
+                    alt={news.title}
+                    class="h-full w-full object-cover transition-transform duration-700 xl:group-hover:scale-110"
+                  />
+                </div>
+
+                {/* Content */}
+                <div class="flex flex-1 flex-col justify-between p-3 md:p-4 lg:p-5 xl:p-6">
+                  <h3 class="mb-1 line-clamp-3 md:line-clamp-2 lg:line-clamp-3 h-auto w-full font-gilroy text-[14px] font-bold leading-[1.3] text-[#000000] transition-colors duration-700 md:mb-2 md:max-w-none md:text-[20px] lg:text-[18px] xl:w-full xl:max-w-[406.33px] xl:text-[19px] xl:leading-[1.3] xl:group-hover:text-[#CC0000] 2xl:text-[22.57px]">
+                    {(news.title || '').charAt(0).toUpperCase() + (news.title || '').slice(1)}
+                  </h3>
+                  <p class="mb-2 line-clamp-2 h-auto w-full font-gilroy text-[8.5px] font-light leading-[1.2] tracking-[0%] text-[#000000] md:mb-0 md:h-auto md:max-w-none md:text-[14px] lg:text-[13px] xl:w-full xl:max-w-[406.33px] xl:text-[14px] xl:leading-[120%] 2xl:text-[16.93px]">
+                    {(news.meta_description || '').charAt(0).toUpperCase() + (news.meta_description || '').slice(1)}
+                  </p>
+
+                  <div class="mt-auto flex items-center justify-between md:mt-4 md:translate-y-0 xl:min-h-[42.89px] 2xl:h-[42.89px]">
+                    <div class="flex items-center justify-center rounded-[62.08px] xl:h-[39.5px] xl:w-[114px] xl:-translate-y-2">
+                      <span class="font-gilroy text-[8.5px] font-semibold text-[#373737]/80 md:text-[14px] lg:text-[13px] xl:text-[15px] 2xl:text-[18.06px]">
+                        {news.created_at ? format(new Date(news.created_at), 'd.M.yyyy') : ''}
+                      </span>
+                    </div>
+                    <button class="group/btn flex h-[21.03px] w-[90.77px] -translate-x-3 items-center justify-center gap-[3.32px] rounded-[30.44px] border-[0.28px] border-[#000000] bg-white px-[4.98px] py-[6.64px] font-gilroy text-[8.5px] font-semibold text-[#373737]/80 transition-all duration-300 md:h-auto md:w-auto md:translate-x-0 md:gap-[6px] md:rounded-[62.08px] md:border-[0.56px] md:px-3 md:py-1.5 md:text-[14px] lg:px-4 lg:py-2 lg:text-[13px] xl:h-[38px] xl:w-[150px] xl:-translate-x-4 xl:-translate-y-1 xl:gap-[6.77px] xl:self-start xl:px-[8px] xl:py-[10px] xl:text-[15px] xl:font-semibold xl:text-[#373737]/80 xl:hover:h-[34px] xl:hover:border-[#CC0000] xl:hover:text-[13px] xl:hover:text-[#CC0000] xl:hover:shadow-[0px_4.51px_14.79px_0px_#FFDFDF] 2xl:h-[42.89px] 2xl:w-[185.11px] 2xl:gap-[8px] 2xl:px-[12px] 2xl:py-[10px] 2xl:text-[18.06px] 2xl:font-semibold 2xl:text-[#373737]/80 2xl:hover:h-[36px] 2xl:hover:border-[#CC0000] 2xl:hover:px-[8px] 2xl:hover:py-[10px] 2xl:hover:text-[14px] 2xl:hover:text-[#CC0000] 2xl:hover:shadow-[0px_4.51px_14.79px_0px_#FFDFDF]">
+                      Xem chi tiết{' '}
+                      <DoubleChevronRight
+                        className="h-[8px] w-[8px] md:h-[10px] md:w-[10px] xl:h-[15.8px] xl:w-[16.93px] xl:group-hover/btn:h-[12px] xl:group-hover/btn:w-[13px] 2xl:h-[18px] 2xl:w-[19px] 2xl:group-hover/btn:h-[12px] 2xl:group-hover/btn:w-[13px]"
+                        aria-hidden="true"
+                      />
+                    </button>
+                  </div>
+                </div>
+              </a>
+            ))
+          )
+        }
+      </div>
+
+      {/* View More Button */}
+      {
+        newsList.length > 0 && (
+          <div class="mt-2 flex translate-y-[24px] justify-center md:mt-6 md:translate-y-0 xl:mt-10">
+            <a
+              href={`/${NEWS_SLUGS[0]}`}
+              class="flex h-[25px] w-[109px] items-center justify-center gap-[3.95px] rounded-[36.18px] border-[0.33px] border-[#AF0000] bg-[#AF0000] py-[7.89px] font-gilroy text-[10.53px] font-bold text-white transition-colors md:h-auto md:w-auto md:gap-[6px] md:bg-[#FAFAFA] md:px-[20px] md:py-[10px] md:text-[15px] md:text-[#AF0000] xl:h-[38px] xl:w-[156px] xl:px-[9px] xl:py-[12px] xl:text-[16px]"
+            >
+              Xem thêm{' '}
+              <DoubleChevronRight
+                className="h-[12px] w-[12px] shrink-0 md:h-[14px] md:w-[14px] xl:h-[14px] xl:w-[15px]"
+                aria-hidden="true"
+              />
+            </a>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>

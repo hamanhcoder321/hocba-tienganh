@@ -1,0 +1,501 @@
+---
+import { FourPointedStar, FourPointedStarMini, PlayIcon } from '@/components/common/icons';
+import ScheduleAISmartSlide, {
+  type ScheduleAISmartSlideItem,
+} from '@/components/features/schedule/ScheduleAISmartSlide';
+import JsonLd from '@/components/common/JsonLd.astro';
+import ScheduleTableNew from '@/components/features/schedule/ScheduleTableNew';
+import HocBaFeatures from '@/components/features/schedule/HocBaFeatures';
+import LecturerShowcase from '@/components/features/lecturer/LecturerShowcase';
+import StudentExperience from '@/components/features/schedule/StudentExperience.astro';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { IMAGES } from '@/lib/constants/images';
+import { fetchOpeningSchedule, fetchTeacherListV2 } from '@/lib/static-data';
+import { HOME_CATEGORIES } from '@/lib/constants/content';
+import { getImage, Image } from 'astro:assets';
+import type { Graph } from 'schema-dts';
+import ScheduleFormRegister from '@/components/features/schedule/ScheduleFormRegister.astro';
+import { DATA_VALUE } from '@/lib/constants/enums';
+
+const baseUrl = import.meta.env.PUBLIC_CLIENT_URL;
+
+// Fetch data at build time
+const scheduleDataPromises = HOME_CATEGORIES.map(async (category) => {
+  const data = await fetchOpeningSchedule(String(category.id));
+  return { categoryId: category.id, data: data || [] };
+});
+
+const scheduleResults = await Promise.all(scheduleDataPromises);
+
+const teacherData = await fetchTeacherListV2({ page: 1, limit: 100 });
+const teachers = teacherData?.list ?? [];
+
+const teacherLists = teachers.map((teacher: TLecturer) => {
+    const rawAvatar = teacher?.avatar_url?.file_path || IMAGES.course.profilePic.src;
+
+    let highlights: TLecturer['teacherHighlights'] = [];
+    try {
+      if (teacher.qualification && Array.isArray(teacher.qualification) && teacher.qualification.length > 0) {
+        highlights = teacher.qualification.map((q: TQualification, index: number) => ({
+          id: index,
+          teacher_id: 0,
+          section: q.name || '',
+          content: q.description || '',
+        }));
+      } else if (typeof teacher.qualification_info === 'string') {
+        const info = JSON.parse(teacher.qualification_info) as { title: string }[];
+        highlights = info.map((i: { title: string }, index: number) => ({
+          id: index,
+          teacher_id: 0,
+          section: '',
+          content: i.title,
+        }));
+      }
+    } catch (e) {
+      console.error('Error parsing teacher highlights:', e);
+    }
+
+    return {
+      ...teacher,
+      optimizedAvatar: rawAvatar,
+      teacherHighlights: highlights,
+    };
+  });
+
+// --- Metadata cho SEO ---
+const title = 'Lịch Khai Giảng Tiếng Trung Học Bá | Học Bá Education';
+const description =
+  'Cập nhật lịch khai giảng các khóa học tiếng Trung mới nhất tại Học Bá Education. Lịch học linh hoạt, cá nhân hóa, cam kết đầu ra HSK/HSKK. Đăng ký nhận tư vấn ngay!';
+
+const jsonLd: Graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Trang chủ',
+          item: baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Lịch khai giảng',
+          item: `${baseUrl}/lich-khai-giang`,
+        },
+      ],
+    },
+    ...scheduleResults.flatMap((result) =>
+      result.data.map((item: any) => ({
+        '@type': 'Course' as const,
+        name: item.Course?.name || 'Khóa học tiếng Trung',
+        description: item.Course?.description || 'Khóa học tiếng Trung tại Học Bá Education',
+        provider: {
+          '@type': 'Organization' as const,
+          name: 'Học Bá Education',
+          url: baseUrl,
+        },
+      })),
+    ),
+  ],
+};
+
+const aiSmartSlide: ScheduleAISmartSlideItem[] = [
+  {
+    id: '01',
+    title: 'Hệ thống học tập số hoá tất cả loại nội dung',
+    mainImage: IMAGES.schedule.lms_slide1,
+  },
+  {
+    id: '02',
+    title: 'Cá nhân hóa bài giảng và bài luyện tập',
+    mainImage: IMAGES.schedule.lms_slide2,
+  },
+  {
+    id: '03',
+    title: 'Tích hợp công nghệ AI chấm chữa bài tự động',
+    mainImage: IMAGES.schedule.lms_slide3,
+  },
+  {
+    id: '04',
+    title: 'Kho học liệu đa dạng, cập nhập liên tục',
+    mainImage: IMAGES.schedule.lms_slide4,
+  },
+];
+
+const formatAISmart = aiSmartSlide.map((item) => {
+  const originalMainImage = item.mainImage;
+  const mainImageSrc = typeof originalMainImage === 'string' ? originalMainImage : originalMainImage.src;
+
+  return {
+    ...item,
+    mainImage: mainImageSrc,
+  };
+});
+---
+
+<script>
+  const handleScrollToForm = () => {
+    const formRegister = document.getElementById('dang-ki-tu-van');
+    if (formRegister) {
+      formRegister.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  // Attach event listeners to all buttons
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('[data-scroll-to-form]');
+    buttons.forEach((button) => {
+      button.addEventListener('click', handleScrollToForm);
+    });
+  });
+</script>
+
+<BaseLayout {title} {description}>
+  <JsonLd data={jsonLd} />
+  <div class="font-landing mx-auto h-fit max-w-[1920px] bg-white">
+    <div class="relative w-full overflow-hidden">
+      <div class="absolute inset-0 z-0 overflow-hidden">
+        <img
+          src={IMAGES.schedule.bgLotrinh.src}
+          alt=""
+          class="h-full w-full translate-y-10 object-contain object-center md:translate-y-24 lg:translate-y-6 xl:translate-y-16 3xl:translate-y-24"
+          style="filter: invert(1) hue-rotate(180deg);"
+          loading="lazy"
+        />
+      </div>
+
+      <div
+        class="container relative z-10 mx-auto h-fit w-full pt-6 xl:max-w-[1280px] xl:px-4 xl:pt-8 2xl:max-w-[1600px] 2xl:pt-12 3xl:pt-[60px]"
+      >
+        <!-- Mesh Pattern Background -->
+        <div class="pointer-events-none absolute left-[700px] top-[30px] z-0 hidden h-[391px] w-[391px] xl:block">
+          <img src={IMAGES.schedule.meshPattern.src} alt="" class="h-full w-full object-contain" loading="lazy" />
+        </div>
+
+        <div class="px-4 lg:pl-10 2xl:pl-32 3xl:pl-[108px]">
+          <Breadcrumb className="mb-4">
+            <BreadcrumbList className="font-gilroy text-[18px] font-medium leading-[150%] text-black">
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <a href="/" class="hover:text-primary hover:underline">Trang chủ</a>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>Lịch khai giảng</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
+
+        <div
+          class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between lg:pt-6 2xl:pt-10 3xl:pl-6 3xl:pt-12"
+        >
+          <div
+            class="flex w-full flex-col items-center space-y-6 px-4 text-center lg:w-[500px] lg:flex-shrink-0 lg:items-start lg:pl-10 lg:text-left xl:w-[600px] 2xl:w-[850px] 2xl:pl-32 3xl:pl-[120px]"
+          >
+            <div class="flex flex-col items-center lg:items-start">
+              <div class="flex flex-col items-start gap-2 md:gap-4 lg:items-start">
+                <!-- Dòng 1: LỊCH KHAI GIẢNG + Badge -->
+                <div class="flex items-center gap-2 md:gap-4">
+                  <div class="relative">
+                    <div class="absolute -left-4 -top-3 block md:-left-8 md:-top-4 3xl:-top-1">
+                      <img src={IMAGES.schedule.decorCorner.src} alt="" class="h-5 w-5 md:h-[31px] md:w-[31px]" loading="lazy" />
+                    </div>
+                    <h1
+                      class="bg-gradient-to-r from-[#7D1900] to-[#B90E0A] bg-clip-text py-2 font-gilroy text-[24px] font-[1000] uppercase leading-[1.2] text-transparent md:text-[36px] md:leading-[1.2] lg:whitespace-nowrap lg:text-[32px] lg:leading-[1.2] xl:text-[42px] xl:leading-[50px] 2xl:text-[52px] 2xl:leading-[64px]"
+                    >
+                      LỊCH KHAI GIẢNG <span class="sr-only">CÁC LỚP TIẾNG TRUNG</span>
+                    </h1>
+                  </div>
+
+                  <div class="relative flex items-center gap-2 md:gap-4">
+                    <div
+                      class="flex h-[24px] w-[70px] items-center justify-center rounded-[6px] border border-gray-400 bg-white shadow-sm md:h-[50px] md:w-[190px] md:rounded-[13px]"
+                    >
+                      <span
+                        class="font-gilroy text-[14px] font-[1000] leading-[23.54px] text-[#2D2D2D] md:text-[30px] md:font-black"
+                      >
+                        Mới nhất
+                      </span>
+                    </div>
+                    <!-- Ngôi sao -->
+                    <div
+                      class="absolute -top-10 left-[60px] h-8 w-10 md:absolute md:left-auto md:right-[-110px] md:top-[10px] md:h-20 md:w-24 lg:relative lg:left-0 lg:top-0 lg:ml-0 lg:h-12 lg:w-24"
+                    >
+                      <div
+                        class="absolute right-0 top-0 md:left-3 md:right-auto md:top-[-35px] lg:left-6 lg:top-[-60px]"
+                      >
+                        <img
+                          src={IMAGES.schedule.starLarge.src}
+                          alt=""
+                          class="h-5 w-5 md:h-[40px] md:w-[40px] lg:h-[50px] lg:w-[50px] xl:h-[72px] xl:w-[72px]"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div class="absolute left-1 top-4 md:left-0 md:top-0">
+                        <img
+                          src={IMAGES.schedule.starSmall.src}
+                          alt=""
+                          class="h-3 w-3 md:h-[18px] md:w-[18px] lg:h-[29px] lg:w-[29px]"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Dòng 2 -->
+                <div
+                  class="-mt-5 bg-gradient-to-r from-[#7D1900] to-[#B90E0A] bg-clip-text py-2 font-gilroy text-[24px] font-[1000] uppercase leading-[1.2] text-transparent md:-mt-7 md:text-[36px] md:leading-[1.2] lg:-mt-8 lg:whitespace-nowrap lg:text-[32px] lg:leading-[1.2] xl:text-[42px] xl:leading-[50px] 2xl:text-[52px] 2xl:leading-[64px] 3xl:-mt-8 3xl:leading-[1.1]"
+                >
+                  CÁC LỚP TIẾNG TRUNG
+                </div>
+              </div>
+
+              <p
+                class="mx-auto mt-2 h-[61px] w-[240px] text-center font-gilroy text-[12px] font-[400] leading-[14px] text-[#2D2D2D] md:h-auto md:w-auto md:max-w-[495px] md:text-[22px] md:leading-[28px] lg:mx-0 lg:mb-4 lg:mt-8 lg:max-w-[460px] lg:text-left lg:text-[20px] xl:max-w-[495px] xl:text-[22px] 2xl:mb-6 2xl:mt-8 2xl:text-[22px] 3xl:-ml-8 3xl:mt-24 3xl:w-[495px] 3xl:max-w-[495px] 3xl:pb-[24px]"
+              >
+                Khám phá lịch khai giảng các lớp chi tiết<span class="hidden md:inline"> tại Học Bá Education</span>,
+                theo dõi và lựa chọn lịch học cá nhân hoá với bạn ngay hôm nay!
+              </p>
+            </div>
+
+            <!-- Ảnh Banner cho Mobile - Nằm giữa Mô tả và Nút bấm -->
+            <div class="relative mt-10 flex w-full justify-center md:mt-32 lg:hidden">
+              <div class="relative h-fit w-fit">
+                <div class="absolute -top-5 left-[10%] z-0 md:left-[8%] md:top-[-10px]">
+                  <img
+                    src={IMAGES.schedule.kaiBan.src}
+                    alt="Mascot Kaiban Học Bá Education"
+                    class="w-[60px] max-w-none md:w-[120px]"
+                    loading="lazy"
+                  />
+                </div>
+                <img
+                  src={IMAGES.schedule.schedule_banner.src}
+                  alt="Banner giới thiệu lịch khai giảng khóa học tiếng Trung tại Học Bá Education"
+                  class="relative z-10 h-auto w-full max-w-[450px] object-contain sm:max-w-[450px] md:mt-10 md:max-w-[600px] lg:max-w-[700px]"
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
+                />
+              </div>
+            </div>
+
+            <div class="flex flex-col items-center gap-3 lg:items-start lg:gap-8 3xl:-ml-8 3xl:mt-24">
+              <div class="relative -mt-4 pt-0 lg:mt-0 lg:pt-0">
+                <button
+                  data-scroll-to-form
+                  class="animate-outline-pulse group relative flex w-full items-center justify-center gap-3 overflow-hidden rounded-full border-2 border-white bg-[#8F1E15] px-8 py-3 shadow-[0_0_20px_rgba(255,184,0,0.2)] transition-all sm:w-fit md:gap-5 md:px-12 md:py-4 xl:h-[64px] xl:w-[313px] xl:justify-start xl:px-6 2xl:h-[64px] 2xl:w-[313px] 2xl:justify-start 2xl:px-6 3xl:h-[64px] 3xl:w-[313px] 3xl:justify-start 3xl:px-8"
+                >
+                  <!-- Hiệu ứng nhấp nháy rực rỡ: Chuyển sang dải màu rồi quay lại đỏ -->
+                  <div
+                    class="animate-pulse-custom absolute left-0 top-0 z-0 h-full w-full bg-gradient-to-r from-[#FE8E39] to-[#8F1E15] opacity-0 transition-opacity duration-1000"
+                  >
+                  </div>
+
+                  <div class="relative z-10 flex items-center gap-3 md:gap-5 xl:gap-2 2xl:gap-2">
+                    <PlayIcon />
+                    <span
+                      class="font-gilroy text-[20px] font-black uppercase leading-none text-white md:text-[28px] lg:text-[24px] xl:text-[28px] 2xl:whitespace-nowrap 3xl:whitespace-nowrap 3xl:text-[22px]"
+                    >
+                      ĐĂNG KÝ NGAY
+                    </span>
+                  </div>
+                </button>
+
+                <style>
+                  .animate-pulse-custom {
+                    animation: pulse-left 1.5s infinite;
+                  }
+                  .animate-outline-pulse {
+                    animation: pulse-outline 1.5s infinite;
+                  }
+                  @keyframes pulse-outline {
+                    0%,
+                    100% {
+                      box-shadow: 0 0 0 0 transparent;
+                    }
+                    50% {
+                      box-shadow:
+                        0 0 0 3px white,
+                        0 0 15px rgba(0, 0, 0, 0.15);
+                    }
+                  }
+                  @keyframes pulse-left {
+                    0%,
+                    100% {
+                      opacity: 0;
+                    }
+                    50% {
+                      opacity: 0.85;
+                    }
+                  }
+                </style>
+              </div>
+              <a
+                href="https://www.facebook.com/groups/hocbahsk/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-4"
+              >
+                <div class="flex -space-x-[4.95px] md:-space-x-4">
+                  <div
+                    class="h-[34.59px] w-[34.59px] overflow-hidden rounded-full border-[1.24px] border-white shadow-md md:h-[50.78px] md:w-[50.78px] md:border-[1.81px]"
+                  >
+                    <img
+                      src={IMAGES.detailLectuter.outstandingStudent1.src}
+                      alt="Học viên tiêu biểu tại Học Bá Education"
+                      class="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div
+                    class="h-[34.59px] w-[34.59px] overflow-hidden rounded-full border-[1.24px] border-white shadow-md md:h-[50.78px] md:w-[50.78px] md:border-[1.81px]"
+                  >
+                    <img
+                      src={IMAGES.home.HoangTuAnh.src}
+                      alt="Học viên tiêu biểu tại Học Bá Education"
+                      class="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div
+                    class="h-[34.59px] w-[34.59px] overflow-hidden rounded-full border-[1.24px] border-white shadow-md md:h-[50.78px] md:w-[50.78px] md:border-[1.81px]"
+                  >
+                    <img
+                      src={IMAGES.khoaHsk.avatarHsk1.src}
+                      alt="Học viên tiêu biểu tại Học Bá Education"
+                      class="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+                <div class="flex flex-col items-start text-left">
+                  <div class="flex items-center gap-1">
+                    <span
+                      class="font-svn-gilroy inline-flex h-[19px] w-[50px] items-center justify-center text-[12.35px] font-[1000] leading-[1.5] text-[#AF0000] md:h-auto md:w-auto md:text-xl md:text-[#8F1E15]"
+                    >
+                      28.000+
+                    </span>
+                    <span
+                      class="font-svn-gilroy text-[8.65px] font-semibold leading-[1.5] text-[#414D60] md:text-[12.69px]"
+                    >
+                      Học viên
+                    </span>
+                  </div>
+                  <span
+                    class="font-svn-gilroy text-[8.65px] font-semibold leading-[1.5] text-[#414D60] md:text-[12.69px]"
+                  >
+                    Đã và đang học tại Học Bá
+                  </span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Content (Chỉ hiện trên Desktop/Laptop) -->
+          <div
+            class="relative hidden flex-grow lg:flex lg:justify-end lg:pr-6 lg:pt-4 2xl:-translate-x-20 2xl:justify-end 3xl:-translate-x-24 3xl:pt-20"
+          >
+            <div class="relative z-10 xl:-translate-x-10">
+              <!-- Icon KaiBan anchor to mascot -->
+              <div
+                class="absolute -top-[45px] right-[5%] z-20 hidden lg:-top-[70px] lg:block 2xl:-top-[70px] 3xl:-top-[70px]"
+              >
+                <img
+                  src={IMAGES.schedule.kaiBan.src}
+                  alt="Mascot Kaiban Học Bá Education"
+                  class="h-[69px] w-[150.18px] object-contain"
+                  loading="lazy"
+                />
+              </div>
+              <img
+                src={IMAGES.schedule.schedule_banner.src}
+                alt="Banner Lịch khai giảng các lớp tiếng Trung tại Học Bá"
+                class="h-auto max-h-[400px] w-auto max-w-[450px] object-contain lg:max-w-[480px] xl:max-w-[650px] 2xl:max-h-[480px] 2xl:max-w-[650px] 3xl:max-h-[559px] 3xl:max-w-[785px]"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 overflow-hidden md:mt-0">
+      <ScheduleTableNew client:load />
+      <HocBaFeatures client:load />
+
+      <section class="mt-10 w-full pt-0 md:mt-[58px] md:pt-5">
+        <div class="relative mx-auto h-auto w-full xl:w-[1224px]">
+          <div class="relative z-20 mx-auto flex w-fit items-center gap-6 px-6 md:px-10">
+            <div class="absolute -top-8 left-1 z-50 flex w-fit md:-left-4 md:-top-2">
+              <FourPointedStarMini
+                className="absolute -bottom-1 -right-2 mt-auto size-2 md:-bottom-2 md:-right-2 md:size-3"
+              />
+              <FourPointedStar className="size-[28px] md:size-[30px]" />
+            </div>
+            <h2
+              class="whitespace-nowrap px-2 text-center font-gilroy text-[18px] font-[1000] uppercase leading-[1.2] text-primary md:px-0 md:text-[36px] xl:text-[42px]"
+            >
+              Nền tảng công nghệ vượt trội
+            </h2>
+          </div>
+          <div
+            class="relative z-20 mt-2 text-center font-gilroy text-[18px] font-bold capitalize leading-[1.2] text-[#1E242C] md:text-[24px] xl:text-[28px]"
+          >
+            Tối ưu hiệu suất học
+          </div>
+          <div class={'relative z-50 px-6 md:px-12 xl:px-0'}>
+            <ScheduleAISmartSlide slides={formatAISmart} client:load />
+          </div>
+          <div
+            class="absolute -right-[15%] top-[5%] z-0 size-[186px] md:-right-[10%] md:size-[365px] xl:-right-[6%] xl:top-[12%]"
+          >
+            <img
+              src={IMAGES.khoaChinese.gridRedChinese.src}
+              alt=""
+              class={'object-cover w-full h-full'}
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="absolute -left-[15%] bottom-[25px] z-0 size-[243px] md:-left-[10%] xl:-bottom-[4%] xl:-left-[5%] xl:size-[469px]"
+          >
+            <img
+              src={IMAGES.khoaChinese.gridRedChinese.src}
+              alt=""
+              class={'object-cover w-full h-full'}
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      <div class="mt-[20px]">
+        <LecturerShowcase lecturers={teacherLists} client:load />
+      </div>
+
+      <div class="mt-[20px]">
+        <StudentExperience />
+      </div>
+
+      <div id="dang-ki-tu-van">
+        <ScheduleFormRegister dataInput={DATA_VALUE.SCHEDULE} />
+      </div>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,964 @@
+---
+import { FourPointedStar, FourPointedStarMini, VectorArrow } from '@/components/common/icons';
+import JsonLd from '@/components/common/JsonLd.astro';
+import SimpleFormRegister from '@/components/common/SimpleFormRegister.astro';
+import ChooseYourCourse from '@/components/features/course/ChooseYourCourse';
+import SmartTechnologyClass, {
+  type SmartTechnologyClassItem,
+} from '@/components/features/course/hsk/SmartTechnologyClass';
+import VideoStudentSlide from '@/components/features/course/hsk/VideoStudentSlide';
+import OutstandingStudent from '@/components/features/detail-lecturer/OutstandingStudent';
+import QAAccordion from '@/components/features/home/advisor-qa/QAAccordion.astro';
+import CourseLayout from '@/layouts/CourseLayout.astro';
+import { CATEGORY_TYPES, DATA_VALUE } from '@/lib/constants/enums';
+import { IMAGES } from '@/lib/constants/images';
+import { fetchCourseList, fetchStudents } from '@/lib/static-data';
+import { getImage, Image } from 'astro:assets';
+import type { Graph } from 'schema-dts';
+
+const baseUrl = import.meta.env.PUBLIC_CLIENT_URL;
+
+const students = await fetchStudents({
+  page: 1,
+  limit: 100,
+});
+
+const optimizedMachine = await getImage({
+  src: IMAGES.introduce.machine,
+  format: 'webp',
+});
+
+const optimizedBook = await getImage({
+  src: IMAGES.book,
+  format: 'webp',
+});
+
+const optimizedLotrinh = await getImage({
+  src: IMAGES.lotrinh,
+  format: 'webp',
+});
+
+const optimizedBookbanner1 = await getImage({
+  src: IMAGES.bookbanner1,
+  format: 'webp',
+});
+
+const optimizedSaoThang = await getImage({
+  src: IMAGES.schedule.sao_thang,
+  format: 'webp',
+});
+
+const optimizedBgLotrinhMobile = await getImage({
+  src: IMAGES.bgLotrinhMobile,
+  format: 'webp',
+});
+
+const iconChooseYourCourse = {
+  lotrinh: optimizedLotrinh.src,
+  book: optimizedBook.src,
+  bookbanner1: optimizedBookbanner1.src,
+  saoThang: optimizedSaoThang.src,
+  bgLotrinhMobile: optimizedBgLotrinhMobile.src,
+};
+
+const optimizedHsk = await getImage({
+  src: IMAGES.detailLectuter.hsk,
+  format: 'webp',
+  width: 250,
+  height: 150,
+  quality: 100,
+  densities: [1, 2],
+});
+const optimizedProfilePic = await getImage({
+  densities: [1, 2],
+  width: 282,
+  height: 350,
+  src: IMAGES.course.profilePic,
+  format: 'webp',
+});
+
+const coursesData = await fetchCourseList({
+  page: 0,
+  limit: 100,
+});
+const listCourses = coursesData?.list || [];
+
+const smartTechnologyClass: SmartTechnologyClassItem[] = [
+  {
+    id: '01',
+    title: 'Study Plan Cá Nhân Hóa: Lộ Trình Minh Bạch – Loại Bỏ Mơ Hồ',
+    content:
+      'Bạn sẽ luôn biết mình đang ở đâu và cần làm gì tiếp theo trong quá trình học mà không cần tốn thời gian suy nghĩ.',
+    subContent: [
+      '⭐ Lộ trình minh bạch, theo sát tiến độ từng buổi học',
+      '⭐ Nền tảng vững chắc, chuẩn hóa Từ vựng & Ngữ pháp HSK 3.0 trước khi luyện chuyên sâu.',
+      '⭐ Phát triển toàn diện 5 kỹ năng, cam kết không hổng kiến thức.',
+    ],
+    mainImage: IMAGES.khoaHsk.s1Main,
+    subImages: [
+      { image: IMAGES.khoaHsk.s1Sub1, position: 'bottom-left', isMobile: false },
+      { image: IMAGES.khoaHsk.s1Sub2, position: 'bottom-right', isMobile: true },
+    ],
+  },
+  {
+    id: '02',
+    title: 'Quản Trị Tiến Độ Trực Quan: Duy Trì Động Lực Mỗi Ngày',
+    content:
+      'Học Bá biến việc học thành một hành trình chinh phục đầy hứng khởi thông qua các chỉ số hiển thị rõ ràng.',
+    subContent: [
+      '⭐ Kiểm soát tiến độ, trực quan hóa kết quả học tập qua chỉ số real-time cụ thể.',
+      '⭐ Chủ động thời gian, tự do thiết kế lịch học và rèn luyện tính tự giác.',
+      '⭐ Cảnh báo thông minh, nhắc nhở kịp thời và "vực dậy" tinh thần nếu bạn lỡ xao nhãng.',
+    ],
+    mainImage: IMAGES.khoaHsk.s2Main,
+    subImages: [
+      { image: IMAGES.khoaHsk.s2Sub1, position: 'bottom-left', isMobile: false },
+      { image: IMAGES.khoaHsk.s2Sub4, position: 'top-right-inner', isMobile: true },
+    ],
+  },
+  {
+    id: '03',
+    title: 'Công Nghệ AI Đột Phá: Chấm Chữa & Luyện Thi Thực Chiến',
+    content: 'Sở hữu sức mạnh công nghệ để tối ưu hóa kết quả thi cử.',
+    subContent: [
+      '⭐ Chấm chữa tức thì, "gia sư AI" phát hiện lỗi sai và trả kết quả ngay khi nộp bài.',
+      '⭐ Phòng thi ảo thực tế, trải nghiệm áp lực thi thật với hệ thống đếm ngược thời gian.',
+      '⭐ Đề thi chuẩn Hanban, ngân hàng đề bám sát 99% cấu trúc HSK 3.0 mới nhất.',
+    ],
+    mainImage: IMAGES.khoaHsk.s3Main,
+    subImages: [
+      { image: IMAGES.khoaHsk.s3Sub1, position: 'bottom-left', isMobile: false },
+      { image: IMAGES.khoaHsk.s3Sub2, position: 'bottom-right', isMobile: true },
+      { image: IMAGES.khoaHsk.s3Sub3, position: 'bottom-left-inner', isMobile: true },
+      { image: IMAGES.khoaHsk.s3Sub4, position: 'top-right-inner', isMobile: true },
+    ],
+  },
+  {
+    id: '04',
+    title: 'Cơ Chế Đánh Giá & Củng Cố: Học Đến Đâu, Chắc Đến Đó',
+    content: 'LMS của Học Bá được thiết kế để kiến thức không bao giờ bị rơi rụng.',
+    subContent: [
+      '⭐ Ôn tập xen kẽ, kiến thức được củng cố tức thì thông qua lộ trình tích hợp khoa học.',
+      '⭐ Hệ thống đánh giá, phân tích chi tiết điểm mạnh/yếu và hiệu suất học tập.',
+      '⭐ Mentor hỗ trợ 1-1, đề xuất kế hoạch học bù và luyện tập thêm để lấp đầy lỗ hổng.',
+    ],
+    mainImage: IMAGES.khoaHsk.s4Main,
+    subImages: [
+      { image: IMAGES.khoaHsk.s4Sub1, position: 'bottom-left', isMobile: false },
+      { image: IMAGES.khoaHsk.s4Sub4, position: 'top-right-inner', isMobile: true },
+    ],
+  },
+];
+
+const formatSmartTechnologyClass = await Promise.all(
+  smartTechnologyClass.map(async (item) => {
+    // Get the original ImageMetadata for getImage - must be ImageMetadata, not string
+    const originalMainImage = item.mainImage;
+    const mainImageSrc = typeof originalMainImage === 'string' ? originalMainImage : originalMainImage.src;
+
+    let optimizedMainImage;
+
+    // Only optimize if mainImage is ImageMetadata (not already a string)
+    if (typeof originalMainImage !== 'string' && originalMainImage) {
+      optimizedMainImage = await getImage({
+        src: originalMainImage,
+        format: 'webp',
+        densities: [1, 2],
+        quality: 85,
+      });
+    }
+
+    const originalSubImages = item.subImages || [];
+    const optimizedSubImages = await Promise.all(
+      originalSubImages.map(async (subImageItem) => {
+        const subImage = subImageItem.image;
+        const subImageSrc = typeof subImage === 'string' ? subImage : subImage.src;
+
+        let optimizedSubImage;
+
+        // Only optimize if subImage is ImageMetadata (not already a string)
+        if (typeof subImage !== 'string' && subImage) {
+          optimizedSubImage = await getImage({
+            src: subImage,
+            format: 'webp',
+            densities: [1, 2],
+            quality: 85,
+          });
+        }
+
+        return {
+          image: optimizedSubImage?.src ?? subImageSrc,
+          position: subImageItem.position as 'bottom-left' | 'bottom-right' | 'bottom-left-inner' | 'top-right-inner',
+          isMobile: subImageItem.isMobile,
+        };
+      }),
+    );
+
+    return {
+      ...item,
+      mainImage: optimizedMainImage?.src ?? mainImageSrc,
+      subImages: optimizedSubImages,
+    };
+  }),
+);
+
+const videoStudentSlides = [
+  {
+    id: 1,
+    videoUrl: 'https://www.youtube.com/embed/MAnASob52M0',
+  },
+  {
+    id: 2,
+    videoUrl: 'https://www.youtube.com/embed/Y87HUHQNSA0',
+  },
+  {
+    id: 3,
+    videoUrl: 'https://www.youtube.com/embed/6S-Zy3Fnzn4',
+  },
+  {
+    id: 4,
+    videoUrl: 'https://www.youtube.com/embed/MAnASob52M0',
+  },
+  {
+    id: 5,
+    videoUrl: 'https://www.youtube.com/embed/Y87HUHQNSA0',
+  },
+  {
+    id: 6,
+    videoUrl: 'https://www.youtube.com/embed/6S-Zy3Fnzn4',
+  },
+];
+
+const qaData = [
+  {
+    id: 'item-1',
+    question: '1. Tôi chưa biết mình phù hợp khoá nào, có cần chọn sẵn không?',
+    answer: `Hiện tại, <strong>Học Bá 100% đào tạo trực tuyến qua Zoom kết hợp LMS độc quyền</strong>, được thiết kế chuyên cho học online ngay từ đầu.
+    ✔️ Tiết kiểm thời gian tương tác 2 chiều như học trực tiếp.
+    ✔️ Record mỗi buổi học lưu trọn đời + LMS tổng hợp từ vựng, ngữ pháp, flashcard, bài tập về nhà ôn tập mọi lúc.
+    ✔️ Giáo viên 100% đạt HSK6 & HSKK cao cấp, nhiều năm kinh nghiệm dạy online, sửa bài chi tiết, giúp học viên tiến bộ nhanh và vững chắc.
+    Nhờ nền tảng và phương pháp dạy, học viên online tại Học Bá vẫn đạt hiệu quả tương đương, thậm chí vượt trội so với học offline.`,
+  },
+  {
+    id: 'item-2',
+    question: '2. Chi phí học tại Học Bá là bao nhiêu?',
+    answer:
+      'Học phí tại Học Bá được <strong>thiết kế linh hoạt theo từng khóa học và cấp độ</strong>, đi đôi với chất lượng đào tạo xứng đáng: giáo trình bài bản, đội ngũ giảng viên giàu kinh nghiệm, hỗ trợ học viên tận tâm và cam kết đầu ra rõ ràng.',
+  },
+  {
+    id: 'item-3',
+    question: '3. Thời gian học trung bình cho mỗi cấp HSK sẽ trong khoảng bao lâu?',
+    answer: 'Mỗi cấp học tại Học Bá thường kéo dài từ <strong>2,5 đến 6 tháng</strong>, tùy theo trình độ.',
+  },
+  {
+    id: 'item-4',
+    question: '4. Vì sao học phí cao hơn một số trung tâm khác?',
+    answer: `✔️ <strong>Sĩ số lớp học tại Học Bá được duy trì 8–10 học viên/lớp</strong>, lớp đông nhất cũng chỉ tối đa 11 bạn. Quy mô này giúp giảng viên theo sát từng học viên, đảm bảo mỗi bạn đều có thời gian tương tác và điều chỉnh kịp thời theo đúng tiêu chuẩn cam kết đầu ra.
+    ✔️ <strong>Mô hình đồng hành 1–3</strong>: Mỗi học viên luôn có 1 giảng viên, 1 quản lý học viên, và 1 mentor học thuật, đảm bảo năng lực và kết quả học tập tốt nhất.
+    ✔️ <strong>Hệ thống LMS độc quyền</strong>: Lưu trữ toàn bộ tài liệu, giáo trình, nội dung bài học và bài tập về nhà, giúp học viên học tập mọi lúc, mọi nơi.
+    ✔️ <strong>Cơ chế feedback 2 chiều</strong> và kiểm tra định kỳ thường xuyên, giúp trung tâm nắm rõ tiến độ, kịp thời hỗ trợ để học viên đạt hiệu quả học tập tốt nhất.`,
+  },
+  {
+    id: 'item-5',
+    question: '5. Trung tâm có cam kết đầu ra không?',
+    answer: `✔️ Cam kết tối thiểu thi đậu HSK/HSKK theo mục tiêu đăng ký.
+    ✔️ Không đạt (nhưng vẫn đi điểm chuyên cần) sẽ được học lại miễn phí.`,
+  },
+  {
+    id: 'item-6',
+    question: '6. Trung tâm có hỗ trợ bảo lưu không?',
+    answer: `✔️ Bảo lưu tối đa 2 tháng, áp dụng khi học viên mới học dưới 20% số buổi.
+    ✔️ Phí bảo lưu: 300.000đ/lần, tối đa 2 lần.
+    ✔️ Quá hạn cần kiểm tra đầu vào để xếp lớp phù hợp khi quay lại học.`,
+  },
+  {
+    id: 'item-7',
+    question: '7. Trung tâm hỗ trợ học viên như thế nào?',
+    answer: `✔️ Bảo lưu tối đa 2 tháng, áp dụng khi học viên mới học dưới 20% số buổi.
+    ✔️ Phí bảo lưu: 300.000đ/lần, tối đa 2 lần.
+    ✔️ Quá hạn cần kiểm tra đầu vào để xếp lớp phù hợp khi quay lại học.`,
+  },
+  {
+    id: 'item-8',
+    question: '8. Các câu hỏi khác thường gặp',
+    answer: `❗ <strong>Lịch học xoay ca có tham gia được không?</strong>
+    – Cần có lịch cố định ít nhất 3 tháng để đảm bảo hiệu quả, xoay ca liên tục trung tâm sẽ khó nhận.
+
+    ❗ <strong>Có được chọn giáo viên không?</strong>
+    – Được sắp xếp GV phù hợp với trình độ và mục tiêu học.
+
+    ❗ <strong>Bao giờ khai giảng lớp mới?</strong>
+    – Lớp cơ bản: 2–3 tuần gom lớp. Lớp nâng cao: 3–4 tuần.
+
+    ❗ <strong>Có lớp chuyên ngành hoặc du học không?</strong>
+    – Có. Lộ trình HSK + giao tiếp + chuyên ngành theo yêu cầu trường hoặc công việc.`,
+  },
+];
+
+const jsonLd: Graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Trang chủ',
+          item: baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Luyện thi TOCFL',
+          item: `${baseUrl}/tocfl`,
+        },
+      ],
+    },
+  ],
+};
+---
+
+<CourseLayout
+  categoryId={CATEGORY_TYPES.TOCFL}
+  hasCommitment={false}
+  breadcrumbName="Khóa học TOCFL"
+  title="Khóa học TOCFL - Chứng chỉ tiếng Trung Đài Loan"
+  description="Khóa học TOCFL chất lượng cao, giúp bạn chinh phục chứng chỉ tiếng Trung Đài Loan"
+>
+  <JsonLd data={jsonLd} />
+  <div class="relative">
+    <section
+      class="relative flex h-auto w-full flex-col overflow-hidden bg-gradient-to-r from-[#FFEBE9] to-[#FFFDFD] pb-6 md:pb-16"
+    >
+      <div class="grid w-full grid-cols-1 md:grid-cols-2 xl:px-20 3xl:px-[256px]">
+        <div class="col-span-1 mt-8 flex flex-col items-center md:mt-[173px] xl:mr-10 3xl:mr-20">
+          <div class="relative flex w-fit items-center gap-6 px-9 md:px-10">
+            <VectorArrow
+              toColor="#AF0000"
+              fromColor="#AF0000"
+              className={'absolute -top-2 left-10 size-4 object-cover transition-opacity duration-500 md:-top-4 md:left-2 md:size-8'}
+            />
+            <div class="absolute -top-3 right-2 z-50 flex w-fit md:-right-10 md:-top-8">
+              <FourPointedStarMini
+                className="absolute -bottom-2 -left-2 mt-auto size-3 md:-bottom-6 md:-left-2 md:size-7"
+              />
+              <FourPointedStar className="size-9 md:size-[72px]" />
+            </div>
+            <h1
+              class="px-6 text-center text-[26px] font-black uppercase leading-tight text-primary md:px-0 md:text-[52px]"
+            >
+              Lộ trình luyện thi HSK toàn diện
+            </h1>
+          </div>
+          <div class="mt-4 flex w-full flex-col items-center md:w-[495px]">
+            <button
+              class="rounded-xl bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-10 py-1 text-[28px] font-black uppercase text-white md:px-20 md:py-3 md:text-[56px]"
+            >
+              TỪ 0 → HSK6
+            </button>
+            <p class="mt-4 px-14 text-xs leading-normal md:mt-11 md:px-0 md:text-[22px]">
+              <strong>Khóa học chuẩn HSK 3.0</strong> với lộ trình cá nhân hóa chuyên sâu, giúp bạn đạt chứng chỉ đúng mục
+              tiêu, đồng thời <strong>tiết kiệm tới 80% thời gian và chi phí</strong> so với phương pháp ôn luyện truyền thống
+            </p>
+          </div>
+        </div>
+        <div class="col-span-1 mt-4 flex items-center justify-center md:mt-28">
+          <div class="relative h-[281px] w-[312px] md:h-auto md:max-h-[695px] md:w-[771px]">
+            <div
+              class="absolute -left-2 top-[29%] z-10 flex w-fit items-center gap-2 rounded bg-gradient-to-l from-[#B90E0A] to-[#F3C650] px-2 py-1 md:-left-5 md:top-[29%] md:rounded-lg md:px-4 md:py-3"
+            >
+              <FourPointedStar className="size-[6px] text-white md:size-4" toColor="#FFFFFF" fromColor="#FFFFFF" />
+              <p class="text-[8px] font-black uppercase italic text-white md:text-[20px]">Sự nghiệp rực rỡ</p>
+            </div>
+            <div
+              class="absolute left-[9%] top-[13%] z-10 flex w-fit items-center gap-2 rounded bg-gradient-to-l from-[#B90E0A] to-[#F3C650] px-2 py-1 md:left-[8%] md:top-[13%] md:rounded-lg md:px-4 md:py-3"
+            >
+              <FourPointedStar className="size-[6px] text-white md:size-4" toColor="#FFFFFF" fromColor="#FFFFFF" />
+              <p class="text-[8px] font-black uppercase italic text-white md:text-[20px]">Thi cử vững vàng</p>
+            </div>
+            <div
+              class="absolute left-[38%] top-2 z-10 flex w-fit items-center gap-2 rounded bg-gradient-to-l from-[#B90E0A] to-[#F3C650] px-2 py-1 md:left-[40%] md:top-0 md:rounded-lg md:px-4 md:py-3"
+            >
+              <FourPointedStar className="size-[6px] text-white md:size-4" toColor="#FFFFFF" fromColor="#FFFFFF" />
+              <p class="text-[8px] font-black uppercase italic text-white md:text-[20px]">Lộ trình tinh gọn</p>
+            </div>
+            <Image
+              src={IMAGES.khoaHsk.heroImage}
+              width={771}
+              height={695}
+              alt={'heroImage'}
+              class={'object-cover w-full h-auto z-50 relative'}
+              densities={[1, 2]}
+            />
+          </div>
+        </div>
+        <div class="flex flex-col items-center xl:mr-10 3xl:mr-20">
+          <button
+            class="group mt-2 flex h-8 w-fit items-center gap-4 rounded-full bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-4 text-[15px] font-black uppercase text-white transition-all duration-300 hover:from-[#B90E0A] hover:to-[#F3C650] md:mt-0 md:h-[60px] md:px-8 md:text-[28px]"
+          >
+            <svg
+              viewBox="0 0 18 21"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-[14px] w-[12px] transition-transform duration-300 group-hover:scale-150 md:h-[21px] md:w-[18px]"
+            >
+              <path d="M18 10.3923L-9.78799e-07 20.7846L-7.02746e-08 2.87771e-05L18 10.3923Z" fill="white"></path>
+            </svg>
+
+            <span class="transition-transform duration-300 group-hover:translate-x-2">Nhận tư vấn lộ trình</span>
+          </button>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="flex items-center justify-center gap-2 bg-primary px-11 py-[14px] md:gap-2 md:px-0 md:py-9">
+        <div class="flex size-6 flex-shrink-0 items-center justify-center rounded-full border border-white md:size-14">
+          <div class="size-2 rounded-full bg-white md:size-5"></div>
+        </div>
+        <p class="text-center text-[15px] font-bold capitalize leading-tight text-white md:text-[28px]">
+          Học Bá đã giúp <span
+            class="mx-2 inline-block origin-bottom translate-y-[2px] scale-x-125 scale-y-125 text-[15px] font-black leading-[120%] text-[#F3C650] md:mx-3 md:translate-y-1 md:text-[32px]"
+            >5.200+</span
+          > học viên Chinh phục thành công mục tiêu HSK
+        </p>
+      </div>
+      <div class="h-auto bg-[#F5F5F5] pb-4 pt-4 md:h-[768px] md:pt-14">
+        <div class="relative mx-auto flex w-fit items-center">
+          <VectorArrow
+            toColor="#AF0000"
+            fromColor="#AF0000"
+            className={'absolute -left-4 top-0 size-4 object-cover transition-opacity duration-500 md:-left-10 md:top-0 md:size-8'}
+          />
+          <h1
+            class="bg-gradient-to-l from-[#B90E0A] to-[#7D1900] bg-clip-text text-lg font-black uppercase leading-normal text-transparent md:text-[42px]"
+          >
+            HSK 3.0 ĐÃ CẬN KỀ <span class="text-[#373737]">NHƯNG BẠN CÓ ĐANG</span>
+          </h1>
+        </div>
+        <div
+          class="mx-auto mt-2 w-fit rounded-sm border-[1.6px] border-[#373737] px-4 py-0 text-lg font-black uppercase text-[#373737] md:rounded-xl md:border-4 md:py-[14px] md:text-[42px]"
+        >
+          Bơi trong vô vọng
+        </div>
+        <div class="mt-8 flex w-full gap-10 md:mt-16 xl:px-20 3xl:px-[256px]">
+          <div class="hidden h-[527px] w-[385px] md:flex">
+            <div class="relative size-[385px] rounded-full bg-gradient-to-bl from-[#D9D9D900] to-[#737373] opacity-80">
+              <div class="absolute left-1/2 top-1/2 h-[527px] w-full -translate-x-1/2 -translate-y-1/2">
+                <Image
+                  src={IMAGES.khoaHsk.boiTrongVoVong}
+                  width={357}
+                  height={527}
+                  alt={'boiTrongVoVong'}
+                  class={'object-contain w-full h-full filter grayscale'}
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="hsk-scrollbar ml-6 grid select-none snap-x content-start gap-x-5 gap-y-5 overflow-x-auto pb-6 max-md:grid-flow-col max-md:grid-rows-2 md:ml-0 md:grid-cols-2 md:gap-x-7 md:gap-y-8 md:pb-0"
+          >
+            <div
+              class="order-1 col-span-1 h-full w-[278px] flex-shrink-0 rounded-xl bg-white px-[14px] py-[10px] shadow-[0px_4px_4px_0px_#00000026] md:w-auto"
+            >
+              <div class="h-1 w-8 rounded-lg bg-[#4D5756] md:h-2 md:w-14 md:rounded-xl"></div>
+              <div class="mt-[10px] flex items-center gap-4 rounded-md bg-[#4D5756] pl-8 pr-4">
+                <p class="text-[30px] font-black text-white md:text-[52px]">#1</p>
+                <p class="text-sm font-black leading-tight text-white md:text-[22px]">
+                  "Lạc lối" giữa biển kiến thức khổng lồ
+                </p>
+              </div>
+              <div class="mt-1 text-[9px] font-normal md:text-base">
+                Bạn mua đủ loại giáo trình, tải mọi bộ tài liệu trên mạng nhưng không biết bắt đầu từ đâu, càng học càng
+                thấy đuối.
+              </div>
+            </div>
+            <div
+              class="order-3 col-span-1 h-full w-[278px] flex-shrink-0 rounded-xl bg-white px-[14px] py-[10px] shadow-[0px_4px_4px_0px_#00000026] md:w-auto"
+            >
+              <div class="h-1 w-8 rounded-lg bg-[#4D5756] md:h-2 md:w-14 md:rounded-xl"></div>
+              <div class="mt-[10px] flex items-center gap-4 rounded-md bg-[#4D5756] pl-8 pr-4">
+                <p class="text-[30px] font-black text-white md:text-[52px]">#2</p>
+                <p class="text-sm font-black leading-tight text-white md:text-[22px]">
+                  Sợ hãi trước "Quái vật" HSK 3.0
+                </p>
+              </div>
+              <div class="mt-1 text-[9px] font-normal md:text-base">
+                HSK 3.0 lên tới 9 cấp với lượng từ vựng tăng vọt (từ 5.000 lên hơn 11.000 từ). Cấu trúc đề thay đổi hoàn
+                toàn với các phần thi mới lạ.
+              </div>
+            </div>
+            <div
+              class="order-2 col-span-1 h-full w-[278px] flex-shrink-0 rounded-xl bg-white px-[14px] py-[10px] shadow-[0px_4px_4px_0px_#00000026] md:w-auto"
+            >
+              <div class="h-1 w-8 rounded-lg bg-[#4D5756] md:h-2 md:w-14 md:rounded-xl"></div>
+              <div class="mt-[10px] flex items-center gap-4 rounded-md bg-[#4D5756] pl-8 pr-4">
+                <p class="text-[30px] font-black text-white md:text-[52px]">#3</p>
+                <p class="text-sm font-black leading-tight text-white md:text-[22px]">
+                  "Học câm" và nỗi lo thiếu kỹ năng thực tế
+                </p>
+              </div>
+              <div class="mt-1 text-[9px] font-normal md:text-base">
+                Sẽ ra sao nếu bạn có chứng chỉ HSK nhưng không thể dịch nổi một văn bản hành chính đơn giản hay ấp úng
+                khi phỏng vấn với sếp người Trung?
+              </div>
+            </div>
+            <div
+              class="order-4 col-span-1 h-full w-[278px] flex-shrink-0 rounded-xl bg-white px-[14px] py-[10px] shadow-[0px_4px_4px_0px_#00000026] md:w-auto"
+            >
+              <div class="h-1 w-8 rounded-lg bg-[#4D5756] md:h-2 md:w-14 md:rounded-xl"></div>
+              <div class="mt-[10px] flex items-center gap-4 rounded-md bg-[#4D5756] pl-8 pr-4">
+                <p class="text-[30px] font-black text-white md:text-[52px]">#4</p>
+                <p class="text-sm font-black leading-tight text-white md:text-[22px]">
+                  Học đâu quên đó – Thiếu môi trường tương tác thực chiến
+                </p>
+              </div>
+              <div class="mt-1 text-[9px] font-normal md:text-base">
+                Tự học khiến bạn nhanh nản, gặp cấu trúc khó không biết hỏi ai, viết bài luận không ai sửa lỗi, phát âm
+                sai không ai uốn nắn.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="w-full bg-sunset2 md:bg-sunset">
+      <div class="xl:px-20 3xl:px-[256px]">
+        <div class="relative mx-auto flex w-[290px] flex-col items-center gap-2 pt-9 md:w-[690px] md:pt-11">
+          <Image
+            src={IMAGES.introduce.book_icon}
+            alt={'book_icon'}
+            width={92}
+            height={92}
+            densities={[1, 2]}
+            class={'object-cover size-10 md:size-[92px] absolute top-6 md:top-10 -left-4 md:-left-20 -scale-x-100 -rotate-12'}
+          />
+          <div
+            class="rounded-[2px] bg-white px-6 py-1 text-sm font-black text-primary md:rounded-[5px] md:px-14 md:py-4 md:text-[28px]"
+          >
+            Không còn nỗi lo bỏ cuộc
+          </div>
+          <div class="text-center text-lg font-black uppercase leading-snug text-white md:text-[42px]">
+            CHẮC CHẮN chạm tay vào tấm bằng HSK VỚI HỌC BÁ
+          </div>
+          <p class="mt-2 px-2 text-center text-[10px] font-normal text-white md:px-16 md:text-base">
+            <span class="font-black">Giải pháp luyện thi HSK 3.0 đột phá!</span> Xóa bỏ tư duy học vẹt, thay thế bằng hệ thống
+            6 TRỤ CỘT SỨC MẠNH chuyên biệt. Đây là "Chìa khóa vàng" giúp bạn chinh phục HSK 3.0 nhàn nhã mà vẫn đạt hiệu quả
+            bứt phá.
+          </p>
+          <div class="absolute -right-6 top-5 z-50 flex w-fit md:-right-[4.5rem] md:top-10">
+            <FourPointedStarMini
+              className="absolute -bottom-2 -left-2 mt-auto size-3 rotate-90 md:-bottom-6 md:-left-2 md:size-7"
+              fromColor="#FFF8F8"
+              toColor="#FFDF89"
+            />
+            <FourPointedStar className="size-9 rotate-90 md:size-[72px]" fromColor="#FFF8F8" toColor="#FFDF89" />
+          </div>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="relative h-auto w-full md:h-[548px] md:w-[842px]">
+            <div
+              class="mt-6 grid h-full w-full grid-cols-2 gap-x-[10px] gap-y-[13px] px-[18px] md:absolute md:left-0 md:right-0 md:top-0"
+            >
+              <div
+                class="col-span-1 h-10 rounded-[5px] bg-white px-[10px] py-[1px] md:absolute md:-left-[26%] md:top-0 md:h-[94px] md:w-[415px] md:rounded-xl md:px-6 md:py-[2px]"
+              >
+                <div
+                  class="flex h-full items-center gap-3 rounded-[2px] bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-3 md:h-auto"
+                >
+                  <div class="flex size-8 items-center justify-center md:mx-[14px] md:size-[65px]">
+                    <FourPointedStar
+                      className="size-[10px] flex-shrink-0 text-white md:size-7"
+                      toColor="#FFFFFF"
+                      fromColor="#FFFFFF"
+                    />
+                  </div>
+                  <div class="text-[8px] font-bold uppercase leading-[1.3] text-white md:leading-normal md:text-[20px] lg:leading-[1.4]">
+                    Lộ trình "May đo" cá nhân hóa – Tiết kiệm 50% thời gian học
+                  </div>
+                </div>
+              </div>
+              <div
+                class="col-span-1 h-10 rounded-[5px] bg-white px-[10px] py-[1px] md:absolute md:-right-[30%] md:top-0 md:h-[94px] md:w-[415px] md:rounded-xl md:px-6 md:py-[2px]"
+              >
+                <div
+                  class="flex h-full items-center gap-3 rounded-[2px] bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-3"
+                >
+                  <div class="flex size-8 items-center justify-center md:mx-[14px] md:size-[65px]">
+                    <FourPointedStar
+                      className="size-[10px] flex-shrink-0 text-white md:size-6"
+                      toColor="#FFFFFF"
+                      fromColor="#FFFFFF"
+                    />
+                  </div>
+                  <div class="text-[8px] font-bold uppercase leading-[1.3] text-white md:leading-normal md:text-[20px] lg:leading-[1.4]">
+                    Chương trình Chuẩn khung 9 cấp – Đi tắt đón đầu format 3.0
+                  </div>
+                </div>
+              </div>
+              <div
+                class="col-span-1 h-10 rounded-[5px] bg-white px-[10px] py-[1px] md:absolute md:-left-[32%] md:top-[28%] md:h-[94px] md:w-[415px] md:rounded-xl md:px-6 md:py-[2px]"
+              >
+                <div
+                  class="flex h-full items-center gap-3 rounded-[2px] bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-3"
+                >
+                  <div class="flex size-8 items-center justify-center md:mx-[14px] md:size-[65px]">
+                    <FourPointedStar
+                      className="size-[10px] flex-shrink-0 text-white md:size-6"
+                      toColor="#FFFFFF"
+                      fromColor="#FFFFFF"
+                    />
+                  </div>
+                  <div class="text-[8px] font-bold uppercase leading-[1.3] text-white md:leading-normal md:text-[20px] lg:leading-[1.4]">
+                    Đội ngũ Giảng viên & Mentor – Những người truyền lửa tận tâm
+                  </div>
+                </div>
+              </div>
+              <div
+                class="col-span-1 h-10 rounded-[5px] bg-white px-[10px] py-[1px] md:absolute md:-right-[37%] md:top-[28%] md:h-[94px] md:w-[415px] md:rounded-xl md:px-6 md:py-[2px]"
+              >
+                <div
+                  class="flex h-full items-center gap-3 rounded-[2px] bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-3"
+                >
+                  <div class="flex size-8 items-center justify-center md:mx-[14px] md:size-[65px]">
+                    <FourPointedStar
+                      className="size-[10px] flex-shrink-0 text-white md:size-6"
+                      toColor="#FFFFFF"
+                      fromColor="#FFFFFF"
+                    />
+                  </div>
+                  <div class="text-[8px] font-bold uppercase leading-[1.3] text-white md:leading-normal md:text-[20px] lg:leading-[1.4]">
+                    Phương pháp dạy độc quyền: Hiểu sâu - Nhớ lâu - Thực chiến
+                  </div>
+                </div>
+              </div>
+              <div
+                class="col-span-1 h-10 rounded-[5px] bg-white px-[10px] py-[1px] md:absolute md:-left-[26%] md:top-[55%] md:h-[94px] md:w-[415px] md:rounded-xl md:px-6 md:py-[2px]"
+              >
+                <div
+                  class="flex h-full items-center gap-3 rounded-[2px] bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-3"
+                >
+                  <div class="flex size-8 items-center justify-center md:mx-[14px] md:size-[65px]">
+                    <FourPointedStar
+                      className="size-[10px] flex-shrink-0 text-white md:size-6"
+                      toColor="#FFFFFF"
+                      fromColor="#FFFFFF"
+                    />
+                  </div>
+                  <div class="text-[8px] font-bold uppercase leading-[1.3] text-white md:leading-normal md:text-[20px] lg:leading-[1.4]">
+                    LMS thông minh tích hợp AI - "Gia sư ảo" 24/7
+                  </div>
+                </div>
+              </div>
+              <div
+                class="col-span-1 h-10 rounded-[5px] bg-white px-[10px] py-[1px] md:absolute md:-right-[30%] md:top-[55%] md:h-[94px] md:w-[415px] md:rounded-xl md:px-6 md:py-[2px]"
+              >
+                <div
+                  class="flex h-full items-center gap-3 rounded-[2px] bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-3"
+                >
+                  <div class="flex size-8 items-center justify-center md:mx-[14px] md:size-[65px]">
+                    <FourPointedStar
+                      className="size-[10px] flex-shrink-0 text-white md:size-6"
+                      toColor="#FFFFFF"
+                      fromColor="#FFFFFF"
+                    />
+                  </div>
+                  <div class="text-[8px] font-bold uppercase leading-[1.3] text-white md:leading-normal md:text-[20px] lg:leading-[1.4]">
+                    Phát triển toàn diện 5 kỹ năng: Nghe – Nói – Đọc – Viết – Dịch
+                  </div>
+                </div>
+              </div>
+            </div>
+            <Image
+              src={IMAGES.khoaHsk.hskPgsHbc}
+              width={842}
+              height={548}
+              alt={'hskPgsHbc'}
+              densities={[1, 2]}
+              loading={'lazy'}
+              class={'object-contain w-full h-full'}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="w-full">
+      <div class="relative mx-auto mt-11 h-auto w-full md:mt-20 md:w-[1178px]">
+        <div class="relative z-20 mx-auto flex w-fit items-center gap-6 px-6 md:px-10">
+          <div class="absolute -top-5 left-1 z-50 flex w-fit md:-left-[5rem] md:-top-12">
+            <FourPointedStarMini
+              className="absolute -bottom-3 -right-3 mt-auto size-4 md:-bottom-4 md:-right-7 md:size-7"
+            />
+            <FourPointedStar className="size-[26px] md:size-[72px]" />
+          </div>
+          <h1
+            class="text-nowrap px-6 text-center text-lg font-black uppercase leading-tight text-primary md:px-0 md:text-[42px]"
+          >
+            Lớp học công nghệ thông minh
+          </h1>
+        </div>
+        <div class="relative z-20 mt-3 text-center text-lg font-bold text-[#1E242C] md:text-[42px]">
+          Khơi nguồn cảm xúc học tập
+        </div>
+        <div class={'relative z-50'}>
+          <SmartTechnologyClass slides={formatSmartTechnologyClass} icons={{}} client:visible />
+        </div>
+        <div class="absolute -right-[50%] -top-[12%] z-0 size-[365px] md:-right-[30%] md:-top-[14%] md:size-[520px]">
+          <Image
+            src={IMAGES.introduce.bg_nen}
+            alt={'bg_nen1'}
+            width={520}
+            height={520}
+            class={'object-cover w-full h-full'}
+          />
+        </div>
+        <div class="absolute -bottom-[8%] -left-[32%] z-0 size-[564px]">
+          <Image
+            src={IMAGES.introduce.bg_nen}
+            alt={'bg_nen2'}
+            width={564}
+            height={564}
+            class={'object-cover w-full h-full hidden md:flex'}
+          />
+        </div>
+      </div>
+    </section>
+    <section class="pb-5">
+      <div class="flex h-[52px] items-center justify-center gap-2 bg-primary px-20 md:h-[122px] md:gap-2 md:px-0">
+        <div class="flex size-8 items-center justify-center md:mx-[14px] md:size-[65px]">
+          <FourPointedStar
+            className="size-4 flex-shrink-0 text-white md:size-7"
+            toColor="#FFFFFF"
+            fromColor="#FFFFFF"
+          />
+        </div>
+        <p class="text-center text-[15px] font-black uppercase text-white md:text-[28px]">
+          Chọn lộ trình học & Trải nghiệm ngay
+        </p>
+        <div class="flex size-8 items-center justify-center md:mx-[14px] md:size-[65px]">
+          <FourPointedStar
+            className="size-4 flex-shrink-0 text-white md:size-7"
+            toColor="#FFFFFF"
+            fromColor="#FFFFFF"
+          />
+        </div>
+      </div>
+      <div class="mt-9 w-full md:mt-[70px] xl:px-36 3xl:px-[256px]">
+        <div class="relative mx-auto flex w-fit items-center">
+          <VectorArrow
+            toColor="#AF0000"
+            fromColor="#AF0000"
+            className={'absolute -left-4 top-0 hidden size-4 object-cover transition-opacity duration-500 md:-left-10 md:top-0 md:flex md:size-8'}
+          />
+          <h1
+            class="from-[#B90E0A] to-[#7D1900] text-lg font-black uppercase leading-normal text-[#373737] md:bg-gradient-to-l md:bg-clip-text md:text-[42px] md:text-transparent"
+          >
+            Xây dựng lộ trình học HSK 3.0
+          </h1>
+        </div>
+        <div
+          class="mx-auto mt-0 flex h-auto w-full items-center justify-center rounded-[74px] border-none border-[#373737] text-center text-[20px] font-bold normal-case text-primary md:mt-2 md:h-16 md:w-[521px] md:border-2 md:border-solid md:text-[42px] md:font-black md:uppercase md:text-[#373737]"
+        >
+          Dành riêng cho bạn
+        </div>
+      </div>
+      <ChooseYourCourse {listCourses} icons={iconChooseYourCourse} client:visible />
+    </section>
+    <section class="container mt-0 md:mt-9">
+      <div class="flex items-center justify-center gap-2 md:gap-4">
+        <Image
+          src={IMAGES.detailLectuter.detailLectuterIcon2}
+          width={90}
+          height={90}
+          alt={'detailLectuterIcon1'}
+          densities={[1, 2]}
+          class={'h-14 w-14 -rotate-12 object-cover md:h-[90px] md:w-[90px] hidden md:flex'}
+        />
+        <h2 class="text-lg font-black uppercase text-primary md:text-[42px]">Trăm nghe không bằng một thấy</h2>
+      </div>
+      <div class="mx-auto flex w-[277px] items-center justify-center md:w-[516px]">
+        <p class="text-center text-[15px] font-bold md:text-[28px]">
+          Cùng “tận mắt: nghe Học viên nói gì khi chinh phục HSK cùng Học Bá
+        </p>
+      </div>
+      <div class="mx-auto max-w-full md:max-w-[1028px]">
+        <VideoStudentSlide slides={videoStudentSlides || []} client:visible />
+      </div>
+    </section>
+    <section
+      class="mx-auto flex h-auto w-full max-w-[1440px] flex-col rounded-lg bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-[30px] py-6 md:h-[562px] md:flex-row md:rounded-[20px] md:px-[134px] md:py-11"
+    >
+      <div class="basis-1/2">
+        <div class="flex items-center gap-3 md:gap-5">
+          <div class="flex-shrink-0 text-[36px] font-black leading-[120%] text-[#F3C650] md:text-[60px]">
+            {'> 95%'}
+          </div>
+          <p class="text-[15px] font-black uppercase text-white md:text-[22px]">
+            <span class="text-[#F3C650]">HỌC VIÊN ĐẠT VƯỢT ĐIỂM MỤC TIÊU</span> NHỜ HỆ PHƯƠNG PHÁP TƯ DUY ĐỘC QUYỀN TẠI HỌC
+            BÁ
+          </p>
+        </div>
+        <p class="mt-3 pr-0 text-xs font-normal italic leading-tight text-white md:mt-5 md:pr-4 md:text-[20px]">
+          Chúng tôi không đo lường sự thành công bằng số lượng khóa học được bán ra, chúng tôi đo lường bằng chỉ số hạnh
+          phúc và điểm số của học viên
+        </p>
+        <div class="mt-4 flex items-center gap-3 md:mt-5 md:gap-5">
+          <div class="flex-shrink-0 text-2xl font-black leading-[120%] text-white md:text-[42px]">
+            {'95.8%'}
+          </div>
+          <div
+            class="flex items-center gap-2 rounded-[10px] bg-white py-3 pl-3 md:gap-3 md:rounded-[18px] md:py-5 md:pl-2"
+          >
+            <div class="flex size-8 items-center justify-center md:mx-[14px] md:size-[65px]">
+              <FourPointedStar className="size-6 flex-shrink-0 md:size-[42px]" toColor="#AF0000" fromColor="#AF0000" />
+            </div>
+            <div class="pr-3 text-xs font-bold leading-tight text-[#373737] md:pr-28 md:text-[18px]">
+              95.8% tỷ lệ học viên đạt hoặc vượt mức điểm kỳ vọng ngay trong kỳ thi đầu tiên
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center gap-3 md:mt-5 md:gap-5">
+          <div
+            class="flex items-center gap-2 rounded-[10px] bg-white py-3 pl-3 md:gap-3 md:rounded-[18px] md:py-5 md:pl-2"
+          >
+            <div class="flex size-8 items-center justify-center md:mx-[14px] md:size-[65px]">
+              <FourPointedStar className="size-6 flex-shrink-0 md:size-[42px]" toColor="#AF0000" fromColor="#AF0000" />
+            </div>
+            <div class="pr-3 text-xs font-bold leading-tight text-[#373737] md:pr-24 md:text-[18px]">
+              100% Học viên tự tin thực hành đồng thời 5 kỹ năng Nghe - Nói - Đọc - Viết - Dịch – "nỗi sợ" lớn nhất của
+              format 3.0
+            </div>
+          </div>
+          <div class="flex-shrink-0 text-2xl font-black leading-[120%] text-white md:text-[42px]">
+            {'100%'}
+          </div>
+        </div>
+      </div>
+      <div class="flex basis-1/2 justify-end gap-x-3 px-3 pb-0 pt-4 md:gap-x-5 md:px-0">
+        <div class="h-[180px] w-[113px] rounded-md md:h-[307px] md:w-[194px] md:rounded-[18px]">
+          <Image
+            src={IMAGES.khoaHsk.target2Hsk}
+            width={194}
+            height={307}
+            alt={'target2Hsk'}
+            densities={[1, 2]}
+            loading={'lazy'}
+            class={'object-cover w-full h-full rounded-md md:rounded-[18px]'}
+          />
+        </div>
+        <div class="relative h-[262px] w-[182px] rounded-md md:h-[447px] md:w-[309px] md:rounded-[18px]">
+          <div
+            class="absolute -left-[70%] bottom-4 flex h-14 w-fit items-center rounded-md bg-white px-[10px] py-[10px] md:bottom-10 md:h-20 md:rounded-[18px] md:px-4 md:py-4"
+          >
+            <div class="size-9 rounded-full border-2 border-white md:size-[50px]">
+              <Image
+                src={IMAGES.khoaHsk.target3Hsk}
+                width={50}
+                height={50}
+                alt={'target3Hsk'}
+                densities={[1, 2]}
+                loading={'lazy'}
+                class={'object-cover w-full h-full rounded-full'}
+              />
+            </div>
+            <div class="-ml-2 size-9 rounded-full border-2 border-white md:size-[50px]">
+              <Image
+                src={IMAGES.khoaHsk.target4Hsk}
+                width={50}
+                height={50}
+                alt={'target4Hsk'}
+                densities={[1, 2]}
+                loading={'lazy'}
+                class={'object-cover w-full h-full rounded-full'}
+              />
+            </div>
+            <div class="-ml-2 size-9 rounded-full border-2 border-white md:size-[50px]">
+              <Image
+                src={IMAGES.khoaHsk.target5Hsk}
+                width={50}
+                height={50}
+                alt={'target5Hsk'}
+                densities={[1, 2]}
+                loading={'lazy'}
+                class={'object-cover w-full h-full rounded-full'}
+              />
+            </div>
+            <div class="ml-2 md:ml-4">
+              <p class="text-xs font-black uppercase text-primary md:text-lg">10k +</p>
+              <p class="text-[8px] font-semibold text-[#414D60] md:text-xs">Học viên</p>
+            </div>
+          </div>
+          <Image
+            src={IMAGES.khoaHsk.target1Hsk}
+            width={309}
+            height={447}
+            alt={'target1Hsk'}
+            densities={[1, 2]}
+            loading={'lazy'}
+            class={'object-cover w-full h-full rounded-md md:rounded-[18px] object-right-top'}
+          />
+        </div>
+      </div>
+    </section>
+    <section class="container my-11">
+      <OutstandingStudent
+        outstandingStudent={students?.list || []}
+        icons={{
+          hsk: optimizedHsk.src,
+          machine: optimizedMachine.src,
+          defaultAvatar: optimizedProfilePic.src,
+        }}
+        isPageCourse
+        client:visible
+      />
+    </section>
+    <section class="">
+      <SimpleFormRegister dataInput={DATA_VALUE.COURSE_TOCFL} isSimpleForm />
+    </section>
+    <section id="advisor-qa" class="" style="background: linear-gradient(357.89deg, #FFF8F8 42.88%, #FFD3D3 140.83%);">
+      <div class="mx-auto w-full max-w-[1354px]">
+        <div class="flex flex-col gap-8 lg:flex-row">
+          <div class="hidden flex-1 md:flex">
+            <div class="relative md:h-[748px] md:w-[614px]">
+              <Image
+                src={IMAGES.khoaHsk.qaBgHsk}
+                width={614}
+                height={748}
+                alt={'fdBook'}
+                densities={[1, 2]}
+                class={'object-cover w-auto h-full'}
+                loading={'lazy'}
+              />
+            </div>
+          </div>
+          <div class="w-full px-7 md:px-0 lg:w-[646px]">
+            <div class="flex h-24 items-center justify-center md:h-[129px] md:justify-start">
+              <div class="text-[58px] font-black text-primary md:text-[108px]">?</div>
+              <h2 class="text-lg font-black uppercase text-primary md:text-[42px]">Câu hỏi thường gặp</h2>
+            </div>
+            <QAAccordion {qaData} />
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</CourseLayout>
+
+<style>
+  .hsk-scrollbar::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .hsk-scrollbar::-webkit-scrollbar-track {
+    border-radius: 22px;
+  }
+
+  .hsk-scrollbar::-webkit-scrollbar-track:hover {
+    background: transparent;
+  }
+
+  .hsk-scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 22px;
+    background: #d9d9d9;
+  }
+</style>

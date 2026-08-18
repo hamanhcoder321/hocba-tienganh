@@ -1,0 +1,602 @@
+---
+import {
+  CommaIcon,
+  EllipContact,
+  EllipLecturer,
+  EllipLecturer1,
+  EllipseVtcg1,
+  EllipseVtcg2,
+  Rectangle1,
+  Rectangle2,
+} from '@/components/common/icons';
+import JsonLd from '@/components/common/JsonLd.astro';
+import SimpleFormRegister from '@/components/common/SimpleFormRegister.astro';
+import AlbumCarousel from '@/components/features/detail-lecturer/AlbumCarousel';
+import OutstandingStudent from '@/components/features/detail-lecturer/OutstandingStudent';
+import RelevantLecturers from '@/components/features/detail-lecturer/RelevantLecturers';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { PROGRAM_OPTIONS } from '@/lib/constants/content';
+import { DATA_VALUE } from '@/lib/constants/enums';
+import { IMAGES } from '@/lib/constants/images';
+import { fetchTeacherDetail, fetchRelatedTeachers, fetchStudents } from '@/lib/static-data';
+import { getImage, Image } from 'astro:assets';
+import type { Graph } from 'schema-dts';
+
+const { slugLecturer } = Astro.params;
+
+// Fetch teacher detail from API
+const teacherDetail = await fetchTeacherDetail(slugLecturer!);
+
+// If no data found, redirect to 404
+if (!teacherDetail) {
+  Astro.response.status = 404;
+  Astro.response.statusText = 'Not Found';
+  return Astro.rewrite('/404');
+}
+
+// Map API data to Lecturer format using helper
+const lecturer = {
+  ...teacherDetail,
+  qualification_info: teacherDetail?.qualification_info?.map((item) => {
+    return {
+      ...item,
+    };
+  }),
+};
+
+// Prepare tag parameter for related teachers API
+let tagParam = 'hsk'; // default value
+if (teacherDetail?.tags?.scope) {
+  if (Array.isArray(teacherDetail.tags.scope)) {
+    // If multiple tags, format as JSON string array
+    tagParam = JSON.stringify(teacherDetail.tags.scope);
+  } else {
+    // If single tag, use as string
+    tagParam = teacherDetail.tags.scope;
+  }
+}
+
+// Fetch related teachers based on tags.scope
+const relatedTeachersData = await fetchRelatedTeachers({
+  tag: tagParam,
+  limit: 100,
+});
+
+const students = await fetchStudents({
+  page: 1,
+  limit: 9,
+});
+
+// --- Metadata cho SEO ---
+const title = `${lecturer.name} | Đội ngũ giảng viên | Học Bá Education`;
+const description = lecturer.description;
+
+const optimizedHsk = await getImage({
+  src: IMAGES.detailLectuter.hsk,
+  format: 'webp',
+  width: 250,
+  height: 150,
+  quality: 100,
+  densities: [1, 2],
+});
+const optimizedMachine = await getImage({
+  src: IMAGES.introduce.machine,
+  format: 'webp',
+  width: 40,
+  height: 25,
+  quality: 100,
+});
+const optimizedIcon3 = await getImage({
+  src: IMAGES.detailLectuter.detailLectuterIcon3,
+  format: 'webp',
+  width: 160,
+  height: 140,
+  quality: 100,
+});
+const optimizedProfilePic = await getImage({
+  densities: [1, 2],
+  width: 282,
+  height: 350,
+  src: IMAGES.course.profilePic,
+  format: 'webp',
+});
+
+const optimizedTeachers = await Promise.all(
+  (relatedTeachersData ?? []).map(async (teacher) => {
+    const AVATAR_WIDTH = 700;
+    const AVATAR_HEIGHT = 900;
+    // 1. Tối ưu Avatar chính
+    const rawAvatar = teacher?.avatar_url?.file_path || IMAGES.course.profilePic;
+
+    const optimizedAvatar = await getImage({
+      src: rawAvatar,
+      width: AVATAR_WIDTH,
+      height: AVATAR_HEIGHT,
+      format: 'webp',
+      quality: 80,
+      position: 'top',
+    });
+
+    return {
+      ...teacher,
+      optimizedAvatar: optimizedAvatar.src,
+    };
+  }),
+);
+
+const baseUrl = import.meta.env.PUBLIC_CLIENT_URL ?? 'https://hoc-ba.edu.vn';
+
+const jsonLd: Graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Trang chủ',
+          item: baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Đội ngũ giảng viên',
+          item: `${baseUrl}/doi-ngu-giang-vien`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: lecturer.name,
+          item: `${baseUrl}/doi-ngu-giang-vien/${lecturer.slug}`,
+        },
+      ],
+    },
+    {
+      '@type': 'ProfilePage',
+      name: `${lecturer.name} - Giảng viên | Học Bá Education`,
+      url: `${baseUrl}/doi-ngu-giang-vien/${lecturer.slug}`,
+      dateModified: new Date().toISOString(),
+      mainEntity: {
+        '@type': 'Person',
+        '@id': `${baseUrl}/doi-ngu-giang-vien/${lecturer.slug}#person`,
+        name: lecturer.name,
+        jobTitle: 'Giảng viên',
+        worksFor: {
+          '@id': `${baseUrl}/#organization`,
+        },
+        url: `${baseUrl}/doi-ngu-giang-vien/${lecturer.slug}`,
+        image: lecturer.avatar_url?.file_path,
+        description:
+          'Giảng viên tại Học Bá Education, chuyên đào tạo và giảng dạy tiếng Trung theo lộ trình bài bản, thực tiễn.',
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout {title} {description}>
+  <JsonLd data={jsonLd} />
+  <div class="relative">
+    <section class="relative flex h-[789px] w-full flex-col bg-gradient-to-b from-[#B90E0A] to-[#7D1900] md:h-[800px]">
+      <div class="relative z-10 flex h-full flex-col overflow-x-clip md:px-0">
+        <Breadcrumb className="container mt-6 px-4 md:mt-12 md:px-0">
+          <BreadcrumbList className="text-xs text-white md:text-lg">
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <a href="/">Trang chủ</a>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <a href="/doi-ngu-giang-vien">Đội ngũ giảng viên</a>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage className="text-white">{lecturer.name}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+        <div class="mx-auto grid grid-cols-1 xl:grid-cols-2 2xl:max-w-[1354px]">
+          <div class="relative order-2 col-span-1 h-[378px] md:h-auto xl:order-1">
+            <div class="absolute left-1/2 top-0 h-[830px] w-full -translate-x-1/2 md:w-[830px]">
+              <Image
+                src={IMAGES.detailLectuter.heroLeftBg}
+                alt={'heroLeftBg'}
+                width={830}
+                height={830}
+                class={'size-[450px] md:size-[830px]'}
+              />
+            </div>
+            <div
+              class="absolute left-0 top-[14%] h-[340px] w-full select-none overflow-hidden md:mt-0 md:h-[632px] md:w-[632px]"
+            >
+              <div class="absolute left-0 top-0 h-24 w-20">
+                <Rectangle1 />
+                <Rectangle2 className="ml-auto" />
+              </div>
+              <div
+                class="absolute left-1/2 top-1/2 flex h-[340px] w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center md:h-[632px] md:w-[632px]"
+              >
+                <EllipLecturer className="size-[340px] animate-spin-slow object-cover md:size-[632px]" />
+              </div>
+              <div
+                class="absolute left-1/2 top-1/2 flex size-[378px] -translate-x-1/2 -translate-y-1/2 select-none items-center justify-center"
+              >
+                <EllipLecturer1 className="size-[204px] animate-spin-reverse object-cover md:size-[378px]" />
+              </div>
+              <Image
+                src={lecturer.avatar_url?.file_path || ''}
+                alt={'lecturer_avatar_url'}
+                width={700}
+                height={1000}
+                layout="constrained"
+                loading={'eager'}
+                position="top"
+                class={'object-cover object-top w-auto h-[334px] md:h-[618px] absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2'}
+              />
+            </div>
+          </div>
+          <div class="z-50 order-1 col-span-1 md:mt-16 xl:order-2">
+            <div
+              class="mt-10 text-center text-lg font-black uppercase text-white md:mt-0 md:text-start md:text-[42px] xl:px-[38px]"
+            >
+              Thông tin giảng viên
+            </div>
+            <div
+              class="mx-4 mt-4 h-[296px] rounded-[20px] bg-gradient-to-bl from-[#CA0000] to-[#D1000000] p-5 md:mx-0 md:mt-10 md:h-[370px] md:w-[615px] md:p-10"
+            >
+              <div
+                class="custom-scrollbar flex h-full flex-col gap-4 overflow-y-auto whitespace-pre-line text-[15px] font-medium text-white md:gap-6 md:text-[20px]"
+              >
+                {lecturer.description}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="absolute -bottom-[7%] left-0 right-0 z-20 mx-auto w-[94%] xl:w-[1173px] 2xl:w-[1354px]">
+          <div
+            class="grid h-auto w-full grid-cols-1 rounded-[18px] border-2 border-[#F67B7B] bg-white px-5 py-4 shadow-[-3px_20px_68.2px_0px_#B90E0A1A;] md:h-[232px] md:grid-cols-3 xl:px-10 xl:py-6 2xl:px-20 2xl:py-4"
+          >
+            <h1 class="col-span-1 my-auto flex items-center justify-center gap-2 md:block md:gap-0">
+              <p class="text-[20px] font-black uppercase text-primary md:text-[42px]">Giảng viên</p>
+              <p class="line-clamp-2 text-[20px] font-black uppercase text-primary md:text-[42px]">
+                {lecturer.name}
+              </p>
+            </h1>
+            <div class="col-span-1 mt-4 grid grid-cols-2 gap-x-2 md:col-span-2 md:mt-0 md:gap-x-10">
+              {
+                lecturer.qualification_info?.map((item, index) => {
+                  // Map index to hero images (hero1, hero2, hero3, hero4)
+                  const heroImages = [
+                    IMAGES.lectuter.hero1,
+                    IMAGES.lectuter.hero4,
+                    IMAGES.lectuter.hero2,
+                    IMAGES.lectuter.lectuterStar,
+                  ];
+                  const heroImage = heroImages[index % heroImages.length];
+
+                  return (
+                    <div class="col-span-1 flex items-center gap-2">
+                      <Image
+                        src={heroImage}
+                        width={76}
+                        height={76}
+                        alt={`hero${(index % 4) + 1}`}
+                        class={'size-8 h-auto scale-95 object-cover md:w-[76px]'}
+                        densities={[1, 2]}
+                        loading={'lazy'}
+                      />
+                      <p class="line-clamp-2 text-[9px] font-bold uppercase md:text-lg">{item.title}</p>
+                    </div>
+                  );
+                })
+              }
+            </div>
+          </div>
+        </div>
+        <div
+          class="absolute -right-14 top-[56%] z-10 size-[140px] select-none overflow-clip md:right-[2%] md:top-4 2xl:size-[236px]"
+        >
+          <Image
+            src={IMAGES.detailLectuter.heroRightBg}
+            alt={'rectangle1'}
+            width={212}
+            height={236}
+            class={'object-cover w-auto h-[70px] md:h-full'}
+          />
+        </div>
+      </div>
+    </section>
+    <section class="relative overflow-clip bg-[#F6F6F6] pb-0 pt-24 md:pb-20 md:pt-32">
+      <div class="absolute top-[4%] hidden h-[740px] w-[740px] xl:-left-[30%] xl:block 2xl:-left-[20%]">
+        <Image
+          src={IMAGES.introduce.bg_nen}
+          alt={'gs_hbc'}
+          width={740}
+          height={740}
+          class={'object-cover w-full h-full'}
+          loading={'lazy'}
+        />
+      </div>
+      <div class="container relative z-50">
+        <div class="grid grid-cols-1 gap-x-6 gap-y-0 md:grid-cols-2 md:gap-y-[70px]">
+          {
+            (lecturer.teacherHighlights ?? []).map((item, index) => (
+              <div class="last:md:[18px] relative col-span-1 flex flex-col gap-3 rounded-xl bg-white pb-12 pl-6 pr-[34px] pt-11 last:pb-4 md:pb-[18px] md:pl-11 md:pt-[60px]">
+                <h2 class="absolute -top-[14px] left-1/2 flex h-7 w-fit min-w-[344px] -translate-x-1/2 items-center justify-center gap-2 text-nowrap rounded-full bg-primary px-6 text-[15px] font-bold text-white md:-top-[22px] md:h-11 md:px-10 md:text-2xl">
+                  {index === 0 ? (
+                    <Image
+                      src={IMAGES.detailLectuter.hvIcon}
+                      alt={'hvIcon'}
+                      width={24}
+                      height={24}
+                      class={'h-5 w-auto object-cover md:h-6'}
+                      loading={'lazy'}
+                    />
+                  ) : (
+                    <Image
+                      src={IMAGES.detailLectuter.knIcon}
+                      alt={'knIcon'}
+                      width={24}
+                      height={24}
+                      class={'h-5 w-auto object-cover md:h-6'}
+                      loading={'lazy'}
+                    />
+                  )}
+                  {item.section}
+                </h2>
+                <div
+                  class="text-base font-medium [&>figure]:my-4 [&>img]:h-auto [&>img]:max-w-full [&>img]:rounded-lg [&>li]:mb-2 [&>ol]:mb-4 [&>ol]:ml-6 [&>ol]:list-decimal [&>ul]:mb-4 [&>ul]:ml-6 [&>ul]:list-disc"
+                  set:html={item.content}
+                />
+                {index === 2 && lecturer.album_url && lecturer.album_url?.length > 0 && (
+                  <AlbumCarousel items={lecturer.album_url} client:visible />
+                )}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div
+        class="absolute z-10 hidden h-[740px] w-[740px] xl:-bottom-0 xl:-right-[30%] xl:block 2xl:-bottom-[2%] 2xl:-right-[20%]"
+      >
+        <Image
+          src={IMAGES.introduce.bg_nen}
+          alt={'gs_hbc'}
+          width={740}
+          height={740}
+          class={'object-cover w-full h-full'}
+          loading={'lazy'}
+        />
+      </div>
+    </section>
+    <section class="relative pb-6 pt-4 md:pb-10 md:pt-9">
+      <div class="container">
+        <div class="ml-4 flex items-center gap-3 md:ml-40 md:gap-6">
+          <div
+            class="flex h-[30px] w-8 items-center justify-center rounded-[54px] bg-gradient-to-r from-[#7D1900] to-[#B90E0A] shadow-[8.39px_6.71px_45.49px_0px_#B90E0A66;] md:size-14"
+          >
+            <CommaIcon className="md:scale-150" />
+          </div>
+          <p class="text-nowrap text-lg font-black uppercase text-primary md:text-[42px]">
+            {`Chia sẻ từ ${lecturer.name}`}
+          </p>
+        </div>
+        <div class="mt-0 flex flex-col-reverse md:mt-10 md:flex-row">
+          <div class="w-full md:w-[678px]">
+            <div
+              class="scrollbar-hide flex h-full max-h-[571px] flex-col gap-4 overflow-y-auto rounded-[20px] bg-gradient-to-r from-[#FFD3D3] to-[#FFF8F800] px-8 py-7 md:px-20 md:py-14"
+            >
+              <p class="whitespace-pre-line text-justify text-[15px] font-medium italic md:text-[20px]">
+                {lecturer.share_content?.description}
+              </p>
+            </div>
+          </div>
+          <div class="relative flex flex-1">
+            <div
+              class="absolute bottom-0 left-1/2 size-[320px] overflow-clip max-sm:-translate-x-1/2 md:bottom-2 md:left-0 md:size-[505px]"
+            >
+              <EllipseVtcg1 className="absolute left-0 top-0 z-10 size-[320px] animate-spin-slow md:size-[505px]" />
+              <EllipseVtcg2
+                className="absolute left-[20%] top-[20%] z-10 size-[168px] animate-spin-reverse md:size-[302px]"
+              />
+            </div>
+            <div
+              class="relative z-50 mx-auto mt-auto flex h-[354px] w-[432px] justify-center overflow-hidden md:h-[584px]"
+            >
+              <Image
+                src={lecturer.avatar_url?.file_path || ''}
+                width={794}
+                height={1436}
+                densities={[1, 2]}
+                loading={'lazy'}
+                alt={'shareQuocHung'}
+                class={'object-contain w-auto md:w-auto h-[354px] md:h-full relative z-50 mx-full'}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="container relative md:pt-9">
+      <div>
+        <div class="flex items-center justify-center gap-4">
+          <Image
+            src={IMAGES.detailLectuter.detailLectuterIcon1}
+            width={90}
+            height={90}
+            alt={'detailLectuterIcon1'}
+            densities={[1, 2]}
+            class={'object-cover w-10 md:w-[90px] h-10 md:h-[90px] scale-x-[-1]'}
+          />
+          <h2 class="text-lg font-black uppercase text-primary md:text-[42px]">Các lớp đang giảng dạy</h2>
+        </div>
+        <div class="mt-0 flex items-center justify-center md:-mt-2">
+          <p class="px-10 text-center text-[15px] font-bold md:px-56 md:text-[28px]">
+            {
+              (() => {
+                const gender = lecturer.gender === 1 ? 'Thầy' : 'Cô';
+                const programs = lecturer.current_class?.map((c) => c.title).join(' & ') || '';
+                return `${gender} ${lecturer.name} đảm nhận dạy các chương trình đào tạo ${programs}`;
+              })()
+            }
+          </p>
+        </div>
+        <div class="flex flex-col gap-y-4 py-4 md:flex-row md:gap-x-7 md:gap-y-0 md:py-12">
+          <div
+            class="group w-full bg-[#FFF8F8] p-5 transition-all duration-300 hover:-translate-y-2 hover:bg-[#AF0000] hover:shadow-[0px_4px_25px_0px_#FF6969] md:w-[558px]"
+          >
+            <Image
+              src={IMAGES.detailLectuter.class1}
+              width={520}
+              height={274}
+              densities={[1, 2]}
+              loading={'lazy'}
+              alt={'detailLectuter-class1'}
+              class={'h-auto w-full object-cover group-hover:opacity-50 md:h-[274px]'}
+            />
+            <div class="relative mt-2 flex flex-col items-center justify-center gap-2">
+              <div class="relative flex h-[28px] w-full items-center justify-center md:h-[36px]">
+                <h3
+                  class="absolute text-[18px] font-black uppercase transition-opacity duration-300 group-hover:opacity-0 md:text-[28px]"
+                >
+                  Học Bá HSK
+                </h3>
+                <button
+                  onclick="document.getElementById('advisor-registration')?.scrollIntoView({ behavior: 'smooth', block: 'start' })"
+                  class="absolute text-[18px] font-black uppercase text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:text-[28px]"
+                >
+                  Đăng ký ngay
+                </button>
+              </div>
+              <div class="h-[2px] w-[200px] scale-x-0 bg-white transition-all duration-300 group-hover:scale-x-100">
+              </div>
+              <p
+                class="text-xs font-medium transition-colors duration-300 group-hover:font-black group-hover:text-[#F3C650] md:text-lg"
+              >
+                Luyện thi HSK chuẩn Format 3.0 mới nhất
+              </p>
+            </div>
+          </div>
+          <div
+            class="group w-full bg-[#FFF8F8] p-5 transition-all duration-300 hover:-translate-y-2 hover:bg-[#AF0000] hover:shadow-[0px_4px_25px_0px_#FF6969] md:w-[558px]"
+          >
+            <Image
+              src={IMAGES.detailLectuter.class2}
+              width={520}
+              height={274}
+              densities={[1, 2]}
+              quality={85}
+              loading={'lazy'}
+              alt={'detailLectuter-class1'}
+              class={'h-auto w-full object-cover group-hover:opacity-50 md:h-[274px]'}
+            />
+            <div class="relative mt-2 flex flex-col items-center justify-center gap-2">
+              <div class="relative flex h-[28px] w-full items-center justify-center md:h-[36px]">
+                <h3
+                  class="absolute text-[18px] font-black uppercase transition-opacity duration-300 group-hover:opacity-0 md:text-[28px]"
+                >
+                  HỌC BÁ chinese
+                </h3>
+                <button
+                  onclick="document.getElementById('advisor-registration')?.scrollIntoView({ behavior: 'smooth', block: 'start' })"
+                  class="absolute text-[18px] font-black uppercase text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:text-[28px]"
+                >
+                  Đăng ký ngay
+                </button>
+              </div>
+              <div class="h-[2px] w-[200px] scale-x-0 bg-white transition-all duration-300 group-hover:scale-x-100">
+              </div>
+              <p
+                class="text-xs font-medium transition-colors duration-300 group-hover:font-black group-hover:text-[#F3C650] md:text-lg"
+              >
+                Tiếng trung giao tiếp thực chiến cho người đi làm
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {
+      students?.list && students?.list.length > 0 && (
+        <section class="relative bg-[#FFF8F8] md:pt-9">
+          <div class="container">
+            <div class="flex items-center justify-center gap-2 md:gap-4">
+              <Image
+                src={IMAGES.detailLectuter.detailLectuterIcon2}
+                width={90}
+                height={90}
+                alt={'detailLectuterIcon1'}
+                densities={[1, 2]}
+                class={'h-14 w-14 -rotate-12 object-cover md:h-[90px] md:w-[90px]'}
+              />
+              <h2 class="text-lg font-black uppercase text-primary md:text-[42px]">Học viên xuất sắc</h2>
+            </div>
+            <div class="-mt-2 flex items-center justify-center">
+              <p class="px-10 text-center text-[15px] font-bold md:px-12 md:text-[28px]">
+                {(() => {
+                  const gender = lecturer.gender === 1 ? 'thầy' : 'cô';
+                  return `Cùng Học Bá "Flex" thành tích khủng của học viên trong lớp tiếng trung ${gender} ${lecturer.name} và các thầy cô Học Bá dẫn dắt`;
+                })()}
+              </p>
+            </div>
+            <div class="">
+              <OutstandingStudent
+                outstandingStudent={students?.list || []}
+                icons={{
+                  hsk: optimizedHsk.src,
+                  machine: optimizedMachine.src,
+                  defaultAvatar: optimizedProfilePic.src,
+                }}
+                client:visible
+              />
+            </div>
+          </div>
+        </section>
+      )
+    }
+    <section class="relative bg-gradient-to-t from-[#FFF8F8] to-[#FFFFFF00] md:pt-9">
+      <div class="container">
+        <div class="flex items-center justify-center gap-2 md:gap-4">
+          <Image
+            src={IMAGES.detailLectuter.detailLectuterIcon3}
+            width={90}
+            height={90}
+            alt={'detailLectuterIcon1'}
+            densities={[1, 2]}
+            class={'object-cover w-14 h-14 md:w-[90px] md:h-[90px] -rotate-12 scale-75'}
+          />
+          <h2 class="text-lg font-black uppercase text-primary md:text-[42px]">Giảng viên liên quan</h2>
+        </div>
+        <div class="-mt-2 flex items-center justify-center">
+          <p class="px-10 text-center text-[15px] font-bold md:pl-[25rem] md:pr-[18rem] md:text-[28px]">
+            Tìm hiểu thêm về những giảng viên “chất” chỉ có tại Học Bá Education
+          </p>
+        </div>
+        <div class="">
+          <RelevantLecturers
+            relevantLecturers={optimizedTeachers}
+            icons={{
+              hsk: optimizedIcon3.src,
+            }}
+            client:visible
+          />
+        </div>
+      </div>
+    </section>
+    <section id="advisor-registration" class="relative">
+      <SimpleFormRegister dataInput={`Trang giảng viên ${lecturer.name}`} isSimpleForm />
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,136 @@
+---
+import { IMAGES } from '@/lib/constants/images';
+import { Image } from 'astro:assets';
+
+const col1 = IMAGES.home.evidenceGallery.col1;
+const col2 = IMAGES.home.evidenceGallery.col2;
+const col3 = IMAGES.home.evidenceGallery.col3;
+
+const fullCol1 = [...col1, ...col1, ...col1];
+const fullCol2 = [...col2, ...col2, ...col2];
+const fullCol3 = [...col3, ...col3, ...col3];
+---
+
+<div class="relative overflow-hidden bg-[#B1000E] py-5 md:py-20">
+  <div class="container relative z-10 mx-auto h-[500px] px-0 md:h-[700px] md:px-4">
+    <div
+      id="evidence-gallery-scroll"
+      class="scrollbar-hide flex h-full snap-x snap-mandatory gap-x-4 overflow-x-auto px-[10%] md:grid md:grid-cols-3 md:gap-x-8 md:overflow-x-visible md:px-0"
+    >
+      <div class="marquee-up col-1 flex min-w-[80%] snap-center flex-col md:min-w-0">
+        {
+          fullCol1.map((img, index) => (
+            <div class="mb-4 w-full shrink-0 shadow-xl md:mb-8">
+              <Image src={img} alt={`Evidence 1-${index}`} class="h-auto w-full object-cover" loading="eager" />
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="marquee-down col-2 flex min-w-[80%] snap-center flex-col md:min-w-0">
+        {
+          fullCol2.map((img, index) => (
+            <div class="mb-4 w-full shrink-0 shadow-xl md:mb-8">
+              <Image src={img} alt={`Evidence 2-${index}`} class="h-auto w-full object-cover" loading="eager" />
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="marquee-up-stagger col-3 flex min-w-[80%] snap-center flex-col md:min-w-0">
+        {
+          fullCol3.map((img, index) => (
+            <div class="mb-4 w-full shrink-0 shadow-xl md:mb-8">
+              <Image src={img} alt={`Evidence 3-${index}`} class="h-auto w-full object-cover" loading="eager" />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="pointer-events-none absolute inset-0 z-20 hidden bg-gradient-to-b from-[#B1000E] via-transparent to-[#B1000E] opacity-60 md:block"
+  >
+  </div>
+</div>
+
+<style>
+  /* Base marquee logic - Using Triple loop (33.333%) for seamless transition */
+  .marquee-up,
+  .marquee-down,
+  .marquee-up-stagger {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .marquee-up {
+    animation: scrollUp 30s linear infinite;
+    animation-delay: -5s;
+  }
+
+  .marquee-down {
+    animation: scrollUp 30s linear infinite reverse;
+    animation-delay: -15s;
+  }
+
+  .marquee-up-stagger {
+    animation: scrollUp 30s linear infinite;
+    animation-delay: -25s;
+  }
+
+  @keyframes scrollUp {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-33.3333%);
+    } /* Exact 1/3 for Triple repeat */
+  }
+
+  /* Interaction */
+  .marquee-up:hover,
+  .marquee-down:hover,
+  .marquee-up-stagger:hover {
+    animation-play-state: paused;
+  }
+
+  /* Custom scrollbar hiding */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* GPU Acceleration for absolute smoothness */
+  .shrink-0 {
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+
+  .w-full {
+    will-change: transform;
+  }
+</style>
+
+<script>
+  function centerColumn2OnMobile() {
+    if (typeof window === 'undefined') return;
+    if (!window.matchMedia('(max-width: 767px)').matches) return;
+    const container = document.getElementById('evidence-gallery-scroll');
+    const col2 = container?.querySelector('.col-2');
+    if (!container || !col2) return;
+    const scrollLeft =
+      (col2 as HTMLElement).offsetLeft - container.offsetWidth / 2 + (col2 as HTMLElement).offsetWidth / 2;
+    container.scrollLeft = Math.max(0, scrollLeft);
+  }
+  if (typeof window !== 'undefined') {
+    centerColumn2OnMobile();
+    window.addEventListener('resize', centerColumn2OnMobile);
+    window.addEventListener('load', () => {
+      requestAnimationFrame(centerColumn2OnMobile);
+    });
+  }
+</script>

@@ -1,0 +1,19 @@
+---
+interface Props {
+  title: string;
+  icon?: any;
+  className?: string;
+}
+
+const { title, icon: Icon, className = '' } = Astro.props;
+---
+
+<div
+  class:list={[
+    'flex h-8 w-fit items-center gap-4 rounded-xl border border-black px-5 md:h-[60px] md:rounded-[20px]',
+    className,
+  ]}
+>
+  {Icon && <Icon className="size-4 md:size-6" />}
+  <h2 class="text-base md:text-2xl">{title}</h2>
+</div>

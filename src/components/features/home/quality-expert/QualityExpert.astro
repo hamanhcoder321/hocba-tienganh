@@ -1,0 +1,11 @@
+---
+import CoreQuality from './CoreQuality.astro';
+import ExpertAdvisory from './ExpertAdvisory.astro';
+import InspiredLecturers from './InspiredLecturers.astro';
+---
+
+<section id="quality-expert" class="quality-expert-wrapper">
+  <CoreQuality />
+  <ExpertAdvisory />
+  <InspiredLecturers server:defer />
+</section>

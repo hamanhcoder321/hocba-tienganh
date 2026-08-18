@@ -1,0 +1,579 @@
+---
+import JsonLd from '@/components/common/JsonLd.astro';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { baseUrl } from '@/lib/constants/api';
+import { CONTACTS } from '@/lib/constants/content';
+import type { Graph } from 'schema-dts';
+
+// export const prerender = true;
+
+const data = [
+  {
+    title: 'Giới thiệu chung',
+    content: [
+      'Trang Điều khoản sử dụng được xây dựng nhằm xác định quyền và nghĩa vụ giữa Học Bá và tất cả người dùng, bao gồm học viên, người truy cập, người đăng ký tài khoản và người sử dụng nền tảng LMS. Truy cập hoặc sử dụng bất kỳ dịch vụ nào do Học Bá cung cấp đồng nghĩa với việc người dùng chấp thuận và tuân thủ đầy đủ các điều khoản này.',
+      'Để thuận tiện trong quá trình áp dụng Điều khoản sử dụng, các thuật ngữ dưới đây được định nghĩa như sau:',
+    ],
+    definitions: [
+      {
+        term: 'Người dùng',
+        description:
+          'Bao gồm tất cả các đối tượng nêu trên, tức là học viên, người truy cập, người đăng ký tài khoản và người sử dụng LMS.',
+      },
+      {
+        term: 'Học viên',
+        description: 'Cá nhân đã đăng ký và tham gia một hoặc nhiều khóa học của Học Bá.',
+      },
+      {
+        term: 'Tài khoản',
+        description:
+          'Thông tin định danh của Người dùng trên website hoặc nền tảng LMS, bao gồm tên đăng nhập, mật khẩu và các dữ liệu liên quan.',
+      },
+      {
+        term: 'Khóa học',
+        description:
+          'Các chương trình học trực tuyến do Học Bá phát triển và cung cấp, có thể bao gồm video, tài liệu, bài tập và các nội dung tương tác khác.',
+      },
+      {
+        term: 'Website',
+        description: 'Trang web chính thức của Học Bá tại địa chỉ https://hoc-ba.edu.vn/.',
+      },
+      {
+        term: 'Dịch vụ',
+        description:
+          'Tất cả các sản phẩm, khóa học, công cụ, tính năng, nội dung số và các dịch vụ liên quan được Học Bá cung cấp thông qua website hoặc nền tảng LMS.',
+      },
+    ],
+  },
+  {
+    title: 'Điều kiện sử dụng dịch vụ',
+    sections: [
+      {
+        subtitle: 'Yêu cầu đăng ký tài khoản',
+        content: [
+          'Để sử dụng dịch vụ của Học Bá, người dùng cần tạo tài khoản hợp lệ và cung cấp đầy đủ, chính xác các thông tin cá nhân, bao gồm: họ tên, địa chỉ email, số điện thoại và các dữ liệu bắt buộc khác.',
+        ],
+      },
+      {
+        subtitle: 'Trách nhiệm bảo mật',
+        content: [
+          'Người dùng có trách nhiệm giữ bảo mật thông tin tài khoản và mật khẩu. Mọi hành vi sử dụng tài khoản do người dùng cung cấp đều được coi là hành động của chính người đó. Người dùng nên cập nhật thông tin và mật khẩu định kỳ để bảo vệ quyền lợi cá nhân.',
+        ],
+      },
+      {
+        subtitle: 'Quyền từ chối hoặc ngừng cung cấp dịch vụ',
+        content: [
+          'Học Bá có quyền từ chối, đình chỉ hoặc ngừng cung cấp dịch vụ nếu thông tin cung cấp không chính xác, gian lận, vi phạm quy định hoặc ảnh hưởng đến hoạt động của hệ thống. Quyết định này được thực hiện nhằm đảm bảo môi trường học tập trực tuyến an toàn, minh bạch và công bằng cho tất cả người dùng.',
+        ],
+      },
+      {
+        subtitle: 'Quy định sử dụng tài khoản',
+        content: ['Người dùng không được phép:'],
+        list: [
+          'Chia sẻ tài khoản hoặc thông tin đăng nhập với người khác.',
+          'Mạo danh người khác khi sử dụng dịch vụ.',
+          'Thực hiện các hành vi gây hại, xâm phạm quyền lợi của Học Bá hoặc các người dùng khác.',
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Quyền truy cập và sử dụng nội dung',
+    sections: [
+      {
+        subtitle: 'Quyền truy cập cá nhân',
+        content: [
+          'Học Bá cung cấp cho người dùng quyền truy cập cá nhân vào các nội dung khóa học. Quyền này không được chuyển nhượng hoặc cấp phép cho bất kỳ bên thứ ba nào dưới bất kỳ hình thức nào mà không có sự đồng ý bằng văn bản của Học Bá.',
+        ],
+      },
+      {
+        subtitle: 'Hạn chế sao chép và phân phối',
+        content: [
+          'Người dùng không được sao chép, phân phối, truyền phát, tái sử dụng hoặc xuất bản bất kỳ nội dung nào thuộc sở hữu của Học Bá, bao gồm nhưng không giới hạn ở video, tài liệu, bài tập, giáo trình và tài nguyên tương tác, trừ khi được Học Bá chấp thuận bằng văn bản.',
+        ],
+      },
+      {
+        subtitle: 'Quyền sở hữu trí tuệ',
+        content: [
+          'Toàn bộ giáo trình, video, tài liệu, thương hiệu, logo và các nội dung khác do Học Bá phát triển đều được bảo hộ theo pháp luật về bản quyền và sở hữu trí tuệ. Học Bá giữ toàn quyền sở hữu và thực hiện các biện pháp pháp lý khi quyền này bị xâm phạm.',
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Hành vi bị cấm',
+    content: [
+      'Người dùng phải tuân thủ các quy định của Học Bá và nghiêm cấm các hành vi gây hại hoặc vi phạm quyền lợi của nền tảng, người dùng khác và bản quyền nội dung. Các hành vi bị cấm bao gồm nhưng không giới hạn ở:',
+    ],
+    list: [
+      'Sử dụng tài khoản bất hợp pháp hoặc đăng nhập trái phép vào hệ thống.',
+      'Chia sẻ tài khoản hoặc mạo danh người khác khi sử dụng dịch vụ.',
+      'Can thiệp, phá hoại hệ thống, hack hoặc sử dụng phần mềm trái phép để truy cập dịch vụ.',
+      'Phát tán, sao chép hoặc cung cấp nội dung khóa học ra bên ngoài, vi phạm quyền sở hữu trí tuệ.',
+      'Thực hiện các hành vi làm ảnh hưởng tiêu cực đến môi trường học tập, bao gồm quấy rối, xúc phạm, kỳ thị hoặc gây mất trật tự.',
+    ],
+  },
+  {
+    title: 'Bảo mật thông tin & quyền riêng tư',
+    content: [
+      'Học Bá cam kết bảo mật tuyệt đối thông tin cá nhân của người dùng, bao gồm tất cả dữ liệu cung cấp khi đăng ký tài khoản, tham gia khóa học hoặc sử dụng dịch vụ trên nền tảng. Việc thu thập, xử lý và lưu trữ thông tin cá nhân được thực hiện theo quy định pháp luật hiện hành và phù hợp với Chính sách bảo mật.',
+      'Người dùng chịu trách nhiệm bảo vệ thông tin đăng nhập và dữ liệu cá nhân của bản thân. Trong trường hợp xảy ra mất mát, bị lộ hoặc truy cập trái phép, Học Bá sẽ áp dụng các biện pháp cần thiết để hạn chế thiệt hại, khắc phục sự cố và thông báo cho người dùng theo quy định pháp luật.',
+      'Người dùng có quyền truy cập, chỉnh sửa, bổ sung hoặc yêu cầu xóa dữ liệu cá nhân mà Học Bá lưu trữ. Các yêu cầu này sẽ được Học Bá xử lý một cách minh bạch, kịp thời và tuân thủ pháp luật, nhằm đảm bảo quyền riêng tư và bảo vệ lợi ích hợp pháp của người dùng.',
+    ],
+  },
+  {
+    title: 'Điều kiện thay đổi & cập nhật dịch vụ',
+    content: [
+      'Học Bá có quyền thay đổi, bổ sung hoặc sửa đổi Điều khoản sử dụng bất kỳ lúc nào mà không cần thông báo trước. Mục đích của việc điều chỉnh là nhằm cập nhật, hoàn thiện dịch vụ, nâng cao trải nghiệm người dùng và tuân thủ các quy định pháp luật hiện hành.',
+      'Mọi thay đổi sẽ được thông báo đến người dùng thông qua một hoặc nhiều hình thức sau:',
+    ],
+    list: [
+      'Đăng tải công khai trên website chính thức của Học Bá.',
+      'Gửi thông báo trực tiếp qua email đã đăng ký.',
+      'Hiển thị thông báo trên nền tảng hoặc hệ thống LMS của Học Bá.',
+    ],
+    footer: [
+      'Các thay đổi sẽ có hiệu lực kể từ thời điểm được thông báo hoặc theo mốc thời gian cụ thể được ghi rõ trong thông báo. Việc tiếp tục truy cập, sử dụng dịch vụ sau thời điểm này đồng nghĩa với việc người dùng chấp thuận và tuân thủ các nội dung Điều khoản sử dụng đã được cập nhật.',
+    ],
+  },
+  {
+    title: 'Giới hạn trách nhiệm & từ chối bảo đảm',
+    content: [
+      'Học Bá không chịu trách nhiệm pháp lý đối với bất kỳ thiệt hại, mất mát hoặc gián đoạn nào phát sinh trong quá trình sử dụng dịch vụ, bao gồm nhưng không giới hạn ở:',
+    ],
+    list: [
+      'Mất dữ liệu, thông tin cá nhân hoặc nội dung khóa học do sự cố kỹ thuật, sự cố hệ thống, thiên tai, hỏa hoạn hoặc các yếu tố khách quan khác nằm ngoài khả năng kiểm soát của Học Bá.',
+      'Gián đoạn, đình trệ hoặc sự cố trong việc truy cập và sử dụng dịch vụ do lỗi của bên thứ ba hoặc nhà cung cấp dịch vụ hỗ trợ hạ tầng.',
+    ],
+    footer: [
+      'Học Bá không đảm bảo rằng dịch vụ sẽ luôn hoạt động hoàn hảo, không có lỗi, phù hợp với mọi mục đích của người sử dụng hoặc không bị gián đoạn. Người dùng hiểu và chấp nhận rằng việc sử dụng dịch vụ hoàn toàn dựa trên cơ sở hiện trạng và rủi ro được người sử dụng tự chịu.',
+      'Trong giới hạn pháp luật cho phép, Học Bá không chịu trách nhiệm bồi thường đối với bất kỳ thiệt hại trực tiếp, gián tiếp, ngẫu nhiên hoặc hệ quả nào phát sinh từ việc sử dụng hoặc không thể sử dụng dịch vụ.',
+    ],
+  },
+  {
+    title: 'Chấm dứt hợp đồng & đình chỉ dịch vụ',
+    content: ['Học Bá có quyền đình chỉ hoặc chấm dứt quyền truy cập của người dùng trong các trường hợp sau:'],
+    list: [
+      'Người dùng vi phạm bất kỳ điều khoản nào của Điều khoản sử dụng.',
+      'Người dùng cung cấp thông tin không chính xác hoặc gian lận trong quá trình đăng ký và sử dụng dịch vụ.',
+      'Người dùng không thực hiện nghĩa vụ thanh toán hoặc thực hiện các hành vi ảnh hưởng xấu đến hệ thống, dịch vụ hoặc các người dùng khác.',
+      'Các trường hợp khác theo quy định pháp luật hoặc theo quyết định của Học Bá nhằm bảo vệ quyền lợi hợp pháp của mình.',
+    ],
+    footer: [
+      'Trong trường hợp bị chấm dứt, người dùng không được hoàn trả phí đã thanh toán cho các khóa học hoặc dịch vụ đã sử dụng. Học Bá sẽ thông báo về việc chấm dứt quyền truy cập theo hình thức phù hợp, và quyền truy cập của người dùng vào khóa học, tài liệu, nội dung số hoặc các dịch vụ khác sẽ bị vô hiệu hóa ngay lập tức.',
+      'Hậu quả của việc chấm dứt bao gồm nhưng không giới hạn ở:',
+    ],
+    sublist: [
+      'Mất quyền truy cập vào toàn bộ tài liệu, video, bài tập và các nội dung liên quan của khóa học.',
+      'Không được phép chuyển nhượng, chia sẻ hoặc sử dụng bất kỳ nội dung nào thuộc sở hữu của Học Bá.',
+      'Mất quyền lợi và các tính năng liên quan đến tài khoản và dịch vụ của Học Bá.',
+    ],
+    note: 'Việc chấm dứt quyền truy cập **không ảnh hưởng đến các quyền và nghĩa vụ** phát sinh trước thời điểm chấm dứt, bao gồm các quyền sở hữu trí tuệ và nghĩa vụ thanh toán.',
+  },
+  {
+    title: 'Giải quyết tranh chấp',
+    content: [
+      'Mọi tranh chấp, khiếu nại phát sinh từ hoặc liên quan đến việc sử dụng dịch vụ của Học Bá sẽ được giải quyết theo quy định của pháp luật Việt Nam, trong đó bao gồm nhưng không giới hạn các quy định liên quan đến giáo dục và giáo dục trực tuyến.',
+      'Trong trường hợp xảy ra tranh chấp, người dùng cần thực hiện các bước sau:',
+    ],
+    steps: [
+      {
+        label: 'Thông báo tranh chấp',
+        description:
+          'Người dùng gửi thông báo bằng văn bản về khiếu nại hoặc vấn đề phát sinh tới Học Bá thông qua email hoặc hệ thống liên lạc chính thức.',
+      },
+      {
+        label: 'Liên hệ giải quyết',
+        description: 'Học Bá sẽ xem xét, phản hồi và nỗ lực giải quyết tranh chấp một cách hợp lý và kịp thời.',
+      },
+    ],
+    footer: [
+      'Nếu tranh chấp không thể giải quyết thông qua thương lượng, cơ quan tài phán duy nhất có thẩm quyền giải quyết là Tòa án có thẩm quyền tại nơi Học Bá đặt trụ sở. Quyết định của Tòa án sẽ là quyết định cuối cùng và ràng buộc đối với các bên liên quan.',
+    ],
+  },
+  {
+    title: 'Thông tin liên hệ',
+    content: [
+      'Người dùng có thể liên hệ với Học Bá để được hỗ trợ, giải đáp thắc mắc hoặc gửi yêu cầu liên quan đến dịch vụ thông qua các kênh sau:',
+    ],
+    contacts: [
+      { label: 'Hotline', value: CONTACTS.hotline },
+      { label: 'Email hỗ trợ', value: CONTACTS.email },
+      {
+        label: 'Địa chỉ văn phòng',
+        value: CONTACTS.address.label,
+      },
+    ],
+    footer: [
+      'Học Bá khuyến khích người dùng liên hệ kịp thời để được hướng dẫn và giải quyết các vấn đề phát sinh trong quá trình sử dụng dịch vụ, đảm bảo quyền lợi hợp pháp và trải nghiệm học tập an toàn, minh bạch.',
+    ],
+  },
+];
+
+const jsonLd: Graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Trang chủ',
+          item: baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Điều khoản sử dụng',
+          item: `${baseUrl}/dieu-khoan-su-dung`,
+        },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout>
+  <JsonLd data={jsonLd} />
+  <div>
+    <div class="container px-4 pb-8 text-black">
+      <div class="z-10 -mx-4 bg-transparent px-4 pb-4 pt-8">
+        <Breadcrumb className="container px-4 md:px-0">
+          <BreadcrumbList className="text-foreground text-xs md:text-lg">
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <a href="/" class={'hover:underline hover:text-primary'}> Trang chủ </a>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Điều khoản sử dụng</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+
+        <nav class="mt-2 overflow-x-auto border-b border-gray-200 pb-2 lg:hidden">
+          <ul class="flex min-w-max gap-1">
+            {
+              data.map((item, i) => (
+                <li>
+                  <a
+                    href={`#section-${i}`}
+                    class="toc-link hover:border-primary/40 block whitespace-nowrap rounded-full border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 transition-colors hover:text-primary"
+                    data-section={`section-${i}`}
+                  >
+                    {item.title}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+
+      <h1 class="mb-6 mt-4 text-center text-2xl font-bold uppercase">Điều khoản sử dụng</h1>
+
+      <div class="flex gap-8">
+        <aside class="hidden w-72 flex-shrink-0 lg:block">
+          <nav
+            class="sticky top-[112px] max-h-[calc(100vh-150px)] overflow-y-auto rounded-xl border border-gray-200 p-3"
+          >
+            <p class="mb-2 px-2 text-[11px] font-semibold uppercase tracking-widest text-gray-400">Nội dung</p>
+            <ul class="space-y-0.5">
+              {
+                data.map((item, i) => (
+                  <li>
+                    <a
+                      href={`#section-${i}`}
+                      class="toc-link hover:bg-primary/5 block rounded-lg px-2 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:text-primary"
+                      data-section={`section-${i}`}
+                    >
+                      {item.title}
+                    </a>
+                    {item.sections && (
+                      <ul class="mb-1 ml-2 mt-0.5 space-y-0.5 border-l-2 border-gray-100 pl-3">
+                        {item.sections.map((sub: any, j: number) => (
+                          <li>
+                            <a
+                              href={`#section-${i}-sub-${j}`}
+                              class="toc-link hover:bg-primary/5 block rounded-lg px-2 py-1 text-xs text-gray-500 transition-colors hover:text-primary"
+                              data-section={`section-${i}-sub-${j}`}
+                            >
+                              {sub.subtitle}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
+        </aside>
+
+        <div class="min-w-0 flex-1">
+          {
+            data.map((item, i) => (
+              <div id={`section-${i}`} class="mb-8 scroll-mt-24">
+                <h2 class="mb-4 text-xl font-medium text-black dark:text-slate-300 md:text-2xl">{item.title}</h2>
+
+                {item.content &&
+                  item.content.map((text: string) => {
+                    let content = text.replace(
+                      /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi,
+                      '<a href="mailto:$1" class="text-primary hover:underline">$1</a>',
+                    );
+                    content = content.replace(
+                      /(\+?\d{1,3}[\s-]?\(?\d{1,4}\)?[\s-]?\d{3}[\s-]?\d{3,4})/g,
+                      '<a href="tel:$1" class="text-primary hover:underline">$1</a>',
+                    );
+                    if (text.includes('Tòa nhà Imperial Plaza') || text.includes('360 Giải Phóng')) {
+                      content = content.replace(
+                        /(Tòa nhà Imperial Plaza, 360 Giải Phóng[^,]*,[^,]*,[^,]*,[^\.]*)/gi,
+                        '<a href="https://maps.app.goo.gl/kMGiEXyvfdGzYEVB8" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">$1</a>',
+                      );
+                    }
+                    return (
+                      <p class="mb-3 flex items-start space-x-2 pl-4 text-black">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="2"
+                          stroke="currentColor"
+                          aria-hidden="true"
+                          width="15"
+                          class="mt-1 flex-shrink-0"
+                        >
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                        </svg>
+                        <span set:html={content} />
+                      </p>
+                    );
+                  })}
+
+                {item.definitions && (
+                  <div class="mb-3 pl-10">
+                    {item.definitions.map((def: { term: string; description: string }) => (
+                      <p class="mb-2 flex items-start space-x-2">
+                        <span class={'mt-2 block size-[6px] rounded-full bg-black'} />
+                        <span>
+                          <strong>{def.term}:</strong> {def.description}
+                        </span>
+                      </p>
+                    ))}
+                  </div>
+                )}
+
+                {item.sections &&
+                  item.sections.map((section: any, j: number) => (
+                    <div id={`section-${i}-sub-${j}`} class="mb-4 scroll-mt-24">
+                      <h3 class="mb-3 pl-4 text-lg font-medium text-black dark:text-slate-300">{section.subtitle}</h3>
+                      {section.content &&
+                        section.content.map((text: string) => (
+                          <p class="mb-2 flex items-start space-x-2 pl-8 text-black">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke-width="2"
+                              stroke="currentColor"
+                              aria-hidden="true"
+                              width="15"
+                              class="mt-1 flex-shrink-0"
+                            >
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                            </svg>
+                            <span>{text}</span>
+                          </p>
+                        ))}
+                      {section.list && (
+                        <div class="pl-14">
+                          {section.list.map((listItem: string) => (
+                            <p class="mb-2 flex items-center space-x-2">
+                              <span class={'block size-[6px] rounded-full bg-black'} />
+                              <span>{listItem}</span>
+                            </p>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+
+                {item.list && (
+                  <div class="mb-3 pl-10">
+                    {item.list.map((listItem: string) => (
+                      <p class="mb-2 flex items-center space-x-2">
+                        <span class={'block size-[6px] rounded-full bg-black'} />
+                        <span>{listItem}</span>
+                      </p>
+                    ))}
+                  </div>
+                )}
+
+                {item.steps && (
+                  <div class="mb-3 pl-4">
+                    {item.steps.map((step: any) => (
+                      <p class="mb-2 flex items-start space-x-2">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="2"
+                          stroke="currentColor"
+                          aria-hidden="true"
+                          width="15"
+                          class="mt-1 flex-shrink-0"
+                        >
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                        </svg>
+                        <span>
+                          <strong>{step.label}:</strong> {step.description}
+                        </span>
+                      </p>
+                    ))}
+                  </div>
+                )}
+
+                {item.contacts && (
+                  <div class="mb-3 pl-4">
+                    {item.contacts.map((contact: any) => {
+                      let value = contact.value;
+                      if (contact.label === 'Email hỗ trợ') {
+                        value = `<a href="mailto:${contact.value}" class="text-primary hover:underline">${contact.value}</a>`;
+                      }
+                      if (contact.label === 'Hotline') {
+                        value = `<a href="tel:${contact.value}" class="text-primary hover:underline">${contact.value}</a>`;
+                      }
+                      if (contact.label === 'Địa chỉ văn phòng') {
+                        value = `<a href="https://maps.app.goo.gl/kMGiEXyvfdGzYEVB8" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">${contact.value}</a>`;
+                      }
+                      return (
+                        <p class="mb-2 flex items-start space-x-2">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                            width="15"
+                            class="mt-1 flex-shrink-0"
+                          >
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                          </svg>
+                          <span>
+                            <strong>{contact.label}:</strong> <span set:html={value} />
+                          </span>
+                        </p>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {item.footer &&
+                  item.footer.map((text: string) => (
+                    <p class="mb-3 flex items-start space-x-2 pl-4 text-black">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                        width="15"
+                        class="mt-1 flex-shrink-0"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                      </svg>
+                      <span>{text}</span>
+                    </p>
+                  ))}
+
+                {item.sublist && (
+                  <div class="mb-3 pl-14">
+                    {item.sublist.map((subItem: string) => (
+                      <p class="mb-2 flex items-center space-x-2">
+                        <span class={'block size-[6px] rounded-full bg-black'} />
+                        <span>{subItem}</span>
+                      </p>
+                    ))}
+                  </div>
+                )}
+
+                {item.note && (
+                  <p class="mb-3 flex items-start space-x-2 pl-4 text-black">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="2"
+                      stroke="currentColor"
+                      aria-hidden="true"
+                      width="15"
+                      class="mt-1 flex-shrink-0"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                    </svg>
+                    <span set:html={item.note} />
+                  </p>
+                )}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  .toc-link.active {
+    color: hsl(var(--primary));
+    background-color: hsl(var(--primary) / 0.08);
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  const tocLinks = document.querySelectorAll<HTMLAnchorElement>('.toc-link');
+
+  const allSectionIds: string[] = [];
+  document.querySelectorAll("[id^='section-']").forEach((el) => {
+    allSectionIds.push(el.id);
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach((link) => {
+            link.classList.remove('active');
+            if (link.dataset.section === entry.target.id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    },
+    { rootMargin: '-20% 0px -70% 0px', threshold: 0 },
+  );
+
+  allSectionIds.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+</script>

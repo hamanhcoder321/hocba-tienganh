@@ -1,0 +1,203 @@
+---
+import { FacebookIcon, InstagramIcon, TiktokIcon, YtbIcon } from '@/components/common/icons';
+import ZaloButton from '@/components/common/ZaloButton.astro';
+import { CONTACTS } from '@/lib/constants/content';
+import { IMAGES } from '@/lib/constants/images';
+import { Image } from 'astro:assets';
+import { Mail, MapPin, Phone } from 'lucide-react';
+
+interface Props {
+  logo?: any;
+}
+
+const { logo } = Astro.props;
+---
+
+<section class="relative z-50 min-h-[608px] overflow-hidden bg-[#820000] text-white">
+  <div class="mx-auto w-full max-w-[1354px] px-6 pb-20 pt-7 md:px-0 md:py-14">
+    <div class="flex items-center gap-2">
+      {
+        typeof logo === 'string' && logo.startsWith('http') ? (
+          <img src={logo} alt="logo" width="80" height="52" class="h-[38px] w-auto object-cover md:h-[52px]" />
+        ) : (
+          <Image
+            width={80}
+            height={52}
+            class="h-[38px] w-auto object-cover md:h-[52px]"
+            src={logo || IMAGES.logoFooter}
+            alt="logo"
+            densities={[1, 2]}
+          />
+        )
+      }
+      <div class="h-9 w-[6px] bg-white md:h-12"></div>
+      <div class="w-full text-sm font-black uppercase leading-6 text-white md:w-[400px] md:text-[20px] md:leading-7">
+        Học Bá - Hệ thống giáo dục Hán ngữ trực tuyến uy tín top đầu Việt Nam
+      </div>
+    </div>
+    <div class="mt-7 grid grid-cols-1 md:grid-cols-4">
+      <div class="col-span-1 md:col-span-2">
+        <div>
+          <p class="text-[20px] font-bold uppercase text-white">Thông tin liên hệ</p>
+          <div class="my-4 h-[238px] w-full overflow-hidden md:w-[434px]">
+            <iframe
+              src={CONTACTS.linkMap}
+              width="100%"
+              height="238"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Vị trí Học Bá - Imperial Plaza"></iframe>
+          </div>
+          <div class="flex flex-col gap-4">
+            <div class="flex items-center gap-2">
+              <MapPin className="size-4 flex-shrink-0 md:size-6" />
+              <div class="flex flex-col">
+                <a
+                  href={`${CONTACTS.address.value}`}
+                  target="_blank"
+                  class="pr-0 text-sm font-medium hover:underline md:pr-40 md:text-sm"
+                >
+                  {CONTACTS.address.label}
+                </a>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <Mail className="size-4 flex-shrink-0 md:size-6" />
+              <div class="flex flex-col">
+                <a href={`mailto:${CONTACTS.email}`} class="text-sm font-medium hover:underline md:text-sm">
+                  {CONTACTS.email}
+                </a>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <Phone className="size-4 flex-shrink-0 md:size-6" />
+              <div class="flex flex-col">
+                <a href={`tel:${CONTACTS.hotline}`} class="text-sm font-medium hover:underline md:text-sm">
+                  {CONTACTS.hotline}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-2 grid grid-cols-1 md:grid-cols-2">
+        <div class="col-span-1 my-6 h-auto md:my-0 md:h-[220px]">
+          <div class="mb-4 text-[20px] font-bold uppercase">Về học bá</div>
+          <ul class="flex flex-col gap-2">
+            <li>
+              <a href="/gioi-thieu" class="text-sm hover:underline">Giới thiệu</a>
+            </li>
+            <li class="text-sm">
+              <a href="/chuyen-gia/gs-baozhang-he" class="text-sm hover:underline"> Cố vấn chuyên môn </a>
+            </li>
+            <li class="text-sm">
+              <a href="/doi-ngu-giang-vien" class="text-sm hover:underline"> Đội ngũ giảng viên </a>
+            </li>
+            <li class="text-sm">
+              <a href="/tin-tuc-su-kien" class="text-sm hover:underline"> Tin tức & sự kiện </a>
+            </li>
+            <li class="text-sm">
+              <a href="/hoc-vien-diem-cao" class="text-sm hover:underline"> Học viên điểm cao </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-span-1 mb-6 h-auto md:my-0 md:h-[220px]">
+          <div class="mb-4 text-[20px] font-bold uppercase">Trung tâm hỗ trợ</div>
+          <ul class="flex flex-col gap-2">
+            <li>
+              <a href="/dieu-khoan-su-dung" rel="noopener noreferrer" target="_blank" class="text-sm hover:underline">
+                Điều khoản sử dụng
+              </a>
+            </li>
+            <li>
+              <a href="/chinh-sach-bao-mat" rel="noopener noreferrer" target="_blank" class="text-sm hover:underline">
+                Chính sách bảo mật
+              </a>
+            </li>
+            <li>
+              <a href="/chinh-sach-ban-quyen" rel="noopener noreferrer" target="_blank" class="text-sm hover:underline">
+                Chính sách bản quyền
+              </a>
+            </li>
+            <li>
+              <a href="/cam-ket-dau-ra" rel="noopener noreferrer" target="_blank" class="text-sm hover:underline">
+                Cam kết đầu ra
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-span-1 mb-6 md:mb-0">
+          <div class="mb-4 text-[20px] font-bold uppercase">Kết nối với học bá</div>
+          <div class="flex gap-x-4">
+            <a
+              href={CONTACTS.facebookHskUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook của Học Bá"
+              title="Facebook của Học Bá"
+              class="text-[15px] font-black hover:underline md:text-2xl"
+            >
+              <div
+                class="flex size-[30px] items-center justify-center rounded-full bg-[#1877F2] text-[#1877F2] md:size-[50px]"
+              >
+                <FacebookIcon />
+              </div>
+            </a>
+            <a
+              href={CONTACTS.tiktokUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Tiktok của Học Bá"
+              title="Tiktok của Học Bá"
+              class="text-[15px] font-black hover:underline md:text-2xl"
+            >
+              <div class="flex size-[30px] items-center justify-center rounded-full bg-black text-black md:size-[50px]">
+                <TiktokIcon />
+              </div>
+            </a>
+            <a
+              href={CONTACTS.igUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram của Học Bá"
+              title="Instagram của Học Bá"
+              class="text-[15px] font-black hover:underline md:text-2xl"
+            >
+              <div
+                class="flex size-[30px] items-center justify-center rounded-full bg-[#FF3DA1] text-[#FF3DA1] md:size-[50px]"
+              >
+                <InstagramIcon />
+              </div>
+            </a>
+            <a
+              href={CONTACTS.ytbkUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Youtube của Học Bá"
+              title="Youtube của Học Bá"
+              class="text-[15px] font-black hover:underline md:text-2xl"
+            >
+              <div
+                class="flex size-[30px] items-center justify-center rounded-full bg-[#EC3323] text-[#EC3323] md:size-[50px]"
+              >
+                <YtbIcon />
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-span-1">
+          <div class="mb-4 text-[20px] font-bold uppercase">Thông tin pháp lý</div>
+          <ul class="flex flex-col gap-2 text-sm">
+            <li>CÔNG TY CỔ PHẦN GD & ĐT Học Bá</li>
+            <li>Mã số thuế: 0110883975</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ZaloButton />
+</section>

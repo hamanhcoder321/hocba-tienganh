@@ -1,0 +1,85 @@
+---
+import { Image } from 'astro:assets';
+import { IMAGES } from '@/lib/constants/images';
+import VideoStudentSlide from '@/components/features/course/hsk/VideoStudentSlide';
+
+const videoStudentSlides = [
+  {
+    id: 1,
+    videoUrl: 'https://www.youtube.com/shorts/Y87HUHQNSA0',
+    thumbnail: IMAGES.studentAchievements.hvdcNgocHang.src,
+  },
+  {
+    id: 2,
+    videoUrl: 'https://www.youtube.com/shorts/6S-Zy3Fnzn4',
+    thumbnail: IMAGES.studentAchievements.hvdcTienVu.src,
+  },
+  {
+    id: 3,
+    videoUrl: 'https://www.youtube.com/shorts/MAnASob52M0',
+    thumbnail: IMAGES.studentAchievements.hvdcMaiMai.src,
+  },
+  {
+    id: 4,
+    videoUrl: 'https://www.youtube.com/shorts/Y87HUHQNSA0',
+    thumbnail: IMAGES.studentAchievements.hvdcNgocHang.src,
+  },
+  {
+    id: 5,
+    videoUrl: 'https://www.youtube.com/embed/MAnASob52M0',
+    thumbnail: IMAGES.studentAchievements.hvdcTienVu.src,
+  },
+  {
+    id: 6,
+    videoUrl: 'https://www.youtube.com/shorts/MAnASob52M0',
+    thumbnail: IMAGES.studentAchievements.hvdcMaiMai.src,
+  },
+];
+---
+
+<section
+  class="relative mx-auto mb-0 flex w-full max-w-[1920px] flex-col justify-start overflow-hidden bg-gradient-to-b from-[#FFF4F4] to-[#FFFFFF] pb-0 pt-6 md:h-[779px] md:py-0 md:pb-10 md:pt-[50px]"
+>
+  {/* Background Grid Decorations */}
+  <Image
+    src={IMAGES.khoaChinese.gridRedChinese}
+    alt="Grid Decor Bottom Left"
+    width={375}
+    height={375}
+    class="pointer-events-none z-0 hidden opacity-[0.7] md:absolute md:left-[calc(50%-460px)] md:top-[530px] md:block md:h-[260px] md:w-[260px] lg:left-[calc(50%-560px)] xl:left-[calc(50%-798px)] xl:h-[375px] xl:w-[375px]"
+  />
+  <Image
+    src={IMAGES.khoaChinese.gridRedChinese}
+    alt="Grid Decor Top Right"
+    width={272}
+    height={272}
+    class="pointer-events-none z-0 hidden opacity-[0.49] md:absolute md:left-[calc(50%+240px)] md:top-[54px] md:block md:h-[200px] md:w-[200px] lg:left-[calc(50%+316px)] lg:h-[272px] lg:w-[272px]"
+  />
+  <div class="container relative z-10 mx-auto px-4 lg:px-10 xl:max-w-[1280px] 2xl:max-w-[1600px]">
+    <div
+      class="relative mx-auto flex w-full max-w-full flex-col items-center text-center md:mt-[6.91px] md:h-[80px] md:w-[540px] lg:w-[640px] xl:w-[778.98px] xl:max-w-none"
+    >
+      <div class="relative">
+        <img
+          src={IMAGES.studentAchievements.huychuong.src}
+          alt="detailLectuterIcon1"
+          class="absolute left-[-6px] top-[calc(50%-4px)] h-[41.57px] w-[41.57px] -translate-y-1/2 object-cover md:left-[-80px] md:top-[calc(50%-26px)] md:h-[70px] md:w-[70px] lg:left-[-92px] lg:top-[calc(50%-20px)] lg:h-[80px] lg:w-[80px] xl:left-[-106px] xl:top-[calc(50%-16px)] xl:h-[90.7px] xl:w-[90.7px]"
+        />
+        <h2
+          class="mx-auto w-[321.52px] text-center font-gilroy text-[18px] font-[1000] font-black uppercase leading-[26.9px] text-[#AF0000] md:mt-[-30px] md:w-full md:text-[32px] md:leading-[48px] lg:text-[38px] lg:leading-[54px] xl:text-[42px] xl:leading-[64px]"
+        >
+          HỌC VIÊN NÓI GÌ VỀ HỌC BÁ?
+        </h2>
+      </div>
+      <p
+        class="mx-auto mt-0 w-[271px] text-center font-gilroy text-[12px] font-[700] leading-[14.4px] text-[#373737] md:mt-2 md:w-auto md:text-[18px] md:leading-[22px] lg:h-[48px] lg:w-[450px] lg:text-[20px] lg:leading-[24px] xl:h-[52px] xl:w-[496px] xl:text-[22px] xl:leading-[26.4px]"
+      >
+        Cùng “tận mắt” nghe Học viên nói về hành trình chinh phục tiếng Trung cùng Học Bá Education
+      </p>
+    </div>
+
+    <div class="-mx-4 mt-[-20px] md:mx-auto md:mt-[16px] md:max-w-[1028px]">
+      <VideoStudentSlide slides={videoStudentSlides} client:visible />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,446 @@
+---
+import {
+  HeaderContactIcon,
+  HeaderCourseIcon,
+  HeaderEbookIcon,
+  HeaderHomeIcon,
+  HeaderScheduleIcon,
+  HeaderNewsIcon,
+} from '@/components/common/icons';
+import RegisterStudyModal from '@/components/common/RegisterStudyModal';
+import { HOME_CATEGORIES, NEWS_SLUGS } from '@/lib/constants/content';
+import { TitleMenu } from '@/lib/constants/enums';
+import { IMAGES } from '@/lib/constants/images';
+import { cn } from '@/lib/utils';
+import { CourseMenuDesktop, CourseMenuMobile } from './CourseMenuClient';
+import { BlogCategoryMenuDesktop, BlogCategoryMenuMobile } from './BlogCategoryMenuClient';
+import { NewsCategoryMenuDesktop, NewsCategoryMenuMobile } from './NewsCategoryMenuClient';
+import type { JSX } from 'astro/jsx-runtime';
+import { Image } from 'astro:assets';
+import { AlignJustify, ChevronDown } from 'lucide-react';
+import SearchTrigger from '@/components/common/search/SearchTrigger';
+
+export type NavbarUiItem = {
+  icon?: (props?: React.HTMLAttributes<SVGElement> & { isActive?: boolean }) => JSX.Element;
+  name: string;
+  href?: string;
+  ddMenu?: { title: string; href: string }[];
+  modalMenu?: {
+    title: string;
+    subChildren?: { title: string; href: string }[];
+  }[];
+  activeModal?: string;
+};
+
+const currentPath = Astro.url.pathname;
+
+const isNavActive = (nav: NavbarUiItem, currentPath: string): boolean => {
+  if (nav.href && currentPath.startsWith(`/${nav.href}`)) {
+    return true;
+  }
+
+  if (nav.ddMenu) {
+    return nav.ddMenu.some((item) => {
+      if (item.href === 'tin-tuc-su-kien') {
+        return currentPath === '/tin-tuc-su-kien' || currentPath.startsWith('/tin-tuc-su-kien/');
+      }
+      return currentPath.startsWith(`/${item.href}`);
+    });
+  }
+
+  if (nav.modalMenu) {
+    return nav.modalMenu.some((category) => category.subChildren?.some((child) => currentPath.startsWith(child.href)));
+  }
+
+  if (nav.name === TitleMenu.KHOA_HOC) {
+    return HOME_CATEGORIES.some((cat) => currentPath.startsWith(cat.link));
+  }
+
+  if (nav.name === TitleMenu.CAM_NANG) {
+    return currentPath.startsWith('/cam-nang');
+  }
+
+  if (nav.name === TitleMenu.TIN_TUC) {
+    return NEWS_SLUGS.some((s) => currentPath.startsWith('/' + s));
+  }
+
+  if (nav.name === 'Sách & tài liệu') {
+    return currentPath.startsWith('/sach-tai-lieu');
+  }
+
+  return false;
+};
+
+const INITIAL_NAVBARS: NavbarUiItem[] = [
+  {
+    icon: (props = {}) => HeaderHomeIcon(props),
+    name: TitleMenu.INTRODUCE,
+    ddMenu: [
+      { href: 'gioi-thieu', title: 'Học Bá Education' },
+      { href: 'chuyen-gia/gs-baozhang-he', title: 'Cố vấn chuyên môn' },
+      { href: 'doi-ngu-giang-vien', title: 'Đội ngũ giảng viên' },
+      { href: 'tin-tuc-su-kien', title: 'Tin tức & sự kiện' },
+      { href: 'hoc-vien-diem-cao', title: 'Học viên điểm cao' },
+      { href: 'sach-tai-lieu', title: 'Sách & Tài Liệu' },
+    ],
+  },
+  {
+    icon: (props = {}) => HeaderCourseIcon(props),
+    name: TitleMenu.KHOA_HOC,
+    activeModal: '0',
+  },
+  {
+    icon: (props = {}) => HeaderScheduleIcon(props),
+    name: TitleMenu.LICH_KHAI_GIANG,
+    href: 'lich-khai-giang',
+  },
+  {
+    icon: (props = {}) => HeaderEbookIcon(props),
+    name: TitleMenu.CAM_NANG,
+  },
+  {
+    icon: (props = {}) => HeaderNewsIcon(props),
+    name: 'Sách & tài liệu',
+    // href: 'sach-tai-lieu',
+  },
+  {
+    icon: (props = {}) => HeaderContactIcon(props),
+    name: TitleMenu.LIEN_HE,
+    href: 'lien-he',
+  },
+];
+
+interface Props {
+  logo?: any;
+  siteName?: string;
+}
+
+const { logo, siteName = 'Học Bá Education' } = Astro.props;
+---
+
+<header
+  id="header-nav"
+  class="bg-[#3256CA] sticky left-0 top-0 z-[99] w-full shadow-[0px_5px_18px_0px_rgba(0,0,0,0.25)] transition-transform duration-300"
+  role="banner"
+>
+  <div class="relative">
+    <nav
+      class="relative flex h-[64px] w-full items-center bg-[#3256CA] px-[20px] sm:px-[40px] lg:h-20 lg:bg-[#3256CA] lg:px-10 xl:px-14 2xl:px-24 3xl:px-[160px]"
+      role="navigation"
+      aria-label="Menu chính"
+    >
+      <div class="container flex h-full items-center justify-between md:mx-auto lg:justify-start">
+        {/* Logo Section */}
+        <div class="flex items-center gap-2">
+          <a href="/" class="flex-shrink-0 lg:-ml-6" aria-label="Trang chủ Học Bá">
+            {
+              typeof logo === 'string' && logo.startsWith('http') ? (
+                <img src={logo} alt={siteName} width="73" height="48" class="h-6 w-auto lg:h-12" loading="eager" />
+              ) : (
+                <Image
+                  width={73}
+                  height={48}
+                  class={`h-6 w-auto lg:h-12`}
+                  src={logo || IMAGES.logo}
+                  alt={siteName}
+                  densities={[1, 2]}
+                />
+              )
+            }
+          </a>
+          <div class="flex items-center justify-center lg:hidden">
+            <button
+              type="button"
+              id="mobile-menu-button"
+              class="inline-flex items-center justify-center rounded-[3px] p-0 text-white"
+              aria-label="Mở menu"
+              aria-expanded="false"
+              aria-controls="mobile-menu"
+            >
+              <AlignJustify size={20} aria-hidden="true" strokeWidth={2.5} />
+            </button>
+          </div>
+        </div>
+
+        {/* laptop menu - render list item-mnu */}
+        <div class="hidden h-full flex-1 items-center lg:flex">
+          <ul class="mx-auto flex h-full w-fit justify-center" role="menubar">
+            {
+              INITIAL_NAVBARS.map((nav) => {
+                const isActive = isNavActive(nav, currentPath);
+                return (
+                  <li role="none" class="group relative flex h-full items-center px-1 xl:px-3 md:py-5">
+                    {nav.href ? (
+                      <a
+                        role="menuitem"
+                        href={`/${nav.href}`}
+                        class="flex h-full cursor-pointer items-center justify-center pt-2"
+                      >
+                        {/* {nav.icon && <nav.icon isActive={isActive} className={cn('mr-2 h-[18px] w-[18px]')} />} */}
+                        <span
+                          class={`text-nowrap text-sm font-bold xl:text-lg ${isActive ? 'text-[#F3C650]' : 'text-white'}`}
+                        >
+                          {nav.name}
+                        </span>
+                        {(nav.modalMenu ||
+                          nav.ddMenu ||
+                          nav.name === TitleMenu.KHOA_HOC ||
+                          nav.name === TitleMenu.CAM_NANG ||
+                          nav.name === TitleMenu.TIN_TUC) && (
+                          <ChevronDown
+                            className="h-auto w-[18px] translate-y-[2px] xl:w-[20px] xl:translate-y-[3px] transition-transform duration-200 group-hover:rotate-180"
+                            color={isActive ? '#F3C650' : '#FFFFFF'}
+                            aria-hidden="true"
+                          />
+                        )}
+                      </a>
+                    ) : (
+                      <div role="menuitem" class="flex h-full cursor-pointer items-center justify-center pt-2">
+                        {/* {nav.icon && <nav.icon isActive={isActive} className="h-[18px] w-[18px] mr-2" />} */}
+                        <span
+                          class={`text-nowrap text-sm font-bold xl:text-lg ${isActive ? 'text-[#F3C650]' : 'text-white'}`}
+                        >
+                          {nav.name}
+                        </span>
+                        {(nav.modalMenu ||
+                          nav.ddMenu ||
+                          nav.name === TitleMenu.KHOA_HOC ||
+                          nav.name === TitleMenu.CAM_NANG ||
+                          nav.name === TitleMenu.TIN_TUC) && (
+                          <ChevronDown
+                            className="h-auto w-[18px] translate-y-[2px] xl:w-[20px] xl:translate-y-[3px] transition-transform duration-200 group-hover:rotate-180"
+                             color={isActive ? '#F3C650' : '#FFFFFF'}
+                            aria-hidden="true"
+                          />
+                        )}
+                      </div>
+                    )}
+
+                    {/* Dropdown menu for static ddMenu */}
+                    {nav.ddMenu && nav.name !== TitleMenu.CAM_NANG && (
+                      <ul
+                        class="invisible absolute left-1/2 top-[90%] z-50 -translate-x-1/2 translate-y-2 pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100"
+                        role="menu"
+                        aria-label={`Menu ${nav.name}`}
+                      >
+                        <div
+                          role="none"
+                          class="flex h-fit w-fit flex-col gap-4 rounded-b-xl bg-[#F3F3F3] py-5 shadow-xl"
+                        >
+                          {nav.ddMenu.map((item) => (
+                            <li role="none">
+                              <a
+                                href={`/${item.href}`}
+                                class="text-nowrap px-10 text-sm font-medium uppercase text-gray-900 hover:text-primary hover:underline"
+                                role="menuitem"
+                              >
+                                {item.title}
+                              </a>
+                            </li>
+                          ))}
+                        </div>
+                      </ul>
+                    )}
+
+                    {/* Dropdown menu for dynamic blog categories */}
+                    {nav.name === TitleMenu.CAM_NANG && <BlogCategoryMenuDesktop client:load />}
+
+                    {/* Dropdown menu for news categories */}
+                    {nav.name === TitleMenu.TIN_TUC && <NewsCategoryMenuDesktop client:load />}
+
+                    {/* modal menu */}
+                    {nav.name === TitleMenu.KHOA_HOC && (
+                      <div
+                        class="invisible fixed left-0 right-0 top-[var(--header-height,72px)] z-50 max-w-full translate-y-2 rounded-b-xl bg-[#F3F3F3] pt-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100"
+                        role="menu"
+                        aria-label={`Menu ${nav.name}`}
+                      >
+                        <div role="none" class="container grid grid-cols-2 gap-6 p-6 lg:grid-cols-3 xl:grid-cols-3">
+                          <CourseMenuDesktop client:load />
+                        </div>
+                      </div>
+                    )}
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </div>
+
+        <div class="flex items-center gap-2 lg:-mr-6 xl:-mr-10">
+          {/* <SearchTrigger client:load /> */}
+          <RegisterStudyModal
+            client:idle
+            {currentPath}
+            buttonText="Đăng ký tư vấn"
+            buttonClassName={`flex h-8 min-w-max items-center justify-center rounded-[2.68px] bg-[#F97316] py-3 sm:h-[30px] sm:w-[100px] lg:h-fit lg:w-fit lg:rounded-[8px] lg:px-6 3xl:text-[20px] text-xs font-black uppercase leading-[7.03px] text-white lg:text-[16px] lg:leading-[21px]`}
+          />
+        </div>
+      </div>
+    </nav>
+
+    {/* mobi menu sideba */}
+    <div
+      id="mobile-menu"
+      class="fixed inset-y-0 left-0 z-[100] w-[280px] -translate-x-full transform bg-white shadow-xl transition-transform duration-300 ease-in-out lg:hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Menu di động"
+    >
+      <div class="flex h-full flex-col">
+        {/* Header */}
+        <div class="flex items-center justify-between border-b border-gray-200 p-4">
+          <a href="/" class="flex-shrink-0 lg:ml-0" aria-label="Trang chủ Học Bá">
+            {currentPath === '/' && <h1 class="sr-only">{siteName}</h1>}
+            {
+              typeof logo === 'string' && logo.startsWith('http') ? (
+                <img src={logo} alt={siteName} width="73" height="48" class="h-8 w-auto" />
+              ) : (
+                <Image
+                  width={73}
+                  height={48}
+                  class="h-8 w-auto"
+                  src={logo || IMAGES.logo}
+                  alt={siteName}
+                  densities={[1, 2]}
+                />
+              )
+            }
+          </a>
+          <button
+            type="button"
+            id="mobile-menu-close"
+            class="inline-flex h-8 w-8 items-center justify-center rounded-md text-gray-700 hover:bg-gray-100"
+            aria-label="Đóng menu"
+          >
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+
+        {/* Menu Items */}
+        <nav class="flex-1 overflow-y-auto p-4">
+          <ul class="space-y-2">
+            {
+              INITIAL_NAVBARS.map((nav) => {
+                const isActive = isNavActive(nav, currentPath);
+                return (
+                  <li>
+                    {nav.href ? (
+                      <a
+                        href={`/${nav.href}`}
+                        class={`flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold ${isActive ? 'bg-red-50 text-[#AF0000]' : 'text-gray-900 hover:bg-gray-100'}`}
+                      >
+                        {/* {nav.icon && <nav.icon isActive={isActive} className="h-[18px] w-[18px]" />} */}
+                        <span>{nav.name}</span>
+                      </a>
+                    ) : (
+                      <>
+                        <button
+                          type="button"
+                          class={`mobile-menu-toggle flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-semibold ${isActive ? 'bg-red-50 text-[#AF0000]' : 'text-gray-900 hover:bg-gray-100'}`}
+                          data-target={`mobile-submenu-${nav.name}`}
+                        >
+                          <div class="flex items-center gap-2">
+                            {/* {nav.icon && <nav.icon isActive={isActive} className="h-[18px] w-[18px]" />} */}
+                            <span>{nav.name}</span>
+                          </div>
+                          <ChevronDown
+                            className="mobile-chevron h-5 w-5 transition-transform duration-200"
+                            color={isActive ? '#AF0000' : '#374151'}
+                          />
+                        </button>
+                        <div id={`mobile-submenu-${nav.name}`} class="mobile-submenu hidden space-y-1 pl-9 pt-2">
+                          {nav.ddMenu &&
+                            nav.ddMenu.map((item) => (
+                              <a
+                                href={`/${item.href}`}
+                                class="block rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-[#AF0000]"
+                              >
+                                {item.title}
+                              </a>
+                            ))}
+                          {nav.name === TitleMenu.KHOA_HOC && <CourseMenuMobile client:idle />}
+                          {nav.name === TitleMenu.CAM_NANG && <BlogCategoryMenuMobile client:idle />}
+                          {nav.name === TitleMenu.TIN_TUC && <NewsCategoryMenuMobile client:idle />}
+                        </div>
+                      </>
+                    )}
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </nav>
+
+        {/* Footer Button */}
+        <div class="border-t border-gray-200 p-4">
+          <RegisterStudyModal
+            client:idle
+            {currentPath}
+            buttonText="Đăng ký tư vấn"
+            buttonClassName="flex h-10 w-full items-center justify-center rounded-lg bg-[#F97316] text-sm font-bold uppercase text-white"
+          />
+        </div>
+      </div>
+    </div>
+
+    {/* Overlay */}
+    <div
+      id="mobile-menu-overlay"
+      class="pointer-events-none fixed inset-0 z-[99] bg-black/50 opacity-0 transition-opacity duration-300 lg:hidden"
+      aria-hidden="true"
+    >
+    </div>
+  </div>
+</header>
+
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenuClose = document.getElementById('mobile-menu-close');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+  function openMobileMenu() {
+    mobileMenu?.classList.remove('-translate-x-full');
+    mobileMenuOverlay?.classList.remove('opacity-0', 'pointer-events-none');
+    mobileMenuButton?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileMenu() {
+    mobileMenu?.classList.add('-translate-x-full');
+    mobileMenuOverlay?.classList.add('opacity-0', 'pointer-events-none');
+    mobileMenuButton?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  mobileMenuButton?.addEventListener('click', openMobileMenu);
+  mobileMenuClose?.addEventListener('click', closeMobileMenu);
+  mobileMenuOverlay?.addEventListener('click', closeMobileMenu);
+
+  const mobileMenuToggles = document.querySelectorAll('.mobile-menu-toggle');
+  mobileMenuToggles.forEach((toggle) => {
+    toggle.addEventListener('click', () => {
+      const targetId = toggle.getAttribute('data-target');
+      const submenu = document.getElementById(targetId || '');
+      const chevron = toggle.querySelector('.mobile-chevron');
+
+      if (submenu) {
+        submenu.classList.toggle('hidden');
+        chevron?.classList.toggle('rotate-180');
+      }
+    });
+  });
+
+  const categoryLinks = document.querySelectorAll('.category-link');
+  categoryLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const categoryTitle = (e.currentTarget as HTMLElement).getAttribute('data-category-title');
+      if (categoryTitle) {
+        localStorage.setItem('selectedCategory', categoryTitle);
+      }
+    });
+  });
+</script>

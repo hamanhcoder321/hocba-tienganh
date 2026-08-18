@@ -1,0 +1,172 @@
+---
+import SearchCard from '@/components/common/search/SearchCard';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { searchApi } from '@/lib/api/search';
+import { cn } from '@/lib/utils';
+import { ArrowLeft, ArrowRight, Search } from 'lucide-react';
+
+const s = Astro.url.searchParams.get('s') || '';
+const pageParam = Astro.url.searchParams.get('page');
+const currentPage = pageParam ? parseInt(pageParam) : 1;
+
+let results: TResponsePagination<TBlogs[]> | null = null;
+try {
+  const response = await searchApi.globalSearch({ s, page: currentPage, limit: 10 });
+  results = response.data;
+} catch (error) {
+  console.error('Search error:', error);
+}
+
+const CATEGORIES = [{ id: 'post', label: 'Bài viết', count: results?.meta?.total || 0 }];
+
+const pageNumbers = (() => {
+  const totalPages = results?.meta?.lastPage || 1;
+  const pages: (number | string)[] = [];
+  if (totalPages <= 5) {
+    for (let i = 1; i <= totalPages; i++) {
+      pages.push(i);
+    }
+  } else {
+    if (currentPage <= 3) {
+      pages.push(1, 2, 3, 4, '...', totalPages);
+    } else if (currentPage >= totalPages - 2) {
+      pages.push(1, '...', totalPages - 3, totalPages - 2, totalPages - 1, totalPages);
+    } else {
+      pages.push(1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages);
+    }
+  }
+  return pages;
+})();
+const totalPages = results?.meta?.lastPage || 1;
+---
+
+<BaseLayout title="Kết quả tìm kiếm | Học Bá Education">
+  <main class="h-auto bg-[#F7FAFC]">
+    <div class="container mx-auto pb-8">
+      {/* Search Header */}
+      <div
+        class="sticky top-16 z-40 mb-2 flex items-center gap-3 border-b border-gray-200 bg-[#F7FAFC] px-4 py-6 md:top-20 md:px-0"
+      >
+        <Search className="size-6 text-[#373737]" />
+        <h1 class="text-lg font-semibold uppercase leading-none tracking-wide text-[#373737] md:text-2xl">
+          KẾT QUẢ TÌM KIẾM: {s && <span class="italic text-[#373737]">"{s}"</span>}
+        </h1>
+      </div>
+
+      <div class="flex flex-col gap-0 px-4 lg:flex-row lg:px-0">
+        {/* Sidebar Filters */}
+        <aside class="w-full flex-shrink-0 lg:w-64 lg:border-r lg:border-gray-300 lg:pr-8">
+          <div class="h-fit lg:sticky lg:top-[200px]">
+            <nav class="flex flex-col">
+              {
+                CATEGORIES.map((cat) => (
+                  <button
+                    class={cn(
+                      'group flex w-full items-center gap-3 border-b border-gray-50 py-4 text-left transition-all duration-200 last:border-0',
+                      cat.id === 'post' ? 'font-bold text-primary' : 'text-[#373737] hover:text-primary',
+                    )}
+                  >
+                    <span class="whitespace-nowrap text-sm md:text-base">{cat.label}</span>
+                    <span
+                      class={cn(
+                        'rounded-full px-2 py-0.5 text-[10px] font-bold transition-colors',
+                        cat.id === 'post'
+                          ? 'bg-primary text-white'
+                          : 'group-hover:bg-primary/20 bg-gray-100 text-gray-400 group-hover:text-primary',
+                      )}
+                    >
+                      {cat.count}
+                    </span>
+                  </button>
+                ))
+              }
+            </nav>
+          </div>
+        </aside>
+
+        {/* Results List */}
+        <div class="flex-1 pt-6 lg:pl-12 lg:pt-0">
+          <div class="flex flex-col gap-6">
+            {
+              results && results.list.length > 0 ? (
+                results.list.map((blog) => (
+                  <SearchCard
+                    type="blog"
+                    variant="list"
+                    title={blog.title ?? ''}
+                    description={blog.meta_description ?? ''}
+                    image={blog?.thumbnail_link?.file_path ?? ''}
+                    href={blog.slug && blog.BlogCategory?.slug ? `/${blog.BlogCategory?.slug}/${blog.slug}` : '#'}
+                    date={blog.created_at && new Date(blog.created_at).toLocaleDateString()}
+                    author={
+                      blog.User
+                        ? `${blog.User.first_name ?? ''} ${blog.User.last_name ?? ''}`.trim() || 'Ẩn danh'
+                        : 'Ẩn danh'
+                    }
+                  />
+                ))
+              ) : (
+                <div class="rounded-3xl border border-dashed border-gray-200 bg-white p-20 text-center shadow-sm">
+                  <Search className="mx-auto size-16 text-gray-200 mb-4" />
+                  <p class="text-lg text-gray-500">
+                    Không tìm thấy kết quả phù hợp cho <span class="font-bold text-[#373737]">"{s}"</span>
+                  </p>
+                  <a href="/" class="mt-6 inline-block font-bold text-primary hover:underline">
+                    Quay lại trang chủ
+                  </a>
+                </div>
+              )
+            }
+          </div>
+
+          {/* Pagination */}
+          {
+            results && results.list.length > 0 && totalPages > 1 && (
+              <div class="mt-12 flex justify-center gap-2">
+                <a
+                  href={currentPage > 1 ? `?s=${encodeURIComponent(s)}&page=${currentPage - 1}` : '#'}
+                  class={cn(
+                    'flex size-8 items-center justify-center rounded-full border border-gray-100 bg-white font-bold text-[#373737] shadow-sm transition-all',
+                    currentPage === 1 ? 'cursor-not-allowed opacity-50' : 'hover:bg-primary hover:text-white',
+                  )}
+                >
+                  <ArrowLeft className="size-4" />
+                </a>
+                <div class="flex gap-1">
+                  {pageNumbers.map((page) =>
+                    typeof page === 'number' ? (
+                      <a
+                        href={`?s=${encodeURIComponent(s)}&page=${page}`}
+                        class={cn(
+                          'flex size-8 items-center justify-center rounded-full text-sm font-bold transition-all',
+                          currentPage === page
+                            ? 'bg-primary text-white shadow-md'
+                            : 'text-[#373737] opacity-50 hover:bg-gray-100 hover:opacity-100',
+                        )}
+                      >
+                        {page}
+                      </a>
+                    ) : (
+                      <span class="flex size-8 items-center justify-center text-sm font-bold text-[#373737] opacity-50">
+                        {page}
+                      </span>
+                    ),
+                  )}
+                </div>
+                <a
+                  href={currentPage < totalPages ? `?s=${encodeURIComponent(s)}&page=${currentPage + 1}` : '#'}
+                  class={cn(
+                    'flex size-8 items-center justify-center rounded-full border border-gray-100 bg-white font-bold text-[#373737] shadow-sm transition-all',
+                    currentPage === totalPages ? 'cursor-not-allowed opacity-50' : 'hover:bg-primary hover:text-white',
+                  )}
+                >
+                  <ArrowRight className="size-4" />
+                </a>
+              </div>
+            )
+          }
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>

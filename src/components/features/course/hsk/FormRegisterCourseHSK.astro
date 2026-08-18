@@ -1,0 +1,217 @@
+---
+import { ArrowIcon } from '@/components/common/icons';
+import ContactAdvisorRegistrationForm from '@/components/features/contact/ContactAdvisorRegistrationForm';
+import { IMAGES } from '@/lib/constants/images';
+import { cn } from '@/lib/utils';
+import { getImage, Image } from 'astro:assets';
+
+const optimizedNoteBook = await getImage({
+  width: 80,
+  height: 80,
+  densities: [1, 2],
+  src: IMAGES.contact.noteBook,
+  format: 'webp',
+});
+
+const { dataInput } = Astro.props;
+---
+
+<section class={cn('w-full overflow-hidden bg-gradient-to-l from-[#B90E0A] to-[#7D1900] h-auto md:h-auto')}>
+  <div class="mx-auto w-full max-w-full md:max-w-[1354px]">
+    <div class="grid grid-cols-1 px-4 pt-8 md:grid-cols-2 md:py-0">
+      <div class="col-span-1">
+        <div class="mt-0 flex h-[50px] items-center gap-2 pl-6 md:mt-10 md:h-[90px] md:gap-4 md:pl-0">
+          <Image
+            src={IMAGES.contact.iconBook}
+            width={90}
+            height={90}
+            alt={'icon-book'}
+            densities={[1, 2]}
+            class={'object-cover w-[50px] md:w-[90px] h-auto'}
+          />
+          <div class="relative flex flex-col gap-2 md:gap-4">
+            <div class="text-lg font-black uppercase text-white md:text-[32px] lg:text-[42px]">
+              Đăng ký tư vấn ngay!
+            </div>
+            <div class="absolute -right-8 bottom-0 md:-bottom-12 md:-right-[10%] lg:-bottom-28 lg:-right-[34%]">
+              <ArrowIcon className="h-6 w-9 md:h-[60px] md:w-[85px] lg:h-[88px] lg:w-[125px]" />
+            </div>
+          </div>
+        </div>
+        <div class="mt-2 md:mt-6">
+          <ContactAdvisorRegistrationForm
+            className="w-full lg:w-[502px]"
+            icons={{ noteBook: optimizedNoteBook.src }}
+            client:idle
+            {dataInput}
+            isSimpleForm
+          />
+        </div>
+      </div>
+      <div class="col-span-1">
+        <div class="mt-[30px] flex flex-col items-center md:mt-[84px]">
+          <div class="text-xs font-black uppercase text-white md:text-[22px]">Nhận ưu đãi lên tới</div>
+          <div
+            class="text-[28px] font-black uppercase text-[#F3C650] md:mt-1 md:text-[42px]"
+            style="text-shadow: 5px 14px 25px #FF6969;"
+          >
+            30% Học phí
+          </div>
+          <div
+            class="mt-2 flex h-9 w-fit items-center rounded-[74px] border border-white px-4 text-center text-xs font-black uppercase text-white md:h-12 md:text-lg lg:h-16 lg:px-10 lg:text-2xl"
+          >
+            KHI ĐĂNG KÝ LỘ TRÌNH CHINH PHỤC HSK 3.0
+          </div>
+        </div>
+        <div class="mt-2 flex h-auto w-full justify-center md:mt-4 lg:mt-0 lg:h-[445px] lg:w-[622px]">
+          <Image
+            src={IMAGES.khoaHsk.hskPgsHbc}
+            alt={'hskPgsHbc'}
+            width={622}
+            height={445}
+            densities={[1, 2]}
+            class={'object-contain w-full h-full'}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes moveBCT {
+    0%,
+    16.67% {
+      top: 2rem;
+      left: -27%;
+      height: 80px;
+      transform: rotate(-12deg);
+    }
+    25%,
+    58.33% {
+      top: 4.5rem;
+      left: -30%;
+      height: 56px;
+      transform: rotate(0deg);
+    }
+    66.67%,
+    100% {
+      top: 2rem;
+      left: -27%;
+      height: 80px;
+      transform: rotate(-12deg);
+    }
+  }
+
+  @keyframes moveHSK {
+    0%,
+    16.67% {
+      bottom: 39%;
+      right: 0;
+      height: 2.5rem;
+      transform: rotate(12deg);
+    }
+    25%,
+    58.33% {
+      bottom: 56%;
+      right: 17px;
+      height: 56px;
+      transform: rotate(0deg);
+    }
+    66.67%,
+    100% {
+      bottom: 39%;
+      right: 0;
+      height: 2.5rem;
+      transform: rotate(12deg);
+    }
+  }
+
+  @keyframes moveCU {
+    0%,
+    16.67%,
+    66.67%,
+    100% {
+      transform: translateX(0);
+    }
+    25%,
+    58.33% {
+      transform: translateX(-1.5rem);
+    }
+  }
+
+  @media (min-width: 768px) {
+    @keyframes moveBCT {
+      0%,
+      16.67% {
+        top: 2rem;
+        left: -27%;
+        height: 137px;
+        transform: rotate(-12deg);
+      }
+      25%,
+      58.33% {
+        top: 9rem;
+        left: -24%;
+        height: 84px;
+        transform: rotate(0deg);
+      }
+      66.67%,
+      100% {
+        top: 2rem;
+        left: -27%;
+        height: 137px;
+        transform: rotate(-12deg);
+      }
+    }
+
+    @keyframes moveHSK {
+      0%,
+      16.67% {
+        bottom: 39%;
+        right: -12px;
+        height: 70px;
+        transform: rotate(12deg);
+      }
+      25%,
+      58.33% {
+        bottom: 56%;
+        right: 17px;
+        height: 100px;
+        transform: rotate(-12deg);
+      }
+      66.67%,
+      100% {
+        bottom: 39%;
+        right: -12px;
+        height: 70px;
+        transform: rotate(12deg);
+      }
+    }
+
+    @keyframes moveCU {
+      0%,
+      16.67%,
+      66.67%,
+      100% {
+        transform: translateX(0);
+      }
+      25%,
+      58.33% {
+        transform: translateX(-2.5rem);
+      }
+    }
+  }
+
+  .icon-bct {
+    animation: moveBCT 12s ease-in-out 3s infinite;
+  }
+
+  .icon-hsk {
+    animation: moveHSK 12s ease-in-out 3s infinite;
+  }
+
+  .icon-cu {
+    animation: moveCU 12s ease-in-out 3s infinite;
+  }
+</style>

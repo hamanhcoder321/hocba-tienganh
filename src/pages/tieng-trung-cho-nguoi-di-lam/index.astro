@@ -1,0 +1,1314 @@
+---
+import CircleProgress from '@/components/common/CircleProgress';
+import GroupAvatarStudent from '@/components/common/GroupAvatarStudent.astro';
+import {
+  ArrowStartIcon,
+  FourPointedStar,
+  FourPointedStarMini,
+  StarColorWhite,
+  TextChineseIcon,
+  TriangularIcon,
+  VectorArrow,
+} from '@/components/common/icons';
+import JsonLd from '@/components/common/JsonLd.astro';
+import AISmartSlide, { type AISmartSlideItem } from '@/components/features/course/chinese/AISmartSlide';
+import BuildRoadmap from '@/components/features/course/chinese/BuildRoadmap';
+import FeedbackStudentChineseSlider from '@/components/features/course/chinese/FeedbackStudentChineseSlider';
+import FormRegisterCourseChinese from '@/components/features/course/chinese/FormRegisterCourseChinese.astro';
+import ProprietarySolutionSlide, {
+  type ProprietarySolutionSlideType,
+} from '@/components/features/course/chinese/ProprietarySolutionSlide';
+import ReviewStudentChinese, {
+  type ReviewStudentChineseItem,
+} from '@/components/features/course/chinese/ReviewStudentChinese';
+import RelevantLecturers from '@/components/features/detail-lecturer/RelevantLecturers';
+import QAAccordion from '@/components/features/home/advisor-qa/QAAccordion.astro';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+import CourseLayout from '@/layouts/CourseLayout.astro';
+import { CATEGORY_TYPES, DATA_VALUE } from '@/lib/constants/enums';
+import { IMAGES } from '@/lib/constants/images';
+import { fetchTeacherListV2 } from '@/lib/static-data';
+import { cn } from '@/lib/utils';
+import { getImage, Image } from 'astro:assets';
+import { Check } from 'lucide-react';
+import { createElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
+import type { Graph } from 'schema-dts';
+
+const grid = IMAGES.khoaChinese.gridRedChinese;
+
+const baseUrl = import.meta.env.PUBLIC_CLIENT_URL;
+
+// Fetch teachers from API
+let teachers: TLecturer[] = [];
+const teacherData = await fetchTeacherListV2({ page: 1, limit: 20 });
+
+if (teacherData?.list) {
+  teachers = teacherData.list;
+} else {
+  console.log('No teacher data from API, using empty array');
+}
+
+const jsonLd: Graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Trang chủ',
+          item: baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Tiếng Trung Ứng Dụng',
+          item: `${baseUrl}/tieng-trung-ung-dung`,
+        },
+      ],
+    },
+  ],
+};
+
+const swimmingNoHopeData = [
+  {
+    id: 1,
+    title: `Học để "Thi" thay vì học để "Làm"`,
+    content: 'Cày cuốc HSK nhưng lại "đứng hình" khi soạn một chiếc Email báo cáo hay đàm phán hợp đồng',
+  },
+  {
+    id: 2,
+    title: `Môi trường "Loãng"`,
+    content: 'Lớp quá đông khiến bạn mất đi quyền được nói. Không được sửa lỗi ngay lập tức dẫn đến tâm lý ',
+  },
+  {
+    id: 3,
+    title: `Lộ trình "Sách vở"`,
+    content: 'Nhồi nhét từ vựng phổ không liên quan đến ngành nghề, lãng phí 80% thời gian học mà không dùng',
+  },
+  {
+    id: 4,
+    title: `Hệ thống "Thiếu hơi người"`,
+    content: 'Chỉ học với App hoặc tài liệu rời rạc, không có Mentor kèm cặp, hổng kiến thức & mất gốc',
+  },
+  {
+    id: 5,
+    title: `Kỷ luật "Lỏng lẻo"`,
+    content: 'Không người đôn đốc, bạn dễ dàng đầu hàng trước áp lực Deadline và vòng xoáy công việc',
+  },
+  {
+    id: 6,
+    title: `Lý thuyết "Suông"`,
+    content: 'Học xong không có cơ hội áp dụng ngay vào công việc, khiến kiến thức rơi rụng chỉ sau 1 tuần',
+  },
+];
+
+const checkIcon = renderToStaticMarkup(
+  createElement(Check, { size: 18, color: '#373737', className: 'inline-block shrink-0 mt-1 stroke-[2.5]' }),
+);
+
+const li = (icon: string, content: string) => `<li class="flex items-start gap-2">${icon}<span>${content}</span></li>`;
+const ul = (items: string) => `<ul class="flex flex-col gap-2">${items}</ul>`;
+
+const qaData = [
+  {
+    id: 'item-1',
+    question: '1. Chương trình đào tạo của Học Bá Chinese phù hợp với những ai?',
+    answer: `${ul(
+      [
+        li(
+          '',
+          '<strong>- Người mới bắt đầu:</strong> Những người chưa từng học tiếng Trung muốn có một lộ trình bài bản, vững chắc ngay từ đầu.',
+        ),
+        li(
+          '',
+          '<strong>- Người đi làm:</strong> Nhân sự tại các doanh nghiệp Trung Quốc - Đài Loan muốn nâng cao hiệu suất công việc và mở rộng cơ hội thăng tiến.',
+        ),
+        li(
+          '',
+          '<strong>- Sinh viên & Người trẻ:</strong> Những bạn muốn chuẩn bị năng lực ngôn ngữ thực chiến để tạo lợi thế cạnh tranh vượt trội trên thị trường lao động.',
+        ),
+      ].join(''),
+    )}`,
+  },
+  {
+    id: 'item-2',
+    question: '2. Sự khác biệt cụ thể giữa các cấp độ từ GT1 đến GT5 là gì?',
+    answer: `<p class="mb-3 font-bold">Lộ trình của chúng tôi được phân cấp rõ rệt theo mức độ phức tạp của môi trường làm việc:</p>${ul(
+      [
+        li(
+          '',
+          '<strong>- GT1 (Tiếng Trung Giao tiếp Cơ bản):</strong> Làm quen ngôn ngữ, tự giới thiệu và giao tiếp cơ bản trong đời sống hàng ngày.',
+        ),
+        li(
+          '',
+          '<strong>- GT2 (Tiếng Trung Văn Phòng & Công Sở):</strong> Thực hành viết email đơn giản, hội thoại văn phòng, quản lý lịch làm việc và trao đổi công việc thường nhật.',
+        ),
+        li(
+          '',
+          '<strong>- GT3 (Tiếng Trung Thương mại):</strong> Xử lý các tình huống phức tạp, thuyết trình ngắn, báo cáo và giao tiếp trôi chảy trong môi trường chuyên nghiệp.',
+        ),
+        li(
+          '',
+          '<strong>- GT4 (Tiếng Trung Thương Mại Chuyên Sâu):</strong> Làm chủ kỹ năng đàm phán hợp đồng, tham gia hội nghị, hội chợ và thương mại điện tử.',
+        ),
+        li(
+          '',
+          '<strong>- GT5 (Tiếng Trung Doanh nhân):</strong> Làm việc ở cấp độ quản lý dự án, thương thảo quốc tế, trình bày báo cáo chuyên sâu và xử lý các tình huống đa văn hóa.',
+        ),
+      ].join(''),
+    )}`,
+  },
+  {
+    id: 'item-3',
+    question: '3. Sau khi hoàn thành toàn bộ lộ trình, tôi sẽ đạt được trình độ thế nào?',
+    answer: `<p class="mb-3 font-bold">Hoàn thành combo GT1 - GT5, bạn sẽ sở hữu năng lực tiếng Trung thực chiến toàn diện:</p>${ul(
+      [
+        li(
+          checkIcon,
+          '<strong>Tích lũy khoảng 3.300 từ vựng chuyên sâu</strong> về công sở - thương mại, đủ sức xử lý đa dạng tình huống kinh doanh.',
+        ),
+        li(
+          checkIcon,
+          '<strong>Thành thạo kỹ năng viết email, báo cáo, đàm phán và thuyết trình</strong> chuyên môn hoàn toàn bằng tiếng Trung.',
+        ),
+        li(
+          checkIcon,
+          '<strong>Giao tiếp tự tin trong môi trường quốc tế:</strong> từ họp hành, thương lượng đến ký kết hợp đồng và tham gia triển lãm.',
+        ),
+        li(
+          checkIcon,
+          '<strong>Đủ năng lực đảm nhận các vị trí quan trọng</strong> tại các doanh nghiệp Trung Quốc/Đài Loan hoặc các tập đoàn thương mại quốc tế.',
+        ),
+      ].join(''),
+    )}`,
+  },
+  {
+    id: 'item-4',
+    question: '4. Phương pháp học tại Học Bá có gì giúp tôi ghi nhớ nhanh và lâu hơn?',
+    answer: `<p class="mb-3">Chúng tôi áp dụng bộ đôi phương pháp tiên tiến nhất hiện nay:</p>${ul(
+      [
+        li(
+          '',
+          '<strong>- PBL & Task Based Learning:</strong> Học qua các tình huống thực tế (viết email, làm báo cáo, đàm phán). Phương châm "Học thật – Dùng thật" giúp kiến thức đi thẳng vào ứng dụng.',
+        ),
+        li(
+          '',
+          '<strong>- Spaced Repetition (Lặp lại ngắt quãng):</strong> Hệ thống thông minh nhắc lại từ vựng/mẫu câu vào đúng "thời điểm vàng" trước khi bạn quên, giúp ghi nhớ lâu hơn gấp 3 lần so với cách học truyền thống.',
+        ),
+        li(
+          '',
+          '<strong>Giao tiếp tự tin trong môi trường quốc tế:</strong> từ họp hành, thương lượng đến ký kết hợp đồng và tham gia triển lãm.',
+        ),
+        li(
+          '',
+          '<strong>- Tương tác phản xạ:</strong> Kết hợp Flashcard và Quiz nhanh để biến kiến thức thành phản xạ tự nhiên.',
+        ),
+      ].join(''),
+    )}`,
+  },
+  {
+    id: 'item-5',
+    question: '5. Học trực tuyến (Online) liệu có đảm bảo chất lượng bằng học trực tiếp?',
+    answer: `<p class="mb-3 font-bold">Tại Học Bá Chinese, học Online không có nghĩa là học thụ động.</p>
+    <p class="mb-3">Lớp học được thiết kế quy mô nhỏ để tối ưu hóa sự tương tác.</p>${ul(
+      [
+        li('', '<strong>- Mentor kèm cặp riêng:</strong> Theo sát từng học viên để sửa lỗi và hỗ trợ kịp thời.'),
+        li(
+          '',
+          '<strong>- Bắt buộc tương tác:</strong> Học viên phải bật mic luyện nói, làm việc nhóm và trình bày dự án liên tục, tạo ra môi trường giao tiếp sôi nổi không kém gì lớp học offline.',
+        ),
+      ].join(''),
+    )}`,
+  },
+  {
+    id: 'item-6',
+    question: '6. Tôi sẽ mất bao lâu để hoàn thành khóa học?',
+    answer:
+      '- Mỗi khóa lẻ (GT1-5. Học trực tuyến (Online) liệu có đảm bảo chất lượng bằng học trực tiếp?GT5) kéo dài khoảng 3 tháng (khoảng 36 buổi). Nếu bạn học theo lộ trình Combo từ GT1 đến GT5, bạn sẽ mất khoảng 12 - 15 tháng để từ một người mới bắt đầu trở thành người sử dụng tiếng Trung chuyên nghiệp trong thương mại.',
+  },
+  {
+    id: 'item-7',
+    question: '7. Tôi có thể bảo lưu khóa học nếu có việc bận đột xuất không?',
+    answer: `<p class="mb-3 font-bold">Học Bá luôn sẵn sàng đồng hành và hỗ trợ học viên một cách linh hoạt nhất thông qua chính sách bảo lưu chuyên nghiệp:</p>${ul(
+      [
+        li(
+          '',
+          '<strong>- Thời gian linh hoạt:</strong> Bạn được hỗ trợ bảo lưu tối đa 2 tháng, áp dụng cho các trường hợp học viên mới hoàn thành dưới 20% số buổi học của khóa.',
+        ),
+        li(
+          '',
+          '<strong>- Chi phí tối ưu:</strong> Phí bảo lưu chỉ 300.000đ/lần và bạn có thể thực hiện tối đa 2 lần để đảm bảo việc học không bị gián đoạn vĩnh viễn.',
+        ),
+        li(
+          '',
+          '<strong>- Đảm bảo chất lượng khi quay lại:</strong> Để đảm bảo bạn không bị hổng kiến thức sau thời gian tạm nghỉ, khi quay lại, trung tâm sẽ hỗ trợ kiểm tra trình độ đầu vào để sắp xếp bạn vào lớp phù hợp nhất với năng lực hiện tại.',
+        ),
+      ].join(''),
+    )}`,
+  },
+];
+
+const thucChienChinese = [
+  {
+    id: 1,
+    title: `Biết từ nhưng thiếu "Tầm"`,
+    content: 'Nói đúng ngữ pháp nhưng từ ngữ thiếu chuyên nghiệp, khiến vị thế của bạn bị hạ thấp trong mắt đối tác',
+  },
+  {
+    id: 2,
+    title: `Nghe hiểu nhưng "Bất lực"`,
+    content: 'Hiểu ý sếp nhưng không đủ phản xạ để phản biện, đành "cười trừ" và làm sai ý',
+  },
+  {
+    id: 3,
+    title: `Giỏi lý thuyết nhưng "Hỏng" thực hành`,
+    content: 'Làm đúng 100% bài tập sách giáo khoa, nhưng không soạn nổi một chiếc Email báo cáo chuẩn chỉnh',
+  },
+  {
+    id: 4,
+    title: `Bằng cấp cao nhưng "Vô diện" trong phòng họp`,
+    content: 'Sở hữu HSK 4-5 nhưng vẫn cần phiên dịch khi đàm phán hợp đồng, mất đi cơ hội khẳng định năng lực cốt lõi',
+  },
+];
+
+const handleOptimizeImage = async (
+  image: ImageMetadata,
+  option?: {
+    width?: number;
+    height?: number;
+  },
+) => {
+  const img = await getImage({
+    src: image,
+    width: option?.width || 691,
+    height: option?.height || 411,
+    format: 'webp',
+    densities: [1, 2],
+    quality: 95,
+  });
+  return img.src;
+};
+
+const feedbackStudentSlides = [
+  await handleOptimizeImage(IMAGES.khoaChinese.studentSlide1Chinese, {
+    width: 335,
+    height: 520,
+  }),
+  await handleOptimizeImage(IMAGES.khoaChinese.studentSlide2Chinese, {
+    width: 335,
+    height: 520,
+  }),
+  await handleOptimizeImage(IMAGES.khoaChinese.studentSlide3Chinese, {
+    width: 335,
+    height: 520,
+  }),
+  await handleOptimizeImage(IMAGES.khoaChinese.studentSlide1Chinese, {
+    width: 335,
+    height: 520,
+  }),
+  await handleOptimizeImage(IMAGES.khoaChinese.studentSlide2Chinese, {
+    width: 335,
+    height: 520,
+  }),
+  await handleOptimizeImage(IMAGES.khoaChinese.studentSlide3Chinese, {
+    width: 335,
+    height: 520,
+  }),
+];
+
+const proprietarySolutionSlides: ProprietarySolutionSlideType[] = [
+  {
+    id: 1,
+    title: `Lộ trình "Đo ni đóng giày" – Cá nhân hóa 100%`,
+    contents: [
+      `<strong>Học đúng trọng tâm:</strong> Thiết kế riêng theo ngành nghề (XNK, Sales,  Kế toán...)`,
+      `<strong>Bỏ qua dư thừa:</strong> Chỉ học những gì thực sự dùng trong công việc`,
+      `<strong>Tối ưu thời gian:</strong> Tiết kiệm 50% thời gian so với các khóa học đại trà`,
+    ],
+    image: await handleOptimizeImage(IMAGES.khoaChinese.slide1Chinese),
+  },
+  {
+    id: 2,
+    title: `Làm chủ 6 kỹ năng thiết yếu cho công việc`,
+    contents: [
+      `<strong>Toàn diện kỹ năng:</strong> Nghe – Nói – Đọc – Viết – Dịch – Đánh máy`,
+      `<strong>Thực chiến công sở:</strong> Xử lý văn bản, hợp đồng, soạn mail chuẩn chỉnh`,
+      `<strong>Giao tiếp chuyên nghiệp:</strong> Làm chủ WeChat, phản xạ tự nhiên như người bản xứ`,
+    ],
+    image: await handleOptimizeImage(IMAGES.khoaChinese.slide2Chinese),
+  },
+  {
+    id: 3,
+    title: `<h2>Bộ 3 Phương pháp giảng dạy "Thực chiến"</h2>`,
+    contents: [
+      `<h3><strong>Project-Based:</strong> Giải quyết dự án thực tế ngay tại lớp học</h3>`,
+      `<h3><strong>Task-Based:</strong> Hoàn thành các nhiệm vụ báo cáo, đàm phán, phỏng vấn</h3>`,
+      `<h3><strong>Visual Learning:</strong> Kích thích phản xạ nghe - nói qua tình huống mô phỏng</h3>`,
+    ],
+    image: await handleOptimizeImage(IMAGES.khoaChinese.slide3Chinese),
+  },
+  {
+    id: 4,
+    title: `Đội ngũ giảng viên chuyên nghiệp trình độ cao`,
+    contents: [
+      `<strong>Trình độ cao:</strong> 100% Tiến sĩ, Thạc sĩ từ các Đại học danh tiếng Trung - Đài`,
+      `<strong>Giàu kinh nghiệm:</strong> Dày dặn trải nghiệm thực chiến tại các tập đoàn lớn`,
+      `<strong>Chuyên môn sư phạm:</strong> Giảng dạy dễ hiểu, chuẩn hóa phát âm bản xứ`,
+    ],
+    image: await handleOptimizeImage(IMAGES.khoaChinese.slide4Chinese),
+  },
+  {
+    id: 5,
+    title: `Mô hình Đồng hành 1:3 "Không để ai bị bỏ lại phía sau"`,
+    contents: [
+      `<strong>Bộ 3 quyền lực:</strong> Giáo viên (Dạy) – Mentor (Sửa lỗi 24/7) – LMS (Công nghệ đồng hành mọi nơi)`,
+      `<strong>Kỷ luật chặt chẽ:</strong> Nhắc nhở, bám sát tiến độ học tập mỗi ngày`,
+      `<strong>Hệ thống LMS tích hợp AI:</strong> Quản lý tiến độ học tập trong lòng bàn tay, mọi lúc mọi nơi`,
+    ],
+    image: await handleOptimizeImage(IMAGES.khoaChinese.slide5Chinese),
+  },
+];
+
+const menuGPDQ = [
+  {
+    icon: await handleOptimizeImage(IMAGES.khoaChinese.gpdq1Chinese, {
+      width: 65,
+      height: 65,
+    }),
+    title: `Lộ trình <br/> "Đo ni đóng giày"`,
+  },
+  {
+    icon: await handleOptimizeImage(IMAGES.khoaChinese.gpdq2Chinese, {
+      width: 80,
+      height: 50,
+    }),
+    title: `Làm chủ 6 kỹ năng <br/> thiết yếu`,
+  },
+  {
+    icon: await handleOptimizeImage(IMAGES.khoaChinese.gpdq3Chinese, {
+      width: 80,
+      height: 50,
+    }),
+    title: `Phương pháp dạy <br/> "thực chiến"`,
+  },
+  {
+    icon: await handleOptimizeImage(IMAGES.khoaChinese.gpdq4Chinese, {
+      width: 65,
+      height: 65,
+    }),
+    title: `Đội ngũ giáo viên <br/> chất lượng`,
+  },
+  {
+    icon: await handleOptimizeImage(IMAGES.khoaChinese.gpdq5Chinese, {
+      width: 100,
+      height: 100,
+    }),
+    title: `Mô hình <br/> 1 - 3 độc quyền`,
+  },
+];
+
+const aiSmartSlide: AISmartSlideItem[] = [
+  {
+    id: '01',
+    title: 'Study Plan Cá Nhân Hóa: Lộ Trình Minh Bạch – Loại Bỏ Mơ Hồ',
+    contents: [
+      '🔴 Hệ thống tự động thiết kế lộ trình dựa trên ngành nghề và mục tiêu riêng của bạn.',
+      '🔴 Minh bạch tiến độ: Luôn biết rõ mình đã học được gì và cần làm gì tiếp theo.',
+      '🔴 Tập trung thực chiến: Loại bỏ kiến thức dư thừa, chỉ học những gì ứng dụng được ngay vào công việc.',
+    ],
+    mainImage: IMAGES.khoaChinese.s1MainChinese,
+    subImages: [
+      { image: IMAGES.khoaChinese.s1Sub1Chinese, position: 'bottom-left', isMobile: false },
+      { image: IMAGES.khoaChinese.s1Sub2Chinese, position: 'bottom-right', isMobile: true },
+      { image: IMAGES.khoaChinese.s1Sub4Chinese, position: 'top-right-inner', isMobile: true },
+    ],
+  },
+  {
+    id: '02',
+    title: 'Quản trị Tiến độ Trực quan: Duy trì động lực cho người bận rộn',
+    contents: [
+      '🔴 LMS biến việc học thành hành trình chinh phục với các chỉ số hiển thị rõ ràng.',
+      '🔴 Theo dõi Real-time: Kiểm soát kết quả học tập và mức độ hoàn thành mục tiêu giao tiếp.',
+      '🔴 Nhắc nhở thông minh: Hệ thống "vực dậy" tinh thần và nhắc lịch học kịp thời khi bạn quá bận rộn với công việc.',
+    ],
+    mainImage: IMAGES.khoaChinese.s2MainChinese,
+    subImages: [
+      { image: IMAGES.khoaChinese.s2Sub1Chinese, position: 'bottom-left', isMobile: false },
+      { image: IMAGES.khoaChinese.s2Sub2Chinese, position: 'bottom-right', isMobile: true },
+      { image: IMAGES.khoaChinese.s2Sub3Chinese, position: 'bottom-left-inner', isMobile: true },
+    ],
+  },
+  {
+    id: '03',
+    title: 'Công nghệ AI đột phá: Chữa lỗi Phản xạ & Phát âm 24/7',
+    contents: [
+      '🔴 Sở hữu "Gia sư AI" riêng để luyện nói và chỉnh sửa lỗi sai ngay lập tức.',
+      '🔴 Chấm chữa tức thì: Phát hiện lỗi phát âm, dùng từ và trả kết quả sửa lỗi ngay khi bạn luyện nói/viết.',
+      '🔴 Môi trường giao tiếp ảo: Thực hành các tình huống công sở (họp, đàm phán, báo cáo) với AI để tăng phản xạ trước khi gặp đối tác thật.',
+    ],
+    mainImage: IMAGES.khoaChinese.s3MainChinese,
+    subImages: [
+      { image: IMAGES.khoaChinese.s3Sub2Chinese, position: 'bottom-right', isMobile: true },
+      { image: IMAGES.khoaChinese.s3Sub3Chinese, position: 'bottom-left-inner', isMobile: true },
+    ],
+  },
+  {
+    id: '04',
+    title: 'Cơ chế Củng cố: Học đến đâu, Dùng được đến đó',
+    contents: [
+      '🔴 Thiết kế theo phương pháp ôn tập xen kẽ để kiến thức "ngấm" sâu vào phản xạ.',
+      '🔴 Ôn tập khoa học: Hệ thống tự động nhắc lại các mẫu câu, từ vựng chuyên ngành quan trọng theo chu kỳ.',
+      '🔴 Phân tích điểm yếu: Chỉ rõ những kỹ năng giao tiếp bạn còn yếu để Mentor hỗ trợ lấp đầy lỗ hổng ngay lập tức.',
+    ],
+    mainImage: IMAGES.khoaChinese.s4MainChinese,
+    subImages: [
+      { image: IMAGES.khoaChinese.s4Sub1Chinese, position: 'bottom-left', isMobile: false },
+      { image: IMAGES.khoaChinese.s4Sub4Chinese, position: 'top-right-inner', isMobile: true },
+    ],
+  },
+];
+
+const formatAISmart = await Promise.all(
+  aiSmartSlide.map(async (item) => {
+    // Get the original ImageMetadata for getImage - must be ImageMetadata, not string
+    const originalMainImage = item.mainImage;
+    const mainImageSrc = typeof originalMainImage === 'string' ? originalMainImage : originalMainImage.src;
+
+    let optimizedMainImage;
+
+    // Only optimize if mainImage is ImageMetadata (not already a string)
+    if (typeof originalMainImage !== 'string' && originalMainImage) {
+      optimizedMainImage = await getImage({
+        src: originalMainImage,
+        format: 'webp',
+        densities: [1, 2],
+        quality: 85,
+      });
+    }
+
+    const originalSubImages = item.subImages || [];
+    const optimizedSubImages = await Promise.all(
+      originalSubImages.map(async (subImageItem) => {
+        const subImage = subImageItem.image;
+        const subImageSrc = typeof subImage === 'string' ? subImage : subImage.src;
+
+        let optimizedSubImage;
+
+        // Only optimize if subImage is ImageMetadata (not already a string)
+        if (typeof subImage !== 'string' && subImage) {
+          optimizedSubImage = await getImage({
+            src: subImage,
+            format: 'webp',
+            densities: [1, 2],
+            quality: 85,
+          });
+        }
+
+        return {
+          image: optimizedSubImage?.src ?? subImageSrc,
+          position: subImageItem.position,
+          isMobile: subImageItem.isMobile,
+        };
+      }),
+    );
+
+    return {
+      ...item,
+      mainImage: optimizedMainImage?.src ?? mainImageSrc,
+      subImages: optimizedSubImages,
+    };
+  }),
+);
+
+const reviewStudentChinese: ReviewStudentChineseItem[] = [
+  {
+    id: 1,
+    name: 'Ms Linh Hương',
+    title: 'Học viên lớp GT4, Học Bá Chinese',
+    content:
+      'Các giáo viên ở trung tâm rất hài hước, gần gũi. Nền tảng LMS làm mình ấn tượng, học hiệu quả ứng dụng tốt',
+    videoId: 'YujOcZFo8_8',
+  },
+  {
+    id: 2,
+    name: 'Ms Hồng Nhung',
+    title: 'Học viên lớp GT2, Học Bá Chinese',
+    content:
+      'Lịch học và kiến thức của Học Bá Chinese làm mình khá bị ngợp khi học. Thầy dạy trên lớp luôn đốc thúc học viên phải thực hành nhiều',
+    videoId: 'nY2gWlxaSYs',
+  },
+];
+
+const optimizedTeachers = await Promise.all(
+  teachers.map(async (teacher) => {
+    const AVATAR_WIDTH = 700;
+    const AVATAR_HEIGHT = 900;
+    // 1. Tối ưu Avatar chính
+    const rawAvatar = teacher?.avatar_url?.file_path || IMAGES.course.profilePic;
+
+    const optimizedAvatar = await getImage({
+      src: rawAvatar,
+      width: AVATAR_WIDTH,
+      height: AVATAR_HEIGHT,
+      format: 'webp',
+      quality: 80,
+      position: 'top',
+    });
+
+    return {
+      ...teacher,
+      optimizedAvatar: optimizedAvatar.src,
+    };
+  }),
+);
+
+const linkFbRedirect = 'https://www.facebook.com/hocbachinese';
+---
+
+<CourseLayout
+  categoryId={CATEGORY_TYPES.TIENG_TRUNG_CHO_NGUOI_DI_LAM}
+  hasCommitment={false}
+  breadcrumbName="Khoá học Học Bá Chinese"
+  title="Tiếng Trung cho người đi làm - Học tiếng Trung thực tế"
+  description="Khóa học tiếng Trung cho người đi làm, tập trung vào giao tiếp thực tế trong công việc"
+>
+  <JsonLd data={jsonLd} />
+  <section class="w-full bg-gradient-to-t from-[#610000] to-[#B70000] xl:h-auto">
+    <Breadcrumb className="container px-4 pt-4 md:px-0">
+      <BreadcrumbList className="text-foreground text-xs text-white md:text-lg">
+        <BreadcrumbItem>
+          <BreadcrumbLink asChild>
+            <a href="/" class="hover:underline">Trang chủ</a>
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator className="" />
+        <BreadcrumbItem>
+          <BreadcrumbPage>Khoá học Học Bá Chinese</BreadcrumbPage>
+        </BreadcrumbItem>
+      </BreadcrumbList>
+    </Breadcrumb>
+    <div class="flex h-auto flex-col xl:flex-row 2xl:mx-14 3xl:mx-[114px]">
+      <div class="flex-1 pl-4 pr-4 pt-3 md:pr-0 xl:pl-10 xl:pt-16 3xl:pl-36 3xl:pt-16">
+        <div class="relative w-fit py-2 pl-0 max-lg:mx-auto xl:py-4 xl:pl-14">
+          <div class="absolute -left-[12%] top-2 z-50 flex w-fit md:-left-10 md:-top-4">
+            <FourPointedStar className="size-6 md:size-[72px]" fromColor="#B90E0A" toColor="#F3C650" />
+            <FourPointedStarMini
+              className="absolute -left-1 bottom-5 size-3 md:-bottom-6 md:left-14 md:size-7"
+              fromColor="#B90E0A"
+              toColor="#F3C650"
+            />
+          </div>
+          <div class="text-center text-[29px] font-black uppercase text-white md:text-[52px] xl:text-start">
+            Học Bá Chinese
+          </div>
+          <VectorArrow
+            fromColor="#B90E0A"
+            toColor="#F3C650"
+            className={'absolute -right-[8%] top-2 size-4 -scale-x-100 object-cover transition-opacity duration-500 md:-right-8 md:top-4 md:size-8'}
+          />
+        </div>
+        <div class="relative mt-2 h-[76px] w-full xl:mt-5 xl:h-[163px]">
+          <h1 class={'sr-only'}>Lộ trình tiếng trung giao tiếp cho người đi làm</h1>
+          <div
+            class="absolute bottom-0 left-0 top-0 flex w-full flex-shrink-0 flex-col justify-center rounded bg-[#F3C650] from-[#B90E0A00] to-[#F3C650] text-[19px] font-extrabold uppercase text-white md:w-[769px] md:text-[42px] xl:rounded-lg xl:bg-transparent xl:bg-gradient-to-l"
+          >
+            <p class="text-nowrap px-0 text-center text-[#890000] xl:px-[54px] xl:text-start xl:text-white">
+              Lộ trình tiếng Trung giao tiếp
+            </p>
+            <div
+              class="flex w-full items-center gap-x-2 rounded-none bg-primary py-1 pl-14 pr-[54px] xl:w-fit xl:rounded-r-xl xl:py-0 xl:pl-3"
+            >
+              <div class="flex gap-x-1">
+                <TriangularIcon className="size-3 xl:size-4" />
+                <TriangularIcon className="size-3 xl:size-4" />
+              </div>
+              <span>cho người đi làm</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-2 flex flex-col items-center px-8 xl:mt-9">
+          <div class="flex items-center gap-1 text-nowrap text-[13px] font-bold text-white md:text-[28px] xl:gap-4">
+            <div
+              class="flex size-[14px] items-center justify-center rounded-full border border-white transition-opacity duration-500 xl:size-8"
+            >
+              <div class="size-1 rounded-full bg-white md:size-[10px] xl:size-[10px]"></div>
+            </div>
+            <span class="text-nowrap font-black">Lộ trình tinh gọn*</span>
+            dành riêng
+          </div>
+          <div class="flex h-10 w-auto items-start justify-center xl:h-[60px] xl:w-[440px]">
+            <p
+              class="hover-bounce mt-1 flex h-6 w-[206px] items-center justify-center border-[3px] border-transparent bg-[linear-gradient(90deg,rgba(243,198,80,0)_-1.52%,#F3C650_42.65%,rgba(255,255,255,0)_103.62%)] py-[6px] text-center text-[11px] font-semibold italic text-[#650000] hover:h-10 hover:rounded-[37px] hover:border-white hover:bg-[#F3C650] hover:font-black hover:text-[#B90E0A] hover:shadow-[0px_4px_37px_0px_#FFDC81] md:text-2xl xl:h-11 xl:w-full hover:xl:h-[60px]"
+            >
+              cho người đi làm bận rộn
+            </p>
+          </div>
+        </div>
+        <button
+          onclick="document.getElementById('form-register-roadmap').scrollIntoView({ behavior: 'smooth' })"
+          class="group relative ml-8 hidden h-[60px] items-center justify-center gap-x-4 overflow-hidden rounded-[86px] border-[3px] border-white px-10 text-[28px] font-black uppercase text-white transition-all duration-700 ease-in-out hover:shadow-[3px_4px_30px_0px_#F3C65099] xl:mx-auto xl:mt-12 xl:flex 3xl:mt-20"
+        >
+          <span class="absolute inset-0 z-0 bg-gradient-to-l from-[#B90E0A] to-[#7D1900]"></span>
+          <span
+            class="absolute inset-0 z-0 bg-gradient-to-l from-[#B90E0A] to-[#F3C650] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+          ></span>
+          <span class="relative z-10 flex items-center gap-x-4">
+            <TriangularIcon />
+            Nhận tư vấn lộ trình
+          </span>
+        </button>
+        <div class="flex justify-center pl-0 xl:mb-8 xl:block xl:pl-[74px] 2xl:mt-5 3xl:mt-[30px]">
+          <GroupAvatarStudent
+            avatars={[
+              IMAGES.khoaChinese.grAvatar3Chinese,
+              IMAGES.khoaChinese.grAvatar1Chinese,
+              IMAGES.khoaChinese.grAvatar2Chinese,
+            ]}
+            link={linkFbRedirect}
+            classTarget="text-[#F3C650]"
+            classContent="text-white"
+          />
+        </div>
+      </div>
+      <div class="flex items-end">
+        <div
+          class="relative flex w-full items-end xl:h-auto xl:min-w-[860px] xl:max-w-[1200px] 3xl:h-[740px] 3xl:max-w-[1022px]"
+        >
+          <div
+            class="absolute left-4 top-0 z-10 size-[172px] bg-white xl:-top-[80px] xl:left-[120px] xl:size-[391px] 3xl:-top-[34px] 3xl:left-[172px]"
+            style={`
+              mask-image: url(${grid.src});
+              -webkit-mask-image: url(${grid.src});
+              mask-size: contain;
+              mask-repeat: no-repeat;
+            `}
+          >
+          </div>
+          <Image
+            src={IMAGES.khoaChinese.heroBgChinese}
+            alt={'heroBgChinese'}
+            width={1022}
+            height={740}
+            loading={'lazy'}
+            densities={[1, 2]}
+            class={'w-full h-full object-contain z-40'}
+          />
+          <TextChineseIcon
+            className="absolute right-2 top-4 h-auto w-[72px] xl:-top-6 xl:right-11 xl:w-auto 3xl:-top-4 3xl:right-24"
+          />
+          <TextChineseIcon
+            className="absolute right-0 top-14 h-auto w-[60px] opacity-40 xl:right-4 xl:top-[86px] xl:w-[164px] 3xl:right-16 3xl:top-[122px]"
+          />
+
+          <div class="absolute bottom-4 left-0 right-0 z-50 flex justify-center xl:hidden">
+            <button
+              onclick="document.getElementById('form-register-roadmap').scrollIntoView({ behavior: 'smooth' })"
+              class="group relative ml-0 flex h-[34px] w-auto items-center justify-center gap-x-4 overflow-hidden rounded-[86px] border-[3px] border-white px-4 text-sm font-extrabold uppercase text-white hover:shadow-[3px_4px_30px_0px_#F3C65099] xl:ml-8"
+            >
+              <span class="absolute inset-0 z-0 bg-gradient-to-l from-[#B90E0A] to-[#7D1900]"></span>
+              <span
+                class="absolute inset-0 z-0 bg-gradient-to-l from-[#B90E0A] to-[#F3C650] opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+              ></span>
+              <span class="relative z-10 flex items-center gap-x-2">
+                <TriangularIcon className="size-3" />
+                Nhận tư vấn lộ trình
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="w-full bg-primary">
+    <div class="flex flex-col-reverse justify-center gap-x-6 py-0 xl:flex-row xl:py-[34px]">
+      <div class="relative h-[129px] w-full px-4 xl:h-[249px] xl:w-[714px] xl:px-0">
+        <div
+          class="absolute -left-[150px] top-1/2 z-10 hidden size-[250px] -translate-y-1/2 bg-white xl:flex"
+          style={`
+              mask-image: url(${grid.src});
+              -webkit-mask-image: url(${grid.src});
+              mask-size: contain;
+              mask-repeat: no-repeat;
+            `}
+        >
+        </div>
+        <Image
+          src={IMAGES.khoaChinese.student5200Chinese}
+          alt={'student5200Chinese'}
+          width={714}
+          height={249}
+          densities={[1, 2]}
+          class={'w-full h-full xl:h-auto object-cover object-top'}
+          loading={'lazy'}
+        />
+      </div>
+      <div
+        class="relative -mb-7 flex w-full flex-col justify-between py-4 pl-12 pr-8 xl:mb-0 xl:w-[423px] xl:py-7 xl:pl-0 xl:pr-0"
+      >
+        <div
+          class="absolute -left-24 -top-6 z-10 hidden size-[208px] bg-white xl:flex"
+          style={`
+              mask-image: url(${grid.src});
+              -webkit-mask-image: url(${grid.src});
+              mask-size: contain;
+              mask-repeat: no-repeat;
+            `}
+        >
+        </div>
+        <div class="relative z-40 flex flex-row gap-3 xl:flex-col">
+          <p class="text-[20px] font-black text-[#F3C650] xl:text-[52px]">+5.200</p>
+          <p class="text-[10px] font-bold text-white xl:text-[20px]">
+            Học viên đã bứt phá thu nhập & thăng tiến sự nghiệp nhờ lộ trình Tiếng Trung thực chiến
+          </p>
+        </div>
+        <button
+          onclick="document.getElementById('feedback-student').scrollIntoView({ behavior: 'smooth' })"
+          class="relative z-40 mx-auto mt-2 w-fit rounded-[28px] border border-white px-2 py-0 text-[10px] text-white transition-all duration-700 ease-in-out hover:bg-white hover:text-[#373737] hover:shadow-[3px_4px_30px_0px_#F3C65099] xl:mx-0 xl:mt-0 xl:rounded-[42px] xl:px-4 xl:py-1 xl:text-base"
+          >Khám phá ngay</button
+        >
+        <div
+          class="absolute -bottom-11 -right-[102px] z-10 hidden size-[250px] bg-white xl:flex"
+          style={`
+              mask-image: url(${grid.src});
+              -webkit-mask-image: url(${grid.src});
+              mask-size: contain;
+              mask-repeat: no-repeat;
+            `}
+        >
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="bg-gradient-to-b from-[#F4F4F4] to-[#CCCCCC]">
+    <div class="relative w-full">
+      <Image
+        src={IMAGES.khoaChinese.bgThucChienChinese}
+        alt={'bgThucChienChinese'}
+        width={1920}
+        height={616}
+        densities={[1, 2]}
+        class={'w-full h-full object-fill absolute top-0 left-0 right-0 hidden xl:flex z-0'}
+      />
+      <div class="relative z-10 flex items-center justify-center gap-x-3 pt-3 xl:pt-10">
+        <div
+          class="flex items-center bg-gradient-to-l from-[#B90E0A] to-[#7D1900] bg-clip-text text-[32px] font-black leading-tight text-transparent xl:-mt-10 xl:h-[128px] xl:text-[134px]"
+        >
+          ?
+        </div>
+        <h2 class="text-center text-lg font-black uppercase leading-tight xl:text-[42px]">
+          <p class="bg-gradient-to-l from-[#B90E0A] to-[#7D1900] bg-clip-text text-transparent">
+            Vì sao 70% người đi làm
+          </p>
+          <p class="text-[#373737]">đang học tiếng Trung "Vô dụng"</p>
+        </h2>
+      </div>
+      <div
+        class="chinese-scrollbar relative z-10 mx-auto mt-8 grid w-full select-none snap-x content-start gap-x-5 gap-y-[30px] overflow-x-auto px-6 pb-6 max-md:grid-flow-col max-md:grid-rows-2 xl:mt-[54px] xl:auto-cols-[410px] xl:grid-cols-[repeat(3,410px)] xl:justify-center xl:gap-x-7 xl:gap-y-4 xl:pb-12"
+      >
+        {
+          (swimmingNoHopeData ?? []).map((item) => (
+            <div class="order-1 col-span-1 h-auto rounded-sm xl:h-[128px]">
+              <div class="group h-auto w-[278px] rounded-sm border border-transparent bg-white py-[10px] shadow-[0px_4px_4px_0px_#00000026] transition-all duration-500 ease-in-out md:w-auto xl:hover:h-[128px] xl:hover:border-black xl:hover:shadow-[3px_15px_27.6px_0px_#00000099]">
+                <div class="flex h-7 items-center gap-2 rounded-sm p-[10px] px-[14px] transition-all duration-300 ease-in-out xl:h-10 xl:group-hover:mx-[14px] xl:group-hover:h-[54px] xl:group-hover:bg-[#373737]">
+                  <div class="size-4 rounded-full border-2 border-[#373737] bg-white xl:size-6 xl:group-hover:size-8 xl:group-hover:border-[6px] xl:group-hover:border-[#B90E0A] xl:group-hover:bg-transparent" />
+                  <h3 class="text-sm font-black leading-tight text-[#373737] md:text-[20px] xl:group-hover:text-white">
+                    {item.title}
+                  </h3>
+                </div>
+                <div class="mt-0 px-[22px] text-xs font-normal transition-all duration-300 ease-in-out md:text-base xl:px-[14px]">
+                  {item.content}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div
+      class={cn(
+        'h-[122px] w-full py-5 xl:h-[221px] xl:py-10 xl:rounded-none rounded-md mt-5 xl:mt-0',
+        'xl:bg-[linear-gradient(270deg,_rgba(255,255,255,0)_0%,_#373737_38.94%,_#373737_66.83%,_rgba(255,255,255,0)_100%)]',
+        'bg-[linear-gradient(270deg,_rgba(255,255,255,0)_-33.34%,_#373737_12.12%,_#373737_87.17%,_rgba(255,255,255,0)_121.88%)]',
+      )}
+    >
+      <div class="mx-auto flex h-full w-fit flex-col items-center justify-between">
+        <h2 class="sr-only">Người làm không cần tiếng Trung "sách vở" Mà cần tiếng Trung thực chiến</h2>
+        <div class="text-sm font-extrabold uppercase text-white xl:text-[26px]">
+          Người làm không cần tiếng Trung "sách vở"
+        </div>
+        <div
+          class="flex items-center justify-center gap-x-2 text-lg font-extrabold uppercase text-primary xl:gap-x-3 xl:text-[42px]"
+        >
+          <div
+            class="flex size-[14px] flex-shrink-0 items-center justify-center rounded-full border-[1.4px] border-white transition-opacity duration-500 xl:size-[26px] xl:border-[2.8px]"
+          >
+            <div class="size-1 rounded-full bg-white xl:size-[11px]"></div>
+          </div>
+          <p
+            class="animate-neon-flicker [--flicker-alt:#F3C650] [--flicker-color:#AF0000] [--flicker-shadow:3px_4px_30px_#F3C65099]"
+          >
+            Mà cần tiếng Trung thực chiến
+          </p>
+          <div
+            class="flex size-[14px] items-center justify-center rounded-full border-[1.4px] border-white transition-opacity duration-500 xl:size-[26px] xl:border-[2.8px]"
+          >
+            <div class="size-1 rounded-full bg-white xl:size-[11px]"></div>
+          </div>
+        </div>
+        <div
+          class="w-[266px] text-center text-xs font-medium leading-4 text-white xl:w-[536px] xl:text-[20px] xl:leading-6"
+        >
+          Học sai phương pháp không chỉ tốn tiền, mà còn lãng phí cơ hội thăng tiến của chính bạn
+        </div>
+      </div>
+    </div>
+    <div class="w-full pb-0 pt-6 xl:pb-[70px] xl:pt-16">
+      <div
+        class={cn(
+          'relative z-10 mx-auto grid w-full max-w-none xl:max-w-[1283px] grid-flow-col auto-cols-auto gap-x-6 chinese-scrollbar overflow-x-auto px-6 xl:px-0 xl:grid-flow-row xl:grid-cols-2 xl:gap-y-[34px] xl:overflow-visible [--bgScrollColor:#5B000040]',
+        )}
+      >
+        {
+          (thucChienChinese ?? []).map((item, index) => (
+            <div
+              class={cn(
+                'group mb-1 flex h-[129px] w-[225px] justify-center rounded-sm from-primary to-[#FFFFFF00] pt-[1px] transition-colors duration-500 ease-in-out xl:h-[183px] xl:hover:bg-gradient-to-b',
+                'xl:w-[432px]',
+                index % 2 === 0 ? 'xl:ml-0' : 'xl:ml-auto',
+              )}
+            >
+              <div class="h-[129px] w-[225px] rounded-sm px-0 py-0 transition-all duration-500 ease-in-out xl:h-[182px] xl:w-[430px] xl:px-6 xl:py-7 xl:group-hover:bg-white xl:group-hover:px-[13px] xl:group-hover:py-[18px]">
+                <div class="flex h-[54px] items-center gap-3 rounded-sm bg-[#373737] px-2 transition-colors duration-500 xl:h-[68px] xl:px-5 xl:group-hover:h-20 xl:group-hover:bg-primary">
+                  <div class="size-[13px] flex-shrink-0 rounded-full border-[3px] border-primary bg-transparent transition-all duration-500 ease-in-out xl:size-6 xl:border-[6px] xl:group-hover:size-[30px] xl:group-hover:border-white xl:group-hover:bg-white" />
+                  <h3 class="text-sm font-extrabold uppercase text-white xl:text-[20px]">{item.title}</h3>
+                </div>
+                <div class="mx-0 mt-1 text-justify text-xs font-medium xl:mx-7 xl:mt-0 xl:text-base">
+                  {item.content}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+        <div class="absolute -bottom-[71px] left-1/2 z-0 hidden h-[503px] w-[261px] -translate-x-1/2 xl:flex">
+          <Image
+            src={IMAGES.khoaChinese.thucChienChinese}
+            alt={'thucChienChinese'}
+            width={261}
+            height={503}
+            densities={[1, 2]}
+            class={'w-full h-full object-contain'}
+          />
+        </div>
+      </div>
+      <div class="relative w-full">
+        <div class="mx-auto mt-4 h-[260px] w-[198px] xl:hidden">
+          <Image
+            src={IMAGES.khoaChinese.thucChienChinese}
+            alt={'thucChienChinese'}
+            width={198}
+            height={328}
+            densities={[1, 2]}
+            class={'w-full h-full object-cover object-top z-0'}
+          />
+        </div>
+        <Image
+          src={IMAGES.khoaChinese.bgThucChienChinese}
+          alt={'bgThucChienChinese'}
+          width={393}
+          height={316}
+          densities={[1, 2]}
+          class={'w-full h-full object-fill absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 xl:hidden z-0'}
+        />
+      </div>
+    </div>
+  </section>
+  <section class="h-auto w-full bg-gradient-to-t from-[#780000] to-[#B50101] pt-4 xl:h-[1018px] xl:pt-7">
+    <h2 class="sr-only">Giải pháp độc quyền Học thật - Dùng thật</h2>
+    <div class="flex w-full flex-col items-center justify-center gap-y-1 xl:gap-y-3">
+      <div class="flex items-center gap-3">
+        <div class="flex items-center gap-x-3">
+          <TriangularIcon className="size-3 xl:size-7" />
+          <TriangularIcon className="size-3 xl:size-7" />
+          <TriangularIcon className="size-3 xl:size-7" />
+        </div>
+        <div class="flex h-6 items-center text-lg font-black uppercase text-white xl:h-14 xl:text-[42px]">
+          Giải pháp độc quyền
+        </div>
+        <div class="flex items-center gap-x-3">
+          <TriangularIcon className="size-3 -scale-x-100 xl:size-7" />
+          <TriangularIcon className="size-3 -scale-x-100 xl:size-7" />
+          <TriangularIcon className="size-3 -scale-x-100 xl:size-7" />
+        </div>
+      </div>
+      <div
+        class="flex h-8 items-center rounded-sm bg-gradient-to-r from-primary to-[#490000] px-[14px] py-3 shadow-[2px_13px_60px_0px_#FFF2D2] xl:h-[78px] xl:rounded-lg xl:px-11"
+      >
+        <div class="text-lg font-black uppercase text-[#F3C650] xl:text-[42px]">Học thật - dùng thật</div>
+      </div>
+    </div>
+    <div class="mx-auto w-full xl:w-[1370px]">
+      <ProprietarySolutionSlide slides={proprietarySolutionSlides} menu={menuGPDQ} client:visible />
+    </div>
+  </section>
+  <section class="w-full overflow-hidden">
+    <div class="relative mx-auto mt-5 h-auto w-full xl:mt-11 xl:w-[1224px]">
+      <h2 class="sr-only">Hệ thống LMS AI thông minh Tối ưu hiệu suất học</h2>
+      <div class="relative z-20 mx-auto flex w-fit items-center gap-6 px-6 md:px-10">
+        <div class="absolute -top-3 left-5 z-50 flex w-fit md:-left-4 md:-top-2">
+          <FourPointedStarMini
+            className="absolute -bottom-1 -right-2 mt-auto size-2 md:-bottom-2 md:-right-2 md:size-3"
+          />
+          <FourPointedStar className="size-[18px] md:size-[30px]" />
+        </div>
+        <div
+          class="text-nowrap px-6 text-center text-lg font-black uppercase leading-tight text-primary md:px-0 md:text-[42px]"
+        >
+          Hệ thống LMS AI thông minh
+        </div>
+      </div>
+      <div class="relative z-20 text-center text-base font-bold capitalize text-[#1E242C] md:mt-3 md:text-[34px]">
+        Tối ưu hiệu suất học
+      </div>
+      <div class={'relative z-50'}>
+        <AISmartSlide slides={formatAISmart} icons={{}} client:load />
+      </div>
+      <div class="absolute -right-[20%] top-[5%] z-0 size-[186px] md:size-[365px] xl:-right-[6%] xl:top-[12%]">
+        <Image
+          src={IMAGES.khoaChinese.gridRedChinese}
+          alt={'bg_nen1'}
+          width={365}
+          height={365}
+          class={'object-cover w-full h-full'}
+        />
+      </div>
+      <div class="absolute -left-[32%] bottom-[25px] z-0 size-[243px] xl:-bottom-[4%] xl:-left-[5%] xl:size-[469px]">
+        <Image
+          src={IMAGES.khoaChinese.gridRedChinese}
+          alt={'bg_nen2'}
+          width={469}
+          height={469}
+          class={'object-cover w-full h-full'}
+        />
+      </div>
+    </div>
+  </section>
+  <section>
+    <div
+      class="flex h-[52px] items-center justify-center gap-0 bg-primary from-[#B90E0A] to-[#7D1900] xl:h-[122px] xl:gap-6 xl:bg-gradient-to-l"
+    >
+      <ArrowStartIcon className="w-8" />
+      <div class="w-[210px] px-4 text-center text-[15px] font-bold uppercase text-white xl:w-fit xl:text-[28px]">
+        Chọn lộ trình học & trải nghiệm ngay
+      </div>
+      <ArrowStartIcon className="w-8 -scale-x-100 xl:hidden" />
+    </div>
+    <div class="relative bg-gradient-to-b from-[#FFF8F8] to-[#FFF8E4] xl:from-transparent xl:to-transparent">
+      <div id="xay-dung-lo-trinh" class="h-auto w-full pt-2 xl:mt-8 xl:h-[122px]">
+        <h2 class="sr-only">Thiết kế lộ trình tiếng Trung thực chiến Dành riêng cho mục tiêu sự nghiệp của bạn!</h2>
+        <div class="relative mx-auto flex w-fit items-center">
+          <VectorArrow
+            toColor="#AF0000"
+            fromColor="#AF0000"
+            className={'absolute -left-5 top-0 size-4 object-cover transition-opacity duration-500 xl:-left-10 xl:top-0 xl:size-8'}
+          />
+          <div
+            class="bg-gradient-to-l from-[#B90E0A] to-[#7D1900] bg-clip-text text-center text-lg font-black uppercase leading-normal text-transparent xl:text-[42px]"
+          >
+            Thiết kế lộ trình tiếng <br class="xl:hidden" /> Trung thực chiến
+          </div>
+        </div>
+        <div
+          class="mx-auto mt-2 w-[178px] text-center text-sm font-bold capitalize text-[#373737] xl:mt-3 xl:w-auto xl:text-[34px]"
+        >
+          Dành riêng cho mục tiêu sự nghiệp của bạn!
+        </div>
+      </div>
+      <BuildRoadmap
+        roadmapIcon={await handleOptimizeImage(IMAGES.khoaChinese.roadmapIconChinese, {
+          width: 96,
+          height: 88,
+        })}
+        bgRoadmap={await handleOptimizeImage(IMAGES.khoaChinese.bgRoadmapChinese)}
+        client:load
+      />
+      <div
+        class="absolute left-0 right-0 z-40 h-[103px] w-full max-lg:top-0 xl:bottom-0 xl:h-[505px] xl:max-w-[1920px]"
+      >
+        <Image
+          src={IMAGES.khoaChinese.bgRoadmapChinese}
+          alt={'bgRoadmapChinese'}
+          width={1920}
+          height={505}
+          class={'w-full h-full object-contain'}
+        />
+      </div>
+    </div>
+  </section>
+  <section class="relative overflow-hidden bg-gradient-to-t from-[#FFF8F8] to-[#FFFFFF00] pt-3 xl:pt-8">
+    <div class="container">
+      <h2 class="sr-only">Đội ngũ giáo viên top đầu ngành Những bậc thầy thực chiến</h2>
+      <div class="relative flex w-full items-center justify-center">
+        <div
+          class="relative ml-4 bg-gradient-to-l from-[#B90E0A] to-[#7D1900] bg-clip-text text-center text-lg font-black uppercase leading-normal text-transparent xl:text-[42px]"
+        >
+          <VectorArrow
+            toColor="#AF0000"
+            fromColor="#AF0000"
+            className={'absolute -left-5 top-0 size-4 object-cover transition-opacity duration-500 xl:-left-10 xl:top-0 xl:size-8'}
+          />
+          Đội ngũ giáo viên top đầu ngành
+        </div>
+      </div>
+      <div class="mx-auto mt-0 w-auto text-center text-sm font-bold capitalize text-[#373737] xl:mt-3 xl:text-[34px]">
+        Những bậc thầy thực chiến
+      </div>
+      <div
+        class="mx-auto mt-3 w-full px-10 text-center text-[8px] font-normal leading-tight text-[#373737] xl:mt-6 xl:w-[630px] xl:px-0 xl:text-base"
+      >
+        Tại Học Bá, giảng viên không chỉ có trình độ sư phạm cao mà còn dày dặn kinh nghiệm thực tế tại các tập đoàn
+        lớn. Chúng tôi không chỉ dạy ngôn ngữ, chúng tôi huấn luyện tư duy nghiệp vụ giúp bạn bứt phá sự nghiệp trong
+        thời gian ngắn nhất.
+      </div>
+      <div class="relative">
+        <div
+          class="absolute -left-[20%] top-[5%] z-0 size-[186px] opacity-65 xl:-left-[27%] xl:-top-[20%] xl:size-[407px]"
+        >
+          <Image
+            src={IMAGES.khoaChinese.gridRedChinese}
+            alt={'bg_nen1'}
+            width={365}
+            height={365}
+            class={'object-cover w-full h-full'}
+          />
+        </div>
+        <div class="relative z-40 mx-auto max-w-full xl:max-w-[1108px]">
+          <RelevantLecturers
+            relevantLecturers={optimizedTeachers}
+            icons={{
+              hsk: '',
+            }}
+            client:visible
+          />
+        </div>
+        <div
+          class="absolute -right-[20%] bottom-[5%] z-0 size-[186px] opacity-65 xl:-right-[36%] xl:bottom-[6%] xl:size-[407px]"
+        >
+          <Image
+            src={IMAGES.khoaChinese.gridRedChinese}
+            alt={'bg_nen1'}
+            width={365}
+            height={365}
+            class={'object-cover w-full h-full'}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="feedback-student" class="overflow-hidden bg-[#780000] pb-[30px] pt-8 xl:pt-[50px]">
+    <h2 class="sr-only">Học viên nói gì về Học Bá Chinese Chia sẻ thực tế - học thật - ứng dụng thật</h2>
+    <div class="relative z-20 flex w-full items-center justify-center gap-6">
+      <div
+        class="relative w-[331px] text-nowrap text-center text-lg font-black uppercase leading-tight text-white md:px-0 md:text-[42px] xl:w-fit"
+      >
+        <div class="absolute -right-4 -top-5 z-50 flex w-fit md:-left-12 md:-top-1">
+          <FourPointedStarMini
+            fromColor="#FFFFFF"
+            toColor="#FFFFFF"
+            className="absolute -bottom-2 -left-1 mt-auto size-2 md:-bottom-2 md:left-6 xl:size-3"
+          />
+          <FourPointedStar fromColor="#FFFFFF" toColor="#FFFFFF" className="size-5 md:size-[30px]" />
+        </div>
+        Học viên nói gì về <span class="text-[#F3C650]">Học Bá Chinese</span>
+      </div>
+    </div>
+    <div class="relative z-20 text-center text-[14px] font-bold capitalize text-white md:mt-3 md:text-[34px]">
+      Chia sẻ thực tế - học thật - ứng dụng thật
+    </div>
+    <div class="relative mx-auto w-fit">
+      <div class="absolute -left-[26%] -top-[26%] h-[276px] w-[248px]">
+        <Image
+          src={IMAGES.khoaChinese.bgIconStudentChinese}
+          alt={'bgIconStudentChinese'}
+          width={248}
+          height={276}
+          loading={'lazy'}
+          densities={[1, 2]}
+          class={'w-full h-full object-contain -scale-x-100 opacity-40'}
+        />
+      </div>
+      <div class="absolute -right-[20%] -top-[16%] h-[157px] w-[157px]">
+        <Image
+          src={IMAGES.khoaChinese.bgIconStudentChinese}
+          alt={'bgIconStudentChinese'}
+          width={157}
+          height={157}
+          loading={'lazy'}
+          densities={[1, 2]}
+          class={'w-full h-full object-contain -scale-y-100 opacity-40'}
+        />
+      </div>
+      <div class="mx-5 mt-10 w-full max-w-[90vw] xl:mx-auto xl:mt-16 xl:w-[1120px]">
+        <FeedbackStudentChineseSlider feedbackStudentSlides={feedbackStudentSlides || []} client:visible />
+      </div>
+    </div>
+    <div class="relative mx-auto mt-5 w-full gap-x-5 xl:mt-16 xl:w-[1173px]">
+      <div class="absolute -left-[15%] top-[6%] h-[157px] w-[157px]">
+        <Image
+          src={IMAGES.khoaChinese.bgIconStudentChinese}
+          alt={'bgIconStudentChinese'}
+          width={157}
+          height={157}
+          loading={'lazy'}
+          densities={[1, 2]}
+          class={'w-full h-full object-contain -scale-x-100 -scale-y-100 opacity-40'}
+        />
+      </div>
+      <div class="absolute -bottom-[14%] -right-[19%] h-[191px] w-[212px]">
+        <Image
+          src={IMAGES.khoaChinese.bgIconStudentChinese}
+          alt={'bgIconStudentChinese'}
+          width={191}
+          height={212}
+          loading={'lazy'}
+          densities={[1, 2]}
+          class={'w-full h-full object-contain -scale-y-100 opacity-40'}
+        />
+      </div>
+      <ReviewStudentChinese slides={reviewStudentChinese || []} icons={{}} client:load />
+    </div>
+    <div class="px-[14px]">
+      <div
+        class="relative mx-auto mt-0 h-auto w-full rounded-md bg-white pt-5 xl:mt-10 xl:h-[560px] xl:max-w-[1280px] xl:rounded-[20px]"
+      >
+        <div class="absolute left-4 top-3 h-9 w-[34px] xl:left-10 xl:top-10 xl:h-[129px] xl:w-[116px]">
+          <Image
+            src={IMAGES.khoaChinese.bgIconStudentChinese}
+            alt={'bgIconStudentChinese'}
+            width={116}
+            height={129}
+            loading={'lazy'}
+            densities={[1, 2]}
+            class={'w-full h-full object-contain -scale-x-100 opacity-40'}
+          />
+        </div>
+        <h2 class="sr-only">Những con số ấn tượng Chỉ có tại Học Bá Chinese</h2>
+        <div class="relative mx-auto flex w-fit items-center">
+          <div
+            class="relative ml-4 bg-gradient-to-l from-[#B90E0A] to-[#7D1900] bg-clip-text text-center text-lg font-black uppercase leading-normal text-transparent xl:ml-0 xl:text-[42px]"
+          >
+            <VectorArrow
+              toColor="#AF0000"
+              fromColor="#AF0000"
+              className={'absolute -left-5 top-0 size-4 object-cover transition-opacity duration-500 xl:-left-10 xl:top-0 xl:size-8'}
+            />
+            Những con số ấn tượng
+          </div>
+        </div>
+        <div
+          class="mx-auto mt-2 w-[178px] text-center text-sm font-bold capitalize text-[#373737] xl:mt-3 xl:w-auto xl:text-[28px]"
+        >
+          Chỉ có tại Học Bá Chinese
+        </div>
+        <div
+          class="mx-auto mt-6 grid w-full grid-cols-3 gap-3 px-2 pb-3 xl:mt-16 xl:max-w-[1074px] xl:gap-x-[78px] xl:px-0 xl:pb-0"
+        >
+          <div class="col-span-1">
+            <div class="h-[103px] overflow-hidden xl:h-[245px]">
+              <div class="flex origin-top scale-[0.39] justify-center xl:scale-100">
+                <CircleProgress size={245} strokeWidth={40} percent={92} startColor="#F3C650" endColor="#B90E0A" />
+              </div>
+            </div>
+            <p class="mt-1 px-0 text-center text-[8px] font-bold uppercase text-black xl:px-6 xl:text-[20px]">
+              Học viên đạt mục tiêu sau 3-6 tháng
+            </p>
+          </div>
+          <div class="col-span-1">
+            <div class="h-[103px] overflow-hidden xl:h-[245px]">
+              <div class="flex origin-top scale-[0.39] justify-center xl:scale-100">
+                <CircleProgress size={245} strokeWidth={40} percent={87} startColor="#7D1900" endColor="#B90E0A" />
+              </div>
+            </div>
+            <p class="mt-1 px-0 text-center text-[8px] font-bold uppercase text-black xl:px-6 xl:text-[20px]">
+              Người đi làm tăng thu nhập sau khóa GT3
+            </p>
+          </div>
+          <div class="col-span-1">
+            <div class="h-[103px] overflow-hidden xl:h-[245px]">
+              <div class="flex origin-top scale-[0.39] justify-center xl:scale-100">
+                <CircleProgress size={245} strokeWidth={40} percent={95} startColor="#780000" endColor="#320000" />
+              </div>
+            </div>
+            <p class="mt-1 px-0 text-center text-[8px] font-bold uppercase text-black xl:px-6 xl:text-[20px]">
+              Khách hàng hài lòng & giới thiệu bạn bè
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div id="form-register-roadmap">
+    <FormRegisterCourseChinese dataInput={DATA_VALUE.COURSE_FOR_WORKERS} />
+  </div>
+  <section id="advisor-qa" class="" style="background: linear-gradient(357.89deg, #FFF8F8 42.88%, #FFD3D3 140.83%);">
+    <div class="mx-auto w-full max-w-[1354px]">
+      <div class="flex flex-col gap-8 lg:flex-row">
+        <div class="hidden lg:block lg:w-[614px]">
+          <div class="sticky top-24">
+            <div class="relative md:h-[748px] md:w-[614px]">
+              <Image
+                src={IMAGES.khoaHsk.qaBgHsk}
+                width={614}
+                height={748}
+                alt={'fdBook'}
+                densities={[1, 2]}
+                class={'object-cover w-auto h-full'}
+                loading={'lazy'}
+              />
+            </div>
+          </div>
+        </div>
+        <div class="w-full px-7 md:px-0 lg:w-[646px]">
+          <div class="flex h-24 items-center justify-center gap-x-4 md:h-[129px] md:justify-start">
+            <div class="stroke-text text-[64px] font-black text-white md:text-[108px]">?</div>
+            <h2 class="text-lg font-black uppercase text-primary md:text-[42px]">Câu hỏi thường gặp</h2>
+          </div>
+          <QAAccordion {qaData} />
+        </div>
+      </div>
+    </div>
+  </section>
+</CourseLayout>
+
+<style is:global>
+  .chinese-scrollbar::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .chinese-scrollbar::-webkit-scrollbar-track {
+    border-radius: 22px;
+  }
+
+  .chinese-scrollbar::-webkit-scrollbar-track:hover {
+    background: transparent;
+  }
+
+  .chinese-scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 22px;
+    background: var(--bgScrollColor, #d9d9d9);
+  }
+
+  .stroke-text {
+    -webkit-text-stroke: 3px #b91c1c; /* đỏ */
+    color: transparent;
+  }
+</style>

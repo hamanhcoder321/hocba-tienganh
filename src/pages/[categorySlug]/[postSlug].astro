@@ -1,0 +1,296 @@
+---
+import JsonLd from '@/components/common/JsonLd.astro';
+import DetailBlogContent from '@/components/features/post/DetailBlogContent';
+import DetailBlogRightSidebar from '@/components/features/post/DetailBlogRightSidebar.astro';
+import PopularBlogsCarousel from '@/components/features/post/PopularBlogsCarousel';
+import ShareButton from '@/components/features/post/ShareButton';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { IMAGES } from '@/lib/constants/images';
+import { HOC_VIEN_DIEM_CAO_SLUG } from '@/lib/constants/content';
+import { fetchBlogDetail, fetchBlogList } from '@/lib/static-data';
+import { getImage, Image } from 'astro:assets';
+import { format } from 'date-fns';
+import type { Graph } from 'schema-dts';
+
+const baseUrl = import.meta.env.PUBLIC_CLIENT_URL ?? 'https://hoc-ba.edu.vn';
+
+const { categorySlug: categorySlugFromUrl, postSlug } = Astro.params;
+
+const postData = await fetchBlogDetail(postSlug || '', categorySlugFromUrl);
+const post = postData?.data;
+
+if (!post) {
+  Astro.response.status = 404;
+  Astro.response.statusText = 'Not Found';
+  return Astro.rewrite('/404');
+}
+
+const popularPostData = await fetchBlogList({
+  page: 1,
+  limit: 10,
+  queryParams: `orderBy=views&blog_category_id=${post?.blogCategoryId}`,
+});
+
+const popularPosts = popularPostData?.list || [];
+
+// Tối ưu ảnh
+const optimizedPost = await Promise.all(
+  popularPosts.map(async (post) => {
+    const THUMBNAIL_WIDTH = 320;
+    const THUMBNAIL_HEIGHT = 162;
+    // 1. Tối ưu Avatar chính
+    const rawThumbnailLink = post.thumbnail_link?.file_path || '';
+    const rawUserPhoto = post.User?.photo || '';
+
+    let optimizedUserPhoto;
+    let optimizedThumbnailLink;
+
+    if (rawUserPhoto) {
+      optimizedUserPhoto = await getImage({
+        src: rawUserPhoto,
+        width: 20,
+        height: 20,
+        format: 'webp',
+        quality: 80,
+      });
+    } else {
+      optimizedUserPhoto = await getImage({
+        src: IMAGES.post.profilePic,
+        width: 20,
+        height: 20,
+        format: 'webp',
+      });
+    }
+
+    if (rawThumbnailLink) {
+      optimizedThumbnailLink = await getImage({
+        src: rawThumbnailLink,
+        width: THUMBNAIL_WIDTH,
+        height: THUMBNAIL_HEIGHT,
+        format: 'webp',
+        quality: 80,
+      });
+    } else {
+      optimizedThumbnailLink = await getImage({
+        src: IMAGES.post.postBanner,
+        width: THUMBNAIL_WIDTH,
+        height: THUMBNAIL_HEIGHT,
+        format: 'webp',
+        quality: 80,
+      });
+    }
+
+    return {
+      ...post,
+      thumbnail_link: {
+        file_path: optimizedThumbnailLink.src,
+        originalname: post.thumbnail_link?.originalname || '',
+      },
+      User: {
+        ...post.User,
+        photo: optimizedUserPhoto.src,
+      },
+    };
+  }),
+);
+
+// Generate hashtags from tags
+const hashtags =
+  post?.tag
+    ?.split(',')
+    .map((item) => `#${item}`)
+    .join(' ') || '';
+
+// Get full name
+const firstName = post?.User?.first_name || '';
+const lastName = post?.User?.last_name || '';
+const fullName = `${firstName} ${lastName}`.trim();
+
+// Slugify function for URLs
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[đĐ]/g, 'd')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+// Generate category slug
+const categoryName = post?.BlogCategory?.name || 'Cẩm nang';
+const categorySlugGenerated = post?.BlogCategory?.slug || slugify(categoryName);
+
+// Generate full URL for sharing
+const shareUrl = `${baseUrl}/${categorySlugGenerated}/${post?.slug}`;
+
+// Optimize cover image for LCP with priority
+const coverImageSrc = post?.meta_img?.file_path || '';
+let optimizedCoverImage;
+if (coverImageSrc && coverImageSrc.startsWith('http')) {
+  optimizedCoverImage = await getImage({
+    src: coverImageSrc,
+    width: 1200,
+    height: 630,
+    format: 'webp',
+    quality: 85,
+  });
+} else {
+  optimizedCoverImage = { src: coverImageSrc };
+}
+
+const finalMetaImage = optimizedCoverImage.src.startsWith('http')
+  ? optimizedCoverImage.src
+  : `${baseUrl}${optimizedCoverImage.src}`;
+
+// JSON-LD for SEO
+const jsonLd: Graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Article',
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': `${baseUrl}/${categorySlugGenerated}/${post?.slug}`,
+      },
+      headline: post?.title,
+      image: optimizedCoverImage.src,
+      author: {
+        '@type': 'Person',
+        name: fullName,
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Học bá Education - Trung tâm đào tạo tiếng Trung trực tuyến Top 1 Việt Nam',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://cdn.hoc-ba.edu.vn/landing/1748796704525-logo-hocba.png',
+        },
+      },
+      datePublished: post?.created_at,
+      dateModified: post?.updated_at,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Trang chủ',
+          item: baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: categoryName,
+          item: `${baseUrl}/${categorySlugGenerated === HOC_VIEN_DIEM_CAO_SLUG ? `${HOC_VIEN_DIEM_CAO_SLUG}/chi-tiet` : categorySlugGenerated}`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: post?.title,
+          item: `${baseUrl}/${categorySlugGenerated}/${post?.slug}`,
+        },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout title={post?.title} description={post?.meta_description} image={finalMetaImage}>
+  <link slot="head" rel="preload" as="image" href={optimizedCoverImage.src} fetchpriority="high" />
+
+  <JsonLd data={jsonLd} />
+  <section class="mb-10 bg-white !font-gilroy dark:bg-gray-800">
+    <div class="h-[350px] w-full bg-[#E51733]"></div>
+    <div class="relative px-4 2xl:mx-[104px]">
+      <div
+        class="absolute bottom-full left-1/2 h-auto w-full -translate-x-1/2 translate-y-[20%] transform px-4 xl:w-[736px] xl:px-0"
+      >
+        <div class="flex h-full flex-col rounded-xl bg-white p-6 shadow-md">
+          <div class="flex-1">
+            <Breadcrumb className="py-3">
+              <BreadcrumbList className="flex w-full flex-nowrap text-black">
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="/" className="text-nowrap hover:text-primary"> Trang chủ </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbLink
+                    href={categorySlugGenerated === HOC_VIEN_DIEM_CAO_SLUG ? `/${HOC_VIEN_DIEM_CAO_SLUG}/chi-tiet` : `/${categorySlugGenerated}`}
+                    className="line-clamp-1 w-max max-w-[200px] hover:text-primary"
+                  >
+                    {categoryName}
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbItem className="line-clamp-1 w-full">
+                    {post?.title}
+                  </BreadcrumbItem>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+
+            <h1 class="mt-4 line-clamp-2 text-[32px] font-bold">
+              {post?.title}
+            </h1>
+            <div class="mt-4 line-clamp-4 text-gray-600">
+              {post?.meta_description}
+            </div>
+          </div>
+          <div class="mt-4 flex flex-col items-center gap-2 border-t pt-4 sm:flex-row">
+            <div class="flex flex-row items-center gap-3 max-sm:w-full">
+              {
+                post?.User?.photo && (
+                  <Image
+                    src={post.User.photo}
+                    width={24}
+                    height={24}
+                    alt={fullName || 'Author'}
+                    class="h-6 w-6 rounded-full object-cover"
+                  />
+                )
+              }
+              {fullName && <span class="font-medium">{fullName}</span>}
+              <div class="h-1 w-1 rounded-full bg-slate-400"></div>
+              <span class="text-sm text-gray-600">
+                {post?.created_at && format(new Date(post.created_at), 'dd/MM/yyyy')}
+              </span>
+            </div>
+            <div class="flex w-full flex-1 items-center justify-between gap-2">
+              <div class="flex items-center gap-2 text-sm text-gray-600">
+                <div class="h-1 w-1 rounded-full bg-slate-400"></div>
+                <span>Quy tắc biên tập</span>
+              </div>
+              <ShareButton client:load url={shareUrl} title={post?.title || ''} {hashtags} />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex w-full flex-col gap-8 lg:flex-row">
+        <div class="mt-24 flex w-full flex-col justify-end gap-8 xl:flex-row">
+          <DetailBlogContent blog={post} blogSlug={post?.slug} client:idle />
+          <DetailBlogRightSidebar recentBlogs={post?.recentPosts} categorySlug={categorySlugGenerated} />
+        </div>
+      </div>
+
+      <div id="related_posts" class="mt-10">
+        <PopularBlogsCarousel
+          client:load
+          initialBlogs={optimizedPost}
+          categoryId={post?.blogCategoryId}
+          title="Bài viết tương tự"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

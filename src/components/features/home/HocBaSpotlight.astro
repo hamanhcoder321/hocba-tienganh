@@ -1,0 +1,240 @@
+---
+import { ArrowBorderIcon, ArrowBorderSmallIcon } from '@/components/common/icons';
+import { Image } from 'astro:assets';
+
+import { IMAGES } from '@/lib/constants/images';
+---
+
+<div class="relative">
+  <Image
+    src={IMAGES.bg}
+    alt="background"
+    width={241}
+    height={306}
+    format="webp"
+    sizes="(max-width: 768px) 199px, 241px"
+    class="absolute -top-20 right-0 h-auto w-auto object-cover"
+    loading="lazy"
+  />
+
+  <div class="relative mx-auto mt-[110px] max-w-screen-xl px-7 max-lg:px-4">
+    <Image
+      src={IMAGES.hocbaSpotlight.ellipse}
+      alt="ellipse"
+      width={400}
+      height={402}
+      sizes="(max-width: 768px) 300px, 400px"
+      class="absolute -bottom-[50px] -left-[400px] bg-no-repeat object-cover"
+      loading="lazy"
+    />
+    <div
+      class="absolute -top-[59px] left-8 h-[138px] w-[143px] max-lg:-top-[84px] max-lg:left-1/2 max-lg:h-[56px] max-lg:w-[59px] max-lg:-translate-x-1/2 max-lg:transform"
+    >
+      <Image
+        src={IMAGES.hocbaSpotlight.megaSpeaker}
+        alt="mega-speaker"
+        width={56}
+        height={54}
+        densities={[1, 2]}
+        sizes="(max-width: 768px) 59px, 143px"
+        class="absolute inset-0 h-auto w-auto animate-blinkOn object-cover"
+        loading="lazy"
+      />
+      <Image
+        src={IMAGES.hocbaSpotlight.megaSpeaker2}
+        alt="mega-speaker"
+        width={67}
+        height={64}
+        densities={[1, 2]}
+        sizes="(max-width: 768px) 59px, 143px"
+        class="absolute inset-0 h-auto w-auto animate-blinkOff object-cover"
+        loading="lazy"
+      />
+    </div>
+    <div class="relative mx-auto flex h-[130px] w-[948px] flex-col items-center max-lg:h-auto max-lg:w-full">
+      <div class="relative flex min-h-[88px] items-center justify-center px-[10px] max-lg:min-h-[48px] max-lg:w-full">
+        <p
+          class="absolute -top-[59px] z-50 flex h-[59px] items-center justify-center rounded-[10px] px-[30px] text-center text-3xl font-extrabold uppercase text-white max-lg:-top-9 max-lg:h-9 max-lg:text-sm"
+          style={{
+            background: 'linear-gradient(to right, #8A0101, #C0262C)',
+          }}
+        >
+          Học bá hân hạnh giới thiệu
+        </p>
+        <h2
+          class="relative bg-gradient-to-r from-[#8A0101] to-[#C0262C] bg-clip-text px-4 text-[43px] font-black uppercase text-transparent after:absolute after:bottom-0 after:left-1/2 after:h-[3px] after:w-[96%] after:-translate-x-1/2 after:bg-gradient-to-r after:from-[#8A0101] after:to-[#C0262C] after:content-[''] max-lg:px-0 max-lg:text-base"
+        >
+          Cố vấn chuyên môn quốc tế độc quyền
+        </h2>
+        <ArrowBorderIcon className="absolute left-0 top-0 max-lg:hidden" />
+        <ArrowBorderIcon className="absolute right-0 top-0 rotate-90 max-lg:hidden" />
+        <ArrowBorderIcon className="absolute bottom-0 left-0 -rotate-90 max-lg:hidden" />
+        <ArrowBorderIcon className="absolute bottom-0 right-0 rotate-180 max-lg:hidden" />
+        {/* Small */}
+        <ArrowBorderSmallIcon className="absolute left-0 top-0 lg:hidden" />
+        <ArrowBorderSmallIcon className="absolute right-0 top-0 rotate-90 lg:hidden" />
+        <ArrowBorderSmallIcon className="absolute bottom-0 left-0 -rotate-90 lg:hidden" />
+        <ArrowBorderSmallIcon className="absolute bottom-0 right-0 rotate-180 lg:hidden" />
+      </div>
+      <div class="relative">
+        <p
+          class="flex h-[60px] items-center justify-center rounded-[10px] px-[30px] text-center text-3xl font-black uppercase text-black max-lg:h-9 max-lg:rounded-none max-lg:px-2 max-lg:text-sm"
+          style={{
+            background: 'linear-gradient(to right, #FFDE9000, #FFDE90)',
+          }}
+        >
+          Từ chuyên gia hán ngữ hàng đầu thế giới
+        </p>
+        <div
+          class="absolute -right-[60px] top-2 h-14 w-10 max-lg:-right-[10px] max-lg:top-[34px] max-lg:h-7 max-lg:w-7"
+        >
+          <svg
+            width="9"
+            height="8"
+            viewBox="0 0 9 8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="absolute -right-4 top-2 animate-rotateStar max-lg:-right-1 max-lg:top-1 lg:size-4"
+          >
+            <path
+              d="M2.94356 4.17877L0.910185 1.84195L4.09627 2.02532L6.38888 0.0835088L6.24972 3.17802L8.19153 5.47063L5.18859 5.37569L2.85176 7.40907L2.94356 4.17877Z"
+              fill="#AF0002"></path>
+          </svg>
+
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="absolute bottom-0 left-0 animate-rotateStar lg:size-9"
+          >
+            <path
+              d="M5.82906 11.4239L0.632642 5.452L8.77486 5.92061L14.6338 0.958208L14.2781 8.86641L19.2405 14.7253L11.5663 14.4827L5.59445 19.6791L5.82906 11.4239Z"
+              fill="#AF0002"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="flex pt-12 max-lg:flex-col max-lg:pt-2">
+      <div class="relative flex-1 flex-shrink-0">
+        <Image
+          src={IMAGES.introduce.bao_zhang_he}
+          alt="Expert"
+          width={600}
+          height={449}
+          loading="lazy"
+          sizes="(max-width: 768px) 100vw, 600px"
+          class="object-cover max-lg:mx-auto"
+        />
+        <Image
+          src={IMAGES.hocbaSpotlight.star}
+          alt="star"
+          width={44}
+          height={44}
+          sizes="(max-width: 768px) 44px, 44px"
+          class="absolute bottom-[82px] left-5 h-auto w-auto object-cover max-lg:bottom-11 max-lg:left-3 max-lg:w-11"
+          loading="lazy"
+        />
+      </div>
+      <div class="w-[566px] max-lg:w-full">
+        <div class="group flex flex-col items-center">
+          <p
+            class="group-hover:shadow-customRed w-[429px] rounded-[30px] bg-gradient-to-r from-[#8A0101] to-[#C0262C] py-3 text-center text-3xl font-black uppercase text-white transition-all duration-300 group-hover:from-[#BA0000] group-hover:to-[#ED5157] group-hover:text-[34px] max-lg:w-[306px] max-lg:text-[22px] max-lg:group-hover:text-[26px]"
+          >
+            GS.Hà Bảo Chương
+          </p>
+          <div class="group mt-2 flex items-center gap-2">
+            <div class="relative flex size-[36px] items-center justify-center">
+              <svg
+                width="31"
+                height="30"
+                viewBox="0 0 31 30"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ease-in-out group-hover:rotate-180 group-hover:opacity-0"
+              >
+                <path
+                  d="M11.1063 10.5L15.6063 0L20.1063 10.875L30.2313 15.375L19.7313 19.875L15.2313 30L10.7313 19.875L0.231323 15.375L11.1063 10.5Z"
+                  fill="#AF0002"></path>
+              </svg>
+
+              <svg
+                width="33"
+                height="30"
+                viewBox="0 0 33 30"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100"
+              >
+                <g filter="url(#filter0_d_15_75)">
+                  <path
+                    d="M25.826 13.6706L33.2626 24.1005L20.222 22.0741L10.0107 29.1514L11.8186 16.4701L4.74124 6.25875L17.0633 7.84811L27.4932 0.411517L25.826 13.6706Z"
+                    fill="#E43234"></path>
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_d_15_75"
+                    x="0.741241"
+                    y="0.411514"
+                    width="36.5214"
+                    height="36.7399"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                    <feColorMatrix
+                      in="SourceAlpha"
+                      type="matrix"
+                      values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+                      result="hardAlpha"></feColorMatrix>
+                    <feOffset dy="4"></feOffset>
+                    <feGaussianBlur stdDeviation="2"></feGaussianBlur>
+                    <feComposite in2="hardAlpha" operator="out"></feComposite>
+                    <feColorMatrix
+                      type="matrix"
+                      values="0 0 0 0 0.769231 0 0 0 0 0.0258876 0 0 0 0 0.0258876 0 0 0 0.19 0"></feColorMatrix>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_15_75"></feBlend>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_15_75" result="shape"></feBlend>
+                  </filter>
+                </defs>
+              </svg>
+            </div>
+
+            <div
+              class="flex flex-col items-start transition-transform duration-300 ease-in-out group-hover:translate-x-2"
+            >
+              <p
+                class="bg-gradient-to-r from-[#8A0101] to-[#C0262C] bg-clip-text text-xl font-black text-transparent max-lg:text-sm"
+              >
+                PGS danh dự Đại học Holy Cross, Tiến sĩ
+              </p>
+              <p
+                class="bg-gradient-to-r from-[#8A0101] to-[#C0262C] bg-clip-text text-xl font-black text-transparent max-lg:text-sm"
+              >
+                Ngôn ngữ học - Đại học Bang Ohio, Hoa Kỳ
+              </p>
+            </div>
+          </div>
+        </div>
+        <ul class="mt-6 list-disc pl-5 text-justify font-semibold max-lg:mb-6 max-lg:px-4 max-lg:pl-9 max-lg:text-xs">
+          <li>Nguyên Giám đốc Chương trình tiếng Trung tại Đại học Harvard</li>
+          <li>Chủ tịch Hiệp hội Giáo viên Tiếng Trung tại Hoa Kỳ (CLTA): Nhiệm kỳ 2019–2020.</li>
+          <li>
+            Là đồng biên tập của cuốn Pedagogical Grammar and Grammar Pedagogy in Chinese as a Second Language (2022) –
+            công trình đầu tiên hệ thống hoá lý thuyết và thực tiễn ngữ pháp sư phạm trong giảng dạy tiếng Trung như
+            ngoại ngữ.
+          </li>
+          <li>
+            Đồng tác giả giáo trình The Routledge Course in Modern Mandarin Chinese – bộ giáo trình tiêu chuẩn được sử
+            dụng rộng rãi tại nhiều đại học ở Mỹ.
+          </li>
+          <li>
+            Thường xuyên là diễn giả chính tại các hội thảo quốc tế như ACTFL, CLTA, NECLTA..., nơi ông chia sẻ về ứng
+            dụng ngữ pháp nhận thức trong dạy tiếng Trung.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

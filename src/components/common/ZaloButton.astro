@@ -1,0 +1,71 @@
+---
+import { MessageIcon } from '@/components/common/icons';
+import { IMAGES } from '@/lib/constants/images';
+import { Image } from 'astro:assets';
+import { ChevronUp } from 'lucide-react';
+
+const isHskPage = Astro.url.pathname.startsWith('/khoa-hoc-hsk');
+const isChinesePage = Astro.url.pathname.startsWith('/tieng-trung-cho-nguoi-di-lam');
+const shouldShowFacebook = isHskPage || isChinesePage;
+
+let url = 'https://zalo.me/68362348417414118';
+if (isHskPage) url = 'https://m.me/hocbahsk';
+if (isChinesePage) url = 'https://m.me/hocbachinese';
+---
+
+<a
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="animate-zalo-pulse fixed bottom-5 right-5 z-30 flex h-14 w-[274px] items-center justify-center rounded-xl bg-white px-4 shadow-lg transition-transform duration-300 hover:scale-110 md:h-[70px]"
+>
+  {
+    shouldShowFacebook ? (
+      <MessageIcon className="size-5 text-white md:size-10" />
+    ) : (
+      <Image
+        src={IMAGES.zalo}
+        alt="Zalo"
+        width={46}
+        height={46}
+        loading="lazy"
+        class="size-8 object-cover md:size-[46px]"
+      />
+    )
+  }
+  <p class="ml-2 font-medium text-blue-600">Tư vấn miễn phí</p>
+  <ChevronUp className="ml-auto text-blue-600" />
+</a>
+
+<style>
+  @keyframes zalo-pulse-burst {
+    0% {
+      transform: scale(1);
+    }
+
+    6% {
+      transform: scale(1.08);
+    }
+
+    12% {
+      transform: scale(1);
+    }
+
+    18% {
+      transform: scale(1.08);
+    }
+
+    24% {
+      transform: scale(1);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .animate-zalo-pulse {
+    animation: zalo-pulse-burst 2s ease-in-out infinite;
+    will-change: transform;
+  }
+</style>

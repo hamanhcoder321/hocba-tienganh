@@ -1,0 +1,104 @@
+---
+import { IMAGES } from '@/lib/constants/images';
+import { getImage } from 'astro:assets';
+import {
+  TestimonialSlider,
+  type TestimonialItem,
+} from '@/components/features/home/student-success/TestimonialSlider.tsx';
+
+const RAW_TESTIMONIALS: Omit<TestimonialItem, 'avatar'>[] = [
+  {
+    name: 'Hoàng Tú Anh',
+    role: 'Nhân viên văn phòng',
+    location: 'TP HCM',
+    rating: 5,
+    hskLevel: 'HSK 4',
+    timeSpent: 'Sau 9 tháng',
+    content:
+      'Review qua 2 khoá H2-3 rồi lên H4 nha. Mình dân tiếng Anh qua học tiếng Trung. Lúc đầu mấy bạn tư vấn bên Học Bá này mình thấy oke, hỏi han đầy đủ rõ ràng mục tiêu học học rõ ràng... Mình cũng có thử qua 1 số hệ thống LMS khác của tiếng Anh thì bên này làm rất oke, giống form của nước ngoài. Cho nội dung trên LS để HV học trước, sau đó lên lớp thì GV phân tích, sau đó thì mình sẽ làm bt, bt thì có bt trong sách và bt mở rộng từ vựng và ngữ pháp 3.0 tự soạn. Nếu HV không làm bt thì có Mentor lắp nhắc làm, không làm bị phạt... Học ở đây rất hiệu quả!',
+    likes: 348,
+    shares: 67,
+  },
+  {
+    name: 'Lê Thương',
+    role: 'Học sinh lớp 12',
+    location: 'Hà Nội',
+    rating: 5,
+    hskLevel: 'HSK3',
+    timeSpent: 'Từ mất gốc',
+    content:
+      'Mình đang học lớp HSK3 cô Tâm học vui lắm ạ, nhma cnhan học Tiếng Trung siêu khó nha xdinh là áp lực nếu lười :))) còn mình học thì có mentor nhắc bài với chấm chữa bt siêu kĩ nên học thấy tiến bộ đều rõ nha. Học phí k rẻ cũng k đắt mà so với thị trg là xứng đáng, highly rcm nhaaaa bác ơi',
+    likes: 128,
+    shares: 23,
+  },
+  {
+    name: 'Tiến Vũ',
+    role: 'Nhân viên IT ',
+    location: 'Đà Nẵng',
+    rating: 5,
+    hskLevel: 'HSK 6',
+    timeSpent: 'Sau 7+ tháng',
+    content:
+      'Mình đã đi làm nên quỹ thời gian hạn chế. Tình cờ biết đến Học Bá có lớp online 100% thời gian linh động nên đăng ký học luôn. Mình học H6 trong thời gian cam kết 6 tháng của trung tâm cùng với ctrinh H6 học 100% với giáo viên bản xứ .Ở đây cách học Project Based Learning mình thấy hiệu quả, học qua project nên dễ hiểu, áp dụng nhanh, dù kiến thức HSK6 khá nặng & khó.Giảng viên bản xứ cực kỳ nhiệt tình, theo sát từng buổi, giúp mình tiến bộ rõ rệt Kết quả là mình đỗ HSK6 đợt thi tháng 9 / 2025. Rất cảm ơn trung tâm và cô Junchi đã support hết mình.',
+    likes: 298,
+    shares: 68,
+  },
+];
+
+const AVATAR_IMAGES = [IMAGES.home.HoangTuAnh, IMAGES.home.LeThuong, IMAGES.home.TienVu];
+
+const optimizedTestimonials: TestimonialItem[] = await Promise.all(
+  RAW_TESTIMONIALS.map(async (item, index) => {
+    const baseImage = AVATAR_IMAGES[index];
+    const optimized = await getImage({
+      src: baseImage,
+      width: 150,
+      height: 150,
+      format: 'webp',
+      densities: [1, 2],
+    });
+    return {
+      ...item,
+      avatar: optimized.src,
+    };
+  }),
+);
+---
+
+<section id="student-experience" class="relative overflow-hidden bg-white pb-10 pt-0 md:pb-20">
+  {/* Decorative Grid Patterns */}
+  <div
+    class="absolute left-[-16px] top-[-15px] z-0 h-[106px] w-[106px] opacity-90 md:left-[-5%] md:top-[10%] md:size-[400px] xl:left-[2%] xl:top-[20%]"
+  >
+    <img src={IMAGES.khoaChinese.gridRedChinese.src} alt="" class="h-full w-full object-contain" />
+  </div>
+  <div
+    class="absolute -right-[5%] bottom-[2%] z-0 hidden size-[200px] opacity-90 md:bottom-0 md:block md:size-[400px] xl:bottom-[2%] xl:right-[2%]"
+  >
+    <img src={IMAGES.khoaChinese.gridRedChinese.src} alt="" class="h-full w-full object-contain" />
+  </div>
+
+  <div class="container relative z-10 mx-auto px-4 xl:max-w-[1224px] 3xl:max-w-[1440px]">
+    <div class="mb-4 flex flex-col items-center text-center md:mb-10">
+      <div class="relative flex items-center justify-center gap-4">
+        <h2
+          class="font-svn-gilroy bg-gradient-to-r from-[#7D1900] to-[#B90E0A] bg-clip-text text-[18px] font-[1000] uppercase leading-[24.65px] text-transparent md:text-[34px] md:leading-[50px] lg:text-[42px] lg:leading-[64px]"
+        >
+          UY TÍN ĐẾN TỪ TRẢI NGHIỆM THẬT<br />
+          CỦA HỌC VIÊN HỌC BÁ
+        </h2>
+        <div class="absolute -right-2 top-[25px] md:-right-20 md:top-1 lg:-right-28 lg:top-2">
+          <img
+            src={IMAGES.schedule.chatPencil.src}
+            alt="Biểu tượng phản hồi học viên Học Bá Education"
+            class="h-[33px] w-[33px] md:h-[55px] md:w-[55px] lg:h-[75px] lg:w-[75px]"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="py-2">
+      <TestimonialSlider items={optimizedTestimonials} client:visible />
+    </div>
+  </div>
+</section>

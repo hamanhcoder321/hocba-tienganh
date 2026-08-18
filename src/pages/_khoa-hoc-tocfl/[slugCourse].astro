@@ -1,0 +1,438 @@
+---
+import {
+  CourseDetailsContent,
+  CourseDetailsDocument,
+  CourseDetailsFocus,
+  CourseDetailsTarget,
+} from '@/components/common/icons';
+import JsonLd from '@/components/common/JsonLd.astro';
+import RegisterStudyModal from '@/components/common/RegisterStudyModal';
+import SimpleFormRegister from '@/components/common/SimpleFormRegister.astro';
+import CourseSchedule from '@/components/features/course/course-detail/CourseSchedule';
+import CoursesTeachers from '@/components/features/course/course-detail/CoursesTeachers';
+import CourseRegistrationForm from '@/components/features/course/CourseRegistrationForm';
+import CourseSectionAccordion from '@/components/features/course/CourseSectionAccordion';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { HOME_CATEGORIES } from '@/lib/constants/content';
+import { CATEGORY_TYPES } from '@/lib/constants/enums';
+import { IMAGES } from '@/lib/constants/images';
+import { fetchClassesList, fetchCourseDetail, fetchCourseList, fetchTeacherList } from '@/lib/static-data';
+import { getImage, Image } from 'astro:assets';
+import { CalendarCheck, Clock, MonitorSmartphone } from 'lucide-react';
+import type { Graph } from 'schema-dts';
+
+const { slugCourse } = Astro.params;
+
+// Fetch course detail by slug
+const course = await fetchCourseDetail(slugCourse || '');
+
+if (!slugCourse || !course) {
+  Astro.response.status = 404;
+  Astro.response.statusText = 'Not Found';
+  return Astro.rewrite('/404');
+}
+
+const baseUrl = import.meta.env.PUBLIC_CLIENT_URL ?? 'https://hoc-ba.edu.vn';
+const url = `${baseUrl}/khoa-hoc-hsk/${course?.slug}`;
+
+const title = course?.meta_title || `${course?.name} | Học Bá Education`;
+const description = course?.meta_description || `Khoá học ${course?.name} tại Tiếng Trung Học Bá`;
+const keywords =
+  course && course?.meta_keyword
+    ? course?.meta_keyword.split(',').map((k) => k.trim())
+    : ['tiếng trung', 'HSK', course ? course.name : ''];
+
+// Find theme color based on category
+const themeColor = HOME_CATEGORIES.find((category) => category.id === CATEGORY_TYPES.TOCFL) || HOME_CATEGORIES[0]; // Default to HSK theme
+
+// Get all courses in the same category
+let coursesInCategory: TCourse[] = [];
+const coursesData = await fetchCourseList({
+  page: 0,
+  limit: 100,
+  queryParams: `category_id=${course?.category_id}`,
+});
+
+if (coursesData?.list) {
+  coursesInCategory = coursesData.list as TCourse[];
+}
+
+const categoryName = themeColor.title || 'HSK';
+const categoryLink = themeColor.link;
+
+// Fetch teachers
+let dataTeacher: TLecturer[] = [];
+const teachersData = await fetchTeacherList({ page: 0, limit: 20 });
+
+if (teachersData?.list) {
+  dataTeacher = teachersData.list as TLecturer[];
+}
+
+// Fetch classes schedule
+let classesSchedule: TResponsePagination<TClasses[]> | null = null;
+const today = new Date();
+const schedulesData = await fetchClassesList({
+  limit: 10,
+  page: 1,
+  month: today.getMonth() + 1,
+  year: today.getFullYear(),
+  course_id: course?.id,
+  start_date_order: 'asc',
+});
+
+if (schedulesData) {
+  classesSchedule = schedulesData as TResponsePagination<TClasses[]>;
+}
+
+// Tối ưu hóa mảng giáo viên
+const optimizedTeachers: TLecturer[] = await Promise.all(
+  dataTeacher.map(async (teacher) => {
+    const AVATAR_WIDTH = 296;
+    const AVATAR_HEIGHT = 584;
+    const ALBUM_WIDTH = 600;
+    const ALBUM_HEIGHT = 400;
+    // 1. Tối ưu Avatar chính
+    const rawAvatar = teacher?.avatar_url?.file_path || IMAGES.course?.profilePic;
+
+    const optimizedAvatar = await getImage({
+      src: rawAvatar,
+      width: AVATAR_WIDTH,
+      height: AVATAR_HEIGHT,
+      format: 'webp',
+      quality: 80,
+    });
+
+    // 2. Tối ưu mảng Album
+    let optimizedAlbum: string[] = [];
+    if (Array.isArray(teacher.album_url)) {
+      optimizedAlbum = await Promise.all(
+        teacher.album_url.map(async (img) => {
+          const imgRes = await getImage({
+            src: img.file_path,
+            width: ALBUM_WIDTH,
+            height: ALBUM_HEIGHT,
+            format: 'webp',
+            quality: 75,
+          });
+          return imgRes.src;
+        }),
+      );
+    }
+
+    return {
+      ...teacher,
+      optimizedAvatar: optimizedAvatar.src,
+      optimizedAlbum: optimizedAlbum,
+    };
+  }),
+);
+
+const optimizedProfilePic = await getImage({
+  src: IMAGES.course?.profilePic,
+  format: 'webp',
+});
+
+const imagesCourseTeacher = {
+  profilePic: optimizedProfilePic.src,
+};
+
+// ==========================
+// 3. JSON-LD (SEO)
+// ==========================
+const jsonLd: Graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Trang chủ',
+          item: baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Khóa học TOCFL',
+          item: `${baseUrl}/khoa-hoc-tocfl`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: course?.name,
+          item: `${baseUrl}/khoa-hoc-tocfl/${course?.slug}`,
+        },
+      ],
+    },
+    {
+      '@type': 'Course',
+      name: `${course?.name}`,
+      description: description,
+      provider: {
+        '@type': 'Organization',
+        name: 'Học Bá Education',
+        sameAs: baseUrl,
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout {title} {description} {keywords} image={course?.cover_image_link || course?.thumbnail_link}>
+  <JsonLd data={jsonLd} />
+
+  <div class="mx-auto w-full max-w-[1920px] bg-white">
+    <section class="font-primary w-full">
+      <div class="mx-auto w-full max-w-[1920px]">
+        <div class="flex w-full flex-col-reverse justify-between lg:grid lg:grid-cols-5">
+          <div class={`3xl:p-32 col-span-3 rounded-2xl ${themeColor.secondBg} p-4 lg:p-12 xl:p-20`}>
+            <div
+              class={`w-[120px] rounded-full rounded-bl-none ${themeColor.bgRoadmap} bg-opacity-80 px-4 py-2 text-center text-lg font-medium text-white`}
+            >
+              Khóa học
+            </div>
+            <h1
+              style={{
+                WebkitTextStroke: '3px ' + themeColor.color,
+                color: 'white',
+              }}
+              class="text-border-black text-[36px] font-bold uppercase leading-relaxed text-white lg:text-[56px]"
+            >
+              {course?.name} - {categoryName}
+            </h1>
+            <div class="leading-relaxed text-black dark:text-white">
+              {course?.short_description}
+            </div>
+
+            <div class="mt-8 flex w-full flex-wrap gap-4">
+              {
+                coursesInCategory?.map((item) =>
+                  item.id === course?.id ? (
+                    <div
+                      style={{ borderColor: themeColor.color }}
+                      class={`cursor-pointer text-nowrap rounded-full border-[2px] ${themeColor.bgRoadmap} px-2 py-1 text-white`}
+                    >
+                      {item.name}
+                    </div>
+                  ) : (
+                    <a href={`${categoryLink}/${item.slug}`}>
+                      <div class="rounded-full bg-white">
+                        <div
+                          style={{
+                            borderColor: themeColor.color,
+                            color: themeColor.color,
+                          }}
+                          class={`cursor-pointer text-nowrap rounded-full border-[2px] ${themeColor.bgRoadmap} bg-opacity-5 px-2 py-1 hover:bg-opacity-50`}
+                        >
+                          {item.name}
+                        </div>
+                      </div>
+                    </a>
+                  ),
+                )
+              }
+            </div>
+            <div class="mt-8">
+            <RegisterStudyModal
+                client:load
+                currentPath={Astro.url.pathname}
+                buttonText="Đăng ký tư vấn"
+                buttonClassName={`rounded-full ${themeColor.bgRoadmap} px-4 py-2 font-semibold text-white`}
+              />
+            </div>
+            <div class="mt-8 flex items-center">
+              <div class="flex items-center -space-x-1.5 md:-space-x-2">
+                <Image
+                  alt="Student avatar"
+                  loading="lazy"
+                  width={40}
+                  height={40}
+                  class="size-10 min-w-10 rounded-full object-cover text-transparent shadow-md"
+                  src={IMAGES.course?.avtRoadmap1}
+                />
+                <Image
+                  alt="Student avatar"
+                  loading="lazy"
+                  width={40}
+                  height={40}
+                  class="size-10 min-w-10 rounded-full object-cover text-transparent shadow-md"
+                  src={IMAGES.course?.avtRoadmap2}
+                />
+                <Image
+                  alt="Student avatar"
+                  loading="lazy"
+                  width={40}
+                  height={40}
+                  class="size-10 min-w-10 rounded-full object-cover text-transparent shadow-md"
+                  src={IMAGES.course?.avtRoadmap3}
+                />
+                <Image
+                  alt=""
+                  loading="lazy"
+                  width="40"
+                  height="40"
+                  decoding="async"
+                  data-nimg="1"
+                  class="size-10 min-w-10 rounded-full object-cover text-transparent shadow-md"
+                  src={IMAGES.studentFeedback.avatar6}
+                />
+              </div>
+              <span class="ml-2">Hơn 10.000 người đã học</span>
+            </div>
+          </div>
+          <div
+            class={`${themeColor.bgRoadmap} relative flex h-full min-h-[380px] w-full items-end justify-center overflow-hidden rounded-2xl border-[2px] lg:col-span-2`}
+          >
+            <Image
+              width={0}
+              height={0}
+              class="absolute z-10 h-auto w-full"
+              src={IMAGES.course?.deepMatrix}
+              alt="Background pattern"
+            />
+            <Image
+              class="bottom-0 z-20 h-full w-auto object-cover lg:absolute"
+              width={0}
+              height={0}
+              sizes="100vw"
+              src={IMAGES.course?.roadmapBanner}
+              alt="Course banner"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class={'bg-background container m-auto px-4 py-[10px]'}>
+      <Breadcrumb client:load>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/" className="hover:underline"> Trang chủ </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href={categoryLink} className="hover:underline">
+              {themeColor.title}
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>{course?.name}</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+    </div>
+
+    <section class="container">
+      <div class="xl:w-wrapSmall 3xl:w-wrapBox m-auto">
+        <div class="relative flex w-full flex-wrap gap-y-5 px-4 py-10">
+          <div class="w-full flex-1 space-y-8 lg:w-7/12">
+            {
+              course?.description ? (
+                <div>
+                  <div class="flex items-center gap-2 pb-4">
+                    <CourseDetailsFocus className="h-14 w-14" />
+                    <h2>
+                      <span class="text-xl font-medium md:text-2xl">
+                        Khóa học này <span class="text-[#6B0806]">dành cho ai</span>
+                      </span>
+                    </h2>
+                  </div>
+                  <div class="text-base leading-[1.8] md:px-4 xl:pl-8 xl:pr-0" set:html={course?.description} />
+                </div>
+              ) : null
+            }
+            {
+              course?.targets ? (
+                <div>
+                  <div class="flex items-center gap-2 pb-4">
+                    <CourseDetailsTarget />
+                    <h2 class="text-xl font-medium md:text-2xl">
+                      <span class="text-[#6B0806]">Mục tiêu</span> khóa học
+                    </h2>
+                  </div>
+                  <div
+                    class="whitespace-break-spaces text-wrap leading-8 md:px-4 xl:pl-8 xl:pr-0"
+                    set:html={course?.targets}
+                  />
+                </div>
+              ) : null
+            }
+            {
+              course?.Section ? (
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2 pb-4">
+                    <CourseDetailsContent />
+                    <h2 class="text-xl font-medium md:text-2xl">
+                      <span class="text-[#6B0806]">Nội dung </span>chương trình
+                    </h2>
+                  </div>
+                  <CourseSectionAccordion sections={course?.Section} client:load />
+                </div>
+              ) : null
+            }
+            {
+              course?.documents ? (
+                <div class="space-y-2">
+                  <div class="flex items-center gap-2 pb-4">
+                    <CourseDetailsDocument />
+                    <h2 class="text-xl font-medium md:text-2xl">
+                      <span class="text-[#6B0806]">Giáo trình & Tài liệu</span>
+                      khóa học
+                    </h2>
+                  </div>
+                  <div
+                    class="whitespace-break-spaces text-wrap leading-8 md:px-4 xl:pl-8 xl:pr-0"
+                    set:html={course?.documents}
+                  />
+                </div>
+              ) : null
+            }
+          </div>
+          <div class="mb-10 w-full lg:mb-0 lg:w-5/12 lg:pl-8">
+            <div class="sticky top-[160px] z-10 w-full rounded-2xl border p-4 sm:p-6 3xl:top-[190px]">
+              <div class="mb-4 space-y-2 border-b pb-4">
+                <span class="mb-4 text-xl font-bold">Thông tin khóa học</span>
+                <div class="flex gap-2">
+                  <CalendarCheck />
+                  <p class="text-nowrap">Thời lượng:</p>
+                  <p class="font-bold">{course?.duration || 0} buổi</p>
+                </div>
+                <div class="flex gap-2">
+                  <Clock />
+                  <p class="text-nowrap">Giờ học:</p>
+                  <p class="font-bold">
+                    {course?.study_time} phút/buổi (Tổng{' '}
+                    {(Number(course?.study_time || 0) * Number(course?.duration) || 0) / 60}{' '}
+                    giờ)
+                  </p>
+                </div>
+                <div class="flex gap-2">
+                  <MonitorSmartphone />
+                  <p class="text-nowrap">Hình thức:</p>
+                  <p class="font-bold">Online</p>
+                </div>
+              </div>
+              <CourseRegistrationForm client:load courseName={course?.name as string} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <CoursesTeachers client:visible dataTeacher={optimizedTeachers} images={imagesCourseTeacher} />
+
+  <CourseSchedule client:visible id={course?.id as number} initialData={classesSchedule} />
+
+  <SimpleFormRegister dataInput={`Khóa học ${course?.name}`} isSimpleForm />
+</BaseLayout>

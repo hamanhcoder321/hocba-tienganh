@@ -1,0 +1,555 @@
+---
+import JsonLd from '@/components/common/JsonLd.astro';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { baseUrl } from '@/lib/constants/api';
+import { CONTACTS } from '@/lib/constants/content';
+import type { Graph } from 'schema-dts';
+
+// export const prerender = true;
+
+const data = [
+  {
+    title: 'Giới thiệu chung',
+    content: [
+      'Chính sách Bản quyền và Quyền sở hữu trí tuệ này được xây dựng nhằm bảo vệ giá trị nội dung, thương hiệu và tài sản trí tuệ thuộc sở hữu của Học Bá Education. Mục đích của trang chính sách là thông tin rõ ràng đến người dùng, khách truy cập và các bên liên quan về cách thức Học Bá Education quản lý, bảo hộ và xử lý các vấn đề liên quan đến bản quyền.',
+      'Học Bá Education cam kết bảo vệ toàn bộ quyền sở hữu trí tuệ đối với các nội dung được tạo ra và cung cấp trên hệ thống của mình, đồng thời tôn trọng quyền của các bên thứ ba khi có hợp tác hoặc sử dụng nội dung được cấp phép.',
+    ],
+  },
+  {
+    title: 'Đối tượng áp dụng',
+    content: ['Chính sách này áp dụng đối với:'],
+    list: [
+      'Người truy cập vào website https://hoc-ba.edu.vn/ hoặc các nền tảng trực tuyến của Học Bá.',
+      'Học viên đang tham gia khóa học tại Học Bá Education.',
+      'Bên thứ ba có sử dụng, khai thác hoặc tiếp cận nội dung thuộc Học Bá.',
+      'Bất kỳ cá nhân hoặc tổ chức nào tải xuống, chia sẻ, sao chép hoặc sử dụng nội dung có trên website hoặc tài liệu của Học Bá Education.',
+    ],
+    footer: ['Tất cả đối tượng trên phải tuân thủ đầy đủ các quy định được nêu trong chính sách này.'],
+  },
+  {
+    title: 'Quyền sở hữu nội dung',
+    sections: [
+      {
+        subtitle: 'Các loại nội dung được bảo hộ',
+        content: [
+          'Tất cả nội dung do Học Bá Education sản xuất, đăng tải hoặc phân phối dưới bất kỳ hình thức nào đều thuộc phạm vi được bảo vệ theo quy định pháp luật về Sở hữu trí tuệ. Các nội dung này bao gồm nhưng không giới hạn:',
+        ],
+        list: [
+          'Bài viết, bài giảng, nội dung học thuật.',
+          'Tài liệu học tập: ebook, slide, đề thi, checklist, video bài giảng.',
+          'Hình ảnh, đồ họa, infographic.',
+          'Video, audio.',
+          'Giao diện website, nội dung thiết kế.',
+          'Phần mềm, hệ thống học trực tuyến (LMS) và các tính năng đi kèm.',
+          'Logo, tên thương hiệu, khẩu hiệu (slogan), nhận diện thương hiệu.',
+        ],
+      },
+      {
+        subtitle: 'Chủ sở hữu bản quyền',
+        content: [
+          'Trừ khi có ghi chú khác, **Học Bá Education là chủ sở hữu toàn bộ bản quyền và quyền sở hữu trí tuệ** đối với các nội dung được đăng tải trên website và các kênh truyền thông chính thức của Học Bá.',
+          'Trong trường hợp nội dung do đối tác, giảng viên hoặc bên thứ ba cung cấp, Học Bá Education cam kết sử dụng theo đúng thỏa thuận, đồng thời thực hiện đầy đủ các yêu cầu về bản quyền của các bên liên quan.',
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Quy định về việc sao chép, sử dụng nội dung',
+    sections: [
+      {
+        subtitle: 'Các hành vi được phép',
+        content: ['Người dùng được phép:'],
+        list: [
+          'Xem, đọc và sử dụng nội dung phục vụ **nhu cầu cá nhân, phi thương mại.**',
+          'Trích dẫn lại nội dung trong phạm vi hợp lý với điều kiện **ghi rõ nguồn Học Bá Education.**',
+        ],
+      },
+      {
+        subtitle: 'Các hành vi không được phép',
+        content: [
+          'Người dùng **không được** thực hiện các hành vi sau nếu không có sự chấp thuận bằng văn bản của Học Bá:',
+        ],
+        list: [
+          'Sao chép, sửa đổi, phân phối, xuất bản hoặc khai thác nội dung vì mục đích thương mại.',
+          'Tải xuống và chia sẻ lại tài liệu học tập cho bên thứ ba.',
+          'Tự ý biên soạn lại tài liệu, chuyển thể, chỉnh sửa hoặc tái xuất bản dưới danh nghĩa khác.',
+          'Sử dụng trái phép logo, thương hiệu hoặc hình ảnh nhận diện của Học Bá.',
+          'Đăng tải lại nội dung lên website, mạng xã hội, diễn đàn hoặc nền tảng khác mà không ghi nguồn hoặc không được cấp phép.',
+          'Sử dụng nội dung nhằm mục đích cạnh tranh không lành mạnh, gây nhầm lẫn hoặc xuyên tạc thương hiệu Học Bá.',
+        ],
+      },
+      {
+        subtitle: 'Hướng dẫn xin phép sử dụng nội dung',
+        content: [
+          'Nếu người dùng hoặc tổ chức muốn sử dụng bất kỳ nội dung nào của Học Bá Education ngoài phạm vi cho phép, vui lòng liên hệ qua email hoặc hotline ở cuối trang để được xem xét và cấp phép (nếu phù hợp).',
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Xử lý vi phạm bản quyền',
+    sections: [
+      {
+        subtitle: 'Cách thức thông báo vi phạm',
+        content: [
+          'Nếu phát hiện nội dung thuộc sở hữu của Học Bá Education bị sao chép, sử dụng sai mục đích hoặc bị vi phạm bản quyền, người dùng có thể thông báo cho chúng tôi qua:',
+        ],
+        list: [
+          'Email: **info@hoc-ba.edu.vn**',
+          'Hotline: **(+84) 0888 861 786**',
+          'Fanpage: Học Bá HSK hoặc Học Bá Chinese',
+        ],
+      },
+      {
+        subtitle: 'Cam kết xử lý',
+        content: ['Học Bá Education cam kết:'],
+        list: [
+          'Tiếp nhận, kiểm tra và phản hồi thông báo vi phạm trong thời gian sớm nhất.',
+          'Thực hiện các biện pháp yêu cầu gỡ bỏ, chấm dứt hoặc xử lý hành vi vi phạm.',
+          'Áp dụng các biện pháp pháp lý khi cần thiết để bảo vệ quyền lợi hợp pháp của Học Bá Education và đối tác liên quan.',
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Trách nhiệm của người dùng',
+    content: ['Người dùng có trách nhiệm:'],
+    list: [
+      'Tôn trọng quyền sở hữu trí tuệ của Học Bá Education và các bên thứ ba.',
+      'Không thực hiện các hành vi sao chép, chia sẻ, chỉnh sửa hoặc sử dụng nội dung trái phép.',
+      'Nhận thức rõ rằng mọi hành vi vi phạm bản quyền đều có thể bị xử lý theo quy định pháp luật.',
+      'Kiểm tra và đảm bảo tính hợp pháp khi trích dẫn hoặc sử dụng nội dung từ website của Học Bá.',
+      'Báo cáo cho Học Bá Education nếu phát hiện các trường hợp vi phạm bản quyền nghiêm trọng.',
+    ],
+  },
+  {
+    title: 'Cập nhật chính sách',
+    content: [
+      'Học Bá Education có thể điều chỉnh, bổ sung hoặc cập nhật Chính sách Bản quyền theo từng thời điểm để phù hợp với quy định pháp luật và nhu cầu thực tế.',
+    ],
+    list: [
+      'Mọi thay đổi sẽ được đăng tải trên website **https://hoc-ba.edu.vn/**.',
+      'Chính sách có hiệu lực ngay tại thời điểm được công bố.',
+      'Người dùng tiếp tục sử dụng website nghĩa là đã chấp nhận các quy định trong phiên bản mới.',
+    ],
+  },
+  {
+    title: 'Thông tin liên hệ',
+    content: [
+      'Nếu bạn có nhu cầu xin phép sử dụng nội dung, báo cáo vi phạm bản quyền hoặc cần hỗ trợ liên quan đến quyền sở hữu trí tuệ, vui lòng liên hệ:',
+    ],
+    companyInfo: ['CÔNG TY CỔ PHẦN GIÁO DỤC & ĐÀO TẠO HỌC BÁ', 'Mã số thuế: 0110883975'],
+    address: [`Địa chỉ: ${CONTACTS.address.label}`, `(Địa điểm đào tạo: ${CONTACTS.address.label}`],
+    contacts: [
+      { label: 'Website', value: CONTACTS.linkWeb },
+      { label: 'Email', value: CONTACTS.email },
+      { label: 'Hotline', value: CONTACTS.hotline },
+    ],
+    socialLinks: [
+      { label: 'Học Bá HSK', value: CONTACTS.facebookHskUrl },
+      {
+        label: 'Học Bá Chinese',
+        value: CONTACTS.facebookChineseUrl,
+      },
+      { label: 'TikTok', value: CONTACTS.tiktokUrl },
+      { label: 'Instagram', value: CONTACTS.igUrl },
+    ],
+    footer: [
+      'Chúng tôi luôn sẵn sàng hỗ trợ, giải đáp và xử lý các vấn đề liên quan đến bản quyền một cách nghiêm túc và minh bạch.',
+    ],
+  },
+];
+
+const jsonLd: Graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Trang chủ',
+          item: baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Chính sách bản quyền',
+          item: `${baseUrl}/chinh-sach-ban-quyen`,
+        },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout>
+  <JsonLd data={jsonLd} />
+  <div>
+    <div class="container px-4 pb-8 text-black">
+      <div class="z-10 -mx-4 bg-transparent px-4 pb-4 pt-8">
+        <Breadcrumb className="container px-4 md:px-0">
+          <BreadcrumbList className="text-foreground text-xs md:text-lg">
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <a href="/" class={'hover:underline hover:text-primary'}> Trang chủ </a>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Chính sách bản quyền</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+
+        <nav class="mt-2 overflow-x-auto border-b border-gray-200 pb-2 lg:hidden">
+          <ul class="flex min-w-max gap-1">
+            {
+              data.map((item, i) => (
+                <li>
+                  <a
+                    href={`#section-${i}`}
+                    class="toc-link hover:border-primary/40 block whitespace-nowrap rounded-full border border-gray-200 px-3 py-1.5 text-xs font-medium text-gray-600 transition-colors hover:text-primary"
+                    data-section={`section-${i}`}
+                  >
+                    {item.title}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+
+      <h1 class="mb-6 mt-4 text-center text-2xl font-bold uppercase">Chính sách bản quyền</h1>
+
+      <div class="flex gap-8">
+        <aside class="hidden w-72 flex-shrink-0 lg:block">
+          <nav
+            class="sticky top-[112px] max-h-[calc(100vh-150px)] overflow-y-auto rounded-xl border border-gray-200 p-3"
+          >
+            <p class="mb-2 px-2 text-[11px] font-semibold uppercase tracking-widest text-gray-400">Nội dung</p>
+            <ul class="space-y-0.5">
+              {
+                data.map((item, i) => (
+                  <li>
+                    <a
+                      href={`#section-${i}`}
+                      class="toc-link hover:bg-primary/5 block rounded-lg px-2 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:text-primary"
+                      data-section={`section-${i}`}
+                    >
+                      {item.title}
+                    </a>
+                    {item.sections && (
+                      <ul class="mb-1 ml-2 mt-0.5 space-y-0.5 border-l-2 border-gray-100 pl-3">
+                        {item.sections.map((sub: any, j: number) => (
+                          <li>
+                            <a
+                              href={`#section-${i}-sub-${j}`}
+                              class="toc-link hover:bg-primary/5 block rounded-lg px-2 py-1 text-xs text-gray-500 transition-colors hover:text-primary"
+                              data-section={`section-${i}-sub-${j}`}
+                            >
+                              {sub.subtitle}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
+        </aside>
+
+        <div class="min-w-0 flex-1">
+          {
+            data.map((item: any, i: number) => (
+              <div id={`section-${i}`} class="mb-8 scroll-mt-24">
+                <h2 class="mb-4 text-xl font-medium text-black dark:text-slate-300 md:text-2xl">{item.title}</h2>
+
+                {item.content &&
+                  item.content.map((text: string) => {
+                    let content = text.replace(
+                      /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/gi,
+                      '<a href="mailto:$1" class="text-primary hover:underline">$1</a>',
+                    );
+
+                    content = content.replace(
+                      /(\+?\d{1,3}[\s-]?\(?\d{1,4}\)?[\s-]?\d{3}[\s-]?\d{3,4})/g,
+                      '<a href="tel:$1" class="text-primary hover:underline">$1</a>',
+                    );
+
+                    if (text.includes('Tầng 2, Tòa nhà HH1 Imperia Plaza') || text.includes('360 Giải Phóng')) {
+                      content = content.replace(
+                        /(Tầng 2, Tòa nhà HH1 Imperia Plaza[^\.]*)/gi,
+                        '<a href="https://maps.app.goo.gl/kMGiEXyvfdGzYEVB8" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">$1</a>',
+                      );
+                    }
+
+                    return (
+                      <p class="mb-2 flex items-start space-x-2 pl-4 text-black">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="2"
+                          stroke="currentColor"
+                          aria-hidden="true"
+                          width="15"
+                          class="mt-1 flex-shrink-0"
+                        >
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                        </svg>
+                        <span set:html={content} />
+                      </p>
+                    );
+                  })}
+
+                {item.sections &&
+                  item.sections.map((section: any, j: number) => (
+                    <div id={`section-${i}-sub-${j}`} class="mb-4 scroll-mt-24">
+                      <h3 class="mb-3 pl-4 text-lg font-medium text-black dark:text-slate-300">{section.subtitle}</h3>
+                      {section.content &&
+                        section.content.map((text: string) => (
+                          <p class="mb-2 flex items-start space-x-2 pl-8 text-black">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke-width="2"
+                              stroke="currentColor"
+                              aria-hidden="true"
+                              width="15"
+                              class="mt-1 flex-shrink-0"
+                            >
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                            </svg>
+                            <span set:html={text} />
+                          </p>
+                        ))}
+                      {section.list && (
+                        <div class="pl-14">
+                          {section.list.map((listItem: string) => (
+                            <p class="mb-2 flex items-center space-x-2">
+                              <span class={'block size-[6px] rounded-full bg-black'} />
+                              <span set:html={listItem} />
+                            </p>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+
+                {item.list && (
+                  <div class="mb-3 pl-10">
+                    {item.list.map((listItem: string) => (
+                      <p class="mb-2 flex items-center space-x-2">
+                        <span class={'block size-[6px] rounded-full bg-black'} />
+                        <span set:html={listItem} />
+                      </p>
+                    ))}
+                  </div>
+                )}
+
+                {item.companyInfo && (
+                  <div class="mb-3 pl-4">
+                    {item.companyInfo.map((info: string) => (
+                      <p class="mb-2 flex items-start space-x-2">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="2"
+                          stroke="currentColor"
+                          aria-hidden="true"
+                          width="15"
+                          class="mt-1 flex-shrink-0"
+                        >
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                        </svg>
+                        <span class="font-medium">{info}</span>
+                      </p>
+                    ))}
+                  </div>
+                )}
+
+                {item.address && (
+                  <div class="mb-3 pl-4">
+                    {item.address.map((addr: string) => {
+                      let content = addr;
+                      if (addr.includes('Tầng 2, Tòa nhà HH1 Imperia Plaza') || addr.includes('360 Giải Phóng')) {
+                        content = addr.replace(
+                          /(Tầng 2, Tòa nhà HH1 Imperia Plaza[^)]*)/gi,
+                          '<a href="https://maps.app.goo.gl/kMGiEXyvfdGzYEVB8" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">$1</a>',
+                        );
+                      }
+                      return (
+                        <p class="mb-2 flex items-start space-x-2">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                            width="15"
+                            class="mt-1 flex-shrink-0"
+                          >
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                          </svg>
+                          <span set:html={content} />
+                        </p>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {item.contacts && (
+                  <div class="mb-3 pl-4">
+                    {item.contacts.map((contact: any) => {
+                      let value = contact.value;
+
+                      if (contact.label === 'Email') {
+                        value = `<a href="mailto:${contact.value}" class="text-primary hover:underline">${contact.value}</a>`;
+                      }
+
+                      if (contact.label === 'Hotline') {
+                        value = `<a href="tel:${contact.value}" class="text-primary hover:underline">${contact.value}</a>`;
+                      }
+
+                      if (contact.label === 'Website') {
+                        value = `<a href="${contact.value}" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">${contact.value}</a>`;
+                      }
+
+                      return (
+                        <p class="mb-2 flex items-start space-x-2">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                            width="15"
+                            class="mt-1 flex-shrink-0"
+                          >
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                          </svg>
+                          <span>
+                            <strong>{contact.label}:</strong> <span set:html={value} />
+                          </span>
+                        </p>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {item.socialLinks && (
+                  <div class="mb-3 pl-4">
+                    <p class="mb-2 flex items-start space-x-2 font-medium">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                        width="15"
+                        class="mt-1 flex-shrink-0"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                      </svg>
+                      <span>Fanpage:</span>
+                    </p>
+                    {item.socialLinks.map((link: any) => {
+                      const linkHtml = `<a href="${link.value}" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">${link.value}</a>`;
+
+                      return (
+                        <p class="mb-2 flex items-start space-x-2 pl-8">
+                          <span class={'mt-2 block size-[6px] rounded-full bg-black'} />
+                          <span>
+                            <strong>{link.label}:</strong> <span set:html={linkHtml} />
+                          </span>
+                        </p>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {item.footer &&
+                  item.footer.map((text: string) => (
+                    <p class="mb-3 flex items-start space-x-2 pl-4 text-black">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                        width="15"
+                        class="mt-1 flex-shrink-0"
+                      >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                      </svg>
+                      <span>{text}</span>
+                    </p>
+                  ))}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  .toc-link.active {
+    color: hsl(var(--primary));
+    background-color: hsl(var(--primary) / 0.08);
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  const tocLinks = document.querySelectorAll<HTMLAnchorElement>('.toc-link');
+
+  const allSectionIds: string[] = [];
+  document.querySelectorAll("[id^='section-']").forEach((el) => {
+    allSectionIds.push(el.id);
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach((link) => {
+            link.classList.remove('active');
+            if (link.dataset.section === entry.target.id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    },
+    { rootMargin: '-20% 0px -70% 0px', threshold: 0 },
+  );
+
+  allSectionIds.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+</script>

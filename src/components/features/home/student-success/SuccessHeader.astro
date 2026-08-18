@@ -1,0 +1,40 @@
+---
+import { IMAGES } from '@/lib/constants/images';
+import { Image } from 'astro:assets';
+import { Star } from 'lucide-react';
+import CommitmentBadge from '../ui/CommitmentBadge';
+---
+
+<div
+  class="container mx-auto mb-6 rounded-t-[24px] bg-gradient-to-b from-[#FFF7EF] to-[#FFFBF700] px-0 pt-8 md:mb-12 md:px-4 md:pt-10"
+>
+  <div class="flex flex-col items-center text-center">
+    <div class="mb-3 flex flex-row sm:items-center sm:gap-4 md:mb-6" data-animate="fade-up">
+      <div class="w-[60px] md:w-32">
+        <Image src={IMAGES.home.iconShot2} alt="Target Icon" class="h-auto w-full rotate-[270deg]" />
+      </div>
+      <h2 class="flex flex-col items-center md:items-start">
+        <p
+          class="bg-gradient-to-r from-[#7D1900] to-[#B90E0A] bg-clip-text text-lg font-black uppercase leading-tight text-transparent md:text-[24px] lg:text-[42px]"
+        >
+          Được tin tưởng & lựa chọn bởi
+        </p>
+        <p class="uppercase max-sm:px-5">
+          <CommitmentBadge className="mx-4 mt-2 text-[15px] font-bold md:mx-0 md:text-[32px]">
+            hàng chục nghìn học viên trên toàn quốc
+          </CommitmentBadge>
+        </p>
+      </h2>
+    </div>
+
+    <div class="flex max-w-3xl items-start gap-3 px-4 md:px-0" data-animate="fade-up">
+      <div class="mt-4 flex-shrink-0">
+        <Star className="size-4 text-[#373737] md:size-6" strokeWidth={3} />
+      </div>
+      <p class="max-w-[692px] text-xs font-medium leading-relaxed text-[#373737] md:text-xl">
+        Đây chính là sự ghi nhận quý giá nhất để Học Bá không ngừng cải tiến chương trình, phương pháp và trải nghiệm
+        học tập – giúp mỗi học viên học đúng hướng và tiến bộ rõ ràng.
+      </p>
+    </div>
+  </div>
+</div>

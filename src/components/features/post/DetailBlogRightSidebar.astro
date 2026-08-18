@@ -1,0 +1,43 @@
+---
+import { Image } from 'astro:assets';
+import { ChevronRight } from 'lucide-react';
+import { HOC_VIEN_DIEM_CAO_SLUG } from '@/lib/constants/content';
+
+const { recentBlogs, categorySlug }: { recentBlogs?: TBlogs[]; categorySlug?: string } = Astro.props;
+---
+
+<div class="w-full flex-shrink-0 xl:w-[300px]">
+  <div class="self-start xl:sticky xl:top-24">
+    <div class="flex items-center justify-between">
+      <div class="text-sm font-medium uppercase">Bài viết gần đây</div>
+      <a href={categorySlug === HOC_VIEN_DIEM_CAO_SLUG ? `/${HOC_VIEN_DIEM_CAO_SLUG}/chi-tiet` : `/${categorySlug}`} class="flex items-center text-xs text-blue-500">
+        <span>Tất cả bài viết</span>
+        <ChevronRight className="h-4 w-4" />
+      </a>
+    </div>
+
+    <div class="max-h-recent-blog mt-4 flex flex-col gap-3">
+      {
+        recentBlogs?.map((post) => (
+          <a href={`/${post?.BlogCategory?.slug}/${post.slug}`}>
+            <div class="mt-4 flex gap-2 first:mt-0">
+              <div class="w-[80px]">
+                <Image
+                  src={post?.thumbnail_link?.file_path || '/images/course_banner.avif'}
+                  alt={post?.thumbnail_link?.originalname || post.title || 'Blog thumbnail'}
+                  width={80}
+                  height={45}
+                  densities={[1, 2]}
+                  class="h-[45px] w-full cursor-pointer rounded-sm object-cover"
+                />
+              </div>
+              <div class="flex-1">
+                <div class="line-clamp-3 cursor-pointer text-sm duration-300 hover:text-blue-500">{post.title}</div>
+              </div>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</div>

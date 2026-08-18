@@ -1,0 +1,63 @@
+type TCourse = {
+  id: number;
+  name: string;
+  slug: string;
+  status: number;
+  duration: number;
+  study_time: number;
+  order: number;
+  short_description: string;
+  description: string;
+  private_status: boolean;
+  course_level: number;
+  is_free: boolean;
+  price: string;
+  payable_price: number;
+  discount_status: boolean;
+  discount_type: number;
+  discount_value: string;
+  thumbnail_link: string;
+  cover_image_link: string;
+  demo_video: null;
+  video_upload_source: number;
+  meta_title: string | null;
+  meta_keyword: string | null;
+  meta_description: string | null;
+  what_you_will_learn: string;
+  free_gift?: string;
+  requirments: string;
+  targets: string;
+  documents: string;
+  category_id: number;
+  sub_category_id: number;
+  instructorId: number;
+  created_at: string;
+  updated_at: string;
+  category: TBlogCategory;
+  User: TUserBase;
+  Section: TCourseSection[];
+  lession_count?: number;
+  average_rating?: number;
+};
+type TCourseSection = {
+  id: number;
+  title: string;
+  description: string;
+  course_id: number;
+  createed_at: string;
+  updated_at: string;
+  Lesson: TCourseSectionLesson[];
+};
+type TCourseSectionLesson = {
+  id: number;
+  title: string;
+  description: string;
+};
+
+type TRoadmapCourse = {
+  id: string;
+  name: string;
+  slug: string;
+  content: string;
+  dataResults?: any[];
+};

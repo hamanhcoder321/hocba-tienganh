@@ -1,0 +1,53 @@
+---
+import SimpleFormRegister from '@/components/common/SimpleFormRegister.astro';
+import FeaturedEvents from '@/components/features/home/news-events/FeaturedEvents.tsx';
+import NewsHero from '@/components/features/home/news-events/NewsHero.astro';
+import OtherNews from '@/components/features/home/news-events/OtherNews.astro';
+import WorkshopEvents from '@/components/features/home/news-events/WorkshopEvents.tsx';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/common/JsonLd.astro';
+import type { Graph } from 'schema-dts';
+
+const title = "Tin tức & Sự kiện";
+const description = "Cập nhật những tin tức mới nhất, sự kiện giáo dục tiêu biểu và các buổi Workshop bổ ích tại Học Bá Education. Nơi chia sẻ kiến thức và hành trình chinh phục tiếng Trung.";
+
+const baseUrl = import.meta.env.PUBLIC_CLIENT_URL ?? 'https://hoc-ba.edu.vn';
+
+const jsonLd: Graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Trang chủ',
+          item: baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Tin tức & sự kiện',
+          item: `${baseUrl}/tin-tuc-su-kien`,
+        },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout 
+  {title}
+  {description}
+  disableDefaultSchema={false}
+>
+  <JsonLd data={jsonLd} />
+  <main class="mx-auto max-w-[1920px] overflow-hidden bg-white font-gilroy">
+    <NewsHero />
+    <FeaturedEvents client:load />
+    <WorkshopEvents client:load />
+    <OtherNews />
+    <SimpleFormRegister dataInput="Tin tức & sự kiện" isSimpleForm />
+  </main>
+</BaseLayout>

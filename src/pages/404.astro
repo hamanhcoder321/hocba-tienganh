@@ -1,0 +1,37 @@
+---
+export const prerender = false;
+Astro.response.status = 404;
+Astro.response.statusText = 'Not Found';
+import { Button } from '@/components/ui/button';
+import { IMAGES } from '@/lib/constants/images';
+import '@/styles/globals.css';
+import { Image } from 'astro:assets';
+---
+
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Không tìm thấy trang</title>
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+  <body class="h-screen font-gilroy antialiased">
+    <main class="flex h-full items-center justify-center bg-white">
+      <div class="layout flex min-h-screen flex-col items-center justify-center gap-4 text-center text-black">
+        <Image
+          width={300}
+          height={120}
+          alt={'logo'}
+          src={IMAGES.logo}
+          densities={[1, 2]}
+          class="h-full w-auto object-cover"
+        />
+        <h1 class="mt-8 text-4xl md:text-6xl">Không tìm thấy trang</h1>
+        <a href="/" class="mt-8">
+          <Button variant="destructive">Trở về trang chủ</Button>
+        </a>
+      </div>
+    </main>
+  </body>
+</html>

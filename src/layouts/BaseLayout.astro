@@ -1,0 +1,147 @@
+---
+import "@/styles/globals.css";
+import { SITE_SETTINGS } from "@/lib/constants/site-config";
+import Header from '@/components/common/header/Header.astro';
+import Footer from '@/components/common/footer/Footer.astro';
+import ToasterProvider from '@/components/common/ToasterProvider';
+import JsonLd from '@/components/common/JsonLd.astro';
+import type { Graph } from "schema-dts";
+import commonApi from "@/lib/api/common";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  socialFacebook?: string;
+  keywords?: string[];
+  noindex?: boolean;
+  disableDefaultSchema?: boolean; 
+}
+
+const {
+  title: propTitle,
+  description: propDescription,
+  image: propImage,
+  keywords: propKeywords,
+  socialFacebook,
+  noindex = false,
+  disableDefaultSchema = true,
+} = Astro.props;
+
+const { data: settingsData } = (await commonApi.getSettings()) || {};
+const apiSettings = settingsData?.settings;
+
+const siteName = apiSettings?.site_name || SITE_SETTINGS.site_name;
+const title = propTitle 
+  ? `${propTitle} | ${siteName}` 
+  : (apiSettings?.meta_title || SITE_SETTINGS.meta_title);
+
+const description = propDescription || apiSettings?.meta_description || SITE_SETTINGS.meta_description;
+const keywords = propKeywords || (apiSettings?.meta_keywords ? apiSettings.meta_keywords.split(',').map((k: any) => k.trim()) : SITE_SETTINGS.meta_keywords);
+const siteLogoMeta = typeof SITE_SETTINGS.site_logo_meta === "string" ? SITE_SETTINGS.site_logo_meta : SITE_SETTINGS.site_logo_meta.src;
+const ogImage = new URL(propImage || siteLogoMeta, SITE_SETTINGS.site_url).href;
+const canonicalURL = new URL(Astro.url.pathname, SITE_SETTINGS.site_url).href;
+const keywordsString = Array.isArray(keywords) ? keywords.join(", ") : keywords;
+
+const googleAnalyticsId = (apiSettings?.google_analytics_tracking_id && apiSettings.google_analytics_tracking_id !== "null") 
+  ? apiSettings.google_analytics_tracking_id 
+  : SITE_SETTINGS.google_analytics_tracking_id;
+
+const gaId = (googleAnalyticsId && googleAnalyticsId !== "null") ? googleAnalyticsId : null;
+
+const baseJsonLd: Graph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      name: SITE_SETTINGS.site_legal_name,
+      alternateName: siteName,
+      url: apiSettings?.site_url || SITE_SETTINGS.site_url,
+      logo: apiSettings?.site_logo || (typeof SITE_SETTINGS.site_logo === "string" ? SITE_SETTINGS.site_logo : SITE_SETTINGS.site_logo.src),
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: SITE_SETTINGS.site_phone,
+        contactType: 'sales',
+        areaServed: 'VN',
+        availableLanguage: 'Vietnamese',
+      },
+      sameAs: socialFacebook 
+        ? [socialFacebook, SITE_SETTINGS.social_instagram]
+        : [SITE_SETTINGS.social_facebook_education, SITE_SETTINGS.social_instagram]
+    }
+  ],
+};
+
+// const siteLogo = apiSettings?.site_logo || SITE_SETTINGS.site_logo; // logo từ api mặ định
+const siteLogo = SITE_SETTINGS.site_logo; // set logo mới
+const siteFooterLogo = apiSettings?.site_footer_logo || SITE_SETTINGS.site_footer_logo;
+const favIcon = apiSettings?.site_fav_icon || SITE_SETTINGS.site_fav_icon.src;
+---
+
+<!doctype html>
+<html lang="vi" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <link rel="preconnect" href="https://cdn-landing.hoc-ba.edu.vn" crossorigin />
+    <link rel="dns-prefetch" href="https://cdn-landing.hoc-ba.edu.vn" />
+    
+    <link rel="preload" href="/fonts/gilroy/SVN-Gilroy.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="/fonts/gilroy/SVN-GilroyBold.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywordsString} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/png" href={favIcon} />
+    <link rel="apple-touch-icon" href={favIcon} />
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="vi_VN" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    
+    <slot name="head" />
+    
+    {!disableDefaultSchema && <JsonLd data={baseJsonLd} />}
+    
+    {gaId && (
+      <>
+        <script 
+          type="text/partytown" 
+          src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+        ></script>
+
+        <script type="text/partytown" define:vars={{ gaId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+          gtag('config', gaId);
+        </script>
+      </>
+    )}
+  </head>
+  <body class="antialiased font-gilroy overflow-hidden h-screen">
+    <div id="main-scroll-container" class="custom-scrollbar overflow-y-auto h-screen">
+      <Header logo={siteLogo} siteName={siteName} />
+      <slot />
+      <Footer/>
+      <ToasterProvider client:only="react" />
+    </div>
+  </body>
+</html>
+

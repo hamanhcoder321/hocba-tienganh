@@ -1,0 +1,269 @@
+@import 'ckeditor5/ckeditor5.css';
+
+.custom-editor ol,
+.custom-editor ul,
+.custom-editor ol,
+.custom-editor ul {
+  padding: revert-layer;
+  list-style: revert-layer;
+  margin: auto;
+}
+
+.ck-editor__editable {
+  min-height: 400px;
+  max-height: 600px;
+}
+
+.ck-content {
+  font-size: 14px;
+  font-family: 'Gilroy', 'Noto Sans', sans-serif;
+}
+
+.ck-content p {
+  margin-top: 1em !important;
+  margin-bottom: 1em !important;
+}
+
+.ck-content p > span {
+  font-size: 14px;
+}
+
+.custom-editor p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.custom-editor p > span {
+  font-size: 14px;
+}
+
+.ck-content h1,
+.custom-editor h1 {
+  font-size: 2em !important;
+  font-weight: bold !important;
+  margin-top: 0.67em !important;
+  margin-bottom: 0.67em !important;
+  line-height: 1.2 !important;
+  scroll-margin-top: 100px;
+}
+
+.ck-content h2,
+.custom-editor h2,
+.ck-content h2 > span {
+  font-size: 1.5em !important;
+  font-weight: bold !important;
+  margin-top: 0.83em !important;
+  margin-bottom: 0.83em !important;
+  line-height: 1.3 !important;
+  scroll-margin-top: 100px;
+}
+
+.ck-content h3,
+.custom-editor h3,
+.ck-content h3 > span {
+  font-size: 1.25em !important;
+  font-weight: bold !important;
+  margin-top: 1em !important;
+  margin-bottom: 1em !important;
+  line-height: 1.4 !important;
+  scroll-margin-top: 100px;
+}
+
+.ck-content h4,
+.ck-content h4 > span {
+  font-size: 1.15em !important;
+  font-weight: bold !important;
+  margin-top: 1.33em !important;
+  margin-bottom: 1.33em !important;
+  line-height: 1.4 !important;
+}
+
+.ck-content h5,
+.ck-content h5 > span {
+  font-size: 1.05em !important;
+  font-weight: bold !important;
+  margin-top: 1.67em !important;
+  margin-bottom: 1.67em !important;
+  line-height: 1.5 !important;
+}
+
+.ck-content h6,
+.ck-content h6 > span {
+  font-size: 0.95em !important;
+  font-weight: bold !important;
+  margin-top: 2.33em !important;
+  margin-bottom: 2.33em !important;
+  line-height: 1.5 !important;
+}
+
+.ck .ck-powered-by {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .ck-content table {
+    width: max-content !important;
+  }
+}
+
+.custom-editor figure,
+.ck-content figure,
+.custom-editor .table,
+.ck-content .table,
+.ck-content figure.table {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  /* width: 100% !important; */
+  float: none !important;
+}
+
+@media (max-width: 1024px) {
+  .custom-editor .table,
+  .ck-content .table,
+  .ck-content figure.table {
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.custom-editor .table table,
+.ck-content .table table,
+.ck-content figure.table table {
+  margin: auto;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .custom-editor .table table,
+  .ck-content .table table,
+  .ck-content figure.table table {
+    min-width: max-content;
+  }
+}
+
+/* Fix border cho Safari/iOS */
+.custom-editor .table table td,
+.custom-editor .table table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.custom-editor .table table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Text trong table */
+.custom-editor .table table td span,
+.custom-editor .table table th span,
+.ck-content table td span,
+.ck-content table th span {
+  font-size: 14px;
+}
+
+/* Text trong list */
+.custom-editor ol li span,
+.custom-editor ul li span,
+.ck-content ol li span,
+.ck-content ul li span {
+  font-size: 14px !important;
+}
+
+/* Đảm bảo border hiển thị trên tất cả trình duyệt */
+.ck-content table,
+.ck-content table td,
+.ck-content table th {
+  border: 1px solid #ddd;
+}
+
+.ck-content table {
+  border-collapse: collapse !important;
+}
+
+.ck-content table td,
+.ck-content table th {
+  padding: 8px !important;
+}
+
+/* Heading styles for rendered content */
+.custom-editor h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+}
+
+.custom-editor h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+}
+
+.custom-editor h3 {
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.custom-editor h4 {
+  font-size: 1.15em;
+  font-weight: bold;
+  margin-top: 1.33em;
+  margin-bottom: 1.33em;
+}
+
+.custom-editor h5 {
+  font-size: 1.05em;
+  font-weight: bold;
+  margin-top: 1.67em;
+  margin-bottom: 1.67em;
+}
+
+.custom-editor h6 {
+  font-size: 0.95em;
+  font-weight: bold;
+  margin-top: 2.33em;
+  margin-bottom: 2.33em;
+}
+
+.ck-content figure.media.media-size-50,
+.custom-editor figure.media.media-size-50 {
+  width: 50% !important;
+  margin-left: auto;
+  margin-right: auto;
+  float: none !important;
+}
+
+.ck-content figure.media.media-size-75,
+.custom-editor figure.media.media-size-75 {
+  width: 75% !important;
+  margin-left: auto;
+  margin-right: auto;
+  float: none !important;
+}
+
+.ck-content figure.media.media-size-100,
+.custom-editor figure.media.media-size-100 {
+  width: 100% !important;
+  margin-left: auto;
+  margin-right: auto;
+  float: none !important;
+}
+
+.ck-content a,
+.custom-editor a {
+  color: blue !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.ck-content a:hover,
+.custom-editor a:hover {
+  text-decoration: underline !important;
+  text-underline-offset: 2px;
+}

@@ -1,0 +1,104 @@
+---
+import { MinusIcon, PlusIcon } from 'lucide-react';
+
+interface Props {
+  qaData: {
+    question: string;
+    answer: string;
+  }[];
+}
+
+const { qaData } = Astro.props;
+---
+
+<div class="flex select-none flex-col gap-3 pb-10 pt-2 md:gap-5 md:pt-5">
+  {
+    qaData.map((item, index) => (
+      <details
+        class="accordion-item group overflow-hidden rounded-2xl border bg-white shadow-[0px_1.97px_1.97px_0px_#0000002E] backdrop-blur-sm transition-all duration-500 hover:border-gray-100/50 hover:shadow-[0_10px_35px_rgba(237,50,36,0.08)]"
+        open={index === 0}
+      >
+        <summary class="flex cursor-pointer list-none items-center justify-between px-4 py-4 text-left outline-none transition-all duration-300 md:px-6">
+          <h3 class="max-w-[93%] text-[15px] font-bold tracking-tight text-[#373737] transition-colors md:text-[22px]">
+            {item.question}
+          </h3>
+
+          <div class="relative flex h-8 w-8 items-center justify-center transition-all duration-500 group-open:rotate-180">
+            <PlusIcon className="text-black group-open:hidden" />
+            <MinusIcon className="text-black group-open:block hidden" />
+          </div>
+        </summary>
+
+        <div class="accordion-content bg-white">
+          <div class="min-h-0">
+            <div class="px-6 pb-8 pt-0 md:px-8">
+              <div class="text-[12px] font-medium !leading-normal text-[#373737] md:text-base" set:html={item.answer} />
+            </div>
+          </div>
+        </div>
+      </details>
+    ))
+  }
+</div>
+
+<style>
+  /* Remove default arrow in Chrome/Safari */
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary {
+    list-style: none; /* For Firefox */
+  }
+  .accordion-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* When open, set rows to 1fr */
+  details[open] .accordion-content {
+    grid-template-rows: 1fr;
+  }
+
+  /* Inner content animation */
+  .accordion-content > div {
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-15px);
+    transition:
+      opacity 0.4s ease-out,
+      transform 0.4s ease-out;
+  }
+
+  details[open] .accordion-content > div {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+  }
+
+  /* Active state shadow */
+  details[open] {
+    box-shadow: 0px 1.97px 1.97px 0px #0000002e;
+    border-color: rgba(0, 0, 0, 0.15);
+  }
+</style>
+
+<script>
+  const accordions = document.querySelectorAll('.accordion-item') as NodeListOf<HTMLDetailsElement>;
+
+  accordions.forEach((el) => {
+    const summary = el.querySelector('summary');
+    if (summary) {
+      summary.addEventListener('click', (e) => {
+        if (!el.open) {
+          accordions.forEach((other) => {
+            if (other !== el && other.open) {
+              other.open = false;
+            }
+          });
+        }
+      });
+    }
+  });
+</script>

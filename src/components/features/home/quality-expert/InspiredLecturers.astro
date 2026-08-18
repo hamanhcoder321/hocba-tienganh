@@ -1,0 +1,74 @@
+---
+import { IMAGES } from '@/lib/constants/images';
+import { getImage, Image } from 'astro:assets';
+import Link from '../ui/Link';
+
+import TeacherCarousel from '@/components/features/introduce/TeacherCarousel';
+import { fetchLecturersClient } from '@/lib/api/lecturer';
+
+let lecturers: TLecturer[] = [];
+
+try {
+  const apiData = await fetchLecturersClient({});
+  if (apiData && apiData.length > 0) {
+    lecturers = apiData;
+  }
+} catch (error) {
+  console.error('Lỗi khi tải danh sách giảng viên:', error);
+}
+
+const optimizedLecturers = await Promise.all(
+  lecturers.map(async (teacher) => {
+    const AVATAR_WIDTH = 296;
+    const AVATAR_HEIGHT = 584;
+
+    const rawAvatar = teacher?.avatar_url?.file_path || IMAGES.course.profilePic;
+
+    const optimizedAvatar = await getImage({
+      src: rawAvatar,
+      width: AVATAR_WIDTH,
+      height: AVATAR_HEIGHT,
+      format: 'webp',
+      quality: 80,
+    });
+
+    return {
+      ...teacher,
+      optimizedAvatar: optimizedAvatar.src,
+    };
+  }),
+);
+---
+
+<section class="overflow-hidden bg-white py-0 md:py-12">
+  <div class="container mx-auto px-0 md:px-4">
+    {/* Header Section */}
+    <div class="relative mb-3 flex flex-col items-center justify-center sm:mb-12">
+      <div class="flex items-center gap-2 md:gap-4">
+        <h2 class="flex items-center gap-2 text-base font-black uppercase text-[#373737] md:text-[24px] lg:text-[42px]">
+          <p class="text-center">
+            <span>150+ giảng viên</span>
+            <span class="text-[#B11702]">truyền cảm hứng</span>
+          </p>
+        </h2>
+        <div class="relative w-10 md:w-20">
+          <Image
+            src={IMAGES.introduce.book_icon}
+            width={80}
+            height={80}
+            densities={[1, 2]}
+            alt="Graduation icon"
+            class="h-auto w-full"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-0 md:px-4">
+    <TeacherCarousel teachers={optimizedLecturers} client:visible />
+    <div class="flex justify-center max-sm:hidden">
+      <Link href="/doi-ngu-giang-vien"> XEM ĐỘI NGŨ GIẢNG VIÊN </Link>
+    </div>
+  </div>
+</section>

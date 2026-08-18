@@ -1,0 +1,150 @@
+---
+// export const prerender = true; // Pre-render trang cam kết đầu ra
+
+import CourseLayout from '@/layouts/CourseLayout.astro';
+---
+
+<CourseLayout breadcrumbName="Cam kết đầu ra" hasCommitment>
+  <div class="w-full p-5 md:p-10 xl:p-20 3xl:px-40">
+    <div class="font-montserrat flex flex-wrap items-center gap-2">
+      <div class="xs:text-4xl w-full border-b py-4 text-3xl font-bold sm:text-5xl">
+        <h1>Cam kết đầu ra</h1>
+      </div>
+      <div class="text-base leading-[36px]">
+        <p>
+          Kính gửi các bạn học viên đã đăng ký khóa học tại{' '}
+          <a href="/" class="font-semibold text-blue-400 underline"> Học Bá </a>
+        </p>
+        <p>
+          Học Bá cam kết mang đến lộ trình học tập hiệu quả, giúp học viên chinh phục chứng chỉ HSK một cách vững chắc.
+          Chúng tôi đảm bảo đầu ra theo các tiêu chí sau:
+        </p>
+        <h2>
+          <strong>I.&nbsp; Khóa học áp dụng cam kết </strong>
+        </h2>
+        <ul class="mb-4 list-disc pl-6">
+          <li>HSK</li>
+          <li>Tiếng Trung Ứng Dụng</li>
+          <li>TOCFL</li>
+          <li>Luyện Thi Đại Học</li>
+        </ul>
+        <h2>
+          <strong>II. Nghĩa vụ của học viên</strong>
+        </h2>
+        <p>Học viên cần hoàn thành đầy đủ đồng thời các nghĩa vụ sau:</p>
+        <div class="pl-4 [&>p]:font-semibold [&>ul]:list-disc [&>ul]:pl-5">
+          <h3>1. Quyền lợi học tập</h3>
+          <ul>
+            <li>Học viên được tham gia đầy đủ các buổi học theo nội dung chương trình của khóa học.</li>
+            <li>Học viên có cơ hội tham gia các hoạt động bổ trợ và luyện tập chuyên sâu do Học Bá tổ chức.</li>
+          </ul>
+          <h3>2. Nghĩa vụ tài chính</h3>
+          <ul>
+            <li>Học viên cam kết thanh toán học phí đúng thời hạn và theo tiến độ quy định tại Điều 2 của hợp đồng.</li>
+          </ul>
+          <h3>3. Trách nhiệm tham gia khóa học</h3>
+          <ul>
+            <li>Học viên phải tham gia tối thiểu 90% số buổi học theo chương trình đào tạo.</li>
+            <li>Hoàn thành đầy đủ bài tập về nhà và các bài kiểm tra đánh giá theo yêu cầu của Học Bá.</li>
+            <li>Tham gia đầy đủ các buổi học bổ trợ, luyện đề do Học Bá tổ chức để đảm bảo chất lượng học tập.</li>
+          </ul>
+          <h3>4. Chính sách bảo lưu khóa học</h3>
+          <ul>
+            <li>
+              Học viên có quyền bảo lưu khóa học 02 lần trong suốt quá trình học, với thời gian bảo lưu tối đa 02 tháng
+              (Số lượng buổi học đã học không quá 20% tổng số buổi).
+            </li>
+            <li>Sau thời hạn bảo lưu 02 tháng, nếu học viên chưa quay lại, phí bảo lưu sẽ là 300.000đ/lần.</li>
+            <li>Nếu học viên không tham gia khóa học, học phí sẽ không được hoàn lại.</li>
+            <li>
+              Trong thời gian bảo lưu, học viên có trách nhiệm chủ động ôn tập để đảm bảo kiến thức khi quay lại học.
+            </li>
+            <li>
+              Từ lần học lại thứ 2 cần xem xét các lý do về việc không lên được lớp nếu do yếu tố chủ quan từ học viên
+              như thái độ, chuyên cần, ý thức,... thì không được học lại.
+            </li>
+            <li>
+              Sau khi thời gian bảo lưu kết thúc, học viên phải tiếp tục học theo đúng lịch trình cam kết. Nếu không,
+              các buổi học còn lại sẽ được tính theo lộ trình đăng ký ban đầu.
+            </li>
+          </ul>
+          <h3>5. Quy định về chuyển nhượng và hủy khóa học</h3>
+          <ul>
+            <li>
+              Học viên không được chuyển nhượng khóa học dưới bất kỳ hình thức nào cho bên thứ ba nếu chưa có sự đồng ý
+              của Học Bá.
+            </li>
+            <li>Ngay khi học viên đã ký hợp đồng và/hoặc thanh toán học phí, khóa học được xem là đã bắt đầu.</li>
+            <li>Học viên không được hủy hợp đồng hoặc khóa học vì bất kỳ lý do gì.</li>
+          </ul>
+          <h3>6. Cam kết về đầu ra</h3>
+          <ul>
+            <li>
+              Nếu học viên chấp hành đầy đủ nội quy, tham gia đủ số buổi học quy định, hoàn thành đầy đủ bài tập nhưng
+              vẫn chưa đạt chuẩn đầu ra, Học Bá sẽ tạo điều kiện cho học viên học lại miễn phí.
+            </li>
+          </ul>
+          <h3>7. Thực hiện các quy định chung</h3>
+          <ul>
+            <li>
+              Học viên có nghĩa vụ tuân thủ các quy định của pháp luật, nội quy lớp học, và các yêu cầu từ Học Bá nhằm
+              đảm bảo chất lượng giảng dạy và kết quả học tập tốt nhất.
+            </li>
+          </ul>
+        </div>
+        <h2>
+          <strong>III. Cam kết của hocba</strong>
+        </h2>
+        <div class="pl-4 [&>p]:font-semibold [&>ul]:list-disc [&>ul]:pl-5">
+          <h3>1. Chất lượng đào tạo</h3>
+          <ul>
+            <li>
+              Học Bá cam kết cung cấp chương trình đào tạo đúng với nội dung đã tư vấn, đảm bảo chất lượng giảng dạy,
+              giáo trình và kiến thức đầu ra theo chuẩn HSK.
+            </li>
+            <li>Đội ngũ giảng viên có trình độ chuyên môn cao, giàu kinh nghiệm, tận tâm trong giảng dạy.</li>
+          </ul>
+          <h3>2. Hướng dẫn và hỗ trợ học viên</h3>
+          <ul>
+            <li>Học Bá sẽ giám sát, hướng dẫn, hỗ trợ học viên trong suốt quá trình học tập.</li>
+            <li>Cung cấp đầy đủ tài liệu học tập cũng như Giấy xác nhận/Chứng chỉ nếu học viên hoàn thành khóa học.</li>
+            <li>
+              Đảm bảo môi trường học tập hiệu quả, cung cấp giải pháp phù hợp và giải đáp kịp thời các thắc mắc của học
+              viên.
+            </li>
+          </ul>
+          <h3>3. Cập nhật thông tin và đánh giá kết quả học tập</h3>
+          <ul>
+            <li>
+              Học Bá cam kết thông báo kịp thời đến học viên về mọi thay đổi liên quan đến chương trình học, giáo trình,
+              lịch nghỉ lễ, nghỉ bất thường và chính sách đào tạo.
+            </li>
+            <li>Thường xuyên đánh giá và thông báo kết quả học tập của học viên.</li>
+            <li>Tổ chức các lớp học bổ trợ dành cho học viên chưa đạt chuẩn đầu ra trong quá trình học tập.</li>
+          </ul>
+          <h3>4. Cam kết đầu ra</h3>
+          <ul>
+            <li>Học Bá cam kết học viên đạt kết quả thi HSK như đã tư vấn.</li>
+            <li>
+              Nếu sau khi thi, học viên không đạt chuẩn đầu ra, Học Bá sẽ hỗ trợ đào tạo bổ sung với số buổi tăng cường.
+            </li>
+            <li>
+              Học viên được phép đào tạo lại tối đa 02 lần trong vòng 01 năm mà không phải đóng thêm bất kỳ chi phí nào,
+              với điều kiện tuân thủ đầy đủ các quy định tại Điều 2 và Điều 4 của hợp đồng.
+            </li>
+            <li>
+              Học Bá không cam kết đầu ra nếu học viên nghỉ học quá 20% số buổi hoặc không hoàn thành bài tập theo yêu
+              cầu.
+            </li>
+          </ul>
+        </div>
+
+        <p class="italic">
+          Kính chúc quý học viên có một quá trình học tập hiệu quả, đạt được kết quả tốt nhất và sớm chinh phục mục tiêu
+          đặt ra. Học Bá luôn đồng hành cùng bạn trên hành trình này!
+        </p>
+        <p class="font-semibold italic">Trân trọng cảm ơn!</p>
+      </div>
+    </div>
+  </div>
+</CourseLayout>

@@ -1,0 +1,127 @@
+---
+import { ArrowIcon } from '@/components/common/icons';
+import ContactAdvisorRegistrationForm from '@/components/features/contact/ContactAdvisorRegistrationForm';
+import ScheduleRegistrationForm from './ScheduleRegistrationForm';
+import { IMAGES } from '@/lib/constants/images';
+import { cn } from '@/lib/utils';
+
+const { dataInput } = Astro.props;
+---
+
+<section
+  class={cn(
+    'w-full overflow-hidden bg-gradient-to-l xl:bg-gradient-to-b from-[#B90E0A] to-[#7D1900] xl:from-[#780000] xl:to-[#AF0000] h-auto pt-[23px] pb-0 lg:pb-[23px] xl:h-[780px] 2xl:h-[720px] 3xl:h-[780px] xl:py-0',
+  )}
+>
+  <div class="mx-auto w-full max-w-full xl:relative xl:h-full xl:max-w-[1280px] 2xl:max-w-[1440px] 3xl:max-w-[1920px]">
+    <div class="grid grid-cols-1 px-4 lg:grid-cols-2 lg:gap-10 lg:px-10 lg:py-0 xl:h-full xl:grid-cols-2 xl:px-0">
+      <!-- Left: Form -->
+      <div class="col-span-1 3xl:static">
+        <div
+          class="mt-0 flex h-[50px] w-full items-center justify-center gap-2 md:h-[90px] md:gap-4 md:pl-0 lg:justify-start xl:absolute xl:left-[20px] xl:top-[60px] xl:m-0 xl:h-[91px] xl:w-[675px] xl:gap-[6px] 2xl:left-[80px] 2xl:top-[35px] 3xl:left-[282.72px] 3xl:top-[75px]"
+        >
+          <div class="w-[50px] flex-shrink-0 md:w-20">
+            <img
+              src={IMAGES.schedule.iconChinese.src}
+              alt={'iconChinese'}
+              class={'md:hidden w-full h-auto object-contain -scale-x-100'}
+              loading="lazy"
+            />
+            <img
+              src={IMAGES.khoaChinese.registerIconChinese.src}
+              alt={'registerIconChinese'}
+              class={'hidden md:block w-full h-auto object-contain -scale-x-100'}
+              loading="lazy"
+            />
+          </div>
+          <div class="relative flex flex-row items-center gap-2 md:flex-col md:gap-4 md:pr-[170px] lg:pr-0 3xl:gap-0">
+            <div
+              class="whitespace-nowrap font-gilroy text-[18px] font-[1000] uppercase leading-[35.91px] text-white md:text-[32px] xl:text-[42px] 3xl:h-[64px] 3xl:w-[589px] 3xl:text-[42px] 3xl:font-black 3xl:leading-[64px]"
+            >
+              Đăng ký tư vấn ngay!
+            </div>
+            <div
+              class="relative md:absolute md:-top-[40px] md:left-[360px] lg:left-[360px] lg:top-[90px] xl:left-[420px] xl:top-[60px] 2xl:left-[460px] 2xl:top-[40px] 3xl:left-[480px]"
+            >
+              <ArrowIcon
+                className="h-[33.94px] w-[51.92px] md:h-[104px] md:w-[170px] lg:h-[60px] lg:w-[100px] xl:h-[104px] xl:w-[170px]"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="mt-2 md:mt-6 xl:absolute xl:left-[20px] xl:top-[160px] xl:m-0 xl:w-[502.27px] 2xl:left-[120px] 2xl:top-[130px] 3xl:left-[342px] 3xl:top-[180px]"
+        >
+          <ScheduleRegistrationForm className="w-full xl:m-0 xl:w-full" client:load {dataInput} />
+        </div>
+      </div>
+
+      <!-- Right: Promo -->
+      <div class="col-span-1">
+        <div
+          class="mt-6 flex flex-col items-center lg:mt-[120px] xl:absolute xl:left-[740px] xl:top-[90px] xl:m-0 2xl:left-[880px] 2xl:top-[55px] 3xl:left-[1140px] 3xl:top-[90px]"
+        >
+          <div
+            class="font-gilroy text-[13.82px] font-[1000] uppercase leading-[130%] text-white md:text-[22px] lg:text-[22px]"
+          >
+            Nhận ưu đãi lên tới
+          </div>
+          <div
+            class="mt-[-10px] font-gilroy text-[47.61px] font-[1000] uppercase leading-[120%] text-[#F3C650] md:text-[56px] lg:text-[72px] xl:text-[65px]"
+            style="text-shadow: 3.66px 10.25px 18.31px #FF6969;"
+          >
+            20% <span class="text-[30.76px] md:text-[36px] lg:text-[42px] xl:text-[42px]">học phí</span>
+          </div>
+          <div
+            class="mt-[-5px] flex h-auto w-fit flex-col items-center justify-center rounded-[46.5px] border-[0.63px] border-white/20 p-[7.23px] text-center font-gilroy text-[12.57px] font-medium leading-[120%] text-white md:flex-row md:px-10 lg:text-[22px] xl:h-[65px] xl:w-[370.01px] xl:flex-col xl:rounded-[74px] xl:border-white/40 xl:px-[11.5px] xl:py-[11.5px] xl:text-[20px] xl:leading-[120%]"
+          >
+            <div class="md:hidden">
+              <p>Khi đăng ký lộ trình học Tiếng Trung</p>
+              <p class="font-[900]">Từ 6 tháng+</p>
+            </div>
+            <p class="hidden md:block">
+              Khi đăng ký lộ trình học <br />
+              Tiếng Trung <strong class="font-[1000]">từ 6 tháng+</strong>
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="relative mx-auto mt-[-20px] flex w-full justify-center lg:mt-0 lg:h-[340px] xl:static xl:h-[600px] 2xl:h-[630px] 3xl:h-[700px]"
+        >
+          <div
+            class="relative z-10 h-[295px] w-[399.82px] flex-shrink-0 -translate-x-[20px] md:h-[430px] md:w-[600px] md:translate-x-0 lg:absolute lg:bottom-[-32px] lg:left-1/2 lg:h-auto lg:w-[500px] lg:flex-shrink lg:-translate-x-1/2 xl:absolute xl:bottom-[60px] xl:left-auto xl:right-[60px] xl:top-auto xl:h-[455px] xl:w-[622px] xl:translate-x-0 2xl:bottom-[50px] 2xl:right-[80px] 2xl:h-[455px] 2xl:w-[622px] 3xl:bottom-[-2px] 3xl:left-[924px] 3xl:right-auto 3xl:h-[555px] 3xl:w-[776px]"
+          >
+            {/* Welcome tag */}
+            <div
+              class="absolute left-[20%] top-[12%] z-20 w-[45px] md:w-[65px] lg:bottom-[290px] lg:left-[18%] lg:top-auto xl:bottom-[350px] xl:left-auto xl:right-[430px] xl:top-auto xl:w-[80px] 2xl:bottom-[350px] 2xl:left-auto 2xl:right-[430px] 3xl:bottom-[440px] 3xl:left-[171px] 3xl:right-auto 3xl:z-30"
+            >
+              <img src={IMAGES.schedule.welcome_tag.src} alt="welcome" class="h-auto w-full" loading="lazy" />
+            </div>
+
+            <img
+              src={IMAGES.schedule.experts.src}
+              alt="Học Bá Experts"
+              class="h-full w-full object-contain object-bottom"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  .animate-bounce {
+    animation: bounce 3s infinite ease-in-out;
+  }
+</style>

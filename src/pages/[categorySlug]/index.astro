@@ -1,0 +1,273 @@
+---
+import JsonLd from '@/components/common/JsonLd.astro';
+import BlogListWithLoadMore from '@/components/features/post/BlogListWithLoadMore';
+import PopularBlogsCarousel from '@/components/features/post/PopularBlogsCarousel';
+import PostSidebar from '@/components/features/post/PostSidebar';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { IMAGES } from '@/lib/constants/images';
+import { NEWS_SLUGS, EXCLUDED_FROM_CAM_NANG } from '@/lib/constants/content';
+import { fetchBlogCategoryList, fetchBlogList } from '@/lib/static-data';
+import { getImage } from 'astro:assets';
+import type { Graph } from 'schema-dts';
+
+const baseUrl = import.meta.env.PUBLIC_CLIENT_URL ?? 'https://hoc-ba.edu.vn';
+
+const { categorySlug } = Astro.params;
+
+// Fetch blog categories
+const categoryLists = (await fetchBlogCategoryList()) || [];
+
+const category = categoryLists.find((item: TCategoryBlog) => item.slug === categorySlug);
+
+if (!categorySlug || !category) {
+  Astro.response.status = 404;
+  Astro.response.statusText = 'Not Found';
+  return Astro.rewrite('/404');
+}
+
+// Fetch blog posts for this category (first page only)
+const orderBy = Astro.url.searchParams.get('orderBy') || '';
+const queryParams = orderBy ? `orderBy=${orderBy}` : '';
+
+const blogData = await fetchBlogList({
+  page: 1,
+  limit: 24,
+  queryParams: `${queryParams}&blog_category_id=${category.id}`,
+});
+
+const blogPosts = blogData?.list || [];
+const totalPosts = blogData?.meta?.total || 0;
+
+// Fetch popular blogs for carousel (first 10)
+const popularPostsData = await fetchBlogList({
+  page: 1,
+  limit: 10,
+  queryParams: `orderBy=views&blog_category_id=${category.id}`,
+});
+
+const popularPosts = popularPostsData?.list || [];
+
+// Tối ưu ảnh
+const optimizedPost = await Promise.all(
+  (popularPosts ?? []).map(async (post) => {
+    const THUMBNAIL_WIDTH = 320;
+    const THUMBNAIL_HEIGHT = 162;
+    // 1. Tối ưu Avatar chính
+    const rawThumbnailLink = post.thumbnail_link?.file_path || '';
+    const rawUserPhoto = post.User?.photo || '';
+
+    let optimizedUserPhoto;
+    let optimizedThumbnailLink;
+
+    if (rawUserPhoto) {
+      optimizedUserPhoto = await getImage({
+        src: rawUserPhoto,
+        width: 20,
+        height: 20,
+        format: 'webp',
+        quality: 80,
+      });
+    } else {
+      optimizedUserPhoto = await getImage({
+        src: IMAGES.post.profilePic,
+        width: 20,
+        height: 20,
+        format: 'webp',
+      });
+    }
+
+    if (rawThumbnailLink) {
+      optimizedThumbnailLink = await getImage({
+        src: rawThumbnailLink,
+        width: THUMBNAIL_WIDTH,
+        height: THUMBNAIL_HEIGHT,
+        format: 'webp',
+        quality: 80,
+      });
+    } else {
+      optimizedThumbnailLink = await getImage({
+        src: IMAGES.post.postBanner,
+        width: THUMBNAIL_WIDTH,
+        height: THUMBNAIL_HEIGHT,
+        format: 'webp',
+      });
+    }
+
+    return {
+      ...post,
+      thumbnail_link: {
+        file_path: optimizedThumbnailLink.src,
+        originalname: post.thumbnail_link?.originalname || '',
+      },
+      User: {
+        ...post.User,
+        photo: optimizedUserPhoto.src,
+      },
+    };
+  }),
+);
+
+const optimizedBlogPosts = await Promise.all(
+  blogPosts.map(async (post) => {
+    const THUMBNAIL_WIDTH = 320;
+    const THUMBNAIL_HEIGHT = 162;
+    // 1. Tối ưu Avatar chính
+    const rawThumbnailLink = post.thumbnail_link?.file_path || '';
+    const rawUserPhoto = post.User?.photo || '';
+
+    let optimizedUserPhoto;
+    let optimizedThumbnailLink;
+
+    if (rawUserPhoto) {
+      optimizedUserPhoto = await getImage({
+        src: rawUserPhoto,
+        width: 20,
+        height: 20,
+        format: 'webp',
+        quality: 80,
+      });
+    } else {
+      optimizedUserPhoto = await getImage({
+        src: IMAGES.post.profilePic,
+        width: 20,
+        height: 20,
+        format: 'webp',
+      });
+    }
+
+    if (rawThumbnailLink) {
+      optimizedThumbnailLink = await getImage({
+        src: rawThumbnailLink,
+        width: THUMBNAIL_WIDTH,
+        height: THUMBNAIL_HEIGHT,
+        format: 'webp',
+        quality: 80,
+      });
+    } else {
+      optimizedThumbnailLink = await getImage({
+        src: IMAGES.post.postBanner,
+        width: THUMBNAIL_WIDTH,
+        height: THUMBNAIL_HEIGHT,
+        format: 'webp',
+      });
+    }
+
+    return {
+      ...post,
+      thumbnail_link: {
+        file_path: optimizedThumbnailLink.src,
+        originalname: post.thumbnail_link?.originalname || '',
+      },
+      User: {
+        ...post.User,
+        photo: optimizedUserPhoto.src,
+      },
+    };
+  }),
+);
+
+// JSON-LD (SEO)
+const jsonLd: Graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Trang chủ',
+          item: baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: category?.name,
+          item: `${baseUrl}/${category?.slug}`,
+        },
+      ],
+    },
+    {
+      '@type': 'CollectionPage',
+      name: category?.name,
+      description: `Danh sách bài viết về ${category?.name}`,
+      url: `${baseUrl}/${category?.slug}`,
+    },
+  ],
+};
+
+const pageTitle = category?.name || 'Blog';
+const pageDescription = `Danh sách bài viết về ${category?.name}`;
+
+// Check if this category belongs to the news section
+const isNewsCategory = NEWS_SLUGS.includes(categorySlug || '');
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <JsonLd data={jsonLd} />
+
+  <h1 class="hidden">{category.name}</h1>
+
+  <div class="relative z-10 bg-white shadow-sm md:sticky md:top-20">
+    <Breadcrumb className="px-4 py-3 md:px-20">
+      <BreadcrumbList className="text-sm text-black md:text-sm">
+        <BreadcrumbItem>
+          <BreadcrumbLink asChild>
+            {isNewsCategory ? <a href="/tin-tuc-su-kien">Tin tức & sự kiện</a> : <a href="/">Trang chủ</a>}
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
+        {
+          isNewsCategory ? (
+            <BreadcrumbItem>
+              <BreadcrumbPage>{category.name}</BreadcrumbPage>
+            </BreadcrumbItem>
+          ) : (
+            <BreadcrumbItem>
+              <BreadcrumbPage>{category.name}</BreadcrumbPage>
+            </BreadcrumbItem>
+          )
+        }
+      </BreadcrumbList>
+    </Breadcrumb>
+  </div>
+
+  <div class="flex flex-col gap-0 px-4 md:flex-row md:items-start md:gap-8 md:px-20">
+    <aside class="py-0 md:sticky md:top-[124px] md:self-start md:py-8">
+      <PostSidebar
+        client:load
+        categories={isNewsCategory
+          ? categoryLists.filter((c: TCategoryBlog) => NEWS_SLUGS.includes(c.slug || ''))
+          : categoryLists.filter((c: TCategoryBlog) => !EXCLUDED_FROM_CAM_NANG.includes(c.slug || ''))
+        }
+        currentSlug={categorySlug}
+        initialOrderBy={orderBy}
+      />
+    </aside>
+
+    <main class="flex-1 overflow-x-hidden py-4 md:ml-8 md:py-8">
+      <div>
+        {
+          optimizedPost.length > 0 && (
+            <PopularBlogsCarousel
+              client:load
+              initialBlogs={optimizedPost}
+              categoryId={category.id}
+              title="Được xem nhiều nhất"
+            />
+          )
+        }
+
+        <BlogListWithLoadMore client:load initialBlogs={optimizedBlogPosts} {categorySlug} {orderBy} {totalPosts} />
+      </div>
+    </main>
+  </div>
+</BaseLayout>

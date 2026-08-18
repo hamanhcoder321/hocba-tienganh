@@ -1,0 +1,436 @@
+---
+import { Image, getImage } from 'astro:assets';
+import { IMAGES } from '@/lib/constants/images';
+import {
+  FourPointedStar,
+  FourPointedStarMini,
+  GraduationCapAchievement,
+  TargetAchievement,
+  DoubleChevronRight,
+} from '@/components/common/icons';
+import { StudentShowcaseDialog } from './StudentShowcaseDialog';
+import { fetchStudents } from '@/lib/static-data';
+
+const studentsResponse = await fetchStudents({ page: 1, limit: 10 });
+const studentList = studentsResponse?.list || [];
+
+const students =
+  studentList.length > 0
+    ? studentList.map((item) => ({
+        name: item.name,
+        role: item.profession,
+        badge: item.course,
+        score: item.score ? `${item.score} điểm` : '',
+        image: item.avatar_url || IMAGES.course.profilePic,
+      }))
+    : Array(8).fill({
+        name: 'Nguyễn Văn A',
+        role: 'Sinh viên',
+        badge: 'HSK5',
+        score: '230 điểm',
+        image: IMAGES.home.aboutClass, // Placeholder image matching the study group
+      });
+
+const optimizedHsk = await getImage({
+  src: IMAGES.detailLectuter.hsk,
+  format: 'webp',
+  width: 250,
+  height: 150,
+  quality: 100,
+  densities: [1, 2],
+});
+const optimizedMachine = await getImage({
+  src: IMAGES.introduce.machine,
+  format: 'webp',
+  width: 40,
+  height: 25,
+  quality: 100,
+});
+const optimizedProfilePic = await getImage({
+  densities: [1, 2],
+  src: IMAGES.course.profilePic,
+  width: 300,
+  height: 300,
+});
+
+const icons = {
+  hsk: optimizedHsk.src,
+  machine: optimizedMachine.src,
+  defaultAvatar: optimizedProfilePic.src,
+};
+---
+
+<section
+  class="container relative mx-auto mb-0 h-auto w-full max-w-none overflow-hidden rounded-none bg-white px-0 pt-0 md:mb-4 md:h-auto md:max-w-none md:px-4 md:pt-10 lg:rounded-[12px] lg:px-6 lg:pt-8 xl:max-w-[1280px] xl:px-10 2xl:h-[1310px] 2xl:max-w-[1600px] 2xl:rounded-[12px] 2xl:px-0 2xl:pt-0 3xl:h-[1310px] 3xl:w-[1920px] 3xl:max-w-[1920px] 3xl:rounded-[12px] 3xl:px-0 3xl:pt-0"
+>
+  {/* Title (Stays on outer wrapper on 3xl, absolute positioned) */}
+  <div
+    class="relative z-10 flex h-[44px] flex-col items-center justify-center gap-3 md:h-auto md:flex-row md:-top-[20px] lg:-top-[20px] xl:-top-[20px] 2xl:absolute 2xl:left-0 2xl:right-0 2xl:top-[38px] 2xl:mb-0 3xl:absolute 3xl:left-0 3xl:right-0 3xl:top-[38px] 3xl:mb-0"
+  >
+    <Image
+      src={IMAGES.studentAchievements.muctieu}
+      alt="Mục tiêu"
+      class="absolute left-[41px] top-[12px] h-[29.38px] w-[30.66px] object-contain md:relative md:left-auto md:top-auto md:h-[64px] md:w-[67px]"
+    />
+    <h2
+      class="absolute left-[83px] top-[15px] h-[27.04px] w-[224.13px] text-left font-gilroy text-[18px] font-[900] uppercase leading-[1.2] text-[#AF0000] md:relative md:left-auto md:top-auto md:h-auto md:w-auto md:text-center md:text-[42px]"
+    >
+      Bảng vàng thành tích
+    </h2>
+    <div
+      class="absolute inset-0 md:relative md:h-[30px] md:w-[34px] md:flex-shrink-0 md:-translate-x-1.5 md:-translate-y-3 2xl:absolute 2xl:left-[1090px] 2xl:top-[6px] 2xl:translate-x-0 2xl:translate-y-0 3xl:absolute 3xl:left-[1250px] 3xl:top-[6px] 3xl:translate-x-0 3xl:translate-y-0"
+    >
+      <FourPointedStarMini
+        className="absolute left-[299px] top-[26.83px] h-[6.58px] w-[6.58px] md:bottom-0 md:left-0 md:top-auto md:h-[10.16px] md:w-[10.16px]"
+      />
+      <FourPointedStar
+        className="absolute left-[304.5px] top-[14px] h-[16.5px] w-[16.5px] md:left-auto md:right-0 md:top-0 md:h-[25.5px] md:w-[25.5px]"
+      />
+    </div>
+  </div>
+
+  {/* Inner Box (Below title, starts at Top 122px on 3xl) */}
+  <div
+    class="relative z-10 overflow-visible rounded-none p-6 shadow-none md:rounded-[32px] md:px-4 md:pb-10 md:pt-[24px] md:shadow-[0_0_40px_rgba(0,0,0,0.03)] lg:px-6 lg:pb-12 lg:pt-[32px] xl:px-16 xl:pb-16 xl:pt-[32px] 2xl:absolute 2xl:left-1/2 2xl:top-[122px] 2xl:flex 2xl:h-[1180px] 2xl:w-[1440px] 2xl:-translate-x-1/2 2xl:flex-col 2xl:justify-start 2xl:gap-3 2xl:rounded-[24px] 2xl:p-[32px_80px_16px_80px] 2xl:shadow-none 3xl:absolute 3xl:left-[240px] 3xl:top-[122px] 3xl:flex 3xl:h-[1180px] 3xl:w-[1440px] 3xl:translate-x-0 3xl:flex-col 3xl:justify-start 3xl:gap-3 3xl:rounded-[24px] 3xl:p-[32px_80px_16px_80px] 3xl:shadow-none"
+  >
+    {/* Background Layer */}
+    <div
+      class="pointer-events-none absolute inset-0 z-0 rounded-none bg-gradient-to-b from-[#FFFBF0] to-[#FFF5E9]/0 md:rounded-[32px] 2xl:rounded-[24px] 3xl:rounded-[24px]"
+    >
+    </div>
+
+    {/* Decorative Frame (Placed inside Inner Box, between z-0 background and z-20 cards for perfect stacking) */}
+    <div
+      class="pointer-events-none absolute z-[1] hidden items-center justify-center opacity-40 md:left-[-16px] md:right-[-16px] md:top-[380px] md:flex md:h-[300px] md:w-[calc(100%+32px)] md:max-w-none lg:left-[-24px] lg:right-[-24px] lg:top-[430px] lg:h-[340px] lg:w-[calc(100%+48px)] xl:top-[460px] xl:h-[380px] 2xl:left-1/2 2xl:top-[498px] 2xl:flex 2xl:h-[420px] 2xl:w-[1600px] 2xl:-translate-x-1/2 3xl:left-[-240px] 3xl:top-[440px] 3xl:flex 3xl:h-[505px] 3xl:w-[1920px] 3xl:translate-x-0"
+    >
+      <Image
+        src={IMAGES.schedule.bgLotrinh}
+        alt=""
+        class="h-full w-full translate-y-10 object-contain object-center md:translate-y-20 lg:translate-y-14 xl:translate-y-16 2xl:translate-y-0 3xl:translate-y-0"
+        style="filter: invert(1) hue-rotate(190deg);"
+      />
+    </div>
+    {/* Stats Row */}
+    {/* Stats Row */}
+    <div
+      class="relative z-20 mx-[-24px] mb-5 mt-[2px] flex flex-row justify-between gap-[9px] px-[8px] md:mx-0 md:mt-0 md:h-auto md:flex-row md:justify-center md:gap-6 md:px-0 2xl:mb-0 3xl:mb-0"
+    >
+      <div
+        class="flex h-[55px] w-1/2 min-w-0 shrink items-center justify-start gap-[6px] rounded-[7.33px] border-[0.23px] border-[#FFF0CD] bg-[#AF0000] px-[6.42px] py-1 text-white shadow-lg md:h-[104px] md:w-[470px] md:gap-[20px] md:rounded-[16px] md:border-[0.5px] md:px-[14px] md:py-4"
+      >
+        <GraduationCapAchievement
+          className="h-[35.75px] w-[35.75px] shrink-0 fill-none text-[#FFF0CD] md:h-[78px] md:w-[78px]"
+        />
+        <div
+          class="flex flex-1 flex-col items-center justify-center gap-0 md:flex-initial md:items-start md:gap-0.5 xl:flex-row xl:items-center xl:gap-3"
+        >
+          <span
+            class="font-gilroy text-[14px] font-[1000] leading-[1.1] text-[#FFF0CD] md:text-[28px] md:leading-none xl:leading-[64px]"
+            >20.000+</span
+          >
+          <span
+            class="text-center font-gilroy text-[10px] font-bold leading-[1.1] text-[#FFF0CD] md:text-left md:text-[16px] md:leading-normal xl:leading-[64px]"
+            >Học viên đạt mục tiêu</span
+          >
+        </div>
+      </div>
+
+      <div
+        class="flex h-[55px] w-1/2 min-w-0 shrink items-center justify-start gap-[6px] rounded-[7.33px] border-[0.23px] border-[#FFF0CD] bg-[#AF0000] px-[6.42px] py-1 text-white shadow-lg md:h-[104px] md:w-[470px] md:gap-[20px] md:rounded-[16px] md:border-[0.5px] md:px-[14px] md:py-4"
+      >
+        <TargetAchievement
+          className="h-[35.75px] w-[35.75px] shrink-0 fill-none text-[#FFF0CD] md:h-[78px] md:w-[78px]"
+        />
+        <div
+          class="flex flex-1 flex-col items-center justify-center gap-0 md:flex-initial md:items-start md:gap-0.5 xl:flex-row xl:items-center xl:gap-3"
+        >
+          <span
+            class="font-gilroy text-[14px] font-[1000] leading-[1.1] text-[#FFF0CD] md:text-[28px] md:leading-none xl:leading-[64px]"
+            >5.000+</span
+          >
+          <span
+            class="text-center font-gilroy text-[10px] font-bold leading-[1.1] text-[#FFF0CD] md:text-left md:text-[16px] md:leading-normal xl:leading-[64px]"
+            >Chinh phục thành công HSK</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <p
+      class="relative z-20 mx-auto mb-3 mt-3 w-full max-w-[321px] text-center font-gilroy text-[12px] font-[300] italic leading-[1.2] text-[#000000] md:mb-12 md:mt-12 md:max-w-[655px] md:text-[18px]"
+    >
+      Đây không chỉ là niềm tự hào của Học Bá Education mà còn là minh chứng rõ ràng cho hiệu quả đào tạo, tiếp thêm
+      động lực để Học Bá đồng hành cùng người Việt trên hành trình nâng tầm năng lực tiếng Trung.
+    </p>
+
+    {/* Mobile-only: 2 Independent Scrolling Rows */}
+    <div class="mobile-showcase-container mt-5 flex flex-col gap-[24px] md:hidden">
+      {/* Row 1 (first 4 cards) */}
+      <div
+        id="mobile-row-1"
+        class="mx-[-24px] flex flex-row gap-[12px] overflow-x-auto overflow-y-hidden px-[8px] pb-[5px] [scrollbar-width:none] [&-::-webkit-scrollbar]:hidden"
+      >
+        {
+          [...students.slice(0, 4), ...students.slice(0, 4), ...students.slice(0, 4)].map((student) => (
+            <div class="student-card group relative flex h-[256px] w-[248px] shrink-0 flex-col gap-[9.39px] overflow-hidden rounded-[7.83px] border border-[#F0F0F0] bg-[#FAFAFA] p-[7.83px] pb-[13px] 2xl:cursor-pointer">
+              {/* Image */}
+              <div class="relative h-[174.25px] w-[232.34px] shrink-0 overflow-hidden rounded-[7.83px] bg-[#FAFAFA]">
+                <Image
+                  src={student.image}
+                  alt=""
+                  width={232}
+                  height={174}
+                  class="pointer-events-none absolute inset-0 h-full w-full scale-110 select-none object-cover opacity-30 blur-md"
+                />
+                <img
+                  src={typeof student.image === 'string' ? student.image : student.image.src}
+                  alt={student.name}
+                  width={232}
+                  height={174}
+                  class="relative z-10 h-full w-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+
+              {/* Info */}
+              <div class="flex flex-col gap-[7.83px]">
+                <div class="flex items-center justify-between">
+                  <h3 class="font-gilroy text-[14.1px] font-bold leading-[1.2] text-[#373737]">{student.name}</h3>
+                  <span class="inline-flex h-[20.89px] w-[58.74px] items-center justify-center rounded-[3.26px] bg-[#AF0000] px-[10px] font-gilroy text-[11.75px] font-[1000] leading-none text-[#FFF0CD]">
+                    {student.badge}
+                  </span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <p class="font-gilroy text-[12.53px] font-normal leading-[1.2] text-[#373737]">{student.role}</p>
+                  <p class="font-gilroy text-[12.53px] font-normal leading-[1.2] text-[#373737]">{student.score}</p>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      {/* Row 2 (last 4 cards) */}
+      <div
+        id="mobile-row-2"
+        class="mx-[-24px] flex flex-row gap-[12px] overflow-x-auto overflow-y-hidden px-[8px] pb-[5px] [scrollbar-width:none] [&-::-webkit-scrollbar]:hidden"
+      >
+        {
+          [...students.slice(4, 8), ...students.slice(4, 8), ...students.slice(4, 8)].map((student) => (
+            <div class="student-card group relative flex h-[256px] w-[248px] shrink-0 flex-col gap-[9.39px] overflow-hidden rounded-[7.83px] border border-[#F0F0F0] bg-[#FAFAFA] p-[7.83px] pb-[13px] 2xl:cursor-pointer">
+              {/* Image */}
+              <div class="relative h-[174.25px] w-[232.34px] shrink-0 overflow-hidden rounded-[7.83px] bg-[#FAFAFA]">
+                <Image
+                  src={student.image}
+                  alt=""
+                  width={232}
+                  height={174}
+                  class="pointer-events-none absolute inset-0 h-full w-full scale-110 select-none object-cover opacity-30 blur-md"
+                />
+                <img
+                  src={typeof student.image === 'string' ? student.image : student.image.src}
+                  alt={student.name}
+                  width={232}
+                  height={174}
+                  class="relative z-10 h-full w-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+
+              {/* Info */}
+              <div class="flex flex-col gap-[7.83px]">
+                <div class="flex items-center justify-between">
+                  <h3 class="font-gilroy text-[14.1px] font-bold leading-[1.2] text-[#373737]">{student.name}</h3>
+                  <span class="inline-flex h-[20.89px] w-[58.74px] items-center justify-center rounded-[3.26px] bg-[#AF0000] px-[10px] font-gilroy text-[11.75px] font-[1000] leading-none text-[#FFF0CD]">
+                    {student.badge}
+                  </span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <p class="font-gilroy text-[12.53px] font-normal leading-[1.2] text-[#373737]">{student.role}</p>
+                  <p class="font-gilroy text-[12.53px] font-normal leading-[1.2] text-[#373737]">{student.score}</p>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    {/* Desktop-only: 3-Column Grid with 6 Original Cards */}
+    <div
+      class="relative z-20 hidden md:mt-16 md:grid md:grid-cols-3 md:justify-items-center md:gap-x-4 md:gap-y-8 xl:gap-x-6 2xl:mt-0 2xl:gap-6 3xl:mt-0 3xl:gap-6"
+    >
+      {
+        students.slice(0, 6).map((student, index) => (
+          <div class="student-card group relative flex flex-col gap-[12px] overflow-hidden rounded-[12px] border border-[#F0F0F0] bg-[#FAFAFA] px-[12px] py-[20px] md:h-auto md:w-full md:max-w-[380px] 2xl:h-[376px] 2xl:w-[380px] 2xl:cursor-pointer 3xl:h-[376px] 3xl:w-[380px]">
+            {/* Image */}
+            <div class="relative shrink-0 overflow-hidden rounded-[12px] bg-[#FAFAFA] md:aspect-[4/3] md:h-auto md:w-full 2xl:aspect-auto 2xl:h-[267px] 2xl:w-[356px] 3xl:aspect-auto 3xl:h-[267px] 3xl:w-[356px]">
+              <Image
+                src={student.image}
+                alt=""
+                width={356}
+                height={267}
+                class="pointer-events-none absolute inset-0 h-full w-full scale-110 select-none object-cover opacity-40 blur-lg"
+              />
+              <img
+                src={typeof student.image === 'string' ? student.image : student.image.src}
+                alt={student.name}
+                width={356}
+                height={267}
+                class="relative z-10 h-full w-full object-contain transition-transform duration-700 2xl:group-hover:scale-105"
+                loading="lazy"
+              />
+              {/* Hover Button Overlay */}
+              <div class="absolute inset-0 z-20 flex items-center justify-center bg-black/5 opacity-0 transition-opacity duration-300 2xl:group-hover:opacity-100">
+                <button
+                  data-student-index={index}
+                  class="btn-xem-chi-tiet group/btn flex h-[38px] w-[164px] cursor-pointer items-center justify-center gap-[6px] rounded-[55px] border-[0.5px] border-black bg-white px-[9px] py-[12px] shadow-md transition-colors duration-300 hover:border-[#B90E0A]"
+                >
+                  <span class="font-gilroy text-[16px] font-semibold leading-none text-[#373737] opacity-80 transition-colors duration-300 group-hover/btn:text-[#B90E0A] group-hover/btn:opacity-100">
+                    Xem chi tiết
+                  </span>
+                  <DoubleChevronRight
+                    className="h-[14px] w-[15px] text-[#373737] opacity-80 transition-colors duration-300 group-hover/btn:text-[#B90E0A] group-hover/btn:opacity-100"
+                    aria-hidden="true"
+                  />
+                </button>
+              </div>
+            </div>
+
+            {/* Info */}
+            <div class="flex flex-col gap-[12px]">
+              <div class="flex items-center justify-between">
+                <h3 class="font-gilroy font-bold leading-[1.2] text-[#373737] md:text-[15px] xl:text-[18px]">
+                  {student.name}
+                </h3>
+                <span class="inline-flex h-[28px] w-[75px] items-center justify-center rounded-[5px] bg-[#AF0000] px-[8px] font-gilroy text-[14px] font-[1000] leading-none text-[#FFF0CD] md:h-[28px] md:w-[75px] md:rounded-[5px] md:text-[14px] xl:h-[32px] xl:w-[90px] xl:text-[18px]">
+                  {student.badge}
+                </span>
+              </div>
+              <div class="flex items-center justify-between">
+                <p class="font-gilroy font-normal leading-[1.2] text-[#373737] md:text-[13px] xl:text-[16px]">
+                  {student.role}
+                </p>
+                <p class="font-gilroy font-normal leading-[1.2] text-[#373737] md:text-[13px] xl:text-[16px]">
+                  {student.score}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    {/* CTA Button */}
+    <div class="relative z-20 mt-6 flex justify-center md:mt-8">
+      <div class="relative">
+        <StudentShowcaseDialog {icons} client:load />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .student-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  @media (hover: hover) and (min-width: 1536px) {
+    .student-card:hover {
+      background: linear-gradient(135deg, #ffd568 0%, #fff5db 100%) !important;
+      border-color: #d9d9d9 !important;
+      box-shadow: 4px 11px 13.6px 0px rgba(175, 0, 0, 0.25) !important;
+    }
+  }
+</style>
+
+<script is:inline>
+  function setupAutoScroll(containerId, intervalMs) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    let timer = null;
+    const cardWidth = 260;
+    const totalCards = 4;
+
+    container.scrollLeft = totalCards * cardWidth;
+
+    function startInterval() {
+      timer = setInterval(() => {
+        let currentIndex = Math.round(container.scrollLeft / cardWidth);
+
+        currentIndex++;
+
+        container.scrollTo({
+          left: currentIndex * cardWidth,
+          behavior: 'smooth',
+        });
+
+        if (currentIndex === totalCards * 2) {
+          setTimeout(() => {
+            container.scrollTo({ left: totalCards * cardWidth, behavior: 'auto' });
+          }, 500);
+        }
+      }, intervalMs);
+    }
+
+    startInterval();
+
+    let resetTimer = null;
+
+    container.addEventListener(
+      'touchstart',
+      () => {
+        clearInterval(timer);
+        timer = null;
+      },
+      { passive: true },
+    );
+
+    container.addEventListener(
+      'touchend',
+      () => {
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(() => {
+          let currentIndex = Math.round(container.scrollLeft / cardWidth);
+          if (currentIndex >= totalCards * 2 || currentIndex < totalCards) {
+            const normalizedIndex = (currentIndex % totalCards) + totalCards;
+            container.scrollTo({ left: normalizedIndex * cardWidth, behavior: 'auto' });
+          }
+          startInterval();
+        }, 3000);
+      },
+      { passive: true },
+    );
+
+    container.addEventListener(
+      'scroll',
+      () => {
+        if (timer !== null) return;
+
+        const middleStart = totalCards * cardWidth;
+        const middleEnd = totalCards * cardWidth * 2;
+
+        if (container.scrollLeft >= middleEnd) {
+          container.scrollLeft -= middleStart;
+        } else if (container.scrollLeft < middleStart) {
+          container.scrollLeft += middleStart;
+        }
+      },
+      { passive: true },
+    );
+  }
+
+  setupAutoScroll('mobile-row-1', 4000);
+  setupAutoScroll('mobile-row-2', 6000);
+
+  // Thêm sự kiện click cho nút "Xem chi tiết"
+  document.addEventListener('DOMContentLoaded', () => {
+    const detailButtons = document.querySelectorAll('.btn-xem-chi-tiet');
+    detailButtons.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const index = e.currentTarget.getAttribute('data-student-index');
+        window.dispatchEvent(new CustomEvent('openStudentDialog', { detail: { index } }));
+      });
+    });
+  });
+</script>

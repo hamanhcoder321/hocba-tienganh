@@ -1,0 +1,172 @@
+---
+import { ChevronRight } from 'lucide-react';
+import { PlaySolidIcon } from '@/components/common/icons';
+import { IMAGES } from '@/lib/constants/images';
+import { Image } from 'astro:assets';
+---
+
+<section
+  class="student-hero-section relative w-full overflow-hidden bg-gradient-to-r from-[#7D1900] to-[#B90E0A] max-[767px]:h-[496px] md:h-[450px] lg:h-[500px] xl:h-[478px] 2xl:h-[600px] 3xl:h-[718px]"
+>
+  <img
+    src={IMAGES.studentAchievements.bannerLayer1.src}
+    width="529"
+    height="529"
+    class="pointer-events-none absolute top-[-69px] z-0 max-[767px]:!top-0 max-[767px]:left-[-35px] max-[767px]:h-[180.46px] max-[767px]:w-[242.46px] md:!left-[0px] md:!top-[0px] md:h-[150px] md:w-[300px] lg:!left-[0px] lg:!top-[0px] lg:h-[200px] lg:w-[350px] xl:!left-[0px] xl:!top-[0px] xl:h-[200px] xl:w-[350px] 2xl:!left-[0px] 2xl:!top-[0px] 2xl:h-[300px] 2xl:w-[450px] 3xl:!top-[0px]"
+    alt=""
+    aria-hidden="true"
+  />
+
+  <div
+    class="relative z-10 flex h-full w-full flex-col items-center px-6 max-[767px]:static md:flex-row md:px-12 xl:px-[30px]"
+  >
+    {/* Left Content */}
+    <div
+      class="relative flex h-full w-full flex-col items-center justify-center px-6 py-12 text-center max-[767px]:static md:items-start md:text-left xl:flex-[0_0_650px] 2xl:flex-[0_0_800px] 3xl:flex-[0_0_900px]"
+    >
+      {/* Breadcrumbs */}
+      <nav
+        class="mb-8 flex items-center justify-center gap-2 whitespace-nowrap text-white/80 max-[767px]:absolute max-[767px]:!left-[22px] max-[767px]:!right-auto max-[767px]:!top-[10px] max-[767px]:!mx-0 max-[767px]:h-[18px] max-[767px]:w-max max-[767px]:gap-1 md:absolute md:!left-[20px] md:top-[40px] lg:!left-[40px] xl:!left-[160px] xl:!top-[40px] xl:h-[32.84px] xl:w-max 2xl:!left-[150px] 2xl:!top-[40px] 3xl:!left-[278px] 3xl:!top-[60px]"
+      >
+        <a
+          href="/"
+          class="font-gilroy text-[12px] text-white transition-colors hover:text-white max-[767px]:text-[11px] max-[767px]:font-medium max-[767px]:leading-[150%] md:text-[16px] xl:text-[18px] xl:font-medium xl:leading-[150%]"
+          >Trang chủ</a
+        >
+        <ChevronRight className="hidden h-6 w-6 shrink-0 text-white md:block" strokeWidth={2.25} />
+        <ChevronRight className="block shrink-0 text-white md:hidden" width="14.15" height="18.15" strokeWidth={2.25} />
+        <span
+          class="font-gilroy text-[12px] text-white max-[767px]:text-[11px] max-[767px]:font-medium max-[767px]:leading-[150%] md:text-[16px] xl:text-[18px] xl:font-medium xl:leading-[150%]"
+          >Học viên điểm cao</span
+        >
+      </nav>
+
+      {/* Title Section */}
+      <div
+        class="relative mb-6 max-[767px]:absolute max-[767px]:!left-0 max-[767px]:!right-0 max-[767px]:!top-[39px] max-[767px]:m-0 max-[767px]:!mx-auto max-[767px]:h-auto max-[767px]:w-[353.12px] md:absolute md:!left-[30px] md:!top-[100px] lg:!left-[50px] xl:absolute xl:!left-[180px] xl:!top-[100px] xl:m-0 xl:flex xl:flex-col xl:gap-[30px] 2xl:!left-[170px] 2xl:!top-[130px] 3xl:!left-[298px] 3xl:!top-[172px]"
+        style="transform: rotate(-0.05deg);"
+      >
+        <div
+          class="absolute -left-8 -top-2 max-[767px]:!left-[16px] max-[767px]:!top-[0.01px] md:-left-12 md:top-[0px] lg:top-[0px] xl:-left-[60px] xl:top-[2px]"
+        >
+          <div
+            class="h-4 w-4 bg-gradient-to-r from-[#FFD568] to-[#FFF5DB] max-[767px]:h-[14.21px] max-[767px]:w-[13.9px] md:h-8 md:w-8 xl:h-[31px] xl:w-[30.33px]"
+            style={`mask-image: url(${IMAGES.schedule.decorCorner.src}); -webkit-mask-image: url(${IMAGES.schedule.decorCorner.src}); mask-size: contain; -webkit-mask-size: contain; mask-repeat: no-repeat; -webkit-mask-repeat: no-repeat;`}
+          >
+          </div>
+        </div>
+        {/* Decorative Stars */}
+        <img
+          src={IMAGES.schedule.starSmall.src}
+          class="absolute h-4 w-4 brightness-0 invert max-[767px]:!left-[309px] max-[767px]:!right-auto max-[767px]:!top-[20.85px] max-[767px]:h-[10.69px] max-[767px]:w-[10.69px] md:!left-[240px] md:!top-[6px] md:h-[15px] md:w-[15px] lg:!left-[280px] xl:!left-[310px] xl:!top-[10px] xl:h-[15px] xl:w-[15px] 2xl:!left-[457px] 2xl:!top-[1.5px] 2xl:h-[23.32px] 2xl:w-[23.32px]"
+          alt=""
+        />
+        <img
+          src={IMAGES.schedule.starLarge.src}
+          class="absolute h-8 w-8 brightness-0 invert max-[767px]:!left-[317.94px] max-[767px]:!right-auto max-[767px]:!top-[0px] max-[767px]:h-[26.81px] max-[767px]:w-[26.81px] md:!left-[250px] md:!top-[-22px] md:h-[35px] md:w-[35px] lg:!left-[290px] xl:!left-[320px] xl:!top-[-20px] xl:h-[35px] xl:w-[35px] 2xl:!left-[476.5px] 2xl:!top-[-44px] 2xl:h-[58.5px] 2xl:w-[58.5px]"
+          alt=""
+        />
+        <h1
+          class="flex w-max flex-col uppercase max-[767px]:mx-auto max-[767px]:items-center max-[767px]:gap-[1px] xl:gap-0"
+        >
+          <span
+            class="whitespace-nowrap bg-gradient-to-r from-[#FFD568] to-[#FFF5DB] bg-clip-text font-gilroy text-[32px] font-[1000] leading-tight text-transparent max-[767px]:text-[36.67px] max-[767px]:leading-[38.96px] md:text-[42px] lg:text-[48px] xl:text-[54px] xl:leading-[70px] 2xl:text-[80px] 2xl:leading-[85px]"
+            >BẢNG VÀNG</span
+          >
+          <span
+            class="relative whitespace-nowrap font-gilroy text-[32px] font-[1000] leading-tight text-white max-[767px]:text-[31.17px] max-[767px]:leading-[38.96px] md:text-[42px] lg:text-[48px] xl:text-[54px] xl:leading-[60px] 2xl:text-[68px] 2xl:leading-[85px]"
+          >
+            HỌC BÁ EDUCATION
+          </span>
+        </h1>
+      </div>
+    </div>
+  </div>
+
+  <p
+    class="font-gilroy text-[14px] font-normal leading-[150%] text-[#FFD2D1] max-[767px]:absolute max-[767px]:!left-0 max-[767px]:!right-0 max-[767px]:!top-[124px] max-[767px]:m-0 max-[767px]:!mx-auto max-[767px]:flex max-[767px]:h-[74px] max-[767px]:w-[306px] max-[767px]:max-w-none max-[767px]:flex-col max-[767px]:items-center max-[767px]:justify-center max-[767px]:text-center max-[767px]:leading-[120%] md:absolute md:!left-[80px] md:!top-[255px] md:w-[350px] md:text-[16px] lg:!left-[100px] lg:!top-[270px] lg:w-[450px] lg:text-[20px] xl:absolute xl:!left-[210px] xl:!top-[270px] xl:m-0 xl:w-[506px] xl:text-[20px] xl:leading-[160%] 2xl:!left-[200px] 2xl:!top-[310px] 2xl:flex 2xl:!h-[161px] 2xl:!w-[486px] 2xl:flex-col 2xl:justify-center 2xl:text-justify 2xl:text-[22px] 2xl:leading-[28px] 2xl:text-white 3xl:!left-[330px] 3xl:!top-[360px] 3xl:flex 3xl:!h-[161px] 3xl:!w-[486px] 3xl:flex-col 3xl:justify-center 3xl:text-justify 3xl:text-[22px] 3xl:leading-[28px] 3xl:text-white"
+  >
+    Nơi những Bá sinh chia sẻ hành trình chinh phục Tiếng Trung đầy thử thách và cảm hứng.
+  </p>
+
+  <a
+    href="/hoc-vien-diem-cao/chi-tiet"
+    class="animate-outline-pulse group relative flex items-center justify-center gap-[6px] rounded-[86px] border-[3px] border-white bg-gradient-to-r from-[#7D1900] to-[#B90E0A] transition-all max-[767px]:absolute max-[767px]:!left-0 max-[767px]:!right-0 max-[767px]:!top-[198px] max-[767px]:!mx-auto max-[767px]:h-[27.5px] max-[767px]:w-[153.54px] max-[767px]:gap-[2.75px] max-[767px]:rounded-[39.42px] max-[767px]:border-[1.38px] md:absolute md:!left-[70px] md:!top-[360px] md:h-[48px] md:w-[240px] lg:!left-[80px] lg:!top-[385px] lg:h-[56px] lg:w-[280px] xl:absolute xl:!left-[190px] xl:!top-[380px] xl:h-[56px] xl:w-[280px] 2xl:!left-[180px] 2xl:!top-[490px] 2xl:h-[66px] 2xl:w-[288px] 3xl:!left-[298px] 3xl:!top-[546px] 3xl:!h-[66px] 3xl:!w-[288px] 3xl:!gap-[6px] 3xl:!rounded-[86px] 3xl:!border-[3px] 3xl:!p-[11.5px]"
+  >
+    <div
+      class="animate-pulse-custom absolute left-1/2 top-1/2 z-0 h-full w-full -translate-x-1/2 -translate-y-1/2 rounded-[86px] bg-gradient-to-r from-[#F3C650] to-[#B90E0A] opacity-0 transition-opacity duration-1000 max-[767px]:rounded-[39.42px] 2xl:!h-[60px] 2xl:!w-[282px] 3xl:!h-[60px] 3xl:!w-[282px] 3xl:!rounded-[86px]"
+    >
+    </div>
+    <PlaySolidIcon
+      className="relative z-10 h-4 w-4 fill-white max-[767px]:h-[11px] max-[767px]:w-[11px] md:h-5 md:w-5"
+    />
+    <span
+      class="relative -top-[2px] z-10 font-gilroy text-[14px] font-[900] text-white max-[767px]:top-[-0.5px] max-[767px]:text-[11px] max-[767px]:leading-[14.67px] md:text-[16px] lg:text-[20px] xl:text-[20px] 2xl:text-[24px] 3xl:h-[32px] 3xl:text-[24px] 3xl:font-[900] 3xl:leading-[32px]"
+    >
+      KHÁM PHÁ NGAY!
+    </span>
+  </a>
+
+  {/* Right Banner Image */}
+  <div
+    class="student-hero-banner-image relative z-0 flex h-full flex-1 items-end justify-center pr-4 max-[767px]:absolute max-[767px]:!left-[50%] max-[767px]:!right-auto max-[767px]:!top-[165px] max-[767px]:m-0 max-[767px]:!mx-0 max-[767px]:!-ml-[255px] max-[767px]:!h-[415px] max-[767px]:!w-[605px] max-[767px]:pr-0 md:absolute md:!left-[360px] md:!top-[-300px] md:flex md:h-[750px] md:w-[650px] lg:!left-[420px] lg:!top-[-480px] lg:h-[1000px] lg:w-[800px] lg:justify-end xl:absolute xl:!bottom-[-150px] xl:!left-[560px] xl:!top-auto xl:h-[720px] xl:w-[1005px] 2xl:!bottom-auto 2xl:!left-[635px] 2xl:!top-[-80px] 2xl:h-[850px] 2xl:w-[1195px] 3xl:!left-[709px] 3xl:!top-[-116px] 3xl:h-[1036px] 3xl:w-[1512px]"
+  >
+    <div
+      class="relative h-auto w-full max-w-[900px] max-[767px]:h-full max-[767px]:w-full xl:h-full xl:w-full xl:max-w-none"
+    >
+      <img
+        src={IMAGES.studentAchievements.bannerStudent.src}
+        alt="Bảng vàng thành tích"
+        class="h-auto w-full object-contain max-[767px]:h-full max-[767px]:w-full xl:h-full xl:w-full"
+        style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .animate-pulse-custom {
+    animation: pulse-left 1s infinite;
+  }
+  .animate-outline-pulse {
+    animation: pulse-outline 1s infinite;
+  }
+  @keyframes pulse-outline {
+    0%,
+    100% {
+      box-shadow: 3px 4px 30px rgba(243, 198, 80, 0);
+    }
+    50% {
+      box-shadow: 3px 4px 30px rgba(243, 198, 80, 0.6);
+    }
+  }
+  @keyframes pulse-left {
+    0%,
+    100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.85;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 819px) {
+    .student-hero-section {
+      height: 420px !important;
+    }
+    .student-hero-section > p {
+      top: 245px !important;
+    }
+    .student-hero-section > a {
+      top: 340px !important;
+    }
+    .student-hero-banner-image {
+      left: 360px !important;
+      width: 580px !important;
+      height: 680px !important;
+      top: -260px !important;
+    }
+  }
+</style>

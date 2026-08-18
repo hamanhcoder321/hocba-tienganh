@@ -1,0 +1,805 @@
+---
+export const prerender = false; // Render SSR để TeacherCarousel được render trên server
+
+import AnimatedArrow from '@/components/common/AnimatedArrow';
+import ButtonTitle from '@/components/common/ButtonTitle.astro';
+import { Owl, StarColorGradient, VectorArrow, VectorChat, VectorChatLarge } from '@/components/common/icons';
+import JsonLd from '@/components/common/JsonLd.astro';
+import SimpleFormRegister from '@/components/common/SimpleFormRegister.astro';
+import AnimatedBadges from '@/components/features/introduce/AnimatedBadges';
+import TeacherCarousel from '@/components/features/introduce/TeacherCarousel';
+import TimeLineCarousel from '@/components/features/introduce/TimeLineCarousel';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { DATA_VALUE } from '@/lib/constants/enums';
+import { IMAGES } from '@/lib/constants/images';
+import { fetchTeacherListV2 } from '@/lib/static-data';
+import { cn } from '@/lib/utils';
+import { Image } from 'astro:assets';
+import { Globe, Home, MapPin, Star } from 'lucide-react';
+import type { Graph } from 'schema-dts';
+// --- Metadata cho SEO ---
+const title = 'Về Học Bá | Học Bá Education';
+const description =
+  'Câu chuyện hình thành, sứ mệnh và đội ngũ đằng sau Tiếng Trung Học Bá. Chúng tôi cung cấp giải pháp [Lĩnh vực của bạn] uy tín và chất lượng.';
+
+const baseUrl = import.meta.env.PUBLIC_CLIENT_URL ?? 'https://hoc-ba.edu.vn';
+
+// Breadcrumb Schema cho trang giới thiệu
+const jsonLd: Graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Trang chủ',
+          item: baseUrl,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Giới thiệu',
+          item: `${baseUrl}/gioi-thieu`,
+        },
+      ],
+    },
+  ],
+};
+
+// Fetch teachers from API
+let teachers: TLecturer[] = [];
+const teacherData = await fetchTeacherListV2({ page: 1, limit: 10 });
+
+if (teacherData?.list) {
+  teachers = teacherData.list;
+} else {
+  console.log('No teacher data from API, using empty array');
+}
+
+const statistics = [
+  {
+    number: '10.000+',
+    description: 'Học viên đã tin tưởng & lựa chọn Học Bá Education',
+  },
+  {
+    number: '586+',
+    description: 'Học viên sử dụng kết quả phục vụ mục tiêu du học',
+  },
+  {
+    number: '99,9%',
+    description: 'Tỷ lệ học viên đạt chuẩn đầu ra theo lộ trình',
+  },
+  {
+    number: '100+',
+    description: 'Doanh nghiệp đã tin tưởng & đồng hành cùng Học Bá Education',
+  },
+  {
+    number: '1.668+',
+    description: 'Nội dung học thuật được nghiên cứu và phát triển',
+  },
+  {
+    number: '25+',
+    description: 'Đầu sách nội bộ phục vụ đào tạo & xây học liệu',
+  },
+];
+
+const timeline = [
+  {
+    date: 'Tháng 06/2023',
+    description:
+      'Học Bá Education chính thức được thành lập, khởi đầu cho hành trình xây dựng một hệ sinh thái đào tạo tiếng Trung bài bản, nơi chất lượng học thuật, chuẩn đầu ra và giá trị dài hạn cho người học được đặt làm trọng tâm.',
+    position: 'top' as const,
+    colStart: 'col-start-2',
+  },
+  {
+    date: 'Tháng 01/2024',
+    description:
+      'Học Bá Education bắt tay vào quá trình nghiên cứu chuyên sâu các chương trình đào tạo Hán ngữ tại Việt Nam, tập trung phân tích cấu trúc chương trình, chuẩn năng lực và khoảng cách giữa việc học – thi – ứng dụng thực tế.',
+    position: 'top' as const,
+  },
+  {
+    date: 'Tháng 06/2024',
+    description:
+      'Hoàn thiện và ra mắt Học Bá HSK, sản phẩm đào tạo luyện thi HSK được thiết kế theo tư duy hệ thống, hướng tới việc xây dựng nền tảng năng lực bền vững thay vì chỉ tập trung vào kỹ thuật làm bài.',
+    position: 'top' as const,
+  },
+  {
+    date: 'Tháng 12/2024',
+    description:
+      'Hoàn thiện Học Bá Chinese – Tiếng Trung cho người đi làm, chương trình đào tạo tập trung vào giao tiếp ứng dụng, môi trường công sở và các tình huống thực tế, đáp ứng nhu cầu học tiếng Trung phục vụ công việc và sự nghiệp.',
+    position: 'bottom' as const,
+    colStart: 'col-start-3',
+  },
+  {
+    date: 'Tháng 01/2025',
+    description:
+      'Chính thức ra mắt Học Bá HSK 3.0 – hệ thống luyện thi HSK Online thế hệ mới, được phát triển dựa trên chuẩn năng lực thực, lộ trình cá nhân hóa và trải nghiệm học tập tối ưu.',
+    position: 'bottom' as const,
+  },
+  {
+    date: '07/2025 – 12/2025',
+    description:
+      'Giới thiệu Học Bá Plus – phiên bản nâng cấp toàn diện về sản phẩm, học liệu, hệ thống LMS và trải nghiệm học viên, đánh dấu bước tiến quan trọng trong chiến lược phát triển dài hạn và bền vững của Học Bá Education.',
+    position: 'bottom' as const,
+  },
+];
+
+const coreValues = [
+  {
+    image: IMAGES.introduce.tt_hq_tc,
+    alt: 'tt_hq_tc',
+    title: 'Tận Tâm - Hiệu quả - Thực chiến',
+    width: 'md:w-[330px]',
+  },
+  {
+    image: IMAGES.introduce.ht_dd_ptld,
+    alt: 'ht_dd_ptld',
+    title: 'Học thật - Dùng được - Phát triển lâu dài',
+    width: 'md:w-[376px]',
+  },
+  {
+    image: IMAGES.introduce.cmmd_vmnt,
+    alt: 'cmmd_vmnt',
+    title: 'Chung một đích đến - Vững một niềm tin',
+    width: 'md:w-[330px]',
+  },
+];
+
+const cards = [
+  {
+    number: 1,
+    bgColor: '#780000',
+    title: 'Phương pháp học hiện đại theo chuẩn các đại học hàng đầu thế giới',
+    subtitle: '⭐ Phát triển bởi GS. Baozhang He, nguyên Giám đốc chương trình tiếng Trung Harvard',
+    points: [
+      'Phương pháp học "Project-Based Learning chuẩn quốc tế - học bằng hành động, thuyết trình, giải quyết vấn đề thực tế.',
+      'Phương pháp học Visual Learning kết hợp flashcard, hình ảnh, trò chơi ngôn ngữ, tranh luận nhóm.',
+      'Học đúng đường - không học vẹt, kết hợp Phương pháp học Functional Learning để ghi nhớ và ứng dụng ngữ pháp HSK 3.0.',
+    ],
+    image: IMAGES.introduce.dkb_slide1,
+    position: 'object-right',
+  },
+  {
+    number: 2,
+    bgColor: '#B90E0A',
+    title: 'Lớp học Công nghệ - kết hợp nền tảng LMS hiện đại',
+    points: [
+      'Hệ thống học tập số hóa: lưu tiến độ, chấm bài, ôn tập tự động.',
+      'Cá nhân hóa bài giảng và bài luyện, giúp học viên học chủ động, không rơi rớt kiến thức.',
+      'Hệ thống tích hợp công nghệ AI chấm chữa bài tự động',
+      'Kho học liệu đa dạng (video, flashcards, slides bài giảng..)',
+    ],
+    image: IMAGES.introduce.dkb_slide2,
+    position: 'object-center',
+  },
+  {
+    number: 3,
+    bgColor: '#D94C00',
+    title: 'Cố vấn học thuật & giảng viên giỏi chuyên môn, giàu kinh nghiệm',
+    subtitle: '⭐ GS. Baozhang He và các giảng viên Thạc sĩ, NCS Tiến sĩ giàu kinh nghiệm, đảm bảo chuyên môn.',
+    points: [
+      '1 cố vấn học thuật quốc tế',
+      '20+ chuyên gia cao cấp',
+      'Nghiên cứu - phát triển 424 điểm ngữ pháp HSK 3.0',
+      'Đội ngũ xây dựng chương trình HSK & Chinese Application',
+    ],
+    image: IMAGES.introduce.dkb_slide3,
+    position: 'object-center',
+  },
+  {
+    number: 4,
+    bgColor: '#FFA10A',
+    title: 'Mentor HỌC THUẬT đồng hành sát sao, HỖ TRỢ HỌC VIÊN 24/7',
+    subtitle: '⭐ “Huấn luyện viên thầm lặng” giúp mọi học viên Học Bá chinh phục mục tiêu Tiếng Trung',
+    points: [
+      'Luôn sẵn sàng giải đáp mọi thắc mắc về bài học, bài tập. Giao thêm tài liệu, bài luyện tập phù hợp với trình độ để học viên tiến bộ',
+      'Theo dõi sát sao tiến độ học tập của từng học viên',
+      'Sửa bài tập, góp ý chi tiết để học viên nắm chắc kiến thức.',
+      'Gắn kết lớp học, tạo không khí học tập tích cực và hứng thú.',
+    ],
+    image: IMAGES.introduce.dkb_slide4,
+    position: 'object-center',
+  },
+];
+---
+
+<BaseLayout {title} {description}>
+  <JsonLd data={jsonLd} />
+  <div class="relative">
+    <section class="relative h-[328px] w-full overflow-hidden md:h-[652px]">
+      <div
+        class="absolute inset-0 z-0 w-full bg-[linear-gradient(180deg,#B90E0A_0%,#7D1900_137.89%)] pt-5 max-sm:flex max-sm:justify-center"
+      >
+        <div class="mx-auto flex size-[600px] items-center justify-center rounded-full bg-[#FFA2A221] md:size-[1253px]">
+          <div
+            class="mx-auto flex size-[484px] items-center justify-center rounded-full bg-[#FF999921] md:size-[1007px]"
+          >
+            <div
+              class="mx-auto flex size-[429px] items-center justify-center rounded-full bg-[#FF999952] md:size-[895px]"
+            >
+              <div
+                class="mx-auto size-[310px] rounded-full bg-[radial-gradient(53.34%_53.34%_at_49.91%_39.55%,_#FFFFFF_0%,_rgba(255,246,246,0.8)_100%)] md:size-[646px]"
+              >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container relative z-10 flex h-[328px] flex-col px-4 pt-4 md:h-[652px] md:px-0 md:pt-8">
+        <Breadcrumb>
+          <BreadcrumbList className="text-xs text-white md:text-lg">
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <a href="/">Trang chủ</a>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage className="text-white"> Về chúng tôi </BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+
+        <div class="flex w-full flex-1 flex-col items-center">
+          <div class="text-base font-black uppercase text-white md:text-[32px]">HỌC BÁ EDUCATION</div>
+          <div
+            class="relative flex h-10 items-center bg-gradient-to-t from-[#FFF8F8] to-[#FFDF89] bg-clip-text px-4 text-2xl font-black uppercase text-transparent md:mt-2 md:h-[66px] md:px-10 md:text-[52px]"
+          >
+            <AnimatedArrow
+              toColor="#FFF8F8"
+              fromColor="#FFDF89"
+              className={'absolute -left-1 top-2 size-4 object-cover md:-top-4 md:left-2 md:size-8'}
+              client:load
+            />
+            <p>Học từ người giỏi nhất</p>
+            <VectorArrow
+              toColor="#FFF8F8"
+              fromColor="#FFDF89"
+              className={'absolute -right-1 bottom-2 size-4 rotate-180 object-cover md:-bottom-4 md:right-2 md:size-8'}
+            />
+          </div>
+          <AnimatedBadges client:load />
+          <div class="relative">
+            <div class="absolute -left-2 top-6 flex md:-left-6 md:top-8">
+              <VectorChat className="h-7 w-[50px] md:h-auto md:w-auto" />
+              <p
+                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-2/3 text-nowrap text-[10px] font-bold text-white md:text-base"
+              >
+                学霸教育
+              </p>
+            </div>
+
+            <Image
+              src={IMAGES.introduce.instructor}
+              height={495}
+              width={575}
+              alt={'instructor'}
+              densities={[1, 2]}
+              quality={95}
+              class={'object-cover w-[264px] md:w-[575px] h-auto mt-6 md:mt-4'}
+            />
+            <div class="absolute right-2 top-8 flex md:right-6">
+              <VectorChatLarge className="h-7 w-8 md:h-auto md:w-[50px] md:w-auto" />
+              <p
+                class="absolute -right-1 top-1/2 -translate-x-1/2 -translate-y-2/3 text-nowrap text-[10px] font-bold text-white md:-right-0 md:text-base"
+              >
+                你好
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="w-full overflow-hidden px-4 md:px-0">
+      <div class="h-audo container relative z-10 flex w-full flex-col pt-4 md:h-[652px] md:pt-12">
+        <div
+          class="relative flex h-14 w-fit items-center gap-6 px-4 text-lg font-black uppercase text-primary md:h-[64px] md:px-10 md:text-[42px]"
+        >
+          <AnimatedArrow
+            toColor="#AF0000"
+            fromColor="#AF0000"
+            className={'absolute -left-1 top-2 size-4 object-cover md:-top-4 md:left-2 md:size-8'}
+            client:load
+          />
+          <h1>Câu chuyện về học bá</h1>
+          <Owl className="size-8 md:size-auto text-primary" />
+          <VectorArrow
+            toColor="#AF0000"
+            fromColor="#AF0000"
+            className={'absolute -right-1 bottom-2 size-4 rotate-180 object-cover md:-bottom-4 md:right-2 md:size-8'}
+          />
+        </div>
+        <div class="flex grid-cols-2 flex-col md:grid">
+          <div class="col-span-1">
+            <ButtonTitle title="Lịch sử hình thành" icon={Home} className="mt-2 md:mt-8" />
+            <div class="mt-0 px-0 py-4 text-base font-medium md:mt-4 md:px-9 md:py-10">
+              <p>
+                <strong>Học Bá Education</strong> là hệ thống đào tạo Hán ngữ trực tuyến theo phương pháp chuẩn quốc tế, hướng
+                tới việc chuẩn hóa năng lực người học và nâng cao khả năng ứng dụng tiếng Trung trong học tập, công việc và
+                sự nghiệp dài hạn.
+              </p>
+              <p class="mt-4">
+                Thành lập từ tháng 06/2023, <strong>Học Bá Education</strong> xây dựng hệ sinh thái đào tạo tiếng Trung Online
+                với các chương trình luyện thi HSK 3.0, YCT và tiếng Trung cho người đi làm, được triển khai trên nền tảng
+                số với hệ thống LMS, học liệu số hóa và lộ trình học cá nhân hóa.
+              </p>
+              <p class="mt-4">
+                Chúng tôi tin rằng, khi phương pháp đúng được kết hợp với công nghệ phù hợp, người học có thể xây dựng
+                năng lực tiếng Trung bền vững và sử dụng hiệu quả trong thực tế.
+              </p>
+            </div>
+          </div>
+          <div class="relative col-span-1 mb-16 h-[236px] w-[344px] md:mb-0 md:h-full md:w-auto">
+            <Image
+              src={IMAGES.introduce.lich_su_hinh_thanh2}
+              alt="lich_su_hinh_thanh2"
+              width={422}
+              height={422}
+              quality={95}
+              densities={[1, 2]}
+              class={'object-cover size-[112px] md:size-[211px] absolute top-0 md:-top-10 -right-[2%] md:-right-10 rounded-lg'}
+            />
+            <Image
+              src={IMAGES.introduce.lich_su_hinh_thanh1}
+              alt="lich_su_hinh_thanh1"
+              width={822}
+              height={768}
+              quality={95}
+              densities={[1, 2]}
+              class={'object-cover object-left w-[218px] md:w-[411px] h-[204px] md:h-[384px] absolute bottom-0 left-[44%] max-sm:-translate-x-1/2 md:left-20 rounded-lg md:rounded-3xl brightness-125'}
+            />
+            <Image
+              src={IMAGES.introduce.staff_founder}
+              alt="staff_founder"
+              width={374}
+              height={374}
+              quality={95}
+              densities={[1, 2]}
+              class={'object-cover size-[100px] md:size-[187px] absolute -bottom-6 md:-bottom-10 left-0 md:left-0 rounded-lg'}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="w-full overflow-hidden bg-[#FFF4F4] px-4 py-6 md:px-0 md:py-16">
+      <div class="container relative z-10 flex w-full flex-col">
+        <ButtonTitle title="Cột mốc phát triển" icon={MapPin} className="mb-6 md:mb-16" />
+      </div>
+      <div class="relative flex text-[#373737] md:flex-col 3xl:px-[240px]">
+        <div class="container hidden grid-cols-12 border-b border-black md:grid">
+          {
+            timeline
+              .filter((item) => item.position === 'top')
+              .map((item) => (
+                <div
+                  class={`relative col-span-3 flex flex-col gap-4 border-l border-black px-6 py-4 ${item.colStart || ''}`}
+                >
+                  <div class="absolute -left-2 top-0 size-4 rounded-full bg-black" />
+                  <h3 class="text-base font-black md:text-[28px]">{item.date}</h3>
+                  <p class="text-base font-medium">{item.description}</p>
+                </div>
+              ))
+          }
+        </div>
+        <div class="container hidden grid-cols-12 md:grid">
+          {
+            timeline
+              .filter((item) => item.position === 'bottom')
+              .map((item) => (
+                <div
+                  class={`relative col-span-3 flex flex-col gap-4 border-l border-black px-6 py-4 ${item.colStart || ''}`}
+                >
+                  <div class="absolute -left-2 bottom-0 size-4 rounded-full bg-black" />
+                  <h3 class="text-base font-black md:text-[28px]">{item.date}</h3>
+                  <p class="text-base font-medium">{item.description}</p>
+                </div>
+              ))
+          }
+        </div>
+        <div class="container md:hidden">
+          <TimeLineCarousel client:load {timeline} />
+        </div>
+      </div>
+    </section>
+
+    <section class="relative w-full overflow-hidden px-4 py-4 md:px-0 md:py-10">
+      <Image
+        src={IMAGES.introduce.su_menh_tam_nhin}
+        alt={'su_menh_tam_nhin'}
+        width={1920}
+        height={470}
+        class={'object-cover h-[223px] md:h-auto absolute top-1/2 -translate-y-1/2 left-0 z-0 md:mt-24 opacity-40'}
+      />
+      <div class="container relative z-10">
+        <ButtonTitle title="Sứ mệnh & Tầm nhìn" icon={Globe} className="mb-6 md:mb-16" />
+        <div class="flex flex-col items-start justify-center gap-16 px-4 md:flex-row md:gap-40 md:px-0 md:px-6">
+          <div class="flex w-full flex-col md:w-[422px]">
+            <div class="flex items-center justify-center gap-2 md:gap-6">
+              <Image
+                src={IMAGES.introduce.coin}
+                alt={'coin'}
+                width={68}
+                height={68}
+                class={'object-cover size-[50px] md:size-[68px]'}
+              />
+              <p class="text-2xl font-black uppercase text-primary md:text-[52px]">Sứ mệnh</p>
+            </div>
+            <p class="text-justify text-base font-medium">
+              Cam kết mang đến môi trường học tập tối ưu, khai phóng tiềm năng và phát triển cá nhân thông qua chương
+              trình đào tạo tiếng Trung chuẩn quốc tế, ứng dụng phương pháp hiện đại & công nghệ tiên tiến. Học Bá đồng
+              hành toàn diện với học viên, trang bị kỹ năng ngôn ngữ, giao tiếp & công sở chuyên sâu để mở rộng cơ hội
+              nghề nghiệp và tự tin làm việc trong môi trường Trung Quốc/Đài Loan.
+            </p>
+          </div>
+          <div class="flex w-full flex-col md:w-[422px]">
+            <div class="flex items-center justify-center gap-6">
+              <Image
+                src={IMAGES.introduce.target_3d}
+                alt={'coin'}
+                width={68}
+                height={68}
+                class={'object-cover size-[50px] md:size-[68px]'}
+              />
+              <p class="text-2xl font-black uppercase text-primary md:text-[52px]">Tầm nhìn</p>
+            </div>
+            <p class="text-justify text-base font-medium">
+              <span class="whitespace-nowrap text-base font-black text-primary md:text-2xl">2025–2026:</span>
+              Trở thành đơn vị dẫn đầu đào tạo tiếng Trung ứng dụng và luyện thi HSK 3.0 tại Việt Nam.
+            </p>
+            <p class="mt-6 text-justify text-base font-medium">
+              <span class="whitespace-nowrap text-base font-black text-primary md:text-2xl">2026-2030:</span>
+              <span>
+                Tiến tới trở thành Hệ sinh thái Edtech Giáo dục - Du học - Việc làm tiếng Trung hàng đầu khu vực.
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="relative w-full overflow-hidden bg-[#FFFBF6] px-4 py-10 md:px-0">
+      <div class="container relative z-10">
+        <ButtonTitle title="Giá trị cốt lõi" icon={Star} className="mb-6 md:mb-16" />
+        <div class="scrollbar-hide flex gap-4 max-sm:overflow-x-scroll md:gap-16">
+          {
+            coreValues.map((value) => (
+              <div
+                class={`group relative flex h-[161px] w-[164px] p-2 md:h-[368px] ${value.width} flex-shrink-0 flex-col items-center justify-center gap-4 rounded-xl bg-primary transition-colors duration-1000 ease-in-out md:gap-10 md:rounded-[28px] md:hover:bg-white`}
+                style="box-shadow: 4px 4px 37px 0px #FF989840;"
+              >
+                <Image
+                  src={value.image}
+                  alt={value.alt}
+                  width={128}
+                  height={128}
+                  class="size-14 object-cover transition-transform duration-1000 ease-in-out md:size-32 md:group-hover:scale-125"
+                  densities={[1, 2, 3]}
+                />
+
+                <h3 class="text-center text-base font-black uppercase text-white transition-colors transition-transform duration-700 ease-in-out md:text-[26px] md:leading-10 md:group-hover:translate-y-4 md:group-hover:text-primary">
+                  {value.title}
+                </h3>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="relative w-full overflow-hidden px-4 py-4 md:px-0 md:pt-10">
+      <div class="container relative z-10">
+        <div
+          class="relative mx-auto flex h-auto w-fit items-center gap-6 px-4 text-[52px] font-black uppercase text-primary md:h-[64px] md:px-10"
+        >
+          <AnimatedArrow
+            toColor="#AF0000"
+            fromColor="#AF0000"
+            className={'absolute -left-1 top-2 size-4 object-cover md:-top-4 md:left-2 md:size-8'}
+            client:load
+          />
+          <h2 class="text-lg md:text-[42px]">ĐỘI NGŨ CHUYÊN GIA TẠI HỌC BÁ</h2>
+          <VectorArrow
+            toColor="#AF0000"
+            fromColor="#AF0000"
+            className={'absolute -right-1 bottom-2 size-4 rotate-180 object-cover md:-bottom-4 md:right-2 md:size-8'}
+          />
+        </div>
+        <div
+          class="relative mx-auto mt-1 flex h-auto w-fit items-center gap-1 px-0 text-[52px] font-black uppercase text-primary md:mt-0 md:h-[64px] md:gap-3 md:gap-6 md:px-10"
+        >
+          <Image
+            src={IMAGES.introduce.global}
+            alt={'global'}
+            width={78}
+            height={69}
+            class={'object-cover w-7 h-6 md:w-[78px] md:h-[69px]'}
+          />
+          <div
+            class="flex h-7 items-center rounded-md bg-primary px-2 text-[15px] font-black uppercase text-white md:h-[52px] md:rounded-[18px] md:px-6 md:text-[28px]"
+          >
+            CỐ VẤN CHUYÊN MÔN QUỐC TẾ
+          </div>
+        </div>
+        <div class="mt-2 rounded-t-[18px] bg-gradient-to-b from-orange-700/30 to-transparent p-[2px] md:mt-9">
+          <div class="rounded-t-[16px] bg-gradient-to-b from-[#FFFAF4] via-[#FFFAF4]/80 to-transparent">
+            <div class="flex flex-col justify-center gap-0 px-2 pt-4 md:flex-row md:gap-10 md:px-0 md:pt-10">
+              <Image
+                src={IMAGES.introduce.bao_zhang_he}
+                alt={'bao_zhang_he'}
+                width={510}
+                height={383}
+                class={'object-cover w-[286px] h-[214px] md:w-[510px] md:h-[383px] mx-auto'}
+              />
+              <div
+                class="flex w-full flex-col items-center rounded-[18px] px-0 pb-0 md:w-[580px] md:px-10 md:py-[18px]"
+                style="background: linear-gradient(206.7deg, #FFDFDF -7.42%, rgba(255, 251, 251, 0) 83.27%);"
+              >
+                <h3 class="text-lg font-black uppercase text-[#373737] md:text-[34px]">GS. Bao-Zhang He</h3>
+                <div class="flex items-center gap-2 md:gap-4">
+                  <StarColorGradient className="size-5 size-7" />
+                  <div class="text-base md:text-2xl">
+                    <p class="bg-gradient-to-r from-[#8A0101] to-[#C0262C] bg-clip-text font-black text-transparent">
+                      Nguyên Giám đốc Chương trình
+                    </p>
+                    <p class="bg-gradient-to-r from-[#8A0101] to-[#C0262C] bg-clip-text font-black text-transparent">
+                      tiếng Trung tại Đại học Harvard
+                    </p>
+                  </div>
+                </div>
+                <ul
+                  class="mt-4 list-disc pl-5 text-justify text-base font-semibold max-lg:mb-6 max-lg:px-4 max-lg:pl-9 md:mt-6 md:text-lg"
+                >
+                  <li>Tiến sĩ Ngôn ngữ học, Đại học Bang Ohio (Ohio State University).</li>
+                  <li>Phó Giáo sư danh dự tại Đại học College of the Holy Cross, Hoa Kỳ.</li>
+                  <li>Nguyên Giám đốc Chương trình tiếng Trung tại Đại học Harvard (7 năm).</li>
+                  <li>Chủ tịch Hiệp hội Giáo viên Tiếng Trung tại Hoa Kỳ (CLTA, 2019-2020).</li>
+                  <li>Đồng biên tập và tác giả nhiều công trình chuẩn quốc tế về giảng dạy tiếng Trung.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="flex flex-col justify-center gap-2 pt-0 md:gap-10 md:pt-10">
+              <div
+                class="relative mx-auto flex h-[64px] w-fit items-center gap-4 text-[52px] font-black uppercase text-primary md:gap-6 md:px-10"
+              >
+                <Image
+                  src={IMAGES.introduce.book_icon}
+                  alt={'book_icon'}
+                  width={80}
+                  height={80}
+                  class={'object-cover size-11 md:size-[80px]'}
+                />
+                <h2
+                  class="flex h-7 items-center rounded-[18px] rounded-lg bg-primary px-4 text-base font-black uppercase text-white md:h-[52px] md:px-6 md:text-[28px]"
+                >
+                  ĐỘI NGŨ GIẢNG VIÊN
+                </h2>
+              </div>
+              <TeacherCarousel {teachers} client:load />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="relative w-full overflow-hidden pb-4 pt-0 md:py-4">
+      <div class="container relative z-10">
+        <div
+          class="relative mx-auto flex h-[64px] w-fit items-center gap-0 px-4 text-[52px] font-black uppercase text-primary md:gap-6 md:px-10"
+        >
+          <AnimatedArrow
+            toColor="#AF0000"
+            fromColor="#AF0000"
+            className={'absolute -left-1 top-2 size-4 object-cover md:-top-4 md:left-2 md:size-8'}
+            client:load
+          />
+          <Image
+            src={IMAGES.introduce.badge}
+            alt={'badge'}
+            width={90}
+            height={90}
+            class={'object-cover size-7 md:size-[90px]'}
+          />
+          <h2 class="text-lg md:text-[42px]">DẤU ẤN & thành tựu học bá</h2>
+          <VectorArrow
+            toColor="#AF0000"
+            fromColor="#AF0000"
+            className={'absolute -right-1 bottom-2 size-4 rotate-180 object-cover md:-bottom-4 md:right-2 md:size-8'}
+          />
+        </div>
+        <div
+          class="relative mx-auto flex h-auto w-full items-center gap-6 px-0 text-[52px] font-black uppercase text-primary md:h-[64px] md:w-fit md:px-10"
+        >
+          <div
+            class="absolute left-1/2 top-1/2 flex h-8 -translate-x-1/2 -translate-y-1/2 items-center text-nowrap rounded-xl bg-primary px-4 text-base font-black uppercase text-white md:relative md:h-[52px] md:rounded-[18px] md:px-6 md:text-[28px]"
+          >
+            Sản phẩm giáo dục dẫn đầu*
+          </div>
+        </div>
+        <div class="mx-4 rounded-t-[18px] bg-gradient-to-b from-orange-700/30 to-transparent p-[2px] md:mt-9 md:px-0">
+          <div class="rounded-t-[16px] bg-gradient-to-b from-[#FFFAF4] via-[#FFFAF4]/80 to-transparent pb-4 md:pb-10">
+            <div class="flex flex-col justify-center gap-20 gap-4 pt-10 md:flex-row md:gap-10">
+              <div class="flex w-full flex-col items-center justify-center md:w-[420px] md:gap-4">
+                <div class="flex h-auto w-auto items-center justify-center md:h-[320px]">
+                  <Image
+                    src={IMAGES.introduce.hocbahsk}
+                    alt={'bao_zhang_he'}
+                    width={330}
+                    height={320}
+                    densities={[1, 2]}
+                    class={'object-cover w-[188px] h-auto md:w-[330px]'}
+                  />
+                </div>
+                <h3
+                  class="bg-gradient-to-r from-[#7D1900] to-[#B90E0A] bg-clip-text text-lg font-black uppercase text-transparent md:text-[42px] md:leading-normal"
+                >
+                  HỌC BÁ HSK
+                </h3>
+                <p class="px-10 text-center text-justify text-base font-medium md:px-0 md:text-center md:text-lg">
+                  Đơn vị luyện thi HSK Online theo format HSK 3.0, dẫn đầu về hiệu quả ứng dụng và đầu ra thực tế.
+                </p>
+              </div>
+              <div class="flex w-full flex-col items-center justify-center md:w-[420px] md:gap-4">
+                <div class="flex h-auto w-auto items-center justify-center md:h-[320px]">
+                  <Image
+                    src={IMAGES.introduce.hocbachinese}
+                    alt={'hocbachinese'}
+                    width={330}
+                    height={320}
+                    densities={[1, 2]}
+                    class={'object-cover w-[188px] h-auto md:w-[330px]'}
+                  />
+                </div>
+                <h3
+                  class="bg-gradient-to-r from-[#7D1900] to-[#B90E0A] bg-clip-text text-lg font-black uppercase text-transparent md:text-[42px] md:leading-normal"
+                >
+                  HỌC BÁ Chinese
+                </h3>
+                <p class="px-10 text-center text-justify text-base font-medium md:px-0 md:text-center md:text-lg">
+                  Tiếng Trung online cho người đi làm, giúp giao tiếp chuyên nghiệp và nâng cao hiệu quả công việc.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="relative w-full overflow-hidden bg-gradient-to-b from-[#FFEFEF] to-[#FFFFFF00] py-4 md:py-10">
+      <div class="container relative z-10 flex flex-col gap-8">
+        <div class="flex flex-col gap-4 px-9 md:flex-row md:gap-0 md:px-0">
+          <div class="w-full text-[#373737] md:w-1/2">
+            <h2 class="text-lg font-black uppercase md:text-[28px]">Những con số ấn tượng</h2>
+            <p class="mt-4 text-base font-light md:text-lg">
+              Học Bá Education từng bước khẳng định vị thế của mình trong lĩnh vực đào tạo tiếng Trung tại Việt Nam, với
+              định hướng phát triển bền vững, lấy chuẩn năng lực thực, hiệu quả đầu ra và giá trị ứng dụng dài hạn làm
+              trung tâm.
+            </p>
+            <p class="mt-4 text-base font-light md:text-lg">
+              Thông qua việc xây dựng hệ thống học liệu bài bản, đội ngũ giảng viên chất lượng cao và lộ trình đào tạo
+              được thiết kế chuyên sâu, Học Bá không ngừng mở rộng tác động tích cực tới cộng đồng người học tiếng
+              Trung, từ mục tiêu thi cử, học tập đến phát triển sự nghiệp và du học.
+            </p>
+          </div>
+          <div class="w-full md:w-1/2">
+            <Image
+              src={IMAGES.introduce.hocba_education}
+              alt={'hocbachinese'}
+              width={402}
+              height={225}
+              densities={[1, 2]}
+              class={'object-cover w-[300px] md:w-auto h-auto md:h-[255px] mx-auto'}
+            />
+          </div>
+        </div>
+        <div class="grid grid-cols-3 gap-y-10 px-4 md:gap-y-16 md:px-0">
+          {
+            statistics.map((stat) => (
+              <div class="col-span-1 flex flex-col border-l-2 border-[#6D6D6D] px-5 md:border-l-4">
+                <div class="text-base font-black text-primary md:text-[28px]">{stat.number}</div>
+                <p class="text-xs font-medium md:text-lg">{stat.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="relative w-full px-7 py-4 md:px-0 md:pt-24">
+      <div class="container relative z-10 flex flex-col gap-4 md:gap-8">
+        <div
+          class="relative mx-auto flex flex-col items-center gap-0 px-0 text-[52px] font-black uppercase md:gap-2 md:px-10"
+        >
+          <div class="flex gap-2">
+            <Image
+              src={IMAGES.introduce.machine}
+              alt={'hocbachinese'}
+              width={70}
+              height={40}
+              densities={[1, 2]}
+              class={'object-cover w-7 md:w-auto h-full'}
+            />
+            <h2 class="text-lg md:text-[38px]">Điểm khác biệt</h2>
+          </div>
+          <div
+            class="flex h-auto items-center text-nowrap rounded-[18px] px-0 text-lg font-black uppercase text-primary md:h-[52px] md:px-6 md:text-[42px]"
+          >
+            tạo nên thương hiệu của Học Bá
+          </div>
+        </div>
+        <div class="relative mt-0 md:mb-0 md:mb-[100px] md:mt-0 md:mt-10">
+          {
+            cards.map((card, index) => (
+              <div
+                class="relative sticky top-16 h-auto pt-10 md:top-32 md:h-[650px] md:pt-[calc(var(--i)*20px)]"
+                style={{
+                  '--i': index,
+                }}
+              >
+                <div
+                  class="relative flex h-auto w-full transform-none gap-2 rounded-lg py-6 pl-5 pr-2 transition-transform duration-500 md:mx-auto md:mb-auto md:h-[480px] md:w-[1060px] md:translate-x-[calc(var(--i)*20px)] md:transform md:gap-4 md:rounded-[28px] md:py-10 md:pl-14 md:pr-7"
+                  style={`background-color: ${card.bgColor};`}
+                >
+                  <div
+                    class="absolute -top-6 left-16 left-8 flex h-6 w-10 items-center justify-center rounded-t-lg text-sm font-black text-white md:left-[calc(var(--i)*50px+64px)] md:h-[34px] md:w-[70px] md:rounded-t-xl md:text-2xl md:text-lg"
+                    style={`--i: ${index}; background-color: ${card.bgColor};`}
+                  >
+                    {card.number}
+                  </div>
+                  <div class="w-full md:w-[583px]">
+                    <h3
+                      class="rounded-md bg-white px-4 py-[10px] text-xs font-black uppercase leading-normal shadow-lg md:rounded-[20px] md:px-9 md:text-[26px]"
+                      style={`color: ${card.bgColor}`}
+                    >
+                      {card.title}
+                    </h3>
+                    <div class="mt-2 text-[10px] font-bold text-white md:mt-4 md:text-2xl">{card.subtitle}</div>
+                    <div class="mt-2 flex flex-col gap-2 text-[10px] text-white md:mt-4 md:gap-4 md:text-lg">
+                      {card.points.map((point) => (
+                        <p>
+                          <span class="mr-[2px] inline-block size-2 rounded-full bg-white md:size-3" />
+                          <span>{point}</span>
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                  <div class="flex-1">
+                    <div class="flex h-[228px] w-[113px] justify-end overflow-hidden md:h-[390px] md:w-[365px]">
+                      <Image
+                        src={card.image}
+                        alt={'hocbachinese'}
+                        width={365}
+                        height={390}
+                        densities={[1, 2]}
+                        class={cn(
+                          'h-full w-[113px] rounded-md object-cover md:w-auto md:rounded-[20px]',
+                          card.position,
+                        )}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="relative z-50 pt-12 md:pb-0 md:pt-0">
+      <SimpleFormRegister dataInput={DATA_VALUE.ABOUT} isSimpleForm />
+    </section>
+  </div>
+</BaseLayout>

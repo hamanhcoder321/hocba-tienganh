@@ -1,0 +1,34 @@
+---
+import { IMAGES } from '@/lib/constants/images';
+import { RoadmapTabs } from './RoadmapTabs';
+
+const bgImage = IMAGES.roadmap.bg.src;
+const hskImage = IMAGES.roadmap.hsk.src;
+const jobImage = IMAGES.roadmap.job1.src;
+const iconImage = IMAGES.roadmap.icon.src;
+---
+
+<section
+  id="roadmap-section"
+  class="relative bg-cover bg-center bg-no-repeat py-8"
+  style={`background-image: url(${bgImage});`}
+>
+  <div class="relative z-10">
+    <RoadmapTabs
+      client:visible
+      icons={{
+        hsk: hskImage,
+        hskSrcset: '',
+        job: jobImage,
+        jobSrcset: '',
+        icon: iconImage,
+      }}
+    />
+  </div>
+</section>
+
+<style>
+  #roadmap-section {
+    background-color: #fff8f6;
+  }
+</style>
