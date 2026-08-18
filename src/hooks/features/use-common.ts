@@ -16,7 +16,7 @@ export const useRegisterStudy = () => {
       name: '',
       phone: '',
       email: '',
-      wishlist_courses: 'HSK 3.0',
+      wishlist_courses: 'Xét tuyển vào Đại học',
       note: '',
       data_input: '',
       target: '',

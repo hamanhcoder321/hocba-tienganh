@@ -4,29 +4,36 @@ import IconMb from '@/assets/images/home/icon-maybay.png';
 import QAAccordion from '@/components/features/home/advisor-qa/QAAccordion.astro';
 import CommitmentBadge from '@/components/features/home/ui/CommitmentBadge';
 import { Image } from 'astro:assets';
+import imgGiaiDapCoVan from '@/assets/images/img-hocba-tienganh/img-giai-dap-co-van.png';
 
 const qaData = [
   {
     id: 'item-1',
-    question: '1. Học phí cho mỗi khóa học tại Học Bá là bao nhiêu?',
+    question: '1. Lộ trình học tại THE IELTS SPACE như thế nào?',
     answer:
-      'Học phí các khóa học tại Học Bá dao động từ 3 – 15 triệu, tùy theo cấp độ. Để nhận tư vấn chi tiết và lộ trình phù hợp với mục tiêu cá nhân, hãy để lại thông tin, Học Bá sẽ hỗ trợ bạn 1:1.',
+      'Lộ trình tại THE IELTS SPACE được xây dựng theo năng lực đầu vào và mục tiêu band của từng học viên, tập trung vào đúng kiến thức, kỹ năng và dạng bài còn yếu. Kết hợp giữa giảng dạy trên lớp, luyện tập trên LMS E-Power, AI phân tích dữ liệu và mentor theo sát, THE IELTS SPACE giúp học viên học đúng trọng tâm, cải thiện liên tục và rút ngắn thời gian chinh phục mục tiêu IELTS.',
   },
   {
     id: 'item-2',
-    question: '2. Lộ trình học tại Học Bá như thế nào?',
+    question: '2. THE IELTS SPACE có cam kết chất lượng đầu ra không?',
     answer:
       'Lộ trình ôn thi tại Học Bá được thiết kế cá nhân hóa, tập trung vào các kiến thức trọng tâm để học viên không lãng phí thời gian vào nội dung không cần thiết. Kết hợp cùng phương pháp học thông minh và tài liệu ôn luyện cập nhật theo chuẩn Tiếng Trung mới nhất, Học Bá giúp bạn tiếp thu nhanh, hiệu quả và tiết kiệm tối đa thời gian.',
   },
   {
     id: 'item-3',
-    question: '3. Học Bá có cam kết chất lượng đầu ra không?',
+    question: '3. Một lớp tại THE IELTS SPACE có bao nhiêu học viên?',
     answer:
       'Có! Học Bá cam kết đầu ra rõ ràng cho từng khóa học. Nếu học viên tuân thủ đúng lộ trình học tập và hướng dẫn từ giáo viên nhưng không đạt kết quả như mong muốn, chúng tôi sẽ hỗ trợ học lại miễn phí hoặc có giải pháp bù đắp phù hợp.',
   },
   {
     id: 'item-4',
-    question: '4. Người mới bắt đầu học Tiếng Trung cần tối thiểu bao lâu để giao tiếp cơ bản tiếng Trung?',
+    question: '4. Không theo kịp lớp học thì sao?',
+    answer:
+      'Thời gian để một người mới bắt đầu có thể giao tiếp cơ bản bằng Tiếng Trung phụ thuộc vào lộ trình học và mức độ tập trung của từng học viên. Với phương pháp giảng dạy tại Học Bá, nếu học viên học đúng lộ trình và thực hành đều đặn, chỉ sau 2-3 tháng, bạn đã có thể nắm vững các mẫu câu giao tiếp thông dụng và tự tin trao đổi trong những tình huống hàng ngày.',
+  },
+  {
+    id: 'item-5',
+    question: '5. AI có đảm bảo chính xác không?',
     answer:
       'Thời gian để một người mới bắt đầu có thể giao tiếp cơ bản bằng Tiếng Trung phụ thuộc vào lộ trình học và mức độ tập trung của từng học viên. Với phương pháp giảng dạy tại Học Bá, nếu học viên học đúng lộ trình và thực hành đều đặn, chỉ sau 2-3 tháng, bạn đã có thể nắm vững các mẫu câu giao tiếp thông dụng và tự tin trao đổi trong những tình huống hàng ngày.',
   },
@@ -39,11 +46,11 @@ const qaData = [
 >
   <div class="relative z-10 mx-auto max-w-[1212px] max-lg:px-9">
     <div class="mb-6 md:mb-7">
-      <div class="flex items-center">
-        <span class="text-[67px] font-black text-primary md:text-[109px]">?</span>
+      <div class="flex items-center gap-2 md:gap-4">
+        <span class="text-[67px] font-black text-[#1336B3] md:text-[109px] mr-2 md:mr-4">?</span>
         <div>
-          <h2 class="py-4 text-xl font-black text-primary md:text-[24px] lg:text-[42px]">Giải Đáp 1:1</h2>
-          <CommitmentBadge className="rounded-sm px-4 text-[20px] font-bold md:text-[32px]">
+          <h2 class="py-1 md:py-2 text-[22px] font-black uppercase text-[#1336B3] md:text-[36px] lg:text-[42px]">GIẢI ĐÁP 1:1</h2>
+          <CommitmentBadge className="rounded-md px-3 py-1 sm:px-4 text-[16px] font-bold md:text-[32px] !from-[#F97316] !to-[#F59E0B] inline-block mt-1 md:mt-2">
             CÙNG CỐ VẤN HỌC TẬP
           </CommitmentBadge>
         </div>
@@ -54,7 +61,7 @@ const qaData = [
         <QAAccordion {qaData} />
       </div>
       <div class="relative w-full lg:w-[45%]">
-        <div class="absolute top-0 translate-x-1/2 lg:-top-20 lg:right-1/2">
+        <!-- <div class="absolute top-0 translate-x-1/2 lg:-top-20 lg:right-1/2">
           <Image
             src={IconMb}
             alt="Icon may bay"
@@ -62,8 +69,8 @@ const qaData = [
             height={54}
             class="h-auto w-[58px] object-contain md:w-[87px]"
           />
-        </div>
-        <Image src={hocbaQAImg} alt="Advisor QA" class="h-auto w-full object-contain" />
+        </div> -->
+        <Image src={imgGiaiDapCoVan} alt="Advisor QA" class="h-auto w-full object-contain" />
       </div>
     </div>
   </div>

@@ -1,6 +1,10 @@
 ---
 import { Image } from 'astro:assets';
 import { IMAGES } from '@/lib/constants/images';
+import imgChugaMentor from '@/assets/images/img-hocba-tienganh/img-chuga-mentor.png';
+import imgLoiNhanMentor from '@/assets/images/img-hocba-tienganh/img-loi-nhan-thong-bao-mentor.png';
+import imgNhacNho from '@/assets/images/img-hocba-tienganh/img-nhac-nho.png';
+import imgTenLua from '@/assets/images/img-hocba-tienganh/icon-tenlua.png';
 
 const features = [
   {
@@ -30,28 +34,38 @@ const features = [
   <div class="mx-auto px-4">
     <div class="mb-12 flex flex-col text-center">
       <div class="relative mx-auto max-w-4xl">
-        <div class="absolute -top-6 -left-10 md:-left-20">
+        <div class="absolute top-2 -left-4 sm:-left-8 md:top-6 md:-left-28 lg:top-8 lg:-left-36 z-10 pointer-events-none">
           <Image
-            width={140}
-            height={140}
+            width={160}
+            height={160}
             densities={[1, 2]}
-            src={IMAGES.home.LearningBook}
-            alt="Learning Book"
-            class="h-auto w-[60px] object-cover md:w-[120px]"
+            src={imgTenLua}
+            alt="Rocket"
+            class="h-auto w-[60px] drop-shadow-[0_15px_30px_rgba(0,0,0,0.2)] md:w-[130px] lg:w-[160px] transform -rotate-12"
           />
         </div>
         <div>
-          <h2 class="mb-4 text-2xl font-black uppercase sm:leading-tight md:text-[46px] text-[#373737]">
+          <h2 class="mb-4 text-[26px] md:text-[50px] font-black uppercase leading-tight text-[#373737]">
             TỐI ƯU HÀNH TRÌNH HỌC<br />
             <span
-              class="mt-3 inline-block rounded-xl bg-gradient-to-r from-[#F97316] to-[#F59E0B] px-8 py-2 text-white md:mt-2 text-xl md:text-[36px] shadow-lg relative"
+              class="mt-2 md:mt-4 inline-block rounded-[16px] md:rounded-[20px] bg-gradient-to-r from-[#F97316] to-[#F59E0B] px-6 py-1 md:py-2 text-white text-[22px] md:text-[42px] shadow-lg relative"
             >
               & LUYỆN THI IELTS
             </span>
           </h2>
-          <div class="mt-8 flex items-center justify-center gap-2 px-4 md:px-0">
-            <p class="max-w-[700px] text-sm font-bold text-[#555] sm:leading-7 md:text-[20px]">
-              Một hệ sinh thái học tập được nghiên cứu và thiết kế hoàn toàn mới.<br class="hidden md:block" /> Giúp mỗi người học tiến bộ theo cách riêng của mình
+          <div class="mt-6 md:mt-8 flex items-center justify-center px-1 sm:px-2 md:px-0 w-full overflow-hidden">
+            <p class="max-w-[850px] text-[11px] min-[375px]:text-[11.5px] sm:text-[13px] tracking-tight md:tracking-normal md:text-[22px] lg:text-[24px] font-bold text-[#555] leading-relaxed md:leading-snug text-center">
+              {/* Desktop 3 lines */}
+              <span class="hidden md:inline">
+                Một hệ sinh thái học tập được nghiên cứu và thiết<br />
+                kế hoàn toàn mới. Giúp mỗi người học tiến bộ theo<br />
+                cách riêng của mình
+              </span>
+              {/* Mobile 2 lines */}
+              <span class="inline md:hidden whitespace-nowrap">
+                Một hệ sinh thái học tập được nghiên cứu và thiết kế hoàn toàn mới.<br />
+                Giúp mỗi người học tiến bộ theo cách riêng của mình
+              </span>
             </p>
           </div>
         </div>
@@ -135,23 +149,24 @@ const features = [
 
 <!-- Khối Mentor (Căn giữa - full with) -->
 <section class="w-full bg-[#0835C3] mt-12 py-16 overflow-hidden flex flex-col items-center">
-  <div class="mb-10 px-4 text-center">
-    <h2 class="text-2xl font-black uppercase text-white md:text-[36px] drop-shadow-md">
+  <div class="mb-10 px-1 sm:px-4 text-center w-full overflow-hidden">
+    <h2 class="text-[15.5px] sm:text-[20px] tracking-tight md:tracking-normal whitespace-nowrap md:whitespace-normal font-black uppercase text-white md:text-[36px] drop-shadow-md">
       MỖI BƯỚC ĐI ĐỀU CÓ NGƯỜI ĐỒNG HÀNH
+      <svg class="w-4 h-4 sm:w-5 sm:h-5 md:w-8 md:h-8 text-[#FF7A00] inline-block -mt-1 md:-mt-3 ml-1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
     </h2>
   </div>
-  <div id="mentor-content" class="px-4 flex justify-center w-full">
-    <div class="group relative w-full max-w-[550px]">
+  <div id="mentor-content" class="px-2 sm:px-4 flex justify-center w-full overflow-visible">
+    <div class="group relative w-[55%] sm:w-[65%] md:w-full max-w-[550px] mt-4 md:mt-0">
       <div
-        class="relative z-10 overflow-hidden rounded-[24px] bg-[#F48220] p-4 md:p-5 transition-all duration-500 shadow-xl group-hover:-translate-y-2 group-hover:bg-[#F69A45] group-hover:shadow-[0_20px_40px_rgba(244,130,32,0.4)]"
+        class="relative z-10 overflow-hidden rounded-[16px] md:rounded-[24px] bg-[#F48220] p-2 md:p-5 transition-all duration-500 shadow-xl group-hover:-translate-y-2 group-hover:bg-[#F69A45] group-hover:shadow-[0_20px_40px_rgba(244,130,32,0.4)]"
       >
         <div class="relative z-10 overflow-hidden max-sm:!h-auto">
           <h3
-            class="rounded-2xl border-[2px] border-white/90 py-3 px-4 text-center text-[22px] md:text-[26px] font-black uppercase text-white leading-[1.3] shadow-sm transition-all duration-500"
+            class="rounded-xl md:rounded-2xl border-[2px] border-white/90 py-2 px-1 md:py-3 md:px-4 text-center text-[12px] sm:text-[14px] md:text-[26px] font-black uppercase text-white leading-[1.3] shadow-sm transition-all duration-500"
           >
-            Mentor học thuật 1-1 <br class="hidden md:block" /> BỔ TRỢ 24/7
+            Mentor học thuật 1-1 <br /> BỔ TRỢ 24/7
           </h3>
-          <div class="mt-4 overflow-hidden rounded-2xl bg-white pt-4 px-2 shadow-inner">
+          <div class="mt-2 md:mt-4 overflow-hidden rounded-xl md:rounded-2xl bg-white pt-2 md:pt-4 px-1 md:px-2 shadow-inner">
             <Image
               src={IMAGES.home.mentorImg}
               alt="Academic Mentor"
@@ -161,26 +176,33 @@ const features = [
         </div>
       </div>
 
+      {/* Owl on the left */}
       <div
-        class="pointer-events-none absolute -right-[140px] top-[160px] z-20 hidden translate-x-10 opacity-0 transition-all delay-100 duration-700 group-hover:translate-x-0 group-hover:opacity-100 lg:block 3xl:-right-[200px]"
+        class="pointer-events-none absolute -bottom-4 -left-[30%] sm:-left-[25%] z-20 block transition-all delay-100 duration-700 lg:-bottom-8 lg:-left-[180px] lg:-translate-x-10 lg:opacity-0 lg:group-hover:translate-x-0 lg:group-hover:opacity-100"
       >
         <Image
-          src={IMAGES.home.hoverScore}
-          alt="Score Card"
-          class="h-auto w-[353px] drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
+          src={imgChugaMentor}
+          alt="Mentor Owl"
+          class="h-auto w-[75px] sm:w-[100px] drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] md:w-[160px] lg:w-[280px]"
         />
       </div>
 
+      {/* Large feedback on top right */}
       <div
-        class="pointer-events-none absolute -bottom-8 -right-[150px] z-20 hidden translate-y-4 opacity-0 transition-all delay-200 duration-500 group-hover:translate-y-0 group-hover:opacity-100 lg:block"
+        class="pointer-events-none absolute -right-[40%] sm:-right-[35%] top-[20%] md:top-[35%] z-20 block transition-all delay-100 duration-700 xl:top-8 xl:-right-[350px] xl:translate-x-10 xl:opacity-0 xl:group-hover:translate-x-0 xl:group-hover:opacity-100"
       >
-        <Image src={IMAGES.home.hoverCamKet} alt="Cam kết đồng hành" class="h-auto w-[269px] drop-shadow-lg" />
+        <Image
+          src={imgLoiNhanMentor}
+          alt="Mentor Feedback"
+          class="h-auto w-[135px] sm:w-[165px] drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] md:w-[350px] xl:w-[450px]"
+        />
       </div>
 
+      {/* Small reminder on bottom right */}
       <div
-        class="pointer-events-none absolute -right-[60px] top-0 z-20 hidden translate-y-4 opacity-0 transition-all delay-200 duration-500 group-hover:translate-y-0 group-hover:opacity-100 lg:block"
+        class="pointer-events-none absolute bottom-4 sm:bottom-6 -right-[25%] sm:-right-[20%] z-20 block transition-all delay-200 duration-500 xl:-bottom-4 xl:-right-[220px] xl:translate-y-4 xl:opacity-0 xl:group-hover:translate-y-0 xl:group-hover:opacity-100"
       >
-        <Image src={IMAGES.home.iconShot2} alt="Cam kết đồng hành" class="h-auto w-[120px] drop-shadow-lg" />
+        <Image src={imgNhacNho} alt="Reminder" class="h-auto w-[85px] sm:w-[110px] drop-shadow-xl md:w-[190px] xl:w-[320px]" />
       </div>
     </div>
   </div>

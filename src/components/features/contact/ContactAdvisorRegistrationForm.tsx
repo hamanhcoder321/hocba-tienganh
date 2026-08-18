@@ -149,21 +149,22 @@ export default function ContactAdvisorRegistrationForm({
 
             <div className="space-y-2 md:col-span-1">
               <Label htmlFor="course" className="text-[15px] font-semibold text-white md:text-base">
-                Khóa Học Bạn Quan Tâm
+                Mục Tiêu IELTS Của Bạn
               </Label>
               <Select
                 value={form.watch('wishlist_courses')}
                 onValueChange={(value) => form.setValue('wishlist_courses', value)}
               >
                 <SelectTrigger id="course" className="h-12 rounded-lg border-0 bg-white focus:ring-white md:h-14">
-                  <SelectValue placeholder="Chọn khóa học" />
+                  <SelectValue placeholder="Chọn mục tiêu" />
                 </SelectTrigger>
                 <SelectContent className="bg-white">
-                  <SelectItem value="HSK 3.0">HSK 3.0</SelectItem>
-                  <SelectItem value="Học tiếng trung dành cho người đi làm">
-                    Khoá học tiếng Trung dành cho người đi làm
-                  </SelectItem>
-                  <SelectItem value="Tiếng Trung Doanh Nghiệp">Tiếng Trung Doanh Nghiệp</SelectItem>
+                  <SelectItem value="Xét tuyển vào Đại học">Xét tuyển vào Đại học</SelectItem>
+                  <SelectItem value="Xét tốt nghiệp Đại học">Xét tốt nghiệp Đại học</SelectItem>
+                  <SelectItem value="Du học, xin học bổng">Du học, xin học bổng</SelectItem>
+                  <SelectItem value="Định cư">Định cư</SelectItem>
+                  <SelectItem value="Cơ hội nghề nghiệp">Cơ hội nghề nghiệp</SelectItem>
+                  <SelectItem value="Khác">Khác</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -291,12 +292,17 @@ export default function ContactAdvisorRegistrationForm({
               <Button
                 type="submit"
                 disabled={isPending}
-                className="relative h-10 w-fit rounded-[25px] border-2 border-white bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-10 text-base font-black uppercase text-white shadow-lg transition-colors disabled:opacity-70 md:h-12 md:rounded-full md:text-2xl"
+                className="relative min-h-[50px] w-fit rounded-[25px] border-2 border-white bg-gradient-to-r from-[#F26522] to-[#FFB800] py-2 px-10 text-base font-black uppercase text-white shadow-lg transition-colors hover:opacity-90 disabled:opacity-70 md:min-h-[70px] md:rounded-full md:py-3 md:text-2xl"
               >
-                {isPending ? 'Đang xử lý...' : isSuccess ? 'Thành công!' : 'Gửi thông tin cho Học Bá'}
+                {isPending ? 'Đang xử lý...' : isSuccess ? 'Thành công!' : (
+                  <span className="flex flex-col items-center leading-tight">
+                    <span>GỬI THÔNG TIN CHO</span>
+                    <span>THE IELTS SPACE</span>
+                  </span>
+                )}
               </Button>
               <p className="mt-2 text-xs font-light text-white md:text-base">
-                Học Bá sẽ liên hệ lại trong vòng <span className="font-bold">24 giờ</span> làm việc.
+                THE IELTS SPACE sẽ liên hệ lại trong vòng <span className="font-bold">24 giờ</span> làm việc.
               </p>
             </div>
           ) : (
@@ -304,7 +310,7 @@ export default function ContactAdvisorRegistrationForm({
               <Button
                 type="submit"
                 disabled={isPending}
-                className="relative h-10 w-fit rounded-[10px] border-[3px] border-white bg-gradient-to-l from-[#B90E0A] to-[#F3C650] px-10 text-base font-black uppercase text-white shadow-lg transition-colors disabled:opacity-70 md:h-12 md:rounded-full md:text-2xl"
+                className="relative min-h-[50px] w-fit rounded-[10px] border-[3px] border-white bg-gradient-to-r from-[#F26522] to-[#FFB800] py-2 px-10 text-base font-black uppercase text-white shadow-lg transition-colors hover:opacity-90 disabled:opacity-70 md:min-h-[70px] md:rounded-full md:py-3 md:text-2xl"
               >
                 {icons?.noteBook && (
                   <img
@@ -312,13 +318,18 @@ export default function ContactAdvisorRegistrationForm({
                     alt={'noteBook'}
                     width={80}
                     height={80}
-                    className="absolute -left-9 -top-2 z-20 h-[54px] w-auto rotate-12 object-cover md:-left-14 md:-top-[22px] md:h-[80px]"
+                    className="absolute -left-9 top-1/2 z-20 h-[54px] w-auto -translate-y-1/2 rotate-12 object-cover md:-left-12 md:h-[80px]"
                   />
                 )}
-                {isPending ? 'Đang xử lý...' : isSuccess ? 'Thành công!' : 'Gửi thông tin cho Học Bá'}
+                {isPending ? 'Đang xử lý...' : isSuccess ? 'Thành công!' : (
+                  <span className="flex flex-col items-center leading-tight">
+                    <span>GỬI THÔNG TIN CHO</span>
+                    <span>THE IELTS SPACE</span>
+                  </span>
+                )}
               </Button>
               <p className="mt-2 text-xs font-light text-white md:text-base">
-                Học Bá sẽ liên hệ lại trong vòng <span className="font-bold">24 giờ</span> làm việc.
+                THE IELTS SPACE sẽ liên hệ lại trong vòng <span className="font-bold">24 giờ</span> làm việc.
               </p>
             </div>
           )}

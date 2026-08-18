@@ -5,6 +5,7 @@ import { CONTACTS } from '@/lib/constants/content';
 import { IMAGES } from '@/lib/constants/images';
 import { Image } from 'astro:assets';
 import { Mail, MapPin, Phone } from 'lucide-react';
+import logoHocbaTienganh from '@/assets/images/img-hocba-tienganh/logo-hocba-tienganh.png';
 
 interface Props {
   logo?: any;
@@ -13,7 +14,7 @@ interface Props {
 const { logo } = Astro.props;
 ---
 
-<section class="relative z-50 min-h-[608px] overflow-hidden bg-[#820000] text-white">
+<section class="relative z-50 min-h-[608px] overflow-hidden bg-[#052284] text-white">
   <div class="mx-auto w-full max-w-[1354px] px-6 pb-20 pt-7 md:px-0 md:py-14">
     <div class="flex items-center gap-2">
       {
@@ -24,7 +25,7 @@ const { logo } = Astro.props;
             width={80}
             height={52}
             class="h-[38px] w-auto object-cover md:h-[52px]"
-            src={logo || IMAGES.logoFooter}
+            src={logo || logoHocbaTienganh}
             alt="logo"
             densities={[1, 2]}
           />
@@ -32,7 +33,7 @@ const { logo } = Astro.props;
       }
       <div class="h-9 w-[6px] bg-white md:h-12"></div>
       <div class="w-full text-sm font-black uppercase leading-6 text-white md:w-[400px] md:text-[20px] md:leading-7">
-        Học Bá - Hệ thống giáo dục Hán ngữ trực tuyến uy tín top đầu Việt Nam
+        THE IELTS SPACE - KHÔNG GIAN HỌC TẬP TÍCH HỢP THẾ HỆ MỚI
       </div>
     </div>
     <div class="mt-7 grid grid-cols-1 md:grid-cols-4">

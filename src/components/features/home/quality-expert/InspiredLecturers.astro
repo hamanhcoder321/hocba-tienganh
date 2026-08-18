@@ -3,11 +3,16 @@ import { IMAGES } from '@/lib/constants/images';
 import { getImage, Image } from 'astro:assets';
 import Link from '../ui/Link';
 
-import TeacherCarousel from '@/components/features/introduce/TeacherCarousel';
+import StaticTeacherCarousel from './StaticTeacherCarousel';
+// import TeacherCarousel from '@/components/features/introduce/TeacherCarousel';
 import { fetchLecturersClient } from '@/lib/api/lecturer';
+
+import soSachIcon from '@/assets/images/img-hocba-tienganh/so-sach-2.png';
 
 let lecturers: TLecturer[] = [];
 
+// Tạm thời comment API để dùng dữ liệu tĩnh giả lập giao diện trước
+/*
 try {
   const apiData = await fetchLecturersClient({});
   if (apiData && apiData.length > 0) {
@@ -38,37 +43,43 @@ const optimizedLecturers = await Promise.all(
     };
   }),
 );
+*/
 ---
 
-<section class="overflow-hidden bg-white py-0 md:py-12">
-  <div class="container mx-auto px-0 md:px-4">
+<section class="overflow-hidden bg-white py-8 md:py-12">
+  <div class="container mx-auto px-4">
     {/* Header Section */}
-    <div class="relative mb-3 flex flex-col items-center justify-center sm:mb-12">
-      <div class="flex items-center gap-2 md:gap-4">
-        <h2 class="flex items-center gap-2 text-base font-black uppercase text-[#373737] md:text-[24px] lg:text-[42px]">
-          <p class="text-center">
-            <span>150+ giảng viên</span>
-            <span class="text-[#B11702]">truyền cảm hứng</span>
-          </p>
+    <div class="relative mb-8 flex flex-col items-center justify-center sm:mb-12">
+      <div class="flex items-center justify-center gap-3 md:gap-6">
+        <h2 class="flex flex-col md:flex-row md:gap-3 items-center text-center text-[26px] md:text-[36px] lg:text-[46px] font-black uppercase leading-tight tracking-tight">
+          <span class="text-[#434343]">150+ GIẢNG VIÊN</span>
+          <span class="text-[#0A3BCE]">TRUYỀN CẢM HỨNG</span>
         </h2>
-        <div class="relative w-10 md:w-20">
+        <div class="relative w-[70px] md:w-28 flex-shrink-0">
           <Image
-            src={IMAGES.introduce.book_icon}
-            width={80}
-            height={80}
+            src={soSachIcon}
+            width={120}
+            height={120}
             densities={[1, 2]}
-            alt="Graduation icon"
-            class="h-auto w-full"
+            alt="Sổ sách icon"
+            class="h-auto w-full object-contain"
           />
         </div>
       </div>
     </div>
   </div>
 
-  <div class="container mx-auto px-0 md:px-4">
-    <TeacherCarousel teachers={optimizedLecturers} client:visible />
-    <div class="flex justify-center max-sm:hidden">
-      <Link href="/doi-ngu-giang-vien"> XEM ĐỘI NGŨ GIẢNG VIÊN </Link>
+  <div class="container mx-auto px-4 md:px-0">
+    {/* <TeacherCarousel teachers={optimizedLecturers} client:visible /> */}
+    <StaticTeacherCarousel client:visible />
+    
+    <div class="mt-12 hidden md:flex justify-center pb-8">
+      <a 
+        href="/doi-ngu-giang-vien" 
+        class="inline-block rounded-full bg-gradient-to-r from-[#F89C1E] to-[#E97607] px-8 py-3 text-sm md:text-lg font-bold text-white shadow-lg transition-transform hover:scale-105"
+      >
+        XEM HỒ SƠ CHUYÊN GIA
+      </a>
     </div>
   </div>
 </section>

@@ -5,6 +5,8 @@ import { IMAGES } from '@/lib/constants/images';
 import { cn } from '@/lib/utils';
 import { getImage, Image } from 'astro:assets';
 
+import cugaDangky from '@/assets/images/img-hocba-tienganh/img-cuga-dangky.png';
+
 const optimizedNoteBook = await getImage({
   width: 80,
   height: 80,
@@ -19,33 +21,33 @@ const { dataInput, isSimpleForm, id = 'simple-register-form' } = Astro.props;
 <section
   id={id}
   class={cn(
-    'w-full overflow-hidden bg-gradient-to-l from-[#B90E0A] to-[#7D1900] h-auto',
-    isSimpleForm ? 'md:h-[660px]' : 'md:h-[842px]',
+    'w-full overflow-hidden bg-[#02187B] h-auto',
+    isSimpleForm ? 'md:py-8' : 'md:py-16'
   )}
 >
   <div class="mx-auto w-full max-w-[1354px]">
-    <div class="flex items-start pt-10">
+    <div class="relative flex flex-col gap-2 md:gap-4 pt-10 pl-2 sm:pl-4 md:pl-[40px]">
       <Image
         src={IMAGES.contact.iconBook}
         width={90}
         height={90}
         alt={'icon-book'}
         densities={[1, 2]}
-        class={'object-cover w-[50px] md:w-[90px] h-auto'}
+        class={'absolute left-0 md:left-0 top-7 md:top-5 z-20 object-cover w-[55px] md:w-[100px] h-auto drop-shadow-xl'}
       />
-      <div class="relative flex flex-col gap-2 md:gap-4">
+      <div class="relative z-10 w-max flex flex-col gap-2 md:gap-4 pl-[30px] md:pl-[60px]">
         <div
-          class="flex h-8 w-fit items-center text-nowrap rounded bg-gradient-to-r from-[#B90E0A] to-[#F3C650] px-2 text-base font-bold uppercase text-white md:h-[58px] md:rounded-lg md:px-[13px] md:text-[32px]"
+          class="relative z-0 flex h-8 md:h-[58px] w-fit items-center text-nowrap rounded bg-gradient-to-r from-[#F26522] to-[#FFB800] pl-[34px] pr-4 md:pl-[65px] md:pr-8 text-[13px] sm:text-[14px] md:text-[32px] font-bold uppercase text-white md:rounded-lg shadow-md"
         >
-          Học tiếng trung từ người giỏi nhất
+          EVERYTHING YOU NEED IN ONE SPACE
         </div>
-        <h2 class="text-lg font-black uppercase text-white md:text-[42px]">Đăng ký tư vấn ngay!</h2>
-        <div class="absolute bottom-0 right-[30px] md:-bottom-2 md:right-[68px]">
-          <ArrowIcon />
+        <h2 class="text-[22px] md:text-[42px] font-black uppercase text-white relative z-10 drop-shadow-md">ĐĂNG KÝ TƯ VẤN NGAY!</h2>
+        <div class="absolute bottom-0 -right-[30px] md:-bottom-2 md:-right-[80px] z-10 hidden sm:block">
+          <!-- <ArrowIcon /> -->
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-1 px-4 py-8 md:grid-cols-2 md:py-0">
+    <div class="grid grid-cols-1 px-4 py-8 md:grid-cols-2 md:py-0 md:gap-8 items-center">
       <div class="order-2 col-span-1 md:order-1">
         <div
           class="relative mx-auto mt-16 flex h-auto w-full items-center justify-center md:mt-4 md:h-[571px] md:w-[571px]"
@@ -56,31 +58,25 @@ const { dataInput, isSimpleForm, id = 'simple-register-form' } = Astro.props;
               className="absolute left-1/2 top-1/2 z-20 size-[128px] -translate-x-1/2 -translate-y-1/2 opacity-20 md:size-[342px]"
             />
           </div>
-          <div class="relative z-50 ml-16 flex items-center justify-center">
+          <div class="relative z-50 flex items-center justify-center w-full">
             <Image
-              src={IMAGES.contact.btcContact}
-              width={160}
-              height={137}
-              alt={'btcContact'}
-              densities={[1, 2]}
-              class={'icon-bct object-cover w-auto h-[80px] md:h-[137px] absolute top-8 -left-[27%] z-30 -rotate-12'}
-            />
-            <Image
-              src={IMAGES.contact.cuContact}
-              width={377}
-              height={320}
+              src={cugaDangky}
+              width={700}
+              height={700}
               alt={'cuContact'}
               densities={[1, 2]}
-              class={'icon-cu object-cover h-auto w-[216px] md:w-[377px] z-50'}
+              class={'object-contain h-auto w-[280px] md:w-[540px] z-50'}
             />
-            <Image
-              src={IMAGES.contact.hskContact}
-              width={90}
-              height={70}
-              alt={'hskContact'}
-              densities={[1, 2]}
-              class={'icon-hsk object-cover w-auto h-10 md:h-[70px] absolute bottom-[39%] -right-[17px] rotate-12'}
-            />
+            {/* Sparkles */}
+            <svg class="absolute top-[20%] left-[5%] md:-left-[5%] w-5 h-5 md:w-8 md:h-8 text-[#FF7A00] z-20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            <svg class="absolute top-[35%] right-[5%] md:right-[0%] w-4 h-4 md:w-6 md:h-6 text-white z-20 opacity-90" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            <svg class="absolute bottom-[20%] left-[10%] md:left-[0%] w-4 h-4 md:w-5 md:h-5 text-white z-20 opacity-70" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            <svg class="absolute bottom-[10%] right-[10%] md:right-[5%] w-3 h-3 md:w-4 md:h-4 text-[#FF7A00] z-20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            <svg class="absolute top-[5%] left-[30%] md:left-[20%] w-3 h-3 md:w-5 md:h-5 text-white z-20 opacity-80" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            <svg class="absolute top-[10%] right-[30%] md:right-[20%] w-4 h-4 md:w-7 md:h-7 text-[#FF7A00] z-20 opacity-90" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            <svg class="absolute bottom-[30%] right-[25%] md:right-[15%] w-2 h-2 md:w-4 md:h-4 text-white z-20 opacity-60" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            <svg class="absolute bottom-[30%] right-[25%] md:right-[15%] w-2 h-2 md:w-4 md:h-4 text-white z-20 opacity-60" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            <svg class="absolute bottom-[30%] right-[25%] md:right-[15%] w-2 h-2 md:w-4 md:h-4 text-white z-20 opacity-60" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
           </div>
         </div>
       </div>
