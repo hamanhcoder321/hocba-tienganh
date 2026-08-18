@@ -1,8 +1,8 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Plus } from 'lucide-react';
-import gv1 from '@/assets/images/img-hocba-tienganh/gv-1.png';
-import gv2 from '@/assets/images/img-hocba-tienganh/img-gv-2.png';
-import gv3 from '@/assets/images/img-hocba-tienganh/gv-3.png';
+import gv1 from '@/assets/images/img-hocba-tienganh/gv-1.png?url';
+import gv2 from '@/assets/images/img-hocba-tienganh/img-gv-2.png?url';
+import gv3 from '@/assets/images/img-hocba-tienganh/gv-3.png?url';
 
 const getImgSrc = (img: any) => typeof img === 'string' ? img : img?.src || '';
 
