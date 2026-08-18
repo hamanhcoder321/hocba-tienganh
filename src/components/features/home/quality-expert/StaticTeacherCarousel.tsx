@@ -5,7 +5,7 @@ const TEACHERS = [
   {
     badgeTop: 'LISTENING',
     badgeBottom: '8.5',
-    image: '/src/assets/images/img-hocba-tienganh/gv-1.png',
+    image: '/assets/images/img-hocba-tienganh/gv-1.png',
     name: 'THẠC SĨ LINH PHƯƠNG',
     title: '12 Năm Kinh Nghiệm Giảng Dạy',
     description: 'Thạc sĩ Đại học Kinh tế Quốc dân, Cử nhân Đại học Khoa học Ứng dụng Kymenlaakso, Phần Lan (Học bổng)'
@@ -13,7 +13,7 @@ const TEACHERS = [
   {
     badgeTop: 'LISTENING',
     badgeBottom: '8.5',
-    image: '/src/assets/images/img-hocba-tienganh/gv-1.png',
+    image: '/assets/images/img-hocba-tienganh/gv-1.png',
     name: 'THẠC SĨ LINH PHƯƠNG',
     title: '12 Năm Kinh Nghiệm Giảng Dạy',
     description: 'Thạc sĩ Đại học Kinh tế Quốc dân, Cử nhân Đại học Khoa học Ứng dụng Kymenlaakso, Phần Lan (Học bổng)'
@@ -21,7 +21,7 @@ const TEACHERS = [
   {
     badgeTop: 'OVERALL',
     badgeBottom: '8.5',
-    image: '/src/assets/images/img-hocba-tienganh/img-gv-2.png',
+    image: '/assets/images/img-hocba-tienganh/img-gv-2.png',
     name: 'GIẢNG VIÊN YẾN CHI',
     title: 'Hơn 10 Năm Kinh Nghiệm Giảng Dạy Chứng Chỉ IELTS Và TOEIC',
     description: '2 lần đạt 8.5 IELTS, Đại sứ bài thi IELTS trên máy tính 2023 của IDP, Cố vấn Học thuật của nhiều đơn vị'
@@ -29,7 +29,7 @@ const TEACHERS = [
   {
     badgeTop: 'OVERALL',
     badgeBottom: '8.5',
-    image: '/src/assets/images/img-hocba-tienganh/img-gv-2.png',
+    image: '/assets/images/img-hocba-tienganh/img-gv-2.png',
     name: 'GIẢNG VIÊN YẾN CHI',
     title: 'Hơn 10 Năm Kinh Nghiệm Giảng Dạy Chứng Chỉ IELTS Và TOEIC',
     description: '2 lần đạt 8.5 IELTS, Đại sứ bài thi IELTS trên máy tính 2023 của IDP, Cố vấn Học thuật của nhiều đơn vị'
@@ -37,7 +37,7 @@ const TEACHERS = [
   {
     badgeTop: 'GIẢNG VIÊN',
     badgeBottom: 'BẢN XỨ',
-    image: '/src/assets/images/img-hocba-tienganh/gv-3.png',
+    image: '/assets/images/img-hocba-tienganh/gv-3.png',
     name: 'GIẢNG VIÊN JACKSON HOWARD',
     title: 'Cựu Giám Khảo Bài Thi IELTS',
     description: '20 năm kinh nghiệm giảng dạy và luyện thi tiếng Anh cho học sinh thế giới, Cựu Trưởng khoa Tiếng Anh Trường Western Sydney University'
@@ -45,7 +45,7 @@ const TEACHERS = [
   {
     badgeTop: 'GIẢNG VIÊN',
     badgeBottom: 'BẢN XỨ',
-    image: '/src/assets/images/img-hocba-tienganh/gv-3.png',
+    image: '/assets/images/img-hocba-tienganh/gv-3.png',
     name: 'GIẢNG VIÊN JACKSON HOWARD',
     title: 'Cựu Giám Khảo Bài Thi IELTS',
     description: '20 năm kinh nghiệm giảng dạy và luyện thi tiếng Anh cho học sinh thế giới, Cựu Trưởng khoa Tiếng Anh Trường Western Sydney University'
