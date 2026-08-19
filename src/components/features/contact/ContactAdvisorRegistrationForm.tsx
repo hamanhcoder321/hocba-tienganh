@@ -15,6 +15,7 @@ interface ContactAdvisorRegistrationFormProps {
   isCourseChinese?: boolean;
   dataInput?: string;
   className?: string;
+  children?: React.ReactNode;
 }
 
 const targetOptions = [
@@ -41,6 +42,7 @@ export default function ContactAdvisorRegistrationForm({
   isCourseChinese = false,
   dataInput = '',
   className = '',
+  children,
 }: ContactAdvisorRegistrationFormProps) {
   const { form, isPending, isSuccess, handleRegisterStudy } = useRegisterStudy();
 
@@ -284,6 +286,8 @@ export default function ContactAdvisorRegistrationForm({
               />
             </div>
           </div>
+
+          {children}
 
           {/* Submit Button */}
           {isCourseChinese ? (

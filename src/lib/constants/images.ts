@@ -197,15 +197,12 @@ import LeThuong from '@/assets/images/home/student-comment/lethuong.jpg';
 import ThanhHai from '@/assets/images/home/student-comment/thanhhai.png';
 import TienVu from '@/assets/images/home/student-comment/tienvu.png';
 import VuHaiMy from '@/assets/images/home/student-comment/vuhaimy.jpg';
+import MinhAnh from '@/assets/images/img-hocba-tienganh/image-minh-anh.png';
+import ThuThuy from '@/assets/images/img-hocba-tienganh/image-Thu-Thuy.png';
 // Evidence Gallery images
-import evicCol1_1 from '@/assets/images/home/student-feedback/col-1.1.png';
-import evicCol1_2 from '@/assets/images/home/student-feedback/col-1.2.png';
-import evicCol1_3 from '@/assets/images/home/student-feedback/col-1.3.png';
-import evicCol2_0 from '@/assets/images/home/student-feedback/col-2.0.png';
-import evicCol2_1 from '@/assets/images/home/student-feedback/col-2.1.png';
-import evicCol2_2 from '@/assets/images/home/student-feedback/col-2.2.png';
-import evicCol3_1 from '@/assets/images/home/student-feedback/col-3.1.png';
-import evicCol3_2 from '@/assets/images/home/student-feedback/col-3.2.png';
+import imgIeltsCot1 from '@/assets/images/img-hocba-tienganh/img-ielts-cot1.png';
+import imgIeltsCot3 from '@/assets/images/img-hocba-tienganh/img-ielts-cot3.png';
+import imgNhanTin from '@/assets/images/img-hocba-tienganh/img-nhan-tin-banner.png';
 
 // Roadmap assets
 import roadmapBg from '@/assets/images/home/roadmap/backgroud.webp';
@@ -547,10 +544,12 @@ export const IMAGES = {
     ThanhHai,
     TienVu,
     VuHaiMy,
+    MinhAnh,
+    ThuThuy,
     evidenceGallery: {
-      col1: [evicCol1_1, evicCol1_2, evicCol1_3],
-      col2: [evicCol2_0, evicCol2_1, evicCol2_2],
-      col3: [evicCol3_1, evicCol3_2, evicCol3_1],
+      col1: [imgIeltsCot1, imgIeltsCot1, imgIeltsCot1],
+      col2: [imgNhanTin, imgNhanTin, imgNhanTin],
+      col3: [imgIeltsCot3, imgIeltsCot3, imgIeltsCot3],
     },
   },
   post: {

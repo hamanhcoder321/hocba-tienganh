@@ -26,47 +26,41 @@ const { dataInput, isSimpleForm, id = 'simple-register-form' } = Astro.props;
   )}
 >
   <div class="mx-auto w-full max-w-[1354px]">
-    <div class="relative flex flex-col gap-2 md:gap-4 pt-8 pl-2 sm:pl-4 md:pl-[40px]">
+    <div class="relative flex flex-col items-center justify-center gap-2 md:gap-4 pt-8 px-4 md:items-start md:pl-[40px]">
       <Image
         src={IMAGES.contact.iconBook}
         width={90}
         height={90}
         alt={'icon-book'}
         densities={[1, 2]}
-        class={'absolute left-0 md:left-0 top-7 md:top-5 z-20 object-cover w-[55px] md:w-[100px] h-auto drop-shadow-xl'}
+        class={'absolute left-0 top-7 z-20 hidden h-auto w-[55px] object-cover drop-shadow-xl md:top-5 md:block md:w-[100px]'}
       />
-      <div class="relative z-10 w-max flex flex-col gap-2 md:gap-4 pl-[30px] md:pl-[60px]">
-        <div
-          class="relative z-0 flex h-8 md:h-[58px] w-fit items-center text-nowrap rounded bg-gradient-to-r from-[#F26522] to-[#FFB800] pl-[34px] pr-4 md:pl-[65px] md:pr-8 text-[13px] sm:text-[14px] md:text-[32px] font-bold uppercase text-white md:rounded-lg shadow-md"
-        >
-          EVERYTHING YOU NEED IN ONE SPACE
+      <div class="relative z-10 flex w-full flex-col items-center justify-center gap-2 md:w-max md:items-start md:gap-4 md:pl-[60px]">
+        <div class="relative flex items-center">
+          <svg class="absolute -left-6 h-4 w-4 text-[#A8C7FA] md:hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+          <div
+            class="relative z-0 flex h-8 w-fit items-center text-nowrap rounded-full bg-gradient-to-r from-[#F26522] to-[#FFB800] px-6 text-[13px] font-bold uppercase text-white shadow-md sm:text-[14px] md:h-[58px] md:rounded-lg md:pl-[65px] md:pr-8 md:text-[32px]"
+          >
+            EVERYTHING YOU NEED IN ONE SPACE
+          </div>
         </div>
-        <h2 class="text-[22px] md:text-[42px] font-black uppercase text-white relative z-10 drop-shadow-md">ĐĂNG KÝ TƯ VẤN NGAY!</h2>
-        <div class="absolute bottom-0 -right-[30px] md:-bottom-2 md:-right-[80px] z-10 hidden sm:block">
+        <h2 class="relative z-10 flex items-center gap-2 text-center text-[22px] font-black uppercase text-white drop-shadow-md md:text-left md:text-[42px]">
+          ĐĂNG KÝ TƯ VẤN NGAY!
+          <svg class="h-5 w-5 text-[#FF7A00] md:hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+        </h2>
+        <div class="absolute bottom-0 -right-[30px] z-10 hidden sm:block md:-bottom-2 md:-right-[80px]">
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-1 px-4 py-8 md:grid-cols-2 md:py-0 md:gap-8 items-center">
-      <div class="order-2 col-span-1 md:order-1">
-        <div
-          class="relative mx-auto mt-16 flex h-auto w-full items-center justify-center md:mt-4 md:h-[571px] md:w-[571px]"
-        >
+    <div class="grid grid-cols-1 items-center px-4 py-8 md:grid-cols-2 md:gap-8 md:py-0">
+      <div class="order-1 col-span-1 hidden md:block">
+        <div class="relative mx-auto mt-16 flex h-auto w-full items-center justify-center md:mt-4 md:h-[571px] md:w-[571px]">
           <div class="absolute -top-10 left-1/2 size-[212px] -translate-x-1/2 md:left-1/2 md:top-0 md:size-[571px]">
             <EllipContact className="absolute left-0 top-0 z-10 size-[212px] opacity-30 md:size-[571px]" />
-            <EllipContact2
-              className="absolute left-1/2 top-1/2 z-20 size-[128px] -translate-x-1/2 -translate-y-1/2 opacity-20 md:size-[342px]"
-            />
+            <EllipContact2 className="absolute left-1/2 top-1/2 z-20 size-[128px] -translate-x-1/2 -translate-y-1/2 opacity-20 md:size-[342px]" />
           </div>
-          <div class="relative z-50 flex items-center justify-center w-full">
-            <Image
-              src={cugaDangky}
-              width={700}
-              height={700}
-              alt={'cuContact'}
-              densities={[1, 2]}
-              class={'object-contain h-auto w-[280px] md:w-[540px] z-50'}
-            />
-            {/* Sparkles */}
+          <div class="relative z-50 flex w-full items-center justify-center">
+            <Image src={cugaDangky} width={700} height={700} alt={'cuContact'} densities={[1, 2]} class={'z-50 h-auto w-[280px] object-contain md:w-[540px]'} />
             <svg class="absolute top-[20%] left-[5%] md:-left-[5%] w-5 h-5 md:w-8 md:h-8 text-[#FF7A00] z-20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
             <svg class="absolute top-[35%] right-[5%] md:right-[0%] w-4 h-4 md:w-6 md:h-6 text-white z-20 opacity-90" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
             <svg class="absolute bottom-[20%] left-[10%] md:left-[0%] w-4 h-4 md:w-5 md:h-5 text-white z-20 opacity-70" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
@@ -79,13 +73,27 @@ const { dataInput, isSimpleForm, id = 'simple-register-form' } = Astro.props;
           </div>
         </div>
       </div>
-      <div class="order-1 col-span-1 md:order-2">
+      <div class="order-2 col-span-1">
         <ContactAdvisorRegistrationForm
           icons={{ noteBook: optimizedNoteBook.src }}
           client:idle
           {dataInput}
           {isSimpleForm}
-        />
+        >
+          <div class="relative mx-auto mt-8 mb-4 flex h-auto w-full items-center justify-center md:hidden">
+            <div class="absolute -top-10 left-1/2 size-[212px] -translate-x-1/2">
+              <EllipContact className="absolute left-0 top-0 z-10 size-[212px] opacity-30" />
+              <EllipContact2 className="absolute left-1/2 top-1/2 z-20 size-[128px] -translate-x-1/2 -translate-y-1/2 opacity-20" />
+            </div>
+            <div class="relative z-50 flex w-full items-center justify-center">
+              <Image src={cugaDangky} width={700} height={700} alt={'cuContact'} densities={[1, 2]} class={'z-50 h-auto w-[280px] object-contain'} />
+              <svg class="absolute top-[20%] left-[5%] w-5 h-5 text-[#FF7A00] z-20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+              <svg class="absolute top-[35%] right-[5%] w-4 h-4 text-white z-20 opacity-90" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+              <svg class="absolute bottom-[20%] left-[10%] w-4 h-4 text-white z-20 opacity-70" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+              <svg class="absolute bottom-[10%] right-[10%] w-3 h-3 text-[#FF7A00] z-20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            </div>
+          </div>
+        </ContactAdvisorRegistrationForm>
       </div>
     </div>
   </div>

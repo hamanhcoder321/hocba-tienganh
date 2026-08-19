@@ -1,11 +1,17 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Plus } from 'lucide-react';
 
+import imgGv1 from '/src/assets/images/img-hocba-tienganh/gv-1.png';
+import imgGv2 from '/src/assets/images/img-hocba-tienganh/img-gv-2.png';
+import imgGv3 from '/src/assets/images/img-hocba-tienganh/gv-3.png';
+import iconSearch from '/src/assets/images/img-hocba-tienganh/icon-search.png';
+import buttonScroll from '/src/assets/images/img-hocba-tienganh/button-scroll.png';
+
 const TEACHERS = [
   {
     badgeTop: 'LISTENING',
     badgeBottom: '8.5',
-    image: '/src/assets/images/img-hocba-tienganh/gv-1.png',
+    image: imgGv1.src,
     name: 'THẠC SĨ LINH PHƯƠNG',
     title: '12 Năm Kinh Nghiệm Giảng Dạy',
     description: 'Thạc sĩ Đại học Kinh tế Quốc dân, Cử nhân Đại học Khoa học Ứng dụng Kymenlaakso, Phần Lan (Học bổng)'
@@ -13,7 +19,7 @@ const TEACHERS = [
   {
     badgeTop: 'OVERALL',
     badgeBottom: '8.5',
-    image: '/src/assets/images/img-hocba-tienganh/img-gv-2.png',
+    image: imgGv2.src,
     name: 'GIẢNG VIÊN YẾN CHI',
     title: 'Hơn 10 Năm Kinh Nghiệm Giảng Dạy Chứng Chỉ IELTS Và TOEIC',
     description: '2 lần đạt 8.5 IELTS, Đại sứ bài thi IELTS trên máy tính 2023 của IDP, Cố vấn Học thuật của nhiều đơn vị'
@@ -21,7 +27,7 @@ const TEACHERS = [
   {
     badgeTop: 'GIẢNG VIÊN',
     badgeBottom: 'BẢN XỨ',
-    image: '/src/assets/images/img-hocba-tienganh/gv-3.png',
+    image: imgGv3.src,
     name: 'GIẢNG VIÊN JACKSON HOWARD',
     title: 'Cựu Giám Khảo Bài Thi IELTS',
     description: '20 năm kinh nghiệm giảng dạy và luyện thi tiếng Anh cho học sinh thế giới, Cựu Trưởng khoa Tiếng Anh Trường Western Sydney University'
@@ -29,7 +35,7 @@ const TEACHERS = [
   {
     badgeTop: 'GIẢNG VIÊN',
     badgeBottom: 'BẢN XỨ',
-    image: '/src/assets/images/img-hocba-tienganh/gv-3.png',
+    image: imgGv3.src,
     name: 'GIẢNG VIÊN JACKSON HOWARD',
     title: 'Cựu Giám Khảo Bài Thi IELTS',
     description: '20 năm kinh nghiệm giảng dạy và luyện thi tiếng Anh cho học sinh thế giới, Cựu Trưởng khoa Tiếng Anh Trường Western Sydney University'
@@ -37,7 +43,7 @@ const TEACHERS = [
   {
     badgeTop: 'LISTENING',
     badgeBottom: '8.5',
-    image: '/src/assets/images/img-hocba-tienganh/gv-1.png',
+    image: imgGv1.src,
     name: 'THẠC SĨ LINH PHƯƠNG',
     title: '12 Năm Kinh Nghiệm Giảng Dạy',
     description: 'Thạc sĩ Đại học Kinh tế Quốc dân, Cử nhân Đại học Khoa học Ứng dụng Kymenlaakso, Phần Lan (Học bổng)'
@@ -45,7 +51,7 @@ const TEACHERS = [
   {
     badgeTop: 'OVERALL',
     badgeBottom: '8.5',
-    image: '/src/assets/images/img-hocba-tienganh/img-gv-2.png',
+    image: imgGv2.src,
     name: 'GIẢNG VIÊN YẾN CHI',
     title: 'Hơn 10 Năm Kinh Nghiệm Giảng Dạy Chứng Chỉ IELTS Và TOEIC',
     description: '2 lần đạt 8.5 IELTS, Đại sứ bài thi IELTS trên máy tính 2023 của IDP, Cố vấn Học thuật của nhiều đơn vị'
@@ -53,7 +59,7 @@ const TEACHERS = [
   {
     badgeTop: 'GIẢNG VIÊN',
     badgeBottom: 'BẢN XỨ',
-    image: '/src/assets/images/img-hocba-tienganh/gv-3.png',
+    image: imgGv3.src,
     name: 'GIẢNG VIÊN JACKSON HOWARD',
     title: 'Cựu Giám Khảo Bài Thi IELTS',
     description: '20 năm kinh nghiệm giảng dạy và luyện thi tiếng Anh cho học sinh thế giới, Cựu Trưởng khoa Tiếng Anh Trường Western Sydney University'
@@ -122,7 +128,7 @@ const StaticTeacherCarousel = () => {
                 {/* Search / Plus icon button at the bottom */}
                 <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 z-30">
                   <div className="flex size-10 items-center justify-center rounded-full bg-white shadow-md transition-transform hover:scale-110 cursor-pointer">
-                    <img src="/src/assets/images/img-hocba-tienganh/icon-search.png" alt="Search" className="size-5" />
+                    <img src={iconSearch.src} alt="Search" className="size-5" />
                   </div>
                 </div>
               </div>
@@ -132,10 +138,10 @@ const StaticTeacherCarousel = () => {
         {/* Navigation Arrows for Desktop */}
         <div className="hidden md:block">
           <CarouselPrevious className="bg-gradient-to-r from-[#F89C1E] to-[#E97607] text-white border-0 hover:bg-[#E97607] hover:text-white size-10 shadow-md p-0 flex items-center justify-center overflow-hidden">
-            <img src="/src/assets/images/img-hocba-tienganh/button-scroll.png" alt="Prev" className="w-full h-full object-cover" />
+            <img src={buttonScroll.src} alt="Prev" className="w-full h-full object-cover" />
           </CarouselPrevious>
           <CarouselNext className="bg-gradient-to-r from-[#F89C1E] to-[#E97607] text-white border-0 hover:bg-[#E97607] hover:text-white size-10 shadow-md p-0 flex items-center justify-center overflow-hidden">
-            <img src="/src/assets/images/img-hocba-tienganh/button-scroll.png" alt="Next" className="w-full h-full object-cover rotate-180" />
+            <img src={buttonScroll.src} alt="Next" className="w-full h-full object-cover rotate-180" />
           </CarouselNext>
         </div>
       </Carousel>
