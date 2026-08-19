@@ -92,9 +92,10 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
               >
                 <div 
                   className={cn(
-                    "absolute bottom-[calc(100%-8px)] md:bottom-[calc(100%-16px)] -ml-10 md:-ml-16 transition-opacity duration-300 w-[55px] md:w-[75px] z-20",
-                    isActive ? "opacity-100" : "opacity-50 group-hover:opacity-80"
+                    "absolute bottom-[calc(100%-8px)] md:bottom-[calc(100%-16px)] -ml-10 md:-ml-16 transition-all duration-300 w-[55px] md:w-[75px] z-20",
+                    isActive ? "opacity-100 scale-110" : "opacity-50 group-hover:opacity-80"
                   )}
+                  style={isActive ? { filter: `drop-shadow(0 4px 12px ${item.color}80)` } : undefined}
                 >
                   <img src={ScoreMap[item.score]} alt={item.score} className="w-full h-auto object-contain" />
                 </div>
@@ -110,12 +111,10 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                     style={{ backgroundColor: item.color }}
                   />
                   {/* Soft glow below */}
-                  {isActive && (
-                    <div 
-                      className="absolute inset-0 translate-y-6 blur-xl rounded-full opacity-50"
-                      style={{ backgroundColor: item.color }}
-                    />
-                  )}
+                  <div 
+                    className="absolute inset-0 translate-y-4 md:translate-y-6 blur-xl rounded-full transition-opacity duration-300 opacity-50 md:opacity-60"
+                    style={{ backgroundColor: item.color }}
+                  />
                   {/* Top face */}
                   <div 
                     className="absolute inset-0 bg-white border-[3px] rounded-[16px] md:rounded-[20px] rotate-45 flex items-center justify-center z-10"
@@ -158,11 +157,11 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                 )}>
                   {index + 1}
                 </div>
-                <div className="flex flex-col items-start md:items-center w-full">
+                <div className="flex flex-col items-start w-full px-1 md:px-4 lg:px-6">
                   <span 
                     className={cn(
                       "text-[14px] md:text-[15px] lg:text-[16px] font-bold uppercase transition-colors mb-0.5 md:mb-1",
-                      isActive ? "text-white md:text-[var(--active-color)]" : "text-white md:text-[var(--active-color)]"
+                      "text-white md:text-[var(--active-color)]"
                     )}
                     style={{ '--active-color': item.color } as React.CSSProperties}
                   >
@@ -173,12 +172,12 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                   </span>
                   
                   {/* Progress(hiển thị trên laptop) */}
-                  <div className="hidden md:block w-full px-4 lg:px-8">
+                  <div className="hidden md:flex w-full justify-start">
                     <div 
                       className={cn(
                         "h-1.5 lg:h-2 rounded-full transition-all duration-500 ease-out",
                         // (từ trái sang phải)
-                        (isActive || hoveredIndex === index) ? "w-full" : "w-0"
+                        (isActive || hoveredIndex === index) ? "w-full" : "w-10 md:w-12"
                       )}
                       style={{ backgroundColor: item.color }}
                     ></div>
@@ -194,24 +193,28 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
       <div className="bg-[#0B328F] rounded-[24px] md:rounded-[32px] p-8 md:p-12 relative overflow-hidden transition-all duration-500 min-h-[300px]">
         <div className="absolute top-0 right-0 w-64 h-64 bg-[#3B82F6]/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#06B6D4]/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
-        <div className="absolute top-10 right-20 text-white/20">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
-        </div>
-        <div className="absolute bottom-10 right-10 text-white/10">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
-        </div>
-        
+
         <div className="relative z-10 flex flex-col items-start text-left w-full px-2">
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mb-4 md:mb-8 w-full border-b border-white/20 md:border-none pb-4 md:pb-0">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 md:w-16 md:h-16 rounded-full bg-white flex items-center justify-center flex-shrink-0 text-[#0B328F]">
-                <BookOpen className="w-5 h-5 md:w-8 md:h-8" />
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mb-4 md:mb-8 w-full pb-2 md:pb-0">
+            <div className="flex flex-col">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 md:w-16 md:h-16 rounded-full bg-white flex items-center justify-center flex-shrink-0 text-[#0B328F]">
+                  <img src={getImgSrc(bookIcon)} alt="book" className="w-5 h-5 md:w-8 md:h-8" />
+                </div>
+                
+                {/* Text Container */}
+                <div className="flex flex-col gap-1 md:gap-2">
+                  <h3 className="text-white text-[18px] md:text-[28px] font-bold">Chi tiết khóa học</h3>
+                  {/* Blue line - Desktop only (under text) */}
+                  <div className="hidden md:block w-20 h-1.5 bg-[#1C4EE5] rounded-full ml-2"></div>
+                </div>
               </div>
-              <h3 className="text-white text-[18px] md:text-[28px] font-bold">Chi tiết khóa học</h3>
+              {/* Blue line - Mobile only (spanning under icon and text) */}
+              <div className="md:hidden block w-20 h-1 bg-[#1C4EE5] rounded-full mt-2 ml-1"></div>
             </div>
           </div>
 
-          <div className="w-full mb-0 md:mb-10 lg:pr-12">
+          <div className="relative w-full mb-0 md:mb-10 lg:pr-8">
             {data.map((stage, index) => {
               const isActive = activeIndex === index;
               return (
@@ -224,10 +227,12 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                 >
                   
                   <h4 className="sr-only">Chi tiết lộ trình: {stage.title} - {stage.subtitle}</h4>
-                  <ul className="space-y-4 md:space-y-5 text-white/90 text-[14px] md:text-[16px] font-medium leading-[1.6] md:leading-[1.8]">
+                  <ul className="space-y-4 text-white/90 text-[15px] md:text-[17px] font-normal leading-[1.5] md:leading-[1.6]">
                     {stage.details.map((detail, idx) => (
-                      <li key={idx} className="flex items-start gap-2.5">
-                        <div className="mt-2 w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-white/60 flex-shrink-0" aria-hidden="true"></div>
+                      <li key={idx} className={cn("flex items-start gap-2.5", detail.startsWith('-') && "ml-[14px] md:ml-4")}>
+                        {!detail.startsWith('-') && (
+                          <div className="mt-2.5 w-1 h-1 md:w-[5px] md:h-[5px] rounded-full bg-white/60 flex-shrink-0" aria-hidden="true"></div>
+                        )}
                         <span className="text-left block">{detail}</span>
                       </li>
                     ))}
@@ -235,6 +240,15 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                 </div>
               );
             })}
+            
+            <div className="absolute -bottom-0 md:-bottom-4 -right-6 md:right-26 lg:right-[8%] flex items-end gap-1 pointer-events-none">
+              <div className="text-white/20">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              </div>
+              <div className="text-white/20 mb-2">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -242,7 +256,7 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
       <div className="mt-8 flex justify-center w-full">
         <a
           href="#tu-van"
-          className="inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full bg-[#F97316] px-8 py-3.5 text-[15px] font-bold text-white shadow-[0_4px_15px_rgba(249,115,22,0.4)] transition-transform hover:scale-105 uppercase"
+          className="inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full bg-[#F97316] px-8 py-3.5 text-[15px] font-bold text-white shadow-[0_4px_15px_rgba(249,115,22,0.4)] transition-all duration-300 hover:scale-105 hover:bg-gradient-to-r hover:from-[#F97316] hover:to-[#FBBF24] hover:shadow-[0_0_25px_rgba(249,115,22,0.7)] hover:[text-shadow:0_0_10px_rgba(255,255,255,0.9)] uppercase"
         >
           XEM THÊM KHÓA HỌC
         </a>

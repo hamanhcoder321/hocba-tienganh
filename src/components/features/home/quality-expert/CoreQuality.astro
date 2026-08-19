@@ -6,20 +6,20 @@ import CommitmentBadge from '../ui/CommitmentBadge';
 const commitments = [
   {
     id: '01',
-    title: 'Cam kết đầu ra rõ ràng, không đạt học lại miễn phí',
+    title: 'Cam kết đầu ra rõ ràng, không<br class="hidden lg:block" /> đạt học lại miễn phí',
     description:
-      'Tự tin cam kết đầu ra với tư duy đề cao chất lượng hàng đầu. Học viên không đạt đầu ra được học lại miễn phí, mentor theo sát bổ trợ.',
+      'Tự tin cam kết đầu ra với tư duy đề cao chất lượng<br class="hidden lg:block" /> hàng đầu. Học viên không đạt đầu ra được học lại<br class="hidden lg:block" /> miễn phí, mentor theo sát bổ trợ.',
   },
   {
     id: '02',
-    title: 'Giáo trình nội bộ tự biên soạn độc quyền',
+    title: 'Giáo trình nội bộ tự biên soạn<br class="hidden lg:block" /> độc quyền',
     description:
-      'Giáo trình thiết kế mục tiêu đầu ra rõ ràng. Giúp học viên hiểu bản chất, hình thành tư duy, phát triển ý thay vì học thuộc công thức hay luyện đề máy móc.',
+      'Giáo trình thiết kế mục tiêu đầu ra rõ ràng. Giúp học<br class="hidden lg:block" /> viên hiểu bản chất, hình thành tư duy, phát triển ý thay<br class="hidden lg:block" /> vì học thuộc công thức hay luyện đề máy móc.',
   },
   {
     id: '03',
-    title: 'Học đủ - Đúng cấp độ với Mock Test chuẩn IELTS',
-    description: 'Bài thi đầu vào được mô phỏng theo cấu trúc, thời lượng và tiêu chí chấm điểm của kỳ thi IELTS chính thức, giúp đánh giá chính xác năng lực hiện tại, xác định điểm mạnh - điểm yếu và làm cơ sở xây dựng lộ trình học phù hợp.',
+    title: 'Học đủ - Đúng cấp độ với Mock<br class="hidden lg:block" /> Test chuẩn IELTS',
+    description: 'Bài thi đầu vào được mô phỏng theo cấu trúc, thời<br class="hidden lg:block" /> lượng và tiêu chí chấm điểm của kỳ thi IELTS chính<br class="hidden lg:block" /> thức, giúp đánh giá chính xác năng lực hiện tại, xác<br class="hidden lg:block" /> định điểm mạnh - điểm yếu và làm cơ sở xây dựng lộ<br class="hidden lg:block" /> trình học phù hợp.',
   },
 ];
 ---
@@ -30,7 +30,7 @@ const commitments = [
     <div class="relative flex flex-col items-center mb-10 md:mb-16">
       <div class="relative mb-4 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
         <Image
-          src={IMAGES.home.iconShot2}
+          src={IMAGES.home.iconMuiTenXanh}
           alt="Biểu tượng giá trị cốt lõi The IELTS Space"
           width={124}
           height={124}
@@ -38,7 +38,7 @@ const commitments = [
         />
         <div class="flex flex-col items-center justify-center gap-2 sm:gap-4 text-center">
           <h2
-            class="text-[#1336B3] py-1 text-[22px] font-black uppercase leading-tight sm:py-2 md:text-[26px] lg:text-[30px]"
+            class="text-[#072899] py-1 text-[22px] font-black uppercase leading-tight sm:py-2 md:text-[26px] lg:text-[30px]"
           >
             LẤY CHẤT LƯỢNG LÀM GIÁ TRỊ CỐT LÕI
           </h2>
@@ -59,18 +59,19 @@ const commitments = [
             <div class="flex flex-col overflow-hidden rounded-[16px] bg-[#1132B4] text-white transition-all duration-300 hover:translate-x-2 sm:rounded-[20px] shadow-lg border border-[#2b4cda]">
               <div class="p-5 md:p-7">
                 <div class="flex items-start gap-4 sm:gap-6">
-                  <div class="flex flex-col items-center min-w-[50px] md:min-w-[70px]">
-                    <Image src={IMAGES.home.QuoteIcon} alt="Biểu tượng cam kết chất lượng" class="mb-2 w-8 md:w-10 opacity-90" />
-                    <span class="text-[#F3C650] text-[32px] font-black leading-none md:text-[48px]">
+                  <div class="flex flex-col items-center min-w-[50px] md:min-w-[70px] lg:min-w-[90px]">
+                    <Image src={IMAGES.home.QuoteIcon} alt="Biểu tượng cam kết chất lượng" class="mb-2 w-8 md:w-10 lg:w-12 opacity-90" />
+                    <span class="text-[#F3C650] text-[32px] font-black leading-none md:text-[48px] lg:text-[60px]">
                       {item.id}
                     </span>
                   </div>
                   <div class="flex-1">
-                    <h3 class="mb-2 text-[15px] font-black uppercase leading-tight text-[#F3C650] md:text-[22px]">
-                      {item.title}
-                    </h3>
+                    <h3
+                      class="mb-2 text-[16px] font-black uppercase leading-tight text-[#F3C650] md:text-[24px] lg:text-[28px]"
+                      set:html={item.title}
+                    />
                     <p
-                      class="text-[13px] font-medium leading-relaxed text-gray-100 md:text-[15px]"
+                      class="text-[14px] font-medium leading-relaxed text-gray-100 md:text-[16px] lg:text-[18px]"
                       set:html={item.description}
                     />
                   </div>

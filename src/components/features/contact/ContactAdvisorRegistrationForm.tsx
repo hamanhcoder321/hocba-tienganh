@@ -64,7 +64,7 @@ export default function ContactAdvisorRegistrationForm({
           <div className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-x-6 md:gap-y-3">
             <div className="col-span-1 space-y-2">
               <Label htmlFor="name" className="text-[15px] font-semibold text-white md:text-base">
-                Họ Và Tên (*)
+                Họ Và Tên
               </Label>
               <Input
                 id="name"
@@ -82,10 +82,9 @@ export default function ContactAdvisorRegistrationForm({
 
             <div className="col-span-1 space-y-2">
               <Label htmlFor="phone" className="text-[15px] font-semibold text-white md:text-base">
-                Số Điện Thoại (*)
+                Số Điện Thoại
               </Label>
               <div className="relative">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 font-medium text-gray-700">+84</span>
                 <Input
                   id="phone"
                   type="tel"
@@ -96,7 +95,7 @@ export default function ContactAdvisorRegistrationForm({
                     },
                   })}
                   placeholder="Nhập số điện thoại"
-                  className={`h-12 rounded-lg border-0 bg-white pl-14 focus-visible:ring-white md:h-14 ${
+                  className={`h-12 rounded-lg border-0 bg-white focus-visible:ring-white md:h-14 ${
                     form.formState.errors.phone ? 'ring-2 ring-red-500' : ''
                   }`}
                   maxLength={10}

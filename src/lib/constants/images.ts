@@ -180,6 +180,7 @@ import hoverScore from '@/assets/images/home/hover-score.png';
 import hoverShowHocba from '@/assets/images/home/hover-show-hocba.png';
 import hoverShowLms from '@/assets/images/home/hover-show-lms.png';
 import iconShot2 from '@/assets/images/home/icon-gia-tri-cot-loi.png';
+import iconMuiTenXanh from '@/assets/images/img-hocba-tienganh/icon-mui-ten-xanh.png';
 import MegaPhoneIcon from '@/assets/images/home/icon-megaphone.png';
 import QuoteIcon from '@/assets/images/home/icon-quote.png';
 import LearningBook from '@/assets/images/home/learning-book.png';
@@ -534,6 +535,7 @@ export const IMAGES = {
     thanhvien,
     LearningBook,
     iconShot2,
+    iconMuiTenXanh,
     TeacherGroup,
     QuoteIcon,
     MegaPhoneIcon,

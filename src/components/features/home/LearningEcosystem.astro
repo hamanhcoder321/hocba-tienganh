@@ -5,27 +5,35 @@ import imgChugaMentor from '@/assets/images/img-hocba-tienganh/img-chuga-mentor.
 import imgLoiNhanMentor from '@/assets/images/img-hocba-tienganh/img-loi-nhan-thong-bao-mentor.png';
 import imgNhacNho from '@/assets/images/img-hocba-tienganh/img-nhac-nho.png';
 import imgTenLua from '@/assets/images/img-hocba-tienganh/icon-tenlua.png';
+import imgPaceAssessment from '@/assets/images/img-hocba-tienganh/img-pace-assessment.png';
+import imgSpaceLoop from '@/assets/images/img-hocba-tienganh/img-spaceloop.png';
+import imgPhuongPhapSpace from '@/assets/images/img-hocba-tienganh/img-phuong-phap-space.png';
+import imgLmsESpace from '@/assets/images/img-hocba-tienganh/img-lms-e-space.png';
 
 const features = [
   {
     title: 'HIỂU NGƯỜI HỌC',
     subtitle: 'PACE ASSESSMENT',
-    description: 'Bài trắc nghiệm giúp bạn hiểu rõ phong cách học tập và khả năng tiếp thu ngôn ngữ',
+    description: 'Bài trắc nghiệm giúp bạn hiểu rõ<br />phong cách học tập và khả năng<br />tiếp thu ngôn ngữ',
+    image: imgPaceAssessment
   },
   {
     title: 'HỌC HIỆU QUẢ',
     subtitle: 'SPACE LOOP',
-    description: 'Chu trình học tập vòng xoắn, liên tục theo dõi - phản hồi - điều chỉnh để tiến bộ',
+    description: 'Chu trình học tập vòng xoắn, liên tục<br />theo dõi - phản hồi - điều chỉnh để<br />tiến bộ',
+    image: imgSpaceLoop
   },
   {
     title: 'HỌC ĐÚNG CÁCH',
     subtitle: 'PHƯƠNG PHÁP SPACE',
-    description: 'Phương pháp phát triển tư duy đa chiều, hình thành 7 năng lực học tập cốt lõi',
+    description: 'Phương pháp phát triển tư duy đa<br />chiều, hình thành 7 năng lực học tập<br />cốt lõi',
+    image: imgPhuongPhapSpace
   },
   {
     title: 'HỌC THÔNG MINH',
     subtitle: 'LMS E-SPACE',
-    description: 'Nền tảng học tập thông minh kết hợp báo cáo AI và đề xuất phù hợp',
+    description: 'Nền tảng học tập thông minh kết<br />hợp báo cáo AI và đề xuất phù hợp',
+    image: imgLmsESpace
   },
 ];
 ---
@@ -34,7 +42,7 @@ const features = [
   <div class="mx-auto px-4">
     <div class="mb-12 flex flex-col text-center">
       <div class="relative mx-auto max-w-4xl">
-        <div class="absolute top-2 -left-4 sm:-left-8 md:top-6 md:-left-28 lg:top-8 lg:-left-36 z-10 pointer-events-none">
+        <div class="absolute top-2 -left-4 sm:-left-8 md:top-0 md:-left-24 lg:-top-6 lg:-left-[130px] xl:-left-[180px] z-10 pointer-events-none">
           <Image
             width={160}
             height={160}
@@ -48,25 +56,27 @@ const features = [
           <h2 class="mb-4 text-[26px] md:text-[50px] font-black uppercase leading-tight text-[#373737]">
             TỐI ƯU HÀNH TRÌNH HỌC<br />
             <span
-              class="mt-2 md:mt-4 inline-block rounded-[16px] md:rounded-[20px] bg-gradient-to-r from-[#F97316] to-[#F59E0B] px-6 py-1 md:py-2 text-white text-[22px] md:text-[42px] shadow-lg relative"
+              class="mt-2 md:mt-4 inline-block rounded-[16px] md:rounded-[20px] bg-gradient-to-r from-[#F97316] to-[#F59E0B] px-10 md:px-36 py-1 md:py-2 text-white text-[22px] md:text-[42px] shadow-lg relative"
             >
               & LUYỆN THI IELTS
             </span>
           </h2>
-          <div class="mt-6 md:mt-8 flex items-center justify-center px-1 sm:px-2 md:px-0 w-full overflow-hidden">
-            <p class="max-w-[850px] text-[11px] min-[375px]:text-[11.5px] sm:text-[13px] tracking-tight md:tracking-normal md:text-[22px] lg:text-[24px] font-bold text-[#555] leading-relaxed md:leading-snug text-center">
-              {/* Desktop 3 lines */}
-              <span class="hidden md:inline">
-                Một hệ sinh thái học tập được nghiên cứu và thiết<br />
-                kế hoàn toàn mới. Giúp mỗi người học tiến bộ theo<br />
-                cách riêng của mình
-              </span>
-              {/* Mobile 2 lines */}
-              <span class="inline md:hidden whitespace-nowrap">
-                Một hệ sinh thái học tập được nghiên cứu và thiết kế hoàn toàn mới.<br />
-                Giúp mỗi người học tiến bộ theo cách riêng của mình
-              </span>
-            </p>
+          <div class="mt-6 md:mt-8 flex items-center justify-center px-1 sm:px-2 md:px-0 w-full relative">
+            <div class="relative inline-block text-center max-w-[850px]">
+              <p class="text-[11px] min-[375px]:text-[11.5px] sm:text-[13px] tracking-tight md:tracking-normal md:text-[22px] lg:text-[24px] font-bold text-[#555] leading-relaxed md:leading-snug">
+                {/* Desktop 3 lines */}
+                <span class="hidden md:inline">
+                  Một hệ sinh thái học tập được nghiên cứu và thiết<br />
+                  kế hoàn toàn mới. Giúp mỗi người học tiến bộ theo<br />
+                  cách riêng của mình
+                </span>
+                {/* Mobile 2 lines */}
+                <span class="inline md:hidden whitespace-nowrap">
+                  Một hệ sinh thái học tập được nghiên cứu và thiết kế hoàn toàn mới.<br />
+                  Giúp mỗi người học tiến bộ theo cách riêng của mình
+                </span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -82,10 +92,10 @@ const features = [
             <div class="flex h-full w-full flex-col overflow-hidden rounded-[20px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] bg-white">
               <div class="flex flex-col items-center justify-center bg-[#1336B3] py-4 text-center">
                 <h3 class="text-[17px] font-black uppercase text-white">{feature.title}</h3>
-                <p class="text-[#F3AC12] font-bold text-[12px] mt-1">{feature.subtitle}</p>
+                <p class="text-[#EAC261] font-bold text-[12px] mt-1">{feature.subtitle}</p>
               </div>
               <div class="flex min-h-[120px] flex-grow items-center justify-center p-5 text-center bg-white">
-                <p class="text-[13px] font-medium leading-relaxed text-[#555]">{feature.description}</p>
+                <p class="text-[13px] font-medium leading-relaxed text-[#555]" set:html={feature.description}></p>
               </div>
             </div>
           </div>
@@ -104,18 +114,42 @@ const features = [
 
   <!-- layout laptop: vòng tròn 4 thẻ xoay quanh chú cú gaatrang -->
   <div class="hidden md:block relative w-full max-w-[1100px] mx-auto h-[600px] mt-10 mb-10">
-    <!-- SVG đường quỹ đạo nền -->
+    <!-- SVG đường quỹ đạo nền và trang trí -->
     <div class="absolute inset-0 w-full h-full z-0 flex items-center justify-center pointer-events-none">
-       <svg viewBox="0 0 1100 600" class="w-full h-full opacity-70">
-         <ellipse cx="550" cy="300" rx="480" ry="220" fill="none" stroke="#8CA8F9" stroke-width="2" />
-         <!-- Các chấm trang trí trên quỹ đạo -->
-         <circle cx="70" cy="300" r="5" fill="#8CA8F9" />
-         <circle cx="1030" cy="300" r="5" fill="#8CA8F9" />
-         <circle cx="550" cy="80" r="8" fill="#8CA8F9" />
-         <!-- Ngôi sao nhỏ -->
-         <path d="M 120 180 L 125 195 L 140 195 L 128 205 L 132 220 L 120 210 L 108 220 L 112 205 L 100 195 L 115 195 Z" fill="#8CA8F9" class="scale-75 origin-center" />
-         <path d="M 980 400 L 985 415 L 1000 415 L 988 425 L 992 440 L 980 430 L 968 440 L 972 425 L 960 415 L 975 415 Z" fill="#8CA8F9" class="scale-75 origin-center" />
-         <path d="M 1020 80 L 1025 95 L 1040 95 L 1028 105 L 1032 120 L 1020 110 L 1008 120 L 1012 105 L 1000 95 L 1015 95 Z" fill="#8CA8F9" class="scale-100 origin-center" />
+       <svg viewBox="0 0 1100 600" class="w-full h-full opacity-70 overflow-visible">
+         <ellipse cx="550" cy="300" rx="480" ry="220" fill="none" stroke="#083AD4" stroke-width="3" />
+         
+         <!-- Top Middle Node -->
+         <circle cx="550" cy="80" r="14" fill="none" stroke="#6886E6" stroke-width="3" />
+         <circle cx="550" cy="80" r="7" fill="#8CA8F9" />
+
+         <!-- 5-Point Star (Top Left) -->
+         <svg x="180" y="-100" width="50" height="50" viewBox="0 0 24 24" fill="#8CA8F9">
+           <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+         </svg>
+
+         <!-- Top Right Sparkles -->
+         <svg x="950" y="-50" width="80" height="100" viewBox="0 0 24 24" fill="#8CA8F9" opacity="0.9">
+           <path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" />
+         </svg>
+         <svg x="1050" y="-10" width="50" height="50" viewBox="0 0 24 24" fill="#8CA8F9" opacity="0.9">
+           <path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" />
+         </svg>
+
+         <!-- Middle Left Sparkle -->
+         <svg x="-40" y="300" width="60" height="60" viewBox="0 0 24 24" fill="#8CA8F9" opacity="0.8">
+           <path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" />
+         </svg>
+
+         <!-- Bottom Left Sparkle -->
+         <svg x="-40" y="550" width="50" height="50" viewBox="0 0 24 24" fill="#8CA8F9" opacity="0.8">
+           <path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" />
+         </svg>
+
+         <!-- Middle Right Sparkle -->
+         <svg x="978" y="280" width="70" height="70" viewBox="0 0 24 24" fill="#8CA8F9" opacity="0.8">
+           <path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" />
+         </svg>
        </svg>
     </div>
 
@@ -133,13 +167,25 @@ const features = [
         { feature: features[1], classes: "top-[30px] right-[20px]" },
         { feature: features[3], classes: "bottom-[30px] right-[20px]" }
       ].map(({ feature, classes }) => (
-        <div class={`absolute w-[310px] z-20 flex flex-col overflow-hidden rounded-[20px] shadow-[0_15px_40px_rgba(0,0,0,0.06)] bg-white transition-transform duration-300 hover:scale-105 ${classes}`}>
-          <div class="flex flex-col items-center justify-center bg-[#1336B3] py-4 text-center">
-             <h3 class="text-[17px] font-black uppercase text-white">{feature.title}</h3>
-             <p class="text-[#F3AC12] font-bold text-[12px] mt-1">{feature.subtitle}</p>
-          </div>
-          <div class="flex min-h-[120px] flex-grow items-center justify-center p-5 text-center bg-white">
-             <p class="text-[13px] font-medium leading-relaxed text-[#555]">{feature.description}</p>
+        <div class={`absolute w-[310px] z-20 group [perspective:1000px] ${classes}`}>
+          <div class="relative w-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+            
+            <!-- Mặt trước (Nội dung) -->
+            <div class="relative w-full [backface-visibility:hidden] flex flex-col overflow-hidden rounded-[20px] shadow-[0_15px_40px_rgba(0,0,0,0.06)] bg-white border border-gray-100">
+              <div class="flex flex-col items-center justify-center bg-[#1336B3] py-4 text-center">
+                 <h3 class="text-[17px] font-black uppercase text-white">{feature.title}</h3>
+                 <p class="text-[#F3AC12] font-bold text-[12px] mt-1">{feature.subtitle}</p>
+              </div>
+              <div class="flex min-h-[120px] flex-grow items-center justify-center p-5 text-center bg-white">
+                 <p class="text-[13px] font-medium leading-relaxed text-[#555]" set:html={feature.description}></p>
+              </div>
+            </div>
+
+            <!-- Mặt sau (Ảnh) -->
+            <div class="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col overflow-hidden rounded-[20px] shadow-[0_15px_40px_rgba(0,0,0,0.06)] bg-white border border-gray-100">
+              <Image src={feature.image} alt={feature.title} class="w-full h-full object-cover" />
+            </div>
+
           </div>
         </div>
       ))

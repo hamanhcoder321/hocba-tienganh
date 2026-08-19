@@ -11,7 +11,7 @@ const CommitmentBadge: React.FC<CommitmentBadgeProps> = ({ children, className, 
   return (
     <Tag
       className={cn(
-        'flex items-center justify-center rounded-[8px] bg-gradient-to-r from-[#B90E0A] to-[#F3C650] px-1 py-1 text-center text-sm font-black uppercase text-white sm:px-3 sm:py-4 sm:text-lg lg:text-[32px]',
+        'flex items-center justify-center rounded-[8px] bg-gradient-to-r from-[#F97316] to-[#FFC107] px-1 py-1 text-center text-sm font-black uppercase text-white sm:px-3 sm:py-4 sm:text-lg lg:text-[32px]',
         className,
       )}
     >

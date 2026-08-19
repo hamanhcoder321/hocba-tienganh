@@ -11,9 +11,10 @@ const roadmapData = [
     color: '#014AEF',
     icon: 'BookOpen',
     details: [
-      'Dành cho những bạn mất gốc hoặc nền tảng chưa vững chắc. Vốn từ, ngữ pháp và khả năng nghe nói còn rất hạn chế.',
-      'THE IELTS SPACE giúp bạn xây lại nền tảng từ vựng, phát âm và phản xạ tiếng Anh cơ bản nhanh gấp 3 lần.',
-      'Hiểu và sử dụng trôi chảy các cấu trúc câu thông dụng, tự tin giao tiếp trong các tình huống thực tế hằng ngày.'
+      'Dành cho những bạn mất gốc hoặc gần như chưa có nền tảng tiếng Anh. Vốn từ, ngữ pháp, phát âm và khả năng nghe nói còn rất hạn chế.',
+      'The IELTS SPACE sẽ giúp bạn xây lại nền tảng tiếng Anh từ đầu: làm quen và phát âm đúng các âm cơ bản, củng cố từ vựng', 
+      '- ngữ pháp thông dụng và hình thành phản xạ nghe nói.',
+      'Bạn có thể nghe nhận diện các thông tin quen thuộc, đọc hiểu đoạn văn ngắn, viết được đoạn 5-7 câu có liên kết và trả lời Speaking Part 1 bằng câu hoàn chỉnh.'
     ]
   },
   {
@@ -86,16 +87,29 @@ const roadmapData = [
 
 <section id="ielts-roadmap" class="relative overflow-hidden bg-[#F8FAFF] py-16 md:py-24">
   <div class="container mx-auto px-4 lg:px-8 max-w-[1200px]">
-    <div class="text-center mb-12 md:mb-20">
-      <h2 class="mb-4">
+    <div class="text-center mb-12 md:mb-20 relative">
+      {/* Decorative Icons */}
+      <div class="absolute -top-6 left-4 md:-top-2 md:left-10 hidden md:block z-0">
+        <div class="w-10 h-10 md:w-12 md:h-12 rounded-full border border-dashed border-[#5E87F9] flex items-center justify-center text-[#5E87F9] bg-transparent">
+          <span class="text-lg md:text-xl font-bold">?</span>
+        </div>
+      </div>
+      <div class="absolute top-12 left-16 md:top-16 md:left-32 hidden md:block text-[#5E87F9] opacity-30 z-0">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+      </div>
+      <div class="absolute top-2 right-4 md:top-4 md:right-16 hidden md:block text-[#5E87F9] opacity-30 z-0">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+      </div>
+
+      <h2 class="mb-4 relative z-10">
         <span class="block text-[18px] md:text-[22px] font-bold uppercase tracking-[0.15em] text-[#373737] mb-2 md:mb-3">
           CHƯƠNG TRÌNH HỌC TẬP TOÀN DIỆN
         </span>
-        <span class="block text-[36px] md:text-[64px] font-black uppercase text-[#0D1F5B] leading-none tracking-tight">
+        <span class="block text-[36px] md:text-[64px] font-black uppercase text-[#072899] leading-none tracking-tight">
           THE IELTS SPACE
         </span>
       </h2>
-      <div class="flex items-center justify-center gap-3 mb-6 text-[#3659BB]">
+      <div class="flex items-center justify-center gap-3 mb-1 text-[#3659BB] relative z-10">
         <div class="w-10 md:w-20 h-[1px] bg-[#3659BB]/60"></div>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z"/>

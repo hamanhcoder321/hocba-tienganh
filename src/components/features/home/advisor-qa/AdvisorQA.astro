@@ -5,17 +5,18 @@ import QAAccordion from '@/components/features/home/advisor-qa/QAAccordion.astro
 import CommitmentBadge from '@/components/features/home/ui/CommitmentBadge';
 import { Image } from 'astro:assets';
 import imgGiaiDapCoVan from '@/assets/images/img-hocba-tienganh/img-giai-dap-co-van.png';
+import iconHoiCham from '@/assets/images/img-hocba-tienganh/icon-hoi-cham.png';
 
 const qaData = [
   {
     id: 'item-1',
     question: '1. Lộ trình học tại THE IELTS SPACE như thế nào?',
     answer:
-      'Lộ trình tại THE IELTS SPACE được xây dựng theo năng lực đầu vào và mục tiêu band của từng học viên, tập trung vào đúng kiến thức, kỹ năng và dạng bài còn yếu. Kết hợp giữa giảng dạy trên lớp, luyện tập trên LMS E-Power, AI phân tích dữ liệu và mentor theo sát, THE IELTS SPACE giúp học viên học đúng trọng tâm, cải thiện liên tục và rút ngắn thời gian chinh phục mục tiêu IELTS.',
+      'Lộ trình tại THE IELTS SPACE được xây dựng theo năng lực đầu vào và <br/> mục tiêu band của từng học viên, tập trung vào đúng kiến thức, kỹ năng <br/> và dạng bài còn yếu. Kết hợp giữa giảng dạy trên lớp, luyện tập trên LMS <br/> E-Power, AI phân tích dữ liệu và mentor theo sát, THE IELTS SPACE giúp <br/> học viên học đúng trọng tâm, cải thiện liên tục và rút ngắn thời gian <br/> chinh phục mục tiêu IELTS.',
   },
   {
-    id: 'item-2',
-    question: '2. THE IELTS SPACE có cam kết chất lượng đầu ra không?',
+    id: 'item-2', 
+    question: '2. THE IELTS SPACE có cam kết chất lượng đầu ra <br/> <span class="pl-[18px] md:pl-[26px]">không?</span>',
     answer:
       'Lộ trình ôn thi tại Học Bá được thiết kế cá nhân hóa, tập trung vào các kiến thức trọng tâm để học viên không lãng phí thời gian vào nội dung không cần thiết. Kết hợp cùng phương pháp học thông minh và tài liệu ôn luyện cập nhật theo chuẩn Tiếng Trung mới nhất, Học Bá giúp bạn tiếp thu nhanh, hiệu quả và tiết kiệm tối đa thời gian.',
   },
@@ -46,8 +47,8 @@ const qaData = [
 >
   <div class="relative z-10 mx-auto max-w-[1212px] max-lg:px-9">
     <div class="mb-6 md:mb-7">
-      <div class="flex items-center gap-2 md:gap-4">
-        <span class="text-[67px] font-black text-[#1336B3] md:text-[109px] mr-2 md:mr-4">?</span>
+      <div class="flex items-center gap-1 md:gap-2">
+        <Image src={iconHoiCham} alt="?" class="w-16 h-16 md:w-24 md:h-24 object-contain translate-y-[6px]" />
         <div>
           <h2 class="py-1 md:py-2 text-[22px] font-black uppercase text-[#1336B3] md:text-[36px] lg:text-[42px]">GIẢI ĐÁP 1:1</h2>
           <CommitmentBadge className="rounded-md px-3 py-1 sm:px-4 text-[16px] font-bold md:text-[32px] !from-[#F97316] !to-[#F59E0B] inline-block mt-1 md:mt-2">
