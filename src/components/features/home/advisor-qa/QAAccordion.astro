@@ -19,7 +19,11 @@ const { qaData } = Astro.props;
         open={index === 0}
       >
         <summary class="flex cursor-pointer list-none items-center justify-between px-4 py-4 text-left outline-none transition-all duration-300 md:px-6">
-          <h3 class="max-w-[93%] text-[15px] font-bold tracking-tight text-[#373737] transition-colors md:text-[22px]" set:html={item.question}>
+          <h3 
+            class="max-w-[93%] text-[15px] font-bold tracking-tight text-[#373737] transition-colors md:text-[22px]" 
+            style="padding-left: 1.2em; text-indent: -1.2em;"
+            set:html={item.question}
+          >
           </h3>
 
           <div class="relative flex h-8 w-8 items-center justify-center transition-all duration-500 group-open:rotate-180">

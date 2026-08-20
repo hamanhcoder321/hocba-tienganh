@@ -72,7 +72,7 @@ export default function ContactAdvisorRegistrationForm({
                 id="name"
                 type="text"
                 {...form.register('name')}
-                placeholder="Họ Và Tên"
+                placeholder="Nguyen van A"
                 className={`h-12 rounded-lg border-0 bg-white focus-visible:ring-white md:h-14 ${
                   form.formState.errors.name ? 'ring-2 ring-red-500' : ''
                 }`}
@@ -96,7 +96,7 @@ export default function ContactAdvisorRegistrationForm({
                       form.setValue('phone', value);
                     },
                   })}
-                  placeholder="Nhập số điện thoại"
+                  placeholder="Số điện thoại của bạn"
                   className={`h-12 rounded-lg border-0 bg-white focus-visible:ring-white md:h-14 ${
                     form.formState.errors.phone ? 'ring-2 ring-red-500' : ''
                   }`}

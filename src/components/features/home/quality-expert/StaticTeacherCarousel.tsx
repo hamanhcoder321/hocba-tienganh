@@ -120,8 +120,7 @@ const StaticTeacherCarousel = () => {
                   </p>
                 </div>
 
-                {/* Description below white box */}
-                <p className="mt-6 mb-2 text-center text-[13px] text-white md:text-[15px] px-4 leading-relaxed font-medium">
+                <p className="mt-6 mb-2 text-center text-[16px] text-white md:text-[18px] px-4 leading-relaxed font-medium">
                   {teacher.description}
                 </p>
 

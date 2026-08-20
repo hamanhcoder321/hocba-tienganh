@@ -24,7 +24,7 @@ const RAW_TESTIMONIALS: Omit<TestimonialItem, 'avatar'>[] = [
     location: 'Hà Nội',
     rating: 5,
     hskLevel: 'IELTS 7.5',
-    timeSpent: 'Từ mất gốc',
+    timeSpent: '',
     content:
       'Mình biết không phải chỉ mình mình có 7.5 IELTS. Mình biết có rất nhiều người cũng được 7.5 IELTS ở THE IELTS SPACE nên cũng chẳng có gì để nói cả. Mình viết cái này không phải để khoe rằng mình có 7.5 IELTS, mà chỉ muốn nói rằng, trong số rất nhiều người được 7.5 band IELTS ấy thì mình cũng là một người có 7.5 IELTS',
     likes: 128,
@@ -91,8 +91,8 @@ const optimizedTestimonials: TestimonialItem[] = await Promise.all(
 
     const optimized = await getImage({
       src: baseImage,
-      width: 150,
-      height: 150,
+      width: 300,
+      height: 300,
       format: 'webp',
       densities: [1, 2],
     });

@@ -9,12 +9,7 @@ import rocketIcon from '@/assets/images/img-hocba-tienganh/icon-maybay.png';
 import chartIcon from '@/assets/images/img-hocba-tienganh/icon-growth.png';
 import telescopeIcon from '@/assets/images/img-hocba-tienganh/images-icon-chieu.png';
 import trophyIcon from '@/assets/images/img-hocba-tienganh/images-icon-cup.png';
-import score3 from '@/assets/images/img-hocba-tienganh/3.0+.png';
-import score4 from '@/assets/images/img-hocba-tienganh/4.0+.png';
-import score5 from '@/assets/images/img-hocba-tienganh/5.0+.png';
-import score6 from '@/assets/images/img-hocba-tienganh/6.0+.png';
-import score7 from '@/assets/images/img-hocba-tienganh/7.0+.png';
-import score8 from '@/assets/images/img-hocba-tienganh/8.0+.png';
+
 
 interface RoadmapData {
   id: string;
@@ -43,14 +38,7 @@ const IconMap: Record<string, string> = {
   Trophy: getImgSrc(trophyIcon),
 };
 
-const ScoreMap: Record<string, string> = {
-  '3.0+': getImgSrc(score3),
-  '4.0+': getImgSrc(score4),
-  '5.0+': getImgSrc(score5),
-  '6.0+': getImgSrc(score6),
-  '7.0+': getImgSrc(score7),
-  '8.0+': getImgSrc(score8),
-};
+
 
 export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
   // index của mốc lộ trình đang được click chọn (Mặc định: 0)
@@ -92,12 +80,21 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
               >
                 <div 
                   className={cn(
-                    "absolute bottom-[calc(100%-8px)] md:bottom-[calc(100%-16px)] -ml-10 md:-ml-16 transition-all duration-300 w-[55px] md:w-[75px] z-20",
-                    isActive ? "opacity-100 scale-110" : "opacity-50 group-hover:opacity-80"
+                    "absolute bottom-[calc(100%+4px)] md:bottom-[calc(100%+8px)] -ml-6 md:-ml-10 transition-all duration-300 z-20 flex items-center justify-center pointer-events-none",
+                    isActive ? "opacity-100 scale-125" : "opacity-60 group-hover:opacity-100 group-hover:scale-110"
                   )}
-                  style={isActive ? { filter: `drop-shadow(0 4px 12px ${item.color}80)` } : undefined}
+                  style={(isActive || hoveredIndex === index) ? { filter: `drop-shadow(0 4px 6px ${item.color}40)` } : undefined}
                 >
-                  <img src={ScoreMap[item.score]} alt={item.score} className="w-full h-auto object-contain" />
+                  <span 
+                    className="font-black italic text-[24px] md:text-[32px] tracking-[-0.05em] leading-none select-none"
+                    style={{ 
+                      color: item.color,
+                      transform: 'rotate(-19deg) skewX(-19deg)',
+                      WebkitTextStroke: '1px rgba(255,255,255,0.2)'
+                    }}
+                  >
+                    {item.score}
+                  </span>
                 </div>
                 
                 {/* các khối banner 3d */}
@@ -112,7 +109,7 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                   />
                   {/* Soft glow below */}
                   <div 
-                    className="absolute inset-0 translate-y-4 md:translate-y-6 blur-xl rounded-full transition-opacity duration-300 opacity-50 md:opacity-60"
+                    className="absolute inset-0 translate-y-4 md:translate-y-6 blur-xl rounded-full transition-opacity duration-300 opacity-30 md:opacity-40"
                     style={{ backgroundColor: item.color }}
                   />
                   {/* Top face */}
