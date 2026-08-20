@@ -13,15 +13,15 @@ interface TimeLineCarouselProps {
 
 const TimeLineCarousel = ({ timeline }: TimeLineCarouselProps) => {
   return (
-    <div className="relative w-full border-t border-black pt-4">
+    <div className="relative w-full pb-8">
       <Carousel className="relative">
         <CarouselContent className="-ml-2">
           {timeline.map((item, index) => (
-            <CarouselItem key={index} className="basis-1/2 select-none pl-2">
-              <div className="relative ml-4 h-full border-l border-black px-4 py-4">
-                <div className="absolute -left-[6px] top-0 size-3 rounded-full bg-black" />
-                <div className="text-base font-black">{item.date}</div>
-                <p className="text-sm font-medium">{item.description}</p>
+            <CarouselItem key={index} className="basis-[85%] select-none pl-4">
+              <div className="relative ml-2 h-full border-l border-black pl-5 pb-6">
+                <div className="absolute -left-[10px] top-0 size-5 rounded-full bg-[#373737]" />
+                <div className="text-[22px] leading-none font-black text-black mb-3">{item.date}</div>
+                <p className="text-[15px] leading-relaxed font-medium text-[#373737]">{item.description}</p>
               </div>
             </CarouselItem>
           ))}

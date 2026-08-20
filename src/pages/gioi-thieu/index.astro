@@ -5,9 +5,9 @@ import AnimatedArrow from '@/components/common/AnimatedArrow';
 import ButtonTitle from '@/components/common/ButtonTitle.astro';
 import { Owl, StarColorGradient, VectorArrow, VectorChat, VectorChatLarge } from '@/components/common/icons';
 import JsonLd from '@/components/common/JsonLd.astro';
-import SimpleFormRegister from '@/components/common/SimpleFormRegister.astro';
+import AboutRegisterSection from '@/components/features/about/AboutRegisterSection.astro';
 import AnimatedBadges from '@/components/features/introduce/AnimatedBadges';
-import TeacherCarousel from '@/components/features/introduce/TeacherCarousel';
+import StaticTeacherCarousel from '@/components/features/home/quality-expert/StaticTeacherCarousel';
 import TimeLineCarousel from '@/components/features/introduce/TimeLineCarousel';
 import {
   Breadcrumb,
@@ -23,7 +23,19 @@ import { IMAGES } from '@/lib/constants/images';
 import { fetchTeacherListV2 } from '@/lib/static-data';
 import { cn } from '@/lib/utils';
 import { Image } from 'astro:assets';
-import { Globe, Home, MapPin, Star } from 'lucide-react';
+import imgRocketGioiThieu from '@/assets/images/img-hocba-tienganh/img-rocket-gioi-thieu.png';
+import { Globe, Home, MapPin, Star, GraduationCap, Sparkles, TrendingUp, BrainCircuit, BookOpen, LineChart } from 'lucide-react';
+import bannerGioiThieu from '@/assets/images/img-hocba-tienganh/banner-gioi-thieu.png';
+import bannerGioiThieuMobile from '@/assets/images/img-hocba-tienganh/banner-gioi-thieu-mobile.png';
+import trophyIcon from '@/assets/images/img-hocba-tienganh/img-icon-cup.png';
+import iconTenLua from '@/assets/images/img-hocba-tienganh/icon-tenlua.png';
+import iconMuiTenXanh from '@/assets/images/img-hocba-tienganh/icon-mui-ten-xanh.png';
+import imgAnhMo from '@/assets/images/img-hocba-tienganh/img-anh-mo.png';
+import iconGroupNhom from '@/assets/images/img-hocba-tienganh/icon-group-nhom.png';
+import iconLike from '@/assets/images/img-hocba-tienganh/icon-like.png';
+import iconBanCung from '@/assets/images/img-hocba-tienganh/icon-ban-cung.png';
+import coVanTiengAnh from '@/assets/images/img-hocba-tienganh/co-van-tienganh.png';
+import iconSach from '@/assets/images/img-hocba-tienganh/so-sach-2.png';
 import type { Graph } from 'schema-dts';
 // --- Metadata cho SEO ---
 const title = 'Về Học Bá | Học Bá Education';
@@ -95,62 +107,62 @@ const statistics = [
 
 const timeline = [
   {
-    date: 'Tháng 06/2023',
+    date: 'Tháng 06/2024',
     description:
-      'Học Bá Education chính thức được thành lập, khởi đầu cho hành trình xây dựng một hệ sinh thái đào tạo tiếng Trung bài bản, nơi chất lượng học thuật, chuẩn đầu ra và giá trị dài hạn cho người học được đặt làm trọng tâm.',
+      'THE IELTS SPACE chính thức được thành lập, đặt nền móng đầu tiên cho hành trình xây dựng một hệ sinh thái đào tạo tiếng Anh bài bản. Lấy chất lượng giảng dạy, kết quả đầu ra và giá trị dài hạn của học viên làm trọng tâm.',
     position: 'top' as const,
     colStart: 'col-start-2',
   },
   {
-    date: 'Tháng 01/2024',
-    description:
-      'Học Bá Education bắt tay vào quá trình nghiên cứu chuyên sâu các chương trình đào tạo Hán ngữ tại Việt Nam, tập trung phân tích cấu trúc chương trình, chuẩn năng lực và khoảng cách giữa việc học – thi – ứng dụng thực tế.',
-    position: 'top' as const,
-  },
-  {
-    date: 'Tháng 06/2024',
-    description:
-      'Hoàn thiện và ra mắt Học Bá HSK, sản phẩm đào tạo luyện thi HSK được thiết kế theo tư duy hệ thống, hướng tới việc xây dựng nền tảng năng lực bền vững thay vì chỉ tập trung vào kỹ thuật làm bài.',
-    position: 'top' as const,
-  },
-  {
     date: 'Tháng 12/2024',
     description:
-      'Hoàn thiện Học Bá Chinese – Tiếng Trung cho người đi làm, chương trình đào tạo tập trung vào giao tiếp ứng dụng, môi trường công sở và các tình huống thực tế, đáp ứng nhu cầu học tiếng Trung phục vụ công việc và sự nghiệp.',
+      'THE IELTS SPACE bắt đầu quá trình nghiên cứu chuyên sâu thị trường đào tạo tiếng Anh tại Việt Nam và Quốc tế, tập trung phân tích những khoảng trống trong hành trình từ học tập - luyện thi - đến chinh phục mục tiêu đầu ra.',
+    position: 'top' as const,
+  },
+  {
+    date: 'Tháng 05/2025',
+    description:
+      'Hoàn thiện và ra mắt THE IELTS SPACE, chương trình luyện thi IELTS được thiết kế bài bản với hệ thống 6 level từ 0.0 đến 8.0 IELTS, hướng tới xây dựng lõi sản phẩm là năng lực tư duy và phát triển ngôn ngữ vững chắc thay vì chỉ tập trung vào các mẹo và kỹ thuật làm bài.',
+    position: 'top' as const,
+  },
+  {
+    date: 'Tháng 01/2026',
+    description:
+      'Giới thiệu chương trình luyện thi IELTS mới với giáo trình nội bộ, phương pháp học riêng và hệ thống LMS luyện tập Online, hướng tới một hành trình học tập liền mạch, có thể đo lường và tối ưu theo từng giai đoạn.',
     position: 'bottom' as const,
     colStart: 'col-start-3',
   },
   {
-    date: 'Tháng 01/2025',
+    date: 'Tháng 08/2026',
     description:
-      'Chính thức ra mắt Học Bá HSK 3.0 – hệ thống luyện thi HSK Online thế hệ mới, được phát triển dựa trên chuẩn năng lực thực, lộ trình cá nhân hóa và trải nghiệm học tập tối ưu.',
+      'Chính thức ra mắt LMS E-Power và Không gian học tập tích hợp thế hệ mới. Phiên bản nâng cấp toàn diện của sản phẩm luyện thi IELTS Hybird, đánh dấu bước chuyển mình trở thành doanh nghiệp tiên phong định hình xu hướng giáo dục mới',
     position: 'bottom' as const,
   },
-  {
-    date: '07/2025 – 12/2025',
-    description:
-      'Giới thiệu Học Bá Plus – phiên bản nâng cấp toàn diện về sản phẩm, học liệu, hệ thống LMS và trải nghiệm học viên, đánh dấu bước tiến quan trọng trong chiến lược phát triển dài hạn và bền vững của Học Bá Education.',
-    position: 'bottom' as const,
-  },
+  // {
+  //   date: '07/2025 – 12/2025',
+  //   description:
+  //     'Giới thiệu Học Bá Plus – phiên bản nâng cấp toàn diện về sản phẩm, học liệu, hệ thống LMS và trải nghiệm học viên, đánh dấu bước tiến quan trọng trong chiến lược phát triển dài hạn và bền vững của Học Bá Education.',
+  //   position: 'bottom' as const,
+  // },
 ];
 
 const coreValues = [
   {
-    image: IMAGES.introduce.tt_hq_tc,
+    image: iconGroupNhom,
     alt: 'tt_hq_tc',
-    title: 'Tận Tâm - Hiệu quả - Thực chiến',
+    title: 'TẬN TÂM - QUYẾT LIỆT',
     width: 'md:w-[330px]',
   },
   {
-    image: IMAGES.introduce.ht_dd_ptld,
+    image: iconLike,
     alt: 'ht_dd_ptld',
-    title: 'Học thật - Dùng được - Phát triển lâu dài',
+    title: 'HỌC THẬT - KẾT QUẢ THẬT',
     width: 'md:w-[376px]',
   },
   {
-    image: IMAGES.introduce.cmmd_vmnt,
+    image: iconBanCung,
     alt: 'cmmd_vmnt',
-    title: 'Chung một đích đến - Vững một niềm tin',
+    title: 'KHÔNG NGỪNG ĐỔI MỚI',
     width: 'md:w-[330px]',
   },
 ];
@@ -216,86 +228,101 @@ const cards = [
 <BaseLayout {title} {description}>
   <JsonLd data={jsonLd} />
   <div class="relative">
-    <section class="relative h-[328px] w-full overflow-hidden md:h-[652px]">
+    <section class="relative min-h-[400px] w-full overflow-hidden bg-[#083AD4] md:min-h-[652px]">
       <div
-        class="absolute inset-0 z-0 w-full bg-[linear-gradient(180deg,#B90E0A_0%,#7D1900_137.89%)] pt-5 max-sm:flex max-sm:justify-center"
+        class="absolute inset-0 z-0 w-full bg-[linear-gradient(135deg,#042278_0%,#052284_100%)] max-sm:flex max-sm:justify-center"
       >
-        <div class="mx-auto flex size-[600px] items-center justify-center rounded-full bg-[#FFA2A221] md:size-[1253px]">
-          <div
-            class="mx-auto flex size-[484px] items-center justify-center rounded-full bg-[#FF999921] md:size-[1007px]"
-          >
-            <div
-              class="mx-auto flex size-[429px] items-center justify-center rounded-full bg-[#FF999952] md:size-[895px]"
-            >
-              <div
-                class="mx-auto size-[310px] rounded-full bg-[radial-gradient(53.34%_53.34%_at_49.91%_39.55%,_#FFFFFF_0%,_rgba(255,246,246,0.8)_100%)] md:size-[646px]"
-              >
+        {/* Glow at the bottom right */}
+        <div class="absolute -bottom-1/4 -right-1/4 h-[80%] w-[80%] rounded-full bg-white opacity-20 blur-[150px]"></div>
+      </div>
+
+      <div class="container relative z-10 flex h-full min-h-[328px] flex-col px-4 pt-4 md:min-h-[652px] md:flex-row md:items-center md:px-0 md:pt-0">
+        <div class="absolute left-4 top-4 md:left-0 md:top-8">
+          <Breadcrumb>
+            <BreadcrumbList className="text-xs text-white/80 md:text-sm">
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <a href="/" class="hover:text-white">Trang chủ</a>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator className="text-white/80" />
+              <BreadcrumbItem>
+                <BreadcrumbPage className="text-white font-semibold"> Về chúng tôi </BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
+
+        <div class="mt-4 flex w-full flex-col md:mt-0 md:flex-row md:items-center md:justify-between">
+          <div class="contents w-full flex-col z-20 md:w-1/2 md:pr-4 lg:pr-10 xl:-translate-y-8 md:flex">
+            <h1 class="order-1 z-20 text-left text-[38px] font-black leading-[1.2] text-white md:order-none xl:text-[56px] lg:text-[40px] md:text-[30px]">
+              Không gian <br />
+              <span class="text-[#FFC224] inline-block">học tập tích hợp</span> <br />
+              <span class="uppercase inline-block mt-4">THẾ HỆ MỚI</span>
+            </h1>
+            
+            <div class="order-3 z-20 mt-4 flex flex-col gap-4 md:order-none md:mt-12 md:gap-5">
+              <div class="flex items-center gap-4 max-md:[animation:none_!important] md:animate-in md:fade-in md:zoom-in-95 md:slide-in-from-bottom-6 md:fill-mode-both" style="animation-duration: 5s; animation-delay: 200ms; animation-iteration-count: infinite; animation-direction: alternate;">
+                <div class="flex size-10 flex-shrink-0 items-center justify-center rounded-full border border-white/30 text-white md:size-12">
+                  <svg class="size-5 md:size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 10v6M2 10l10-5 10 5-10 5z" />
+                    <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                  </svg>
+                </div>
+                <span class="text-sm font-bold uppercase tracking-wide text-white md:text-base lg:text-lg">GIÁO VIÊN DẪN DẮT</span>
+              </div>
+              <div class="flex items-center gap-4 max-md:[animation:none_!important] md:animate-in md:fade-in md:zoom-in-95 md:slide-in-from-bottom-6 md:fill-mode-both" style="animation-duration: 5s; animation-delay: 500ms; animation-iteration-count: infinite; animation-direction: alternate;">
+                <div class="flex size-10 flex-shrink-0 items-center justify-center rounded-full border border-white/30 text-white md:size-12">
+                  <svg class="size-5 md:size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 18h5" />
+                    <path d="M10 21h3" />
+                    <path d="M14 14.5c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5 0-.8-.2-1.5-.5-2.2" />
+                    <path d="M12 4c-3.3 0-6 2.7-6 6 0 1.5.5 2.8 1.5 3.7.8.8 1.3 1.5 1.5 2.8" />
+                    <path d="M18 4 c0 2.5 1.5 4 4 4 -2.5 0 -4 1.5 -4 4 0 -2.5 -1.5 -4 -4 -4 2.5 0 4 -1.5 4 -4z" fill="currentColor" stroke="none" />
+                  </svg>
+                </div>
+                <span class="text-sm font-bold uppercase tracking-wide text-white md:text-base lg:text-lg">CÔNG NGHỆ TỐI ƯU</span>
+              </div>
+              <div class="flex items-center gap-4 max-md:[animation:none_!important] md:animate-in md:fade-in md:zoom-in-95 md:slide-in-from-bottom-6 md:fill-mode-both" style="animation-duration: 5s; animation-delay: 800ms; animation-iteration-count: infinite; animation-direction: alternate;">
+                <div class="flex size-10 flex-shrink-0 items-center justify-center rounded-full border border-white/30 text-white md:size-12">
+                  <svg class="size-5 md:size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4v16h16" />
+                    <path d="M8 12 l 5 3 l 6 -7" />
+                    <circle cx="8" cy="12" r="1.5" fill="#042278" stroke="currentColor" stroke-width="1.5" />
+                    <circle cx="13" cy="15" r="1.5" fill="#042278" stroke="currentColor" stroke-width="1.5" />
+                    <circle cx="19" cy="8" r="1.5" fill="#042278" stroke="currentColor" stroke-width="1.5" />
+                  </svg>
+                </div>
+                <span class="text-sm font-bold uppercase tracking-wide text-white md:text-base lg:text-lg">DỮ LIỆU THỰC TẾ</span>
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="container relative z-10 flex h-[328px] flex-col px-4 pt-4 md:h-[652px] md:px-0 md:pt-8">
-        <Breadcrumb>
-          <BreadcrumbList className="text-xs text-white md:text-lg">
-            <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <a href="/">Trang chủ</a>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage className="text-white"> Về chúng tôi </BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-
-        <div class="flex w-full flex-1 flex-col items-center">
-          <div class="text-base font-black uppercase text-white md:text-[32px]">HỌC BÁ EDUCATION</div>
-          <div
-            class="relative flex h-10 items-center bg-gradient-to-t from-[#FFF8F8] to-[#FFDF89] bg-clip-text px-4 text-2xl font-black uppercase text-transparent md:mt-2 md:h-[66px] md:px-10 md:text-[52px]"
-          >
-            <AnimatedArrow
-              toColor="#FFF8F8"
-              fromColor="#FFDF89"
-              className={'absolute -left-1 top-2 size-4 object-cover md:-top-4 md:left-2 md:size-8'}
-              client:load
-            />
-            <p>Học từ người giỏi nhất</p>
-            <VectorArrow
-              toColor="#FFF8F8"
-              fromColor="#FFDF89"
-              className={'absolute -right-1 bottom-2 size-4 rotate-180 object-cover md:-bottom-4 md:right-2 md:size-8'}
-            />
-          </div>
-          <AnimatedBadges client:load />
-          <div class="relative">
-            <div class="absolute -left-2 top-6 flex md:-left-6 md:top-8">
-              <VectorChat className="h-7 w-[50px] md:h-auto md:w-auto" />
-              <p
-                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-2/3 text-nowrap text-[10px] font-bold text-white md:text-base"
-              >
-                学霸教育
-              </p>
-            </div>
-
-            <Image
-              src={IMAGES.introduce.instructor}
-              height={495}
-              width={575}
-              alt={'instructor'}
-              densities={[1, 2]}
-              quality={95}
-              class={'object-cover w-[264px] md:w-[575px] h-auto mt-6 md:mt-4'}
-            />
-            <div class="absolute right-2 top-8 flex md:right-6">
-              <VectorChatLarge className="h-7 w-8 md:h-auto md:w-[50px] md:w-auto" />
-              <p
-                class="absolute -right-1 top-1/2 -translate-x-1/2 -translate-y-2/3 text-nowrap text-[10px] font-bold text-white md:-right-0 md:text-base"
-              >
-                你好
-              </p>
+          <div class="order-2 relative mt-6 flex w-full justify-center md:order-none md:mt-0 md:w-[55%]">
+            <div class="relative flex h-[320px] w-full items-end justify-center md:h-[450px] lg:h-[500px] xl:h-[650px]">
+              <div class="absolute inset-0 flex items-center justify-center pointer-events-none translate-y-6 md:translate-y-8">
+                <div class="relative flex size-[300px] items-center justify-center rounded-full md:size-[420px] lg:size-[550px] xl:size-[750px]">
+                  {/* Little stars/sparkles */}
+                  <div class="absolute right-[30%] top-[10%] size-1 bg-white rounded-full shadow-[0_0_10px_2px_#fff] md:size-1.5 md:right-[35%]"></div>
+                  <div class="absolute right-[-2%] top-[25%] size-[3px] bg-white rounded-full shadow-[0_0_5px_1px_#fff] md:right-[2%] md:top-[20%]"></div>
+                  <div class="absolute left-[20%] top-[45%] size-[2px] bg-white rounded-full shadow-[0_0_5px_1px_#fff] md:left-[5%]"></div>
+                </div>
+              </div>
+              
+              <Image
+                src={bannerGioiThieu}
+                alt={'Banner Học Bá'}
+                densities={[1, 2]}
+                quality={95}
+                class={'hidden md:block relative z-10 w-[120%] h-auto md:w-auto md:h-full object-contain object-bottom translate-y-4 md:translate-y-6 md:max-w-none'}
+              />
+              <Image
+                src={bannerGioiThieuMobile}
+                alt={'Banner Học Bá Mobile'}
+                densities={[1, 2]}
+                quality={95}
+                class={'md:hidden relative z-10 w-[110%] h-auto object-contain translate-y-4'}
+              />
             </div>
           </div>
         </div>
@@ -305,43 +332,42 @@ const cards = [
     <section class="w-full overflow-hidden px-4 md:px-0">
       <div class="h-audo container relative z-10 flex w-full flex-col pt-4 md:h-[652px] md:pt-12">
         <div
-          class="relative flex h-14 w-fit items-center gap-6 px-4 text-lg font-black uppercase text-primary md:h-[64px] md:px-10 md:text-[42px]"
+          class="relative mx-auto flex h-14 w-fit items-center gap-6 px-4 text-lg font-black uppercase text-primary md:h-[64px] md:px-10 md:text-[42px]"
         >
           <AnimatedArrow
-            toColor="#AF0000"
-            fromColor="#AF0000"
+            fromColor="#FFA500"
+            toColor="#072899"
+            stopOffset="0.2"
             className={'absolute -left-1 top-2 size-4 object-cover md:-top-4 md:left-2 md:size-8'}
             client:load
           />
-          <h1>Câu chuyện về học bá</h1>
-          <Owl className="size-8 md:size-auto text-primary" />
+          <h1 class="text-[#072899]">CÂU CHUYỆN VỀ THE IELTS SPACE</h1>
+          <Image src={imgRocketGioiThieu} alt="Rocket" class="h-8 w-auto md:h-12 object-contain" densities={[1, 2]} quality={95} />
           <VectorArrow
-            toColor="#AF0000"
-            fromColor="#AF0000"
+            fromColor="#FFA500"
+            toColor="#072899"
+            stopOffset="0.2"
             className={'absolute -right-1 bottom-2 size-4 rotate-180 object-cover md:-bottom-4 md:right-2 md:size-8'}
           />
         </div>
         <div class="flex grid-cols-2 flex-col md:grid">
           <div class="col-span-1">
             <ButtonTitle title="Lịch sử hình thành" icon={Home} className="mt-2 md:mt-8" />
-            <div class="mt-0 px-0 py-4 text-base font-medium md:mt-4 md:px-9 md:py-10">
-              <p>
-                <strong>Học Bá Education</strong> là hệ thống đào tạo Hán ngữ trực tuyến theo phương pháp chuẩn quốc tế, hướng
-                tới việc chuẩn hóa năng lực người học và nâng cao khả năng ứng dụng tiếng Trung trong học tập, công việc và
-                sự nghiệp dài hạn.
-              </p>
-              <p class="mt-4">
-                Thành lập từ tháng 06/2023, <strong>Học Bá Education</strong> xây dựng hệ sinh thái đào tạo tiếng Trung Online
-                với các chương trình luyện thi HSK 3.0, YCT và tiếng Trung cho người đi làm, được triển khai trên nền tảng
-                số với hệ thống LMS, học liệu số hóa và lộ trình học cá nhân hóa.
-              </p>
-              <p class="mt-4">
-                Chúng tôi tin rằng, khi phương pháp đúng được kết hợp với công nghệ phù hợp, người học có thể xây dựng
-                năng lực tiếng Trung bền vững và sử dụng hiệu quả trong thực tế.
-              </p>
+            <div class="mt-4 flex flex-col gap-3 rounded-2xl p-4 text-justify text-[19px] font-medium leading-[1.8] text-[#4A4A4A] md:relative md:mt-6 md:block md:rounded-none md:p-0 md:py-4 md:pr-6 md:text-[11px] lg:pr-16">
+              <div id="history-text">
+                <p>
+                  Ở mô hình học tập truyền thống, người học thường phải thích nghi với một lộ trình, một tiến độ được thiết kế chung cho tất cả. Trong khi đó, sự phát triển của công nghệ đang mở ra khả năng hiểu người học sâu hơn, phản hồi nhanh hơn và tạo ra những trải nghiệm học tập linh hoạt, phù hợp hơn với từng cá nhân. Nhận ra điều đó, tháng 06/2024, <strong class="text-black">THE IELTS SPACE</strong> – hệ thống đào tạo Anh ngữ trực tuyến được thành lập, nổi bật với hệ sinh thái học tập tích hợp thế hệ<span id="history-dots" class="md:hidden">...</span><span id="history-more-text" class="hidden md:inline"> mới hướng tới việc tái thiết cách học truyền thống bằng tri thức và công nghệ tương lai. Từ đó giúp người học chinh phục mục tiêu tiếng Anh một cách nhanh hơn, dễ dàng hơn, hiệu quả hơn và thú vị hơn.</span>
+                </p>
+                <p id="history-more-p" class="mt-6 hidden md:block">
+                  <strong class="text-black">THE IELTS SPACE</strong> cung cấp các chương trình tiếng Anh từ nền tảng đến nâng cao, tập trung vào IELTS và các chứng chỉ tiếng Anh quốc tế, được triển khai trên nền tảng số với hệ thống LMS E-Power, học liệu số hóa và lộ trình học cá nhân hóa. Chúng tôi tin rằng, khi chiều sâu chuyên môn của con người kết hợp với sức mạnh của công nghệ tương lai, người học có thể tiếp cận tiếng Anh dễ dàng hơn, đưa chứng chỉ tiếng Anh quốc tế trở nên phổ biến và trẻ hoá, từ đó xây dựng năng lực sử dụng tiếng Anh bền vững và ứng dụng hiệu quả trong thực tế, gia tăng cơ hội học tập và nghề nghiệp trong tương lai.
+                </p>
+              </div>
+              <div class="text-right mt-1 md:hidden" id="read-more-container">
+                <button class="text-[#072899] font-medium underline underline-offset-2" id="read-more-btn">Xem thêm</button>
+              </div>
             </div>
           </div>
-          <div class="relative col-span-1 mb-16 h-[236px] w-[344px] md:mb-0 md:h-full md:w-auto">
+          <div class="relative col-span-1 mb-16 mt-5 h-[236px] w-[344px] md:mb-0 md:h-full md:w-auto">
             <Image
               src={IMAGES.introduce.lich_su_hinh_thanh2}
               alt="lich_su_hinh_thanh2"
@@ -349,16 +375,16 @@ const cards = [
               height={422}
               quality={95}
               densities={[1, 2]}
-              class={'object-cover size-[112px] md:size-[211px] absolute top-0 md:-top-10 -right-[2%] md:-right-10 rounded-lg'}
+              class={'object-cover size-[112px] md:size-[211px] absolute top-2 md:top-0 -right-[2%] md:-right-10 rounded-lg opacity-60'}
             />
             <Image
               src={IMAGES.introduce.lich_su_hinh_thanh1}
               alt="lich_su_hinh_thanh1"
-              width={822}
-              height={768}
+              width={453}
+              height={450}
               quality={95}
               densities={[1, 2]}
-              class={'object-cover object-left w-[218px] md:w-[411px] h-[204px] md:h-[384px] absolute bottom-0 left-[44%] max-sm:-translate-x-1/2 md:left-20 rounded-lg md:rounded-3xl brightness-125'}
+              class={'object-cover object-left w-[218px] md:w-[411px] h-[204px] md:h-[384px] absolute bottom-0 left-1/2 -translate-x-1/2 md:left-20 md:translate-x-0 rounded-lg md:rounded-3xl brightness-125'}
             />
             <Image
               src={IMAGES.introduce.staff_founder}
@@ -367,16 +393,24 @@ const cards = [
               height={374}
               quality={95}
               densities={[1, 2]}
-              class={'object-cover size-[100px] md:size-[187px] absolute -bottom-6 md:-bottom-10 left-0 md:left-0 rounded-lg'}
+              class={'object-cover size-[130px] md:size-[240px] absolute -bottom-10 md:-bottom-16 left-0 md:-left-8 rounded-xl shadow-lg'}
             />
           </div>
         </div>
       </div>
     </section>
 
-    <section class="w-full overflow-hidden bg-[#FFF4F4] px-4 py-6 md:px-0 md:py-16">
+    <section class="relative w-full overflow-hidden bg-[#F1F4FE] px-4 py-6 md:px-0 md:py-16">
       <div class="container relative z-10 flex w-full flex-col">
         <ButtonTitle title="Cột mốc phát triển" icon={MapPin} className="mb-6 md:mb-16" />
+        <Image 
+          src={trophyIcon} 
+          alt="Trophy Icon" 
+          width={200}
+          height={200}
+          quality={95}
+          class="relative mx-auto mt-2 mb-8 w-[200px] md:absolute md:right-0 md:-top-8 md:w-[280px] md:mt-0 md:mb-0 h-auto object-contain drop-shadow-xl" 
+        />
       </div>
       <div class="relative flex text-[#373737] md:flex-col 3xl:px-[240px]">
         <div class="container hidden grid-cols-12 border-b border-black md:grid">
@@ -417,54 +451,55 @@ const cards = [
 
     <section class="relative w-full overflow-hidden px-4 py-4 md:px-0 md:py-10">
       <Image
-        src={IMAGES.introduce.su_menh_tam_nhin}
-        alt={'su_menh_tam_nhin'}
+        src={imgAnhMo}
+        alt={'su_menh_tam_nhin_bg'}
         width={1920}
         height={470}
-        class={'object-cover h-[223px] md:h-auto absolute top-1/2 -translate-y-1/2 left-0 z-0 md:mt-24 opacity-40'}
+        class={'object-cover w-full h-full absolute top-0 left-0 z-0'}
       />
       <div class="container relative z-10">
         <ButtonTitle title="Sứ mệnh & Tầm nhìn" icon={Globe} className="mb-6 md:mb-16" />
-        <div class="flex flex-col items-start justify-center gap-16 px-4 md:flex-row md:gap-40 md:px-0 md:px-6">
-          <div class="flex w-full flex-col md:w-[422px]">
-            <div class="flex items-center justify-center gap-2 md:gap-6">
+        <div class="flex flex-col items-start justify-center gap-16 px-4 md:flex-row md:gap-16 lg:gap-32 md:px-0 md:px-6 md:mt-24">
+          <div class="flex w-full flex-col md:w-[500px]">
+            <div class="flex items-center justify-center gap-4 mb-4 md:mb-6">
               <Image
-                src={IMAGES.introduce.coin}
-                alt={'coin'}
+                src={iconMuiTenXanh}
+                alt={'Tầm nhìn'}
                 width={68}
                 height={68}
-                class={'object-cover size-[50px] md:size-[68px]'}
+                class={'object-cover size-[50px] md:size-[70px]'}
               />
-              <p class="text-2xl font-black uppercase text-primary md:text-[52px]">Sứ mệnh</p>
+              <p class="text-3xl font-black uppercase text-[#072899] md:text-[48px] leading-none">Tầm nhìn</p>
             </div>
-            <p class="text-justify text-base font-medium">
-              Cam kết mang đến môi trường học tập tối ưu, khai phóng tiềm năng và phát triển cá nhân thông qua chương
-              trình đào tạo tiếng Trung chuẩn quốc tế, ứng dụng phương pháp hiện đại & công nghệ tiên tiến. Học Bá đồng
-              hành toàn diện với học viên, trang bị kỹ năng ngôn ngữ, giao tiếp & công sở chuyên sâu để mở rộng cơ hội
-              nghề nghiệp và tự tin làm việc trong môi trường Trung Quốc/Đài Loan.
-            </p>
+            <div class="pl-0 md:pl-[86px]">
+              <p class="text-left text-base font-medium text-[#373737]">
+                <span class="whitespace-nowrap text-base font-black text-[#072899] md:text-[20px]">Trung hạn: </span>
+                Trở thành đơn vị dẫn đầu về trải nghiệm và chất lượng học IELTS tại Việt Nam.
+              </p>
+              <p class="mt-4 text-left text-base font-medium text-[#373737]">
+                <span class="whitespace-nowrap text-base font-black text-[#072899] md:text-[20px]">Dài hạn: </span>
+                <span>
+                  Mở rộng THE IELTS SPACE thành hệ sinh thái học tập đa chứng chỉ mang tầm quốc tế và hiện diện tại nhiều quốc gia, cung cấp những trải nghiệm giáo dục hiện đại dẫn đầu xu hướng công nghệ và dễ tiếp cận cho người học trên toàn cầu.
+                </span>
+              </p>
+            </div>
           </div>
-          <div class="flex w-full flex-col md:w-[422px]">
-            <div class="flex items-center justify-center gap-6">
+          <div class="flex w-full flex-col md:w-[500px]">
+            <div class="flex items-center justify-center gap-4 mb-4 md:mb-6">
               <Image
-                src={IMAGES.introduce.target_3d}
-                alt={'coin'}
+                src={iconTenLua}
+                alt={'Sứ mệnh'}
                 width={68}
                 height={68}
-                class={'object-cover size-[50px] md:size-[68px]'}
+                class={'object-cover size-[50px] md:size-[70px]'}
               />
-              <p class="text-2xl font-black uppercase text-primary md:text-[52px]">Tầm nhìn</p>
+              <p class="text-3xl font-black uppercase text-[#072899] md:text-[48px] leading-none">Sứ mệnh</p>
             </div>
-            <p class="text-justify text-base font-medium">
-              <span class="whitespace-nowrap text-base font-black text-primary md:text-2xl">2025–2026:</span>
-              Trở thành đơn vị dẫn đầu đào tạo tiếng Trung ứng dụng và luyện thi HSK 3.0 tại Việt Nam.
-            </p>
-            <p class="mt-6 text-justify text-base font-medium">
-              <span class="whitespace-nowrap text-base font-black text-primary md:text-2xl">2026-2030:</span>
-              <span>
-                Tiến tới trở thành Hệ sinh thái Edtech Giáo dục - Du học - Việc làm tiếng Trung hàng đầu khu vực.
-              </span>
-            </p>
+            <div class="pl-0 md:pl-[86px]">
+              <p class="text-left text-base font-medium text-[#373737]">
+                THE IELTS SPACE ra đời mang sứ mệnh tái thiết cách người học chinh phục tiếng Anh và kiến tạo trải nghiệm học tập vượt trội. Tại đây, mỗi học viên được phát huy tối đa năng lực và học tập dễ dàng hơn thông qua mô hình đào tạo chuẩn quốc tế, phương pháp học hiện đại kết hợp với sức mạnh của công nghệ. Chúng tôi sẽ đồng hành toàn diện cùng người học trên hành trình làm chủ tiếng Anh, giúp người học mở rộng cơ hội học tập, du học, nghề nghiệp và tự tin hội nhập trong môi trường toàn cầu.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -473,11 +508,11 @@ const cards = [
     <section class="relative w-full overflow-hidden bg-[#FFFBF6] px-4 py-10 md:px-0">
       <div class="container relative z-10">
         <ButtonTitle title="Giá trị cốt lõi" icon={Star} className="mb-6 md:mb-16" />
-        <div class="scrollbar-hide flex gap-4 max-sm:overflow-x-scroll md:gap-16">
+        <div class="flex flex-col items-center gap-4 md:flex-row md:justify-center md:gap-16">
           {
             coreValues.map((value) => (
               <div
-                class={`group relative flex h-[161px] w-[164px] p-2 md:h-[368px] ${value.width} flex-shrink-0 flex-col items-center justify-center gap-4 rounded-xl bg-primary transition-colors duration-1000 ease-in-out md:gap-10 md:rounded-[28px] md:hover:bg-white`}
+                class={`group relative flex h-[161px] w-full max-w-[300px] p-2 md:max-w-none md:h-[368px] ${value.width} flex-shrink-0 flex-col items-center justify-center gap-4 rounded-xl bg-primary transition-colors duration-300 ease-in-out md:gap-10 md:rounded-[28px] md:hover:bg-[#F97316]`}
                 style="box-shadow: 4px 4px 37px 0px #FF989840;"
               >
                 <Image
@@ -485,11 +520,11 @@ const cards = [
                   alt={value.alt}
                   width={128}
                   height={128}
-                  class="size-14 object-cover transition-transform duration-1000 ease-in-out md:size-32 md:group-hover:scale-125"
+                  class="size-14 object-contain transition-transform duration-300 ease-in-out md:size-32 md:group-hover:scale-125"
                   densities={[1, 2, 3]}
                 />
 
-                <h3 class="text-center text-base font-black uppercase text-white transition-colors transition-transform duration-700 ease-in-out md:text-[26px] md:leading-10 md:group-hover:translate-y-4 md:group-hover:text-primary">
+                <h3 class="text-center text-base font-black uppercase text-white transition-colors transition-transform duration-300 ease-in-out md:text-[26px] md:leading-10 md:group-hover:translate-y-4">
                   {value.title}
                 </h3>
               </div>
@@ -499,102 +534,96 @@ const cards = [
       </div>
     </section>
 
-    <section class="relative w-full overflow-hidden px-4 py-4 md:px-0 md:pt-10">
+    <section class="relative bg-[#E4EAFD] w-full overflow-hidden px-4 py-4 md:px-0 md:pt-10">
       <div class="container relative z-10">
         <div
           class="relative mx-auto flex h-auto w-fit items-center gap-6 px-4 text-[52px] font-black uppercase text-primary md:h-[64px] md:px-10"
         >
           <AnimatedArrow
-            toColor="#AF0000"
-            fromColor="#AF0000"
-            className={'absolute -left-1 top-2 size-4 object-cover md:-top-4 md:left-2 md:size-8'}
+            fromColor="#FFA500"
+            toColor="#072899"
+            stopOffset="0.2"
+            className={'hidden md:block absolute -left-1 top-2 size-4 object-cover md:-top-4 md:left-2 md:size-8'}
             client:load
           />
-          <h2 class="text-lg md:text-[42px]">ĐỘI NGŨ CHUYÊN GIA TẠI HỌC BÁ</h2>
+          <h2 class="text-center text-[24px] leading-snug text-[#072899] md:text-[42px]">ĐỘI NGŨ CHUYÊN GIA TẠI <br class="md:hidden" /> THE IELTS SPACE</h2>
           <VectorArrow
-            toColor="#AF0000"
-            fromColor="#AF0000"
-            className={'absolute -right-1 bottom-2 size-4 rotate-180 object-cover md:-bottom-4 md:right-2 md:size-8'}
+            fromColor="#FFA500"
+            toColor="#072899"
+            stopOffset="0.2"
+            className={'hidden md:block absolute -right-1 bottom-2 size-4 rotate-180 object-cover md:-bottom-4 md:right-2 md:size-8'}
           />
         </div>
         <div
           class="relative mx-auto mt-1 flex h-auto w-fit items-center gap-1 px-0 text-[52px] font-black uppercase text-primary md:mt-0 md:h-[64px] md:gap-3 md:gap-6 md:px-10"
         >
-          <Image
-            src={IMAGES.introduce.global}
-            alt={'global'}
-            width={78}
-            height={69}
-            class={'object-cover w-7 h-6 md:w-[78px] md:h-[69px]'}
-          />
           <div
-            class="flex h-7 items-center rounded-md bg-primary px-2 text-[15px] font-black uppercase text-white md:h-[52px] md:rounded-[18px] md:px-6 md:text-[28px]"
+            class="flex h-7 items-center rounded-md bg-gradient-to-r from-[#F89C1E] to-[#F97316] px-2 text-[15px] font-black uppercase text-white md:h-[52px] md:rounded-full md:px-6 md:text-[28px]"
           >
             CỐ VẤN CHUYÊN MÔN QUỐC TẾ
           </div>
         </div>
-        <div class="mt-2 rounded-t-[18px] bg-gradient-to-b from-orange-700/30 to-transparent p-[2px] md:mt-9">
-          <div class="rounded-t-[16px] bg-gradient-to-b from-[#FFFAF4] via-[#FFFAF4]/80 to-transparent">
-            <div class="flex flex-col justify-center gap-0 px-2 pt-4 md:flex-row md:gap-10 md:px-0 md:pt-10">
-              <Image
-                src={IMAGES.introduce.bao_zhang_he}
-                alt={'bao_zhang_he'}
-                width={510}
-                height={383}
-                class={'object-cover w-[286px] h-[214px] md:w-[510px] md:h-[383px] mx-auto'}
-              />
-              <div
-                class="flex w-full flex-col items-center rounded-[18px] px-0 pb-0 md:w-[580px] md:px-10 md:py-[18px]"
-                style="background: linear-gradient(206.7deg, #FFDFDF -7.42%, rgba(255, 251, 251, 0) 83.27%);"
-              >
-                <h3 class="text-lg font-black uppercase text-[#373737] md:text-[34px]">GS. Bao-Zhang He</h3>
-                <div class="flex items-center gap-2 md:gap-4">
-                  <StarColorGradient className="size-5 size-7" />
-                  <div class="text-base md:text-2xl">
-                    <p class="bg-gradient-to-r from-[#8A0101] to-[#C0262C] bg-clip-text font-black text-transparent">
-                      Nguyên Giám đốc Chương trình
-                    </p>
-                    <p class="bg-gradient-to-r from-[#8A0101] to-[#C0262C] bg-clip-text font-black text-transparent">
-                      tiếng Trung tại Đại học Harvard
-                    </p>
-                  </div>
-                </div>
-                <ul
-                  class="mt-4 list-disc pl-5 text-justify text-base font-semibold max-lg:mb-6 max-lg:px-4 max-lg:pl-9 md:mt-6 md:text-lg"
-                >
-                  <li>Tiến sĩ Ngôn ngữ học, Đại học Bang Ohio (Ohio State University).</li>
-                  <li>Phó Giáo sư danh dự tại Đại học College of the Holy Cross, Hoa Kỳ.</li>
-                  <li>Nguyên Giám đốc Chương trình tiếng Trung tại Đại học Harvard (7 năm).</li>
-                  <li>Chủ tịch Hiệp hội Giáo viên Tiếng Trung tại Hoa Kỳ (CLTA, 2019-2020).</li>
-                  <li>Đồng biên tập và tác giả nhiều công trình chuẩn quốc tế về giảng dạy tiếng Trung.</li>
-                </ul>
-              </div>
+        <div class="mt-8 md:mt-24 w-full max-w-[1100px] mx-auto relative flex flex-col-reverse md:flex-row items-center justify-center gap-10 md:gap-16">
+          
+          {/* Left Content (Blue Box) */}
+          <div class="flex w-full flex-col items-center z-20 md:w-[600px] bg-[#0935C4] rounded-[24px] px-6 py-8 md:px-10 md:py-10 shadow-lg">
+            <h3 class="text-3xl text-center font-black uppercase text-white md:text-[36px] tracking-tight">MR. JACKSON HOWARD</h3>
+            <div class="mt-2 flex items-start justify-center gap-2">
+              <Star className="size-6 text-[#F3C650] mt-1 shrink-0" />
+              <p class="text-left text-lg md:text-[26px] font-bold text-[#F3C650] leading-snug">
+                Thạc sĩ TESOL - Đại học Công <br /> nghệ Sydney
+              </p>
             </div>
-            <div class="flex flex-col justify-center gap-2 pt-0 md:gap-10 md:pt-10">
-              <div
-                class="relative mx-auto flex h-[64px] w-fit items-center gap-4 text-[52px] font-black uppercase text-primary md:gap-6 md:px-10"
-              >
-                <Image
-                  src={IMAGES.introduce.book_icon}
-                  alt={'book_icon'}
-                  width={80}
-                  height={80}
-                  class={'object-cover size-11 md:size-[80px]'}
-                />
-                <h2
-                  class="flex h-7 items-center rounded-[18px] rounded-lg bg-primary px-4 text-base font-black uppercase text-white md:h-[52px] md:px-6 md:text-[28px]"
-                >
-                  ĐỘI NGŨ GIẢNG VIÊN
-                </h2>
-              </div>
-              <TeacherCarousel {teachers} client:load />
+            <ul
+              class="mt-6 space-y-3 list-disc pl-5 text-left text-base font-medium text-white md:text-[20px] leading-relaxed w-fit"
+            >
+              <li>Cựu giám khảo IELTS</li>
+              <li>Cựu Trưởng khoa Tiếng Anh Trường Western <br class="hidden md:block" /> Sydney University (trường đại học Top 22 tại Úc)</li>
+              <li>Đồng tác giả nghiên cứu về ứng dụng công nghệ <br class="hidden md:block" /> trong sửa lỗi và cải thiện kỹ năng Writing, đăng <br class="hidden md:block" /> trên <b>Cambridge English Research Notes.</b></li>
+            </ul>
+            
+            <div class="mt-8 self-center flex w-fit items-center justify-center bg-gradient-to-r from-[#F89C1E] to-[#E97607] rounded-full px-8 py-3 relative cursor-pointer shadow-md transition-all duration-300 hover:scale-105 hover:bg-gradient-to-r hover:from-[#F97316] hover:to-[#FBBF24] hover:shadow-[0_0_25px_rgba(249,115,22,0.7)] hover:[text-shadow:0_0_10px_rgba(255,255,255,0.9)]">
+              <span class="text-white font-black text-[14px] uppercase tracking-wider">XEM HỒ SƠ CHUYÊN GIA</span>
             </div>
+          </div>
+
+          {/* Right Image */}
+          <div class="relative z-10 w-full md:w-[450px] flex justify-center pointer-events-none">
+            <Image
+              src={coVanTiengAnh}
+              alt={'Jackson Howard'}
+              width={992}
+              height={883}
+              class={'relative z-10 object-contain w-[280px] md:w-full h-auto drop-shadow-xl'}
+            />
+          </div>
+        </div>
+
+        <div class="flex flex-col justify-center gap-2 pt-16 md:gap-10 md:pt-24 mb-10">
+          <div
+            class="relative mx-auto flex h-[64px] w-fit items-center gap-4 text-[52px] font-black uppercase text-primary md:gap-6 md:px-10"
+          >
+            <Image
+              src={iconSach}
+              alt={'iconSach'}
+              width={80}
+              height={80}
+              class={'hidden md:block object-cover size-11 md:size-[80px] relative z-10 -mr-2 mt-2 md:-mr-5 md:mt-4'}
+            />
+            <h2
+              class="flex h-7 items-center rounded-md bg-gradient-to-r from-[#F89C1E] to-[#E97607] px-4 text-base font-black uppercase text-white md:h-[52px] md:rounded-full md:px-6 md:text-[28px] shadow-sm"
+            >
+              ĐỘI NGŨ GIẢNG VIÊN
+            </h2>
+          </div>
+          <div class="w-full mt-4 md:mt-8">
+            <StaticTeacherCarousel client:load />
           </div>
         </div>
       </div>
     </section>
 
-    <section class="relative w-full overflow-hidden pb-4 pt-0 md:py-4">
+    <!-- <section class="relative w-full overflow-hidden pb-4 pt-0 md:py-4">
       <div class="container relative z-10">
         <div
           class="relative mx-auto flex h-[64px] w-fit items-center gap-0 px-4 text-[52px] font-black uppercase text-primary md:gap-6 md:px-10"
@@ -675,7 +704,7 @@ const cards = [
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <section class="relative w-full overflow-hidden bg-gradient-to-b from-[#FFEFEF] to-[#FFFFFF00] py-4 md:py-10">
       <div class="container relative z-10 flex flex-col gap-8">
@@ -799,7 +828,32 @@ const cards = [
     </section>
 
     <section class="relative z-50 pt-12 md:pb-0 md:pt-0">
-      <SimpleFormRegister dataInput={DATA_VALUE.ABOUT} isSimpleForm />
+      <AboutRegisterSection dataInput={DATA_VALUE.ABOUT} />
     </section>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const readMoreBtn = document.getElementById('read-more-btn');
+      const readMoreContainer = document.getElementById('read-more-container');
+      const dots = document.getElementById('history-dots');
+      const moreText = document.getElementById('history-more-text');
+      const moreP = document.getElementById('history-more-p');
+      
+      if (readMoreBtn && readMoreContainer) {
+        readMoreBtn.addEventListener('click', () => {
+          if (dots) dots.classList.add('hidden');
+          if (moreText) {
+            moreText.classList.remove('hidden');
+            moreText.classList.add('inline');
+          }
+          if (moreP) {
+            moreP.classList.remove('hidden');
+            moreP.classList.add('block');
+          }
+          readMoreContainer.style.display = 'none';
+        });
+      }
+    });
+  </script>
 </BaseLayout>

@@ -38,10 +38,12 @@ export const TriangularIcon = (props: React.HTMLAttributes<SVGElement>) => {
 export const VectorArrow = ({
   fromColor = '#FFF8F8',
   toColor = '#FFDF89',
+  stopOffset,
   ...props
 }: React.HTMLAttributes<SVGElement> & {
   fromColor?: string;
   toColor?: string;
+  stopOffset?: string;
 }) => {
   const uniqueId = React.useId();
   const gradientId0 = `paint0_linear_${uniqueId}`;
@@ -53,11 +55,13 @@ export const VectorArrow = ({
       <path d="M12.1309 2.7666H2.7666V12.1309H0V0H12.1309V2.7666Z" fill={`url(#${gradientId1})`} />
       <defs>
         <linearGradient id={gradientId0} x1="15.1631" y1="31" x2="15.1631" y2="0" gradientUnits="userSpaceOnUse">
-          <stop stopColor={fromColor} />
+          <stop offset="0" stopColor={fromColor} />
+          <stop offset={stopOffset || "1"} stopColor={toColor} />
           <stop offset="1" stopColor={toColor} />
         </linearGradient>
         <linearGradient id={gradientId1} x1="15.1631" y1="31" x2="15.1631" y2="0" gradientUnits="userSpaceOnUse">
-          <stop stopColor={fromColor} />
+          <stop offset="0" stopColor={fromColor} />
+          <stop offset={stopOffset || "1"} stopColor={toColor} />
           <stop offset="1" stopColor={toColor} />
         </linearGradient>
       </defs>
@@ -91,8 +95,9 @@ export const FeatureBracketIcon = (props: React.HTMLAttributes<SVGElement>) => {
 export const VectorArrowSwapped = ({
   fromColor = '#FFF8F8',
   toColor = '#FFDF89',
+  stopOffset,
   ...props
-}: React.HTMLAttributes<SVGElement> & { fromColor?: string; toColor?: string }) => {
+}: React.HTMLAttributes<SVGElement> & { fromColor?: string; toColor?: string; stopOffset?: string }) => {
   const uniqueId = React.useId();
   const gradientId0 = `paint0_linear_${uniqueId}`;
   const gradientId1 = `paint1_linear_${uniqueId}`;
@@ -110,13 +115,14 @@ export const VectorArrowSwapped = ({
       </g>
 
       <defs>
-        {/* Giữ nguyên defs */}
-        <linearGradient id={gradientId0} x1="15.1631" y1="31" x2="15.1631" y2="0" gradientUnits="userSpaceOnUse">
-          <stop stopColor={fromColor} />
+        <linearGradient id={gradientId0} x1="15.8369" y1="0" x2="15.8369" y2="31" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor={fromColor} />
+          <stop offset={stopOffset || "1"} stopColor={toColor} />
           <stop offset="1" stopColor={toColor} />
         </linearGradient>
-        <linearGradient id={gradientId1} x1="15.1631" y1="31" x2="15.1631" y2="0" gradientUnits="userSpaceOnUse">
-          <stop stopColor={fromColor} />
+        <linearGradient id={gradientId1} x1="15.8369" y1="0" x2="15.8369" y2="31" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor={fromColor} />
+          <stop offset={stopOffset || "1"} stopColor={toColor} />
           <stop offset="1" stopColor={toColor} />
         </linearGradient>
       </defs>
