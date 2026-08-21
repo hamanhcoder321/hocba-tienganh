@@ -14,7 +14,7 @@ const TEACHERS = [
     image: imgGv1.src,
     name: 'THẠC SĨ LINH PHƯƠNG',
     title: '12 Năm Kinh Nghiệm Giảng Dạy',
-    description: 'Thạc sĩ Đại học Kinh tế Quốc dân, Cử nhân Đại học Khoa học Ứng dụng Kymenlaakso, Phần Lan (Học bổng)'
+    description: 'Thạc sĩ Đại học Kinh tế Quốc dân, Cử\nnhân Đại học Khoa học Ứng dụng\nKymenlaakso, Phần Lan (Học bổng)'
   },
   {
     badgeTop: 'OVERALL',
@@ -22,7 +22,7 @@ const TEACHERS = [
     image: imgGv2.src,
     name: 'GIẢNG VIÊN YẾN CHI',
     title: 'Hơn 10 Năm Kinh Nghiệm Giảng Dạy Chứng Chỉ IELTS Và TOEIC',
-    description: '2 lần đạt 8.5 IELTS, Đại sứ bài thi IELTS trên máy tính 2023 của IDP, Cố vấn Học thuật của nhiều đơn vị'
+    description: '2 lần đạt 8.5 IELTS, Đại sứ bài thi IELTS\ntrên máy tính 2023 của IDP, Cố vấn\nHọc thuật của nhiều đơn vị'
   },
   {
     badgeTop: 'GIẢNG VIÊN',
@@ -30,7 +30,7 @@ const TEACHERS = [
     image: imgGv3.src,
     name: 'GIẢNG VIÊN JACKSON HOWARD',
     title: 'Cựu Giám Khảo Bài Thi IELTS',
-    description: '20 năm kinh nghiệm giảng dạy và luyện thi tiếng Anh cho học sinh thế giới, Cựu Trưởng khoa Tiếng Anh Trường Western Sydney University'
+    description: '20 năm kinh nghiệm giảng dạy và\nluyện thi tiếng Anh cho học sinh thế\ngiới, Cựu Trưởng khoa Tiếng Anh\nTrường Western Sydney University'
   },
   {
     badgeTop: 'GIẢNG VIÊN',
@@ -38,7 +38,7 @@ const TEACHERS = [
     image: imgGv3.src,
     name: 'GIẢNG VIÊN JACKSON HOWARD',
     title: 'Cựu Giám Khảo Bài Thi IELTS',
-    description: '20 năm kinh nghiệm giảng dạy và luyện thi tiếng Anh cho học sinh thế giới, Cựu Trưởng khoa Tiếng Anh Trường Western Sydney University'
+    description: '20 năm kinh nghiệm giảng dạy và\nluyện thi tiếng Anh cho học sinh thế\ngiới, Cựu Trưởng khoa Tiếng Anh\nTrường Western Sydney University'
   },
   {
     badgeTop: 'LISTENING',
@@ -46,7 +46,7 @@ const TEACHERS = [
     image: imgGv1.src,
     name: 'THẠC SĨ LINH PHƯƠNG',
     title: '12 Năm Kinh Nghiệm Giảng Dạy',
-    description: 'Thạc sĩ Đại học Kinh tế Quốc dân, Cử nhân Đại học Khoa học Ứng dụng Kymenlaakso, Phần Lan (Học bổng)'
+    description: 'Thạc sĩ Đại học Kinh tế Quốc dân, Cử\nnhân Đại học Khoa học Ứng dụng\nKymenlaakso, Phần Lan (Học bổng)'
   },
   {
     badgeTop: 'OVERALL',
@@ -54,7 +54,7 @@ const TEACHERS = [
     image: imgGv2.src,
     name: 'GIẢNG VIÊN YẾN CHI',
     title: 'Hơn 10 Năm Kinh Nghiệm Giảng Dạy Chứng Chỉ IELTS Và TOEIC',
-    description: '2 lần đạt 8.5 IELTS, Đại sứ bài thi IELTS trên máy tính 2023 của IDP, Cố vấn Học thuật của nhiều đơn vị'
+    description: '2 lần đạt 8.5 IELTS, Đại sứ bài thi IELTS\ntrên máy tính 2023 của IDP, Cố vấn\nHọc thuật của nhiều đơn vị'
   },
   {
     badgeTop: 'GIẢNG VIÊN',
@@ -62,9 +62,8 @@ const TEACHERS = [
     image: imgGv3.src,
     name: 'GIẢNG VIÊN JACKSON HOWARD',
     title: 'Cựu Giám Khảo Bài Thi IELTS',
-    description: '20 năm kinh nghiệm giảng dạy và luyện thi tiếng Anh cho học sinh thế giới, Cựu Trưởng khoa Tiếng Anh Trường Western Sydney University'
+    description: '20 năm kinh nghiệm giảng dạy và\nluyện thi tiếng Anh cho học sinh thế\ngiới, Cựu Trưởng khoa Tiếng Anh\nTrường Western Sydney University'
   }
-  
 ];
 
 const StaticTeacherCarousel = () => {
@@ -120,7 +119,7 @@ const StaticTeacherCarousel = () => {
                   </p>
                 </div>
 
-                <p className="mt-6 mb-2 text-center text-[16px] text-white md:text-[18px] px-4 leading-relaxed font-medium">
+                <p className="mt-6 mb-2 text-center text-[14px] text-white md:text-[17px] px-4 leading-relaxed font-medium whitespace-pre-line">
                   {teacher.description}
                 </p>
 

@@ -253,7 +253,7 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
       <div className="mt-8 flex justify-center w-full">
         <a
           href="#tu-van"
-          className="inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full bg-[#F97316] px-8 py-3.5 text-[15px] font-bold text-white shadow-[0_4px_15px_rgba(249,115,22,0.4)] transition-all duration-300 hover:scale-105 hover:bg-gradient-to-r hover:from-[#F97316] hover:to-[#FBBF24] hover:shadow-[0_0_25px_rgba(249,115,22,0.7)] hover:[text-shadow:0_0_10px_rgba(255,255,255,0.9)] uppercase"
+          className="inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full bg-[#F97316] px-8 py-3.5 text-[15px] font-bold text-white uppercase"
         >
           XEM THÊM KHÓA HỌC
         </a>
