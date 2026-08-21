@@ -72,7 +72,7 @@ export const EXPERIENCE_OPTIONS = [
 
 export const CONTACTS = {
   address: {
-    label: 'Toà Hoà Phát, 257 Giải Phóng, Bạch Mai, Hà Nội',
+    label: 'Toà Nhà Hoà Phát, 257 Giải Phóng, Bạch Mai, Hà Nội',
     value: 'https://maps.app.goo.gl/kMGiEXyvfdGzYEVB8',
   },
   linkWeb: import.meta.env.PUBLIC_CLIENT_URL ?? 'https://hoc-ba.edu.vn',

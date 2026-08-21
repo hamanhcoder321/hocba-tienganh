@@ -119,8 +119,10 @@ const StaticTeacherCarousel = () => {
                   </p>
                 </div>
 
-                <p className="mt-6 mb-2 text-center text-[14px] text-white md:text-[17px] px-4 leading-relaxed font-medium whitespace-pre-line">
-                  {teacher.description}
+                <p className="mt-5 mb-2 text-center text-[12px] sm:text-[14px] md:text-[16px] text-white px-1 md:px-4 leading-relaxed font-medium flex flex-col items-center">
+                  {teacher.description.split('\n').map((line, i) => (
+                    <span key={i} className="whitespace-nowrap">{line}</span>
+                  ))}
                 </p>
 
                 {/* Search / Plus icon button at the bottom */}

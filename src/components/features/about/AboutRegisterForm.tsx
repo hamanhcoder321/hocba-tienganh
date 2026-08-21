@@ -147,7 +147,7 @@ export default function AboutRegisterForm({
           <Button
             type="submit"
             disabled={isPending}
-            className="relative h-12 w-full max-w-[400px] md:max-w-none rounded-full bg-white text-[#072899] font-black uppercase shadow-lg transition-colors hover:bg-slate-100 disabled:opacity-70 md:h-16 md:text-2xl"
+            className="relative h-12 w-full max-w-[400px] md:max-w-none rounded-full bg-white text-[#072899] font-black uppercase shadow-lg transition-colors hover:bg-[#FFF4D7] disabled:opacity-70 md:h-16 md:text-2xl"
           >
             {isPending ? 'Đang xử lý...' : isSuccess ? 'Thành công!' : 'NHẬN TƯ VẤN MIỄN PHÍ'}
           </Button>

@@ -50,6 +50,10 @@ import gs_hbc from '@/assets/images/introduce/gs_hbc.webp';
 import hocba_education from '@/assets/images/introduce/hocba_education.webp';
 import hocbachinese from '@/assets/images/introduce/hocbachinese.png';
 import hocbahsk from '@/assets/images/introduce/hocbahsk.png';
+import dkb1 from '@/assets/images/img-hocba-tienganh/Rectangle 7071.png';
+import dkb2 from '@/assets/images/img-hocba-tienganh/Rectangle 7071 (1).png';
+import dkb3 from '@/assets/images/img-hocba-tienganh/Rectangle 7071 (2).png';
+import dkb4 from '@/assets/images/img-hocba-tienganh/Rectangle 7071 (3).png';
 import hoi_thao_1 from '@/assets/images/introduce/hoi_thao_1.webp';
 import hoi_thao_2 from '@/assets/images/introduce/hoi_thao_2.webp';
 import hoi_thao_3 from '@/assets/images/introduce/hoi_thao_3.jpg';
@@ -199,6 +203,10 @@ import TienVu from '@/assets/images/home/student-comment/tienvu.png';
 import VuHaiMy from '@/assets/images/home/student-comment/vuhaimy.jpg';
 import MinhAnh from '@/assets/images/img-hocba-tienganh/image-minh-anh.png';
 import ThuThuy from '@/assets/images/img-hocba-tienganh/image-Thu-Thuy.png';
+import ThuHa from '@/assets/images/img-hocba-tienganh/img-thu-ha.png';
+import ThanhHuyen from '@/assets/images/img-hocba-tienganh/img-thanh-huyen.png';
+import NhatQuan from '@/assets/images/img-hocba-tienganh/image-nhat-quan.png';
+import TuanKiet from '@/assets/images/img-hocba-tienganh/image-tuan-kiet.png';
 // Evidence Gallery images
 import imgIeltsCot1 from '@/assets/images/img-hocba-tienganh/img-ielts-cot1.png';
 import imgIeltsCot3 from '@/assets/images/img-hocba-tienganh/img-ielts-cot3.png';
@@ -546,6 +554,10 @@ export const IMAGES = {
     VuHaiMy,
     MinhAnh,
     ThuThuy,
+    ThuHa,
+    ThanhHuyen,
+    NhatQuan,
+    TuanKiet,
     evidenceGallery: {
       col1: [imgIeltsCot1, imgIeltsCot1, imgIeltsCot1],
       col2: [imgNhanTin, imgNhanTin, imgNhanTin],
@@ -681,6 +693,10 @@ export const IMAGES = {
     dkb_slide2,
     dkb_slide3,
     dkb_slide4,
+    dkb1,
+    dkb2,
+    dkb3,
+    dkb4,
     gs_hbc,
     tl_tn,
     baozhang_he,

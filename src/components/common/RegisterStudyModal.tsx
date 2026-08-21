@@ -121,13 +121,14 @@ const RegisterStudyModal = ({
   return (
     <Dialog open={openModal} onOpenChange={handleChangeModal}>
       <DialogTrigger asChild>{renderTrigger()}</DialogTrigger>
-      <DialogContent className="z-[999] bg-[#0835C3] border-none text-white duration-700 max-md:top-1/2 max-md:-translate-y-1/2 sm:max-w-[500px] p-3 md:p-6 rounded-[20px] shadow-2xl [&>button]:text-white max-h-[100vh] overflow-hidden">
+      <DialogContent className="z-[999] w-[95vw] sm:w-[600px] sm:max-w-[600px] border-none bg-[#0a31b6] p-6 md:p-10 text-white shadow-2xl duration-700 sm:rounded-[24px] [&>button]:text-white [&>button]:opacity-100 [&>button]:hover:opacity-80">
         <DialogHeader>
-          <DialogTitle className="text-center text-[16px] md:text-[22px] font-black uppercase text-white leading-[1.2]">
-            TÌM HIỂU LỘ TRÌNH, KIỂM TRA <br className="hidden md:block"/> TRÌNH ĐỘ & NHẬN ƯU ĐÃI
+          <DialogTitle className="text-center text-[22px] md:text-[28px] lg:text-[32px] font-black uppercase text-white leading-[1.1] md:leading-[1.2]">
+            <span className="md:whitespace-nowrap">TÌM HIỂU LỘ TRÌNH, KIỂM TRA</span> <br className="hidden md:block"/>
+            <span className="md:whitespace-nowrap">TRÌNH ĐỘ & NHẬN ƯU ĐÃI</span>
           </DialogTitle>
-          <DialogDescription className="text-center text-white/90 text-[11px] md:text-[12px] mt-0.5 font-light">
-            THE IELTS SPACE Sẽ Liên Hệ Với Bạn Trong Thời Gian Sớm Nhất Qua Thông Tin Đăng Ký
+          <DialogDescription className="text-center text-white/90 text-[12px] md:text-[14px] mt-1.5 md:mt-2 font-normal">
+            <span className="md:whitespace-nowrap">THE IELTS SPACE Sẽ Liên Hệ Với Bạn Trong Thời Gian Sớm Nhất Qua Thông Tin Đăng Ký</span>
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -164,7 +165,7 @@ const RegisterStudyModal = ({
                       <select
                         {...field}
                         name="wishlist_courses"
-                        className="h-9 w-full rounded-[8px] border-none bg-white text-gray-700 text-[13px] px-3 py-1 outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                        className="h-10 md:h-[46px] w-full rounded-[8px] md:rounded-[12px] border-none bg-white px-4 text-[13px] md:text-[14px] text-gray-700 outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
                       >
                         <option className="capitalize" value="Bứt Phá (5.0-6.0+)">Bứt Phá (5.0-6.0+)</option>
                         <option className="capitalize" value="Cất Cánh (6.0-7.0+)">Cất Cánh (6.0-7.0+)</option>
@@ -182,7 +183,7 @@ const RegisterStudyModal = ({
                 variant={isPending ? 'outline' : 'default'}
                 className={clsx(
                   { 'cursor-progress opacity-80': isPending },
-                  'w-full uppercase text-[14px] md:text-[16px] font-black h-10 rounded-full bg-[#FA9A23] text-white hover:bg-[#e0881c] shadow-md border-none transition-colors mt-2'
+                  'mt-4 w-full h-[48px] rounded-[12px] md:rounded-full bg-gradient-to-r from-[#F97316] to-[#FBBF24] text-[15px] md:text-[18px] font-black uppercase text-white shadow-lg border-none'
                 )}
               >
                 {isPending ? (
@@ -229,7 +230,7 @@ const InputItem = ({ form, formLabel, formName, formPlaceholder, type, disabled 
               type={type}
               disabled={disabled}
               value={field.value || ''}
-              className="bg-white text-gray-800 text-[13px] h-9 rounded-[8px] border-none px-3 placeholder:text-gray-400 focus-visible:ring-0 focus-visible:ring-offset-0"
+              className="h-10 md:h-[46px] w-full rounded-[8px] md:rounded-[12px] border-none bg-white px-4 text-[13px] md:text-[14px] text-gray-800 placeholder:text-gray-400 focus-visible:ring-0 focus-visible:ring-offset-0"
             />
           </FormControl>
           <FormMessage className="mt-0.5 pl-1 text-[10px] text-red-300" />
