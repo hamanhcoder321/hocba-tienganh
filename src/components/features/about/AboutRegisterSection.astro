@@ -4,6 +4,9 @@ import { IMAGES } from '@/lib/constants/images';
 import AboutRegisterForm from './AboutRegisterForm';
 import { DATA_VALUE } from '@/lib/constants/enums';
 
+import imgDkTuVan from '@/assets/images/dktuvan.png';
+import imgBook from '@/assets/images/book.png';
+
 const { dataInput = DATA_VALUE.ABOUT } = Astro.props;
 ---
 
@@ -32,7 +35,7 @@ const { dataInput = DATA_VALUE.ABOUT } = Astro.props;
         height={350}
         sizes="(max-width: 768px) 120px, 350px"
         class="h-auto w-[120px] sm:w-[250px] xl:w-[320px] drop-shadow-xl"
-        src={'/src/assets/images/dktuvan.png'}
+        src={imgDkTuVan}
         alt={'Register advise boy'}
         loading="lazy"
       />
@@ -40,13 +43,13 @@ const { dataInput = DATA_VALUE.ABOUT } = Astro.props;
 
     {/* Books at Bottom Left */}
     <div class="absolute hidden md:block bottom-[-10%] left-[-5%] sm:bottom-[-10%] sm:left-[-12%] lg:bottom-[-5%] lg:left-[-15%] z-20 pointer-events-none">
-      <img
+      <Image
         width={160}
         height={160}
         sizes="(max-width: 768px) 100px, 160px"
         loading="lazy"
         class="h-auto w-[100px] sm:w-[140px] xl:w-[180px] drop-shadow-lg"
-        src={'/src/assets/images/book.png'}
+        src={imgBook}
         alt={'Books'}
       />
     </div>
