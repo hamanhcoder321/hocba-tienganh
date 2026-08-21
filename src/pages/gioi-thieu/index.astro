@@ -81,27 +81,27 @@ if (teacherData?.list) {
 const statistics = [
   {
     number: '6.000+',
-    description: 'Học viên đã tin tưởng & lựa<br class="block md:hidden" />chọn THE IELTS SPACE',
+    description: '<span class="md:hidden">Học viên đã tin tưởng & lựa<br/>chọn THE IELTS SPACE</span><span class="hidden md:inline">Học viên đã tin tưởng & lựa<br/>chọn THE IELTS SPACE</span>',
   },
   {
     number: '275+',
-    description: 'Học viên sử dụng kết quả<br class="block md:hidden" />phục vụ mục tiêu du học',
+    description: '<span class="md:hidden">Học viên sử dụng kết quả<br/>phục vụ mục tiêu du học</span><span class="hidden md:inline">Học viên sử dụng kết quả<br/>phục vụ mục tiêu du học</span>',
   },
   {
     number: '99,9%',
-    description: 'Tỷ lệ học viên đạt chuẩn đầu<br class="block md:hidden" />ra theo lộ trình',
+    description: '<span class="md:hidden">Tỷ lệ học viên đạt chuẩn đầu<br/>ra theo lộ trình</span><span class="hidden md:inline">Tỷ lệ học viên đạt chuẩn<br/>đầu ra theo lộ trình</span>',
   },
   {
     number: '80+',
-    description: 'Doanh nghiệp đã tin tưởng và<br class="block md:hidden" />đồng hành cùng THE IELTS<br class="block md:hidden" />SPACE',
+    description: '<span class="md:hidden">Doanh nghiệp đã tin tưởng và<br/>đồng hành cùng THE IELTS<br/>SPACE</span><span class="hidden md:inline">Doanh nghiệp đã tin<br/>tưởng và đồng hành cùng<br/>THE IELTS SPACE</span>',
   },
   {
     number: '813+',
-    description: 'Nội dung học thuật được<br class="block md:hidden" />nghiên cứu và phát triển',
+    description: '<span class="md:hidden">Nội dung học thuật được<br/>nghiên cứu và phát triển</span><span class="hidden md:inline">Nội dung học thuật được<br/>nghiên cứu và phát triển</span>',
   },
   {
     number: '25+',
-    description: 'Đầu sách nội bộ đã được sử<br class="block md:hidden" />dụng phục vụ đào tạo & xây<br class="block md:hidden" />học liệu',
+    description: '<span class="md:hidden">Đầu sách nội bộ đã được sử<br/>dụng phục vụ đào tạo & xây<br/>học liệu</span><span class="hidden md:inline">Đầu sách nội bộ đã được<br/>sử dụng phục vụ đào tạo<br/>& xây học liệu</span>',
   },
 ];
 
@@ -184,7 +184,7 @@ const cards = [
   {
     number: 2,
     bgColor: '#0B36BD',
-    title: 'PHƯƠNG PHÁP HỌC ĐỘC<br class="block md:hidden"/> QUYỀN ĐƯỢC NGHIÊN CỨU<br class="block md:hidden"/> BỞI ĐỘI NGŨ QUỐC TẾ',
+    title: 'PHƯƠNG PHÁP HỌC ĐỘC<br class="block md:hidden"/> QUYỀN ĐƯỢC<br class="hidden md:block"/> NGHIÊN CỨU<br class="block md:hidden"/> BỞI ĐỘI NGŨ QUỐC TẾ',
     points: [
       'Phương pháp SPACE by TES phát triển năng lực xử lý ngôn ngữ có hệ thống và xây dựng lộ trình tư duy có chủ đích.',
       'Học viên được rèn luyện cách tư duy theo bài thi IELTS, phân tích thông tin với lăng kính đa chiều và tái ứng dụng kiến thức vào những tình huống mới.',
@@ -210,7 +210,7 @@ const cards = [
   {
     number: 4,
     bgColor: '#0B36BD',
-    title: 'MENTOR HỌC THUẬT ĐỒNG HÀNH SÁT SAO,<br class="block md:hidden"/> HỖ TRỢ HỌC VIÊN 24/7',
+    title: 'MENTOR HỌC THUẬT ĐỒNG HÀNH<br class="block md:hidden"/> SÁT SAO, HỖ TRỢ HỌC VIÊN 24/7',
     points: [
       'Sửa bài, góp ý chi tiết, luôn sẵn sàng giải đáp mọi thắc mắc về bài học, bài tập.',
       'Kết hợp dữ liệu từ LMS và quan sát thực tế để bổ sung kiến thức, củng cố điểm yếu và điều chỉnh trọng tâm luyện tập',
@@ -759,34 +759,40 @@ const cards = [
             />
             <h2 class="text-lg md:text-[38px]">Điểm khác biệt</h2>
           </div>
-          <div
-            class="flex h-auto items-center text-nowrap rounded-[18px] px-0 text-lg font-black uppercase text-primary md:h-[52px] md:px-6 md:text-[42px]"
-          >
-            tạo nên thương hiệu của Học Bá
+          <div class="flex flex-col items-center justify-center">
+            <div
+              class="flex h-auto items-center text-center md:text-nowrap rounded-[18px] px-0 text-lg font-black uppercase text-[#072899] md:h-[52px] md:px-6 md:text-[42px]"
+            >
+              tạo nên thương hiệu của <br class="block md:hidden" /> THE IELTS SPACE
+            </div>
+            <div class="mt-1 h-1 w-16 rounded-full bg-[#F97316] md:hidden"></div>
           </div>
         </div>
         <div class="relative mt-0 md:mb-0 md:mb-[100px] md:mt-0 md:mt-10">
           {
             cards.map((card, index) => (
               <div
-                class="relative sticky top-16 h-auto pt-10 md:top-32 md:h-[650px] md:pt-[calc(var(--i)*20px)]"
+                class="relative mt-8 md:mt-0 md:sticky md:top-32 h-auto md:h-[650px] md:pt-[calc(var(--card-index)*20px)]"
                 style={{
-                  '--i': index,
+                  '--card-index': index,
                 }}
               >
                 <div
-                  class="relative flex flex-col md:flex-row h-auto w-full transform-none gap-2 rounded-lg px-4 py-6 transition-transform duration-500 md:mx-auto md:mb-auto md:h-[480px] md:w-[1060px] md:translate-x-[calc(var(--i)*20px)] md:transform md:gap-4 md:rounded-[28px] md:py-10 md:pl-14 md:pr-7"
+                  class="relative flex flex-col md:flex-row h-auto w-full transform-none gap-2 rounded-lg px-4 py-6 transition-transform duration-500 md:mx-auto md:mb-auto md:h-[480px] md:w-[1060px] md:translate-x-[calc(var(--card-index)*20px)] md:transform md:gap-4 md:rounded-[28px] md:py-10 md:pl-14 md:pr-7"
                   style={`background-color: ${card.bgColor};`}
                 >
                   <div
-                    class="absolute -top-6 left-8 flex h-6 w-10 items-center justify-center rounded-t-lg text-sm font-black text-white md:left-[calc(var(--i)*50px+64px)] md:h-[34px] md:w-[70px] md:rounded-t-xl md:text-2xl md:text-lg"
-                    style={`--i: ${index}; background-color: ${card.bgColor};`}
+                    class="absolute -top-6 left-8 flex h-6 w-10 items-center justify-center rounded-t-lg text-sm font-black text-white md:left-[calc(var(--card-index)*50px+64px)] md:h-[34px] md:w-[70px] md:rounded-t-xl md:text-2xl md:text-lg"
+                    style={`--card-index: ${index}; background-color: ${card.bgColor};`}
                   >
                     {card.number}
                   </div>
                   <div class="contents md:block md:w-[583px]">
                     <h3
-                      class="order-1 w-full md:w-fit rounded-[10px] bg-white px-4 py-3 text-[14px] font-black uppercase leading-[1.4] shadow-lg md:rounded-[20px] md:px-9 md:text-[26px]"
+                      class={cn(
+                        'order-1 w-full rounded-[10px] bg-white px-4 py-3 text-[14px] font-black uppercase leading-[1.4] shadow-lg md:rounded-[20px] md:px-9 md:text-[28px]',
+                        index === 1 ? 'md:w-max md:relative md:z-10' : 'md:w-fit'
+                      )}
                       style={`color: ${card.bgColor}`}
                       set:html={card.title}
                     >

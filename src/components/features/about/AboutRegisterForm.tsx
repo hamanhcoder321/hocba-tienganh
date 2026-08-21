@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -19,15 +19,12 @@ export default function AboutRegisterForm({
 }: AboutRegisterFormProps) {
   const { form, isPending, isSuccess, handleRegisterStudy } = useRegisterStudy();
 
-  useEffect(() => {
-    // Force default value for this specific form
-    form.setValue('wishlist_courses', 'Du học');
-  }, [form]);
 
   const onSubmit = async (data: RegisterStudyBodyType) => {
     try {
       await handleRegisterStudy({
         ...data,
+        wishlist_courses: data.wishlist_courses === 'Xét tuyển vào Đại học' ? 'Du học' : data.wishlist_courses || 'Du học',
         data_input: dataInput,
       });
       form.reset();
@@ -84,7 +81,8 @@ export default function AboutRegisterForm({
               Mục Tiêu Của Bạn
             </Label>
             <Select
-              value={form.watch('wishlist_courses')}
+              defaultValue="Du học"
+              value={form.watch('wishlist_courses') === 'Xét tuyển vào Đại học' ? 'Du học' : form.watch('wishlist_courses') || 'Du học'}
               onValueChange={(value) => form.setValue('wishlist_courses', value)}
             >
               <SelectTrigger id="course" className="h-12 rounded-lg border-0 bg-white text-[#504E4E] focus:ring-white md:h-14">

@@ -42,7 +42,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
           <div>
             <h3 className="text-lg font-black uppercase leading-tight text-[#B11702] md:text-[32px]">{name}</h3>
             <p className="my-2 text-sm font-bold text-[#373737] md:text-[24px]">
-              {role}, {location}
+              {role}{location ? `, ${location}` : ''}
             </p>
             <div className="mt-1 flex items-center gap-1">
               {[...Array(5)].map((_, i) => (

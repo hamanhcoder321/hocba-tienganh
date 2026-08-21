@@ -127,7 +127,7 @@ const RegisterStudyModal = ({
             <span className="md:whitespace-nowrap">TÌM HIỂU LỘ TRÌNH, KIỂM TRA</span> <br className="hidden md:block"/>
             <span className="md:whitespace-nowrap">TRÌNH ĐỘ & NHẬN ƯU ĐÃI</span>
           </DialogTitle>
-          <DialogDescription className="text-center text-white/90 text-[12px] md:text-[14px] mt-1.5 md:mt-2 font-normal">
+          <DialogDescription className="text-center text-white/90 text-[12px] md:text-[12px] mt-1.5 md:mt-2 font-normal">
             <span className="md:whitespace-nowrap">THE IELTS SPACE Sẽ Liên Hệ Với Bạn Trong Thời Gian Sớm Nhất Qua Thông Tin Đăng Ký</span>
           </DialogDescription>
         </DialogHeader>
@@ -177,7 +177,7 @@ const RegisterStudyModal = ({
                 )}
               />
             </div>
-            <DialogFooter className="sm:justify-center">
+            <DialogFooter className="sm:justify-left">
               <Button
                 type="submit"
                 variant={isPending ? 'outline' : 'default'}
