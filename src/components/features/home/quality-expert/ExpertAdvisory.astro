@@ -191,13 +191,17 @@ const expertBullets = [
           </ul>
 
           <div class="flex justify-center w-full mt-auto">
-            <a href="#xem-ho-so" class="inline-block w-full sm:w-auto text-center bg-[#F97316] hover:bg-[#EA580C] text-white font-bold text-[14px] md:text-[16px] py-3.5 px-8 rounded-full  tracking-wide">
+            <a href="#xem-ho-so" class="inline-block w-full sm:w-auto text-center bg-[#F97316] text-white font-bold text-[14px] md:text-[16px] py-3.5 px-8 rounded-full  tracking-wide">
               XEM HỒ SƠ CHUYÊN GIA
             </a>
           </div>
         </div>
 
-        <div class="hidden md:flex w-[50%] lg:w-[45%] absolute bottom-0 right-0 z-10 justify-center items-end h-[110%]">
+        <div class="hidden md:flex w-[50%] lg:w-[45%] absolute bottom-0 right-0 z-10 justify-center items-end h-[110%] relative">
+          <!-- Ngôi sao trang trí bên trái ảnh giáo viên -->
+          <svg class="absolute top-[30%] left-[15%] w-5 h-5 text-[#8CA8F9]  z-20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" />
+          </svg>
           <Image src={coVanTienganh} alt="Mr. Jackson Howard" class="w-full max-w-[400px] lg:max-w-[480px] h-auto object-contain object-bottom drop-shadow-[0_20px_20px_rgba(0,0,0,0.5)] relative z-10 origin-bottom" />
         </div>
         

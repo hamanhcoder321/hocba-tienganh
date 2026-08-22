@@ -55,10 +55,7 @@ const { dataInput, isSimpleForm, id = 'simple-register-form' } = Astro.props;
     <div class="grid grid-cols-1 items-center px-4 py-8 md:grid-cols-2 md:gap-8 md:py-0">
       <div class="order-1 col-span-1 hidden md:block">
         <div class="relative mx-auto mt-16 flex h-auto w-full items-center justify-center md:mt-4 md:h-[571px] md:w-[571px]">
-          <div class="absolute -top-10 left-1/2 size-[212px] -translate-x-1/2 md:left-1/2 md:top-0 md:size-[571px]">
-            <EllipContact className="absolute left-0 top-0 z-10 size-[212px] opacity-30 md:size-[571px]" />
-            <EllipContact2 className="absolute left-1/2 top-1/2 z-20 size-[128px] -translate-x-1/2 -translate-y-1/2 opacity-20 md:size-[342px]" />
-          </div>
+
           <div class="relative z-50 flex w-full items-center justify-center">
             <Image src={cugaDangky} width={700} height={700} alt={'cuContact'} densities={[1, 2]} class={'z-50 h-auto w-[280px] object-contain md:w-[540px]'} />
             <svg class="absolute top-[20%] left-[5%] md:-left-[5%] w-5 h-5 md:w-8 md:h-8 text-[#FF7A00] z-20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
@@ -81,10 +78,7 @@ const { dataInput, isSimpleForm, id = 'simple-register-form' } = Astro.props;
           {isSimpleForm}
         >
           <div class="relative mx-auto mt-8 mb-4 flex h-auto w-full items-center justify-center md:hidden">
-            <div class="absolute -top-10 left-1/2 size-[212px] -translate-x-1/2">
-              <EllipContact className="absolute left-0 top-0 z-10 size-[212px] opacity-30" />
-              <EllipContact2 className="absolute left-1/2 top-1/2 z-20 size-[128px] -translate-x-1/2 -translate-y-1/2 opacity-20" />
-            </div>
+
             <div class="relative z-50 flex w-full items-center justify-center">
               <Image src={cugaDangky} width={700} height={700} alt={'cuContact'} densities={[1, 2]} class={'z-50 h-auto w-[280px] object-contain'} />
               <svg class="absolute top-[20%] left-[5%] w-5 h-5 text-[#FF7A00] z-20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>

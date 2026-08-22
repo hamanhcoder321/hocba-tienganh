@@ -256,6 +256,10 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
           className="inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full bg-[#F97316] px-8 py-3.5 text-[15px] font-bold text-white uppercase"
         >
           XEM THÊM KHÓA HỌC
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
         </a>
       </div>
       
