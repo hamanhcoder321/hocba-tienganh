@@ -70,8 +70,8 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
               <div 
                 key={item.id}
                 className={cn(
-                  "relative flex flex-col items-center justify-center cursor-pointer w-24 md:w-32 transition-transform duration-300 group",
-                  isActive ? "scale-110" : (hoveredIndex === index ? "scale-105" : ""),
+                  "relative flex flex-col items-center justify-center cursor-pointer w-24 md:w-32 transition-all duration-300 group",
+                  isActive ? "scale-110 opacity-100 grayscale-0" : (hoveredIndex === index ? "scale-105 opacity-100 grayscale-0" : "scale-100 opacity-100 grayscale-[50%]"),
                   getTranslateYClass(index)
                 )}
                 onClick={() => setActiveIndex(index)}
@@ -80,7 +80,7 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
               >
                 <div 
                   className={cn(
-                    "absolute bottom-[calc(100%+4px)] md:bottom-[calc(100%+8px)] -ml-6 md:-ml-10 transition-all duration-300 z-20 flex items-center justify-center pointer-events-none",
+                    "absolute -left-0 md:-left-2 -top-2 md:-top-4 transition-all duration-300 z-20 flex items-center justify-center pointer-events-none",
                     isActive ? "opacity-100 scale-125" : "opacity-60 group-hover:opacity-100 group-hover:scale-110"
                   )}
                   style={(isActive || hoveredIndex === index) ? { filter: `drop-shadow(0 4px 6px ${item.color}40)` } : undefined}
@@ -89,7 +89,7 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                     className="font-black italic text-[24px] md:text-[32px] tracking-[-0.05em] leading-none select-none"
                     style={{ 
                       color: item.color,
-                      transform: 'rotate(-19deg) skewX(-19deg)',
+                      transform: 'rotate(-52.71deg)',
                       WebkitTextStroke: '1px rgba(255,255,255,0.2)'
                     }}
                   >
@@ -128,7 +128,7 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
 
       {/* 2. Tabs */}
       <div className="mb-8">
-        <div className="flex overflow-x-auto gap-4 md:gap-0 custom-scrollbar pb-4 px-4 md:px-0 md:flex-nowrap md:justify-between md:bg-white md:rounded-2xl md:shadow-sm md:border md:border-gray-100 md:p-2" role="tablist">
+        <div className="flex overflow-x-auto gap-4 md:gap-[41px] custom-scrollbar pb-4 px-4 md:px-4 md:flex-nowrap md:justify-center md:bg-white md:rounded-[24px] md:shadow-sm md:border md:border-gray-200 md:max-w-[1266px] md:mx-auto md:h-[161px] md:items-center" role="tablist">
           {data.map((item, index) => {
             const isActive = activeIndex === index;
             return (
@@ -154,17 +154,26 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                 )}>
                   {index + 1}
                 </div>
-                <div className="flex flex-col items-start w-full px-1 md:px-4 lg:px-6">
+                <div className="flex flex-col items-center text-center w-full px-1 md:px-2 lg:px-4">
                   <span 
                     className={cn(
-                      "text-[14px] md:text-[15px] lg:text-[16px] font-bold uppercase transition-colors mb-0.5 md:mb-1",
-                      "text-white md:text-[var(--active-color)]"
+                      "text-[14px] md:text-[22px] font-bold uppercase transition-all duration-300 mb-0.5 md:mb-1 md:leading-[24px] whitespace-nowrap",
+                      (isActive || hoveredIndex === index) 
+                        ? "text-white md:text-[var(--active-color)] opacity-100" 
+                        : "text-white/60 md:text-[var(--active-color)] opacity-40"
                     )}
                     style={{ '--active-color': item.color } as React.CSSProperties}
                   >
                     {item.title}
                   </span>
-                  <span className="text-[12px] md:text-[13px] font-medium text-white/90 md:text-[#555555] mb-0 md:mb-3">
+                  <span 
+                    className={cn(
+                      "text-[12px] md:text-[13px] font-medium mb-0 md:mb-3 whitespace-nowrap transition-all duration-300",
+                      (isActive || hoveredIndex === index)
+                        ? "text-white/90 md:text-[#555555] opacity-100"
+                        : "text-white/50 md:text-[#888888] opacity-50"
+                    )}
+                  >
                     {item.subtitle}
                   </span>
                   
@@ -201,7 +210,7 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                 
                 {/* Text Container */}
                 <div className="flex flex-col gap-1 md:gap-2">
-                  <h3 className="text-white text-[18px] md:text-[28px] font-bold">Chi tiết khóa học</h3>
+                  <h3 className="text-white text-[18px] md:text-[30px] font-semibold md:leading-[24px] text-center mb-3">Chi tiết khóa học</h3>
                   {/* Blue line - Desktop only (under text) */}
                   <div className="hidden md:block w-20 h-1.5 bg-[#1C4EE5] rounded-full ml-2"></div>
                 </div>
@@ -224,7 +233,7 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                 >
                   
                   <h4 className="sr-only">Chi tiết lộ trình: {stage.title} - {stage.subtitle}</h4>
-                  <ul className="space-y-4 text-white/90 text-[15px] md:text-[17px] font-normal leading-[1.5] md:leading-[1.6]">
+                  <ul className="space-y-4 text-white/90 text-[15px] md:text-[20px] font-normal md:leading-[47px]">
                     {stage.details.map((detail, idx) => (
                       <li key={idx} className={cn("flex items-start gap-2.5", detail.startsWith('-') && "ml-[14px] md:ml-4")}>
                         {!detail.startsWith('-') && (

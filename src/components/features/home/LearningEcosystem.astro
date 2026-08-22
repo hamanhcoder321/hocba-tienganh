@@ -14,25 +14,25 @@ const features = [
   {
     title: 'HIỂU NGƯỜI HỌC',
     subtitle: 'PACE ASSESSMENT',
-    description: 'Bài trắc nghiệm giúp bạn hiểu rõ<br />phong cách học tập và khả năng<br />tiếp thu ngôn ngữ',
+    description: 'Bài trắc nghiệm giúp bạn hiểu rõ phong cách học tập và khả năng tiếp thu ngôn ngữ',
     image: imgPaceAssessment
   },
   {
     title: 'HỌC HIỆU QUẢ',
     subtitle: 'SPACE LOOP',
-    description: 'Chu trình học tập vòng xoắn, liên tục<br />theo dõi - phản hồi - điều chỉnh để<br />tiến bộ',
+    description: 'Chu trình học tập vòng xoắn, liên tục theo dõi - phản hồi - điều chỉnh để tiến bộ',
     image: imgSpaceLoop
   },
   {
     title: 'HỌC ĐÚNG CÁCH',
     subtitle: 'PHƯƠNG PHÁP SPACE',
-    description: 'Phương pháp phát triển tư duy đa<br />chiều, hình thành 7 năng lực học tập<br />cốt lõi',
+    description: 'Phương pháp phát triển tư duy đa chiều, hình thành 7 năng lực học tập cốt lõi',
     image: imgPhuongPhapSpace
   },
   {
     title: 'HỌC THÔNG MINH',
     subtitle: 'LMS E-SPACE',
-    description: 'Nền tảng học tập thông minh kết<br />hợp báo cáo AI và đề xuất phù hợp',
+    description: 'Nền tảng học tập thông minh kết hợp báo cáo AI và đề xuất phù hợp',
     image: imgLmsESpace
   },
 ];
@@ -53,10 +53,11 @@ const features = [
           />
         </div>
         <div>
-          <h2 class="mb-4 text-[26px] md:text-[50px] font-black uppercase leading-tight text-[#373737]">
+          <h2 class="mb-4 text-[26px] md:text-[42px] uppercase leading-tight md:leading-[64px] text-[#373737]" style="font-weight: 1000;">
             TỐI ƯU HÀNH TRÌNH HỌC
             <span
-              class="mt-2 md:mt-4 inline-block rounded-[16px] md:rounded-[20px] bg-gradient-to-r from-[#F97316] to-[#F59E0B] px-10 md:px-36 py-1 md:py-2 text-white text-[22px] md:text-[42px] shadow-lg relative"
+              class="mt-2 md:mt-4 inline-block rounded-[16px] md:rounded-[20px] bg-gradient-to-r from-[#F97316] to-[#F59E0B] px-10 md:px-36 py-1 md:py-2 text-white text-[22px] md:text-[38px] md:leading-[64px] shadow-lg relative"
+              style="font-weight: 1000;"
             >
               & LUYỆN THI IELTS
             </span>
@@ -67,7 +68,7 @@ const features = [
               <svg class="hidden md:block absolute -left-10 top-1 w-8 h-8" viewBox="0 0 24 24" fill="#8CA8F9" xmlns="http://www.w3.org/2000/svg">
                 <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
               </svg>
-              <p class="text-[11px] min-[375px]:text-[11.5px] sm:text-[13px] tracking-tight md:tracking-normal md:text-[22px] lg:text-[24px] font-bold text-[#555] leading-relaxed md:leading-snug">
+              <p class="text-[11px] min-[375px]:text-[11.5px] sm:text-[13px] tracking-tight md:tracking-normal md:text-[24px] font-semibold text-[#555] leading-relaxed md:leading-[120%]">
                 {/* Desktop 3 lines */}
                 <span class="hidden md:inline">
                   Một hệ sinh thái học tập được nghiên cứu và thiết<br />
@@ -96,7 +97,7 @@ const features = [
             <div class="flex h-full w-full flex-col overflow-hidden rounded-[20px] shadow-[0_10px_30px_rgba(0,0,0,0.06)] bg-white">
               <div class="flex flex-col items-center justify-center bg-[#1336B3] py-4 text-center">
                 <h3 class="text-[17px] font-black uppercase text-white">{feature.title}</h3>
-                <p class="text-[#F59E0B] font-bold text-[12px] mt-1">{feature.subtitle}</p>
+                <p class="text-[#F59E0B] font-extrabold text-[16px] mt-1 leading-[147%] uppercase">{feature.subtitle}</p>
               </div>
               <div class="flex min-h-[120px] flex-grow items-center justify-center p-5 text-center bg-white">
                 <p class="text-[13px] font-medium leading-relaxed text-[#555]" set:html={feature.description}></p>
@@ -121,12 +122,18 @@ const features = [
     <!-- SVG đường quỹ đạo nền và trang trí -->
     <div class="absolute inset-0 w-full h-full z-0 flex items-center justify-center pointer-events-none">
        <svg viewBox="0 0 1100 600" class="w-full h-full overflow-visible">
+         <defs>
+           <linearGradient id="orbitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+             <stop offset="0%" stop-color="#083AD4" />
+             <stop offset="100%" stop-color="#3464F8" />
+           </linearGradient>
+         </defs>
          <!-- Ellipse quỹ đạo -->
-         <ellipse cx="550" cy="300" rx="480" ry="220" fill="none" stroke="#083AD4" stroke-width="3" opacity="1" />
+         <ellipse cx="550" cy="300" rx="480" ry="220" fill="none" stroke="url(#orbitGradient)" stroke-width="3" opacity="1" />
          
          <!-- Top Node (đỉnh ellipse, giữa 2 card trên) -->
          <!-- <circle cx="550" cy="80" r="14" fill="none" stroke="#6886E6" stroke-width="3" opacity="0.5" /> -->
-         <circle cx="460" cy="81" r="8" fill="#083AD4" opacity="0.9" />
+         <circle cx="460" cy="83" r="10" fill="url(#orbitGradient)" opacity="0.9" />
 
          <!-- Bottom Node (cạnh phải card dưới-trái) -->
          <circle cx="330" cy="496" r="7" fill="#083AD4" opacity="0.6" />
@@ -170,22 +177,22 @@ const features = [
         { feature: features[1], classes: "top-[30px] right-[20px]" },
         { feature: features[3], classes: "bottom-[30px] right-[20px]" }
       ].map(({ feature, classes }) => (
-        <div class={`absolute w-[310px] z-20 group ${classes}`}>
+        <div class={`absolute w-[310px] h-[188px] z-20 group ${classes}`}>
           <div class="relative w-full transition-transform duration-700 group-hover:scale-105">
             
             <!-- Mặt trước (Nội dung) -->
-            <div class="relative w-full flex flex-col overflow-hidden rounded-[20px] shadow-[0_15px_40px_rgba(0,0,0,0.06)] bg-white border border-gray-100 transition-opacity duration-700 group-hover:opacity-0">
+            <div class="relative w-full h-full flex flex-col overflow-hidden rounded-[18px] shadow-[0_15px_40px_rgba(0,0,0,0.06)] bg-white border border-gray-100 transition-opacity duration-700 group-hover:opacity-0">
               <div class="flex flex-col items-center justify-center bg-[#1336B3] py-4 text-center">
-                 <h3 class="text-[17px] font-black uppercase text-white">{feature.title}</h3>
+                 <h3 class="text-[24px] font-extrabold uppercase text-white leading-[147%]">{feature.title}</h3>
                  <p class="text-[#F59E0B] font-bold text-[12px] mt-1">{feature.subtitle}</p>
               </div>
               <div class="flex min-h-[120px] flex-grow items-center justify-center p-5 text-center bg-white">
-                 <p class="text-[13px] font-medium leading-relaxed text-[#555]" set:html={feature.description}></p>
+                 <p class="text-[16px] font-extrabold leading-[147%] text-[#555] uppercase" set:html={feature.description}></p>
               </div>
             </div>
 
             <!-- Mặt sau (Ảnh) -->
-            <div class="absolute inset-0 flex flex-col overflow-hidden rounded-[20px] shadow-[0_15px_40px_rgba(0,0,0,0.06)] bg-white border border-gray-100 opacity-0 transition-opacity duration-700 group-hover:opacity-100">
+            <div class="absolute inset-0 flex flex-col overflow-hidden rounded-[18px] shadow-[0_15px_40px_rgba(0,0,0,0.06)] bg-white border border-gray-100 opacity-0 transition-opacity duration-700 group-hover:opacity-100">
               <Image src={feature.image} alt={feature.title} class="w-full h-full object-contain p-2" />
             </div>
 
@@ -199,7 +206,7 @@ const features = [
 <!-- Khối Mentor (Căn giữa - full with) -->
 <section class="w-full bg-[#0835C3] mt-12 py-16 overflow-hidden flex flex-col items-center">
   <div class="mb-10 px-1 sm:px-4 text-center w-full overflow-visible">
-    <h2 class="relative inline-block text-[15.5px] sm:text-[20px] tracking-tight md:tracking-normal whitespace-nowrap md:whitespace-normal font-black uppercase text-white md:text-[36px] drop-shadow-md">
+    <h2 class="relative inline-block text-[15.5px] sm:text-[20px] tracking-tight md:tracking-normal whitespace-nowrap md:whitespace-normal font-black uppercase text-white md:text-[42px] md:leading-[64px] drop-shadow-md text-center" style="font-weight: 1000;">
       MỖI BƯỚC ĐI ĐỀU CÓ NGƯỜI ĐỒNG HÀNH
       <svg class="absolute -top-2 md:-top-4 -right-4 sm:-right-5 md:-right-8 w-4 h-4 sm:w-5 sm:h-5 md:w-8 md:h-8 text-[#FF7A00]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
     </h2>
@@ -207,7 +214,7 @@ const features = [
   <div id="mentor-content" class="px-2 sm:px-4 flex justify-center w-full overflow-visible">
     <div class="group relative w-[55%] sm:w-[65%] md:w-full max-w-[550px] mt-4 md:mt-0">
       <div
-        class="relative z-10 overflow-hidden rounded-[16px] md:rounded-[24px] bg-[#F48220] p-2 md:p-5 transition-all duration-500 shadow-xl group-hover:-translate-y-2 group-hover:bg-[#F69A45] group-hover:shadow-[0_20px_40px_rgba(244,130,32,0.4)]"
+        class="relative z-10 overflow-hidden rounded-[16px] md:rounded-[24px] bg-gradient-to-b from-[#F48220] to-[#FDC959] p-2 md:p-5 transition-all duration-500 shadow-xl group-hover:-translate-y-2 group-hover:from-[#F69A45] group-hover:to-[#FDD375] group-hover:shadow-[0_20px_40px_rgba(244,130,32,0.4)]"
       >
         <div class="relative z-10 overflow-hidden max-sm:!h-auto">
           <h3
