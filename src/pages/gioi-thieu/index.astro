@@ -226,105 +226,114 @@ const cards = [
 <BaseLayout {title} {description}>
   <JsonLd data={jsonLd} />
   <div class="relative">
-    <section class="relative min-h-[400px] w-full overflow-hidden bg-[#083AD4] pb-10 md:min-h-[652px] md:pb-0">
-      <div
-        class="absolute inset-0 z-0 w-full bg-[linear-gradient(135deg,#042278_0%,#052284_100%)] max-sm:flex max-sm:justify-center"
-      >
-        {/* Glow at the bottom right */}
+    <section id="hero-banner" class="w-full overflow-hidden bg-[#083AD4] bg-[linear-gradient(135deg,#042278_0%,#052284_100%)]">
+      <div class="relative mx-auto w-full max-w-[1440px] min-h-[400px] md:min-h-[710px]">
+        {/* 
+          Background Colors and effects to remember:
+          - Glow effect: bg-white opacity-20 blur-[150px]
+        */}
         <div class="absolute -bottom-1/4 -right-1/4 h-[80%] w-[80%] rounded-full bg-white opacity-20 blur-[150px]"></div>
-      </div>
 
-      <div class="container relative z-10 flex h-full min-h-[328px] flex-col px-4 pt-4 md:min-h-[652px] md:flex-row md:items-center md:px-0 md:pt-0">
-        <div class="absolute left-4 top-4 md:left-0 md:top-8">
+        <div 
+          id="breadcrumb-container"
+          class="absolute z-20 flex items-center gap-1 md:left-[57px] md:top-[38px] left-4 top-4 opacity-100"
+        >
           <Breadcrumb>
-            <BreadcrumbList className="text-xs text-white/80 md:text-sm">
+            <BreadcrumbList className="flex gap-1 text-white/80 text-sm">
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <a href="/" class="hover:text-white">Trang chủ</a>
+                  <a href="/" class="hover:text-white transition-colors">Trang chủ</a>
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator className="text-white/80" />
               <BreadcrumbItem>
-                <BreadcrumbPage className="text-white font-semibold"> Về chúng tôi </BreadcrumbPage>
+                <BreadcrumbPage className="text-white font-semibold">Về chúng tôi</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
         </div>
 
-        <div class="mt-4 flex w-full flex-col md:mt-0 md:flex-row md:items-center md:justify-between">
-          <div class="contents w-full flex-col z-20 md:w-1/2 md:pr-4 lg:pr-10 xl:-translate-y-8 md:flex">
-            <h1 class="order-1 z-20 text-left text-[38px] font-black leading-[1.2] text-white md:order-none xl:text-[56px] lg:text-[40px] md:text-[30px]">
-              Không gian <br />
-              <span class="text-[#FFC224] inline-block">học tập tích hợp</span> <br />
-              <span class="uppercase inline-block mt-4">THẾ HỆ MỚI</span>
+          <div id="hero-content" class="relative z-10 w-full min-h-[400px] md:min-h-[710px] flex flex-col md:block">
+          {/* Left Content */}
+          <div 
+            id="hero-text-left" 
+            class="relative z-20 mt-16 px-4 md:px-0 md:mt-0"
+          >
+            <h1 class="text-left text-white font-sans">
+              <span class="block md:absolute md:top-[107px] md:left-[53px] md:w-[404px] md:h-[116px] md:text-[70px] md:font-bold md:leading-[1.34] text-[38px] font-black leading-[1.2]">
+                Không gian
+              </span>
+              <br class="md:hidden" />
+              <span class="text-[#FFC224] inline-block md:absolute md:top-[194px] md:left-[53px] md:w-auto whitespace-nowrap md:h-[116px] md:text-[78px] md:font-bold md:leading-[1.34] text-[38px] font-black leading-[1.2]">
+                học tập tích hợp
+              </span>
+              <br class="md:hidden" />
+              <span class="uppercase inline-block mt-4 md:absolute md:top-[310px] md:left-[53px] text-[38px] md:text-[86px] font-black md:leading-[1.34] leading-[1.2]">THẾ HỆ MỚI</span>
             </h1>
-            
-            <div class="order-3 z-20 mt-4 flex flex-col gap-4 md:order-none md:mt-12 md:gap-5">
-              <div class="flex items-center gap-4 max-md:[animation:none_!important] md:animate-in md:fade-in md:zoom-in-95 md:slide-in-from-bottom-6 md:fill-mode-both" style="animation-duration: 5s; animation-delay: 200ms; animation-iteration-count: infinite; animation-direction: alternate;">
-                <div class="flex size-10 flex-shrink-0 items-center justify-center rounded-full border border-white/30 text-white md:size-12">
-                  <svg class="size-5 md:size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M2 10v6M2 10l10-5 10 5-10 5z" />
-                    <path d="M6 12v5c3 3 9 3 12 0v-5" />
-                  </svg>
-                </div>
-                <span class="text-sm font-bold uppercase tracking-wide text-white md:text-base lg:text-lg">GIÁO VIÊN DẪN DẮT</span>
-              </div>
-              <div class="flex items-center gap-4 max-md:[animation:none_!important] md:animate-in md:fade-in md:zoom-in-95 md:slide-in-from-bottom-6 md:fill-mode-both" style="animation-duration: 5s; animation-delay: 500ms; animation-iteration-count: infinite; animation-direction: alternate;">
-                <div class="flex size-10 flex-shrink-0 items-center justify-center rounded-full border border-white/30 text-white md:size-12">
-                  <svg class="size-5 md:size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 18h5" />
-                    <path d="M10 21h3" />
-                    <path d="M14 14.5c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5 0-.8-.2-1.5-.5-2.2" />
-                    <path d="M12 4c-3.3 0-6 2.7-6 6 0 1.5.5 2.8 1.5 3.7.8.8 1.3 1.5 1.5 2.8" />
-                    <path d="M18 4 c0 2.5 1.5 4 4 4 -2.5 0 -4 1.5 -4 4 0 -2.5 -1.5 -4 -4 -4 2.5 0 4 -1.5 4 -4z" fill="currentColor" stroke="none" />
-                  </svg>
-                </div>
-                <span class="text-sm font-bold uppercase tracking-wide text-white md:text-base lg:text-lg">CÔNG NGHỆ TỐI ƯU</span>
-              </div>
-              <div class="flex items-center gap-4 max-md:[animation:none_!important] md:animate-in md:fade-in md:zoom-in-95 md:slide-in-from-bottom-6 md:fill-mode-both" style="animation-duration: 5s; animation-delay: 800ms; animation-iteration-count: infinite; animation-direction: alternate;">
-                <div class="flex size-10 flex-shrink-0 items-center justify-center rounded-full border border-white/30 text-white md:size-12">
-                  <svg class="size-5 md:size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M4 4v16h16" />
-                    <path d="M8 12 l 5 3 l 6 -7" />
-                    <circle cx="8" cy="12" r="1.5" fill="#042278" stroke="currentColor" stroke-width="1.5" />
-                    <circle cx="13" cy="15" r="1.5" fill="#042278" stroke="currentColor" stroke-width="1.5" />
-                    <circle cx="19" cy="8" r="1.5" fill="#042278" stroke="currentColor" stroke-width="1.5" />
-                  </svg>
-                </div>
-                <span class="text-sm font-bold uppercase tracking-wide text-white md:text-base lg:text-lg">DỮ LIỆU THỰC TẾ</span>
-              </div>
-            </div>
           </div>
 
-          <div class="order-2 relative mt-6 flex w-full justify-center md:order-none md:mt-0 md:w-[55%]">
-            <div class="relative flex h-[320px] w-full items-end justify-center md:h-[450px] lg:h-[500px] xl:h-[650px]">
-              <div class="absolute inset-0 flex items-center justify-center pointer-events-none translate-y-6 md:translate-y-8">
-                <div class="relative flex size-[300px] items-center justify-center rounded-full md:size-[420px] lg:size-[550px] xl:size-[750px]">
-                  {/* Little stars/sparkles */}
-                  <div class="absolute right-[30%] top-[10%] size-1 bg-white rounded-full shadow-[0_0_10px_2px_#fff] md:size-1.5 md:right-[35%]"></div>
-                  <div class="absolute right-[-2%] top-[25%] size-[3px] bg-white rounded-full shadow-[0_0_5px_1px_#fff] md:right-[2%] md:top-[20%]"></div>
-                  <div class="absolute left-[20%] top-[45%] size-[2px] bg-white rounded-full shadow-[0_0_5px_1px_#fff] md:left-[5%]"></div>
-                </div>
+          {/* Right Image */}
+          <div 
+            id="hero-image-right"
+            class="relative z-10 mt-10 flex justify-center md:absolute md:-bottom-10 md:left-[517px] md:w-[931px] md:h-[715px] md:mt-0 pointer-events-none"
+          >
+            {/* Sparkle details memory: bg-white rounded-full */}
+            <Image
+              src={bannerGioiThieu}
+              alt={'Banner Học Bá'}
+              densities={[1, 2]}
+              quality={95}
+              class="hidden md:block w-full h-full object-contain object-bottom"
+            />
+            <Image
+              src={bannerGioiThieuMobile}
+              alt={'Banner Học Bá Mobile'}
+              densities={[1, 2]}
+              quality={95}
+              class="md:hidden w-[358px] h-[305px] object-contain mt-[10px]"
+            />
+          </div>
+          
+          {/* Features / Icons */}
+          <div id="hero-features" class="relative z-20 mt-8 mb-10 px-4 flex flex-col gap-5 md:gap-0 md:justify-between md:absolute md:top-[474px] md:left-[72px] md:w-[284px] md:h-[157px] md:mt-0 md:mb-0 md:px-0 text-white">
+            <div class="flex items-center gap-4 max-md:[animation:none_!important] md:animate-in md:fade-in md:zoom-in-95 md:slide-in-from-bottom-6 md:fill-mode-both" style="animation-duration: 5s; animation-delay: 200ms; animation-iteration-count: infinite; animation-direction: alternate;">
+              {/* Icon 1 */}
+              <div class="flex size-10 flex-shrink-0 items-center justify-center rounded-full border border-white">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="size-5">
+                  <path d="M2 10v6M2 10l10-5 10 5-10 5z" />
+                  <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                </svg>
               </div>
-              
-              <Image
-                src={bannerGioiThieu}
-                alt={'Banner Học Bá'}
-                densities={[1, 2]}
-                quality={95}
-                class={'hidden md:block relative z-10 w-[120%] h-auto md:w-auto md:h-full object-contain object-bottom translate-y-4 md:translate-y-6 md:max-w-none'}
-              />
-              <Image
-                src={bannerGioiThieuMobile}
-                alt={'Banner Học Bá Mobile'}
-                densities={[1, 2]}
-                quality={95}
-                class={'md:hidden relative z-10 w-[110%] h-auto object-contain'}
-              />
+              <span class="text-sm font-bold uppercase md:text-base">GIÁO VIÊN DẪN DẮT</span>
+            </div>
+            <div class="flex items-center gap-4 max-md:[animation:none_!important] md:animate-in md:fade-in md:zoom-in-95 md:slide-in-from-bottom-6 md:fill-mode-both" style="animation-duration: 5s; animation-delay: 500ms; animation-iteration-count: infinite; animation-direction: alternate;">
+              {/* Icon 2 */}
+              <div class="flex size-10 flex-shrink-0 items-center justify-center rounded-full border border-white">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="size-5">
+                  <path d="M9 18h5" />
+                  <path d="M10 21h3" />
+                  <path d="M14 14.5c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5 0-.8-.2-1.5-.5-2.2" />
+                  <path d="M12 4c-3.3 0-6 2.7-6 6 0 1.5.5 2.8 1.5 3.7.8.8 1.3 1.5 1.5 2.8" />
+                  <path d="M18 4 c0 2.5 1.5 4 4 4 -2.5 0 -4 1.5 -4 4 0 -2.5 -1.5 -4 -4 -4 2.5 0 4 -1.5 4 -4z" fill="currentColor" stroke="none" />
+                </svg>
+              </div>
+              <span class="text-sm font-bold uppercase md:text-base">CÔNG NGHỆ TỐI ƯU</span>
+            </div>
+            <div class="flex items-center gap-4 max-md:[animation:none_!important] md:animate-in md:fade-in md:zoom-in-95 md:slide-in-from-bottom-6 md:fill-mode-both" style="animation-duration: 5s; animation-delay: 800ms; animation-iteration-count: infinite; animation-direction: alternate;">
+              {/* Icon 3 */}
+              <div class="flex size-10 flex-shrink-0 items-center justify-center rounded-full border border-white">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="size-5">
+                  <path d="M4 4v16h16" />
+                  <path d="M8 12 l 5 3 l 6 -7" />
+                  <circle cx="8" cy="12" r="1.5" fill="currentColor" stroke="none" />
+                  <circle cx="13" cy="15" r="1.5" fill="currentColor" stroke="none" />
+                  <circle cx="19" cy="8" r="1.5" fill="currentColor" stroke="none" />
+                </svg>
+              </div>
+              <span class="text-sm font-bold uppercase md:text-base">DỮ LIỆU THỰC TẾ</span>
             </div>
           </div>
         </div>
-      </div>
     </section>
 
     <section class="w-full overflow-hidden px-4 md:mt-0 md:px-0">
