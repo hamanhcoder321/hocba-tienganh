@@ -10,31 +10,31 @@ import iconHoiCham from '@/assets/images/img-hocba-tienganh/icon-hoi-cham.png';
 const qaData = [
   {
     id: 'item-1',
-    question: '1. Lộ trình học tại THE IELTS SPACE như thế nào?',
+    question: '<span class="hidden md:inline">1. </span>Lộ trình học tại THE IELTS SPACE như thế nào?',
     answer:
-      'Lộ trình tại THE IELTS SPACE được xây dựng theo năng lực đầu vào và <br/> mục tiêu band của từng học viên, tập trung vào đúng kiến thức, kỹ năng <br/> và dạng bài còn yếu. Kết hợp giữa giảng dạy trên lớp, luyện tập trên LMS <br/> E-Power, AI phân tích dữ liệu và mentor theo sát, THE IELTS SPACE giúp <br/> học viên học đúng trọng tâm, cải thiện liên tục và rút ngắn thời gian <br/> chinh phục mục tiêu IELTS.',
+      'Lộ trình tại THE IELTS SPACE được xây dựng theo năng lực đầu vào và <br class="hidden md:block" /> mục tiêu band của từng học viên, tập trung vào đúng kiến thức, kỹ năng <br class="hidden md:block" /> và dạng bài còn yếu. Kết hợp giữa giảng dạy trên lớp, luyện tập trên LMS <br class="hidden md:block" /> E-Power, AI phân tích dữ liệu và mentor theo sát, THE IELTS SPACE giúp <br class="hidden md:block" /> học viên học đúng trọng tâm, cải thiện liên tục và rút ngắn thời gian <br class="hidden md:block" /> chinh phục mục tiêu IELTS.',
   },
   {
     id: 'item-2', 
-    question: '2. THE IELTS SPACE có cam kết chất lượng đầu ra <br class="hidden md:block" /> không?',
+    question: '<span class="hidden md:inline">2. </span>THE IELTS SPACE có cam kết chất lượng đầu ra <br class="hidden md:block" /> không?',
     answer:
       'Lộ trình ôn thi tại Học Bá được thiết kế cá nhân hóa, tập trung vào các kiến thức trọng tâm để học viên không lãng phí thời gian vào nội dung không cần thiết. Kết hợp cùng phương pháp học thông minh và tài liệu ôn luyện cập nhật theo chuẩn Tiếng Trung mới nhất, Học Bá giúp bạn tiếp thu nhanh, hiệu quả và tiết kiệm tối đa thời gian.',
   },
   {
     id: 'item-3',
-    question: '3. Một lớp tại THE IELTS SPACE có bao nhiêu học viên?',
+    question: '<span class="hidden md:inline">3. </span>Một lớp tại THE IELTS SPACE có bao nhiêu học viên?',
     answer:
       'Có! Học Bá cam kết đầu ra rõ ràng cho từng khóa học. Nếu học viên tuân thủ đúng lộ trình học tập và hướng dẫn từ giáo viên nhưng không đạt kết quả như mong muốn, chúng tôi sẽ hỗ trợ học lại miễn phí hoặc có giải pháp bù đắp phù hợp.',
   },
   {
     id: 'item-4',
-    question: '4. Không theo kịp lớp học thì sao?',
+    question: '<span class="hidden md:inline">4. </span>Không theo kịp lớp học thì sao?',
     answer:
       'Thời gian để một người mới bắt đầu có thể giao tiếp cơ bản bằng Tiếng Trung phụ thuộc vào lộ trình học và mức độ tập trung của từng học viên. Với phương pháp giảng dạy tại Học Bá, nếu học viên học đúng lộ trình và thực hành đều đặn, chỉ sau 2-3 tháng, bạn đã có thể nắm vững các mẫu câu giao tiếp thông dụng và tự tin trao đổi trong những tình huống hàng ngày.',
   },
   {
     id: 'item-5',
-    question: '5. AI có đảm bảo chính xác không?',
+    question: '<span class="hidden md:inline">5. </span>AI có đảm bảo chính xác không?',
     answer:
       'Thời gian để một người mới bắt đầu có thể giao tiếp cơ bản bằng Tiếng Trung phụ thuộc vào lộ trình học và mức độ tập trung của từng học viên. Với phương pháp giảng dạy tại Học Bá, nếu học viên học đúng lộ trình và thực hành đều đặn, chỉ sau 2-3 tháng, bạn đã có thể nắm vững các mẫu câu giao tiếp thông dụng và tự tin trao đổi trong những tình huống hàng ngày.',
   },
@@ -43,21 +43,21 @@ const qaData = [
 
 <section
   id="advisor-qa"
-  class="relative mx-auto max-w-[1493px] bg-[linear-gradient(180deg,rgba(255,251,247,0)_0%,#FFF7EF_31.25%,rgba(255,249,249,0)_100%)]"
+  class="relative mx-auto w-full max-w-[1493px] bg-[linear-gradient(180deg,rgba(255,251,247,0)_0%,#FFF7EF_31.25%,rgba(255,249,249,0)_100%)] min-h-[900px] md:min-h-0"
 >
-  <div class="relative z-10 mx-auto max-w-[1212px] max-lg:px-9">
-    <div class="mb-6 md:mb-7">
+  <div class="relative z-10 mx-auto w-full md:max-w-[1212px] px-[16px] py-[24px] md:py-0 md:px-9 lg:px-0">
+    <div class="mb-[28px] md:mb-7">
       <div class="flex items-center gap-1 md:gap-2">
         <Image src={iconHoiCham} alt="?" class="w-16 h-16 md:w-24 md:h-24 object-contain translate-y-[6px]" />
         <div>
-          <h2 class="py-1 md:py-2 text-[22px] font-black uppercase text-[#1336B3] md:text-[36px] lg:text-[42px]">GIẢI ĐÁP 1:1</h2>
+          <h2 class="py-1 md:py-2 text-[22px] font-black uppercase text-[#1336B3] md:text-[36px] lg:text-[42px]">GIẢI ĐÁP 1:1 kk</h2>
           <CommitmentBadge className="rounded-md px-3 py-1 sm:px-4 text-[16px] font-bold md:text-[32px] !from-[#F97316] !to-[#F59E0B] inline-block mt-1 md:mt-2">
             CÙNG CỐ VẤN HỌC TẬP
           </CommitmentBadge>
         </div>
       </div>
     </div>
-    <div class="flex flex-col items-center gap-8 lg:flex-row">
+    <div class="flex flex-col items-center gap-[28px] md:gap-8 lg:flex-row">
       <div class="w-full lg:w-[55%]">
         <QAAccordion {qaData} />
       </div>

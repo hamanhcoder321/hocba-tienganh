@@ -45,7 +45,7 @@ const TEACHERS = [
 
 const StaticTeacherCarousel = () => {
   return (
-    <div className="relative w-full max-w-[1200px] mx-auto">
+    <div className="relative w-full max-w-[372px] md:max-w-[1112px] h-[368px] md:h-[529px] mx-auto">
       <Carousel
         className="relative w-full"
         opts={{
@@ -53,10 +53,10 @@ const StaticTeacherCarousel = () => {
           loop: true,
         }}
       >
-        <CarouselContent className="-ml-2 md:-ml-4 pb-12">
+        <CarouselContent className="-ml-[27.8px] md:-ml-[40px] pb-12 h-full">
           {TEACHERS.map((teacher, index) => (
-            <CarouselItem key={index} className="pl-2 md:pl-4 basis-[280px] md:basis-1/3">
-              <div className="group relative flex flex-col items-center h-full rounded-[24px] bg-[#0A3BCE] hover:bg-[#1E50FF] hover:shadow-[15px_15px_30px_-5px_rgba(30,80,255,0.4)] transition-all duration-300 pt-6 pb-8 mx-2 md:mx-3 px-3 md:px-4 shadow-lg mt-4 cursor-pointer">
+            <CarouselItem key={index} className="pl-[27.8px] md:pl-[40px] basis-auto md:basis-1/3 h-full">
+              <div className="group relative flex flex-col items-center w-[239px] md:w-[344px] h-[333.6px] md:h-[451px] rounded-[24px] bg-[#0A3BCE] hover:bg-[#1E50FF] hover:shadow-[15px_15px_30px_-5px_rgba(30,80,255,0.4)] transition-all duration-300 pt-6 pb-8 px-3 md:px-4 shadow-lg mt-4 cursor-pointer">
                 {/* Background overlay for clipping glow but not the + icon */}
                 <div className="absolute inset-0 overflow-hidden rounded-[24px]">
                   {/* Large Background Circle behind avatar (Figma exact match) */}
@@ -69,11 +69,11 @@ const StaticTeacherCarousel = () => {
                 </div>
 
                 {/* Badge */}
-                <div className="absolute left-3 md:left-5 top-4 md:top-7 z-30 flex flex-col items-center justify-center rounded-[8px] border-[1.5px] border-white/90 bg-gradient-to-b from-[#FFA73A] to-[#FF8C00] px-2 py-1 md:px-2.5 md:py-1.5 shadow-md">
-                  <span className="text-[7px] font-bold text-white md:text-[9px] tracking-wide">
+                <div className={`absolute z-30 flex flex-col items-center justify-center rounded-[8px] md:rounded-[12.5px] border-[1.5px] md:border-[1.04px] border-white/90 bg-gradient-to-b from-[#FFA73A] to-[#FF8C00] px-2 py-1 md:px-[12.66px] md:py-[12px] shadow-md ${teacher.badgeBottom === 'BẢN XỨ' ? 'left-3 md:left-[14px] top-4 md:top-[34.5px] md:w-[83px] md:h-[54px]' : 'left-3 md:left-[27px] top-4 md:top-[31.5px] md:w-[57px] md:h-[59px]'}`}>
+                  <span className={`text-white whitespace-nowrap ${teacher.badgeBottom === 'BẢN XỨ' ? 'text-[7px] font-black md:text-[10.85px] md:leading-[12.5px] tracking-normal text-center lining-nums tabular-nums' : 'text-[7px] font-bold md:text-[9px] tracking-wide'}`}>
                     {teacher.badgeTop}
                   </span>
-                  <span className="text-lg font-black leading-none text-white md:text-xl mt-0.5">
+                  <span className={`font-black text-white whitespace-nowrap ${teacher.badgeBottom === 'BẢN XỨ' ? 'text-[7px] md:text-[10.85px] md:leading-[12.5px] tracking-normal text-center lining-nums tabular-nums' : 'text-lg leading-none md:text-xl mt-0.5'}`}>
                     {teacher.badgeBottom}
                   </span>
                   {/* Decorative circles (bubbles) below the badge */}
@@ -82,26 +82,26 @@ const StaticTeacherCarousel = () => {
                 </div>
 
                 {/* Avatar */}
-                <div className="relative h-[160px] md:h-[190px] z-20 w-full flex justify-center items-end mt-1">
+                <div className="relative h-[160px] md:h-[235px] z-20 w-full md:w-[235px] flex justify-center items-end mt-1">
                     <img
                       src={teacher.image}
                       alt={teacher.name}
-                      className="h-full w-auto object-contain object-bottom"
+                      className="h-full w-full object-contain object-bottom"
                       loading="lazy"
                     />
                   </div>
 
                 {/* White Info Box */}
-                <div className="relative z-20 -mt-6 w-[105%] flex flex-col items-center justify-center rounded-xl bg-white px-4 py-5 md:py-6 text-center shadow-md min-h-[110px]">
-                  <h3 className="text-base font-black text-[#0935C4] md:text-xl uppercase tracking-tight">
+                <div className="relative z-20 -mt-6 w-[192.51px] md:w-[277px] h-[69.5px] md:h-[100px] flex flex-col items-center justify-center gap-[4.17px] md:gap-[6px] rounded-[8.34px] md:rounded-[12px] bg-white px-4 md:py-[12px] py-[8.34px] text-center shadow-md">
+                  <h3 className={`font-[1000] text-[#0935C4] leading-none capitalize text-center m-0 whitespace-nowrap ${teacher.name === 'GIẢNG VIÊN JACKSON HOWARD' ? 'text-[12.5px] md:text-[17.5px] tracking-tight' : 'text-[14.71px] md:text-[21.16px] tracking-normal'}`}>
                     {teacher.name}
                   </h3>
-                  <p className="mt-1.5 text-sm font-bold text-gray-800 md:text-base leading-snug">
+                  <p className="text-[12.51px] font-bold text-gray-800 md:text-[18px] leading-none capitalize tracking-normal text-center m-0">
                     {teacher.title}
                   </p>
                 </div>
 
-                <p className="mt-5 mb-2 text-center text-[12px] sm:text-[14px] md:text-[16px] text-white px-1 md:px-4 leading-relaxed font-medium flex flex-col items-center">
+                <p className="mt-5 mb-2 text-center text-[12px] sm:text-[14px] md:text-[16px] text-white px-1 md:px-4 leading-[1.2] tracking-normal font-medium flex flex-col items-center">
                   {teacher.description.split('\n').map((line, i) => (
                     <span key={i} className="whitespace-nowrap">{line}</span>
                   ))}

@@ -157,10 +157,7 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                 <div className="flex flex-col items-center text-center w-full px-1 md:px-2 lg:px-4">
                   <span 
                     className={cn(
-                      "text-[14px] md:text-[22px] font-bold uppercase transition-all duration-300 mb-0.5 md:mb-1 md:leading-[24px] whitespace-nowrap",
-                      (isActive || hoveredIndex === index) 
-                        ? "text-white md:text-[var(--active-color)] opacity-100" 
-                        : "text-white/60 md:text-[var(--active-color)] opacity-40"
+                      "text-[14px] md:text-[22px] font-bold uppercase transition-all duration-300 mb-0.5 md:mb-1 md:leading-[24px] whitespace-nowrap text-white md:text-[var(--active-color)] opacity-100"
                     )}
                     style={{ '--active-color': item.color } as React.CSSProperties}
                   >
@@ -168,10 +165,7 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                   </span>
                   <span 
                     className={cn(
-                      "text-[12px] md:text-[13px] font-medium mb-0 md:mb-3 whitespace-nowrap transition-all duration-300",
-                      (isActive || hoveredIndex === index)
-                        ? "text-white/90 md:text-[#555555] opacity-100"
-                        : "text-white/50 md:text-[#888888] opacity-50"
+                      "text-[12px] md:text-[13px] font-medium mb-0 md:mb-3 whitespace-nowrap transition-all duration-300 text-white/90 md:text-[#555555] opacity-100"
                     )}
                   >
                     {item.subtitle}
@@ -220,7 +214,7 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
             </div>
           </div>
 
-          <div className="relative w-full mb-0 md:mb-10 lg:pr-8">
+          <div className="relative w-full mb-0 md:mb-10 lg:pr-10">
             {data.map((stage, index) => {
               const isActive = activeIndex === index;
               return (
@@ -233,11 +227,11 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                 >
                   
                   <h4 className="sr-only">Chi tiết lộ trình: {stage.title} - {stage.subtitle}</h4>
-                  <ul className="space-y-4 text-white/90 text-[15px] md:text-[20px] font-normal md:leading-[47px]">
+                  <ul className="ml-6 space-y-4 text-white/90 text-[15px] md:text-[20px] font-normal md:leading-[47px]">
                     {stage.details.map((detail, idx) => (
-                      <li key={idx} className={cn("flex items-start gap-2.5", detail.startsWith('-') && "ml-[14px] md:ml-4")}>
+                      <li key={idx} className={cn("flex items-start gap-2.5", detail.startsWith('-') && "ml-[14px] md:ml-[15px]")}>
                         {!detail.startsWith('-') && (
-                          <div className="mt-2.5 w-1 h-1 md:w-[5px] md:h-[5px] rounded-full bg-white/60 flex-shrink-0" aria-hidden="true"></div>
+                          <div className="mt-[9px] md:mt-[21px] w-1 h-1 md:w-[5px] md:h-[5px] rounded-full bg-white/60 flex-shrink-0" aria-hidden="true"></div>
                         )}
                         <span className="text-left block">{detail}</span>
                       </li>
