@@ -162,7 +162,7 @@ const expertBullets = [
       <div class="relative w-full flex flex-col md:flex-row items-end justify-center md:gap-[98px] bg-transparent md:h-[472px]">
         
 
-        <div class="absolute inset-0 z-0 overflow-hidden" style="background-image: radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px); background-size: 24px 24px;"></div>
+        <!-- <div class="absolute inset-0 z-0 overflow-hidden" style="background-image: radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px); background-size: 24px 24px;"></div> -->
 
         <!-- mobile (top) -->
         <div class="md:hidden w-full flex justify-center mb-6 relative z-10 mt-[-20px]">
@@ -200,11 +200,13 @@ const expertBullets = [
         </div>
 
         <div class="hidden md:flex md:w-[640px] md:h-[570px] z-10 justify-center items-end">
-          <!-- Ngôi sao trang trí bên trái ảnh giáo viên -->
-          <svg class="absolute top-[30%] left-[15%] w-5 h-5 text-[#8CA8F9]  z-20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" />
-          </svg>
-          <Image src={coVanTienganh} alt="Mr. Jackson Howard" class="w-full max-w-[400px] lg:max-w-[480px] h-auto object-contain object-bottom drop-shadow-[0_20px_20px_rgba(0,0,0,0.5)] relative z-10 origin-bottom" />
+          <div class="relative w-full max-w-[400px] lg:max-w-[480px]">
+            <!-- Ngôi sao nhỏ phía trên bên trái -->
+            <svg class="absolute top-[26%] left-[12%] w-4 h-4 text-[#8CA8F9] z-20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" />
+            </svg>
+            <Image src={coVanTienganh} alt="Mr. Jackson Howard" class="w-full h-auto object-contain object-bottom drop-shadow-[0_20px_20px_rgba(0,0,0,0.5)] relative z-10 origin-bottom" />
+          </div>
         </div>
         
       </div>

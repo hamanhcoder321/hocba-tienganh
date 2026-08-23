@@ -165,8 +165,11 @@ const features = [
 
     <!-- Chú cú ở trung tâm -->
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-[300px] flex justify-center">
-       <!-- Bóng đổ dưới chân -->
-       <div class="absolute bottom-1 left-1/2 -translate-x-1/2 w-[160px] h-[14px] bg-black/90 rounded-[100%] blur-md z-0"></div>
+       <!-- Bóng đổ dưới chân (Giả lập độ mờ và đậm của Figma) -->
+       <div class="absolute bottom-0 left-1/2 -translate-x-1/2 flex justify-center items-center z-0">
+         <div class="absolute w-[222px] h-[21px] bg-[#6F7BA1] rounded-[100%] blur-[10px]"></div>
+         <div class="absolute w-[160px] h-[12px] bg-[#6F7BA1] rounded-[100%] blur-[4px]"></div>
+       </div>
        <Image src={IMAGES.home.imgGatrang} alt="Gatrang Owl" class="w-[260px] h-auto relative z-10 drop-shadow-lg" />
     </div>
 

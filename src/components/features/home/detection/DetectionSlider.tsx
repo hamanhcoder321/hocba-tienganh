@@ -79,18 +79,28 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 <div 
-                  className={cn(
-                    "absolute -left-0 md:-left-2 -top-2 md:-top-4 transition-all duration-300 z-20 flex items-center justify-center pointer-events-none",
-                    isActive ? "opacity-100 scale-125" : "opacity-60 group-hover:opacity-100 group-hover:scale-110"
-                  )}
+                  className="absolute left-0 md:left-2 -top-2 md:-top-4 transition-all duration-300 z-20 flex items-center justify-center pointer-events-none"
                   style={(isActive || hoveredIndex === index) ? { filter: `drop-shadow(0 4px 6px ${item.color}40)` } : undefined}
                 >
+                  {/* Lớp viền trắng (Halo) - Luôn đặc để che đường kẻ */}
                   <span 
-                    className="font-black italic text-[24px] md:text-[32px] tracking-[-0.05em] leading-none select-none"
+                    className="absolute font-black italic text-[24px] md:text-[32px] tracking-[-0.05em] leading-none select-none block text-[#F8FAFC]"
+                    style={{ 
+                      transform: 'rotate(-30deg)',
+                      textShadow: '-2px -2px 0 #F8FAFC, 2px -2px 0 #F8FAFC, -2px 2px 0 #F8FAFC, 2px 2px 0 #F8FAFC, 0px 2px 0 #F8FAFC, 0px -2px 0 #F8FAFC, 2px 0px 0 #F8FAFC, -2px 0px 0 #F8FAFC'
+                    }}
+                  >
+                    {item.score}
+                  </span>
+                  {/* Lớp chữ màu - Có hiệu ứng mờ khi không active */}
+                  <span 
+                    className={cn(
+                      "relative font-black italic text-[24px] md:text-[32px] tracking-[-0.05em] leading-none select-none block transition-opacity duration-300",
+                      isActive ? "opacity-100" : "opacity-60 group-hover:opacity-100"
+                    )}
                     style={{ 
                       color: item.color,
-                      transform: 'rotate(-52.71deg)',
-                      WebkitTextStroke: '1px rgba(255,255,255,0.2)'
+                      transform: 'rotate(-30deg)'
                     }}
                   >
                     {item.score}
@@ -98,14 +108,17 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                 </div>
                 
                 {/* các khối banner 3d */}
-                <div className="relative w-16 h-16 md:w-20 md:h-20">
+                <div className="relative w-20 h-20 md:w-[96px] md:h-[96px]">
                   {/* Shadow base (extrusion) */}
                   <div 
                     className={cn(
-                      "absolute inset-0 translate-y-[8px] rounded-[16px] md:rounded-[20px] rotate-45 transition-colors duration-300",
+                      "absolute inset-0 rounded-[14px] md:rounded-[22px] transition-colors duration-300",
                       isActive ? "opacity-100" : "opacity-80"
                     )}
-                    style={{ backgroundColor: item.color }}
+                    style={{ 
+                      backgroundColor: item.color,
+                      transform: 'translateY(12px) scaleY(0.577) rotate(45deg)'
+                    }}
                   />
                   {/* Soft glow below */}
                   <div 
@@ -114,10 +127,15 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                   />
                   {/* Top face */}
                   <div 
-                    className="absolute inset-0 bg-white border-[3px] rounded-[16px] md:rounded-[20px] rotate-45 flex items-center justify-center z-10"
-                    style={{ borderColor: item.color }}
-                  >
-                    <img src={IconMap[item.icon]} alt={item.title} className="w-8 h-8 md:w-[42px] md:h-[42px] -rotate-45 object-contain" />
+                    className="absolute inset-0 bg-white border-[2px] md:border-[3px] rounded-[14px] md:rounded-[22px] z-10"
+                    style={{ 
+                      borderColor: item.color,
+                      transform: 'scaleY(0.577) rotate(45deg)'
+                    }}
+                  />
+                  {/* Icon */}
+                  <div className="absolute inset-0 flex items-center justify-center z-20">
+                    <img src={IconMap[item.icon]} alt={item.title} className="w-10 h-10 md:w-[44px] md:h-[44px] object-contain" />
                   </div>
                 </div>
               </div>

@@ -208,9 +208,12 @@ import ThanhHuyen from '@/assets/images/img-hocba-tienganh/img-thanh-huyen.png';
 import NhatQuan from '@/assets/images/img-hocba-tienganh/image-nhat-quan.png';
 import TuanKiet from '@/assets/images/img-hocba-tienganh/image-tuan-kiet.png';
 // Evidence Gallery images
-import imgIeltsCot1 from '@/assets/images/img-hocba-tienganh/img-ielts-cot1.png';
-import imgIeltsCot3 from '@/assets/images/img-hocba-tienganh/img-ielts-cot3.png';
-import imgNhanTin from '@/assets/images/img-hocba-tienganh/img-nhan-tin-banner.png';
+import imgCot1 from '@/assets/images/img-hocba-tienganh/img-cot1.png';
+import imgCot3 from '@/assets/images/img-hocba-tienganh/img-cot3.png';
+import imgCot2Vt1 from '@/assets/images/img-hocba-tienganh/img-cot2-vi-tri-1.png';
+import imgCot2Vt2 from '@/assets/images/img-hocba-tienganh/img-cot-2-vi-tri-2.png';
+import imgCot2Vt3 from '@/assets/images/img-hocba-tienganh/img-cot2-vi-tri-3.png';
+import imgCot2Vt4 from '@/assets/images/img-hocba-tienganh/img-cot2-vi-tri-4.png';
 
 // Roadmap assets
 import roadmapBg from '@/assets/images/home/roadmap/backgroud.webp';
@@ -559,9 +562,9 @@ export const IMAGES = {
     NhatQuan,
     TuanKiet,
     evidenceGallery: {
-      col1: [imgIeltsCot1, imgIeltsCot1, imgIeltsCot1],
-      col2: [imgNhanTin, imgNhanTin, imgNhanTin],
-      col3: [imgIeltsCot3, imgIeltsCot3, imgIeltsCot3],
+      col1: [imgCot1],
+      col2: [imgCot2Vt1, imgCot2Vt2, imgCot2Vt3, imgCot2Vt4],
+      col3: [imgCot3],
     },
   },
   post: {

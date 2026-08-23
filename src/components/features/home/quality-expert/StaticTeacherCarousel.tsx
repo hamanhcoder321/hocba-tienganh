@@ -61,19 +61,19 @@ const StaticTeacherCarousel = () => {
                 <div className="absolute inset-0 overflow-hidden rounded-[24px]">
                   {/* Large Background Circle behind avatar (Figma exact match) */}
                   <div 
-                    className="absolute top-6 left-1/2 -translate-x-1/2 size-[250px] md:size-[286px] rounded-full"
+                    className="absolute top-6 left-1/2 -translate-x-1/2 size-[192px] md:size-[286px] rounded-full"
                     style={{
-                      background: 'radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0) 0%, rgba(8, 59, 212, 0) 62.47%, rgba(162, 185, 255, 0.35) 86.84%, rgba(162, 185, 255, 0) 100%)'
+                      background: 'radial-gradient(50% 50% at 50% 50%, transparent 60%, rgba(162, 185, 255, 0.4) 100%)'
                     }}
                   />
                 </div>
 
                 {/* Badge */}
                 <div className={`absolute z-30 flex flex-col items-center justify-center rounded-[8px] md:rounded-[12.5px] border-[1.5px] md:border-[1.04px] border-white/90 bg-gradient-to-b from-[#FFA73A] to-[#FF8C00] px-2 py-1 md:px-[12.66px] md:py-[12px] shadow-md ${teacher.badgeBottom === 'BẢN XỨ' ? 'left-3 md:left-[14px] top-4 md:top-[34.5px] md:w-[83px] md:h-[54px]' : 'left-3 md:left-[27px] top-4 md:top-[31.5px] md:w-[57px] md:h-[59px]'}`}>
-                  <span className={`text-white whitespace-nowrap ${teacher.badgeBottom === 'BẢN XỨ' ? 'text-[7px] font-black md:text-[10.85px] md:leading-[12.5px] tracking-normal text-center lining-nums tabular-nums' : 'text-[7px] font-bold md:text-[9px] tracking-wide'}`}>
+                  <span className={`text-white whitespace-nowrap ${teacher.badgeBottom === 'BẢN XỨ' ? 'text-[8px] font-black md:text-[11px] md:leading-[12.5px] tracking-normal text-center' : 'text-[7px] font-bold md:text-[9px] tracking-wide'}`}>
                     {teacher.badgeTop}
                   </span>
-                  <span className={`font-black text-white whitespace-nowrap ${teacher.badgeBottom === 'BẢN XỨ' ? 'text-[7px] md:text-[10.85px] md:leading-[12.5px] tracking-normal text-center lining-nums tabular-nums' : 'text-lg leading-none md:text-xl mt-0.5'}`}>
+                  <span className={`font-black text-white whitespace-nowrap ${teacher.badgeBottom === 'BẢN XỨ' ? 'text-[10px] md:text-[15px] md:leading-[18px] tracking-normal text-center' : 'text-lg leading-none md:text-xl mt-0.5'}`}>
                     {teacher.badgeBottom}
                   </span>
                   {/* Decorative circles (bubbles) below the badge */}
