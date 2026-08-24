@@ -47,7 +47,7 @@ export default function AboutRegisterForm({
               id="name"
               type="text"
               {...form.register('name')}
-              placeholder="Nhập họ tên của bạn"
+              placeholder="Nguyên Van A"
               className={`h-12 rounded-lg border-0 bg-white text-[#504E4E] focus-visible:ring-white md:h-14 ${
                 form.formState.errors.name ? 'ring-2 ring-red-500' : ''
               }`}

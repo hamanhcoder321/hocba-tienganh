@@ -67,7 +67,7 @@ import hv_vttng_3 from '@/assets/images/introduce/hv_vttng_3.png';
 import hv_vttng_4 from '@/assets/images/introduce/hv_vttng_4.png';
 import instructor from '@/assets/images/introduce/instructor.webp';
 import kptt_sk from '@/assets/images/introduce/kptt_sk.png';
-import lich_su_hinh_thanh1 from '@/assets/images/introduce/lich_su_hinh_thanh1.webp';
+import lich_su_hinh_thanh1 from '@/assets/images/img-hocba-tienganh/img-giua-hinh-thanh.png';
 import lich_su_hinh_thanh2 from '@/assets/images/introduce/lich_su_hinh_thanh2.webp';
 import machine from '@/assets/images/introduce/machine.png';
 import minh_chau from '@/assets/images/introduce/minh_chau.webp';
