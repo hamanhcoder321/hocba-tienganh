@@ -94,7 +94,7 @@ export default function AISmartSlide({ icons, slides }: AISmartSlideProps) {
                       boxShadow: '1.73px 4.85px 8.66px 0px #FF6969',
                     }}
                   >
-                    <LalaIcon className="absolute -top-12 right-0 hidden h-auto w-[58px] rotate-45 -scale-x-100 xl:-top-16 xl:right-20 xl:flex xl:w-auto xl:rotate-0 xl:scale-x-100" />
+                    <LalaIcon className="text-[#AF0000] absolute -top-12 right-0 hidden h-auto w-[58px] rotate-45 -scale-x-100 xl:-top-16 xl:right-20 xl:flex xl:w-auto xl:rotate-0 xl:scale-x-100" />
                     <div className="mt-6 w-full xl:mt-[51px] xl:w-[444px]">
                       <div className="flex items-center gap-3">
                         <div className="flex size-[30px] flex-shrink-0 items-center justify-center rounded-full border border-white">

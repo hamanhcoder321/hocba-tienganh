@@ -41,7 +41,7 @@ import imgMinhAnh from '@/assets/images/img-hocba-tienganh/image-minh-anh.png';
 import imgNhatQuan from '@/assets/images/img-hocba-tienganh/image-nhat-quan.png';
 import imgThuHa from '@/assets/images/img-hocba-tienganh/img-thu-ha.png';
 import imgBannerCayIelts from '@/assets/images/img-hocba-tienganh/image-banner-cay-ielts.png';
-
+import imgBanner3 from '@/assets/images/img-hocba-tienganh/img-banner-3.png';
 
 const baseUrl = import.meta.env.PUBLIC_CLIENT_URL;
 
@@ -119,66 +119,58 @@ const listCourses = coursesData?.list || [];
 const smartTechnologyClass: SmartTechnologyClassItem[] = [
   {
     id: '01',
-    title: 'Study Plan Cá Nhân Hóa: Lộ Trình Minh Bạch – Loại Bỏ Mơ Hồ',
-    content:
-      'Bạn sẽ luôn biết mình đang ở đâu và cần làm gì tiếp theo trong quá trình học mà không cần tốn thời gian suy nghĩ.',
-    subContent: [
-      '⭐ Lộ trình minh bạch, theo sát tiến độ từng buổi học',
-      '⭐ Nền tảng vững chắc, chuẩn hóa Từ vựng & Ngữ pháp HSK 3.0 trước khi luyện chuyên sâu.',
-      '⭐ Phát triển toàn diện 5 kỹ năng, cam kết không hổng kiến thức.',
-    ],
-    mainImage: IMAGES.khoaHsk.s1Main,
+    title: 'Nội dung cập nhật sau, xin cảm ơn!',
+    content: '',
+    subContent: [],
+    mainImage: IMAGES.khoaHsk.imgScroll1,
     subImages: [
-      { image: IMAGES.khoaHsk.s1Sub1, position: 'bottom-left', isMobile: false },
-      { image: IMAGES.khoaHsk.s1Sub2, position: 'bottom-right', isMobile: true },
+      { image: IMAGES.khoaHsk.imgScrollGocTrai1, position: 'bottom-left', isMobile: true },
+      { image: IMAGES.khoaHsk.imgScrollGocPhai1, position: 'bottom-right', isMobile: true },
     ],
   },
   {
     id: '02',
-    title: 'Quản Trị Tiến Độ Trực Quan: Duy Trì Động Lực Mỗi Ngày',
-    content:
-      'Học Bá biến việc học thành một hành trình chinh phục đầy hứng khởi thông qua các chỉ số hiển thị rõ ràng.',
-    subContent: [
-      '⭐ Kiểm soát tiến độ, trực quan hóa kết quả học tập qua chỉ số real-time cụ thể.',
-      '⭐ Chủ động thời gian, tự do thiết kế lịch học và rèn luyện tính tự giác.',
-      '⭐ Cảnh báo thông minh, nhắc nhở kịp thời và "vực dậy" tinh thần nếu bạn lỡ xao nhãng.',
-    ],
-    mainImage: IMAGES.khoaHsk.s2Main,
+    title: 'Nội dung cập nhật sau, xin cảm ơn!',
+    content: '',
+    subContent: [],
+    mainImage: IMAGES.khoaHsk.imgScroll2,
     subImages: [
-      { image: IMAGES.khoaHsk.s2Sub1, position: 'bottom-left', isMobile: false },
-      { image: IMAGES.khoaHsk.s2Sub4, position: 'top-right-inner', isMobile: true },
+      { image: IMAGES.khoaHsk.imgScrollGocTrai2, position: 'bottom-left', isMobile: true },
+      { image: IMAGES.khoaHsk.imgScrollGocPhai2, position: 'top-right-inner', isMobile: true },
     ],
   },
   {
     id: '03',
-    title: 'Công Nghệ AI Đột Phá: Chấm Chữa & Luyện Thi Thực Chiến',
-    content: 'Sở hữu sức mạnh công nghệ để tối ưu hóa kết quả thi cử.',
-    subContent: [
-      '⭐ Chấm chữa tức thì, "gia sư AI" phát hiện lỗi sai và trả kết quả ngay khi nộp bài.',
-      '⭐ Phòng thi ảo thực tế, trải nghiệm áp lực thi thật với hệ thống đếm ngược thời gian.',
-      '⭐ Đề thi chuẩn Hanban, ngân hàng đề bám sát 99% cấu trúc HSK 3.0 mới nhất.',
-    ],
-    mainImage: IMAGES.khoaHsk.s3Main,
+    title: 'Nội dung cập nhật sau, xin cảm ơn!',
+    content: '',
+    subContent: [],
+    mainImage: IMAGES.khoaHsk.imgScroll3,
     subImages: [
-      { image: IMAGES.khoaHsk.s3Sub1, position: 'bottom-left', isMobile: false },
-      { image: IMAGES.khoaHsk.s3Sub2, position: 'bottom-right', isMobile: true },
-      { image: IMAGES.khoaHsk.s3Sub3, position: 'bottom-left-inner', isMobile: true },
-      { image: IMAGES.khoaHsk.s3Sub4, position: 'top-right-inner', isMobile: true },
+      { image: IMAGES.khoaHsk.imgScrollGocDuoiGiua3, position: 'bottom-center', isMobile: true },
+      { image: IMAGES.khoaHsk.imgScrollGocPhaiTren3, position: 'top-right-inner', isMobile: true },
+      { image: IMAGES.khoaHsk.imgScrollGocPhaiDuoi3, position: 'middle-right', isMobile: true },
     ],
   },
   {
     id: '04',
-    title: 'Cơ Chế Đánh Giá & Củng Cố: Học Đến Đâu, Chắc Đến Đó',
-    content: 'LMS của Học Bá được thiết kế để kiến thức không bao giờ bị rơi rụng.',
-    subContent: [
-      '⭐ Ôn tập xen kẽ, kiến thức được củng cố tức thì thông qua lộ trình tích hợp khoa học.',
-      '⭐ Hệ thống đánh giá, phân tích chi tiết điểm mạnh/yếu và hiệu suất học tập.',
-      '⭐ Mentor hỗ trợ 1-1, đề xuất kế hoạch học bù và luyện tập thêm để lấp đầy lỗ hổng.',
-    ],
-    mainImage: IMAGES.khoaHsk.s4Main,
+    title: 'Nội dung cập nhật sau, xin cảm ơn!',
+    content: '',
+    subContent: [],
+    mainImage: IMAGES.khoaHsk.imgScroll4,
     subImages: [
-      { image: IMAGES.khoaHsk.s4Sub1, position: 'bottom-left', isMobile: false },
-      { image: IMAGES.khoaHsk.s4Sub4, position: 'top-right-inner', isMobile: true },
+      { image: IMAGES.khoaHsk.imgScrollGocDuoiGiua4, position: 'bottom-center-wide', isMobile: true },
+      { image: IMAGES.khoaHsk.imgScrollGocPhai4, position: 'top-right-inner', isMobile: true },
+    ],
+  },
+  {
+    id: '05',
+    title: 'Nội dung cập nhật sau, xin cảm ơn!',
+    content: '',
+    subContent: [],
+    mainImage: IMAGES.khoaHsk.imgScroll5,
+    subImages: [
+      { image: IMAGES.khoaHsk.imgScrollGocPhaiTren5, position: 'top-right-inner', isMobile: true },
+      { image: IMAGES.khoaHsk.imgScrollGocPhaiDuoi5, position: 'bottom-right', isMobile: true },
     ],
   },
 ];
@@ -604,206 +596,171 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
         </div>
       </div>
     </section>
-    <section class="w-full bg-sunset2 md:bg-sunset">
-      <div class="xl:px-20 3xl:px-[256px]">
-        <div class="relative mx-auto flex w-[290px] flex-col items-center gap-2 pt-9 md:w-[690px] md:pt-11">
-          <Image
+
+    
+    <section class="relative w-full h-auto xl:h-[783px] overflow-hidden bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#FFD0AF] via-[#083AD4] to-[#052284]">
+      <div class="relative w-full max-w-[1440px] h-auto xl:h-full mx-auto xl:pb-0">
+        <div class="relative mx-auto flex w-[95%] flex-col items-center gap-[10px] mt-4 xl:mt-0 xl:absolute xl:top-[55px] xl:left-[389px] xl:w-fit xl:max-w-[691px] xl:h-fit z-20">
+          <!-- <Image
             src={IMAGES.introduce.book_icon}
             alt={'book_icon'}
             width={92}
             height={92}
             densities={[1, 2]}
-            class={'object-cover size-10 md:size-[92px] absolute top-6 md:top-10 -left-4 md:-left-20 -scale-x-100 -rotate-12'}
-          />
-          <div
-            class="rounded-[2px] bg-white px-6 py-1 text-sm font-black text-primary md:rounded-[5px] md:px-14 md:py-4 md:text-[28px]"
-          >
-            Không còn nỗi lo bỏ cuộc
+            class={'absolute top-6 md:top-10 -left-4 md:-left-20'}
+          /> -->
+          <div class="bg-white text-center text-[11px] md:text-[28px] font-black leading-[1.3] text-[#EA580C] w-[284px] md:w-full md:max-w-[500px] xl:max-w-none rounded-[5px] py-[8px] px-[16px] md:px-2">
+            Học nhiều hơn chưa chắc đã hiệu quả hơn.
           </div>
-          <h2 class="text-center text-lg font-black uppercase leading-snug text-white md:text-[42px]">
-            Chắc chắn chạm tay vào tấm bằng HSK với Học Bá
+          <h2 class="w-[358px] md:w-full h-auto text-[24px] md:text-[42px] font-black leading-[32px] md:leading-[1.3] text-center uppercase text-white">
+            GẠT MỌI NỖI LO <br /> ĐẠT AIM KHÔNG KHÓ!
           </h2>
-          <p class="mt-2 px-2 text-center text-[10px] font-normal text-white md:px-16 md:text-base">
-            <span class="font-black">Giải pháp luyện thi HSK 3.0 đột phá!</span> Xóa bỏ tư duy học vẹt, thay thế bằng hệ thống
-            6 TRỤ CỘT SỨC MẠNH chuyên biệt. Đây là "Chìa khóa vàng" giúp bạn chinh phục HSK 3.0 nhàn nhã mà vẫn đạt hiệu quả
-            bứt phá.
+          <p class="text-center text-[12px] md:text-[16px] font-medium leading-[1.3] text-white w-full max-w-[555px]">
+            Giải pháp luyện thi IELTS đột phá với hệ sinh thái học tập tích hợp thế hệ mới! Đây là "Chìa khoá vàng" giúp bạn chinh phục tấm chứng chỉ IELTS dễ dàng, nhanh chóng và hiệu quả gấp 3 lần phương pháp học truyền thống!
           </p>
-          <div class="absolute -right-6 top-5 z-50 flex w-fit md:-right-[4.5rem] md:top-10">
+          <div class="absolute right-[15%] top-[50px] md:-right-[4.5rem] md:top-10 z-50 flex w-fit">
             <FourPointedStarMini
-              className="absolute -bottom-2 -left-2 mt-auto size-3 rotate-90 md:-bottom-6 md:-left-2 md:size-7"
+              className="absolute -bottom-[2px] -right-[6px] md:-bottom-4 md:-right-6 w-[7px] h-[9px] md:w-auto md:h-auto"
               fromColor="#FFF8F8"
               toColor="#FFDF89"
             />
-            <FourPointedStar className="size-9 rotate-90 md:size-[72px]" fromColor="#FFF8F8" toColor="#FFDF89" />
+            <FourPointedStar className="w-[15px] h-[19px] md:w-auto md:h-auto" fromColor="#FFF8F8" toColor="#FFDF89" />
           </div>
         </div>
-        <div class="flex flex-col items-center">
-          <div class="relative h-auto w-full lg:h-[548px] lg:w-[842px]">
+        <div class="flex flex-col items-center w-full">
+          <div class="relative flex flex-col items-center h-auto w-full xl:w-auto xl:h-auto mt-8 xl:mt-0 px-4 md:px-6 xl:px-0 xl:static">
             <div
-              class="mt-6 grid h-full w-full grid-cols-2 gap-x-[10px] px-[18px] lg:absolute lg:left-0 lg:right-0 lg:top-0"
+              class="grid h-auto w-full max-w-2xl grid-cols-2 gap-[10px] xl:block relative xl:static z-10 xl:z-auto"
             >
-              <div class="col-span-1 h-[54px]">
-                <div
-                  class="group col-span-1 h-auto rounded-[5px] bg-white px-2 py-1 transition-all duration-700 hover:h-[50px] hover:px-[5px] hover:py-[3px] md:px-[10px] lg:absolute lg:-left-[26%] lg:top-0 lg:h-[92px] lg:w-[415px] lg:rounded-xl lg:px-6 lg:py-[3px] hover:lg:h-[116px] hover:lg:px-[10px] hover:lg:py-[6px]"
-                >
-                  <div
-                    class="flex h-full items-center gap-2 rounded-[2px] bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-2 transition-all duration-700 group-hover:from-[#B90E0A] group-hover:to-[#F3C650] md:gap-3 md:px-3 lg:h-full lg:rounded-[6px]"
-                  >
-                    <div class="flex size-6 items-center justify-center md:size-8 lg:mx-[14px] lg:size-[65px]">
+              <div class="col-span-1 h-auto xl:absolute xl:top-[342px] xl:left-[111px] w-full xl:w-full xl:w-[333px] xl:h-[81px]">
+                <div class="flex h-full w-full items-center justify-center rounded-[12px] bg-white p-[2px] xl:p-0">
+                  <div class="flex w-full xl:w-[303px] h-full min-h-[50px] xl:h-[70px] items-center gap-[4px] xl:gap-[8px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
+                    <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px]">
                       <FourPointedStar
-                        className="size-[10px] flex-shrink-0 text-white transition-all duration-700 group-hover:size-6 lg:size-7 group-hover:lg:size-10"
+                        className="flex-shrink-0 w-[21.46px] h-[21.46px] rotate-45"
                         toColor="#FFFFFF"
                         fromColor="#FFFFFF"
                       />
                     </div>
-                    <h3
-                      class="text-[7px] font-bold uppercase leading-[1.3] text-white md:text-xs md:leading-normal lg:text-[20px] lg:leading-[1.4]"
-                    >
-                      Lộ trình "May đo" cá nhân hóa – Tiết kiệm 50% thời gian học
+                    <h3 class="w-full xl:w-[243px] font-sans text-[8.5px] md:text-[11px] xl:text-[14px] font-bold uppercase leading-[1.2] xl:leading-[1.3] text-white">
+                      LỘ TRÌNH SIÊU CÁ NHÂN HÓA - TIẾT KIỆM 80% THỜI GIAN HỌC
                     </h3>
                   </div>
                 </div>
               </div>
-              <div class="col-span-1 h-[54px]">
-                <div
-                  class="group col-span-1 h-auto rounded-[5px] bg-white px-2 py-1 transition-all duration-700 hover:h-[50px] hover:px-[5px] hover:py-[3px] md:px-[10px] lg:absolute lg:-right-[30%] lg:top-0 lg:h-[92px] lg:w-[415px] lg:rounded-xl lg:px-6 lg:py-[3px] hover:lg:h-[116px] hover:lg:px-[10px] hover:lg:py-[6px]"
-                >
-                  <div
-                    class="flex h-full items-center gap-2 rounded-[2px] bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-2 transition-all duration-700 group-hover:from-[#B90E0A] group-hover:to-[#F3C650] md:gap-3 md:px-3 lg:h-full lg:rounded-[6px]"
-                  >
-                    <div class="flex size-6 items-center justify-center md:size-8 lg:mx-[14px] lg:size-[65px]">
+              <div class="col-span-1 h-auto xl:absolute xl:top-[600px] xl:left-[971px] w-full xl:w-full xl:w-[333px] xl:h-[81px]">
+                <div class="flex h-full w-full items-center justify-center rounded-[12px] bg-white p-[2px] xl:p-0">
+                  <div class="flex w-full xl:w-[303px] h-full min-h-[50px] xl:h-[70px] items-center gap-[4px] xl:gap-[8px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
+                    <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px]">
                       <FourPointedStar
-                        className="size-[10px] flex-shrink-0 text-white transition-all duration-700 group-hover:size-6 lg:size-6 group-hover:lg:size-10"
+                        className="flex-shrink-0 w-[21.46px] h-[21.46px] rotate-45"
                         toColor="#FFFFFF"
                         fromColor="#FFFFFF"
                       />
                     </div>
-                    <h3
-                      class="text-[7px] font-bold uppercase leading-[1.3] text-white md:text-xs md:leading-normal lg:text-[20px] lg:leading-[1.4]"
-                    >
-                      Chương trình Chuẩn khung 9 cấp – Đi tắt đón đầu format 3.0
+                    <h3 class="w-full xl:w-[243px] font-sans text-[8.5px] md:text-[11px] xl:text-[14px] font-bold uppercase leading-[1.2] xl:leading-[1.3] text-white">
+                      BỘ TỪ ĐIỂN THÔNG MINH - HỌC TỪ VỰNG CHƯA BAO GIỜ DỄ DÀNG ĐẾN THẾ!
                     </h3>
                   </div>
                 </div>
               </div>
-              <div class="col-span-1 h-[54px]">
-                <div
-                  class="group col-span-1 h-auto rounded-[5px] bg-white px-2 py-1 transition-all duration-700 hover:h-[50px] hover:px-[5px] hover:py-[3px] md:px-[10px] lg:absolute lg:-left-[32%] lg:top-[28%] lg:h-[92px] lg:w-[415px] lg:rounded-xl lg:px-6 lg:py-[3px] hover:lg:h-[116px] hover:lg:px-[10px] hover:lg:py-[6px]"
-                >
-                  <div
-                    class="flex h-full items-center gap-2 rounded-[2px] bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-2 transition-all duration-700 group-hover:from-[#B90E0A] group-hover:to-[#F3C650] md:gap-3 md:px-3 lg:h-full lg:rounded-[6px]"
-                  >
-                    <div class="flex size-6 items-center justify-center md:size-8 lg:mx-[14px] lg:size-[65px]">
+              <div class="col-span-1 h-auto xl:absolute xl:top-[342px] xl:left-[971px] w-full xl:w-full xl:w-[333px] xl:h-[81px]">
+                <div class="flex h-full w-full items-center justify-center rounded-[12px] bg-white p-[2px] xl:p-0">
+                  <div class="flex w-full xl:w-[303px] h-full min-h-[50px] xl:h-[70px] items-center gap-[4px] xl:gap-[8px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
+                    <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px]">
                       <FourPointedStar
-                        className="size-[10px] flex-shrink-0 text-white transition-all duration-700 group-hover:size-6 lg:size-6 group-hover:lg:size-10"
+                        className="flex-shrink-0 w-[21.46px] h-[21.46px] rotate-45"
                         toColor="#FFFFFF"
                         fromColor="#FFFFFF"
                       />
                     </div>
-                    <h3
-                      class="text-[7px] font-bold uppercase leading-[1.3] text-white md:text-xs md:leading-normal lg:text-[20px] lg:leading-[1.4]"
-                    >
-                      Đội ngũ Giảng viên & Mentor – Những người truyền lửa tận tâm
+                    <h3 class="w-full xl:w-[243px] font-sans text-[8.5px] md:text-[11px] xl:text-[14px] font-bold uppercase leading-[1.2] xl:leading-[1.3] text-white">
+                      ĐỘI NGŨ GIẢNG VIÊN & MENTOR CHỌN LỌC - NHỮNG NGƯỜI GIỮ LỬA VÀ TRUYỀN LỬA
                     </h3>
                   </div>
                 </div>
               </div>
-              <div class="col-span-1 h-[54px]">
-                <div
-                  class="group col-span-1 h-auto rounded-[5px] bg-white px-2 py-1 transition-all duration-700 hover:h-[50px] hover:px-[5px] hover:py-[3px] md:px-[10px] lg:absolute lg:-right-[37%] lg:top-[28%] lg:h-[92px] lg:w-[415px] lg:rounded-xl lg:px-6 lg:py-[3px] hover:lg:h-[116px] hover:lg:px-[10px] hover:lg:py-[6px]"
-                >
-                  <div
-                    class="flex h-full items-center gap-2 rounded-[2px] bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-2 transition-all duration-700 group-hover:from-[#B90E0A] group-hover:to-[#F3C650] md:gap-3 md:px-3 lg:h-full lg:rounded-[6px]"
-                  >
-                    <div class="flex size-6 items-center justify-center md:size-8 lg:mx-[14px] lg:size-[65px]">
+              <div class="col-span-1 h-auto xl:absolute xl:top-[471px] xl:left-[75px] w-full xl:w-full xl:w-[333px] xl:h-[81px]">
+                <div class="flex h-full w-full items-center justify-center rounded-[12px] bg-white p-[2px] xl:p-0">
+                  <div class="flex w-full xl:w-[303px] h-full min-h-[50px] xl:h-[70px] items-center gap-[4px] xl:gap-[8px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
+                    <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px]">
                       <FourPointedStar
-                        className="size-[10px] flex-shrink-0 text-white transition-all duration-700 group-hover:size-6 lg:size-6 group-hover:lg:size-10"
+                        className="flex-shrink-0 w-[21.46px] h-[21.46px] rotate-45"
                         toColor="#FFFFFF"
                         fromColor="#FFFFFF"
                       />
                     </div>
-                    <h3
-                      class="text-[7px] font-bold uppercase leading-[1.3] text-white md:text-xs md:leading-normal lg:text-[20px] lg:leading-[1.4]"
-                    >
-                      Phương pháp dạy độc quyền: Hiểu sâu - Nhớ lâu - Thực chiến
+                    <h3 class="w-full xl:w-[243px] font-sans text-[8.5px] md:text-[11px] xl:text-[14px] font-bold uppercase leading-[1.2] xl:leading-[1.3] text-white">
+                      PHƯƠNG PHÁP HỌC ĐỘC QUYỀN space by tes - X3 HIỆU QUẢ
                     </h3>
                   </div>
                 </div>
               </div>
-              <div class="col-span-1 h-[54px]">
-                <div
-                  class="group col-span-1 h-auto rounded-[5px] bg-white px-2 py-1 transition-all duration-700 hover:h-[50px] hover:px-[5px] hover:py-[3px] md:px-[10px] lg:absolute lg:-left-[26%] lg:top-[55%] lg:h-[92px] lg:w-[415px] lg:rounded-xl lg:px-6 lg:py-[3px] hover:lg:h-[116px] hover:lg:px-[10px] hover:lg:py-[6px]"
-                >
-                  <div
-                    class="flex h-full items-center gap-2 rounded-[2px] bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-2 transition-all duration-700 group-hover:from-[#B90E0A] group-hover:to-[#F3C650] md:gap-3 md:px-3 lg:h-full lg:rounded-[6px]"
-                  >
-                    <div class="flex size-6 items-center justify-center md:size-8 lg:mx-[14px] lg:size-[65px]">
+              <div class="col-span-1 h-auto xl:absolute xl:top-[600px] xl:left-[111px] w-full xl:w-full xl:w-[333px] xl:h-[81px]">
+                <div class="flex h-full w-full items-center justify-center rounded-[12px] bg-white p-[2px] xl:p-0">
+                  <div class="flex w-full xl:w-[303px] h-full min-h-[50px] xl:h-[70px] items-center gap-[4px] xl:gap-[8px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
+                    <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px]">
                       <FourPointedStar
-                        className="size-[10px] flex-shrink-0 text-white transition-all duration-700 group-hover:size-6 lg:size-6 group-hover:lg:size-10"
+                        className="flex-shrink-0 w-[21.46px] h-[21.46px] rotate-45"
                         toColor="#FFFFFF"
                         fromColor="#FFFFFF"
                       />
                     </div>
-                    <h3
-                      class="text-[7px] font-bold uppercase leading-[1.3] text-white md:text-xs md:leading-normal lg:text-[20px] lg:leading-[1.4]"
-                    >
-                      LMS thông minh tích hợp AI - "Gia sư ảo" 24/7
+                    <h3 class="w-full xl:w-[243px] font-sans text-[8.5px] md:text-[11px] xl:text-[14px] font-bold uppercase leading-[1.2] xl:leading-[1.3] text-white">
+                      LMS E-space TÍCH HỢP AI - LUYỆN TẬP THÔNG MINH VÀ TOÀN DIỆN 4 KỸ NĂNG
                     </h3>
                   </div>
                 </div>
               </div>
-              <div class="col-span-1 h-[54px]">
-                <div
-                  class="group col-span-1 h-auto rounded-[5px] bg-white px-2 py-1 transition-all duration-700 hover:h-[50px] hover:px-[5px] hover:py-[3px] md:px-[10px] lg:absolute lg:-right-[30%] lg:top-[55%] lg:h-[92px] lg:w-[415px] lg:rounded-xl lg:px-6 lg:py-[3px] hover:lg:h-[116px] hover:lg:px-[10px] hover:lg:py-[6px]"
-                >
-                  <div
-                    class="flex h-full items-center gap-2 rounded-[2px] bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-2 transition-all duration-700 group-hover:from-[#B90E0A] group-hover:to-[#F3C650] md:gap-3 md:px-3 lg:h-full lg:rounded-[6px]"
-                  >
-                    <div class="flex size-6 items-center justify-center md:size-8 lg:mx-[14px] lg:size-[65px]">
+              <div class="col-span-1 h-auto xl:absolute xl:top-[471px] xl:left-[1004px] w-full xl:w-full xl:w-[333px] xl:h-[81px]">
+                <div class="flex h-full w-full items-center justify-center rounded-[12px] bg-white p-[2px] xl:p-0">
+                  <div class="flex w-full xl:w-[303px] h-full min-h-[50px] xl:h-[70px] items-center gap-[4px] xl:gap-[8px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
+                    <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px]">
                       <FourPointedStar
-                        className="size-[10px] flex-shrink-0 text-white transition-all duration-700 group-hover:size-6 lg:size-6 group-hover:lg:size-10"
+                        className="flex-shrink-0 w-[21.46px] h-[21.46px] rotate-45"
                         toColor="#FFFFFF"
                         fromColor="#FFFFFF"
                       />
                     </div>
-                    <h3
-                      class="text-[7px] font-bold uppercase leading-[1.3] text-white md:text-xs md:leading-normal lg:text-[20px] lg:leading-[1.4]"
-                    >
-                      Phát triển toàn diện 5 kỹ năng: Nghe – Nói – Đọc – Viết – Dịch
+                    <h3 class="w-full xl:w-[243px] font-sans text-[8.5px] md:text-[11px] xl:text-[14px] font-bold uppercase leading-[1.2] xl:leading-[1.3] text-white">
+                      DASHBOARD TRỰC QUAN HOÁ DỮ LIỆU HỌC TẬP
                     </h3>
                   </div>
                 </div>
               </div>
             </div>
             <Image
-              src={IMAGES.khoaHsk.hskPgsHbc}
-              width={842}
-              height={548}
-              alt={'hskPgsHbc'}
+              src={imgBanner3}
+              width={750}
+              height={738}
+              alt={'imgBanner3'}
               densities={[1, 2]}
               loading={'lazy'}
-              class={'object-contain w-full h-full lg:flex hidden'}
+              class={'relative xl:absolute -mt-6 md:-mt-10 xl:mt-0 xl:top-[60px] xl:left-[310px] w-[550px] md:w-[650px] max-w-none xl:max-w-[750px] xl:w-[750px] h-auto xl:h-[738px] opacity-100 rotate-0 flex object-contain object-bottom z-0'}
             />
           </div>
         </div>
       </div>
     </section>
+
+
     <section class="w-full overflow-hidden">
       <div class="relative mx-auto mt-11 h-auto w-full md:mt-20 md:w-[1178px]">
         <div class="relative z-20 mx-auto flex w-fit items-center gap-6 px-6 md:px-10">
           <div class="absolute -top-5 left-1 z-50 flex w-fit md:-left-[5rem] md:-top-12">
-            <FourPointedStarMini
+            <!-- <FourPointedStarMini
               className="absolute -bottom-3 -right-3 mt-auto size-4 md:-bottom-4 md:-right-7 md:size-7"
             />
-            <FourPointedStar className="size-[26px] md:size-[72px]" />
+            <FourPointedStar className="size-[26px] md:size-[72px]" /> -->
           </div>
           <h2
-            class="text-nowrap px-6 text-center text-lg font-black uppercase leading-tight text-primary md:px-0 md:text-[42px]"
+            class="text-nowrap px-6 text-center text-lg font-black uppercase leading-tight text-[#D16112] md:px-0 md:text-[42px]"
           >
-            Lớp học công nghệ thông minh
+            LMS E-SPACE
           </h2>
         </div>
-        <div class="relative z-20 text-center text-lg font-bold text-[#1E242C] md:mt-3 md:text-[42px]">
+        <div class="relative z-20 mt-1 text-center text-[15px] font-normal leading-snug text-[#1E242C] md:mt-3 md:text-[32px] md:leading-[1.2]">
+          Lớp học công nghệ thông minh -<br />
           Khơi nguồn cảm xúc học tập
         </div>
         <div class={'relative z-50'}>
@@ -829,6 +786,8 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
         </div>
       </div>
     </section>
+
+    
     <div class="overflow-hidden">
       <section class="relative pb-5">
         <div class="flex h-[52px] items-center justify-center gap-2 bg-primary px-20 md:h-[122px] md:gap-2 md:px-0">

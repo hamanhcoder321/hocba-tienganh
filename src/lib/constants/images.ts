@@ -385,6 +385,22 @@ import huychuong from '@/assets/images/student-achievements/huy-chuong.png';
 import hvdcMaiMai from '@/assets/images/student-achievements/hvdc-mai-mai.png';
 import hvdcNgocHang from '@/assets/images/student-achievements/hvdc-ngoc-hang.png';
 import hvdcTienVu from '@/assets/images/student-achievements/hvdc-tien-vu.png';
+import imgScroll1 from '@/assets/images/img-hocba-tienganh/img-scroll-1.png';
+import imgScrollGocTrai1 from '@/assets/images/img-hocba-tienganh/img-scroll-goc-trai-1.png';
+import imgScrollGocPhai1 from '@/assets/images/img-hocba-tienganh/img-scroll-goc-phai-1.png';
+import imgScroll2 from '@/assets/images/img-hocba-tienganh/img-scroll-2.png';
+import imgScrollGocTrai2 from '@/assets/images/img-hocba-tienganh/img-scroll-goc-trai-2.png';
+import imgScrollGocPhai2 from '@/assets/images/img-hocba-tienganh/img-scroll-goc-phai-2.png';
+import imgScroll3 from '@/assets/images/img-hocba-tienganh/img-scroll-3.png';
+import imgScrollGocPhaiTren3 from '@/assets/images/img-hocba-tienganh/img-scroll-goc-phai-tren-3.png';
+import imgScrollGocPhaiDuoi3 from '@/assets/images/img-hocba-tienganh/img-scroll-goc-phai-duoi-3.png';
+import imgScrollGocDuoiGiua3 from '@/assets/images/img-hocba-tienganh/img-scroll-goc-duoi-giua-3.png';
+import imgScroll4 from '@/assets/images/img-hocba-tienganh/img-scroll-4.png';
+import imgScrollGocDuoiGiua4 from '@/assets/images/img-hocba-tienganh/img-scroll-goc-duoi-giua-4.png';
+import imgScrollGocPhai4 from '@/assets/images/img-hocba-tienganh/img-scroll-goc-phai-4.png';
+import imgScroll5 from '@/assets/images/img-hocba-tienganh/img-scroll-5.png';
+import imgScrollGocPhaiTren5 from '@/assets/images/img-hocba-tienganh/img-scroll-goc-phai-tren-5.png';
+import imgScrollGocPhaiDuoi5 from '@/assets/images/img-hocba-tienganh/img-scroll-goc-phai-duoi-5.png';
 
 // Ảnh dùng cho astro
 export const IMAGES = {
@@ -468,6 +484,7 @@ export const IMAGES = {
     registerIcon1Chinese,
   },
   khoaHsk: {
+    imgScroll1, imgScrollGocTrai1, imgScrollGocPhai1, imgScroll2, imgScrollGocTrai2, imgScrollGocPhai2, imgScroll3, imgScrollGocPhaiTren3, imgScrollGocPhaiDuoi3, imgScrollGocDuoiGiua3, imgScroll4, imgScrollGocDuoiGiua4, imgScrollGocPhai4, imgScroll5, imgScrollGocPhaiTren5, imgScrollGocPhaiDuoi5,
     heroImage1,
     heroImage2,
     heroImage,

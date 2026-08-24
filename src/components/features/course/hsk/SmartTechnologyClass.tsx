@@ -15,7 +15,7 @@ export type SmartTechnologyClassItem = {
   subImages: {
     image: any;
     isMobile?: boolean;
-    position: 'bottom-left' | 'bottom-right' | 'bottom-left-inner' | 'top-right-inner';
+    position: 'bottom-left' | 'bottom-right' | 'bottom-left-inner' | 'top-right-inner' | 'bottom-center-wide' | 'bottom-center' | 'middle-right';
   }[];
 };
 
@@ -84,19 +84,19 @@ export default function SmartTechnologyClass({ icons, slides }: SmartTechnologyC
             return (
               <CarouselItem key={slide.id} className="h-[660px] basis-full pl-0 md:h-[635px] lg:basis-[1178px]">
                 <div className="mx-auto w-full px-6 lg:w-[932px] lg:px-0">
-                  <div className="relative z-50 mx-auto -mb-5 flex h-10 w-16 items-center justify-center rounded-[37px] border-[3px] border-white bg-gradient-to-l from-[#B90E0A] to-[#7D1900] text-[22px] font-black text-white md:mx-0 md:mb-3 md:h-[60px] md:w-[98px] md:text-[33px]">
+                  <div className="relative z-50 mx-auto -mb-5 flex h-10 w-16 items-center justify-center rounded-[37px] border-[3px] border-white bg-gradient-to-l from-[#083AD4] to-[#052284] text-[22px] font-black text-white md:mx-0 md:mb-3 md:h-[60px] md:w-[98px] md:text-[33px]">
                     {slide.id}
                   </div>
                   <div
                     className={
-                      'relative flex h-auto w-full flex-col gap-x-4 rounded-sm bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-4 pb-9 pt-[30px] lg:h-[480px] lg:flex-row lg:rounded-xl lg:p-6'
+                      'relative flex h-auto w-full flex-col gap-x-4 rounded-sm bg-gradient-to-l from-[#083AD4] to-[#052284] px-4 pb-9 pt-[30px] lg:h-[480px] lg:flex-row lg:rounded-xl lg:p-6'
                     }
                     style={{
-                      boxShadow: '1.73px 4.85px 8.66px 0px #FF6969',
+                      boxShadow: '1.73px 4.85px 8.66px 0px #083AD440',
                     }}
                   >
-                    <LalaIcon className="absolute -top-12 right-0 hidden h-auto w-[58px] rotate-45 -scale-x-100 md:-top-16 md:right-20 md:flex md:w-auto md:rotate-0 md:scale-x-100" />
-                    <LalalaIcon className="absolute -bottom-20 left-[68px] hidden md:flex" />
+                    <LalaIcon className="text-[#FDE68A] absolute -top-12 right-0 hidden h-auto w-[58px] rotate-45 -scale-x-100 md:-top-16 md:right-20 md:flex md:w-auto md:rotate-0 md:scale-x-100" />
+                    <LalalaIcon className="text-[#FDE68A] absolute -bottom-20 left-[68px] hidden md:flex" />
                     <div className="w-full lg:w-[413px]">
                       <h3 className="flex h-auto w-full items-center rounded-[24px] bg-white px-4 text-center text-[15px] font-black uppercase text-primary lg:h-[92px] lg:rounded-[84px] lg:px-8 lg:text-[20px]">
                         {slide.title}
@@ -125,11 +125,17 @@ export default function SmartTechnologyClass({ icons, slides }: SmartTechnologyC
                           const positionClasses = {
                             'bottom-left': 'absolute -bottom-[40px] md:-bottom-[60px] -left-2 md:-left-[20px] lg:-left-[50px] w-[180px] md:w-[220px] lg:w-[266px] h-auto',
                             'bottom-right':
-                              'absolute bottom-20 md:bottom-10 lg:bottom-0 -right-[10px] md:-right-[20px] lg:-right-[76px] w-[146px] md:w-[156px] h-11 md:h-[82px]',
+                              'absolute bottom-20 md:bottom-10 lg:bottom-0 -right-[10px] md:-right-[20px] lg:-right-[76px] w-[146px] md:w-[156px] h-auto',
                             'bottom-left-inner':
-                              'absolute -bottom-[10px] md:bottom-[60px] lg:bottom-[105px] -right-[6px] md:-right-[20px] lg:-right-[104px] w-[142px] md:w-[160px] lg:w-[184px] h-20 md:h-[100px] lg:h-[114px]',
+                              'absolute -bottom-[10px] md:bottom-[60px] lg:bottom-[105px] -right-[6px] md:-right-[20px] lg:-right-[104px] w-[142px] md:w-[160px] lg:w-[184px] h-auto',
                             'top-right-inner':
                               'absolute -top-4 md:top-4 lg:top-4 right-[30%] md:right-[5%] lg:-right-[104px] w-[140px] md:w-[160px] lg:w-[184px] h-auto lg:h-[172px]',
+                            'bottom-center-wide':
+                              'absolute -bottom-[20px] md:-bottom-[30px] lg:-bottom-[40px] left-1/2 -translate-x-1/2 w-[90%] lg:w-[420px] h-auto',
+                            'bottom-center':
+                              'absolute -bottom-[20px] md:-bottom-[30px] lg:-bottom-[40px] left-1/2 -translate-x-1/2 w-[160px] md:w-[200px] lg:w-[240px] h-auto',
+                            'middle-right':
+                              'absolute top-[60%] -translate-y-1/2 -right-[10px] md:-right-[20px] lg:-right-[76px] w-[146px] md:w-[156px] h-auto',
                           };
 
                           return (
