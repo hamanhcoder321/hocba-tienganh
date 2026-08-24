@@ -245,7 +245,7 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                 >
                   
                   <h4 className="sr-only">Chi tiết lộ trình: {stage.title} - {stage.subtitle}</h4>
-                  <ul className="ml-6 space-y-4 text-white/90 text-[15px] md:text-[20px] font-normal md:leading-[47px]">
+                  <ul className="md:ml-6 space-y-4 text-white/90 text-[15px] md:text-[20px] font-normal md:leading-[47px]">
                     {stage.details.map((detail, idx) => (
                       <li key={idx} className={cn("flex items-start gap-2.5", detail.startsWith('-') && "ml-[14px] md:ml-[15px]")}>
                         {!detail.startsWith('-') && (
