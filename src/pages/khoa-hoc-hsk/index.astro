@@ -37,6 +37,10 @@ import type { Graph } from 'schema-dts';
 import GroupAvatarStudent from '@/components/common/GroupAvatarStudent.astro';
 import FormRegisterCourseHSK from '@/components/features/course/hsk/FormRegisterCourseHSK.astro';
 import imgBannerKhoaHoc from '@/assets/images/img-hocba-tienganh/img-banner-khoa-hoc.png';
+import imgMinhAnh from '@/assets/images/img-hocba-tienganh/image-minh-anh.png';
+import imgNhatQuan from '@/assets/images/img-hocba-tienganh/image-nhat-quan.png';
+import imgThuHa from '@/assets/images/img-hocba-tienganh/img-thu-ha.png';
+import imgBannerCayIelts from '@/assets/images/img-hocba-tienganh/image-banner-cay-ielts.png';
 
 
 const baseUrl = import.meta.env.PUBLIC_CLIENT_URL;
@@ -379,27 +383,27 @@ const qaData = [
 const swimmingNoHopeData = [
   {
     id: 1,
-    title: `"Lạc lối" giữa biển kiến thức khổng lồ`,
+    title: "Học lan man -<br/>Càng học càng rối",
     content:
-      'Bạn mua đủ loại giáo trình, tải mọi bộ tài liệu trên mạng nhưng không biết bắt đầu từ đâu, càng học càng thấy đuối.',
-  },
-  {
-    id: 3,
-    title: ` "Học câm" và nỗi lo thiếu kỹ năng thực tế`,
-    content:
-      'Sẽ ra sao nếu bạn có chứng chỉ HSK nhưng không thể dịch nổi một văn bản hành chính đơn giản hay ấp úng khi phỏng vấn với sếp người Trung?',
+      'Tải đủ mọi tài liệu, xem vô số video, học đủ mọi tips nhưng không biết bắt đầu từ đâu, học như thế nào, đâu mới là kiến thức mình thực sự cần.',
   },
   {
     id: 2,
-    title: `Sợ hãi trước "Quái vật" HSK 3.0`,
+    title: "Không có phương pháp<br/>- Học trước quên sau",
     content:
-      'HSK 3.0 lên tới 9 cấp với lượng từ vựng tăng vọt (từ 5.000 lên hơn 11.000 từ). Cấu trúc đề thay đổi hoàn toàn với các phần thi mới lạ.',
+      'Học vẹt, ghi nhớ máy móc khiến kiến thức nhanh chóng bị lãng quên và khó vận dụng khi làm bài. Học viên phải học đi học lại cùng một nội dung nhưng vẫn không hiểu bản chất, tốn nhiều thời gian mà hiệu quả không tương xứng.',
+  },
+  {
+    id: 3,
+    title: "Học nhiều nhưng không<br/>biết phát triển và ứng<br/>dụng",
+    content:
+      'Học rất chắc lý thuyết, mẹo làm bài nhưng phải "đầu hàng" trước những đề cần tư duy. Bí ý khi Speaking, diễn đạt thiếu tự nhiên trong Writing và khó vận dụng tiếng Anh vào môi trường thực tế.',
   },
   {
     id: 4,
-    title: `Học đâu quên đó – Thiếu môi trường tương tác thực chiến`,
+    title: "Không tiến bộ làm<br/>chậm tiến độ",
     content:
-      'Tự học khiến bạn nhanh nản, gặp cấu trúc khó không biết hỏi ai, viết bài luận không ai sửa lỗi, phát âm sai không ai uốn nắn.',
+      'Bạn có khả năng bị chậm Deadline nộp hồ sơ vì học mãi không tiến bộ khiến lộ trình học bị kéo dài. Không ai theo sát, không có đo lường, không biết mình có đi đúng tiến độ không?',
   },
 ];
 
@@ -439,8 +443,9 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
   <JsonLd data={jsonLd} />
   <div class="relative">
     <section
-      class="relative flex h-auto w-full flex-col overflow-hidden bg-gradient-to-r from-[#FFEBE9] to-[#FFFDFD] px-4 pb-6 md:pb-16 xl:px-0"
+      class="relative flex h-auto xl:h-[846px] w-full flex-col bg-gradient-to-b from-[#FFFFFF] via-[#EEF4FF] to-[#DCE8FF] px-4 pb-6 md:pb-16 xl:px-0"
     >
+      <div class="relative w-full max-w-[1440px] h-full mx-auto">
       <Breadcrumb className="container mt-4 px-4 md:px-0">
         <BreadcrumbList className="text-foreground text-xs md:text-lg">
           <BreadcrumbItem>
@@ -454,232 +459,147 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <div class="grid w-full grid-cols-1 md:grid-cols-2 xl:px-20 3xl:px-[256px]">
-        <div class="col-span-1 ml-9 mr-9 mt-8 flex flex-col items-center md:ml-0 md:mt-[60px] xl:mr-10 3xl:mr-20">
-          <div class="relative mr-7 flex w-full items-center gap-6 md:mx-0 md:px-10">
-            <VectorArrow
-              toColor="#AF0000"
-              fromColor="#AF0000"
-              className={'absolute -top-1 left-[1%] size-4 object-cover transition-opacity duration-500 md:-top-4 md:left-2 md:size-8'}
-            />
-            <div class="absolute -right-[10%] -top-4 z-50 flex w-fit md:-right-10 md:-top-8">
-              <FourPointedStarMini
-                className="absolute -bottom-2 -left-2 mt-auto size-3 md:-bottom-6 md:-left-2 md:size-7"
-              />
-              <FourPointedStar className="size-9 md:size-[72px]" />
-            </div>
-            <h1
-              class="w-full text-nowrap px-0 text-center text-[26px] font-black uppercase leading-tight text-primary md:px-6 md:text-[32px] lg:text-[42px] xl:text-[52px]"
-            >
-              Lộ trình luyện thi <br /> HSK toàn diện
-            </h1>
+      <div class="relative xl:static w-full h-full flex flex-col items-center gap-6 xl:block xl:gap-0 pt-8 xl:pt-0">
+        
+        <!-- Khối H1 -->
+        <div class="w-[358px] md:w-[600px] lg:w-[699px] h-[72px] md:h-auto mx-auto flex flex-col items-center justify-center gap-[8px] relative xl:absolute xl:top-[107px] xl:left-0 xl:w-[699px] xl:h-[128px] xl:block z-10">
+          <div class="absolute left-0 top-0 w-[25px] h-[159px] md:left-[20px] lg:left-[40px] xl:left-[20px] xl:-top-[15px] xl:w-[30px] xl:h-[159px]">
+            <VectorArrow fromColor="#FFA500" toColor="#4A72F0" stopOffset="0.2" className="w-[13px] h-[14px] md:w-[20px] md:h-[21px] xl:w-[30px] xl:h-[31px]" />
           </div>
-          <div class="mt-4 flex w-full flex-col items-center md:w-[380px] lg:w-[450px] xl:w-[495px]">
-            <div class="relative">
-              <button
-                onclick="document.getElementById('xay-dung-lo-trinh')?.scrollIntoView({ behavior: 'smooth' })"
-                class="relative z-50 cursor-pointer rounded-md bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-10 py-1 text-[28px] font-black uppercase text-white md:rounded-xl md:px-12 md:py-2 md:text-[36px] lg:px-16 lg:py-3 lg:text-[42px] xl:px-20 xl:text-[56px]"
-              >
-                TỪ 0 → HSK6
-              </button>
-              <div
-                class="absolute left-1/2 top-1/2 z-0 hidden h-[80px] w-[260px] -translate-x-1/2 -translate-y-1/2 rounded-xl border-[4px] border-white bg-white md:flex lg:h-[100px] lg:w-[320px] lg:border-[6px] xl:h-[120px] xl:w-[378px]"
-                style="box-shadow: 3px 4px 4px 0px #FC644140;"
-              >
-              </div>
-            </div>
-            <p
-              class="mt-4 px-0 text-justify text-xs leading-normal md:mt-11 md:px-0 md:text-base lg:text-lg xl:text-[22px]"
-            >
-              <strong>Khóa học chuẩn HSK 3.0</strong> với lộ trình cá nhân hóa chuyên sâu, giúp bạn đạt chứng chỉ đúng mục
-              tiêu, đồng thời <strong>tiết kiệm tới 80% thời gian và chi phí</strong> so với phương pháp ôn luyện truyền thống
-            </p>
-          </div>
+          <h1 class="text-[#072899] font-black uppercase text-center text-[26px] md:text-[32px] lg:text-[42px] xl:text-[52px] xl:leading-[64px] w-full">LỘ TRÌNH LUYỆN THI IELTS<br /> TOÀN DIỆN 4 KỸ NĂNG</h1>
         </div>
-        <div class="col-span-1 mt-4 flex items-center justify-center md:mt-28">
-          <div class="relative h-[281px] w-[312px] md:h-auto md:max-h-[695px] md:w-[771px]">
-            <div
-              class="absolute -left-2 top-[29%] z-10 flex w-fit items-center gap-2 rounded bg-gradient-to-l from-[#B90E0A] to-[#F3C650] px-2 py-1 md:-left-5 md:top-[29%] md:rounded-lg md:px-3 md:py-2 lg:px-4 lg:py-3"
-            >
-              <FourPointedStar
-                className="size-[6px] text-white md:size-3 lg:size-4"
-                toColor="#FFFFFF"
-                fromColor="#FFFFFF"
-              />
-              <p class="text-[8px] font-black uppercase italic text-white md:text-sm lg:text-lg xl:text-[20px]">
-                Sự nghiệp rực rỡ
-              </p>
-            </div>
-            <div
-              class="absolute left-[9%] top-[13%] z-10 flex w-fit items-center gap-2 rounded bg-gradient-to-l from-[#B90E0A] to-[#F3C650] px-2 py-1 md:left-[8%] md:top-[13%] md:rounded-lg md:px-3 md:py-2 lg:px-4 lg:py-3"
-            >
-              <FourPointedStar
-                className="size-[6px] text-white md:size-3 lg:size-4"
-                toColor="#FFFFFF"
-                fromColor="#FFFFFF"
-              />
-              <p class="text-[8px] font-black uppercase italic text-white md:text-sm lg:text-lg xl:text-[20px]">
-                Thi cử vững vàng
-              </p>
-            </div>
-            <div
-              class="absolute left-[38%] top-2 z-10 flex w-fit items-center gap-2 rounded bg-gradient-to-l from-[#B90E0A] to-[#F3C650] px-2 py-1 md:left-[40%] md:top-0 md:rounded-lg md:px-3 md:py-2 lg:px-4 lg:py-3"
-            >
-              <FourPointedStar
-                className="size-[6px] text-white md:size-3 lg:size-4"
-                toColor="#FFFFFF"
-                fromColor="#FFFFFF"
-              />
-              <p class="text-[8px] font-black uppercase italic text-white md:text-sm lg:text-lg xl:text-[20px]">
-                Lộ trình tinh gọn
-              </p>
-            </div>
-            <Image
-              src={IMAGES.khoaHsk.heroImage}
-              width={771}
-              height={695}
-              alt={'heroImage'}
-              class={'object-cover w-full h-auto z-50 relative'}
-              densities={[1, 2]}
-            />
-            <!-- <Image
-              src={imgBannerKhoaHoc}
-              width={642}
-              height={814}
-              alt={'heroImage'}
-              class={'object-cover w-full h-auto z-50 relative'}
-              densities={[1, 2]}
-            /> -->
-          </div>
-        </div>
-        <div class="flex flex-col items-center md:mr-12 xl:-mt-[90px] xl:mr-24 2xl:-mt-[176px]">
-          <button
-            onclick="document.getElementById('dang-ki-tu-van').scrollIntoView({ behavior: 'smooth' })"
-            class="group mt-2 flex h-8 w-fit items-center gap-4 rounded-full bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-4 text-[15px] font-black uppercase text-white transition-all duration-300 hover:from-[#B90E0A] hover:to-[#F3C650] md:mt-0 md:h-[50px] md:px-6 md:text-xl lg:h-[60px] lg:px-8 lg:text-[28px]"
-          >
-            <svg
-              viewBox="0 0 18 21"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-[14px] w-[12px] transition-transform duration-300 group-hover:scale-150 md:h-[21px] md:w-[18px]"
-            >
-              <path d="M18 10.3923L-9.78799e-07 20.7846L-7.02746e-08 2.87771e-05L18 10.3923Z" fill="white"></path>
-            </svg>
+        
+        <!-- Nút TỪ 0 -> 8.0+ -->
+        <button 
+          onclick="document.getElementById('xay-dung-lo-trinh')?.scrollIntoView({ behavior: 'smooth' })"
+          class="w-[358px] md:w-[450px] lg:w-[481px] h-[45px] md:h-[60px] lg:h-[80px] rounded-[12px] px-[20px] py-[10px] xl:absolute xl:top-[273px] xl:left-[114px] xl:w-[481px] xl:h-[115px] xl:rounded-[11.5px] xl:p-[11.5px] flex items-center justify-center gap-[6px] bg-[#052284] text-white font-black uppercase text-[24px] md:text-[32px] lg:text-[40px] xl:text-[56px] leading-none text-center z-20"
+        >
+          <span class="w-full h-full xl:w-[408px] xl:h-[59px] flex items-center justify-center">TỪ 0 &rarr; 8.0+</span>
+        </button>
+        
+        <!-- Paragraph -->
+        <p class="w-[358px] md:w-[600px] lg:w-[699px] text-center xl:absolute xl:top-[417px] xl:left-[114px] xl:w-[495px] xl:h-[140px] xl:text-[22px] xl:leading-[28px] font-normal text-[#373737] z-20 xl:text-justify">
+          Khóa học IELTS tại <strong>THE IELTS SPACE</strong> với hệ sinh thái học tập tích hợp sẽ giúp bạn nắm chắc chứng chỉ IELTS trong tầm tay, x3 hiệu quả đồng thời tiết kiệm tới 80% thời gian và chi phí so với phương pháp ôn luyện truyền thống.
+        </p>
 
-            <span class="text-nowrap transition-transform duration-300 group-hover:translate-x-2"
-              >Nhận tư vấn lộ trình</span
-            >
-          </button>
+        <!-- Khối Ảnh Hero & Badges -->
+        <div class="relative w-full max-w-[358px] md:max-w-[500px] lg:max-w-[642px] xl:max-w-none xl:absolute z-10 xl:top-[32px] xl:left-[636px] xl:w-[642px] xl:h-[814px] mt-4 xl:mt-0">
+          <Image
+            src={imgBannerKhoaHoc}
+            class="w-full h-auto xl:h-full xl:w-full object-cover object-top"
+            alt=""
+            width={642}
+            height={814}
+            densities={[1.5, 2]}
+            loading={'eager'}
+            quality={95}
+          />
+
+          <!-- Các nhãn trang trí (đặt tương đối với Ảnh Hero) -->
+          <div class="absolute top-[5%] left-[20%] xl:top-[18px] xl:left-[169px] w-[157px] md:w-[200px] h-[33px] md:h-[40px] xl:w-[245px] xl:h-[52px] flex items-center justify-center gap-[5.65px] md:gap-[7px] xl:gap-[8.81px] rounded-[5.65px] md:rounded-[7px] xl:rounded-[8.81px] p-[9.04px] md:p-[11px] xl:p-[14.1px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] z-20 shadow-md">
+            <FourPointedStar className="size-3 md:size-4 text-white" toColor="#FFFFFF" fromColor="#FFFFFF" />
+            <p class="text-white font-black uppercase italic text-[12px] md:text-[16px] xl:text-[20px]">LỘ TRÌNH TINH GỌN</p>
+          </div>
+          <div class="absolute top-[20%] -left-[5%] xl:top-[149px] xl:left-[26px] w-[158px] md:w-[200px] h-[34px] md:h-[40px] xl:w-[242px] xl:h-[52px] flex items-center justify-center gap-[5.72px] md:gap-[7px] xl:gap-[8.81px] rounded-[5.72px] md:rounded-[7px] xl:rounded-[8.81px] p-[9.15px] md:p-[11px] xl:p-[14.1px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] z-20 shadow-md">
+            <FourPointedStar className="size-3 md:size-4 text-white" toColor="#FFFFFF" fromColor="#FFFFFF" />
+            <p class="text-white font-black uppercase italic text-[12px] md:text-[16px] xl:text-[20px]">THI CỬ VỮNG VÀNG</p>
+          </div>
+          <div class="absolute top-[35%] left-[5%] xl:top-[313px] xl:-left-[26px] w-[158px] md:w-[200px] h-[33px] md:h-[40px] xl:w-[247px] xl:h-[52px] flex items-center justify-center gap-[5.6px] md:gap-[7px] xl:gap-[8.81px] rounded-[5.6px] md:rounded-[7px] xl:rounded-[8.81px] p-[8.96px] md:p-[11px] xl:p-[14.1px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] z-20 shadow-md">
+            <FourPointedStar className="size-3 md:size-4 text-white" toColor="#FFFFFF" fromColor="#FFFFFF" />
+            <p class="text-white font-black uppercase italic text-[12px] md:text-[16px] xl:text-[20px]">ĐẠT AIM ĐÚNG HẠN</p>
+          </div>
+        </div>
+
+        <!-- Nhận tư vấn lộ trình Button -->
+        <button 
+          onclick="document.getElementById('dang-ki-tu-van').scrollIntoView({ behavior: 'smooth' })"
+          class="relative w-[358px] md:w-[400px] h-[50px] md:h-[60px] xl:absolute xl:top-[625px] xl:left-[114px] xl:w-[400px] xl:h-[60px] flex items-center justify-center gap-[6px] rounded-[86px] p-[11.5px] bg-[#F97316] hover:bg-gradient-to-l hover:from-[#B90E0A] hover:to-[#F3C650] transition-all duration-300 text-white font-black uppercase text-[18px] md:text-[22px] xl:text-[28px] group z-20 mt-4 xl:mt-0"
+        >
+          <svg viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-[14px] h-[16px] xl:w-[18px] xl:h-[21px] transition-transform duration-300 group-hover:scale-125">
+            <path d="M18 10.3923L-9.78799e-07 20.7846L-7.02746e-08 2.87771e-05L18 10.3923Z" fill="white"></path>
+          </svg>
+          <span class="text-nowrap transition-transform duration-300 group-hover:translate-x-2">Nhận tư vấn lộ trình</span>
+        </button>
+        
+        <!-- Khối Học Viên (Group Avatar) -->
+        <div class="relative w-[358px] h-[60px] xl:absolute z-20 xl:top-[676px] xl:left-[114px] xl:w-[394px] xl:h-[80px] flex items-center gap-[14.5px] rounded-[18.1px] p-[10px] xl:p-[14.5px] [&_.flex.items-center>div:nth-child(1)>img]:scale-100 [&_.flex.items-center>div:nth-child(2)>img]:scale-[2.5] [&_.flex.items-center>div:nth-child(3)>img]:scale-[2.5]">
           <GroupAvatarStudent
-            link={linkFbRedirect}
-            avatars={[IMAGES.detailLectuter.outstandingStudent1, IMAGES.khoaHsk.target4Hsk, IMAGES.khoaHsk.avatarHsk1]}
+            link="https://www.facebook.com/spaceielts"
+            avatars={[imgMinhAnh, imgNhatQuan, imgThuHa]}
+            numberText="11.000 +"
+            descText="Đã và đang học tại THE IELTS SPACE"
+            classTarget="text-[#D65E19]"
+            classContent="text-[#475467]"
           />
         </div>
+
+      </div>
       </div>
     </section>
-    <section>
-      <div class="flex items-center justify-center gap-2 bg-primary px-11 py-[14px] md:gap-2 md:px-0 md:py-9">
-        <div id="dot-indicators" class="relative size-6 flex-shrink-0 md:size-[60px]">
-          <div
-            class="dot-item absolute inset-0 flex cursor-pointer items-center justify-center rounded-full border border-white transition-opacity duration-500"
-            onclick="document.getElementById('slide-hoc-vien-xuat-sac')?.scrollIntoView({ behavior: 'smooth' })"
-          >
-            <div class="size-2 rounded-full bg-white md:size-[10px]"></div>
-          </div>
-          <div
-            class="dot-item absolute inset-0 flex cursor-pointer items-center justify-center rounded-full border border-white opacity-0 transition-opacity duration-500"
-            onclick="document.getElementById('slide-hoc-vien-xuat-sac')?.scrollIntoView({ behavior: 'smooth' })"
-          >
-            <div class="size-2 rounded-full bg-white md:size-5"></div>
-          </div>
-          <div
-            class="dot-item absolute inset-0 flex cursor-pointer items-center justify-center rounded-full border-2 border-white opacity-0 transition-opacity duration-500"
-            onclick="document.getElementById('slide-hoc-vien-xuat-sac')?.scrollIntoView({ behavior: 'smooth' })"
-          >
-            <div class="size-2 rounded-full border border-white bg-primary md:size-[34px]"></div>
-          </div>
-        </div>
-        <p class="text-center text-[15px] font-bold capitalize leading-tight text-white md:text-[28px]">
-          Học Bá đã giúp <span
-            class="mx-2 inline-block origin-bottom translate-y-[2px] scale-x-125 scale-y-125 text-[15px] font-black leading-[120%] text-[#F3C650] md:mx-3 md:translate-y-1 md:text-[32px]"
-            >5.200+</span
-          > học viên Chinh phục thành công mục tiêu HSK
+    <section class="w-full bg-gradient-to-r from-[#083AD4] to-[#3464F8]">
+      <div class="flex w-full md:max-w-[1440px] md:h-[122px] mx-auto items-center justify-center px-4 py-[24px] md:px-0">
+        <p class="w-full md:max-w-[1137px] md:h-[74px] flex flex-wrap items-center justify-center text-center text-[15px] font-bold capitalize leading-none text-white md:text-[28px]">
+          THE IELTS SPACE đã giúp <span
+            class="mx-2 inline-block origin-bottom text-[15px] font-black text-[#F3C650] md:mx-3 md:text-[32px]"
+            >6.200+</span
+          > học viên Chinh phục thành công mục tiêu IELTS
         </p>
       </div>
-      <div class="h-auto bg-[#F5F5F5] pb-4 pt-4 md:h-[768px] md:pt-14">
-        <h2 class="sr-only">HSK 3.0 đã cận kề nhưng bạn có đang bơi trong vô vọng</h2>
+      <div class="h-auto w-full overflow-hidden bg-white pb-10 pt-4 md:min-h-[836px] md:pb-24 md:pt-14">
+        <div class="mx-auto w-full max-w-[1440px] h-full">
+        <h2 class="sr-only">CÀY IELTS MÃI KHÔNG TĂNG BAND?</h2>
         <div class="mx-auto flex w-fit items-center">
           <div class="relative mx-auto ml-4 flex items-center">
-            <p class="w-fit text-center text-lg font-black uppercase leading-normal md:text-[42px]">
-              <span class="relative bg-gradient-to-l from-[#B90E0A] to-[#7D1900] bg-clip-text text-transparent">
-                <VectorArrow
-                  toColor="#AF0000"
-                  fromColor="#AF0000"
-                  className={'absolute -left-4 -top-1 size-4 object-cover transition-opacity duration-500 md:-left-10 md:top-0 md:size-8'}
-                />
-                HSK 3.0 ĐÃ CẬN KỀ
+            <p class="relative w-fit text-center text-lg font-black uppercase leading-normal md:text-[42px] md:w-[948px] md:h-[67px] flex items-center justify-center">
+              <VectorArrow
+                fromColor="#FFA500"
+                toColor="#4A72F0"
+                stopOffset="0.2"
+                className={'hidden md:block absolute -left-4 top-1/2 -translate-y-1/2 size-4 object-cover transition-opacity duration-500 md:-left-[24px] md:size-8'}
+              />
+              <span class="text-[#D16112]">
+                CÀY IELTS MÃI
               </span>
-              <span class="text-[#373737]">NHƯNG BẠN CÓ ĐANG</span>
+              <span class="text-[#D16112] ml-2">KHÔNG TĂNG BAND?</span>
             </p>
           </div>
         </div>
         <div
-          class="mx-auto mt-2 w-fit rounded-sm border-[1.6px] border-[#373737] px-4 py-0 text-lg font-black uppercase text-[#373737] md:rounded-xl md:border-4 md:py-[14px] md:text-[42px]"
+          class="mx-auto mt-2 flex w-[90%] md:max-w-[969px] items-center justify-center rounded-sm border-[1.6px] border-[#373737] px-4 py-2 text-center text-[13px] whitespace-nowrap font-black uppercase text-[#373737] md:min-h-[64px] md:rounded-[11.5px] md:border-[4px] md:p-[11.5px] md:text-[42px] md:whitespace-normal"
         >
-          Bơi trong vô vọng
+          CÓ THỂ BẠN ĐANG RƠI VÀO VÒNG LẶP NÀY
         </div>
-        <div class="flex w-full gap-10 xl:px-20 3xl:px-[256px]">
-          <div class="group hidden h-[527px] w-[385px] flex-shrink-0 items-center justify-center md:flex">
-            <div
-              class="relative size-[385px] rounded-full bg-gradient-to-bl from-[#D9D9D900] to-[#737373] opacity-80 transition-all group-hover:size-[327px]"
-            >
-              <div
-                class="bounce-on-hover absolute -top-12 left-0 z-50 h-[527px] w-full transition-all group-hover:-top-[98px] group-hover:left-[2%] group-hover:w-[294px]"
-              >
-                <Image
-                  src={IMAGES.khoaHsk.boiTrongVoVong}
-                  width={357}
-                  height={620}
-                  alt={'boiTrongVoVong'}
-                  class={'object-contain w-full h-full filter grayscale contrast-150 group-hover:rotate-12 transition-all duration-700 '}
-                />
-              </div>
-              <NoHope1Icon
-                className="bounce-on-hover z-2 absolute -top-11 right-[26%] transition-all duration-700 group-hover:-top-7 group-hover:right-[90%] group-hover:[--r:-35deg]"
-              />
-              <NoHope2Icon
-                className="bounce-on-hover absolute left-[18%] top-[36%] z-50 transition-all duration-700 group-hover:-top-[30%] group-hover:left-[3%] group-hover:h-[124px] group-hover:w-[67px]"
-              />
-              <NoHope3Icon
-                className="bounce-on-hover absolute right-[4%] top-10 z-50 transition-all duration-700 group-hover:-right-[15%] group-hover:-top-10 group-hover:h-[54px] group-hover:w-[116px] group-hover:rotate-12"
-              />
-              <NoHope4Icon
-                className="bounce-on-hover absolute right-[12%] top-[45%] z-50 contrast-150 transition-all duration-700 group-hover:right-[2%] group-hover:top-[38%] group-hover:[--r:-24deg]"
-              />
-              <NoHope3Icon
-                className="z-1 bounce-on-hover absolute left-[12%] top-[64%] h-[66px] w-[145px] opacity-25 transition-all duration-700 group-hover:left-[1%] group-hover:top-[31%] group-hover:h-[124px] group-hover:w-[268px]"
-              />
-            </div>
+        <div class="mt-10 flex w-full flex-col md:flex-row items-center md:items-end justify-center gap-6 md:gap-10 px-4 md:mt-20 xl:px-0">
+          <div class="flex w-full md:w-[40%] max-w-[537px] items-center justify-center">
+            <Image
+              src={imgBannerCayIelts}
+              width={537}
+              height={477}
+              alt="Cay IELTS"
+              class="w-full h-full object-contain"
+            />
           </div>
           <div
-            class="hsk-scrollbar ml-6 mt-8 grid select-none snap-x content-start gap-x-5 gap-y-5 overflow-x-auto pb-6 max-md:grid-flow-col max-md:grid-rows-2 md:ml-0 md:mt-16 md:grid-cols-2 md:gap-x-7 md:gap-y-8 md:pb-0"
+            class="flex-1 w-full md:max-w-[700px] flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-x-7 md:gap-y-8"
           >
             {
               swimmingNoHopeData.map((item) => (
-                <div class="group order-1 col-span-1 h-full w-[278px] flex-shrink-0 rounded-xl bg-white px-[14px] py-[10px] shadow-[0px_4px_4px_0px_#00000026] transition-colors duration-500 ease-in-out md:w-auto">
-                  <div class="h-1 w-8 rounded-lg bg-[#4D5756] transition-all duration-300 ease-in-out group-hover:w-16 group-hover:bg-[#6D0100] md:h-2 md:w-14 md:rounded-xl group-hover:md:w-[106px]" />
-                  <div class="mt-[10px] flex items-center gap-4 rounded-md bg-[#4D5756] pl-8 pr-4 transition-all duration-300 ease-in-out group-hover:bg-[#7D1900]">
-                    <p class="text-[30px] font-bold text-white transition-all duration-300 ease-in-out group-hover:text-[36px] md:text-[52px] group-hover:md:text-[62px]">
+                <div class:list={["w-full h-full rounded-xl bg-white px-[14px] py-[10px] shadow-[0px_4px_4px_0px_#00000026] transition-colors duration-500 ease-in-out", item.id <= 2 ? "group" : ""]}>
+                  <div class="mb-2 h-1.5 w-[38px] rounded-full bg-[#4D5756] transition-all duration-300 ease-in-out group-hover:w-[106px] group-hover:bg-[#083AD4]"></div>
+                  <div class="mt-[10px] flex w-full md:min-h-[72px] items-center gap-[8px] rounded-[6px] bg-[#4D5756] px-4 py-2 transition-all duration-300 ease-in-out group-hover:bg-[#083AD4]">
+                    <p class="origin-left text-[30px] font-black text-white transition-all duration-300 ease-in-out group-hover:scale-110 md:text-[42px]">
                       {`#${item.id}`}
                     </p>
-                    <h3 class="text-sm font-black leading-tight text-white md:text-[22px]">{item.title}</h3>
+                    <h3 class="text-sm font-medium leading-tight text-white md:text-[20px]" set:html={item.title}></h3>
                   </div>
-                  <div class="mt-1 text-[9px] font-normal transition-all duration-300 ease-in-out group-hover:font-bold md:text-base">
+                  <div class="mt-1 text-[11px] font-normal text-[#373737] transition-all duration-300 ease-in-out group-hover:font-bold group-hover:text-black md:text-[14px]">
                     {item.content}
                   </div>
                 </div>
               ))
             }
+          </div>
+        </div>
           </div>
         </div>
       </div>

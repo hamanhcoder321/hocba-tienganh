@@ -17,6 +17,7 @@ import { BlogCategoryMenuDesktop, BlogCategoryMenuMobile } from './BlogCategoryM
 import { NewsCategoryMenuDesktop, NewsCategoryMenuMobile } from './NewsCategoryMenuClient';
 import type { JSX } from 'astro/jsx-runtime';
 import { Image } from 'astro:assets';
+import imgLogoHeaderMobile from '@/assets/images/img-hocba-tienganh/img-logo-header.png';
 import { AlignJustify, ChevronDown } from 'lucide-react';
 import SearchTrigger from '@/components/common/search/SearchTrigger';
 
@@ -120,12 +121,12 @@ const { logo, siteName = 'Học Bá Education' } = Astro.props;
 
 <header
   id="header-nav"
-  class="bg-[#052284] sticky left-0 top-0 z-[99] w-full shadow-[0px_5px_18px_0px_rgba(0,0,0,0.25)] transition-transform duration-300"
+  class="bg-white lg:bg-[#052284] sticky left-0 top-0 z-[99] w-full shadow-[0px_5px_18px_0px_rgba(0,0,0,0.25)] transition-transform duration-300"
   role="banner"
 >
   <div class="relative">
     <nav
-      class="relative flex h-[64px] w-full items-center bg-[#052284] px-[20px] sm:px-[40px] lg:h-20 lg:bg-[#052284] lg:px-10 xl:px-14 2xl:px-24 3xl:px-[160px]"
+      class="relative flex h-[64px] w-full items-center bg-white lg:bg-[#052284] px-[20px] sm:px-[40px] lg:h-20 lg:px-10 xl:px-14 2xl:px-24 3xl:px-[160px]"
       role="navigation"
       aria-label="Menu chính"
     >
@@ -135,24 +136,32 @@ const { logo, siteName = 'Học Bá Education' } = Astro.props;
           <a href="/" class="flex-shrink-0 lg:-ml-6" aria-label="Trang chủ Học Bá">
             {
               typeof logo === 'string' && logo.startsWith('http') ? (
-                <img src={logo} alt={siteName} width="73" height="48" class="h-6 w-auto lg:h-12" loading="eager" />
+                <img src={logo} alt={siteName} width="73" height="48" class="hidden lg:block h-12 w-auto" loading="eager" />
               ) : (
                 <Image
                   width={73}
                   height={48}
-                  class={`h-6 w-auto lg:h-12`}
+                  class="hidden lg:block h-12 w-auto"
                   src={logo || IMAGES.logo}
                   alt={siteName}
                   densities={[1, 2]}
                 />
               )
             }
+            <Image
+              width={73}
+              height={48}
+              class="block lg:hidden h-6 w-auto"
+              src={imgLogoHeaderMobile}
+              alt={siteName}
+              densities={[1, 2]}
+            />
           </a>
           <div class="flex items-center justify-center lg:hidden">
             <button
               type="button"
               id="mobile-menu-button"
-              class="inline-flex items-center justify-center rounded-[3px] p-0 text-white"
+              class="inline-flex items-center justify-center rounded-[3px] p-0 text-[#052284]"
               aria-label="Mở menu"
               aria-expanded="false"
               aria-controls="mobile-menu"
@@ -292,20 +301,14 @@ const { logo, siteName = 'Học Bá Education' } = Astro.props;
         <div class="flex items-center justify-between border-b border-gray-200 p-4">
           <a href="/" class="flex-shrink-0 lg:ml-0" aria-label="Trang chủ Học Bá">
             {currentPath === '/' && <h1 class="sr-only">{siteName}</h1>}
-            {
-              typeof logo === 'string' && logo.startsWith('http') ? (
-                <img src={logo} alt={siteName} width="73" height="48" class="h-8 w-auto" />
-              ) : (
-                <Image
-                  width={73}
-                  height={48}
-                  class="h-8 w-auto"
-                  src={logo || IMAGES.logo}
-                  alt={siteName}
-                  densities={[1, 2]}
-                />
-              )
-            }
+            <Image
+              width={73}
+              height={48}
+              class="h-8 w-auto"
+              src={imgLogoHeaderMobile}
+              alt={siteName}
+              densities={[1, 2]}
+            />
           </a>
           <button
             type="button"

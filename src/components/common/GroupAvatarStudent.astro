@@ -6,10 +6,21 @@ type Props = {
   avatars: ImageMetadata[];
   classContent?: string;
   classTarget?: string;
+  classImage?: string;
   link: string;
+  numberText?: string;
+  descText?: string;
 };
 
-const { avatars = [], classContent, classTarget, link } = Astro.props as Props;
+const { 
+  avatars = [], 
+  classContent, 
+  classTarget, 
+  classImage, 
+  link,
+  numberText = "28.000 +",
+  descText = "Đã và đang học tại Học Bá"
+} = Astro.props as Props;
 ---
 
 <a
@@ -22,7 +33,7 @@ const { avatars = [], classContent, classTarget, link } = Astro.props as Props;
     {
       avatars.slice(0, 3).map((avatar, index) => (
         <div
-          class={`relative z-10 size-9 rounded-full border-2 border-white md:size-[50px] ${index !== 0 ? '-ml-2' : ''}`}
+          class={`relative overflow-hidden z-10 size-9 rounded-full border-2 border-white md:size-[50px] ${index !== 0 ? '-ml-2' : ''}`}
         >
           <Image
             src={avatar}
@@ -31,7 +42,7 @@ const { avatars = [], classContent, classTarget, link } = Astro.props as Props;
             alt={`avatar-${index}`}
             densities={[1, 2]}
             loading="lazy"
-            class="h-full w-full rounded-full object-cover object-top"
+            class={cn('h-full w-full rounded-full object-cover object-top', classImage)}
           />
         </div>
       ))
@@ -39,9 +50,9 @@ const { avatars = [], classContent, classTarget, link } = Astro.props as Props;
   </div>
 
   <div class={cn('relative z-10 ml-2 md:ml-4', classContent)}>
-    <p class="flex items-center text-xs font-medium">
-      <span class={cn('mr-1 text-lg font-black text-primary', classTarget)}>28.000 +</span> Học viên
+    <p class="flex items-center text-xs font-medium whitespace-nowrap">
+      <span class={cn('mr-1 text-lg font-black text-primary', classTarget)}>{numberText}</span> Học viên
     </p>
-    <p class="text-xs font-medium">Đã và đang học tại Học Bá</p>
+    <p class="text-xs font-medium whitespace-nowrap">{descText}</p>
   </div>
 </a>
