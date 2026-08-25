@@ -36,12 +36,12 @@ import { Check, CircleAlert } from 'lucide-react';
 import type { Graph } from 'schema-dts';
 import GroupAvatarStudent from '@/components/common/GroupAvatarStudent.astro';
 import FormRegisterCourseHSK from '@/components/features/course/hsk/FormRegisterCourseHSK.astro';
-import imgBannerKhoaHoc from '@/assets/images/img-hocba-tienganh/img-banner-khoa-hoc.png';
-import imgMinhAnh from '@/assets/images/img-hocba-tienganh/image-minh-anh.png';
-import imgNhatQuan from '@/assets/images/img-hocba-tienganh/image-nhat-quan.png';
-import imgThuHa from '@/assets/images/img-hocba-tienganh/img-thu-ha.png';
-import imgBannerCayIelts from '@/assets/images/img-hocba-tienganh/image-banner-cay-ielts.png';
-import imgBanner3 from '@/assets/images/img-hocba-tienganh/img-banner-3.png';
+import imgBannerKhoaHoc from '@/assets/images/img-hocba-tienganh-optimized/img-banner-khoa-hoc.webp';
+import imgMinhAnh from '@/assets/images/img-hocba-tienganh-optimized/image-minh-anh.webp';
+import imgNhatQuan from '@/assets/images/img-hocba-tienganh-optimized/image-nhat-quan.webp';
+import imgThuHa from '@/assets/images/img-hocba-tienganh-optimized/img-thu-ha.webp';
+import imgBannerCayIelts from '@/assets/images/img-hocba-tienganh-optimized/image-banner-cay-ielts.webp';
+import imgBanner3 from '@/assets/images/img-hocba-tienganh-optimized/img-banner-3.webp';
 
 const baseUrl = import.meta.env.PUBLIC_CLIENT_URL;
 
@@ -119,9 +119,13 @@ const listCourses = coursesData?.list || [];
 const smartTechnologyClass: SmartTechnologyClassItem[] = [
   {
     id: '01',
-    title: 'Nội dung cập nhật sau, xin cảm ơn!',
-    content: '',
-    subContent: [],
+    title: 'STUDY PLAN CÁ NHÂN HÓA: LỘ TRÌNH MINH BẠCH – LOẠI BỎ MƠ HỒ',
+    content: 'Bạn sẽ luôn biết mình đang ở đâu và cần làm gì tiếp theo trong quá trình học mà không cần tốn thời gian suy nghĩ.',
+    subContent: [
+      '⭐ Lộ trình minh bạch, theo sát tiến độ từng buổi học.',
+      '⭐ Nền tảng vững chắc, chuẩn hóa Từ vựng & phát triển toàn diện 4 kỹ năng.',
+      '⭐ Cam kết không hổng kiến thức.',
+    ],
     mainImage: IMAGES.khoaHsk.imgScroll1,
     subImages: [
       { image: IMAGES.khoaHsk.imgScrollGocTrai1, position: 'bottom-left', isMobile: true },
@@ -130,9 +134,13 @@ const smartTechnologyClass: SmartTechnologyClassItem[] = [
   },
   {
     id: '02',
-    title: 'Nội dung cập nhật sau, xin cảm ơn!',
-    content: '',
-    subContent: [],
+    title: 'QUẢN TRỊ TIẾN ĐỘ TRỰC QUAN: DUY TRÌ ĐỘNG LỰC MỖI NGÀY',
+    content: 'The IELTS Space biến việc học thành một hành trình chinh phục đầy hứng khởi thông qua các chỉ số hiển thị rõ ràng.',
+    subContent: [
+      '⭐ Kiểm soát tiến độ, trực quan hóa kết quả học tập qua chỉ số real-time cụ thể.',
+      '⭐ Chủ động thời gian, tự do thiết kế lịch học và rèn luyện tính tự giác.',
+      '⭐ Cảnh báo thông minh, nhắc nhở kịp thời và "vực dậy" tinh thần nếu bạn lỡ xao nhãng.',
+    ],
     mainImage: IMAGES.khoaHsk.imgScroll2,
     subImages: [
       { image: IMAGES.khoaHsk.imgScrollGocTrai2, position: 'bottom-left', isMobile: true },
@@ -141,9 +149,13 @@ const smartTechnologyClass: SmartTechnologyClassItem[] = [
   },
   {
     id: '03',
-    title: 'Nội dung cập nhật sau, xin cảm ơn!',
-    content: '',
-    subContent: [],
+    title: 'CÔNG NGHỆ AI ĐỘT PHÁ: CHẤM CHỮA & LUYỆN THI THỰC CHIẾN',
+    content: 'Sở hữu sức mạnh công nghệ để tối ưu hóa kết quả thi cử.',
+    subContent: [
+      '⭐ Chấm chữa tức thì, "gia sư AI" phát hiện lỗi sai và trả kết quả ngay khi nộp bài.',
+      '⭐ Phòng thi ảo thực tế, trải nghiệm áp lực thi thật với hệ thống đếm ngược thời gian.',
+      '⭐ Kho đề thi mô phỏng đa dạng, được đội ngũ chuyên môn nghiên cứu xây dựng bám sát format gốc',
+    ],
     mainImage: IMAGES.khoaHsk.imgScroll3,
     subImages: [
       { image: IMAGES.khoaHsk.imgScrollGocDuoiGiua3, position: 'bottom-center', isMobile: true },
@@ -153,9 +165,13 @@ const smartTechnologyClass: SmartTechnologyClassItem[] = [
   },
   {
     id: '04',
-    title: 'Nội dung cập nhật sau, xin cảm ơn!',
-    content: '',
-    subContent: [],
+    title: 'CƠ CHẾ ĐÁNH GIÁ & CỦNG CỐ: HỌC ĐẾN ĐÂU, CHẮC ĐẾN ĐÓ',
+    content: 'LMS của The IELTS Space được thiết kế để kiến thức không bao giờ bị rơi rụng.',
+    subContent: [
+      '⭐ Ôn tập xen kẽ, kiến thức được củng cố tức thì thông qua lộ trình tích hợp khoa học.',
+      '⭐ Hệ thống đánh giá, phân tích chi tiết điểm mạnh/yếu và hiệu suất học tập.',
+      '⭐ Mentor hỗ trợ 1-1, đề xuất kế hoạch học bù và luyện tập thêm để lấp đầy lỗ hổng.',
+    ],
     mainImage: IMAGES.khoaHsk.imgScroll4,
     subImages: [
       { image: IMAGES.khoaHsk.imgScrollGocDuoiGiua4, position: 'bottom-center-wide', isMobile: true },
@@ -164,9 +180,13 @@ const smartTechnologyClass: SmartTechnologyClassItem[] = [
   },
   {
     id: '05',
-    title: 'Nội dung cập nhật sau, xin cảm ơn!',
+    title: 'BỘ TỪ ĐIỂN HỌC TẬP THÔNG MINH: HỌC TỪ VỰNG CHỈ LÀ CHUYỆN NHỎ!',
     content: '',
-    subContent: [],
+    subContent: [
+      '⭐ Từ điển độc quyền với dữ liệu được tổng hợp từ các từ điển Quốc tế uy tín, mở rộng thêm collocation, từ đồng nghĩa, trái nghĩa, lưu ý sử dụng,...',
+      '⭐ Ứng dụng Spaced Repetition cùng đa dạng hình thức luyện tập: flashcard, điền từ, nối từ, minigame để tăng khả năng ghi nhớ và hứng thú học tập,...',
+      '⭐ Hệ thống hóa từ vựng theo chủ đề bằng Sơ đồ tư duy từ vựng, cho phép học viên tự bổ sung và mở rộng vốn từ trong sơ đồ.',
+    ],
     mainImage: IMAGES.khoaHsk.imgScroll5,
     subImages: [
       { image: IMAGES.khoaHsk.imgScrollGocPhaiTren5, position: 'top-right-inner', isMobile: true },

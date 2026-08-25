@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 
 import { cn } from '@/lib/utils';
 import { BookOpen } from 'lucide-react';
-import bookIcon from '@/assets/images/img-hocba-tienganh/icon-sach.png';
-import blockIcon from '@/assets/images/img-hocba-tienganh/img-ABC-Block.png';
-import rocketIcon from '@/assets/images/img-hocba-tienganh/icon-maybay.png';
-import chartIcon from '@/assets/images/img-hocba-tienganh/icon-growth.png';
-import telescopeIcon from '@/assets/images/img-hocba-tienganh/images-icon-chieu.png';
-import trophyIcon from '@/assets/images/img-hocba-tienganh/images-icon-cup.png';
+import bookIcon from '@/assets/images/img-hocba-tienganh-optimized/icon-sach.webp';
+import blockIcon from '@/assets/images/img-hocba-tienganh-optimized/img-ABC-Block.webp';
+import rocketIcon from '@/assets/images/img-hocba-tienganh-optimized/icon-maybay.webp';
+import chartIcon from '@/assets/images/img-hocba-tienganh-optimized/icon-growth.webp';
+import telescopeIcon from '@/assets/images/img-hocba-tienganh-optimized/images-icon-chieu.webp';
+import trophyIcon from '@/assets/images/img-hocba-tienganh-optimized/images-icon-cup.webp';
 
 
 interface RoadmapData {

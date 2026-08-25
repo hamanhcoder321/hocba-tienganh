@@ -98,7 +98,7 @@ export default function SmartTechnologyClass({ icons, slides }: SmartTechnologyC
                     <LalaIcon className="text-[#FDE68A] absolute -top-12 right-0 hidden h-auto w-[58px] rotate-45 -scale-x-100 md:-top-16 md:right-20 md:flex md:w-auto md:rotate-0 md:scale-x-100" />
                     <LalalaIcon className="text-[#FDE68A] absolute -bottom-20 left-[68px] hidden md:flex" />
                     <div className="w-full lg:w-[413px]">
-                      <h3 className="flex h-auto w-full items-center rounded-[24px] bg-white px-4 text-center text-[15px] font-black uppercase text-primary lg:h-[92px] lg:rounded-[84px] lg:px-8 lg:text-[20px]">
+                      <h3 className="flex h-auto w-full items-center rounded-[24px] bg-white px-4 text-center text-[15px] font-black uppercase text-[#D16112] lg:h-[92px] lg:rounded-[84px] lg:px-8 lg:text-[20px]">
                         {slide.title}
                       </h3>
                       <div className="mb-[34px] flex flex-col gap-y-1 px-0 pt-4 font-normal text-white md:px-[34px] lg:mb-0 lg:gap-y-2 lg:pt-[30px]">
@@ -143,9 +143,9 @@ export default function SmartTechnologyClass({ icons, slides }: SmartTechnologyC
                               key={index}
                               src={subImage.image}
                               width={266}
-                              height={12}
+                              height={200}
                               className={cn(
-                                'rounded-sm object-cover object-left-bottom md:rounded-xl',
+                                'rounded-sm object-contain md:rounded-xl',
                                 positionClasses[subImage.position],
                                 subImage.isMobile ? 'flex' : 'hidden md:flex',
                               )}

@@ -1,12 +1,12 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Plus } from 'lucide-react';
 
-import imgGv1 from '/src/assets/images/img-hocba-tienganh/gv-1.png';
-import imgGv2 from '/src/assets/images/img-hocba-tienganh/img-gv-2.png';
-import imgGv3 from '/src/assets/images/img-hocba-tienganh/gv-3.png';
-import imgGv4 from '/src/assets/images/img-hocba-tienganh/img-gv-4-Mai-Thu-Trang.png';
-import iconSearch from '/src/assets/images/img-hocba-tienganh/icon-search.png';
-import buttonScroll from '/src/assets/images/img-hocba-tienganh/button-scroll.png';
+import imgGv1 from '/src/assets/images/img-hocba-tienganh-optimized/gv-1.webp';
+import imgGv2 from '/src/assets/images/img-hocba-tienganh-optimized/img-gv-2.webp';
+import imgGv3 from '/src/assets/images/img-hocba-tienganh-optimized/gv-3.webp';
+import imgGv4 from '/src/assets/images/img-hocba-tienganh-optimized/img-gv-4-Mai-Thu-Trang.webp';
+import iconSearch from '/src/assets/images/img-hocba-tienganh-optimized/icon-search.webp';
+import buttonScroll from '/src/assets/images/img-hocba-tienganh-optimized/button-scroll.webp';
 
 const TEACHERS = [
   {

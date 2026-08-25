@@ -1,7 +1,7 @@
 import footerLogo from '@/assets/images/footer.svg';
 // import { default as favIcon, default as siteLogo } from '@/assets/images/site-logo.png'; // logo mặc định từ api
 import { default as favIcon } from '@/assets/images/site-logo.png'; // logo header mới 
-import siteLogo from '@/assets/images/img-hocba-tienganh/logo-hocba-tienganh.png';
+import siteLogo from '@/assets/images/img-hocba-tienganh-optimized/logo-hocba-tienganh.webp';
 import { IMAGES } from '@/lib/constants/images';
 
 export const SITE_SETTINGS = {
