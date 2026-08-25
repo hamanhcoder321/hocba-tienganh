@@ -159,7 +159,7 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
     const arrow = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
     arrow.setAttribute('points', `${x},${y} ${midX},${y} ${midX},${midY} ${x_2},${y_2}`);
     arrow.setAttribute('fill', 'none');
-    arrow.setAttribute('stroke', '#AF0000');
+    arrow.setAttribute('stroke', '#052284');
     arrow.setAttribute('strokeWidth', '1');
     arrow.setAttribute('stroke-dasharray', '2.5');
     arrow.setAttribute('marker-end', 'url(#arrowhead)');
@@ -167,7 +167,7 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
     const arrow_2 = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
     arrow_2.setAttribute('points', `${x_3},${y_2} ${midX_2},${y_2} ${midX_2},${midY_2} ${x_4},${y_4}`);
     arrow_2.setAttribute('fill', 'none');
-    arrow_2.setAttribute('stroke', '#AF0000');
+    arrow_2.setAttribute('stroke', '#052284');
     arrow_2.setAttribute('strokeWidth', '1');
     arrow_2.setAttribute('stroke-dasharray', '2.5');
     arrow_2.setAttribute('marker-end', 'url(#arrowhead)');
@@ -195,7 +195,7 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
       marker.setAttribute('refX', '6');
       marker.setAttribute('refY', '2');
       marker.setAttribute('orient', 'auto');
-      marker.innerHTML = `<polygon points="0 0, 6 2, 0 6" fill="#AF0000"/>`;
+      marker.innerHTML = `<polygon points="0 0, 6 2, 0 6" fill="#052284"/>`;
 
       defs.appendChild(marker);
     }
@@ -220,7 +220,7 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
       <div className="md:hidden">
         <div className="h-auto w-full">
           <div className="px-11">
-            <div className="bg-gradient-to-b from-[#FFF8F800] to-[#FFD3D3] px-6 py-8">
+            <div className="bg-gradient-to-b from-[#FFF8F800] to-[#B1C4FE] px-6 py-8">
               <div
                 className="relative h-fit w-full space-y-3 rounded-[28px] bg-white px-3 py-6 md:px-5 md:py-16"
                 style={{
@@ -228,14 +228,14 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
                 }}
               >
                 <div>
-                  <p className="mb-4 text-center text-lg font-bold text-primary">Chọn trình độ hiện tại</p>
+                  <p className="mb-4 text-center text-lg font-bold text-[#D16112]">Chọn trình độ hiện tại</p>
                   <div className="relative">
                     <Select
                       onValueChange={(field) => handleSetInputLevel(input.find((item) => item.id === field) || null)}
                       value={inputLevel?.id}
                     >
                       <SelectTrigger
-                        className="w-full cursor-pointer appearance-none rounded-[28px] border-none bg-primary text-[15px] font-medium text-white"
+                        className="w-full cursor-pointer appearance-none rounded-[28px] border-none bg-[#052284] text-[15px] font-medium text-white"
                         style={{
                           boxShadow: '0px 1.41px 1.41px 0px #00000040',
                         }}
@@ -256,7 +256,7 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
                 </div>
                 <div className="relative left-1/2 h-4 w-[120%] -translate-x-1/2 border-b border-[rgba(113,113,113,0.18)]" />
                 <div>
-                  <p className="mb-4 text-center text-lg font-bold text-primary">Chọn đầu ra mong muốn</p>
+                  <p className="mb-4 text-center text-lg font-bold text-[#D16112]">Chọn đầu ra mong muốn</p>
 
                   <div className="relative">
                     <Select
@@ -264,7 +264,7 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
                       value={outputLevel?.id}
                     >
                       <SelectTrigger
-                        className="w-full cursor-pointer appearance-none rounded-[28px] border-none bg-primary text-[15px] font-medium text-white"
+                        className="w-full cursor-pointer appearance-none rounded-[28px] border-none bg-[#052284] text-[15px] font-medium text-white"
                         style={{
                           boxShadow: '0px 1.41px 1.41px 0px #00000040',
                         }}
@@ -284,12 +284,12 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
                   </div>
                 </div>
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[100%]">
-                  <div className="h-20 w-[2px] border-l-[1px] border-dashed border-primary sm:border-l-2"></div>
+                  <div className="h-20 w-[2px] border-l-[1px] border-dashed border-[#052284] sm:border-l-2"></div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="relative w-full rounded-[28px] bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-[18px] pb-[30px] pt-[18px]">
+          <div className="relative w-full rounded-[28px] bg-gradient-to-b from-[#052284] to-[#083AD4] px-[18px] pb-[30px] pt-[18px]">
             <div className="flex flex-wrap gap-x-4 gap-y-4 pl-[18px]">
               <div className="w-fit rounded-[28px] bg-white py-1 pl-4 pr-6 sm:py-2 sm:pl-6 sm:pr-10">
                 <p className="text-xs font-semibold uppercase tracking-[0%] text-black sm:text-2xl">
@@ -360,7 +360,7 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
               <h3 className="text-2xl font-bold uppercase leading-[32px] tracking-[0]">Chọn đầu vào</h3>
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full border-[0.81px] border-black bg-white p-2">
-                  {inputLevel && <Union />}
+                  {inputLevel && <Union color="#052284" />}
                 </div>
               </div>
             </div>
@@ -369,18 +369,18 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
               <h3 className="text-2xl font-bold uppercase leading-[32px] tracking-[0]">Chọn đầu ra mong muốn</h3>
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full border-[0.81px] border-black bg-white p-2">
-                  {outputLevel && <Union />}
+                  {outputLevel && <Union color="#052284" />}
                 </div>
               </div>
             </div>
             <div className="relative w-[40%] border-b-[3.23px] border-black py-10 text-center">
-              <p className="text-[52px] font-bold leading-[91.83px] tracking-[0] text-[#AF0000]">B3</p>
+              <p className="text-[52px] font-bold leading-[91.83px] tracking-[0] text-[#052284]">B3</p>
               <h3 className="text-2xl font-bold uppercase leading-[32px] tracking-[0]">
                 Trả kết quả lộ trình phù hợp{' '}
               </h3>
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2">
                 <div className="flex h-10 w-10 items-center justify-center rounded-full border-[0.81px] border-black bg-white p-2">
-                  {inputLevel && outputLevel && <Union />}
+                  {inputLevel && outputLevel && <Union color="#052284" />}
                 </div>
               </div>
             </div>
@@ -397,7 +397,7 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
                   key={level.name}
                   id={level.id}
                   className={`relative block min-h-[120px] w-full max-w-[320px] rounded-lg border px-3 py-4 text-left ${inputLevel === level
-                    ? 'bg-gradient-to-l from-[#B90E0A] to-[#7D1900] text-white'
+                    ? 'bg-gradient-to-b from-[#052284] to-[#083AD4] text-white'
                     : 'bg-white text-black'
                     } cursor-pointer shadow-[0px_3.23px_3.23px_0px_rgba(0,0,0,0.25)]`}
                   onClick={() => handleSetInputLevel(level)}
@@ -406,7 +406,7 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
                     <div className="text-[20px] font-bold tracking-[0] 3xl:leading-[35.52px]">{level.name}</div>
                     <p className="text-[11px] font-medium leading-[130%] tracking-[0]">{level.content}</p>
                     <div
-                      className={`absolute left-0 top-9 h-5 w-5 rounded-full border ${inputLevel === level ? 'bg-landing border-white' : 'border-black'
+                      className={`absolute left-0 top-9 h-5 w-5 rounded-full border ${inputLevel === level ? 'border-white bg-[#052284]' : 'border-black'
                         } p-[2px]`}
                     >
                       <div className="h-full w-full rounded-full bg-white"></div>
@@ -425,7 +425,7 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
                   id={level.id}
                   key={level.name}
                   className={`relative mx-auto block min-h-[120px] w-full max-w-[320px] rounded-lg border px-3 py-4 text-left ${outputLevel === level
-                    ? 'bg-gradient-to-l from-[#B90E0A] to-[#7D1900] text-white'
+                    ? 'bg-gradient-to-b from-[#052284] to-[#083AD4] text-white'
                     : 'bg-white text-black'
                     } cursor-pointer shadow-[0px_3.23px_3.23px_0px_rgba(0,0,0,0.25)]`}
                   onClick={() => handleSetOutputLevel(level)}
@@ -434,7 +434,7 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
                     <div className="text-[20px] font-bold tracking-[0] 3xl:leading-[35.52px]">{level.name}</div>
                     <p className="text-[11px] font-medium leading-[130%] tracking-[0]">{level.content}</p>
                     <div
-                      className={`absolute left-0 top-9 h-5 w-5 rounded-full border ${outputLevel === level ? 'border-white bg-[#AF0000]' : 'border-black'
+                      className={`absolute left-0 top-9 h-5 w-5 rounded-full border ${outputLevel === level ? 'border-white bg-[#052284]' : 'border-black'
                         } p-[2px]`}
                     >
                       <div className="h-full w-full rounded-full bg-white"></div>
@@ -448,7 +448,7 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
           <div className="flex w-[40%] justify-center pt-4 2xl:w-[468px]">
             <div
               id="course-results"
-              className="relative flex h-full w-full flex-col space-y-4 rounded-[10px] bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-6 py-6 xl:space-y-4 xl:px-4"
+              className="relative flex h-full w-full flex-col space-y-4 rounded-[10px] bg-gradient-to-b from-[#052284] to-[#083AD4] px-6 py-6 xl:space-y-4 xl:px-4"
             >
               <div className="flex flex-wrap gap-2">
                 <div className="w-fit rounded-[7px] bg-white px-2 py-1 text-base font-bold tracking-[0]">
@@ -464,7 +464,7 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
               <div className="w-full flex-1 flex-grow rounded-[11px] bg-white p-6 py-4 xl:px-7">
                 {inputLevel && outputLevel ? (
                   <div>
-                    <p className="text-2xl font-bold uppercase tracking-[0] text-[#AF0000] xl:text-3xl">
+                    <p className="text-2xl font-bold uppercase tracking-[0] text-[#052284] xl:text-3xl">
                       Lộ trình gợi ý
                     </p>
                     <div className="flex gap-4 pt-4">
@@ -479,7 +479,7 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
                         {parse(resultSelectCourse(inputLevel.slug)?.sugges || '...')}
                       </p>
                     </div>
-                    <p className="pt-3 text-2xl font-bold uppercase tracking-[0] text-[#AF0000] xl:pt-6 xl:text-3xl">
+                    <p className="pt-3 text-2xl font-bold uppercase tracking-[0] text-[#052284] xl:pt-6 xl:text-3xl">
                       Kiến thức đạt được
                     </p>
                     <p className="custom-scrollbar mt-4 h-[200px] overflow-y-scroll text-sm font-medium tracking-normal text-black">
@@ -509,14 +509,14 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
         <div className="absolute -left-10 top-1 z-50 flex w-fit md:-left-28 md:-top-8">
           <FourPointedStarMini
             className="absolute bottom-6 right-7 mt-auto size-4 md:-bottom-3 md:-right-6 md:size-6"
-            fromColor="#AF0000"
-            toColor="#AF0000"
+            fromColor="#FFC247"
+            toColor="#FFE9A6"
           />
-          <FourPointedStar className="size-8 md:size-[60px]" fromColor="#AF0000" toColor="#AF0000" />
+          <FourPointedStar className="size-8 md:size-[60px]" fromColor="#FFC247" toColor="#FFE9A6" />
         </div>
         <button
           onClick={() => document.getElementById('dang-ki-tu-van')?.scrollIntoView({ behavior: 'smooth' })}
-          className="mx-auto h-10 cursor-pointer rounded-[20px] bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-5 text-[15px] font-black uppercase text-white transition-all duration-700 ease-in-out hover:from-[#B90E0A] hover:to-[#F3C650] md:h-[60px] md:rounded-[28px] md:px-10 md:text-2xl"
+          className="mx-auto h-10 cursor-pointer rounded-[20px] bg-[#F97316] px-5 text-[15px] font-black uppercase text-white transition-all duration-700 ease-in-out hover:from-[#B90E0A] hover:to-[#F3C650] md:h-[60px] md:rounded-[28px] md:px-10 md:text-2xl"
         >
           Nhận tư vấn lộ trình chi tiết
         </button>

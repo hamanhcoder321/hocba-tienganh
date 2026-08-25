@@ -51,7 +51,7 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
       <div className="hidden md:block relative mb-16 md:mb-24 h-[200px] px-4 md:px-10">
         <div className="absolute inset-x-10 top-1/2 -translate-y-1/2 z-0">
           <svg className="w-full h-[160px]" preserveAspectRatio="none" viewBox="0 0 1000 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M50 50 L230 80 L410 20 L590 80 L770 20 L950 50" stroke="#E2E8F0" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M50 50 L230 80 L410 20 L590 80 L760 25 L865 80 L970 30" stroke="#E2E8F0" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </div>
 
@@ -60,9 +60,11 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
             const isActive = activeIndex === index;
             
             const getTranslateYClass = (idx: number) => {
-              if (idx === 0 || idx === 5) return "md:translate-y-0";
+              if (idx === 0) return "md:translate-y-0";
               if (idx === 1 || idx === 3) return "md:translate-y-[48px]";
-              if (idx === 2 || idx === 4) return "md:-translate-y-[48px]";
+              if (idx === 2) return "md:-translate-y-[48px]";
+              if (idx === 4) return "md:-translate-y-[40px] md:-translate-x-2";
+              if (idx === 5) return "md:-translate-y-[32px] md:translate-x-6";
               return "";
             };
 
@@ -122,8 +124,14 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                   />
                   {/* Soft glow below */}
                   <div 
-                    className="absolute inset-0 translate-y-4 md:translate-y-6 blur-xl rounded-full transition-opacity duration-300 opacity-30 md:opacity-40"
-                    style={{ backgroundColor: item.color }}
+                    className={cn(
+                      "absolute inset-0 rounded-[14px] md:rounded-[22px] transition-all duration-300",
+                      isActive ? "opacity-70 blur-xl md:blur-[24px]" : "opacity-30 blur-lg md:blur-xl"
+                    )}
+                    style={{ 
+                      backgroundColor: item.color,
+                      transform: 'translateY(24px) scaleY(0.577) rotate(45deg)'
+                    }}
                   />
                   {/* Top face */}
                   <div 
@@ -135,7 +143,12 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                   />
                   {/* Icon */}
                   <div className="absolute inset-0 flex items-center justify-center z-20">
-                    <img src={IconMap[item.icon]} alt={item.title} className="w-10 h-10 md:w-[44px] md:h-[44px] object-contain" />
+                    <img 
+                      src={IconMap[item.icon]} 
+                      alt={item.title} 
+                      className="w-10 h-10 md:w-[44px] md:h-[44px] object-contain transition-all duration-300"
+                      style={isActive ? { filter: `drop-shadow(0 1px 1px ${item.color}) contrast(1.2) saturate(1.1)` } : undefined}
+                    />
                   </div>
                 </div>
               </div>
@@ -273,10 +286,10 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
       {/* (laptop & mobil) */}
       <div className="mt-8 flex justify-center w-full">
         <a
-          href="#tu-van"
+          href="/khoa-hoc-hsk"
           className="inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full bg-[#F97316] px-8 py-3.5 text-[15px] font-bold text-white uppercase"
         >
-          XEM THÊM KHÓA HỌC
+          XEM CHI TIẾT KHÓA HỌC
           <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M5 12h14"></path>
             <path d="m12 5 7 7-7 7"></path>

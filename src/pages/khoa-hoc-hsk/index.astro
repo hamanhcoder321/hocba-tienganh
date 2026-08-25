@@ -40,15 +40,75 @@ import imgBannerKhoaHoc from '@/assets/images/img-hocba-tienganh-optimized/img-b
 import imgMinhAnh from '@/assets/images/img-hocba-tienganh-optimized/image-minh-anh.webp';
 import imgNhatQuan from '@/assets/images/img-hocba-tienganh-optimized/image-nhat-quan.webp';
 import imgThuHa from '@/assets/images/img-hocba-tienganh-optimized/img-thu-ha.webp';
+import newImgMinhAnh from '@/assets/images/img-hocba-tienganh-optimized/img-minh-anh.jpg';
+import newImgThuThuy from '@/assets/images/img-hocba-tienganh-optimized/img-thu-thuy.png';
+import newImgTuanKiet from '@/assets/images/img-hocba-tienganh-optimized/img-tuan-kiet.jpg';
+import newImgThuHa from '@/assets/images/img-hocba-tienganh-optimized/img-thu-ha.jpg';
 import imgBannerCayIelts from '@/assets/images/img-hocba-tienganh-optimized/image-banner-cay-ielts.webp';
 import imgBanner3 from '@/assets/images/img-hocba-tienganh-optimized/img-banner-3.webp';
 
 const baseUrl = import.meta.env.PUBLIC_CLIENT_URL;
 
-const students = await fetchStudents({
-  page: 1,
-  limit: 100,
-});
+// const students = await fetchStudents({
+//   page: 1,
+//   limit: 100,
+// });
+
+const optMinhAnh = await getImage({ src: newImgMinhAnh, format: 'webp', width: 300, height: 530, quality: 90 });
+const optThuThuy = await getImage({ src: newImgThuThuy, format: 'webp', width: 300, height: 530, quality: 90 });
+const optTuanKiet = await getImage({ src: newImgTuanKiet, format: 'webp', width: 300, height: 530, quality: 90 });
+const optThuHa = await getImage({ src: newImgThuHa, format: 'webp', width: 300, height: 530, quality: 90 });
+
+const mockStudents = [
+  {
+    id: "1",
+    name: "MINH ANH",
+    course: "7.5 IELTS",
+    avatar_url: optMinhAnh.src,
+    description: "Em vừa nhận điểm nên phải lên feedback luôn ạ 😭 7.5 overall. Trước em học khá nhiều nhưng không biết kẹt ở đâu không lên band được, không biết trọng tâm để ôn. Sang đây em thích nhất là có AI sửa lỗi liên tục, dashboard rất rõ ràng để em tự biết mình là ai không ảo nữa =))) Sau đó mentor cho em luyện thêm những điểm yếu nữa nên đỡ học lan man hẳn. Cảm ơn cô Mai rất nhiều vì đã cứu Writing của em từ 5.5 lên 7.0, có chữa bài kỹ thật sự ạ",
+    title: "Học Sinh Lớp 12, Hà Nội",
+    profession: "Học Sinh Lớp 12, Hà Nội",
+    score: 7.5,
+    createdAt: "",
+    updatedAt: ""
+  },
+  {
+    id: "2",
+    name: "THU THỦY",
+    course: "7.5 IELTS",
+    avatar_url: optThuThuy.src,
+    description: "Mình biết không phải chỉ mình mình có 7.5 IELTS. Mình biết có rất nhiều người cũng được 7.5 IELTS ở THE IELTS SPACE nên cũng chẳng có gì để nói cả. Mình viết cái này không phải để khoe rằng mình có 7.5 IELTS, mà chỉ muốn nói rằng, trong số rất nhiều người được 7.5 band IELTS ấy thì mình cũng là một người có 7.5 IELTS",
+    title: "Học Sinh Lớp 11, Ninh Bình",
+    profession: "Học Sinh Lớp 11, Ninh Bình",
+    score: 7.5,
+    createdAt: "",
+    updatedAt: ""
+  },
+  {
+    id: "3",
+    name: "TRẦN TUẤN KIỆT",
+    course: "7.5 IELTS",
+    avatar_url: optTuanKiet.src,
+    description: "Ban đầu mình cũng hơi rén khoản học với AI vì thường AI tạo sinh có thể không chính xác =))) Trước từng học thử vài bên rồi AI tạo câu hỏi sai tùm lum. Với THE IELTS SPACE thì thấy rất khác biệt vì AI không tự nghĩ ra để lung tung, bài tập đều lấy từ kho nội dung do giáo viên nghiên cứu và kiểm duyệt trước. AI chỉ dựa vào những lỗi mình hay mắc để chọn bài phù hợp hơn thôi :))) Nói chung mình khá thích cách này, vì vẫn tận dụng được AI để cá nhân hóa nhưng phần kiến thức thì có giáo viên kiểm soát nên đáng tin hơn nhiều.",
+    title: "Nhân Viên IT, Tp Hồ Chí Minh",
+    profession: "Nhân Viên IT, Tp Hồ Chí Minh",
+    score: 7.5,
+    createdAt: "",
+    updatedAt: ""
+  },
+  {
+    id: "4",
+    name: "LÊ THU HÀ",
+    course: "7.0 IELTS",
+    avatar_url: optThuHa.src,
+    description: "Mình là dân đi làm nên thật sự không có thời gian ngày nào cũng ngồi cày 3-4 tiếng như các bạn. Cái mình thích nhất ở The IELTS Space là không bắt học dàn trải. AI phân tích khá rõ mình đang yếu kỹ năng nào, dạng bài nào mất điểm nhiều và cả những lỗi bị lặp lại. Đợt đầu mình cứ nghĩ do ngữ pháp yếu nhưng hóa ra thứ kéo điểm xuống nhiều nhất lại là vốn từ vựng collocation :)) Mình đã nhờ AI lên kế hoạch học tập cho và mentor bổ sung thêm bài luyện riêng. Sau 4 tháng mình đã từ 6.0 lên 7.0 overall",
+    title: "26 Tuổi, Đà Nẵng",
+    profession: "26 Tuổi, Đà Nẵng",
+    score: 7.0,
+    createdAt: "",
+    updatedAt: ""
+  }
+];
 
 const optimizedBook = await getImage({
   src: IMAGES.book,
@@ -250,27 +310,15 @@ const formatSmartTechnologyClass = await Promise.all(
 const videoStudentSlides = [
   {
     id: 1,
-    videoUrl: 'https://www.youtube.com/embed/MAnASob52M0',
+    videoUrl: 'https://www.youtube.com/embed/_1k6jp1R6Rg',
   },
   {
     id: 2,
-    videoUrl: 'https://www.youtube.com/embed/Y87HUHQNSA0',
+    videoUrl: 'https://www.youtube.com/embed/7TN4UYl5qtg',
   },
   {
     id: 3,
-    videoUrl: 'https://www.youtube.com/embed/6S-Zy3Fnzn4',
-  },
-  {
-    id: 4,
-    videoUrl: 'https://www.youtube.com/embed/MAnASob52M0',
-  },
-  {
-    id: 5,
-    videoUrl: 'https://www.youtube.com/embed/Y87HUHQNSA0',
-  },
-  {
-    id: 6,
-    videoUrl: 'https://www.youtube.com/embed/6S-Zy3Fnzn4',
+    videoUrl: 'https://www.youtube.com/embed/r0AvMPQaSHE',
   },
 ];
 
@@ -810,7 +858,7 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
     
     <div class="overflow-hidden">
       <section class="relative pb-5">
-        <div class="flex h-[52px] items-center justify-center gap-2 bg-primary px-20 md:h-[122px] md:gap-2 md:px-0">
+        <div class="flex h-[52px] items-center justify-center gap-2 bg-[#F97316] px-20 md:h-[122px] md:gap-2 md:px-0">
           <div class="flex size-8 items-center justify-center md:mx-[14px] md:size-[65px]">
             <FourPointedStar
               className="size-4 flex-shrink-0 text-white md:size-7"
@@ -818,7 +866,7 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
               fromColor="#FFFFFF"
             />
           </div>
-          <p class="animate-neon-flicker text-center text-[15px] font-black uppercase text-white md:text-[28px]">
+          <p class=" text-center text-[15px] font-black uppercase text-white md:text-[28px]">
             Chọn lộ trình học & Trải nghiệm ngay
           </p>
           <div class="flex size-8 items-center justify-center md:mx-[14px] md:size-[65px]">
@@ -833,14 +881,15 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
           <h2 class="sr-only">Xây dựng lộ trình học HSK 3.0 dành riêng cho bạn</h2>
           <div class="relative mx-auto flex w-fit items-center">
             <VectorArrow
-              toColor="#AF0000"
-              fromColor="#AF0000"
-              className={'absolute -left-4 top-0 hidden size-4 object-cover transition-opacity duration-500 md:-left-10 md:top-0 md:flex md:size-8'}
+              fromColor="#FFA500"
+              toColor="#4A72F0"
+              stopOffset="0.2"
+              className={'hidden md:block absolute -left-6 -top-2 size-4 object-cover transition-opacity duration-500 md:-left-[40px] md:-top-[10px] md:size-8'}
             />
             <div
-              class="from-[#B90E0A] to-[#7D1900] text-lg font-black uppercase leading-normal text-[#373737] md:bg-gradient-to-l md:bg-clip-text md:text-[42px] md:text-transparent"
+              class="from-[#D16112] to-[#E71600] text-lg font-black uppercase leading-normal text-[#373737] md:bg-gradient-to-l md:bg-clip-text md:text-[42px] md:text-transparent"
             >
-              Xây dựng lộ trình học HSK 3.0
+              Xây dựng lộ trình học toàn diện
             </div>
           </div>
           <div
@@ -855,19 +904,19 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
       </section>
       <section class="container mt-0 md:mt-5">
         <div class="flex items-center justify-center gap-2 md:gap-4">
-          <Image
+          <!-- <Image
             src={IMAGES.detailLectuter.detailLectuterIcon2}
             width={90}
             height={90}
             alt={'detailLectuterIcon1'}
             densities={[1, 2]}
             class={'h-14 w-14 -rotate-12 object-cover md:h-[90px] md:w-[90px] hidden md:flex'}
-          />
-          <h2 class="text-lg font-black uppercase text-primary md:text-[42px]">Trăm nghe không bằng một thấy</h2>
+          /> -->
         </div>
-        <div class="mx-auto mt-0 flex w-[277px] items-center justify-center md:-mt-4 md:w-[516px]">
-          <p class="text-center text-[15px] font-bold md:text-[28px]">
-            Cùng “tận mắt: nghe Học viên nói gì khi chinh phục HSK cùng Học Bá
+        <div class="mx-auto mt-0 flex w-full flex-col items-center justify-center px-2 md:-mt-4">
+          <h2 class="text-center text-lg font-black uppercase text-[#D16112] md:text-[42px] md:leading-[64px]">TỰ HÀO ĐƯA HƠN 6.000+ HỌC VIÊN ĐẾN ĐÍCH</h2>
+          <p class="whitespace-nowrap text-center text-[11px] font-bold text-[#373737] min-[390px]:text-[12px] sm:text-[15px] md:whitespace-normal md:text-[28px]">
+            Cùng nghe học viên nói gì khi đồng hành cùng THE IELTS SPACE
           </p>
         </div>
         <div class="mx-auto max-w-full md:max-w-[1028px]">
@@ -876,19 +925,18 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
       </section>
     </div>
     <section
-      class="mx-auto flex h-auto w-full max-w-[1440px] flex-col rounded-lg bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-[30px] py-6 md:h-[562px] md:flex-row md:rounded-[20px] md:px-[134px] md:py-11"
+      class="mx-auto flex h-auto w-full max-w-[1440px] flex-col rounded-lg bg-gradient-to-l from-[#083AD4] to-[#052284] px-[30px] py-6 md:h-[562px] md:flex-row md:rounded-[20px] md:px-[134px] md:py-11"
     >
       <div class="basis-1/2">
         <div class="flex items-center gap-3 md:gap-5">
           <div
             class="flex-shrink-0 text-[36px] font-black leading-[120%] text-[#F3C650] md:text-[60px]"
-            style="text-shadow: 5px 14px 25px #FF6969;"
+            style="text-shadow: 5px 14px 25px #083AD4;"
           >
             {'> 95%'}
           </div>
           <p class="text-[15px] font-black uppercase text-white md:text-[22px]">
-            <span class="text-[#F3C650]">HỌC VIÊN ĐẠT VƯỢT ĐIỂM MỤC TIÊU</span> NHỜ HỆ PHƯƠNG PHÁP TƯ DUY ĐỘC QUYỀN TẠI HỌC
-            BÁ
+            <span class="text-[#F3C650]">HỌC VIÊN ĐẠT VƯỢT ĐIỂM MỤC TIÊU</span> NHỜ HỆ PHƯƠNG PHÁP TƯ DUY ĐỘC QUYỀN TẠI THE IELTS SPACE
           </p>
         </div>
         <p class="mt-3 pr-0 text-xs font-normal italic leading-tight text-white md:mt-5 md:pr-4 md:text-[20px]">
@@ -903,10 +951,10 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
             class="flex items-center gap-2 rounded-[10px] bg-white py-3 pl-3 md:gap-3 md:rounded-[18px] md:py-5 md:pl-2"
           >
             <div class="flex size-8 items-center justify-center md:mx-[14px] md:size-[65px]">
-              <FourPointedStar className="size-6 flex-shrink-0 md:size-[42px]" toColor="#AF0000" fromColor="#AF0000" />
+              <FourPointedStar className="size-6 flex-shrink-0 md:size-[42px]" toColor="#052284" fromColor="#052284" />
             </div>
             <div class="pr-3 text-xs font-bold leading-tight text-[#373737] md:pr-28 md:text-[18px]">
-              95.8% tỷ lệ học viên đạt hoặc vượt mức điểm kỳ vọng ngay trong kỳ thi đầu tiên
+              95,8% tỷ lệ học viên đạt hoặc vượt band ngay trong kỳ thi đầu tiên
             </div>
           </div>
         </div>
@@ -914,16 +962,15 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
           <div
             class="flex items-center gap-2 rounded-[10px] bg-white py-3 pl-3 md:gap-3 md:rounded-[18px] md:py-5 md:pl-2"
           >
-            <div class="flex size-8 items-center justify-center md:mx-[14px] md:size-[65px]">
-              <FourPointedStar className="size-6 flex-shrink-0 md:size-[42px]" toColor="#AF0000" fromColor="#AF0000" />
+            <div class="flex size-8 flex-shrink-0 items-center justify-center md:mx-4 md:size-[65px]">
+              <FourPointedStar className="size-5 md:size-[42px]" toColor="#052284" fromColor="#052284" />
             </div>
             <div class="pr-3 text-xs font-bold leading-tight text-[#373737] md:pr-24 md:text-[18px]">
-              100% Học viên tự tin thực hành đồng thời 5 kỹ năng Nghe - Nói - Đọc - Viết - Dịch – "nỗi sợ" lớn nhất của
-              format 3.0
+              99,9% học viên hài lòng với trải nghiệm học tập và sẵn sàng giới thiệu THE IELTS SPACE tới bạn bè, người thân
             </div>
           </div>
           <div class="flex-shrink-0 text-2xl font-black leading-[120%] text-white md:text-[42px]">
-            {'100%'}
+            {'99.9%'}
           </div>
         </div>
       </div>
@@ -998,7 +1045,7 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
     </section>
     <section id="slide-hoc-vien-xuat-sac" class="container my-11">
       <OutstandingStudent
-        outstandingStudent={students?.list || []}
+        outstandingStudent={mockStudents}
         icons={{
           hsk: optimizedHsk.src,
           machine: optimizedMachine.src,
@@ -1045,11 +1092,13 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
 <script>
   (function () {
     const dots = document.querySelectorAll('#dot-indicators .dot-item');
+    if (!dots || dots.length === 0) return;
     const total = dots.length;
     let current = 0;
 
     function showDot(index: number, isShrink: boolean) {
       const el = dots[index] as HTMLElement;
+      if (!el) return;
       el.style.opacity = '1';
       el.classList.remove('dot-bounce', 'dot-shrink');
       void el.offsetWidth;

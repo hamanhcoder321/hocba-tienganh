@@ -26,9 +26,9 @@ const StudentCard = ({
   icons: OutstandingStudentProps['icons'];
   isPageCourse: boolean;
 }) => (
-  <div className="group relative mx-auto h-full w-[344px] overflow-hidden rounded-lg border bg-white shadow-md transition-all duration-300 hover:bg-[#B90E0A]">
+  <div className="group relative mx-auto h-full w-[344px] overflow-hidden rounded-lg border bg-white shadow-md transition-all duration-300 hover:bg-[#083AD4]">
     <div className="h-full select-none md:flex md:flex-col md:items-center md:justify-between">
-      <div className="absolute left-3 top-3 h-auto w-fit rounded-md border border-white bg-gradient-to-l from-[#B90E0A] to-[#7D1900] px-4 py-2">
+      <div className="absolute left-3 top-3 z-20 h-auto w-fit rounded-md border border-white bg-gradient-to-l from-[#3464F8] to-[#083AD4] px-4 py-2">
         <img
           src={icons.machine}
           width={40}
@@ -40,33 +40,22 @@ const StudentCard = ({
         {!isPageCourse && <p className="text-sm font-black text-white md:text-base">{`${item.score ?? 0} điểm`}</p>}
       </div>
       <div className="flex-1 px-5 pt-6 md:px-8 md:pt-9">
-        <div className="h-[294px] w-full md:h-[297px] md:w-[282px]">
-          <img src={item.avatar_url || icons.defaultAvatar} alt={item.name} className="h-full w-full object-cover" />
+        <div className="h-[294px] w-full overflow-hidden md:h-[297px] md:w-[282px]">
+          <img src={item.avatar_url || icons.defaultAvatar} alt={item.name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" />
         </div>
       </div>
       <div
         className={cn(
-          'relative flex w-full flex-col gap-2 bg-primary px-4 py-5',
-          isPageCourse ? 'h-[278px]' : 'h-full',
+          'relative flex w-full flex-col gap-2 bg-[#083AD4] px-4 py-5 h-full'
         )}
       >
-        <div className="absolute -top-4 right-4 h-[40px] w-[60px] rotate-12 rounded-sm border border-[#FF4040]">
-          <img
-            src={icons.hsk}
-            alt={icons.hsk}
-            width={60}
-            height={40}
-            className="h-full w-full object-cover"
-            fetchPriority="high"
-            style={{ imageRendering: 'crisp-edges' }}
-          />
-        </div>
+
         <h3 className="text-center text-[22px] font-black uppercase text-[#F3C650] md:text-2xl">{item.name}</h3>
         {!isPageCourse && <p className="text-center text-xs font-bold text-white md:text-base">{item.title}</p>}
         {isPageCourse && <p className="text-center font-bold text-white md:text-[20px]">{item.profession}</p>}
         {isPageCourse && (
-          <div className="custom-scrollbar overflow-y-auto">
-            <p className="pr-1 text-justify text-sm font-medium italic text-white">{item.description}</p>
+          <div className="pb-2">
+            <p className="text-justify text-sm font-medium italic text-white">{item.description}</p>
           </div>
         )}
       </div>
@@ -139,7 +128,7 @@ const OutstandingStudent = ({ outstandingStudent, icons, isPageCourse = false }:
           {outstandingStudent.map((item, index) => (
             <CarouselItem
               key={index}
-              className={cn('basis-full md:h-[612px] md:basis-1/3', isPageCourse ? 'md:h-[612px]' : 'md:h-auto')}
+              className={cn('basis-full md:basis-1/3 md:h-auto')}
             >
               <StudentCard item={item} icons={icons} isPageCourse={isPageCourse} />
             </CarouselItem>
@@ -166,9 +155,9 @@ const OutstandingStudent = ({ outstandingStudent, icons, isPageCourse = false }:
           <CarouselButton className="!size-[30px] rotate-180 md:!size-10" />
         </Button>
       </Carousel>
-      <div className="flex items-center justify-center pt-5">
+      {/* <div className="flex items-center justify-center pt-5">
         <Button
-          className="col-span-1 mx-auto mb-4 h-14 w-[251px] rounded-[32px] bg-primary text-lg font-bold text-white lg:col-span-2 3xl:col-span-3"
+          className="col-span-1 mx-auto mb-4 h-14 w-[251px] rounded-[32px] bg-[#083AD4] text-lg font-bold text-white lg:col-span-2 3xl:col-span-3"
           onClick={() => setIsDialogOpen(true)}
         >
           Xem thêm
@@ -200,8 +189,8 @@ const OutstandingStudent = ({ outstandingStudent, icons, isPageCourse = false }:
               </div>
             ))}
             {hasMore && (
-              <Button
-                className="col-span-1 mx-auto mb-4 h-14 w-[251px] rounded-[32px] bg-primary text-lg font-bold text-white lg:col-span-2 xl:col-span-3"
+               <Button
+                className="col-span-1 mx-auto mb-4 h-14 w-[251px] rounded-[32px] bg-[#083AD4] text-lg font-bold text-white lg:col-span-2 xl:col-span-3"
                 onClick={handleLoadMore}
                 disabled={loading}
               >
@@ -211,7 +200,7 @@ const OutstandingStudent = ({ outstandingStudent, icons, isPageCourse = false }:
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-[57px] rounded-b-3xl bg-[linear-gradient(0deg,#EBF5FF_11.3%,rgba(235,245,255,0.00)_73.63%)]"></div>
         </DialogContent>
-      </Dialog>
+      </Dialog> */}
     </div>
   );
 };

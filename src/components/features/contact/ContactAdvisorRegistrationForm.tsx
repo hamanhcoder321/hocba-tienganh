@@ -118,7 +118,7 @@ export default function ContactAdvisorRegistrationForm({
                     value={form.watch('current_level')}
                     onValueChange={(value) => form.setValue('current_level', value)}
                   >
-                    <SelectTrigger id="level" className="h-12 rounded-lg border-0 bg-white focus:ring-white md:h-14">
+                    <SelectTrigger id="level" className="h-12 rounded-lg border-0 bg-white font-normal focus:ring-white md:h-14">
                       <SelectValue placeholder="Chọn trình độ" />
                     </SelectTrigger>
                     <SelectContent className="bg-white">
@@ -156,7 +156,7 @@ export default function ContactAdvisorRegistrationForm({
                 value={form.watch('wishlist_courses')}
                 onValueChange={(value) => form.setValue('wishlist_courses', value)}
               >
-                <SelectTrigger id="course" className="h-12 rounded-lg border-0 bg-white focus:ring-white md:h-14">
+                <SelectTrigger id="course" className="h-12 rounded-lg border-0 bg-white font-normal focus:ring-white md:h-14">
                   <SelectValue placeholder="Chọn mục tiêu" />
                 </SelectTrigger>
                 <SelectContent className="bg-white">
@@ -198,7 +198,7 @@ export default function ContactAdvisorRegistrationForm({
                     value={form.watch('current_level')}
                     onValueChange={(value) => form.setValue('current_level', value)}
                   >
-                    <SelectTrigger id="level" className="h-12 rounded-lg border-0 bg-white focus:ring-white md:h-14">
+                    <SelectTrigger id="level" className="h-12 rounded-lg border-0 bg-white font-normal focus:ring-white md:h-14">
                       <SelectValue placeholder="Chọn trình độ" />
                     </SelectTrigger>
                     <SelectContent className="bg-white">
@@ -216,7 +216,7 @@ export default function ContactAdvisorRegistrationForm({
                     Mục tiêu tiếng trung của bạn
                   </Label>
                   <Select value={form.watch('target')} onValueChange={(value) => form.setValue('target', value)}>
-                    <SelectTrigger id="target" className="h-12 rounded-lg border-0 bg-white focus:ring-white md:h-14">
+                    <SelectTrigger id="target" className="h-12 rounded-lg border-0 bg-white font-normal focus:ring-white md:h-14">
                       <SelectValue placeholder="Chọn mục tiêu" />
                     </SelectTrigger>
                     <SelectContent className="bg-white">
@@ -237,7 +237,7 @@ export default function ContactAdvisorRegistrationForm({
                     value={form.watch('contact_method') || ''}
                     onValueChange={(value) => form.setValue('contact_method', value)}
                   >
-                    <SelectTrigger id="contact" className="h-12 rounded-lg border-0 bg-white focus:ring-white md:h-14">
+                    <SelectTrigger id="contact" className="h-12 rounded-lg border-0 bg-white font-normal focus:ring-white md:h-14">
                       <SelectValue placeholder="Chọn hình thức liên hệ" />
                     </SelectTrigger>
                     <SelectContent className="bg-white">
@@ -258,7 +258,7 @@ export default function ContactAdvisorRegistrationForm({
                     value={form.watch('available_time') || ''}
                     onValueChange={(value) => form.setValue('available_time', value)}
                   >
-                    <SelectTrigger id="time" className="h-12 rounded-lg border-0 bg-white focus:ring-white md:h-14">
+                    <SelectTrigger id="time" className="h-12 rounded-lg border-0 bg-white font-normal focus:ring-white md:h-14">
                       <SelectValue placeholder="Chọn khung giờ nghe máy" />
                     </SelectTrigger>
                     <SelectContent className="bg-white">
@@ -295,7 +295,7 @@ export default function ContactAdvisorRegistrationForm({
               <Button
                 type="submit"
                 disabled={isPending}
-                className="relative min-h-[50px] w-fit rounded-[25px] border-2 border-white bg-gradient-to-r from-[#F26522] to-[#FFB800] py-2 px-10 text-base font-black uppercase text-white shadow-lg transition-colors hover:opacity-90 disabled:opacity-70 md:min-h-[70px] md:rounded-full md:py-3 md:text-2xl"
+                className="relative mx-auto flex items-center justify-center gap-[10px] min-h-[50px] w-full max-w-[386px] rounded-[24px] border-[3px] border-white bg-[#F97316] py-[6px] px-[16px] text-base font-black uppercase text-white shadow-lg transition-colors hover:opacity-90 disabled:opacity-70 md:min-h-[68px] md:w-[386px] md:text-2xl"
               >
                 {isPending ? 'Đang xử lý...' : isSuccess ? 'Thành công!' : (
                   <span className="flex flex-col items-center leading-tight">
@@ -304,7 +304,7 @@ export default function ContactAdvisorRegistrationForm({
                   </span>
                 )}
               </Button>
-              <p className="mt-2 text-xs font-light text-white md:text-base">
+              <p className="mt-2 text-xs font-normal text-white md:ml-16 md:text-[16px] md:leading-[150%]">
                 THE IELTS SPACE sẽ liên hệ lại trong vòng <span className="font-bold">24 giờ</span> làm việc.
               </p>
             </div>
@@ -313,7 +313,7 @@ export default function ContactAdvisorRegistrationForm({
               <Button
                 type="submit"
                 disabled={isPending}
-                className="relative min-h-[50px] w-fit rounded-[10px] border-[3px] border-white bg-gradient-to-r from-[#F26522] to-[#FFB800] py-2 px-10 text-base font-black uppercase text-white shadow-lg transition-colors hover:opacity-90 disabled:opacity-70 md:min-h-[70px] md:rounded-full md:py-3 md:text-2xl"
+                className="relative mx-auto flex items-center justify-center gap-[10px] min-h-[50px] w-full max-w-[386px] rounded-[24px] border-[3px] border-white bg-[#F97316] py-[6px] px-[16px] text-base font-black uppercase text-white shadow-lg transition-colors hover:opacity-90 disabled:opacity-70 md:min-h-[68px] md:w-[386px] md:text-2xl"
               >
                 {icons?.noteBook && (
                   <img
@@ -331,7 +331,7 @@ export default function ContactAdvisorRegistrationForm({
                   </span>
                 )}
               </Button>
-              <p className="mt-2 text-xs font-light text-white md:text-base">
+              <p className="mt-2 text-xs font-normal text-white md:ml-12 md:text-[16px] md:leading-[150%]">
                 THE IELTS SPACE sẽ liên hệ lại trong vòng <span className="font-bold">24 giờ</span> làm việc.
               </p>
             </div>

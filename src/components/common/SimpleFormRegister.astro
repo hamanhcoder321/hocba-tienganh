@@ -21,7 +21,7 @@ const { dataInput, isSimpleForm, id = 'simple-register-form' } = Astro.props;
 <section
   id={id}
   class={cn(
-    'w-full overflow-hidden bg-[#02187B] h-auto',
+    'w-full overflow-hidden bg-[linear-gradient(180deg,#04195C,#052284,#072899,#083AD4)] h-auto',
     isSimpleForm ? 'md:py-8' : 'md:py-16'
   )}
 >
@@ -57,16 +57,28 @@ const { dataInput, isSimpleForm, id = 'simple-register-form' } = Astro.props;
         <div class="relative mx-auto mt-16 flex h-auto w-full items-center justify-center md:mt-4 md:h-[571px] md:w-[571px]">
 
           <div class="relative z-50 flex w-full items-center justify-center">
-            <Image src={cugaDangky} width={700} height={700} alt={'cuContact'} densities={[1, 2]} class={'z-50 h-auto w-[280px] object-contain md:w-[540px]'} />
-            <svg class="absolute top-[20%] left-[5%] md:-left-[5%] w-5 h-5 md:w-8 md:h-8 text-[#FF7A00] z-20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
-            <svg class="absolute top-[35%] right-[5%] md:right-[0%] w-4 h-4 md:w-6 md:h-6 text-white z-20 opacity-90" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
-            <svg class="absolute bottom-[20%] left-[10%] md:left-[0%] w-4 h-4 md:w-5 md:h-5 text-white z-20 opacity-70" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
-            <svg class="absolute bottom-[10%] right-[10%] md:right-[5%] w-3 h-3 md:w-4 md:h-4 text-[#FF7A00] z-20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
-            <svg class="absolute top-[5%] left-[30%] md:left-[20%] w-3 h-3 md:w-5 md:h-5 text-white z-20 opacity-80" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
-            <svg class="absolute top-[10%] right-[30%] md:right-[20%] w-4 h-4 md:w-7 md:h-7 text-[#FF7A00] z-20 opacity-90" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
-            <svg class="absolute bottom-[30%] right-[25%] md:right-[15%] w-2 h-2 md:w-4 md:h-4 text-white z-20 opacity-60" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
-            <svg class="absolute bottom-[30%] right-[25%] md:right-[15%] w-2 h-2 md:w-4 md:h-4 text-white z-20 opacity-60" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
-            <svg class="absolute bottom-[30%] right-[25%] md:right-[15%] w-2 h-2 md:w-4 md:h-4 text-white z-20 opacity-60" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            <Image src={cugaDangky} width={700} height={700} alt={'cuContact'} densities={[1, 2]} class={'z-50 h-auto w-[280px] object-contain md:w-[540px] drop-shadow-[0px_20px_20px_rgba(0,0,0,0.5)]'} />
+            
+            {/* 1. Left Orange Star */}
+            <svg class="absolute top-[38%] left-[5%] md:left-[0%] w-4 h-4 md:w-6 md:h-6 text-[#FF7A00] z-20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            
+            {/* 2. Top-Left White Star */}
+            <svg class="absolute top-[20%] left-[20%] md:left-[15%] w-3 h-3 md:w-5 md:h-5 text-white z-20 opacity-80" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            
+            {/* 3. Bottom-Left White Star */}
+            <svg class="absolute bottom-[7%] left-[24%] md:left-[16%] w-3 h-3 md:w-5 md:h-5 text-white z-20 opacity-80" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            
+            {/* 4. Top-Right Orange Star */}
+            <svg class="absolute top-[10%] right-[25%] md:right-[20%] w-2 h-2 md:w-4 md:h-4 text-[#FF7A00] z-20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            
+            {/* 5. Mid-Right Orange Star */}
+            <svg class="absolute top-[34%] right-[25%] md:right-[20%] w-2 h-2 md:w-4 md:h-4 text-[#FF7A00] z-20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            
+            {/* 6. Far-Right White Star */}
+            <svg class="absolute top-[40%] right-[5%] md:right-[2%] w-4 h-4 md:w-6 md:h-6 text-white z-20 opacity-90" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            
+            {/* 7. Tiny White Star (mid-right) */}
+            <svg class="absolute top-[48%] right-[26%] md:right-[22%] w-2 h-2 md:w-3 md:h-3 text-white z-20 opacity-60" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
           </div>
         </div>
       </div>

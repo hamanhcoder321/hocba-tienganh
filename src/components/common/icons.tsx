@@ -406,7 +406,7 @@ export const FourPointedStar = ({
   fromColor?: string;
   toColor?: string;
 }) => {
-  const gradientId = `fourPointedStar-${Math.random().toString(36).substr(2, 9)}`;
+  const gradientId = `fourPointedStar-${(fromColor + toColor).replace(/#/g, '').toLowerCase()}`;
   return (
     <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
@@ -438,7 +438,7 @@ export const FourPointedStarMini = ({
   fromColor?: string;
   toColor?: string;
 }) => {
-  const gradientId = `fourPointedStarMini-${Math.random().toString(36).substr(2, 9)}`;
+  const gradientId = `fourPointedStarMini-${(fromColor + toColor).replace(/#/g, '').toLowerCase()}`;
   return (
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
@@ -1421,7 +1421,7 @@ export const LoTrinhCamKetIcon = () => {
   );
 };
 
-export const Union = () => {
+export const Union = ({ color = "#AF0000" }: { color?: string }) => {
   return (
     <svg
       className="h-full w-full"
@@ -1435,7 +1435,7 @@ export const Union = () => {
         fillRule="evenodd"
         clipRule="evenodd"
         d="M31.0395 4.98177L25.8027 0.336811L13.1947 14.5514L5.2432 7.49852L0.598247 12.7354L13.7867 24.4332L18.4316 19.1964L18.4316 19.1963L31.0395 4.98177Z"
-        fill="#AF0000"
+        fill={color}
       />
     </svg>
   );
