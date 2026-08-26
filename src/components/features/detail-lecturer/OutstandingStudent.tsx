@@ -138,7 +138,7 @@ const OutstandingStudent = ({ outstandingStudent, icons, isPageCourse = false }:
         <Button
           variant="outline"
           size="icon"
-          className="absolute -left-4 top-[50%] z-10 hidden size-[30px] -translate-y-1/2 rounded-full bg-white p-0 hover:bg-gray-100 md:-left-20 md:top-1/2 md:flex md:size-10"
+          className="absolute left-0 top-[50%] z-10 hidden size-[30px] -translate-y-1/2 rounded-full bg-white p-0 hover:bg-gray-100 md:left-0 xl:-left-12 md:top-1/2 md:flex md:size-10"
           disabled={!canScrollPrev}
           onClick={() => api?.scrollPrev()}
         >
@@ -148,7 +148,7 @@ const OutstandingStudent = ({ outstandingStudent, icons, isPageCourse = false }:
         <Button
           variant="outline"
           size="icon"
-          className="absolute -right-4 top-[50%] z-10 hidden size-[30px] -translate-y-1/2 rounded-full bg-white hover:bg-gray-100 md:-right-20 md:top-1/2 md:flex md:size-10"
+          className="absolute right-0 top-[50%] z-10 hidden size-[30px] -translate-y-1/2 rounded-full bg-white hover:bg-gray-100 md:right-0 xl:-right-12 md:top-1/2 md:flex md:size-10"
           disabled={!canScrollNext}
           onClick={() => api?.scrollNext()}
         >

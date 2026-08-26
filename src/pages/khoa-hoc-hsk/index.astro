@@ -43,9 +43,11 @@ import imgThuHa from '@/assets/images/img-hocba-tienganh-optimized/img-thu-ha.we
 import newImgMinhAnh from '@/assets/images/img-hocba-tienganh-optimized/img-minh-anh.jpg';
 import newImgThuThuy from '@/assets/images/img-hocba-tienganh-optimized/img-thu-thuy.png';
 import newImgTuanKiet from '@/assets/images/img-hocba-tienganh-optimized/img-tuan-kiet.jpg';
+import imgQaccNewKhoaHoc from '@/assets/images/img-hocba-tienganh-optimized/img-Qacc-new-khoa-hoc.png';
 import newImgThuHa from '@/assets/images/img-hocba-tienganh-optimized/img-thu-ha.jpg';
 import imgBannerCayIelts from '@/assets/images/img-hocba-tienganh-optimized/image-banner-cay-ielts.webp';
 import imgBanner3 from '@/assets/images/img-hocba-tienganh-optimized/img-banner-3.webp';
+import imgThanhHuyen from '@/assets/images/img-hocba-tienganh-optimized/img-thanh-huyen.webp';
 
 const baseUrl = import.meta.env.PUBLIC_CLIENT_URL;
 
@@ -332,111 +334,28 @@ const ul = (items: string) => `<ul class="flex flex-col gap-2">${items}</ul>`;
 const qaData = [
   {
     id: 'item-1',
-    question: '1. Tôi chưa biết mình phù hợp khoá nào, có cần chọn sẵn không?',
-    answer: `<p class="mb-3">Hiện tại, <strong>Học Bá 100% đào tạo trực tuyến qua Zoom kết hợp LMS độc quyền</strong>, được thiết kế chuyên cho học online ngay từ đầu. Tiết kiệm thời gian, tương tác 2 chiều như học trực tiếp.</p>${ul(
-      [
-        li(
-          checkIcon,
-          'Record mỗi buổi học lưu trọn đời + LMS tổng hợp từ vựng, ngữ pháp, flashcard, bài tập về nhà ôn tập mọi lúc.',
-        ),
-        li(
-          checkIcon,
-          'Giáo viên 100% đạt HSK6 & HSKK cao cấp, nhiều năm kinh nghiệm dạy online, sửa bài chi tiết, giúp học viên tiến bộ nhanh và vững chắc.',
-        ),
-      ].join(''),
-    )}
-    <p class="mt-3">Nhờ nền tảng và phương pháp dạy, học viên online tại Học Bá vẫn đạt hiệu quả tương đương, thậm chí vượt trội so với học offline.</p>`,
+    question: '1. Lộ trình học tại THE IELTS SPACE như thế nào?',
+    answer: 'Lộ trình tại THE IELTS SPACE được xây dựng theo năng lực đầu vào và mục tiêu band của từng học viên, tập trung vào đúng kiến thức, kỹ năng và dạng bài còn yếu. Kết hợp giữa giảng dạy trên lớp, luyện tập trên LMS E-Power, AI phân tích dữ liệu và mentor theo sát, THE IELTS SPACE giúp học viên học đúng trọng tâm, cải thiện liên tục và rút ngắn thời gian chinh phục mục tiêu IELTS.',
   },
   {
     id: 'item-2',
-    question: '2. Chi phí học tại Học Bá là bao nhiêu?',
-    answer:
-      'Học phí tại Học Bá được <strong>thiết kế linh hoạt theo từng khóa học và cấp độ</strong>, đi đôi với chất lượng đào tạo xứng đáng: giáo trình bài bản, đội ngũ giảng viên giàu kinh nghiệm, hỗ trợ học viên tận tâm và cam kết đầu ra rõ ràng.',
+    question: '2. THE IELTS SPACE có cam kết chất lượng đầu ra không?',
+    answer: 'Nội dung đang cập nhật...',
   },
   {
     id: 'item-3',
-    question: '3. Thời gian học trung bình cho mỗi cấp HSK sẽ trong khoảng bao lâu?',
-    answer: 'Mỗi cấp học tại Học Bá thường kéo dài từ <strong>2,5 đến 6 tháng</strong>, tùy theo trình độ.',
+    question: '3. Một lớp tại THE IELTS SPACE có bao nhiêu học viên?',
+    answer: 'Nội dung đang cập nhật...',
   },
   {
     id: 'item-4',
-    question: '4. Vì sao học phí cao hơn một số trung tâm khác?',
-    answer: ul(
-      [
-        li(
-          checkIcon,
-          '<strong>Sĩ số lớp học tại Học Bá được duy trì 8–10 học viên/lớp</strong>, lớp đông nhất cũng chỉ tối đa 11 bạn. Quy mô này giúp giảng viên theo sát từng học viên, đảm bảo mỗi bạn đều có thời gian tương tác và điều chỉnh kịp thời theo đúng tiêu chuẩn cam kết đầu ra.',
-        ),
-        li(
-          checkIcon,
-          '<strong>Mô hình đồng hành 1–3</strong>: Mỗi học viên luôn có 1 giảng viên, 1 quản lý học viên, và 1 mentor học thuật, đảm bảo năng lực và kết quả học tập tốt nhất.',
-        ),
-        li(
-          checkIcon,
-          '<strong>Hệ thống LMS độc quyền</strong>: Lưu trữ toàn bộ tài liệu, giáo trình, nội dung bài học và bài tập về nhà, giúp học viên học tập mọi lúc, mọi nơi.',
-        ),
-        li(
-          checkIcon,
-          '<strong>Cơ chế feedback 2 chiều</strong> và kiểm tra định kỳ thường xuyên, giúp trung tâm nắm rõ tiến độ, kịp thời hỗ trợ để học viên đạt hiệu quả học tập tốt nhất.',
-        ),
-      ].join(''),
-    ),
+    question: '4. Không theo kịp lớp học thì sao?',
+    answer: 'Nội dung đang cập nhật...',
   },
   {
     id: 'item-5',
-    question: '5. Trung tâm có cam kết đầu ra không?',
-    answer: ul(
-      [
-        li(checkIcon, 'Cam kết tối thiểu thi đậu HSK/HSKK theo mục tiêu đăng ký.'),
-        li(checkIcon, 'Không đạt (nhưng vẫn đi điểm chuyên cần) sẽ được học lại miễn phí.'),
-      ].join(''),
-    ),
-  },
-  {
-    id: 'item-6',
-    question: '6. Trung tâm có hỗ trợ bảo lưu không?',
-    answer: ul(
-      [
-        li(checkIcon, 'Bảo lưu tối đa 2 tháng, áp dụng khi học viên mới học dưới 20% số buổi.'),
-        li(checkIcon, 'Phí bảo lưu: 300.000đ/lần, tối đa 2 lần.'),
-        li(checkIcon, 'Quá hạn cần kiểm tra đầu vào để xếp lớp phù hợp khi quay lại học.'),
-      ].join(''),
-    ),
-  },
-  {
-    id: 'item-7',
-    question: '7. Trung tâm hỗ trợ học viên như thế nào?',
-    answer: ul(
-      [
-        li(checkIcon, 'Bảo lưu tối đa 2 tháng, áp dụng khi học viên mới học dưới 20% số buổi.'),
-        li(checkIcon, 'Phí bảo lưu: 300.000đ/lần, tối đa 2 lần.'),
-        li(checkIcon, 'Quá hạn cần kiểm tra đầu vào để xếp lớp phù hợp khi quay lại học.'),
-      ].join(''),
-    ),
-  },
-  {
-    id: 'item-8',
-    question: '8. Các câu hỏi khác thường gặp',
-    answer: ul(
-      [
-        li(
-          '❗',
-          '<strong>Lịch học xoay ca có tham gia được không?</strong> <br/>– Cần có lịch cố định ít nhất 3 tháng để đảm bảo hiệu quả, xoay ca liên tục trung tâm sẽ khó nhận.',
-        ),
-        li(
-          '❗',
-          '<strong>Có được chọn giáo viên không?</strong> <br/>– Được sắp xếp GV phù hợp với trình độ và mục tiêu học.',
-        ),
-        li(
-          '❗',
-          '<strong>Bao giờ khai giảng lớp mới?</strong> <br/>– Lớp cơ bản: 2–3 tuần gom lớp. Lớp nâng cao: 3–4 tuần.',
-        ),
-        li(
-          '❗',
-          '<strong>Có lớp chuyên ngành hoặc du học không?</strong> <br/>– Có. Lộ trình HSK + giao tiếp + chuyên ngành theo yêu cầu trường hoặc công việc.',
-        ),
-      ].join(''),
-    ),
+    question: '5. AI có đảm bảo chính xác không?',
+    answer: 'Nội dung đang cập nhật...',
   },
 ];
 
@@ -503,7 +422,7 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
   <JsonLd data={jsonLd} />
   <div class="relative">
     <section
-      class="relative flex h-auto xl:h-[846px] w-full flex-col bg-gradient-to-b from-[#FFFFFF] via-[#EEF4FF] to-[#DCE8FF] px-4 pb-6 md:pb-16 xl:px-0"
+      class="relative flex h-auto xl:h-[846px] w-full flex-col overflow-hidden bg-gradient-to-b from-[#FFFFFF] via-[#EEF4FF] to-[#DCE8FF] px-4 pb-6 md:pb-16 xl:px-0"
     >
       <div class="relative w-full max-w-[1440px] h-full mx-auto">
       <Breadcrumb className="container mt-4 px-4 md:px-0">
@@ -700,7 +619,7 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
             <div
               class="grid h-auto w-full max-w-2xl grid-cols-2 gap-[10px] xl:block relative xl:static z-10 xl:z-auto"
             >
-              <div class="col-span-1 h-auto xl:absolute xl:top-[342px] xl:left-[111px] w-full xl:w-[333px] xl:h-[81px]">
+              <div class="col-span-1 h-auto xl:absolute xl:top-[342px] xl:left-[30px] min-[1400px]:left-[111px] w-full xl:w-[333px] xl:h-[81px]">
                 <div class="flex h-full w-full items-center justify-center rounded-[12px] bg-white p-[2px] xl:p-0">
                   <div class="flex w-full xl:w-[303px] h-full min-h-[50px] xl:h-[70px] items-center gap-[4px] xl:gap-[8px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
                     <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px]">
@@ -716,7 +635,7 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
                   </div>
                 </div>
               </div>
-              <div class="col-span-1 h-auto xl:absolute xl:top-[600px] xl:left-[971px] w-full xl:w-[333px] xl:h-[81px]">
+              <div class="col-span-1 h-auto xl:absolute xl:top-[600px] xl:left-auto xl:right-[10px] min-[1400px]:right-[136px] w-full xl:w-[333px] xl:h-[81px]">
                 <div class="flex h-full w-full items-center justify-center rounded-[12px] bg-white p-[2px] xl:p-0">
                   <div class="flex w-full xl:w-[303px] h-full min-h-[50px] xl:h-[70px] items-center gap-[4px] xl:gap-[8px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
                     <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px]">
@@ -732,7 +651,7 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
                   </div>
                 </div>
               </div>
-              <div class="col-span-1 h-auto xl:absolute xl:top-[342px] xl:left-[971px] w-full xl:w-[333px] xl:h-[81px]">
+              <div class="col-span-1 h-auto xl:absolute xl:top-[342px] xl:left-auto xl:right-[10px] min-[1400px]:right-[136px] w-full xl:w-[333px] xl:h-[81px]">
                 <div class="flex h-full w-full items-center justify-center rounded-[12px] bg-white p-[2px] xl:p-0">
                   <div class="flex w-full xl:w-[303px] h-full min-h-[50px] xl:h-[70px] items-center gap-[4px] xl:gap-[8px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
                     <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px]">
@@ -748,7 +667,7 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
                   </div>
                 </div>
               </div>
-              <div class="col-span-1 h-auto xl:absolute xl:top-[471px] xl:left-[75px] w-full xl:w-[333px] xl:h-[81px]">
+              <div class="col-span-1 h-auto xl:absolute xl:top-[471px] xl:left-[10px] min-[1400px]:left-[75px] w-full xl:w-[333px] xl:h-[81px]">
                 <div class="flex h-full w-full items-center justify-center rounded-[12px] bg-white p-[2px] xl:p-0">
                   <div class="flex w-full xl:w-[303px] h-full min-h-[50px] xl:h-[70px] items-center gap-[4px] xl:gap-[8px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
                     <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px]">
@@ -764,7 +683,7 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
                   </div>
                 </div>
               </div>
-              <div class="col-span-1 h-auto xl:absolute xl:top-[600px] xl:left-[111px] w-full xl:w-[333px] xl:h-[81px]">
+              <div class="col-span-1 h-auto xl:absolute xl:top-[600px] xl:left-[30px] min-[1400px]:left-[111px] w-full xl:w-[333px] xl:h-[81px]">
                 <div class="flex h-full w-full items-center justify-center rounded-[12px] bg-white p-[2px] xl:p-0">
                   <div class="flex w-full xl:w-[303px] h-full min-h-[50px] xl:h-[70px] items-center gap-[4px] xl:gap-[8px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
                     <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px]">
@@ -780,7 +699,7 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
                   </div>
                 </div>
               </div>
-              <div class="col-span-1 h-auto xl:absolute xl:top-[471px] xl:left-[1004px] w-full xl:w-[333px] xl:h-[81px]">
+              <div class="col-span-1 h-auto xl:absolute xl:top-[471px] xl:left-auto xl:-right-[10px] min-[1400px]:right-[103px] w-full xl:w-[333px] xl:h-[81px]">
                 <div class="flex h-full w-full items-center justify-center rounded-[12px] bg-white p-[2px] xl:p-0">
                   <div class="flex w-full xl:w-[303px] h-full min-h-[50px] xl:h-[70px] items-center gap-[4px] xl:gap-[8px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
                     <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px]">
@@ -919,7 +838,7 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
             Cùng nghe học viên nói gì khi đồng hành cùng THE IELTS SPACE
           </p>
         </div>
-        <div class="mx-auto max-w-full md:max-w-[1028px]">
+        <div class="mx-auto max-w-full md:max-w-[800px]">
           <VideoStudentSlide slides={videoStudentSlides || []} client:visible />
         </div>
       </section>
@@ -1002,41 +921,41 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
             rel="noopener noreferrer"
             class="student-badge absolute -left-[70%] bottom-[4.5rem] flex h-14 w-fit cursor-pointer items-center rounded-md bg-white px-[10px] py-[10px] md:bottom-[7.5rem] md:h-20 md:rounded-[18px] md:px-4 md:py-4"
           >
-            <div class="relative z-10 size-9 rounded-full border-2 border-white md:size-[50px]">
+            <div class="relative z-10 size-9 rounded-full border-2 border-white md:size-[50px] overflow-hidden">
               <Image
-                src={IMAGES.khoaHsk.target3Hsk}
+                src={imgThanhHuyen}
                 width={150}
                 height={150}
-                alt={'target3Hsk'}
+                alt={'Thanh Huyen'}
                 densities={[1, 2]}
                 loading={'lazy'}
-                class={'object-cover w-full h-full rounded-full'}
+                class={'object-cover w-full h-full rounded-full scale-[2.5]'}
               />
             </div>
-            <div class="relative z-10 -ml-2 size-9 rounded-full border-2 border-white md:size-[50px]">
+            <div class="relative z-10 -ml-2 size-9 rounded-full border-2 border-white md:size-[50px] overflow-hidden">
               <Image
-                src={IMAGES.khoaHsk.target4Hsk}
+                src={imgThuHa}
                 width={150}
                 height={150}
-                alt={'target4Hsk'}
+                alt={'Thu Ha'}
                 densities={[1, 2]}
                 loading={'lazy'}
-                class={'object-cover w-full h-full rounded-full'}
+                class={'object-cover w-full h-full rounded-full scale-[2.5]'}
               />
             </div>
-            <div class="relative z-10 -ml-2 size-9 rounded-full border-2 border-white md:size-[50px]">
+            <div class="relative z-10 -ml-2 size-9 rounded-full border-2 border-white md:size-[50px] overflow-hidden">
               <Image
-                src={IMAGES.khoaHsk.target5Hsk}
+                src={imgMinhAnh}
                 width={150}
                 height={150}
-                alt={'target5Hsk'}
+                alt={'Minh Anh'}
                 densities={[1, 2]}
                 loading={'lazy'}
                 class={'object-cover w-full h-full rounded-full'}
               />
             </div>
             <div class="relative z-10 ml-2 md:ml-4">
-              <p class="student-count-primary text-xs font-black uppercase md:text-lg">10k +</p>
+              <p class="student-count-primary text-[#D16112] text-xs font-black uppercase md:text-lg">11k +</p>
               <p class="student-count-secondary text-[8px] font-semibold md:text-xs">Học viên</p>
             </div>
           </a>
@@ -1058,15 +977,15 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
     <section id="dang-ki-tu-van">
       <FormRegisterCourseHSK dataInput={DATA_VALUE.COURSE_HSK} />
     </section>
-    <section id="advisor-qa" class="" style="background: linear-gradient(357.89deg, #FFF8F8 42.88%, #FFD3D3 140.83%);">
+    <section id="advisor-qa" class="" style="background: linear-gradient(180deg, #D7E0FF 0%, #DCE8FF 100%);">
       <div class="mx-auto w-full max-w-[1354px]">
         <div class="flex flex-col gap-8 lg:flex-row">
           <div class="hidden lg:block lg:w-[614px]">
             <div class="sticky top-24">
               <div class="relative md:h-[748px] md:w-[614px]">
                 <Image
-                  src={IMAGES.khoaHsk.qaBgHsk}
-                  width={614}
+                  src={imgQaccNewKhoaHoc}
+                  width={610}
                   height={748}
                   alt={'fdBook'}
                   densities={[1, 2]}
@@ -1078,8 +997,8 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
           </div>
           <div class="w-full px-7 md:px-0 lg:w-[646px]">
             <div class="flex h-24 items-center justify-center md:h-[129px] md:justify-start">
-              <div class="text-[58px] font-black text-primary md:text-[108px]">?</div>
-              <h2 class="text-lg font-black uppercase text-primary md:text-[42px]">Câu hỏi thường gặp</h2>
+              <div class="text-[58px] font-black text-[#D16112] md:text-[108px]">?</div>
+              <h2 class="text-lg font-black uppercase text-[#D16112] md:text-[42px]">Câu hỏi thường gặp</h2>
             </div>
             <QAAccordion {qaData} />
           </div>
@@ -1224,7 +1143,7 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
     0%,
     75%,
     100% {
-      color: var(--primary);
+      color: #D16112;
     }
     25%,
     50% {

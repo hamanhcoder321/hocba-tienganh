@@ -1,9 +1,10 @@
 ---
 import { ArrowIcon } from '@/components/common/icons';
-import ContactAdvisorRegistrationForm from '@/components/features/contact/ContactAdvisorRegistrationForm';
+import IELTSRegisterForm from '@/components/features/course/hsk/IELTSRegisterForm';
 import { IMAGES } from '@/lib/constants/images';
 import { cn } from '@/lib/utils';
 import { getImage, Image } from 'astro:assets';
+import imgResgisterKhoaHoc from '@/assets/images/img-hocba-tienganh-optimized/img-register-khoa-hoc.png';
 
 const optimizedNoteBook = await getImage({
   width: 80,
@@ -16,30 +17,30 @@ const optimizedNoteBook = await getImage({
 const { dataInput } = Astro.props;
 ---
 
-<section class={cn('w-full overflow-hidden bg-gradient-to-l from-[#B90E0A] to-[#7D1900] h-auto md:h-auto')}>
+<section class={cn('w-full overflow-hidden bg-gradient-to-r from-[#04195C] via-[#072899] to-[#083AD4] h-auto md:h-auto')}>
   <div class="mx-auto w-full max-w-full md:max-w-[1354px]">
-    <div class="grid grid-cols-1 px-4 pt-8 md:grid-cols-2 md:py-0">
-      <div class="col-span-1">
-        <div class="mt-0 flex h-[50px] items-center gap-2 pl-6 md:mt-10 md:h-[90px] md:gap-4 md:pl-0">
+    <div class="flex flex-col px-4 pt-8 pb-10 md:grid md:grid-cols-2 md:py-0">
+      <div class="contents md:block">
+        <div class="order-1 mt-0 flex h-[50px] items-center gap-2 pl-6 md:mt-10 md:h-[90px] md:gap-4 md:pl-0">
           <Image
             src={IMAGES.contact.iconBook}
             width={90}
             height={90}
             alt={'icon-book'}
             densities={[1, 2]}
-            class={'object-cover w-[50px] md:w-[90px] h-auto'}
+            class={'object-cover w-[50px] md:w-[90px] h-auto -scale-x-100'}
           />
           <div class="relative flex flex-col gap-2 md:gap-4">
-            <div class="text-lg font-black uppercase text-white md:text-[32px] lg:text-[42px]">
+            <div class="text-[24px] font-black uppercase text-white md:text-[32px] lg:text-[42px]">
               Đăng ký tư vấn ngay!
             </div>
-            <div class="absolute -right-8 bottom-0 md:-bottom-12 md:-right-[10%] lg:-bottom-28 lg:-right-[34%]">
+            <!-- <div class="absolute -right-8 bottom-0 md:-bottom-12 md:-right-[10%] lg:-bottom-28 lg:-right-[34%]">
               <ArrowIcon className="h-6 w-9 md:h-[60px] md:w-[85px] lg:h-[88px] lg:w-[125px]" />
-            </div>
+            </div> -->
           </div>
         </div>
-        <div class="mt-2 md:mt-6">
-          <ContactAdvisorRegistrationForm
+        <div class="order-4 mt-2 w-full md:mt-6">
+          <IELTSRegisterForm
             className="w-full lg:w-[502px]"
             icons={{ noteBook: optimizedNoteBook.src }}
             client:idle
@@ -48,8 +49,8 @@ const { dataInput } = Astro.props;
           />
         </div>
       </div>
-      <div class="col-span-1">
-        <div class="mt-[30px] flex flex-col items-center md:mt-[84px]">
+      <div class="contents md:block">
+        <div class="order-2 mt-[30px] flex flex-col items-center md:mt-[84px]">
           <div class="text-xs font-black uppercase text-white md:text-[22px]">Nhận ưu đãi lên tới</div>
           <div
             class="text-[28px] font-black uppercase text-[#F3C650] md:mt-1 md:text-[42px]"
@@ -60,13 +61,13 @@ const { dataInput } = Astro.props;
           <div
             class="mt-2 flex h-9 w-fit items-center rounded-[74px] border border-white px-4 text-center text-xs font-black uppercase text-white md:h-12 md:text-lg lg:h-16 lg:px-10 lg:text-2xl"
           >
-            KHI ĐĂNG KÝ LỘ TRÌNH CHINH PHỤC HSK 3.0
+            KHI ĐĂNG KÝ LỘ TRÌNH CHINH PHỤC IELTS
           </div>
         </div>
-        <div class="mt-2 flex h-auto w-full justify-center md:mt-4 lg:mt-0 lg:h-[445px] lg:w-[622px]">
+        <div class="order-3 mt-2 flex h-auto w-full justify-center md:mt-4 lg:mt-0 lg:h-[445px] lg:w-[622px]">
           <Image
-            src={IMAGES.khoaHsk.hskPgsHbc}
-            alt={'hskPgsHbc'}
+            src={imgResgisterKhoaHoc}
+            alt={'img-resgister-khoa-hoc'}
             width={622}
             height={445}
             densities={[1, 2]}

@@ -505,7 +505,7 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
           </div>
         </div>
       </div>
-      <div className="relative mx-auto mt-4 flex w-fit items-center justify-center md:mt-12">
+      <div className="relative mx-auto mt-4 mb-[20px] md:mb-0 flex w-fit items-center justify-center md:mt-12">
         <div className="absolute -left-10 top-1 z-50 flex w-fit md:-left-28 md:-top-8">
           <FourPointedStarMini
             className="absolute bottom-6 right-7 mt-auto size-4 md:-bottom-3 md:-right-6 md:size-6"
