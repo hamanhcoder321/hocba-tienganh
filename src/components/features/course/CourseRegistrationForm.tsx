@@ -95,7 +95,7 @@ export default function CourseRegistrationForm({ courseName, isDarkRed }: Course
         >
           <PlayIcon className="!w-[24px] !h-[24px] md:!w-[28px] md:!h-[28px] lg:absolute lg:left-[26px] lg:top-1/2 lg:-translate-y-1/2 lg:!w-[40px] lg:!h-[40px] fill-white shrink-0" />
           <span>
-            {isPending ? 'ĐANG XỬ LÝ...' : isSuccess ? 'THÀNH CÔNG!' : 'ĐĂNG KÝ TƯ VẤN'}
+            {isPending ? 'ĐANG XỬ LÝ...' : isSuccess ? 'THÀNH CÔNG!' : 'TƯ VẤN LỘ TRÌNH IELTS'}
           </span>
         </Button>
       </form>

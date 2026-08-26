@@ -123,19 +123,19 @@ export default function SmartTechnologyClass({ icons, slides }: SmartTechnologyC
                         {/* sub images positions */}
                         {slide.subImages.map((subImage, index) => {
                           const positionClasses = {
-                            'bottom-left': 'absolute -bottom-[40px] md:-bottom-[60px] -left-2 md:-left-[20px] lg:-left-[50px] w-[180px] md:w-[220px] lg:w-[266px] h-auto',
+                            'bottom-left': 'absolute -bottom-[10px] md:-bottom-[60px] -left-[10px] md:-left-[20px] lg:-left-[50px] w-[125px] md:w-[220px] lg:w-[266px] h-auto',
                             'bottom-right':
-                              'absolute bottom-20 md:bottom-10 lg:bottom-0 -right-[10px] md:-right-[20px] lg:-right-[76px] w-[146px] md:w-[156px] h-auto',
+                              'absolute -bottom-[10px] md:bottom-10 lg:bottom-0 -right-[10px] md:-right-[20px] lg:-right-[76px] w-[95px] md:w-[156px] lg:w-[200px] h-auto',
                             'bottom-left-inner':
-                              'absolute -bottom-[10px] md:bottom-[60px] lg:bottom-[105px] -right-[6px] md:-right-[20px] lg:-right-[104px] w-[142px] md:w-[160px] lg:w-[184px] h-auto',
+                              'absolute bottom-[10px] md:bottom-[60px] lg:bottom-[105px] -right-[10px] md:-right-[20px] lg:-right-[104px] w-[105px] md:w-[160px] lg:w-[184px] h-auto',
                             'top-right-inner':
-                              'absolute -top-4 md:top-4 lg:top-4 right-[30%] md:right-[5%] lg:-right-[104px] w-[140px] md:w-[160px] lg:w-[184px] h-auto lg:h-[172px]',
+                              'absolute top-[10px] md:top-4 lg:top-4 -right-[10px] md:right-[5%] lg:-right-[104px] w-[105px] md:w-[160px] lg:w-[184px] h-auto lg:h-[172px]',
                             'bottom-center-wide':
-                              'absolute -bottom-[20px] md:-bottom-[30px] lg:-bottom-[40px] left-1/2 -translate-x-1/2 w-[90%] lg:w-[420px] h-auto',
+                              'absolute -bottom-[10px] md:-bottom-[30px] lg:-bottom-[40px] left-1/2 -translate-x-1/2 w-[250px] lg:w-[420px] h-auto',
                             'bottom-center':
-                              'absolute -bottom-[20px] md:-bottom-[30px] lg:-bottom-[40px] left-1/2 -translate-x-1/2 w-[160px] md:w-[200px] lg:w-[240px] h-auto',
+                              'absolute -bottom-[10px] md:-bottom-[30px] lg:-bottom-[40px] left-1/2 -translate-x-1/2 w-[135px] md:w-[200px] lg:w-[240px] h-auto',
                             'middle-right':
-                              'absolute top-[60%] -translate-y-1/2 -right-[10px] md:-right-[20px] lg:-right-[76px] w-[146px] md:w-[156px] h-auto',
+                              'absolute top-[60%] -translate-y-1/2 -right-[10px] md:-right-[20px] lg:-right-[76px] w-[95px] md:w-[156px] h-auto',
                           };
 
                           return (
