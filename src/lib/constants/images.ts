@@ -310,7 +310,7 @@ import heroChineseBusiness from '@/assets/images/hsk/hero/giao-tiep-doanh-nhan.p
 import heroChineseFactory from '@/assets/images/hsk/hero/cong-xuong.png';
 import hskPgsHbc from '@/assets/images/hsk/pgs-hbc.png';
 import qaBgHsk from '@/assets/images/hsk/qaBg.png';
-import roadmapBook from '@/assets/images/img-hocba-tienganh-optimized/image-sach-lo-trinh-khoa-hoc.jpg';
+import roadmapBook from '@/assets/images/img-hocba-tienganh-optimized/image-sach-lo-trinh-khoa-hoc.png';
 import s1Main from '@/assets/images/hsk/s1Main.png';
 import s1Sub1 from '@/assets/images/hsk/s1Sub1.png';
 import s1Sub2 from '@/assets/images/hsk/s1Sub2.png';
