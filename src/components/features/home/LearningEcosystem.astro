@@ -42,7 +42,7 @@ const features = [
   <div class="mx-auto px-4">
     <div class="mb-12 flex flex-col text-center">
       <div class="relative mx-auto max-w-4xl">
-        <div class="absolute top-[40%] md:top-[15%] lg:top-[20%] -translate-y-1/2 -left-3 sm:left-0 md:-left-[10px] lg:-left-[50px] xl:-left-[60px] z-10 pointer-events-none">
+        <div class="absolute top-[40%] md:top-[15%] lg:top-[30%] -translate-y-1/2 -left-3 sm:left-0 md:-left-[10px] lg:left-0 xl:left-[10px] z-10 pointer-events-none">
           <Image
             width={240}
             height={240}
@@ -63,7 +63,7 @@ const features = [
             </span>
           </h2>
           <div class="mt-6 md:mt-8 flex items-center justify-center px-1 sm:px-2 md:px-0 w-full relative">
-            <div class="relative inline-block text-center max-w-[850px]">
+            <div class="relative inline-block text-center max-w-[850px] md:translate-x-6">
               <!-- 5-point star icon (Figma: filled blue star left of subtitle) -->
               <svg class="hidden md:block absolute -left-10 top-1 w-8 h-8" viewBox="0 0 24 24" fill="#8CA8F9" xmlns="http://www.w3.org/2000/svg">
                 <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" />
@@ -100,7 +100,7 @@ const features = [
                 <p class="text-[#F59E0B] font-extrabold text-[16px] mt-1 leading-[147%] uppercase">{feature.subtitle}</p>
               </div>
               <div class="flex min-h-[120px] flex-grow items-center justify-center p-5 text-center bg-white">
-                <p class="text-[13px] font-medium leading-relaxed text-[#555]" set:html={feature.description}></p>
+                <p class="text-[13px] font-medium leading-relaxed text-[#373737]" set:html={feature.description}></p>
               </div>
             </div>
           </div>
@@ -190,7 +190,7 @@ const features = [
                  <p class="text-[#F59E0B] font-bold text-[12px] mt-1">{feature.subtitle}</p>
               </div>
               <div class="flex min-h-[120px] flex-grow items-center justify-center p-5 text-center bg-white">
-                 <p class="text-[16px] font-extrabold leading-[147%] text-[#555] uppercase" set:html={feature.description}></p>
+                 <p class="text-[15px] font-medium leading-relaxed text-[#373737]" set:html={feature.description}></p>
               </div>
             </div>
 
@@ -217,19 +217,19 @@ const features = [
   <div id="mentor-content" class="px-2 sm:px-4 flex justify-center w-full overflow-visible">
     <div class="group relative w-[55%] sm:w-[65%] md:w-full max-w-[550px] mt-4 md:mt-0">
       <div
-        class="relative z-10 overflow-hidden rounded-[16px] md:rounded-[24px] bg-gradient-to-b from-[#F48220] to-[#FDC959] p-2 md:p-5 transition-all duration-500 shadow-xl group-hover:-translate-y-2 group-hover:from-[#F69A45] group-hover:to-[#FDD375] group-hover:shadow-[0_20px_40px_rgba(244,130,32,0.4)]"
+        class="relative z-10 overflow-hidden rounded-[16px] md:rounded-[24px] bg-gradient-to-b from-[#F69A45] to-[#FDD375] shadow-[0_20px_40px_rgba(244,130,32,0.4)] p-2 md:p-5 transition-all duration-500 lg:from-[#F48220] lg:to-[#FDC959] lg:shadow-xl lg:group-hover:from-[#F69A45] lg:group-hover:to-[#FDD375] lg:group-hover:shadow-[0_20px_40px_rgba(244,130,32,0.4)]"
       >
-        <div class="relative z-10 overflow-hidden max-sm:!h-auto">
+        <div class="relative z-10 overflow-hidden flex flex-col rounded-xl md:rounded-2xl border-[2px] border-white/90 max-sm:!h-auto">
           <h3
-            class="rounded-xl md:rounded-2xl border-[2px] border-white/90 py-2 px-1 md:py-3 md:px-4 text-center text-[12px] sm:text-[14px] md:text-[26px] font-black uppercase text-white leading-[1.3] shadow-sm transition-all duration-500"
+            class="py-3 px-1 md:py-4 md:px-4 text-center text-[14px] md:text-[26px] font-black uppercase text-white leading-[1.3] shadow-sm transition-all duration-500"
           >
             Mentor học thuật 1-1 <br /> BỔ TRỢ 24/7
           </h3>
-          <div class="mt-2 md:mt-4 overflow-hidden rounded-xl md:rounded-2xl bg-white pt-2 md:pt-4 px-1 md:px-2 shadow-inner">
+          <div class="overflow-hidden bg-white pt-2 md:pt-4 px-1 md:px-2 shadow-inner border-t-[2px] border-white/90">
             <Image
               src={IMAGES.home.mentorImg}
               alt="Academic Mentor"
-              class="h-auto w-full object-contain transform transition-transform duration-700 group-hover:scale-105"
+              class="h-auto w-full object-contain transform transition-all duration-700 [clip-path:inset(0_18%_0_18%)] scale-[1.25] lg:[clip-path:inset(0_0_0_0)] lg:scale-100 lg:group-hover:[clip-path:inset(0_18%_0_18%)] lg:group-hover:scale-[1.25]"
             />
           </div>
         </div>
@@ -237,31 +237,31 @@ const features = [
 
       {/* Owl on the left */}
       <div
-        class="pointer-events-none absolute -bottom-4 -left-[30%] sm:-left-[25%] z-20 block transition-all delay-100 duration-700 lg:-bottom-8 lg:-left-[180px] lg:-translate-x-10 lg:opacity-0 lg:group-hover:translate-x-0 lg:group-hover:opacity-100"
+        class="pointer-events-none absolute -bottom-1 -left-[15%] sm:-left-[10%] md:-left-[50px] z-20 block transition-all delay-100 duration-700 lg:-bottom-8 lg:-left-[140px] lg:opacity-0 lg:group-hover:opacity-100"
       >
         <Image
           src={imgChugaMentor}
           alt="Mentor Owl"
-          class="h-auto w-[75px] sm:w-[100px] drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] md:w-[160px] lg:w-[280px]"
+          class="h-auto w-[65px] sm:w-[90px] drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] md:w-[140px] lg:w-[250px]"
         />
       </div>
 
       {/* Large feedback on top right */}
       <div
-        class="pointer-events-none absolute -right-[40%] sm:-right-[35%] top-[20%] md:top-[35%] z-20 block transition-all delay-100 duration-700 xl:top-8 xl:-right-[350px] xl:translate-x-10 xl:opacity-0 xl:group-hover:translate-x-0 xl:group-hover:opacity-100"
+        class="pointer-events-none absolute -right-[40%] sm:-right-[35%] md:-right-[70px] top-[20%] md:top-[25%] z-20 block transition-all delay-100 duration-700 lg:top-[40px] lg:-right-[200px] lg:opacity-0 lg:group-hover:opacity-100 xl:top-[50px] xl:-right-[300px]"
       >
         <Image
           src={imgLoiNhanMentor}
           alt="Mentor Feedback"
-          class="h-auto w-[135px] sm:w-[165px] drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] md:w-[350px] xl:w-[450px]"
+          class="h-auto w-[135px] sm:w-[160px] drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] md:w-[240px] lg:w-[350px] xl:w-[400px]"
         />
       </div>
 
       {/* Small reminder on bottom right */}
       <div
-        class="pointer-events-none absolute bottom-4 sm:bottom-6 -right-[25%] sm:-right-[20%] z-20 block transition-all delay-200 duration-500 xl:-bottom-4 xl:-right-[220px] xl:translate-y-4 xl:opacity-0 xl:group-hover:translate-y-0 xl:group-hover:opacity-100"
+        class="pointer-events-none absolute bottom-4 sm:bottom-6 -right-[30%] sm:-right-[25%] md:-right-[40px] z-20 block transition-all delay-200 duration-500 lg:bottom-[20px] lg:-right-[100px] lg:opacity-0 lg:group-hover:opacity-100 xl:-right-[290px]"
       >
-        <Image src={imgNhacNho} alt="Reminder" class="h-auto w-[85px] sm:w-[110px] drop-shadow-xl md:w-[190px] xl:w-[320px]" />
+        <Image src={imgNhacNho} alt="Reminder" class="h-auto w-[90px] sm:w-[115px] drop-shadow-xl md:w-[150px] lg:w-[190px] xl:w-[350px]" />
       </div>
     </div>
   </div>

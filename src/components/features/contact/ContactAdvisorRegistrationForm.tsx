@@ -7,11 +7,18 @@ import { useRegisterStudy } from '@/hooks/features/use-common';
 import type { RegisterStudyBodyType } from '@/lib/schemas/common';
 import { cn } from '@/lib/utils';
 
+// Form đăng ký tư vấn dùng chung cho nhiều trang (SimpleFormRegister, FormRegisterCourseChinese).
+// dataInput được truyền từ từng trang để backend phân biệt lead đến từ đâu.
+// isSimpleForm=true sẽ ẩn 4 field nâng cao (trình độ, mục tiêu, liên hệ, khung giờ).
+// isCourseChinese — xem ghi chú @deprecated bên dưới.
+
 interface ContactAdvisorRegistrationFormProps {
   icons?: {
     noteBook?: string;
   };
   isSimpleForm?: boolean;
+  // @deprecated — thêm hồi làm trang tiếng Trung (27/03/2026), giờ chỉ còn FormRegisterCourseChinese dùng.
+  // TODO: bỏ prop này + block submit bên dưới khi không còn cần trang tiếng Trung nữa.
   isCourseChinese?: boolean;
   dataInput?: string;
   className?: string;
@@ -59,11 +66,12 @@ export default function ContactAdvisorRegistrationForm({
   };
 
   return (
-    <div className={cn('relative mx-auto mt-0 w-full max-w-[680px] md:-mt-5', className)}>
+    <div className={cn('relative mx-auto mt-0 w-full max-w-[450px] md:-mt-5', className)}>
       <div className="relative">
-        {/* Form */}
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 md:space-y-5">
           <div className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-x-6 md:gap-y-3">
+
+            {/* họ tên + sdt — luôn hiện */}
             <div className="col-span-1 space-y-2">
               <Label htmlFor="name" className="text-[15px] font-semibold text-white md:text-base">
                 Họ Và Tên
@@ -108,6 +116,7 @@ export default function ContactAdvisorRegistrationForm({
               )}
             </div>
 
+            {/* trình độ + nghề nghiệp — chỉ hiện ở trang tiếng Trung */}
             {isCourseChinese && (
               <>
                 <div className="space-y-2 md:col-span-1">
@@ -148,6 +157,7 @@ export default function ContactAdvisorRegistrationForm({
               </>
             )}
 
+            {/* mục tiêu + email — luôn hiện */}
             <div className="space-y-2 md:col-span-1">
               <Label htmlFor="course" className="text-[15px] font-semibold text-white md:text-base">
                 Mục Tiêu IELTS Của Bạn
@@ -188,6 +198,7 @@ export default function ContactAdvisorRegistrationForm({
               )}
             </div>
 
+            {/* 4 field nâng cao — ẩn khi isSimpleForm=true */}
             {!isSimpleForm && (
               <>
                 <div className="space-y-2 md:col-span-1">
@@ -287,15 +298,20 @@ export default function ContactAdvisorRegistrationForm({
             </div>
           </div>
 
+          {/* slot cho content bổ sung — SimpleFormRegister nhét ảnh cô gái mobile vào đây */}
           {children}
 
-          {/* Submit Button */}
+          {/* nút submit có 2 phiên bản tùy isCourseChinese
+              - true:  trang tiếng Trung, không có icon sổ bên trái (legacy, xem TODO bên trên)
+              - false: SimpleFormRegister, có icon sổ absolute bên trái nút
+          */}
           {isCourseChinese ? (
-            <div className="relative mx-auto w-fit pt-1 text-center md:w-full">
+            // TODO: xóa block này khi bỏ trang tiếng Trung
+            <div className="relative mx-auto w-full pt-1 text-center">
               <Button
                 type="submit"
                 disabled={isPending}
-                className="relative mx-auto flex items-center justify-center gap-[10px] min-h-[50px] w-full max-w-[386px] rounded-[24px] border-[3px] border-white bg-[#F97316] py-[6px] px-[16px] text-base font-black uppercase text-white shadow-lg transition-colors hover:opacity-90 disabled:opacity-70 md:min-h-[68px] md:w-[386px] md:text-2xl"
+                className="relative mx-auto flex items-center justify-center gap-[10px] min-h-[50px] w-full max-w-[386px] rounded-[24px] border-[3px] border-white bg-[#F97316] py-[6px] px-[16px] text-base font-black uppercase text-white shadow-lg transition-colors hover:opacity-90 disabled:opacity-70 md:min-h-[68px] md:text-2xl"
               >
                 {isPending ? 'Đang xử lý...' : isSuccess ? 'Thành công!' : (
                   <span className="flex flex-col items-center leading-tight">
@@ -304,17 +320,18 @@ export default function ContactAdvisorRegistrationForm({
                   </span>
                 )}
               </Button>
-              <p className="mt-2 text-xs font-normal text-white md:ml-16 md:text-[16px] md:leading-[150%]">
+              <p className="mt-2 text-right font-normal text-white md:text-[16px] md:leading-[150%]">
                 THE IELTS SPACE sẽ liên hệ lại trong vòng <span className="font-bold">24 giờ</span> làm việc.
               </p>
             </div>
           ) : (
-            <div className="relative mx-auto w-fit pt-4 text-center md:w-full">
+            <div className="relative mx-auto w-full pt-4 text-center">
               <Button
                 type="submit"
                 disabled={isPending}
-                className="relative mx-auto flex items-center justify-center gap-[10px] min-h-[50px] w-full max-w-[386px] rounded-[24px] border-[3px] border-white bg-[#F97316] py-[6px] px-[16px] text-base font-black uppercase text-white shadow-lg transition-colors hover:opacity-90 disabled:opacity-70 md:min-h-[68px] md:w-[386px] md:text-2xl"
+                className="relative mx-auto flex items-center justify-center gap-[10px] min-h-[50px] w-full max-w-[386px] translate-x-2 md:translate-x-4 rounded-[24px] border-[3px] border-white bg-[#F97316] py-[6px] px-[16px] text-base font-black uppercase text-white shadow-lg transition-colors hover:opacity-90 disabled:opacity-70 md:min-h-[68px] md:text-2xl"
               >
+                {/* icon sổ nằm absolute, trôi ra ngoài bên trái nút */}
                 {icons?.noteBook && (
                   <img
                     src={icons.noteBook}
@@ -331,7 +348,7 @@ export default function ContactAdvisorRegistrationForm({
                   </span>
                 )}
               </Button>
-              <p className="mt-2 text-xs font-normal text-white md:ml-12 md:text-[16px] md:leading-[150%]">
+              <p className="mt-2 text-right font-normal text-white md:text-[15px] md:leading-[150%]">
                 THE IELTS SPACE sẽ liên hệ lại trong vòng <span className="font-bold">24 giờ</span> làm việc.
               </p>
             </div>

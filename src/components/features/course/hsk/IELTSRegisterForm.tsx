@@ -190,7 +190,7 @@ export default function IELTSRegisterForm({
               <Button
                 type="submit"
                 disabled={isPending}
-                className="relative mx-auto flex items-center justify-center gap-[10px] min-h-[50px] w-full rounded-[24px] border-[3px] border-white bg-[#F97316] py-[6px] px-[16px] text-base font-black uppercase text-white shadow-lg transition-colors hover:opacity-90 disabled:opacity-70 md:min-h-[68px] md:text-2xl"
+                className="relative ml-auto flex items-center justify-center gap-[10px] min-h-[50px] w-full max-w-[330px] md:max-w-[460px] rounded-[24px] border-[3px] border-white bg-[#F97316] py-[6px] px-[16px] text-[15px] font-black uppercase text-white shadow-lg transition-colors hover:opacity-90 disabled:opacity-70 md:min-h-[68px] md:text-[20px]"
               >
                 {icons?.noteBook && (
                   <img
@@ -205,7 +205,7 @@ export default function IELTSRegisterForm({
                   <span>GỬI THÔNG TIN CHO THE IELTS SPACE</span>
                 )}
               </Button>
-              <p className="mt-2 text-xs font-normal text-white md:text-[16px] md:leading-[150%]">
+              <p className="mt-2 text-right font-normal text-white md:text-[17px] md:leading-[150%]">
                 THE IELTS SPACE sẽ liên hệ lại trong vòng <span className="font-bold">24 giờ</span> làm việc.
               </p>
             </div>
