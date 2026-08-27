@@ -81,7 +81,8 @@ import kinhLup from '@/assets/images/KinhLup.png';
 import laptopHocba from '@/assets/images/laptop_hocba.webp';
 import logoMeta from '@/assets/images/logo-meta.jpg';
 // import logo from '@/assets/images/logohocba.webp'; // logo cũ
-import logo from '@/assets/images/img-hocba-tienganh-optimized/logo-hocba-tienganh.webp'; // logo mới
+import logo from '@/assets/images/img-hocba-tienganh-optimized/logo-hocba-tienganh.webp';
+import logoIeltsSpace from '@/assets/images/img-hocba-tienganh-optimized/img-logo-header.webp'; // logo mới
 import lotrinh from '@/assets/images/lotrinh.png';
 import mocnhay from '@/assets/images/mocnhay.webp';
 import icon1 from '@/assets/images/registration/icon1.png';
@@ -202,11 +203,14 @@ import ThanhHai from '@/assets/images/home/student-comment/thanhhai.png';
 import TienVu from '@/assets/images/home/student-comment/tienvu.png';
 import VuHaiMy from '@/assets/images/home/student-comment/vuhaimy.jpg';
 import MinhAnh from '@/assets/images/img-hocba-tienganh-optimized/image-minh-anh.webp';
+import MinhAnhNew from '@/assets/images/img-hocba-tienganh-optimized/img-minh-anh.jpg';
 import ThuThuy from '@/assets/images/img-hocba-tienganh-optimized/image-Thu-Thuy.webp';
 import ThuHa from '@/assets/images/img-hocba-tienganh-optimized/img-thu-ha.webp';
 import ThanhHuyen from '@/assets/images/img-hocba-tienganh-optimized/img-thanh-huyen.webp';
 import NhatQuan from '@/assets/images/img-hocba-tienganh-optimized/image-nhat-quan.webp';
+import NhatQuanNew from '@/assets/images/img-hocba-tienganh-optimized/img-avatar-nhat-quan.png';
 import TuanKiet from '@/assets/images/img-hocba-tienganh-optimized/image-tuan-kiet.webp';
+import TuanKietNew from '@/assets/images/img-hocba-tienganh-optimized/img-tuan-kiet.jpg';
 // Evidence Gallery images
 import imgCot1 from '@/assets/images/img-hocba-tienganh-optimized/img-cot1.webp';
 import imgCot3 from '@/assets/images/img-hocba-tienganh-optimized/img-cot3.webp';
@@ -302,6 +306,12 @@ import heroHsk3 from '@/assets/images/hsk/hero/hsk3.png';
 import heroHsk4 from '@/assets/images/hsk/hero/hsk4.png';
 import heroHsk5 from '@/assets/images/hsk/hero/hsk5.png';
 import heroHsk6 from '@/assets/images/hsk/hero/hsk6.png';
+import heroHskKhoiDong from '@/assets/images/img-hocba-tienganh-optimized/img-banner-khoi-dong.png';
+import heroHskCatCanh from '@/assets/images/img-hocba-tienganh-optimized/img-banner-cat-canh.png';
+import heroHskTangToc from '@/assets/images/img-hocba-tienganh-optimized/img-banner-tang-toc.png';
+import heroHskButPha from '@/assets/images/img-hocba-tienganh-optimized/img-banner-but-pha.png';
+import heroHskVuonXa from '@/assets/images/img-hocba-tienganh-optimized/img-banner-vuon-xa.png';
+import heroHskChinhPhuc from '@/assets/images/img-hocba-tienganh-optimized/img-banner-chinh-phuc.png';
 import heroChineseBasic from '@/assets/images/hsk/hero/giao-tiep-co-ban.png';
 import heroChineseOffice from '@/assets/images/hsk/hero/giao-tiep-van-phong-cong-so.png';
 import heroChineseCommerce from '@/assets/images/hsk/hero/thuong-mai.png';
@@ -413,6 +423,7 @@ export const IMAGES = {
   heroTof,
   tiengTrungUD,
   logo,
+  logoIeltsSpace,
   logoMeta,
   logoFooter,
   tiengTrungThanhCong,
@@ -493,6 +504,12 @@ export const IMAGES = {
     heroHsk4,
     heroHsk5,
     heroHsk6,
+    heroHskKhoiDong,
+    heroHskCatCanh,
+    heroHskTangToc,
+    heroHskButPha,
+    heroHskVuonXa,
+    heroHskChinhPhuc,
     heroChineseBasic,
     heroChineseOffice,
     heroChineseCommerce,
@@ -573,11 +590,14 @@ export const IMAGES = {
     TienVu,
     VuHaiMy,
     MinhAnh,
+    MinhAnhNew,
     ThuThuy,
     ThuHa,
     ThanhHuyen,
     NhatQuan,
+    NhatQuanNew,
     TuanKiet,
+    TuanKietNew,
     evidenceGallery: {
       col1: [imgCot1],
       col2: [imgCot2Vt1, imgCot2Vt2, imgCot2Vt3, imgCot2Vt4],

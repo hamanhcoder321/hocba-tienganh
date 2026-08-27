@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { IMAGES } from '@/lib/constants/images';
-import { Chinesetag, CertificateIcon, GraduationCapIcon, LecturerBadgeIcon } from '@/components/common/icons';
+import { Chinesetag, CertificateIcon, GraduationCapIcon, LecturerBadgeIcon, VectorArrow } from '@/components/common/icons';
 
 export default function LecturerShowcase({ lecturers = [], bgClass = 'bg-[#F9F9F9]' }: TLecturerShowcaseProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -73,67 +73,29 @@ export default function LecturerShowcase({ lecturers = [], bgClass = 'bg-[#F9F9F
         {/* Header */}
         <div className="mb-6 md:mb-12 flex flex-col items-center text-center">
           <div className="relative">
-            <div className="absolute -left-6 -top-2 block md:-left-12 md:-top-2">
-              <img
-                src={IMAGES.schedule.decorCorner.src}
-                alt="decoration"
-                className="h-[20.75px] w-[21.68px] md:h-[31px] md:w-[31px]"
-                style={{ rotate: '0.03deg' }}
-              />
-            </div>
-            <h2 className="bg-gradient-to-r from-[#7D1900] to-[#B90E0A] bg-clip-text text-center font-gilroy text-[18px] font-[1000] uppercase leading-[23.48px] text-transparent md:text-[36px] md:leading-tight lg:text-[42px] lg:leading-[64px]">
+            <VectorArrow
+              fromColor="#FFA500"
+              toColor="#072899"
+              stopOffset="0.2"
+              className="absolute -left-6 -top-2 h-[20.75px] w-[21.68px] md:-left-12 md:-top-2 md:h-[31px] md:w-[31px]"
+            />
+            <h2 className="text-[#072899] text-center font-gilroy text-[18px] font-[1000] uppercase leading-[23.48px] md:text-[36px] md:leading-tight lg:text-[42px] lg:leading-[64px]">
               HỌC VỚI NGƯỜI GIỎI NHẤT
             </h2>
           </div>
           <p className="font-gilroy text-[16px] font-bold leading-[1.2] text-[#373737] md:text-[24px] md:leading-none lg:text-[28px]">
-            Học Bá Education Tự Hào Quy Tụ Đội Ngũ Giáo Viên Hàng Đầu
+            THE IELTS SPACE Tự Hào Quy Tụ Đội Ngũ Giáo Viên Hàng Đầu
           </p>
         </div>
 
-        <div className="flex flex-col-reverse md:flex-row md:items-start md:justify-between md:gap-0 lg:ml-0 lg:gap-0 xl:items-start xl:justify-center xl:gap-0">
+        <div className="flex flex-col-reverse md:flex-row md:items-start md:justify-between md:gap-4 lg:ml-0 lg:gap-8 xl:items-start xl:justify-center xl:gap-8">
           {/* Left Column: Featured Card (becomes bottom on mobile) */}
-          <div className="flex w-full justify-center md:w-[330px] md:justify-start md:pb-5 lg:w-[460px] lg:pb-5 xl:w-[474px] xl:justify-start xl:pb-0 [@media(min-width:900px)_and_(max-width:1023px)]:w-[380px]">
+          <div className="flex w-full justify-center flex-shrink-0 md:w-[390px] md:justify-start lg:w-[480px] xl:w-[600px] xl:justify-start [@media(min-width:900px)_and_(max-width:1023px)]:w-[460px]">
             <div
-              className="relative flex h-auto min-h-[388px] w-full max-w-[353px] flex-col rounded-[6.99px] border-[0.7px] border-[#FFC7C7] bg-[#FFF3F3] md:min-h-[410px] md:w-full md:max-w-[600px] md:rounded-[9.94px] md:border lg:min-h-[440px] xl:min-h-[532px] xl:max-w-[474px] xl:origin-top [@media(min-width:900px)_and_(max-width:1023px)]:min-h-[440px]"
+              className="relative flex h-auto min-h-[388px] w-full max-w-[353px] flex-col rounded-[6.99px] border-[0.7px] border-[#FFC7C7] bg-white md:h-[410px] md:w-full md:max-w-full md:rounded-[9.94px] md:border lg:h-[440px] xl:h-[532px] xl:max-w-full xl:origin-top [@media(min-width:900px)_and_(max-width:1023px)]:h-[440px]"
               style={{ boxShadow: '2px 4px 15px 0px #DBDBDB' }}
             >
-              {/* Chinese Decorative Text */}
-              <div
-                className="absolute hidden flex-col items-center justify-center lg:right-[50px] lg:top-[40px] lg:flex xl:right-[40px] xl:top-[65px]"
-                style={{
-                  width: '77.66px',
-                  height: '100px',
-                  padding: '7.75px',
-                  gap: '7.75px',
-                  borderRadius: '5.43px',
-                  background:
-                    'linear-gradient(#FFF3F3, #FFF3F3) padding-box, linear-gradient(to bottom, #AF1F23, #E8DADB) border-box',
-                  border: '0.78px solid transparent',
-                }}
-              >
-                <Chinesetag />
-              </div>
-
-              {/* Mobile version of the decorative text */}
-              <div
-                className="absolute z-10 flex flex-col items-center justify-center lg:hidden"
-                style={{
-                  width: '54.6px',
-                  height: '70.3px',
-                  top: '71.71px',
-                  right: 'calc((100% - 234.79px - 54.6px) / 2)',
-                  padding: '5.45px',
-                  gap: '5.45px',
-                  borderRadius: '3.81px',
-                  background:
-                    'linear-gradient(#FFF3F3, #FFF3F3) padding-box, linear-gradient(to bottom, #AF1F23, #E8DADB) border-box',
-                  border: '0.54px solid transparent',
-                }}
-              >
-                <Chinesetag />
-              </div>
-
-              <div className="relative mb-2 ml-[21.08px] mt-[18.98px] flex h-[184.19px] w-[213.71px] items-center justify-center self-start rounded-[4.22px] border-[0.5px] border-[#C7C7C7] bg-[#FFF8F8] shadow-[inset_0_4px_4px_rgba(0,0,0,0.25)] md:ml-[10px] md:mt-3 md:h-[160px] md:w-[220px] lg:ml-[20px] lg:h-[200px] lg:w-[260px] xl:ml-[30px] xl:h-[262px] xl:w-[304px]">
+              <div className="relative mb-2 mx-auto self-center mt-[18.98px] flex h-[210px] w-[240px] flex-shrink-0 items-center justify-center rounded-[4.22px] border-[0.5px] border-[#C7C7C7] bg-white shadow-[inset_0_4px_4px_rgba(0,0,0,0.25)] md:mt-3 md:h-[210px] md:w-[280px] lg:h-[230px] lg:w-[380px] xl:h-[260px] xl:w-[440px]">
                 <div className="relative h-full w-full overflow-hidden rounded-[10px]">
                   <img
                     src={currentLecturer?.optimizedAvatar || currentLecturer?.avatar_url?.file_path || ''}
@@ -141,27 +103,27 @@ export default function LecturerShowcase({ lecturers = [], bgClass = 'bg-[#F9F9F
                     className="h-full w-full object-contain"
                   />
 
-                  {/* Logo HOC BA inside photo */}
+                  {/* Logo IELTS SPACE inside photo */}
                   <div className="absolute left-3 top-3 z-20">
-                    <img src={IMAGES.logo.src} alt="logo" className="h-8 w-auto md:h-10" />
+                    <img src={IMAGES.logoIeltsSpace.src} alt="logo" className="h-8 w-auto md:h-10" />
                   </div>
                 </div>
               </div>
 
-              <div className="flex-1 space-y-3 px-6 pb-10 lg:px-[30px] lg:pb-10">
-                <div>
-                  <h3 className="font-svn-gilroy text-[26px] font-bold leading-none text-[#AF0000]">
+              <div className="flex flex-1 min-h-0 flex-col space-y-3 px-6 pb-10 lg:px-[30px] lg:pb-10">
+                <div className="flex-shrink-0 text-center">
+                  <h3 className="font-svn-gilroy text-[26px] font-bold leading-none text-[#072899]">
                     {currentLecturer?.name}
                   </h3>
-                  <p className="font-svn-gilroy pt-1 text-[14px] font-bold leading-[1.3] text-[#373737] lg:text-[16px]">
+                  <p className="font-svn-gilroy pt-1 text-[14px] font-bold leading-[1.3] text-[#072899] lg:text-[16px]">
                     {currentLecturer?.title || 'Giáo viên lớp HSK & Chinese'}
                   </p>
                 </div>
 
-                <ul className="space-y-3 pl-4 pt-1 md:pt-4">
+                <ul className="flex-1 min-h-0 space-y-3 overflow-y-auto pl-4 pt-1 md:pt-4 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-thumb]:rounded-full">
                   {currentLecturer?.teacherHighlights?.slice(0, 3).map((highlight, idx) => (
-                    <li key={idx} className="flex items-center gap-2">
-                      <div className="flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center md:h-6 md:w-6">
+                    <li key={idx} className="flex items-start gap-2 xl:w-[418px] xl:gap-[12px]">
+                      <div className="flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center mt-0.5 md:mt-1 md:h-6 md:w-6">
                         {idx === 0 ? (
                           <CertificateIcon className="size-[18px] text-[#373737] md:size-6" />
                         ) : idx === 1 ? (
@@ -180,10 +142,10 @@ export default function LecturerShowcase({ lecturers = [], bgClass = 'bg-[#F9F9F
                 <div className="absolute bottom-0 left-[118px] flex translate-y-1/2 md:left-1/2 md:-translate-x-1/2">
                   <Button
                     onClick={handleViewDetail}
-                    className="hover:animate-outline-pulse-btn font-svn-gilroy group relative h-[28.1px] w-[117px] overflow-hidden rounded-[14.76px] bg-gradient-to-r from-[#7D1900] to-[#B90E0A] px-[14.76px] py-[6.32px] text-[10.54px] font-[700] uppercase leading-[1.5] text-white shadow-[0px_4px_15px_rgba(143,30,21,0.3)] transition-all hover:shadow-[0_0_20px_rgba(255,184,0,0.5)] md:h-[54px] md:w-[222px] md:rounded-[28px] md:text-[20px]"
+                    className="hover:animate-outline-pulse-btn font-svn-gilroy group relative h-[28.1px] w-[117px] overflow-hidden rounded-[14.76px] bg-gradient-to-r from-[#F97316] to-[#F3C650] px-[14.76px] py-[6.32px] text-[10.54px] font-[700] uppercase leading-[1.5] text-white shadow-[0px_4px_15px_rgba(249,115,22,0.35)] transition-all hover:shadow-[0_0_20px_rgba(243,198,80,0.5)] md:h-[54px] md:w-[222px] md:rounded-[28px] md:text-[20px]"
                   >
                     {/* Pulsing gradient overlay */}
-                    <div className="group-hover:animate-pulse-custom-btn absolute left-0 top-0 z-0 h-full w-full bg-gradient-to-r from-[#FE8E39] to-[#8F1E15] opacity-0 transition-opacity duration-1000 group-hover:opacity-100"></div>
+                    <div className="group-hover:animate-pulse-custom-btn absolute left-0 top-0 z-0 h-full w-full bg-gradient-to-r from-[#F3C650] to-[#F97316] opacity-0 transition-opacity duration-1000 group-hover:opacity-100"></div>
 
                     <span className="relative z-10">XEM CHI TIẾT</span>
                   </Button>
@@ -218,7 +180,7 @@ export default function LecturerShowcase({ lecturers = [], bgClass = 'bg-[#F9F9F
             <div className="mx-auto h-[80%] w-[2px] bg-[#D9D9D9] xl:translate-x-2" />
           </div>
 
-          <div className="w-full flex-shrink-0 md:w-[390px] lg:w-[480px] xl:w-[620px] [@media(min-width:900px)_and_(max-width:1023px)]:w-[460px]">
+          <div className="w-full flex-shrink-0 md:flex md:flex-col md:justify-between md:h-[410px] md:w-[390px] lg:h-[440px] lg:w-[480px] xl:h-[532px] xl:w-[600px] [@media(min-width:900px)_and_(max-width:1023px)]:h-[440px] [@media(min-width:900px)_and_(max-width:1023px)]:w-[460px]">
             <div
               ref={scrollRef}
               className="scrollbar-hide flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:gap-x-3 md:gap-y-4 md:overflow-visible md:px-1 md:pb-5 lg:gap-x-4 lg:overflow-visible lg:px-2 xl:gap-x-5 xl:gap-y-5 xl:overflow-visible xl:px-4 [@media(min-width:900px)_and_(max-width:1023px)]:overflow-visible [@media(min-width:900px)_and_(max-width:1023px)]:px-2"
@@ -232,14 +194,14 @@ export default function LecturerShowcase({ lecturers = [], bgClass = 'bg-[#F9F9F
                     className={cn(
                       'group relative flex h-[128px] w-[140px] shrink-0 cursor-pointer flex-col items-center rounded-[9.94px] transition-all duration-500 md:h-[125px] md:w-[120px] lg:h-[135px] lg:w-[140px] xl:h-[164px] xl:w-[180px] [@media(min-width:900px)_and_(max-width:1023px)]:h-[135px] [@media(min-width:900px)_and_(max-width:1023px)]:w-[140px]',
                       isSelected
-                        ? 'bg-[#AF0000] shadow-[2px_3.38px_29.3px_rgba(243,198,80,0.3)]'
-                        : 'border border-[#FFDFDF] bg-white shadow-[0px_3.38px_3.38px_rgba(0,0,0,0.25)] hover:bg-[#AF0000] hover:shadow-[2px_3.38px_29.3px_rgba(243,198,80,0.2)]',
+                        ? 'bg-[#072899] shadow-[2px_3.38px_29.3px_rgba(243,198,80,0.3)]'
+                        : 'border border-[#DCE5FF] bg-white shadow-[0px_3.38px_3.38px_rgba(0,0,0,0.25)] hover:bg-[#072899] hover:shadow-[2px_3.38px_29.3px_rgba(243,198,80,0.2)]',
                     )}
                   >
                     <div
                       className={cn(
                         'mt-[7.02px] flex h-[82.73px] w-[85.07px] items-center justify-center overflow-hidden rounded-[6.24px] shadow-[inset_0.78px_1.56px_3.12px_rgba(0,0,0,0.1)] transition-colors group-hover:bg-white md:h-[65px] md:w-[75px] lg:h-[75px] lg:w-[85px] xl:h-[106px] xl:w-[109px]',
-                        isSelected ? 'bg-white' : 'bg-[#FFF8F8]',
+                        isSelected ? 'bg-white' : 'bg-white',
                       )}
                     >
                       <img
@@ -254,7 +216,7 @@ export default function LecturerShowcase({ lecturers = [], bgClass = 'bg-[#F9F9F
                     <h3
                       className={cn(
                         'font-svn-gilroy mt-[10px] px-2 text-center text-[16px] font-bold leading-tight transition-all duration-300',
-                        isSelected ? 'text-white' : 'text-[#373737]/60 group-hover:text-white',
+                        isSelected ? 'text-[#F3C650]' : 'text-[#373737]/60 group-hover:text-[#F3C650]',
                       )}
                     >
                       {lecturer.name}

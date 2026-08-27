@@ -201,8 +201,8 @@ const ScheduleTableNew = ({ courseId, bgGradientClass = 'from-[#FFEFEF] to-[#FFF
         <div className="mb-8 text-center md:mb-16">
           <div className="mx-auto flex w-fit items-start justify-center gap-2 md:items-center">
             <Polygon2 className="mt-1 h-[11px] w-[11px] shrink-0 md:mt-0 md:h-[28px] md:w-[28px]" />
-            <h2 className="max-w-[260px] text-left font-gilroy text-[18px] font-[1000] uppercase leading-[1.2] text-[#AF0000] md:max-w-none md:text-center md:text-[28px] lg:text-[36px] xl:text-[42px]">
-              CHỌN LỊCH HỌC ĐƯỢC <br className="md:hidden" /> "MAY ĐO" CHO BẠN
+            <h2 className="max-w-[260px] text-left font-gilroy text-[18px] font-[1000] uppercase leading-[1.2] text-[#F97316] md:max-w-none md:text-center md:text-[28px] lg:text-[36px] xl:text-[42px]">
+              CHỌN LỊCH HỌC PHÙ HỢP NHẤT VỚI BẠN
             </h2>
           </div>
           <p className="mt-2 font-gilroy text-[16px] font-bold leading-[1.2] text-[#2D2D2D] md:text-[28px]">
@@ -458,7 +458,7 @@ const ScheduleTableNew = ({ courseId, bgGradientClass = 'from-[#FFEFEF] to-[#FFF
                             {idx === 0 && (
                               <TableCell
                                 rowSpan={group.rows.length}
-                                className="w-[182px] bg-[#AF0000] px-2 py-2 text-center align-middle"
+                                className="w-[182px] bg-[#F97316] px-2 py-2 text-center align-middle"
                               >
                                 <span className="block font-gilroy text-[20px] font-[900] uppercase leading-[1.2] text-white">
                                   {group.label}
@@ -467,7 +467,7 @@ const ScheduleTableNew = ({ courseId, bgGradientClass = 'from-[#FFEFEF] to-[#FFF
                             )}
                             <TableCell className="w-[80px] py-2 pl-2 lg:w-[100px] xl:w-[120px] 3xl:w-[120px]">
                               <div className="flex items-center gap-2">
-                                <div className="h-2 w-2 rounded-full bg-[#AF0000]" />
+                                <div className="h-2 w-2 rounded-full bg-[#072899]" />
                                 <span className="font-gilroy text-[14px] font-medium text-[#373737] lg:text-[15px] xl:text-[18px]">
                                   {row.id}
                                 </span>

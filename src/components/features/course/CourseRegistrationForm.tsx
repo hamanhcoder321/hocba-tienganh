@@ -91,12 +91,13 @@ export default function CourseRegistrationForm({ courseName, isDarkRed }: Course
         <Button
           type="submit"
           disabled={isPending}
-          className={`relative inline-flex gap-[9.03px] w-[283.86px] lg:w-full h-[36.14px] lg:h-[48px] items-center justify-center mx-auto whitespace-nowrap rounded-full bg-gradient-to-r from-[#7D1900] to-[#B90E0A] px-4 text-[18.07px] lg:text-[24px] font-[900] text-white uppercase transition-all duration-300 hover:brightness-110 hover:shadow-[0_4px_28px_0px_#FF4040] active:scale-[0.98] disabled:opacity-70 shadow-[0_4px_14px_rgba(185,14,10,0.3)] font-gilroy leading-[24.09px] lg:leading-[32px] ${isDarkRed ? 'border-2 border-white' : 'hover:ring-2 hover:ring-white'}`}
+          className={`relative inline-flex gap-[9.03px] w-[283.86px] lg:w-full h-[36.14px] lg:h-[48px] items-center justify-center mx-auto whitespace-nowrap rounded-full bg-gradient-to-r from-[#F97316] to-[#F3C650] px-4 text-[18.07px] lg:text-[24px] font-[900] text-white uppercase disabled:opacity-70 font-gilroy leading-[24.09px] lg:leading-[32px]`}
         >
-          <PlayIcon className="!w-[24px] !h-[24px] md:!w-[28px] md:!h-[28px] lg:absolute lg:left-[26px] lg:top-1/2 lg:-translate-y-1/2 lg:!w-[40px] lg:!h-[40px] fill-white shrink-0" />
-          <span>
+          <PlayIcon className="!w-[24px] !h-[24px] md:!w-[28px] md:!h-[28px] lg:!w-[40px] lg:!h-[40px] fill-white shrink-0" />
+          <span className="flex-1 text-center whitespace-nowrap">
             {isPending ? 'ĐANG XỬ LÝ...' : isSuccess ? 'THÀNH CÔNG!' : 'TƯ VẤN LỘ TRÌNH IELTS'}
           </span>
+          <div className="!w-[24px] !h-[24px] md:!w-[28px] md:!h-[28px] lg:!w-[40px] lg:!h-[40px] shrink-0" />
         </Button>
       </form>
     </Form>

@@ -15,6 +15,7 @@ import {
   PrivilegeAiStar,
   PrivilegeGift,
   PrivilegeHeart,
+  PrivilegeDictionary,
 } from '@/components/common/icons';
 import JsonLd from '@/components/common/JsonLd.astro';
 import { formatDescription, formatTargets } from '@/lib/utils';
@@ -209,6 +210,7 @@ const formatCourseTitle = (name: string) => {
 
 const hskHeroImages: Record<string, (typeof IMAGES.khoaHsk)[keyof typeof IMAGES.khoaHsk]> = {
   'so-0': IMAGES.khoaHsk.heroHsk02,
+  // 'hsk-0-2': IMAGES.khoaHsk.heroHsk02,
   'hsk-1-2': IMAGES.khoaHsk.heroHsk02,
   'hsk-3': IMAGES.khoaHsk.heroHsk3,
   'hsk-4': IMAGES.khoaHsk.heroHsk4,
@@ -216,36 +218,41 @@ const hskHeroImages: Record<string, (typeof IMAGES.khoaHsk)[keyof typeof IMAGES.
   'hsk-6': IMAGES.khoaHsk.heroHsk6,
 };
 
+const hskHeroImagesDesktop: Record<string, (typeof IMAGES.khoaHsk)[keyof typeof IMAGES.khoaHsk]> = {
+  'so-0': IMAGES.khoaHsk.heroHskKhoiDong,
+  'hsk-0-2': IMAGES.khoaHsk.heroHskKhoiDong,
+  'hsk-1-2': IMAGES.khoaHsk.heroHskCatCanh,
+  'hsk-3': IMAGES.khoaHsk.heroHskTangToc,
+  'hsk-4': IMAGES.khoaHsk.heroHskButPha,
+  'hsk-5': IMAGES.khoaHsk.heroHskVuonXa,
+  'hsk-6': IMAGES.khoaHsk.heroHskChinhPhuc,
+};
+
 const courseHeroImage = hskHeroImages[course.slug] || IMAGES.khoaHsk.heroHsk02;
 const courseHeroImageSrc = typeof courseHeroImage === 'string' ? courseHeroImage : courseHeroImage.src;
+
+const courseHeroImageDesktop = hskHeroImagesDesktop[course.slug] || hskHeroImages[course.slug] || IMAGES.khoaHsk.heroHsk02;
+const courseHeroImageDesktopSrc = typeof courseHeroImageDesktop === 'string' ? courseHeroImageDesktop : courseHeroImageDesktop.src;
 ---
 
 <BaseLayout {title} {description} {keywords} image={course?.cover_image_link || course?.thumbnail_link}>
   <JsonLd data={jsonLd} />
 
   <div class="mx-auto w-full max-w-[1920px] bg-white">
-    <section class="relative font-primary w-full overflow-hidden bg-gradient-to-r from-[#FFF0F0] via-[#FFF0F0] to-[#FFE1E1] pt-[18px] pb-[0px] h-auto md:py-0 md:min-h-[390px] lg:min-h-[500px] xl:min-h-[580px] 2xl:min-h-[610px] 3xl:h-[718px] flex items-start md:items-stretch">
-      <div class="pointer-events-none absolute z-0 hidden md:block md:top-[22px] md:bottom-[-2px] md:right-[340px] md:w-[220px] md:h-auto min-[900px]:max-[1023px]:top-[22px] min-[900px]:max-[1023px]:bottom-[-2px] min-[900px]:max-[1023px]:right-[370px] min-[900px]:max-[1023px]:w-[235px] min-[900px]:max-[1023px]:h-auto lg:top-[30px] lg:bottom-[-2px] lg:right-[544px] lg:w-[296px] lg:h-auto xl:top-[15px] xl:bottom-[-2px] xl:right-[682px] xl:w-[345px] xl:h-auto 2xl:top-[17px] 2xl:bottom-[-2px] 2xl:right-[712px] 2xl:w-[387px] 2xl:h-auto 3xl:top-[19px] 3xl:bottom-[-2px] 3xl:right-[907px] 3xl:w-[422px] 3xl:h-auto">
-        <HskHeroBgCorner1 className="w-full h-full" />
-      </div>
-      <div class="absolute bottom-[-2px] left-0 w-[25px] h-[362px] md:hidden z-0 pointer-events-none overflow-visible">
-        <HskHeroBgCorner1Mobile className="w-full h-full" />
-      </div>
-      <div class="pointer-events-none absolute z-0 w-[395px] h-[309px] bottom-[-2px] left-[24px] md:left-auto md:top-[14px] md:bottom-[-20px] md:right-[-140px] md:w-[480px] md:h-auto min-[900px]:max-[1023px]:top-[10px] min-[900px]:max-[1023px]:bottom-[-20px] min-[900px]:max-[1023px]:right-[-125px] min-[900px]:max-[1023px]:w-[515px] min-[900px]:max-[1023px]:h-auto lg:top-[20px] lg:bottom-[-20px] lg:right-[-92px] lg:w-[636px] lg:h-auto xl:top-[3px] xl:bottom-[-20px] xl:right-[-56px] xl:w-[738px] xl:h-auto 2xl:top-[4px] 2xl:bottom-[-2px] 2xl:right-[-114px] 2xl:w-[827px] 2xl:h-auto 3xl:top-[4px] 3xl:bottom-[-20px] 3xl:right-0 3xl:w-[907px] 3xl:h-auto">
-        <HskHeroBgCorner2 className="w-full h-full" />
-      </div>
+    <section class="relative font-primary w-full overflow-hidden bg-gradient-to-r from-[#052284] to-[#083AD4] pt-[18px] pb-[0px] h-auto md:py-0 md:min-h-[390px] lg:min-h-[500px] xl:min-h-[580px] 2xl:min-h-[610px] 3xl:h-[718px] flex items-start md:items-stretch">
+      <!-- Background SVG decorations removed per request -->
 
       <div class="w-full max-w-[1920px] mx-auto relative z-10 md:h-full flex flex-col md:flex-row md:justify-between">
         <div class="flex flex-col items-center md:items-start text-center md:text-left space-y-3 md:space-y-2 lg:space-y-3 xl:space-y-3 2xl:space-y-4 3xl:space-y-6 px-4 md:px-0 md:pl-[calc(4vw+10px)] min-[900px]:max-[1023px]:pl-[75px] lg:pl-[calc(8vw+10px)] xl:pl-[calc(11vw+10px)] 2xl:pl-[calc(12vw+10px)] 3xl:pl-[298px] md:pt-[15px] md:pb-[15px] lg:pt-[25px] lg:pb-[12px] xl:pt-[30px] xl:pb-[20px] 2xl:pt-[35px] 2xl:pb-[12px] 3xl:pt-[63px] 3xl:pb-[24px] w-full md:w-[50%] lg:w-[55%] xl:w-[60%] md:max-w-[380px] lg:max-w-[440px] xl:max-w-[540px] 2xl:max-w-[780px] 3xl:max-w-[900px] z-10 md:justify-center">
           <div class="flex flex-col items-center md:items-start space-y-[10px] md:space-y-2 lg:space-y-3 xl:space-y-3 2xl:space-y-4 3xl:space-y-6 md:min-h-[168px] lg:min-h-[218px] xl:min-h-[234px] 2xl:min-h-[285px] 3xl:min-h-[301px] w-full">
-            <div class="w-fit rounded-[15.3px] md:rounded-[30px] bg-gradient-to-r from-[#FFF8F8] to-[#FFD3D3] px-[16.32px] py-[6.12px] md:px-[20px] md:py-[6px] lg:px-[24px] lg:py-[10px] 3xl:px-[32px] 3xl:py-[12px] h-[29px] md:h-[38px] lg:h-[48px] 3xl:h-[56px] flex items-center justify-center shadow-[0_2.04px_3.06px_0_rgba(255,180,180,0.3)] md:shadow-[0_4px_6px_0_rgba(255,180,180,0.3)]">
+            <div class="w-fit rounded-[15.3px] md:rounded-[30px] bg-gradient-to-r from-[#FFFFFF] to-[#DCE8FF] px-[16.32px] py-[6.12px] md:px-[20px] md:py-[6px] lg:px-[24px] lg:py-[10px] 3xl:px-[32px] 3xl:py-[12px] h-[29px] md:h-[38px] lg:h-[48px] 3xl:h-[56px] flex items-center justify-center shadow-[0_2.04px_3.06px_0_rgba(220,232,255,0.6)] md:shadow-[0_4px_6px_0_rgba(220,232,255,0.6)]">
               <span class="font-svn-gilroy text-[12px] md:text-[13px] lg:text-[15px] 3xl:text-[18px] font-[800] leading-none text-[#373737]">
-                Khoá học Học Bá HSK
+                Khoá học IELTS
               </span>
             </div>
 
             <div class="flex items-center justify-center md:justify-start gap-2 md:mt-0">
-              <h1 class="font-svn-gilroy text-[40px] font-[1000] leading-[43.34px] uppercase md:font-gilroy md:text-[38px] md:font-black md:leading-[42px] lg:text-[54px] lg:leading-[58px] xl:text-[62px] xl:leading-[66px] 2xl:text-[80px] 2xl:leading-[85px] 3xl:text-[80px] 3xl:leading-[85px] bg-gradient-to-r from-[#B31713] to-[#FF5521] bg-clip-text text-transparent">
+              <h1 class="font-svn-gilroy text-[40px] font-[1000] leading-[43.34px] uppercase md:font-gilroy md:text-[38px] md:font-black md:leading-[42px] lg:text-[54px] lg:leading-[58px] xl:text-[62px] xl:leading-[66px] 2xl:text-[80px] 2xl:leading-[85px] 3xl:text-[80px] 3xl:leading-[85px] text-[#FFD369]">
                 {formatCourseTitle(course?.name || '')}
               </h1>
               <div class="relative w-[35px] h-[35px] shrink-0 self-start mt-[-6px] md:hidden">
@@ -261,19 +268,19 @@ const courseHeroImageSrc = typeof courseHeroImage === 'string' ? courseHeroImage
                 />
               </div>
             </div>
-            <div class="font-svn-gilroy text-[14px] leading-[140%] text-[#373737] text-justify max-w-[350px] mx-auto md:mt-0 md:font-gilroy md:text-[13px] md:leading-[18px] lg:text-[15px] lg:leading-[22px] xl:text-[17px] xl:leading-[24px] 2xl:text-[20px] 2xl:leading-[28px] 3xl:text-[20px] 3xl:leading-[28px] md:text-justify md:max-w-[618px] md:mx-0 w-full h-auto !max-h-[98px] md:!max-h-[90px] lg:!max-h-[110px] xl:!max-h-[120px] 2xl:!max-h-[140px] 3xl:!max-h-[140px] overflow-y-auto custom-scrollbar pr-2 shrink-0" set:html={course?.short_description || ''} />
+            <div class="font-svn-gilroy text-[14px] leading-[140%] text-white text-justify max-w-[350px] mx-auto md:mt-0 md:font-gilroy md:text-[13px] md:leading-[18px] lg:text-[15px] lg:leading-[22px] xl:text-[17px] xl:leading-[24px] 2xl:text-[20px] 2xl:leading-[28px] 3xl:text-[20px] 3xl:leading-[28px] md:text-justify md:max-w-[618px] md:mx-0 w-full h-auto !max-h-[98px] md:!max-h-[90px] lg:!max-h-[110px] xl:!max-h-[120px] 2xl:!max-h-[140px] 3xl:!max-h-[140px] overflow-y-auto custom-scrollbar pr-2 shrink-0" set:html={course?.short_description || ''} />
           </div>
           <div class="max-w-[350px] mx-auto w-full md:max-w-none md:mx-0">
             <div class="flex flex-nowrap md:flex-wrap justify-start gap-3 pt-[12px] md:pt-4 lg:pt-4 xl:pt-5 2xl:pt-8 w-full overflow-x-auto md:overflow-x-visible custom-mobile-scrollbar pb-[10px] md:pb-0">
               {
                 coursesInCategory.map((item) =>
                   item.slug === course?.slug ? (
-                    <div class="font-gilroy cursor-default text-nowrap rounded-[25.92px] md:rounded-[37px] bg-[#AF0000] px-[16.82px] py-[3.5px] md:px-[14px] md:py-[5px] lg:px-[24px] text-[12px] md:text-[13px] lg:text-[16px] font-bold leading-[1.5] text-white border-[0.35px] md:border-[0.5px] border-transparent h-[24.01px] md:h-[28px] lg:h-[34px] flex items-center justify-center shrink-0">
+                    <div class="font-gilroy cursor-default text-nowrap rounded-[25.92px] md:rounded-[37px] bg-[#FF9900] px-[16.82px] py-[3.5px] md:px-[14px] md:py-[5px] lg:px-[24px] text-[12px] md:text-[13px] lg:text-[16px] font-bold leading-[1.5] text-white border-[0.35px] md:border-[0.5px] border-transparent h-[24.01px] md:h-[28px] lg:h-[34px] flex items-center justify-center shrink-0">
                       {formatCourseLabel(item.name)}
                     </div>
                   ) : (
                     <a href={`${categoryLink}/${item.slug}`} class="block shrink-0">
-                      <div class="font-gilroy cursor-pointer text-nowrap rounded-[25.92px] md:rounded-[37px] bg-white px-[16.82px] py-[3.5px] md:px-[14px] md:py-[5px] lg:px-[24px] text-[12px] md:text-[13px] lg:text-[16px] font-bold leading-[1.5] text-[#373737]/50 border-[0.35px] md:border-[0.5px] border-[#969696] h-[24.01px] md:h-[28px] lg:h-[34px] flex items-center justify-center shrink-0 hover:bg-[#AF0000] hover:text-white hover:border-transparent transition-all duration-300">
+                      <div class="font-gilroy cursor-pointer text-nowrap rounded-[25.92px] md:rounded-[37px] bg-white px-[16.82px] py-[3.5px] md:px-[14px] md:py-[5px] lg:px-[24px] text-[12px] md:text-[13px] lg:text-[16px] font-bold leading-[1.5] text-[#373737]/50 border-[0.35px] md:border-[0.5px] border-[#969696] h-[24.01px] md:h-[28px] lg:h-[34px] flex items-center justify-center shrink-0 hover:bg-[#FF9900] hover:text-white hover:border-transparent transition-all duration-300">
                         {formatCourseLabel(item.name)}
                       </div>
                     </a>
@@ -284,21 +291,17 @@ const courseHeroImageSrc = typeof courseHeroImage === 'string' ? courseHeroImage
           </div>
 
           <!-- Main CTA & Avatars Area -->
-          <div class="flex flex-col items-center md:items-start space-y-6 pt-[6px] md:pt-4 w-full">
+          <div class="flex flex-col items-center md:items-start space-y-4 pt-0 md:pt-0 w-full mt-[-8px] md:mt-[-12px] lg:mt-[-16px]">
             <!-- CTA Button Wrapper for Mascot Badge positioning -->
-            <div class="relative w-full max-w-[320px] md:max-w-[180px] lg:max-w-[320px] xl:max-w-[310px] 2xl:max-w-[400px] 3xl:max-w-[400px] shrink-0 mx-auto md:mx-0 flex justify-center md:block">
+            <div class="relative w-full max-w-[320px] md:max-w-[280px] lg:max-w-[400px] xl:max-w-[400px] 2xl:max-w-[460px] 3xl:max-w-[460px] shrink-0 mx-auto md:mx-0 flex justify-center md:block">
               <button
                 onclick="document.getElementById('simple-register-form')?.scrollIntoView({ behavior: 'smooth' })"
-                class="animate-outline-pulse transition-all relative flex items-center justify-center gap-[3.33px] md:gap-[3px] lg:gap-0 rounded-[47.76px] bg-gradient-to-r from-[#7D1900] to-[#B90E0A] border-[1.67px] border-white w-[156px] h-[30.78px] md:w-full md:h-[36px] lg:h-[50px] xl:h-[46px] 2xl:h-[60px] 3xl:h-[60px] md:rounded-[86px] md:border-0 font-gilroy text-white shadow-lg md:top-1 lg:top-1 xl:top-10 2xl:top-4 3xl:top-12"
+                class="transition-all relative flex items-center justify-center gap-[3.33px] md:gap-[3px] lg:gap-0 rounded-[47.76px] bg-gradient-to-r from-[#F97316] to-[#F3C650] border-[1.67px] border-white w-[156px] h-[30.78px] md:w-full md:h-[36px] lg:h-[50px] xl:h-[46px] 2xl:h-[60px] 3xl:h-[60px] md:rounded-[86px] md:border-0 font-gilroy text-white shadow-lg md:top-0 lg:top-0 xl:top-2 2xl:top-0 3xl:top-2 hover:shadow-[0_0_25px_rgba(249,115,22,0.6)]"
               >
-                <div
-                  class="animate-pulse-custom absolute inset-0 z-0 rounded-[47.76px] bg-gradient-to-r from-[#F3C650] to-[#B90E0A] opacity-0 transition-opacity duration-1000 md:rounded-[86px] pointer-events-none"
-                >
-                </div>
                 <PlaySolidIcon className="relative z-10 w-[12px] h-[12px] md:w-[12px] md:h-[12px] lg:w-[24px] lg:h-[24px] fill-white shrink-0 mr-0 md:mr-[2px] lg:mr-0 lg:absolute lg:left-[26px]" />
-                <span class="relative z-10 text-[13px] md:text-[11px] lg:text-[18px] xl:text-[20px] 2xl:text-[28px] 3xl:text-[28px] font-[900] leading-none md:leading-[32px] uppercase lg:w-full lg:text-center lg:pl-[10px] xl:pl-[36px] 2xl:pl-[30px] 3xl:pl-[30px]">
+                <span class="relative z-10 text-[13px] md:text-[14px] lg:text-[24px] xl:text-[24px] 2xl:text-[24px] 3xl:text-[24px] font-[900] font-svn-gilroy leading-none md:leading-[32px] uppercase lg:w-full lg:text-center lg:pl-[10px] xl:pl-[36px] 2xl:pl-[30px] 3xl:pl-[30px] tracking-[0] whitespace-nowrap">
                   <span class="block md:hidden">ĐĂNG KÝ NGAY</span>
-                  <span class="hidden md:block">NHẬN TƯ VẤN LỘ TRÌNH</span>
+                  <span class="hidden md:block">NHẬN TƯ VẤN LỘ TRÌNH IELTS</span>
                 </span>
               </button>
             </div>
@@ -308,15 +311,15 @@ const courseHeroImageSrc = typeof courseHeroImage === 'string' ? courseHeroImage
               href="https://www.facebook.com/groups/hocbahsk/"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex w-fit items-center gap-[14.5px] md:gap-[6px] lg:gap-[14.51px] rounded-[18px] 2xl:rounded-[18.13px] p-[14.5px] md:p-1 lg:p-[14.51px] !mt-0 md:!mt-4 lg:!mt-2 xl:!mt-16 2xl:!mt-6 3xl:!mt-[60px] mx-auto md:mx-0 md:pl-6 lg:pl-[30px] xl:pl-[40px] 2xl:pl-[60px] 3xl:pl-[60px]"
+              class="flex w-fit items-center gap-[14.5px] md:gap-[6px] lg:gap-[14.51px] rounded-[18px] 2xl:rounded-[18.13px] py-[14.5px] pr-[14.5px] pl-0 md:py-1 md:pr-1 md:pl-0 lg:py-[14.51px] lg:pr-[14.51px] lg:pl-0 !mt-0 md:!mt-2 lg:!mt-2 xl:!mt-6 2xl:!mt-4 3xl:!mt-6 mx-auto md:mx-0"
             >
               <div class="flex -space-x-[4.95px] md:-space-x-3 lg:-space-x-4">
                 <div
                   class="h-[34.59px] w-[34.59px] overflow-hidden rounded-full border-[1.24px] border-white shadow-md md:h-[40px] md:w-[40px] md:border-[1.5px] lg:h-[50.78px] lg:w-[50.78px] lg:border-[1.81px]"
                 >
                   <img
-                    src={typeof IMAGES.detailLectuter.outstandingStudent1 === 'string' ? IMAGES.detailLectuter.outstandingStudent1 : IMAGES.detailLectuter.outstandingStudent1.src}
-                    alt="Học viên tiêu biểu tại Học Bá Education"
+                    src={typeof IMAGES.home.MinhAnhNew === 'string' ? IMAGES.home.MinhAnhNew : IMAGES.home.MinhAnhNew.src}
+                    alt="Học viên tiêu biểu tại THE IELTS SPACE"
                     class="h-full w-full object-cover"
                     loading="lazy"
                   />
@@ -325,8 +328,8 @@ const courseHeroImageSrc = typeof courseHeroImage === 'string' ? courseHeroImage
                   class="h-[34.59px] w-[34.59px] overflow-hidden rounded-full border-[1.24px] border-white shadow-md md:h-[40px] md:w-[40px] md:border-[1.5px] lg:h-[50.78px] lg:w-[50.78px] lg:border-[1.81px]"
                 >
                   <img
-                    src={typeof IMAGES.khoaHsk.target4Hsk === 'string' ? IMAGES.khoaHsk.target4Hsk : IMAGES.khoaHsk.target4Hsk.src}
-                    alt="Học viên tiêu biểu tại Học Bá Education"
+                    src={typeof IMAGES.home.TuanKietNew === 'string' ? IMAGES.home.TuanKietNew : IMAGES.home.TuanKietNew.src}
+                    alt="Học viên tiêu biểu tại THE IELTS SPACE"
                     class="h-full w-full object-cover"
                     loading="lazy"
                   />
@@ -335,8 +338,8 @@ const courseHeroImageSrc = typeof courseHeroImage === 'string' ? courseHeroImage
                   class="h-[34.59px] w-[34.59px] overflow-hidden rounded-full border-[1.24px] border-white shadow-md md:h-[40px] md:w-[40px] md:border-[1.5px] lg:h-[50.78px] lg:w-[50.78px] lg:border-[1.81px]"
                 >
                   <img
-                    src={typeof IMAGES.khoaHsk.avatarHsk1 === 'string' ? IMAGES.khoaHsk.avatarHsk1 : IMAGES.khoaHsk.avatarHsk1.src}
-                    alt="Học viên tiêu biểu tại Học Bá Education"
+                    src={typeof IMAGES.home.NhatQuanNew === 'string' ? IMAGES.home.NhatQuanNew : IMAGES.home.NhatQuanNew.src}
+                    alt="Học viên tiêu biểu tại THE IELTS SPACE"
                     class="h-full w-full object-cover"
                     loading="lazy"
                   />
@@ -344,10 +347,14 @@ const courseHeroImageSrc = typeof courseHeroImage === 'string' ? courseHeroImage
               </div>
               <div class="flex flex-col">
                 <div class="flex items-center gap-1 whitespace-nowrap">
-                  <span class="font-svn-gilroy text-[12.35px] md:text-[14px] lg:text-[18.13px] font-[1000] leading-[150%] text-[#AF0000]">28.000 +</span>
-                  <span class="font-svn-gilroy text-[8.65px] md:text-[10px] lg:text-[12.69px] font-semibold leading-[150%] text-[#414D60] whitespace-nowrap">Học viên</span>
+                  <span class="font-svn-gilroy text-[12.35px] md:text-[14px] lg:text-[18.13px] font-[1000] leading-[150%] text-[#FFD369]">
+                    11.000 +
+                  </span>
+                  <span class="font-svn-gilroy text-[8.65px] md:text-[10px] lg:text-[12.69px] font-semibold leading-[150%] text-white whitespace-nowrap">Học viên</span>
                 </div>
-                <span class="font-svn-gilroy text-[8.65px] md:text-[10px] lg:text-[12.69px] font-semibold leading-[150%] text-[#414D60] whitespace-nowrap">Đã và đang học tại Học Bá</span>
+                <span class="font-svn-gilroy text-[8.65px] md:text-[10px] lg:text-[12.69px] font-semibold leading-[150%] text-white whitespace-nowrap">
+                  Đã và đang học tại THE IELTS SPACE
+                </span>
               </div>
             </a>
           </div>
@@ -364,7 +371,7 @@ const courseHeroImageSrc = typeof courseHeroImage === 'string' ? courseHeroImage
             decoding="async"
           />
           <img
-            src={courseHeroImageSrc}
+            src={courseHeroImageDesktopSrc}
             alt={`Ảnh minh họa khóa học ${course.name}`}
             class="hidden md:block h-full w-full object-contain"
             loading="eager"
@@ -504,30 +511,35 @@ const courseHeroImageSrc = typeof courseHeroImage === 'string' ? courseHeroImage
 
               <!-- Đặc quyền chỉ có tại Học Bá -->
               <div class="my-6 space-y-3">
-                <div class="flex items-center justify-center gap-1.5 text-[#AF0000] font-gilroy font-extrabold text-[15px] lg:text-[18px] leading-[130%] uppercase">
+                <div class="flex items-center justify-center gap-1.5 text-[#F97316] font-gilroy font-extrabold text-[15px] lg:text-[18px] leading-[130%] uppercase">
                   <PrivilegeLightning className="w-[20px] h-[20px] lg:w-[14px] lg:h-[19px] shrink-0" secondaryColor="#F3C650" />
-                  <span>Đặc quyền chỉ có tại Học Bá</span>
+                  <span>ĐẶC QUYỀN CHỈ CÓ TẠI THE IELTS SPACE</span>
                 </div>
-                <div class="rounded-[12px] py-3 pl-4 pr-3 space-y-2.5" style="background: radial-gradient(circle, #FFFDFD, #FFEBE9);">
+                <div class="rounded-[12px] py-3 pl-4 pr-3 space-y-2.5" style="background: radial-gradient(circle, #FFFDFD, #FFF3E8);">
                   <!-- Item 1 -->
-                  <div class="flex items-start gap-3">
+                  <div class="flex items-start gap-3 text-[#F97316]">
                     <PrivilegeShieldCheck className="w-[16px] h-[16px] lg:w-[20px] lg:h-[20px] mt-[-1px] lg:mt-[-1px] shrink-0" />
-                    <span class="font-gilroy font-normal text-[12.05px] lg:text-[16px] text-[#AF0000] leading-[110%]">Đảm bảo đầu ra</span>
+                    <span class="font-gilroy font-normal text-[12.05px] lg:text-[16px] text-[#F97316] leading-[110%]">Đảm bảo đầu ra. Học lại miễn phí!</span>
                   </div>
                   <!-- Item 2 -->
-                  <div class="flex items-start gap-3">
+                  <div class="flex items-start gap-3 text-[#F97316]">
                     <PrivilegeAiStar className="w-[16px] h-[16px] lg:w-[20px] lg:h-[20px] mt-[-1px] lg:mt-[-1px] shrink-0" />
-                    <span class="font-gilroy font-normal text-[12.05px] lg:text-[16px] text-[#AF0000] leading-[110%]">Sử dụng công nghệ độc quyền LMS AI</span>
+                    <span class="font-gilroy font-normal text-[12.05px] lg:text-[16px] text-[#F97316] leading-[110%]">Phương pháp độc quyền Space By TES</span>
                   </div>
                   <!-- Item 3 -->
-                  <div class="flex items-start gap-3">
+                  <div class="flex items-start gap-3 text-[#F97316]">
                     <PrivilegeGift className="w-[16px] h-[16px] lg:w-[20px] lg:h-[20px] mt-[-1px] lg:mt-[-1px] shrink-0" />
-                    <span class="font-gilroy font-normal text-[12.05px] lg:text-[16px] text-[#AF0000] leading-[110%]">Tài khoản LMS học tập miễn phí 1 năm trị giá 3.990k</span>
+                    <span class="font-gilroy font-normal text-[12.05px] lg:text-[16px] text-[#F97316] leading-[110%]">Tài khoản học tập LMS E-Space tích hợp AI</span>
                   </div>
                   <!-- Item 4 -->
-                  <div class="flex items-start gap-3">
+                  <div class="flex items-start gap-3 text-[#F97316]">
+                    <PrivilegeDictionary className="w-[16px] h-[16px] lg:w-[20px] lg:h-[20px] mt-[-1px] lg:mt-[-1px] shrink-0" />
+                    <span class="font-gilroy font-normal text-[12.05px] lg:text-[16px] text-[#F97316] leading-[110%]">Bộ từ điển thông minh mở rộng</span>
+                  </div>
+                  <!-- Item 5 -->
+                  <div class="flex items-start gap-3 text-[#F97316]">
                     <PrivilegeHeart className="w-[16px] h-[16px] lg:w-[20px] lg:h-[20px] mt-[-1px] lg:mt-[-1px] shrink-0" />
-                    <span class="font-gilroy font-normal text-[12.05px] lg:text-[16px] text-[#AF0000] leading-[110%]">Mentor hỗ trợ học tập sát sao</span>
+                    <span class="font-gilroy font-normal text-[12.05px] lg:text-[16px] text-[#F97316] leading-[110%]">Mentor bổ trợ học tập 1-1</span>
                   </div>
                 </div>
               </div>
