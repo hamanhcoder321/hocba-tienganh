@@ -1,6 +1,6 @@
 import zalo from '@/assets//images/zalo.png';
 import newsHeroCollage from '@/assets/images/new-event/hero-collage.png';
-import newsHeroCollage1 from '@/assets/images/new-event/hero-collage1.png';
+import newsHeroCollage1 from '@/assets/images/img-hocba-tienganh-optimized/image-banner-tin-tuc.png';
 import newsLayer from '@/assets/images/new-event/layer.png';
 import bell from '@/assets/images/Bell.png';
 import bgLotrinhMobile from '@/assets/images/bg-lotrinh-mobile.png';

@@ -6,7 +6,7 @@ import { NEWS_SLUGS } from '@/lib/constants/content';
 ---
 
 <section
-  class="relative w-full overflow-hidden bg-gradient-to-r from-[#7D1900] to-[#B90E0A] max-[767px]:h-[435px] md:h-[550px] lg:h-[600px] xl:h-[478px] 2xl:h-[600px] 3xl:h-[718px]"
+  class="relative w-full overflow-hidden bg-gradient-to-b from-[#06299C] to-[#052284] max-[767px]:h-auto max-[767px]:min-h-[447px] md:h-[550px] lg:h-[600px] xl:h-[650px] 2xl:h-[781px] 3xl:h-[850px]"
 >
   {/* Decorative Layer */}
   <img
@@ -22,15 +22,15 @@ import { NEWS_SLUGS } from '@/lib/constants/content';
     alt=""
     aria-hidden="true"
   />
-  <div class="flex h-full flex-col md:flex-row">
+  <div class="flex h-full flex-col max-[767px]:gap-[24px] max-[767px]:py-[12px] md:flex-row">
     {/* Left Content */}
     <div
-      class="relative z-10 flex h-[435px] w-full flex-col items-center justify-center px-6 py-16 text-center max-[767px]:!w-full max-[767px]:justify-start max-[767px]:pb-8 max-[767px]:pt-16 md:h-full md:items-start md:px-12 md:text-left xl:flex-[0_0_535px] 2xl:flex-[0_0_700px] 3xl:flex-[0_0_802px]"
+      class="relative z-10 flex h-[435px] w-full flex-col items-center justify-center px-6 py-16 text-center max-[767px]:!w-full max-[767px]:h-auto max-[767px]:justify-start max-[767px]:gap-[24px] max-[767px]:px-[16px] max-[767px]:py-0 md:h-full md:items-start md:px-12 md:text-left xl:flex-[0_0_535px] 2xl:flex-[0_0_678px] 3xl:flex-[0_0_802px]"
       style="width: clamp(320px, calc(106px + 36.25vw), 802px);"
     >
       {/* Breadcrumbs */}
       <nav
-        class="absolute left-[22px] top-[10px] z-20 flex h-[18px] w-[148px] items-center justify-start gap-2 whitespace-nowrap text-sm font-medium text-white/80 max-[767px]:!left-[26px] max-[767px]:!top-[20px] max-[767px]:h-auto max-[767px]:w-max md:m-0 md:h-auto md:w-auto xl:!left-[199px] xl:!top-[40px] 2xl:!left-[238px] 2xl:!top-[50px] 3xl:!left-[298px] 3xl:!top-[60px]"
+        class="absolute left-[22px] top-[10px] z-20 flex h-[18px] w-[148px] items-center justify-start gap-2 whitespace-nowrap text-sm font-medium text-white/80 max-[767px]:static max-[767px]:h-auto max-[767px]:w-full md:m-0 md:h-auto md:w-auto xl:!left-[199px] xl:!top-[40px] 2xl:!left-[238px] 2xl:!top-[50px] 3xl:!left-[298px] 3xl:!top-[60px]"
         style="left: clamp(22px, calc(-416px + 37.18vw), 298px); top: clamp(10px, calc(0px + 3.125vw), 60px);"
       >
         <a
@@ -45,13 +45,13 @@ import { NEWS_SLUGS } from '@/lib/constants/content';
         <span
           class="flex h-[8px] items-center font-gilroy text-[11px] font-medium leading-[150%] text-white md:h-auto md:text-base md:leading-normal lg:text-[18px]"
         >
-          Tin tức & sự kiện
+          Tin tức
         </span>
       </nav>
 
       {/* Title Section */}
       <div
-        class="relative mb-8 flex w-fit flex-col items-center gap-4 max-[767px]:absolute max-[767px]:!left-0 max-[767px]:!right-0 max-[767px]:!top-[60px] max-[767px]:m-0 max-[767px]:mx-auto max-[767px]:h-[82px] max-[767px]:!w-max max-[767px]:flex-row max-[767px]:items-start max-[767px]:justify-center max-[767px]:gap-[6px] md:absolute md:m-0 md:flex-row md:gap-[30px] xl:!left-[200px] xl:!top-[120px] 2xl:!left-[240px] 2xl:!top-[162px] 3xl:!left-[300px] 3xl:!top-[180px]"
+        class="relative mb-8 flex w-fit flex-col items-center gap-4 max-[767px]:static max-[767px]:m-0 max-[767px]:mx-auto max-[767px]:h-auto max-[767px]:!w-fit max-[767px]:flex-row max-[767px]:items-center max-[767px]:justify-center max-[767px]:gap-[6px] md:absolute md:m-0 md:flex-row md:gap-[30px] xl:!left-[200px] xl:!top-[120px] 2xl:!left-[240px] 2xl:!top-[162px] 3xl:!left-[300px] 3xl:!top-[180px]"
         style="left: clamp(46px, calc(-340px + 31.25vw), 260px); top: clamp(15px, calc(10px + 11vw), 120px); transform: rotate(-0.05deg);"
       >
         {/* Left Corner Decoration */}
@@ -68,7 +68,7 @@ import { NEWS_SLUGS } from '@/lib/constants/content';
         </div>
 
         <h1
-          class="flex flex-col text-5xl font-black uppercase leading-tight text-white max-[767px]:h-[41px] max-[767px]:!w-auto max-[767px]:flex-row max-[767px]:items-center max-[767px]:justify-center max-[767px]:gap-[6px] max-[767px]:font-gilroy max-[767px]:text-[38.03px] max-[767px]:font-[1000] max-[767px]:leading-[40.4px] md:text-6xl lg:text-7xl xl:-mt-[13px] xl:ml-[17px] xl:font-gilroy xl:text-[53px] xl:font-[1000] xl:leading-[56px] 2xl:-mt-[18px] 2xl:ml-[23px] 2xl:text-[80px] 2xl:leading-[85px] 3xl:-mt-[20px] 3xl:ml-[26px] 3xl:text-[80px] 3xl:leading-[85px]"
+          class="flex flex-col text-5xl font-black uppercase leading-tight text-white max-[767px]:h-auto max-[767px]:!w-auto max-[767px]:flex-row max-[767px]:items-center max-[767px]:justify-center max-[767px]:gap-[6px] max-[767px]:font-gilroy max-[767px]:text-[32px] max-[767px]:font-[1000] max-[767px]:leading-[1.1] md:text-6xl lg:text-7xl xl:-mt-[13px] xl:ml-[17px] xl:font-gilroy xl:text-[53px] xl:font-[1000] xl:leading-[56px] 2xl:-mt-[18px] 2xl:ml-[23px] 2xl:text-[80px] 2xl:leading-[85px] 3xl:-mt-[20px] 3xl:ml-[26px] 3xl:text-[80px] 3xl:leading-[85px]"
         >
           <span class="relative w-fit">
             TIN TỨC
@@ -93,24 +93,25 @@ import { NEWS_SLUGS } from '@/lib/constants/content';
       </div>
 
       <p
-        class="mb-12 max-w-lg text-center text-lg font-medium leading-relaxed text-white/90 max-[767px]:absolute max-[767px]:!left-0 max-[767px]:!right-0 max-[767px]:!top-[140px] max-[767px]:m-0 max-[767px]:mx-auto max-[767px]:h-[77px] max-[767px]:w-[286px] max-[767px]:font-gilroy max-[767px]:text-[14px] max-[767px]:font-normal max-[767px]:leading-[120%] md:absolute md:max-w-[450px] md:text-justify lg:max-w-none xl:!left-[201px] xl:!top-[260px] xl:h-[107px] xl:w-[364px] xl:font-gilroy xl:text-[15px] xl:font-normal xl:leading-[19px] 2xl:!left-[242px] 2xl:!top-[351px] 2xl:h-[145px] 2xl:w-[491px] 2xl:text-[22px] 2xl:leading-[28px] 3xl:!left-[302px] 3xl:!top-[390px] 3xl:h-[161px] 3xl:w-[546px] 3xl:text-[22px] 3xl:leading-[28px]"
+        class="mb-12 max-w-lg text-center text-lg font-medium leading-relaxed text-white/90 max-[767px]:static max-[767px]:m-0 max-[767px]:mx-auto max-[767px]:h-auto max-[767px]:w-full max-[767px]:max-w-full max-[767px]:font-gilroy max-[767px]:text-[14px] max-[767px]:font-normal max-[767px]:leading-[120%] md:absolute md:max-w-[450px] md:text-left lg:max-w-none xl:!left-[201px] xl:!top-[260px] xl:h-[107px] xl:w-[364px] xl:font-gilroy xl:text-[15px] xl:font-normal xl:leading-[19px] 2xl:!left-[242px] 2xl:!top-[351px] 2xl:h-[145px] 2xl:w-[491px] 2xl:text-[22px] 2xl:leading-[28px] 3xl:!left-[302px] 3xl:!top-[390px] 3xl:h-[161px] 3xl:w-[546px] 3xl:text-[22px] 3xl:leading-[28px]"
         style="left: clamp(60px, calc(-424px + 37.81vw), 302px); top: clamp(270px, calc(195px + 9.8vw), 320px);"
       >
-        Nơi cập nhật tin tức mới nhất về hoạt động và sự kiện nổi bật mà Học Bá Education tham gia, đồng hành.
+        Nơi cập nhật những hoạt động, sự kiện <br />
+        và sự kiện nổi bật của THE IELTS SPACE.
       </p>
 
-      <div class="mt-12 w-full md:static">
+      <div class="mt-12 w-full max-[767px]:m-0 max-[767px]:flex max-[767px]:w-full max-[767px]:justify-center md:static">
         <a
           href={`/${NEWS_SLUGS[0]}`}
-          class="group relative flex w-full animate-[pulse-shadow_0.4s_ease-in-out_infinite_alternate] items-center justify-center overflow-hidden rounded-full border-white bg-gradient-to-r from-[#7D1900] to-[#B90E0A] max-[767px]:absolute max-[767px]:!left-1/2 max-[767px]:!top-[231px] max-[767px]:!h-[30.78px] max-[767px]:!w-[156px] max-[767px]:!-translate-x-1/2 max-[767px]:rounded-[47.76px] max-[767px]:border-[1.67px] max-[767px]:p-[6.39px] sm:w-fit md:absolute md:!left-[clamp(60px,calc(-416px+37.18vw),298px)] md:!top-[clamp(430px,calc(383px+6vw),460px)] md:h-[52px] md:w-[250px] md:justify-center md:rounded-[86px] md:border-[2.5px] md:p-[9px] lg:h-[58px] lg:w-[280px] lg:border-[2.5px] lg:p-[10px] xl:!left-[198px] xl:!top-[364px] xl:h-[62px] xl:w-[300px] xl:border-[3px] xl:p-[11px] 2xl:!left-[238px] 2xl:!top-[491px] 2xl:h-[66px] 2xl:w-[315px] 2xl:border-[3px] 2xl:p-[11.5px] 3xl:!left-[298px] 3xl:!top-[546px]"
+          class="group relative flex w-full animate-[pulse-shadow_0.4s_ease-in-out_infinite_alternate] items-center justify-center overflow-hidden rounded-full border-white bg-gradient-to-r from-[#052284] to-[#083AD4] max-[767px]:relative max-[767px]:!h-[30.78px] max-[767px]:!w-[156px] max-[767px]:rounded-[47.76px] max-[767px]:border-[1.67px] max-[767px]:p-[6.39px] sm:w-fit md:absolute md:!left-[clamp(60px,calc(-416px+37.18vw),298px)] md:!top-[clamp(430px,calc(383px+6vw),460px)] md:h-[52px] md:w-[250px] md:justify-center md:rounded-[86px] md:border-[2.5px] md:p-[9px] lg:h-[58px] lg:w-[280px] lg:border-[2.5px] lg:p-[10px] xl:!left-[198px] xl:!top-[364px] xl:h-[62px] xl:w-[300px] xl:border-[3px] xl:p-[11px] 2xl:!left-[238px] 2xl:!top-[491px] 2xl:h-[66px] 2xl:w-[315px] 2xl:border-[3px] 2xl:p-[11.5px] 3xl:!left-[298px] 3xl:!top-[546px]"
         >
           {/* Auto Pulsing Gradient Effect */}
           <div
-            class="absolute inset-0 z-0 h-full w-full animate-[pulse-gradient_0.4s_ease-in-out_infinite_alternate] bg-gradient-to-r from-[#F3C650] to-[#B90E0A]"
+            class="absolute inset-0 z-0 h-full w-full animate-[pulse-gradient_0.4s_ease-in-out_infinite_alternate] bg-gradient-to-r from-[#083AD4] to-[#052284]"
           >
           </div>
 
-          <div class="relative z-10 flex items-center gap-[6px] max-[767px]:gap-[3.33px]">
+          <div class="relative z-10 flex items-center gap-[6px] max-[767px]:gap-[3.33px] transform-gpu">
             <PlaySolidIcon
               className="fill-white max-[767px]:h-[13.33px] max-[767px]:w-[13.33px] md:h-[18px] md:w-[18px] md:-translate-y-[1px] lg:h-[20px] lg:w-[20px] xl:h-[22px] xl:w-[22px] 2xl:h-[24px] 2xl:w-[24px]"
             />
@@ -126,11 +127,11 @@ import { NEWS_SLUGS } from '@/lib/constants/content';
 
     {/* Right Photo Collage */}
     <div
-      class="relative h-[350px] w-full overflow-hidden max-[767px]:absolute max-[767px]:left-[-145px] max-[767px]:top-[295px] max-[767px]:h-[211px] max-[767px]:w-[716px] md:h-full md:flex-1"
+      class="relative h-[350px] w-full overflow-hidden max-[767px]:static max-[767px]:mx-auto max-[767px]:h-[200px] max-[767px]:w-full max-[767px]:rounded-none md:h-full md:flex-1"
     >
       <img
         src={IMAGES.news.newsHeroCollage1.src}
-        class="block h-full w-full origin-top-left scale-105 object-cover object-left"
+        class="block h-full w-full origin-top-left scale-105 object-cover object-left max-[767px]:object-bottom max-[767px]:scale-100"
         alt="Tin tức & Sự kiện"
       />
     </div>
@@ -141,10 +142,10 @@ import { NEWS_SLUGS } from '@/lib/constants/content';
   @keyframes pulse-shadow {
     0%,
     15% {
-      box-shadow: 0 0 20px rgba(255, 184, 0, 0.2);
+      box-shadow: 0 0 20px rgba(5, 34, 132, 0.4);
     }
     100% {
-      box-shadow: 3px 4px 30px rgba(243, 198, 80, 0.6);
+      box-shadow: 3px 4px 30px rgba(8, 58, 212, 0.8);
     }
   }
 
@@ -158,3 +159,4 @@ import { NEWS_SLUGS } from '@/lib/constants/content';
     }
   }
 </style>
+

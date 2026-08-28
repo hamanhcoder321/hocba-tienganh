@@ -12,7 +12,7 @@ import { fetchBlogCategoryList } from '@/lib/static-data';
 
 const FeaturedEvents = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const { flatData: eventsList, setQueryParams, setEnabled, setLimit, isLoading } = useGetBlogList();
+  const { flatData: eventsList = [], setQueryParams, setEnabled, setLimit, isLoading } = useGetBlogList();
   const [isInitializing, setIsInitializing] = useState(true);
 
   useEffect(() => {
@@ -127,22 +127,34 @@ const FeaturedEvents = () => {
         {/* Header */}
         <div className="mb-[20px] md:mb-[40px] flex flex-row items-center justify-between gap-2 sm:gap-4 md:items-end md:gap-6">
           <div className="flex translate-x-3 items-center gap-[4.5px] md:-translate-y-3 md:translate-x-0 md:gap-4">
-            <div className="h-[23.77px] w-[2.85px] rounded-full bg-[#AF0000] md:h-[50px] md:w-[6px]"></div>
+            <div className="h-[23.77px] w-[2.85px] rounded-full bg-[#052284] md:h-[50px] md:w-[6px]"></div>
             <div className="relative flex items-center">
-              <h2 className="text-[18px] font-[900] leading-[1.2] text-[#AF0000] sm:text-[24px] md:text-[42px]">
+              <h2 className="text-[18px] font-[900] leading-[1.2] text-[#052284] sm:text-[24px] md:text-[42px]">
                 Sự kiện tiêu biểu
               </h2>
               {/* Decorative Stars */}
               <div className="absolute -right-8 -top-2 flex h-[30px] w-[34px] items-center justify-center md:-right-12 md:h-[45px] md:w-[51px]">
-                <img
-                  src={IMAGES.schedule.starLarge.src}
-                  alt="star"
-                  className="absolute right-0 top-0 h-[18.18px] w-[18.18px] md:-top-2 md:left-6 md:h-[38.25px] md:w-[38.25px]"
+                <div
+                  className="absolute right-0 top-0 h-[18.18px] w-[18.18px] bg-[#052284] md:-top-2 md:left-6 md:h-[38.25px] md:w-[38.25px]"
+                  style={{
+                    WebkitMaskImage: `url(${IMAGES.schedule.starLarge.src})`,
+                    WebkitMaskSize: 'contain',
+                    WebkitMaskRepeat: 'no-repeat',
+                    maskImage: `url(${IMAGES.schedule.starLarge.src})`,
+                    maskSize: 'contain',
+                    maskRepeat: 'no-repeat'
+                  }}
                 />
-                <img
-                  src={IMAGES.schedule.starSmall.src}
-                  alt="star"
-                  className="absolute bottom-2 left-2 h-[7.25px] w-[7.25px] md:bottom-1 md:left-3 md:h-[15.25px] md:w-[15.25px]"
+                <div
+                  className="absolute bottom-2 left-2 h-[7.25px] w-[7.25px] bg-[#052284] md:bottom-1 md:left-3 md:h-[15.25px] md:w-[15.25px]"
+                  style={{
+                    WebkitMaskImage: `url(${IMAGES.schedule.starSmall.src})`,
+                    WebkitMaskSize: 'contain',
+                    WebkitMaskRepeat: 'no-repeat',
+                    maskImage: `url(${IMAGES.schedule.starSmall.src})`,
+                    maskSize: 'contain',
+                    maskRepeat: 'no-repeat'
+                  }}
                 />
               </div>
             </div>
@@ -150,7 +162,7 @@ const FeaturedEvents = () => {
 
           <a
             href={`/${NEWS_SLUGS[1]}`}
-            className="flex h-[25px] w-[95px] shrink-0 items-center justify-center gap-[3.95px] rounded-[36.18px] border-[0.33px] border-[#AF0000] bg-[#AF0000] px-[5.92px] py-[7.89px] text-white transition-all sm:h-[32px] sm:w-[150px] md:h-[38px] md:w-[192px] md:gap-[6px] md:bg-[#FAFAFA] md:px-[9px] md:text-[#AF0000] xl:hover:bg-[#AF0000] xl:hover:text-white"
+            className="flex h-[25px] w-[95px] shrink-0 items-center justify-center gap-[3.95px] rounded-[36.18px] border-[0.33px] border-[#052284] bg-[#052284] px-[5.92px] py-[7.89px] text-white transition-all sm:h-[32px] sm:w-[150px] md:h-[38px] md:w-[192px] md:gap-[6px] md:bg-[#FAFAFA] md:px-[9px] md:text-[#052284] xl:hover:bg-[#052284] xl:hover:text-white"
           >
             <span className="text-[10.53px] font-bold md:hidden">Xem toàn bộ</span>
             <span className="hidden font-bold md:inline">Xem tất cả sự kiện</span>
@@ -162,7 +174,7 @@ const FeaturedEvents = () => {
         <div className="relative min-h-[300px] w-full">
           {isLoading || isInitializing ? (
             <div className="flex h-[300px] items-center justify-center">
-              <div className="h-12 w-12 animate-spin rounded-full border-4 border-[#AF0000] border-t-transparent"></div>
+              <div className="h-12 w-12 animate-spin rounded-full border-4 border-[#052284] border-t-transparent"></div>
             </div>
           ) : !(isLoading || isInitializing) && eventsList.length === 0 ? (
             <div className="py-20 text-center text-gray-500">
@@ -174,7 +186,7 @@ const FeaturedEvents = () => {
                 {/* Arrow Left */}
                 <button
                   onClick={scrollPrev}
-                  className="absolute left-2 top-1/2 z-10 hidden h-[42px] w-[42px] -translate-y-1/2 items-center justify-center rounded-full border-none bg-[#FFEFEF] text-[#1A1A1A] shadow-[0_0_5.31px_rgba(0,0,0,0.15)] transition-all duration-300 hover:bg-[#AF0000] hover:text-white hover:shadow-[0_10px_20px_rgba(175,0,0,0.5)] md:-left-12 md:flex"
+                  className="absolute left-2 top-1/2 z-10 hidden h-[42px] w-[42px] -translate-y-1/2 items-center justify-center rounded-full border-none bg-[#EBF0FF] text-[#1A1A1A] shadow-[0_0_5.31px_rgba(0,0,0,0.15)] transition-all duration-300 hover:bg-[#052284] hover:text-white hover:shadow-[0_10px_20px_rgba(5,34,132,0.5)] md:-left-12 md:flex"
                 >
                   <ArrowLeft width={18.79} height={15.47} />
                 </button>
@@ -188,7 +200,7 @@ const FeaturedEvents = () => {
                           key={event.id}
                           className="embla__slide min-w-0 flex-[0_0_276px] pl-6 sm:flex-[0_0_calc((100%+24px)/2)] xl:flex-[0_0_calc((100%+24px)/3)]"
                         >
-                          <div className="group flex h-[305px] w-full flex-col rounded-[2.33px] border-[0.58px] border-[#F0F0F0] bg-white transition-[border-color,box-shadow] duration-1000 md:h-[530px] md:rounded-[4px] md:border-b-[1px] md:border-l-[1px] md:border-r-[1px] md:border-t-0 xl:hover:border-b-[2px] xl:hover:border-r-[2px] xl:hover:border-b-[#FFDFDF] xl:hover:border-r-[#FFDFDF] xl:hover:shadow-[12px_12px_12px_0_rgba(175,0,0,0.12)]">
+                          <div className="group flex h-[305px] w-full flex-col rounded-[2.33px] border-[0.58px] border-[#F0F0F0] bg-white transition-[border-color,box-shadow] duration-1000 md:h-[530px] md:rounded-[4px] md:border-b-[1px] md:border-l-[1px] md:border-r-[1px] md:border-t-0 xl:hover:border-b-[2px] xl:hover:border-r-[2px] xl:hover:border-b-[#EBF0FF] xl:hover:border-r-[#EBF0FF] xl:hover:shadow-[12px_12px_12px_0_rgba(5,34,132,0.12)]">
                             {/* Image container */}
                             <div className="relative h-[159px] w-full shrink-0 overflow-hidden md:h-[274px]">
                               <img
@@ -210,10 +222,10 @@ const FeaturedEvents = () => {
 
                             {/* Content */}
                             <div className="flex flex-1 flex-col px-[20.37px] py-3 md:p-6">
-                              <h3 className="mb-1 line-clamp-2 min-h-[38px] w-full max-w-[209.26px] text-[14px] font-bold leading-[1.3] text-[#000000] transition-colors md:mb-3 md:min-h-[60px] md:max-w-[360px] md:text-[22px] md:leading-[1.3] xl:group-hover:text-[#AF0000]">
+                              <h3 className="mb-1 line-clamp-2 min-h-[38px] w-full max-w-[209.26px] text-[14px] font-bold leading-[1.3] text-[#000000] transition-colors md:mb-3 md:min-h-[60px] md:max-w-[360px] md:text-[22px] md:leading-[1.3] xl:group-hover:text-[#052284]">
                                 {event.title.charAt(0).toUpperCase() + event.title.slice(1)}
                               </h3>
-                              <div className="mb-1 h-[4.07px] w-[34.92px] rounded-[27.94px] bg-[#D9D9D9] transition-all duration-1000 ease-in-out md:h-[7px] md:w-[60px] md:rounded-[48px] xl:group-hover:w-[360px] xl:group-hover:bg-[#AF0000]"></div>
+                              <div className="mb-1 h-[4.07px] w-[34.92px] rounded-[27.94px] bg-[#D9D9D9] transition-all duration-1000 ease-in-out md:h-[7px] md:w-[60px] md:rounded-[48px] xl:group-hover:w-[360px] xl:group-hover:bg-[#052284]"></div>
                               <p className="mb-2 line-clamp-4 min-h-[46px] w-full max-w-[209.26px] text-[9px] font-normal leading-[1.2] text-[#000000] md:mb-4 md:min-h-[78px] md:max-w-[360px] md:text-[16px]">
                                 {event.meta_description.charAt(0).toUpperCase() + event.meta_description.slice(1)}
                               </p>
@@ -221,7 +233,7 @@ const FeaturedEvents = () => {
                               <div className="mt-auto self-start">
                                 <a
                                   href={`/${event.BlogCategory?.slug || NEWS_SLUGS[1]}/${event.slug}`}
-                                  className="flex h-[22.12px] w-[95.46px] items-center justify-center gap-[3.49px] rounded-[32.01px] border-[0.29px] border-[#000000] bg-[#FAFAFA] px-[5.24px] py-[6.98px] text-[8px] font-semibold text-[#373737]/80 transition-all md:h-[38px] md:w-[164px] md:gap-[6px] md:rounded-[55px] md:border-[0.5px] md:bg-[#FFFFFF] md:px-[9px] md:py-0 md:text-[16px] xl:hover:border-[#AF0000] xl:hover:text-[#AF0000]"
+                                  className="flex h-[22.12px] w-[95.46px] items-center justify-center gap-[3.49px] rounded-[32.01px] border-[0.29px] border-[#000000] bg-[#FAFAFA] px-[5.24px] py-[6.98px] text-[8px] font-semibold text-[#373737]/80 transition-all md:h-[38px] md:w-[164px] md:gap-[6px] md:rounded-[55px] md:border-[0.5px] md:bg-[#FFFFFF] md:px-[9px] md:py-0 md:text-[16px] xl:hover:border-[#052284] xl:hover:text-[#052284]"
                                 >
                                   Xem chi tiết{' '}
                                   <DoubleChevronRight className="h-[8px] w-[8.6px] md:h-[14px] md:w-[15px]" />
@@ -243,7 +255,7 @@ const FeaturedEvents = () => {
                     onTouchStart={onDragStart}
                   >
                     <div
-                      className={`absolute top-0 h-[6px] w-[98px] rounded-[63px] bg-[#FFDFDF] ${isDragging ? '' : 'transition-all duration-300 ease-out'}`}
+                      className={`absolute top-0 h-[6px] w-[98px] rounded-[63px] bg-[#052284] ${isDragging ? '' : 'transition-all duration-300 ease-out'}`}
                       style={{ left: `calc((100% - 98px) * ${scrollProgress / 100})` }}
                     ></div>
                   </div>
@@ -252,7 +264,7 @@ const FeaturedEvents = () => {
                 {/* Arrow Right */}
                 <button
                   onClick={scrollNext}
-                  className="absolute right-2 top-1/2 z-10 hidden h-[42px] w-[42px] -translate-y-1/2 items-center justify-center rounded-full border-none bg-[#FFEFEF] text-[#1A1A1A] shadow-[0_0_5.31px_rgba(0,0,0,0.15)] transition-all duration-300 hover:bg-[#AF0000] hover:text-white hover:shadow-[0_10px_20px_rgba(175,0,0,0.5)] md:-right-12 md:flex"
+                  className="absolute right-2 top-1/2 z-10 hidden h-[42px] w-[42px] -translate-y-1/2 items-center justify-center rounded-full border-none bg-[#EBF0FF] text-[#1A1A1A] shadow-[0_0_5.31px_rgba(0,0,0,0.15)] transition-all duration-300 hover:bg-[#052284] hover:text-white hover:shadow-[0_10px_20px_rgba(5,34,132,0.5)] md:-right-12 md:flex"
                 >
                   <ArrowRight width={18.79} height={15.47} />
                 </button>

@@ -103,7 +103,7 @@ const WorkshopEvents = () => {
 
   return (
     <section className="bg-white font-gilroy">
-      <div className="mx-auto h-[414px] w-full rounded-[5.7px] bg-gradient-to-b from-[#FFD3D3] to-[#FFF8F8]/0 pb-12 pt-5 md:h-[703px] md:w-[calc(100%-64px)] md:rounded-[12px] md:pb-24 md:pt-12 xl:w-[1240px] 2xl:w-[1480px] 3xl:w-[1661px]">
+      <div className="mx-auto h-[414px] w-full bg-gradient-to-b from-[#A4B9FF] to-[#FFFFFF] pb-12 pt-5 md:h-[703px] md:pb-24 md:pt-12 max-w-[1920px]">
         <div className="container relative mx-auto max-w-[1200px] px-5 md:px-8 2xl:max-w-[1400px] 3xl:max-w-none 3xl:px-[168px]">
           {/* Header Section */}
           <div className="mb-8 flex items-start justify-start md:mb-12 md:items-center">
@@ -115,16 +115,16 @@ const WorkshopEvents = () => {
                 <div style={{ transform: 'rotate(-0.05deg)' }} className="-mt-[8px] flex flex-col md:-mt-[13px]">
                   <div className="flex items-center gap-2">
                     <h2 className="text-[18px] font-black leading-[30.42px] text-[#000000] md:text-[32px] md:leading-[40px] xl:text-[42px] xl:leading-[64px]">
-                      Workshop Học Bá Education
+                      Workshop The IELTS Space
                     </h2>
                   </div>
                   <p className="-mt-0.5 w-[266px] text-[12px] font-medium leading-[1.1] text-[#373737] md:-ml-[3px] md:mt-[-2px] md:w-auto md:text-[18px] md:leading-[28px] xl:text-[22px] xl:leading-[32px]">
-                    Khám phá các workshop Tiếng Trung nổi bật tại Học Bá
+                    Khám phá các workshop Tiếng Anh nổi bật tại The IELTS Space
                   </p>
                 </div>
               </div>
 
-              {/* Mobile Icon */}
+              {/* Mobile Icon
               <img
                 src={IMAGES.news.videoLibrary.src}
                 alt="Video Library"
@@ -132,9 +132,9 @@ const WorkshopEvents = () => {
               />
 
               {/* Desktop Icon */}
-              <div className="hidden shrink-0 items-center justify-center md:-mt-[10px] md:ml-4 md:flex">
+              {/* <div className="hidden shrink-0 items-center justify-center md:-mt-[10px] md:ml-4 md:flex">
                 <img src={IMAGES.news.videoLibrary.src} alt="Video Library" className="h-auto md:w-[75px]" />
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -184,7 +184,7 @@ const WorkshopEvents = () => {
 
                       {/* Content */}
                       <div className="ml-[10.72px] flex items-start gap-[10.69px] md:ml-0 md:gap-3 xl:gap-4">
-                        <WorkshopPlayIcon className="h-[28.76px] w-[28.59px] shrink-0 md:h-[36px] md:w-[36px] xl:h-[50px] xl:w-[50px]" />
+                        <WorkshopPlayIcon className="text-[#052284] h-[28.76px] w-[28.59px] shrink-0 md:h-[36px] md:w-[36px] xl:h-[50px] xl:w-[50px]" />
                         <div className="flex flex-1 flex-col md:-mt-[1px] xl:-mt-[3px]">
                           <h3 className="w-[265px] text-[14px] font-bold leading-[1.2] text-[#000000] transition-colors md:min-h-[63px] md:w-auto md:text-[16px] md:leading-[1.3] md:text-[#000000] xl:min-h-[53px] xl:text-[22px] xl:leading-[1.2]">
                             {workshop.title}
