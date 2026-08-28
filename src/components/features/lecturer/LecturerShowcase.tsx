@@ -68,7 +68,7 @@ export default function LecturerShowcase({ lecturers = [], bgClass = 'bg-[#F9F9F
   if (!lecturers.length) return null;
 
   return (
-    <section className={cn("w-full px-4 pt-4 pb-10 md:py-10 lg:px-6 xl:px-0", bgClass)}>
+    <section className={cn("w-full max-w-[1920px] mx-auto px-4 pt-4 pb-10 md:py-10 lg:px-6 xl:px-0", bgClass)}>
       <div className="container mx-auto max-w-[1224px]">
         {/* Header */}
         <div className="mb-6 md:mb-12 flex flex-col items-center text-center">
@@ -180,7 +180,7 @@ export default function LecturerShowcase({ lecturers = [], bgClass = 'bg-[#F9F9F
             <div className="mx-auto h-[80%] w-[2px] bg-[#D9D9D9] xl:translate-x-2" />
           </div>
 
-          <div className="w-full flex-shrink-0 md:flex md:flex-col md:justify-between md:h-[410px] md:w-[390px] lg:h-[440px] lg:w-[480px] xl:h-[532px] xl:w-[600px] [@media(min-width:900px)_and_(max-width:1023px)]:h-[440px] [@media(min-width:900px)_and_(max-width:1023px)]:w-[460px]">
+          <div className="w-full flex-shrink-0 md:flex md:flex-col md:justify-between md:min-h-[410px] md:w-[390px] lg:min-h-[440px] lg:w-[480px] xl:min-h-[532px] xl:w-[600px] [@media(min-width:900px)_and_(max-width:1023px)]:min-h-[440px] [@media(min-width:900px)_and_(max-width:1023px)]:w-[460px]">
             <div
               ref={scrollRef}
               className="scrollbar-hide flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:gap-x-3 md:gap-y-4 md:overflow-visible md:px-1 md:pb-5 lg:gap-x-4 lg:overflow-visible lg:px-2 xl:gap-x-5 xl:gap-y-5 xl:overflow-visible xl:px-4 [@media(min-width:900px)_and_(max-width:1023px)]:overflow-visible [@media(min-width:900px)_and_(max-width:1023px)]:px-2"

@@ -195,8 +195,8 @@ const ScheduleTableNew = ({ courseId, bgGradientClass = 'from-[#FFEFEF] to-[#FFF
   };
 
   return (
-    <section className="bg-white px-4 pb-4 pt-12 md:px-5 md:pt-16 lg:px-10 lg:pb-8 lg:pt-20">
-      <div className={`mx-auto w-full rounded-[30px] bg-gradient-to-b ${bgGradientClass} px-0 pb-5 pt-2 md:p-8 xl:px-20 2xl:max-w-[87%] 2xl:px-16 3xl:max-w-[1700px] 3xl:px-28`}>
+    <section className={`w-full max-w-[1920px] mx-auto bg-gradient-to-b ${bgGradientClass} pb-4 pt-12 md:pt-16 lg:pb-8 lg:pt-20`}>
+      <div className="mx-auto w-full px-4 pb-5 pt-2 md:px-8 md:py-8 xl:px-20 2xl:max-w-[87%] 2xl:px-16 3xl:max-w-[1700px] 3xl:px-28">
         {/* Header */}
         <div className="mb-8 text-center md:mb-16">
           <div className="mx-auto flex w-fit items-start justify-center gap-2 md:items-center">

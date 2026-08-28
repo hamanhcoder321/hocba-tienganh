@@ -398,7 +398,7 @@ const courseHeroImageDesktopSrc = typeof courseHeroImageDesktop === 'string' ? c
       </div>
     </section>
 
-    <div class="bg-[#FFF4F4] w-full max-w-[1920px] mx-auto px-4 md:px-0 md:pl-[calc(4vw+10px)] min-[900px]:max-[1023px]:pl-[75px] lg:pl-[calc(8vw+10px)] xl:pl-[calc(11vw+10px)] 2xl:pl-[calc(12vw+10px)] 3xl:pl-[299px] py-[10px]">
+    <div class="bg-[#FFFFFF] w-full max-w-[1920px] mx-auto px-4 md:px-0 md:pl-[calc(4vw+10px)] min-[900px]:max-[1023px]:pl-[75px] lg:pl-[calc(8vw+10px)] xl:pl-[calc(11vw+10px)] 2xl:pl-[calc(12vw+10px)] 3xl:pl-[299px] py-[10px]">
       <Breadcrumb client:load>
         <BreadcrumbList className="font-svn-gilroy text-[11px] md:font-gilroy md:text-[16px] font-medium leading-[150%] text-[#373737] flex items-center flex-wrap gap-1 sm:gap-1.5">
           <BreadcrumbItem>
@@ -422,7 +422,7 @@ const courseHeroImageDesktopSrc = typeof courseHeroImageDesktop === 'string' ? c
       </Breadcrumb>
     </div>
 
-    <section class="w-full max-w-[1920px] mx-auto bg-gradient-to-b from-[#FFF4F4] to-white px-4 md:px-0 md:pl-[calc(4vw+10px)] min-[900px]:max-[1023px]:pl-[75px] lg:pl-[calc(8vw+10px)] xl:pl-[calc(11vw+10px)] 2xl:pl-[calc(12vw+10px)] 3xl:pl-[299px] md:pr-[calc(4vw+10px)] lg:pr-[calc(4vw+10px)] xl:pr-[calc(5vw+10px)] 2xl:pr-[calc(6vw+10px)] 3xl:pr-[299px]">
+    <section class="w-full max-w-[1920px] mx-auto bg-gradient-to-b from-[#FFFFFF] to-[#EEF4FF] px-4 md:px-0 md:pl-[calc(4vw+10px)] min-[900px]:max-[1023px]:pl-[75px] lg:pl-[calc(8vw+10px)] xl:pl-[calc(11vw+10px)] 2xl:pl-[calc(12vw+10px)] 3xl:pl-[299px] md:pr-[calc(4vw+10px)] lg:pr-[calc(4vw+10px)] xl:pr-[calc(5vw+10px)] 2xl:pr-[calc(6vw+10px)] 3xl:pr-[299px]">
       <div class="w-full">
         <div class="relative flex w-full flex-wrap lg:flex-nowrap justify-between gap-y-5 pt-[10px] pb-0 lg:py-10">
           <div class="w-full space-y-[18.36px] lg:space-y-8 lg:max-w-[500px] xl:max-w-[550px] 2xl:max-w-[600px] 3xl:max-w-[689px]">
@@ -561,7 +561,7 @@ const courseHeroImageDesktopSrc = typeof courseHeroImageDesktop === 'string' ? c
     </section>
   </div>
 
-  <LecturerShowcase lecturers={optimizedLecturers} bgClass="bg-white" client:load />
+  <LecturerShowcase lecturers={optimizedLecturers} bgClass="bg-[#EEF4FF]" client:load />
 
   <ScheduleTableNew client:load courseId={course?.id as number} />
 
