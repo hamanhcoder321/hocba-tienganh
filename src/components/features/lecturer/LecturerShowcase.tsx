@@ -105,7 +105,7 @@ export default function LecturerShowcase({ lecturers = [], bgClass = 'bg-[#F9F9F
 
                   {/* Logo IELTS SPACE inside photo */}
                   <div className="absolute left-3 top-3 z-20">
-                    <img src={IMAGES.logoIeltsSpace.src} alt="logo" className="h-8 w-auto md:h-10" />
+                    <img src={IMAGES.logoIeltsSpace.src} alt="logo" className="h-6 w-auto md:h-8" />
                   </div>
                 </div>
               </div>

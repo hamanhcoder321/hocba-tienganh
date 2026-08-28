@@ -195,12 +195,12 @@ const ScheduleTableNew = ({ courseId, bgGradientClass = 'from-[#FFEFEF] to-[#FFF
   };
 
   return (
-    <section className="bg-white px-4 py-4 md:px-5 lg:px-10 lg:py-8">
+    <section className="bg-white px-4 pb-4 pt-12 md:px-5 md:pt-16 lg:px-10 lg:pb-8 lg:pt-20">
       <div className={`mx-auto w-full rounded-[30px] bg-gradient-to-b ${bgGradientClass} px-0 pb-5 pt-2 md:p-8 xl:px-20 2xl:max-w-[87%] 2xl:px-16 3xl:max-w-[1700px] 3xl:px-28`}>
         {/* Header */}
         <div className="mb-8 text-center md:mb-16">
           <div className="mx-auto flex w-fit items-start justify-center gap-2 md:items-center">
-            <Polygon2 className="mt-1 h-[11px] w-[11px] shrink-0 md:mt-0 md:h-[28px] md:w-[28px]" />
+            <Polygon2 className="mt-1 h-[11px] w-[11px] shrink-0 text-[#F97316] md:mt-0 md:h-[28px] md:w-[28px]" />
             <h2 className="max-w-[260px] text-left font-gilroy text-[18px] font-[1000] uppercase leading-[1.2] text-[#F97316] md:max-w-none md:text-center md:text-[28px] lg:text-[36px] xl:text-[42px]">
               CHỌN LỊCH HỌC PHÙ HỢP NHẤT VỚI BẠN
             </h2>

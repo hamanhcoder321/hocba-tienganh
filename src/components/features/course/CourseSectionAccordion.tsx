@@ -31,7 +31,7 @@ function SectionAccordionItem({ section, activeBgClass }: { section: Section; ac
           <div className="w-full gap-2">
             <AccordionTrigger className="relative w-full p-0 hover:no-underline [&>svg:last-child]:hidden flex items-center justify-between min-h-[25.2px] lg:min-h-0">
               <div className="flex items-center gap-2">
-                <CourseDetailsBookmark className="w-[12.24px] h-[12.24px] lg:w-6 lg:h-6 shrink-0" />
+                <CourseDetailsBookmark className="w-[12.24px] h-[12.24px] lg:w-6 lg:h-6 shrink-0 text-[#F97316]" />
                 <h3 className="font-gilroy font-semibold text-[14px] lg:text-[24px] leading-[110%] text-black">{section.title}</h3>
               </div>
               <ChevronDown className="absolute right-0 top-1/2 -translate-y-1/2 w-[12.24px] h-[12.24px] lg:w-6 lg:h-6" />

@@ -17,7 +17,9 @@ import { BlogCategoryMenuDesktop, BlogCategoryMenuMobile } from './BlogCategoryM
 import { NewsCategoryMenuDesktop, NewsCategoryMenuMobile } from './NewsCategoryMenuClient';
 import type { JSX } from 'astro/jsx-runtime';
 import { Image } from 'astro:assets';
-import imgLogoHeaderMobile from '@/assets/images/img-hocba-tienganh-optimized/img-logo-header.webp';
+// import imgLogoHeaderMobile from '@/assets/images/img-hocba-tienganh-optimized/img-logo-header.webp'; // logo cũ webp
+import imgLogoHeaderMobile from '@/assets/images/img-hocba-tienganh-optimized/img-logo-moi-header.png'; // logo mới - desktop màu trắng
+import imgLogoHeaderMobileOld from '@/assets/images/img-hocba-tienganh-optimized/img-logo-header.webp'; // logo cũ - dùng cho mobile
 import { AlignJustify, ChevronDown } from 'lucide-react';
 import SearchTrigger from '@/components/common/search/SearchTrigger';
 
@@ -136,12 +138,12 @@ const { logo, siteName = 'Học Bá Education' } = Astro.props;
           <a href="/" class="flex-shrink-0 lg:-ml-6" aria-label="Trang chủ Học Bá">
             {
               typeof logo === 'string' && logo.startsWith('http') ? (
-                <img src={logo} alt={siteName} width="73" height="48" class="hidden lg:block h-12 w-auto" loading="eager" />
+                <img src={logo} alt={siteName} width="120" height="48" class="hidden lg:block h-14 w-auto object-contain" loading="eager" />
               ) : (
                 <Image
-                  width={73}
+                  width={120}
                   height={48}
-                  class="hidden lg:block h-12 w-auto"
+                  class="hidden lg:block h-14 w-auto object-contain"
                   src={logo || IMAGES.logo}
                   alt={siteName}
                   densities={[1, 2]}
@@ -152,7 +154,7 @@ const { logo, siteName = 'Học Bá Education' } = Astro.props;
               width={73}
               height={48}
               class="block lg:hidden h-6 w-auto"
-              src={imgLogoHeaderMobile}
+              src={imgLogoHeaderMobileOld}
               alt={siteName}
               densities={[1, 2]}
             />

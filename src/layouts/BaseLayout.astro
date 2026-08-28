@@ -31,10 +31,17 @@ const {
 const { data: settingsData } = (await commonApi.getSettings()) || {};
 const apiSettings = settingsData?.settings;
 
-const siteName = apiSettings?.site_name || SITE_SETTINGS.site_name;
-const title = propTitle 
-  ? `${propTitle} | ${siteName}` 
-  : (apiSettings?.meta_title || SITE_SETTINGS.meta_title);
+// [TAB] Lấy từ CMS (comment lại để dùng hardcode từ site-config.ts)
+// const siteName = apiSettings?.site_name || SITE_SETTINGS.site_name;
+// const title = propTitle
+//   ? `${propTitle} | ${siteName}`
+//   : (apiSettings?.meta_title || SITE_SETTINGS.meta_title);
+
+// [TAB] Hardcode từ site-config.ts - đổi tên/title tab ở đây
+const siteName = SITE_SETTINGS.site_name;
+const title = propTitle
+  ? `${propTitle} | ${siteName}`
+  : SITE_SETTINGS.meta_title;
 
 const description = propDescription || apiSettings?.meta_description || SITE_SETTINGS.meta_description;
 const keywords = propKeywords || (apiSettings?.meta_keywords ? apiSettings.meta_keywords.split(',').map((k: any) => k.trim()) : SITE_SETTINGS.meta_keywords);
@@ -75,7 +82,11 @@ const baseJsonLd: Graph = {
 // const siteLogo = apiSettings?.site_logo || SITE_SETTINGS.site_logo; // logo từ api mặ định
 const siteLogo = SITE_SETTINGS.site_logo; // set logo mới
 const siteFooterLogo = apiSettings?.site_footer_logo || SITE_SETTINGS.site_footer_logo;
-const favIcon = apiSettings?.site_fav_icon || SITE_SETTINGS.site_fav_icon.src;
+// [TAB] Lấy từ CMS (comment lại để dùng hardcode từ site-config.ts)
+// const favIcon = apiSettings?.site_fav_icon || SITE_SETTINGS.site_fav_icon.src;
+
+// [TAB] Hardcode từ site-config.ts - đổi logo tab ở đây
+const favIcon = typeof SITE_SETTINGS.site_fav_icon === 'string' ? SITE_SETTINGS.site_fav_icon : SITE_SETTINGS.site_fav_icon.src;
 ---
 
 <!doctype html>

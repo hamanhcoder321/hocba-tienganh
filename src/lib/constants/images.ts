@@ -312,6 +312,12 @@ import heroHskTangToc from '@/assets/images/img-hocba-tienganh-optimized/img-ban
 import heroHskButPha from '@/assets/images/img-hocba-tienganh-optimized/img-banner-but-pha.png';
 import heroHskVuonXa from '@/assets/images/img-hocba-tienganh-optimized/img-banner-vuon-xa.png';
 import heroHskChinhPhuc from '@/assets/images/img-hocba-tienganh-optimized/img-banner-chinh-phuc.png';
+import heroHskKhoiDongMobile from '@/assets/images/img-hocba-tienganh-optimized/image-banner-mobile-khoi-dong.png';
+import heroHskCatCanhMobile from '@/assets/images/img-hocba-tienganh-optimized/img-banner-Cat-canh-mobile.png';
+import heroHskTangTocMobile from '@/assets/images/img-hocba-tienganh-optimized/img-banner-Tang-toc mobile.png';
+import heroHskButPhaMobile from '@/assets/images/img-hocba-tienganh-optimized/img-banner-But-pha-mobile.png';
+import heroHskVuonXaMobile from '@/assets/images/img-hocba-tienganh-optimized/img-banner-Vuon-xa-mobile.png';
+import heroHskChinhPhucMobile from '@/assets/images/img-hocba-tienganh-optimized/img-banner-chinh-phuc-mobile.png';
 import heroChineseBasic from '@/assets/images/hsk/hero/giao-tiep-co-ban.png';
 import heroChineseOffice from '@/assets/images/hsk/hero/giao-tiep-van-phong-cong-so.png';
 import heroChineseCommerce from '@/assets/images/hsk/hero/thuong-mai.png';
@@ -510,6 +516,12 @@ export const IMAGES = {
     heroHskButPha,
     heroHskVuonXa,
     heroHskChinhPhuc,
+    heroHskKhoiDongMobile,
+    heroHskCatCanhMobile,
+    heroHskTangTocMobile,
+    heroHskButPhaMobile,
+    heroHskVuonXaMobile,
+    heroHskChinhPhucMobile,
     heroChineseBasic,
     heroChineseOffice,
     heroChineseCommerce,
