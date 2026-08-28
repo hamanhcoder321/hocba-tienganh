@@ -69,7 +69,7 @@ export const TitleMenu = {
   XAY_DUNG_LO_TRINH: 'Xây dựng lộ trình',
   LICH_KHAI_GIANG: 'Lịch khai giảng',
   KHOA_HOC: 'Khóa học',
-  CAM_NANG: 'Cẩm nang',
+  CAM_NANG: 'Cẩm nang IELTS',
   TIN_TUC: 'Tin tức',
   LIEN_HE: 'Liên hệ',
 } as const;

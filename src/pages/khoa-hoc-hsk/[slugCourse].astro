@@ -20,7 +20,7 @@ import {
 import JsonLd from '@/components/common/JsonLd.astro';
 import { formatDescription, formatTargets } from '@/lib/utils';
 import RegisterStudyModal from '@/components/common/RegisterStudyModal';
-import SimpleFormRegister from '@/components/common/SimpleFormRegister.astro';
+import SimpleFormRegisterchitietkhoahoc from '@/components/common/SimpleFormRegisterchitietkhoahoc.astro';
 import ScheduleTableNew from '@/components/features/schedule/ScheduleTableNew';
 import LecturerShowcase from '@/components/features/lecturer/LecturerShowcase';
 import CourseRegistrationForm from '@/components/features/course/CourseRegistrationForm';
@@ -256,8 +256,9 @@ const courseHeroImageDesktopSrc = typeof courseHeroImageDesktop === 'string' ? c
 
   <div class="mx-auto w-full max-w-[1920px] bg-white">
     <section class="relative font-primary w-full overflow-hidden bg-gradient-to-r from-[#052284] to-[#083AD4] pt-[18px] pb-[0px] h-auto md:py-0 md:min-h-[390px] lg:min-h-[500px] xl:min-h-[580px] 2xl:min-h-[610px] 3xl:h-[718px] flex items-start md:items-stretch">
-      <!-- Background SVG decorations removed per request -->
-
+      <!-- Mobile Background Shapes -->
+      <div class="absolute top-[337px] left-[-95px] w-[120px] h-[362px] bg-[#83A2FF] md:hidden z-0" style="clip-path: polygon(0 0, 100% 28%, 100% 100%, 0 100%);"></div>
+      <div class="absolute top-[390px] left-[25px] w-[395px] max-w-full h-[309px] bg-gradient-to-b from-[#5A7DE9] via-[#2F5AE0] to-[#1B46DA] md:hidden z-0" style="clip-path: polygon(0 16%, 100% 0, 100% 100%, 0 100%);"></div>
       <div class="w-full max-w-[1920px] mx-auto relative z-10 md:h-full flex flex-col md:flex-row md:justify-between">
         <div class="flex flex-col items-center md:items-start text-center md:text-left space-y-3 md:space-y-2 lg:space-y-3 xl:space-y-3 2xl:space-y-4 3xl:space-y-6 px-4 md:px-0 md:pl-[calc(4vw+10px)] min-[900px]:max-[1023px]:pl-[75px] lg:pl-[calc(8vw+10px)] xl:pl-[calc(11vw+10px)] 2xl:pl-[calc(12vw+10px)] 3xl:pl-[298px] md:pt-[15px] md:pb-[15px] lg:pt-[25px] lg:pb-[12px] xl:pt-[30px] xl:pb-[20px] 2xl:pt-[35px] 2xl:pb-[12px] 3xl:pt-[63px] 3xl:pb-[24px] w-full md:w-[50%] lg:w-[55%] xl:w-[60%] md:max-w-[380px] lg:max-w-[440px] xl:max-w-[540px] 2xl:max-w-[780px] 3xl:max-w-[900px] z-10 md:justify-center">
           <div class="flex flex-col items-center md:items-start space-y-[10px] md:space-y-2 lg:space-y-3 xl:space-y-3 2xl:space-y-4 3xl:space-y-6 md:min-h-[168px] lg:min-h-[218px] xl:min-h-[234px] 2xl:min-h-[285px] 3xl:min-h-[301px] w-full">
@@ -565,7 +566,7 @@ const courseHeroImageDesktopSrc = typeof courseHeroImageDesktop === 'string' ? c
 
   <ScheduleTableNew client:load courseId={course?.id as number} />
 
-  <SimpleFormRegister dataInput={`Khóa học ${course?.name}`} isSimpleForm />
+  <SimpleFormRegisterchitietkhoahoc dataInput={`Khóa học ${course?.name}`} isSimpleForm />
 </BaseLayout>
 
 <script define:vars={{ categoryTitle: themeColor.title }}>

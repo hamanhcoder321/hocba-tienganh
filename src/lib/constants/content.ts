@@ -16,24 +16,25 @@ export const HOME_CATEGORIES: CategoryItem[] = [
     id: CATEGORY_TYPES.HSK,
     link: '/khoa-hoc-hsk',
     image: '/images/hero-hsk.webp',
-    title: 'hsk',
+    title: 'IELTS',
+    // title: 'hsk',
     content:
       'Xây dựng nền tảng kiến thức vững chắc, chuẩn chỉnh từ sơ cấp tới nâng cao. Học tập và ôn luyện cùng giáo viên giàu kinh nghiệm giúp bạn tiến bộ rõ nét qua từng bài học.',
     color: '#B90E0A',
     secondBg: 'bg-red-200',
     bgRoadmap: 'bg-[#B90E0A]',
   },
-  {
-    id: CATEGORY_TYPES.TIENG_TRUNG_CHO_NGUOI_DI_LAM,
-    link: '/tieng-trung-cho-nguoi-di-lam',
-    image: '/images/clarity_talk.png',
-    title: 'Tiếng Trung cho người đi làm',
-    content:
-      'Lộ trình học được thiết kế theo năng lực và mục tiêu của từng học viên, giúp bạn nhanh chóng sở hữu được bộ kỹ năng của một biên, phiên dịch chuyên nghiệp.',
-    color: '#B90E0A',
-    secondBg: 'bg-red-200',
-    bgRoadmap: 'bg-[#B90E0A]',
-  },
+  // {
+  //   id: CATEGORY_TYPES.TIENG_TRUNG_CHO_NGUOI_DI_LAM,
+  //   link: '/tieng-trung-cho-nguoi-di-lam',
+  //   image: '/images/clarity_talk.png',
+  //   title: 'Tiếng Trung cho người đi làm',
+  //   content:
+  //     'Lộ trình học được thiết kế theo năng lực và mục tiêu của từng học viên, giúp bạn nhanh chóng sở hữu được bộ kỹ năng của một biên, phiên dịch chuyên nghiệp.',
+  //   color: '#B90E0A',
+  //   secondBg: 'bg-red-200',
+  //   bgRoadmap: 'bg-[#B90E0A]',
+  // },
   //   {
   //     id: CATEGORY_TYPES.TOCFL,
   //     link: '/khoa-hoc-tocfl',
