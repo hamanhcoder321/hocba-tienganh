@@ -321,13 +321,13 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
                 <div>
                   <p className="text-[15px] font-bold text-primary">LỘ TRÌNH GỢI Ý...</p>
                   <div className="flex gap-4 pt-4">
-                    <img
+                    {/* <img
                       className="h-[23px] w-[23px] sm:h-9 sm:w-9"
                       width={0}
                       height={0}
                       src={icons.lotrinh}
                       alt={'lotrinh'}
-                    />
+                    /> */}
                     <p className="whitespace-pre-line text-xs font-medium">
                       {parse(resultSelectCourse(inputLevel.slug)?.sugges ?? '')}
                     </p>
@@ -468,13 +468,13 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
                       Lộ trình gợi ý
                     </p>
                     <div className="flex gap-4 pt-4">
-                      <img
+                      {/* <img
                         className="h-9 w-9 xl:h-[42px] xl:w-[42px]"
                         width={0}
                         height={0}
                         src={icons.lotrinh}
                         alt={'lotrinh'}
-                      />
+                      /> */}
                       <p className="custom-scrollbar h-[200px] overflow-y-scroll text-sm font-medium tracking-normal text-black">
                         {parse(resultSelectCourse(inputLevel.slug)?.sugges || '...')}
                       </p>

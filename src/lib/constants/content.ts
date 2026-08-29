@@ -77,7 +77,7 @@ export const CONTACTS = {
     value: 'https://maps.app.goo.gl/kMGiEXyvfdGzYEVB8',
   },
   linkWeb: import.meta.env.PUBLIC_CLIENT_URL ?? 'https://hoc-ba.edu.vn',
-  hotline: '0888861786',
+  hotline: '0888.861.786',
   email: 'theenglishspace01@gmail.com',
   facebookHskUrl: 'https://www.facebook.com/hocbahsk',
   facebookEducationUrl: 'https://www.facebook.com/hocba.education',

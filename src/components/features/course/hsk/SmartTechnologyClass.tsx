@@ -95,8 +95,8 @@ export default function SmartTechnologyClass({ icons, slides }: SmartTechnologyC
                       boxShadow: '1.73px 4.85px 8.66px 0px #083AD440',
                     }}
                   >
-                    <LalaIcon className="text-[#FDE68A] absolute -top-12 right-0 hidden h-auto w-[58px] rotate-45 -scale-x-100 md:-top-16 md:right-20 md:flex md:w-auto md:rotate-0 md:scale-x-100" />
-                    <LalalaIcon className="text-[#FDE68A] absolute -bottom-20 left-[68px] hidden md:flex" />
+                    <LalaIcon className="text-[#F97316] absolute -top-12 right-0 hidden h-auto w-[58px] rotate-45 -scale-x-100 md:-top-16 md:right-20 md:flex md:w-auto md:rotate-0 md:scale-x-100" />
+                    <LalalaIcon className="text-[#F97316] absolute -bottom-20 left-[68px] hidden md:flex" />
                     <div className="w-full lg:w-[413px]">
                       <h3 className="flex h-auto w-full items-center rounded-[24px] bg-white px-4 text-center text-[15px] font-black uppercase text-[#D16112] lg:h-[92px] lg:rounded-[84px] lg:px-8 lg:text-[20px]">
                         {slide.title}
@@ -180,7 +180,7 @@ export default function SmartTechnologyClass({ icons, slides }: SmartTechnologyC
         <Button
           variant="outline"
           size="icon"
-          className="absolute left-0 top-1/2 z-50 hidden h-[42px] w-[42px] min-w-[42px] -translate-y-1/2 rounded-full border-none bg-[#FFEFEF] text-lg shadow-[0px_0px_5.31px_0px_#00000026] hover:bg-primary hover:text-white hover:shadow-[0px_7.74px_17.79px_0px_#FF6969] md:flex"
+          className="absolute left-0 top-1/2 z-50 hidden h-[42px] w-[42px] min-w-[42px] -translate-y-1/2 rounded-full border-none bg-[#FFEFEF] text-lg shadow-[0px_0px_5.31px_0px_#00000026] hover:bg-[#052284] hover:text-white hover:shadow-[0px_7.74px_17.79px_0px_rgba(5,34,132,0.5)] md:flex"
           disabled={!canScrollPrev}
           onClick={() => api?.scrollPrev()}
         >
@@ -190,7 +190,7 @@ export default function SmartTechnologyClass({ icons, slides }: SmartTechnologyC
         <Button
           variant="outline"
           size="icon"
-          className="absolute right-0 top-1/2 z-50 hidden h-[42px] w-[42px] min-w-[42px] -translate-y-1/2 rounded-full border-none bg-[#FFEFEF] shadow-[0px_0px_5.31px_0px_#00000026] hover:bg-primary hover:text-white hover:shadow-[0px_7.74px_17.79px_0px_#FF6969] md:flex"
+          className="absolute right-0 top-1/2 z-50 hidden h-[42px] w-[42px] min-w-[42px] -translate-y-1/2 rounded-full border-none bg-[#FFEFEF] shadow-[0px_0px_5.31px_0px_#00000026] hover:bg-[#052284] hover:text-white hover:shadow-[0px_7.74px_17.79px_0px_rgba(5,34,132,0.5)] md:flex"
           disabled={!canScrollNext}
           onClick={() => api?.scrollNext()}
         >

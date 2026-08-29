@@ -315,7 +315,7 @@ const courseHeroImageDesktopSrc = typeof courseHeroImageDesktop === 'string' ? c
                 onclick="document.getElementById('simple-register-form')?.scrollIntoView({ behavior: 'smooth' })"
                 class="transition-all relative flex items-center justify-center gap-[3.33px] md:gap-[3px] lg:gap-0 rounded-[47.76px] bg-gradient-to-r from-[#F97316] to-[#F3C650] border-[1.67px] border-white w-[156px] h-[30.78px] md:w-full md:h-[36px] lg:h-[50px] xl:h-[46px] 2xl:h-[60px] 3xl:h-[60px] md:rounded-[86px] md:border-0 font-gilroy text-white shadow-lg md:top-0 lg:top-0 xl:top-2 2xl:top-0 3xl:top-2 hover:shadow-[0_0_25px_rgba(249,115,22,0.6)]"
               >
-                <PlaySolidIcon className="relative z-10 w-[12px] h-[12px] md:w-[12px] md:h-[12px] lg:w-[24px] lg:h-[24px] fill-white shrink-0 mr-0 md:mr-[2px] lg:mr-0 lg:absolute lg:left-[26px]" />
+                <PlaySolidIcon className="relative ml-[-16px] z-10 w-[12px] h-[12px] md:w-[12px] md:h-[12px] lg:w-[24px] lg:h-[24px] fill-white shrink-0 mr-0 md:mr-[2px] lg:mr-0 lg:absolute lg:left-[26px]" />
                 <span class="relative z-10 text-[13px] md:text-[14px] lg:text-[24px] xl:text-[24px] 2xl:text-[24px] 3xl:text-[24px] font-[900] font-svn-gilroy leading-none md:leading-[32px] uppercase lg:w-full lg:text-center lg:pl-[10px] xl:pl-[36px] 2xl:pl-[30px] 3xl:pl-[30px] tracking-[0] whitespace-nowrap">
                   <span class="block md:hidden">ĐĂNG KÝ NGAY</span>
                   <span class="hidden md:block">NHẬN TƯ VẤN LỘ TRÌNH IELTS</span>
@@ -456,6 +456,9 @@ const courseHeroImageDesktopSrc = typeof courseHeroImageDesktop === 'string' ? c
                       Mục tiêu khóa học
                     </h2>
                   </div>
+                  <p class="font-gilroy font-normal text-[14px] lg:text-[16px] leading-[160%] text-[#000000] mb-4">
+                    {course?.target_description || 'Đang cập nhật nội dung'}
+                  </p>
                   <CourseTargetAccordion targets={formatTargets(course?.targets)} client:load />
                 </div>
               ) : null

@@ -27,6 +27,7 @@ type TCourse = {
   free_gift?: string;
   requirments: string;
   targets: string;
+  target_description?: string;
   documents: string;
   category_id: number;
   sub_category_id: number;
