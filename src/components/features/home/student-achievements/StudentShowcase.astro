@@ -8,6 +8,7 @@ import {
   TargetAchievement,
   DoubleChevronRight,
 } from '@/components/common/icons';
+import { SingleCertificateDialog } from './SingleCertificateDialog';
 import { StudentShowcaseDialog } from './StudentShowcaseDialog';
 import { fetchStudents } from '@/lib/static-data';
 
@@ -18,14 +19,14 @@ const students =
   studentList.length > 0
     ? studentList.map((item) => ({
         name: item.name,
-        role: item.profession,
+        // role: item.profession,
         badge: item.course,
-        score: item.score ? `${item.score} điểm` : '',
+        // score: item.score ? `${item.score} điểm` : '',
         image: item.avatar_url || IMAGES.course.profilePic,
       }))
     : Array(8).fill({
         name: 'Nguyễn Văn A',
-        role: 'Sinh viên',
+        // role: 'Sinh viên',
         badge: 'HSK5',
         score: '230 điểm',
         image: IMAGES.home.aboutClass, // Placeholder image matching the study group
@@ -73,7 +74,7 @@ const icons = {
       class="absolute left-[41px] top-[12px] h-[29.38px] w-[30.66px] object-contain md:relative md:left-auto md:top-auto md:h-[64px] md:w-[67px]"
     />
     <h2
-      class="absolute left-[83px] top-[15px] h-[27.04px] w-[224.13px] text-left font-gilroy text-[18px] font-[900] uppercase leading-[1.2] text-[#AF0000] md:relative md:left-auto md:top-auto md:h-auto md:w-auto md:text-center md:text-[42px]"
+      class="absolute left-[83px] top-[15px] h-[27.04px] w-[224.13px] text-left font-gilroy text-[18px] font-[900] uppercase leading-[1.2] text-[#072899] md:relative md:left-auto md:top-auto md:h-auto md:w-auto md:text-center md:text-[42px]"
     >
       Bảng vàng thành tích
     </h2>
@@ -116,27 +117,7 @@ const icons = {
       class="relative z-20 mx-[-24px] mb-5 mt-[2px] flex flex-row justify-between gap-[9px] px-[8px] md:mx-0 md:mt-0 md:h-auto md:flex-row md:justify-center md:gap-6 md:px-0 2xl:mb-0 3xl:mb-0"
     >
       <div
-        class="flex h-[55px] w-1/2 min-w-0 shrink items-center justify-start gap-[6px] rounded-[7.33px] border-[0.23px] border-[#FFF0CD] bg-[#AF0000] px-[6.42px] py-1 text-white shadow-lg md:h-[104px] md:w-[470px] md:gap-[20px] md:rounded-[16px] md:border-[0.5px] md:px-[14px] md:py-4"
-      >
-        <GraduationCapAchievement
-          className="h-[35.75px] w-[35.75px] shrink-0 fill-none text-[#FFF0CD] md:h-[78px] md:w-[78px]"
-        />
-        <div
-          class="flex flex-1 flex-col items-center justify-center gap-0 md:flex-initial md:items-start md:gap-0.5 xl:flex-row xl:items-center xl:gap-3"
-        >
-          <span
-            class="font-gilroy text-[14px] font-[1000] leading-[1.1] text-[#FFF0CD] md:text-[28px] md:leading-none xl:leading-[64px]"
-            >20.000+</span
-          >
-          <span
-            class="text-center font-gilroy text-[10px] font-bold leading-[1.1] text-[#FFF0CD] md:text-left md:text-[16px] md:leading-normal xl:leading-[64px]"
-            >Học viên đạt mục tiêu</span
-          >
-        </div>
-      </div>
-
-      <div
-        class="flex h-[55px] w-1/2 min-w-0 shrink items-center justify-start gap-[6px] rounded-[7.33px] border-[0.23px] border-[#FFF0CD] bg-[#AF0000] px-[6.42px] py-1 text-white shadow-lg md:h-[104px] md:w-[470px] md:gap-[20px] md:rounded-[16px] md:border-[0.5px] md:px-[14px] md:py-4"
+        class="flex h-[55px] w-1/2 min-w-0 shrink items-center justify-start gap-[6px] rounded-[7.33px] border-[0.23px] border-[#FFF0CD] bg-[#072899] px-[6.42px] py-1 text-white shadow-lg md:h-[104px] md:w-[470px] md:gap-[20px] md:rounded-[16px] md:border-[0.5px] md:px-[14px] md:py-4"
       >
         <TargetAchievement
           className="h-[35.75px] w-[35.75px] shrink-0 fill-none text-[#FFF0CD] md:h-[78px] md:w-[78px]"
@@ -145,12 +126,32 @@ const icons = {
           class="flex flex-1 flex-col items-center justify-center gap-0 md:flex-initial md:items-start md:gap-0.5 xl:flex-row xl:items-center xl:gap-3"
         >
           <span
-            class="font-gilroy text-[14px] font-[1000] leading-[1.1] text-[#FFF0CD] md:text-[28px] md:leading-none xl:leading-[64px]"
-            >5.000+</span
+            class="font-gilroy text-[14px] font-[1000] leading-[1.1] text-[#FFFFFF] md:text-[28px] md:leading-none xl:leading-[64px]"
+            >6.200+</span
           >
           <span
-            class="text-center font-gilroy text-[10px] font-bold leading-[1.1] text-[#FFF0CD] md:text-left md:text-[16px] md:leading-normal xl:leading-[64px]"
-            >Chinh phục thành công HSK</span
+            class="text-center font-gilroy text-[10px] font-bold leading-[1.1] text-[#FFFFFF] md:text-left md:text-[16px] md:leading-normal xl:leading-[64px]"
+            >Học viên đạt mục tiêu</span
+          >
+        </div>
+      </div>
+
+      <div
+        class="flex h-[55px] w-1/2 min-w-0 shrink items-center justify-start gap-[6px] rounded-[7.33px] border-[0.23px] border-[#FFF0CD] bg-[#072899] px-[6.42px] py-1 text-white shadow-lg md:h-[104px] md:w-[470px] md:gap-[20px] md:rounded-[16px] md:border-[0.5px] md:px-[14px] md:py-4"
+      >
+        <GraduationCapAchievement
+          className="h-[35.75px] w-[35.75px] shrink-0 fill-none text-[#FFF0CD] md:h-[78px] md:w-[78px]"
+        />
+        <div
+          class="flex flex-1 flex-col items-center justify-center gap-0 md:flex-initial md:items-start md:gap-0.5 xl:flex-row xl:items-center xl:gap-3"
+        >
+          <span
+            class="font-gilroy text-[14px] font-[1000] leading-[1.1] text-[#FFFFFF] md:text-[28px] md:leading-none xl:leading-[64px]"
+            >99,9%</span
+          >
+          <span
+            class="text-center font-gilroy text-[10px] font-bold leading-[1.1] text-[#FFFFFF] md:text-left md:text-[16px] md:leading-normal xl:leading-[64px]"
+            >Học viên hài lòng</span
           >
         </div>
       </div>
@@ -159,8 +160,7 @@ const icons = {
     <p
       class="relative z-20 mx-auto mb-3 mt-3 w-full max-w-[321px] text-center font-gilroy text-[12px] font-[300] italic leading-[1.2] text-[#000000] md:mb-12 md:mt-12 md:max-w-[655px] md:text-[18px]"
     >
-      Đây không chỉ là niềm tự hào của Học Bá Education mà còn là minh chứng rõ ràng cho hiệu quả đào tạo, tiếp thêm
-      động lực để Học Bá đồng hành cùng người Việt trên hành trình nâng tầm năng lực tiếng Trung.
+      Đây không chỉ là niềm tự hào của The IELTS Space, mà còn là minh chứng cho chất lượng và hiệu quả đào tạo mà chúng tôi theo đuổi. Mỗi kết quả của học viên tiếp tục là động lực để The IELTS Space đồng hành cùng người Việt trên hành trình chinh phục IELTS, nâng cao năng lực tiếng Anh và mở rộng những cơ hội mới trong tương lai.
     </p>
 
     {/* Mobile-only: 2 Independent Scrolling Rows */}
@@ -172,7 +172,10 @@ const icons = {
       >
         {
           [...students.slice(0, 4), ...students.slice(0, 4), ...students.slice(0, 4)].map((student) => (
-            <div class="student-card group relative flex h-[256px] w-[248px] shrink-0 flex-col gap-[9.39px] overflow-hidden rounded-[7.83px] border border-[#F0F0F0] bg-[#FAFAFA] p-[7.83px] pb-[13px] 2xl:cursor-pointer">
+            <div 
+              class="student-card group relative flex h-[256px] w-[248px] shrink-0 flex-col gap-[9.39px] overflow-hidden rounded-[7.83px] border border-[#F0F0F0] bg-[#FAFAFA] p-[7.83px] pb-[13px] cursor-pointer"
+              data-student={JSON.stringify(student)}
+            >
               {/* Image */}
               <div class="relative h-[174.25px] w-[232.34px] shrink-0 overflow-hidden rounded-[7.83px] bg-[#FAFAFA]">
                 <Image
@@ -200,10 +203,10 @@ const icons = {
                     {student.badge}
                   </span>
                 </div>
-                <div class="flex items-center justify-between">
+                {/* <div class="flex items-center justify-between">
                   <p class="font-gilroy text-[12.53px] font-normal leading-[1.2] text-[#373737]">{student.role}</p>
                   <p class="font-gilroy text-[12.53px] font-normal leading-[1.2] text-[#373737]">{student.score}</p>
-                </div>
+                </div> */}
               </div>
             </div>
           ))
@@ -217,7 +220,10 @@ const icons = {
       >
         {
           [...students.slice(4, 8), ...students.slice(4, 8), ...students.slice(4, 8)].map((student) => (
-            <div class="student-card group relative flex h-[256px] w-[248px] shrink-0 flex-col gap-[9.39px] overflow-hidden rounded-[7.83px] border border-[#F0F0F0] bg-[#FAFAFA] p-[7.83px] pb-[13px] 2xl:cursor-pointer">
+            <div 
+              class="student-card group relative flex h-[256px] w-[248px] shrink-0 flex-col gap-[9.39px] overflow-hidden rounded-[7.83px] border border-[#F0F0F0] bg-[#FAFAFA] p-[7.83px] pb-[13px] cursor-pointer"
+              data-student={JSON.stringify(student)}
+            >
               {/* Image */}
               <div class="relative h-[174.25px] w-[232.34px] shrink-0 overflow-hidden rounded-[7.83px] bg-[#FAFAFA]">
                 <Image
@@ -262,7 +268,10 @@ const icons = {
     >
       {
         students.slice(0, 6).map((student, index) => (
-          <div class="student-card group relative flex flex-col gap-[12px] overflow-hidden rounded-[12px] border border-[#F0F0F0] bg-[#FAFAFA] px-[12px] py-[20px] md:h-auto md:w-full md:max-w-[380px] 2xl:h-[376px] 2xl:w-[380px] 2xl:cursor-pointer 3xl:h-[376px] 3xl:w-[380px]">
+          <div 
+            class="student-card group relative flex flex-col gap-[12px] overflow-hidden rounded-[12px] border border-[#F0F0F0] bg-[#FAFAFA] px-[12px] py-[20px] md:h-auto md:w-full md:max-w-[380px] 2xl:h-[376px] 2xl:w-[380px] cursor-pointer 3xl:h-[376px] 3xl:w-[380px]"
+            data-student={JSON.stringify(student)}
+          >
             {/* Image */}
             <div class="relative shrink-0 overflow-hidden rounded-[12px] bg-[#FAFAFA] md:aspect-[4/3] md:h-auto md:w-full 2xl:aspect-auto 2xl:h-[267px] 2xl:w-[356px] 3xl:aspect-auto 3xl:h-[267px] 3xl:w-[356px]">
               <Image
@@ -281,6 +290,7 @@ const icons = {
                 loading="lazy"
               />
               {/* Hover Button Overlay */}
+              {/* 
               <div class="absolute inset-0 z-20 flex items-center justify-center bg-black/5 opacity-0 transition-opacity duration-300 2xl:group-hover:opacity-100">
                 <button
                   data-student-index={index}
@@ -295,15 +305,21 @@ const icons = {
                   />
                 </button>
               </div>
+              */}
+              {/* New Hover Overlay for Certificate */}
+              <div class="absolute inset-0 z-20 flex items-center justify-center bg-gradient-to-t from-[#D55F0D]/60 via-black/20 to-transparent opacity-0 transition-opacity duration-300 md:group-hover:opacity-100">
+                <span class="font-gilroy text-[22px] md:text-[28px] font-black text-white tracking-widest drop-shadow-lg uppercase text-center px-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                  XEM BẢNG ĐIỂM
+                </span>
+              </div>
             </div>
 
-            {/* Info */}
             <div class="flex flex-col gap-[12px]">
               <div class="flex items-center justify-between">
-                <h3 class="font-gilroy font-bold leading-[1.2] text-[#373737] md:text-[15px] xl:text-[18px]">
+                <h3 class="font-gilroy font-bold leading-[1.2] text-[#373737] md:text-[15px] xl:text-[18px] transition-colors duration-300 md:group-hover:text-[#823000]">
                   {student.name}
                 </h3>
-                <span class="inline-flex h-[28px] w-[75px] items-center justify-center rounded-[5px] bg-[#AF0000] px-[8px] font-gilroy text-[14px] font-[1000] leading-none text-[#FFF0CD] md:h-[28px] md:w-[75px] md:rounded-[5px] md:text-[14px] xl:h-[32px] xl:w-[90px] xl:text-[18px]">
+                <span class="inline-flex h-[28px] w-[75px] items-center justify-center rounded-[5px] bg-[#AF0000] px-[8px] font-gilroy text-[14px] font-[1000] leading-none text-[#FFF0CD] md:h-[28px] md:w-[75px] md:rounded-[5px] md:text-[14px] xl:h-[32px] xl:w-[90px] xl:text-[18px] transition-colors duration-300 md:group-hover:bg-[#C2410C] md:group-hover:text-[#FFEDD5]">
                   {student.badge}
                 </span>
               </div>
@@ -325,6 +341,7 @@ const icons = {
     <div class="relative z-20 mt-6 flex justify-center md:mt-8">
       <div class="relative">
         <StudentShowcaseDialog {icons} client:load />
+        <SingleCertificateDialog client:load />
       </div>
     </div>
   </div>
@@ -334,11 +351,18 @@ const icons = {
   .student-card {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  @media (hover: hover) and (min-width: 1536px) {
+  @media (hover: hover) and (min-width: 768px) {
+    /*
     .student-card:hover {
       background: linear-gradient(135deg, #ffd568 0%, #fff5db 100%) !important;
       border-color: #d9d9d9 !important;
       box-shadow: 4px 11px 13.6px 0px rgba(175, 0, 0, 0.25) !important;
+    }
+    */
+    .student-card:hover {
+      background: linear-gradient(180deg, #E97E2E 0%, #D55F0D 100%) !important;
+      border-color: #D55F0D !important;
+      box-shadow: 4px 11px 13.6px 0px rgba(213, 95, 13, 0.25) !important;
     }
   }
 </style>
@@ -423,13 +447,16 @@ const icons = {
   setupAutoScroll('mobile-row-1', 4000);
   setupAutoScroll('mobile-row-2', 6000);
 
-  // Thêm sự kiện click cho nút "Xem chi tiết"
+  // Thêm sự kiện click cho thẻ học viên
   document.addEventListener('DOMContentLoaded', () => {
-    const detailButtons = document.querySelectorAll('.btn-xem-chi-tiet');
-    detailButtons.forEach((btn) => {
-      btn.addEventListener('click', (e) => {
-        const index = e.currentTarget.getAttribute('data-student-index');
-        window.dispatchEvent(new CustomEvent('openStudentDialog', { detail: { index } }));
+    const studentCards = document.querySelectorAll('.student-card');
+    studentCards.forEach((card) => {
+      card.addEventListener('click', (e) => {
+        const studentDataRaw = e.currentTarget.getAttribute('data-student');
+        if (studentDataRaw) {
+          const student = JSON.parse(studentDataRaw);
+          window.dispatchEvent(new CustomEvent('openSingleCertificateDialog', { detail: { student } }));
+        }
       });
     });
   });

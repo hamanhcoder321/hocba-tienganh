@@ -14,7 +14,8 @@ interface StudentShowcaseDialogProps {
   };
 }
 
-const StudentCard = ({
+/*
+const StudentCardOld = ({
   item,
   icons,
   isPageCourse,
@@ -69,6 +70,30 @@ const StudentCard = ({
     </div>
   </div>
 );
+*/
+
+const StudentCard = ({ item }: { item: TStudent }) => {
+  const avatarUrl = item.avatar_url || '';
+  return (
+    <div className="w-[344px] h-[458px] relative flex items-center justify-center bg-[#D9D9D9]/50 rounded-[16px] border border-gray-200 shadow-inner overflow-hidden shrink-0 group hover:shadow-2xl transition-all duration-300">
+      <div className="w-full h-full flex flex-col items-center justify-center text-gray-500">
+        <span className="font-gilroy text-lg font-bold uppercase tracking-wider text-gray-400">Chưa có dữ liệu</span>
+      </div>
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[90%] bg-black/60 backdrop-blur-md rounded-[50px] p-2 flex items-center shadow-xl group-hover:bg-black/80 transition-colors duration-300">
+        <div className="shrink-0 rounded-full w-[45px] h-[45px] overflow-hidden border-2 border-white/20 bg-gray-200 relative">
+          {avatarUrl && <img src={avatarUrl} alt={item.name} className="w-full h-full object-cover" />}
+        </div>
+        <div className="flex-1 px-3 flex flex-col justify-center">
+          <h3 className="text-white font-gilroy font-bold uppercase text-[13px] leading-tight line-clamp-1">{item.name}</h3>
+          <p className="text-[#FFCF5A] font-gilroy text-[11px] font-semibold mt-0.5">Lis: 8.0, Read: 8.5</p>
+        </div>
+        <div className="pr-3 shrink-0 flex items-center justify-end border-l border-white/20 pl-3 py-1">
+          <span className="text-white font-gilroy font-black text-[18px]">{item.course || 'IELTS'}</span>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export const StudentShowcaseDialog = ({ icons }: StudentShowcaseDialogProps) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -99,6 +124,7 @@ export const StudentShowcaseDialog = ({ icons }: StudentShowcaseDialogProps) => 
     }
   }, [isDialogOpen]);
 
+  /*
   useEffect(() => {
     const handleOpenDialog = (e: any) => {
       setIsDialogOpen(true);
@@ -109,7 +135,9 @@ export const StudentShowcaseDialog = ({ icons }: StudentShowcaseDialogProps) => 
     window.addEventListener('openStudentDialog', handleOpenDialog);
     return () => window.removeEventListener('openStudentDialog', handleOpenDialog);
   }, []);
+  */
 
+  /*
   useEffect(() => {
     if (isDialogOpen && listStudents.length > 0 && targetScrollIndex !== null) {
       setTimeout(() => {
@@ -121,6 +149,7 @@ export const StudentShowcaseDialog = ({ icons }: StudentShowcaseDialogProps) => 
       }, 150);
     }
   }, [isDialogOpen, listStudents, targetScrollIndex]);
+  */
 
   const handleLoadMore = async () => {
     if (loading || !hasMore) return;
@@ -180,10 +209,10 @@ export const StudentShowcaseDialog = ({ icons }: StudentShowcaseDialogProps) => 
               Danh sách các học viên
             </DialogTitle>
           </DialogHeader>
-          <div className="custom-scrollbar grid h-full max-h-[60vh] grid-cols-1 gap-4 overflow-y-auto px-1 pb-4 md:gap-8 lg:grid-cols-2 xl:max-h-[60vh] xl:grid-cols-3 3xl:max-h-[620px]">
+          <div className="custom-scrollbar grid h-full max-h-[60vh] grid-cols-1 gap-4 overflow-y-auto overscroll-contain touch-pan-y px-1 pb-4 md:gap-8 lg:grid-cols-2 xl:max-h-[60vh] xl:grid-cols-3 3xl:max-h-[620px]">
             {listStudents.map((item, index) => (
               <div key={index} id={`student-dialog-card-${index}`} className="flex justify-center">
-                <StudentCard item={item} icons={icons} isPageCourse={true} />
+                <StudentCard item={item} />
               </div>
             ))}
             {hasMore && (

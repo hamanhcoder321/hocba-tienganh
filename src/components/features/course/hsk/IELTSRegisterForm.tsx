@@ -111,7 +111,7 @@ export default function IELTSRegisterForm({
             </div>
 
             {/* Row 2: Objective and Phone */}
-            <div className="col-span-1 space-y-2 text-left hidden md:block">
+            <div className="col-span-1 space-y-2 text-left md:block">
               <Label htmlFor="course" className="text-[14px] font-bold text-white md:text-base">
                 Mục Tiêu Của Bạn
               </Label>
@@ -169,8 +169,7 @@ export default function IELTSRegisterForm({
 
           {children}
 
-          {/* Submit Button */}
-          {isCourseChinese ? (
+          {/* isCourseChinese ? (
             <div className="relative mx-auto w-full pt-1 text-center">
               <Button
                 type="submit"
@@ -185,31 +184,32 @@ export default function IELTSRegisterForm({
                 THE IELTS SPACE sẽ liên hệ lại trong vòng <span className="font-bold">24 giờ</span> làm việc.
               </p>
             </div>
-          ) : (
-            <div className="relative mx-auto w-full pt-4 text-center">
-              <Button
-                type="submit"
-                disabled={isPending}
-                className="relative ml-auto flex items-center justify-center gap-[10px] min-h-[50px] w-full max-w-[330px] md:max-w-[460px] rounded-[24px] border-[3px] border-white bg-[#F97316] py-[6px] px-[16px] text-[15px] font-black uppercase text-white shadow-lg transition-colors hover:opacity-90 disabled:opacity-70 md:min-h-[68px] md:text-[20px]"
-              >
-                {icons?.noteBook && (
-                  <img
-                    src={icons.noteBook}
-                    alt={'noteBook'}
-                    width={80}
-                    height={80}
-                    className="absolute -left-9 top-1/2 z-20 h-[54px] w-auto -translate-y-1/2 rotate-12 object-cover md:-left-12 md:h-[80px]"
-                  />
-                )}
-                {isPending ? 'Đang xử lý...' : isSuccess ? 'Thành công!' : (
-                  <span>GỬI THÔNG TIN CHO THE IELTS SPACE</span>
-                )}
-              </Button>
-              <p className="mt-2 text-right font-normal text-white md:text-[17px] md:leading-[150%]">
-                THE IELTS SPACE sẽ liên hệ lại trong vòng <span className="font-bold">24 giờ</span> làm việc.
-              </p>
-            </div>
-          )}
+          ) */}
+
+          {/* Submit Button */}
+          <div className="relative mx-auto w-full pt-4 text-center md:text-right">
+            <Button
+              type="submit"
+              disabled={isPending}
+              className="relative mx-auto md:ml-auto md:mr-0 flex items-center justify-center gap-[10px] min-h-[50px] w-full max-w-[330px] md:max-w-[460px] rounded-[24px] border-[3px] border-white bg-[#F97316] py-[6px] px-[16px] text-[15px] font-black uppercase text-white shadow-lg transition-colors hover:opacity-90 disabled:opacity-70 md:min-h-[68px] md:text-[20px]"
+            >
+              {icons?.noteBook && (
+                <img
+                  src={icons.noteBook}
+                  alt={'noteBook'}
+                  width={80}
+                  height={80}
+                  className="absolute -left-9 top-1/2 z-20 h-[54px] w-auto -translate-y-1/2 rotate-12 object-cover md:-left-12 md:h-[80px]"
+                />
+              )}
+              {isPending ? 'Đang xử lý...' : isSuccess ? 'Thành công!' : (
+                <span>GỬI THÔNG TIN CHO THE IELTS SPACE</span>
+              )}
+            </Button>
+            <p className="mt-2 text-center text-[12.5px] md:text-right font-normal text-white md:text-[17px] md:leading-[150%]">
+              THE IELTS SPACE sẽ liên hệ lại trong vòng <span className="font-bold">24 giờ</span> làm việc.
+            </p>
+          </div>
         </form>
       </div>
     </div>

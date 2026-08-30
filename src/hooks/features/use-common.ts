@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
-export const useRegisterStudy = () => {
+export const useRegisterStudy = (overrides?: Partial<RegisterStudyBodyType>) => {
   const [isPending, setIsPending] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [responseData, setResponseData] = useState<any>(null);
@@ -19,10 +19,11 @@ export const useRegisterStudy = () => {
       wishlist_courses: 'Xét tuyển vào Đại học',
       note: '',
       data_input: '',
-      target: '',
-      current_level: '',
-      contact_method: '',
-      available_time: '',
+      target: 'Du học/ đi làm',
+      current_level: 'Mất gốc/ mới bắt đầu',
+      contact_method: 'Gọi điện trực tiếp',
+      available_time: 'Sáng (8h-12h)',
+      ...overrides,
     },
   });
 

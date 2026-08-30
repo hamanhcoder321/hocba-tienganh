@@ -6,35 +6,52 @@ import VideoStudentSlide from '@/components/features/course/hsk/VideoStudentSlid
 const videoStudentSlides = [
   {
     id: 1,
-    videoUrl: 'https://www.youtube.com/shorts/Y87HUHQNSA0',
+    videoUrl: 'https://www.youtube.com/shorts/_1k6jp1R6Rg',
     thumbnail: IMAGES.studentAchievements.hvdcNgocHang.src,
   },
   {
     id: 2,
-    videoUrl: 'https://www.youtube.com/shorts/6S-Zy3Fnzn4',
+    videoUrl: 'https://www.youtube.com/shorts/7TN4UYl5qtg',
     thumbnail: IMAGES.studentAchievements.hvdcTienVu.src,
   },
   {
     id: 3,
-    videoUrl: 'https://www.youtube.com/shorts/MAnASob52M0',
+    videoUrl: 'https://www.youtube.com/shorts/r0AvMPQaSHE',
     thumbnail: IMAGES.studentAchievements.hvdcMaiMai.src,
   },
-  {
-    id: 4,
-    videoUrl: 'https://www.youtube.com/shorts/Y87HUHQNSA0',
-    thumbnail: IMAGES.studentAchievements.hvdcNgocHang.src,
-  },
-  {
-    id: 5,
-    videoUrl: 'https://www.youtube.com/embed/MAnASob52M0',
-    thumbnail: IMAGES.studentAchievements.hvdcTienVu.src,
-  },
-  {
-    id: 6,
-    videoUrl: 'https://www.youtube.com/shorts/MAnASob52M0',
-    thumbnail: IMAGES.studentAchievements.hvdcMaiMai.src,
-  },
+  // {
+  //   id: 4,
+  //   videoUrl: 'https://www.youtube.com/shorts/Y87HUHQNSA0',
+  //   thumbnail: IMAGES.studentAchievements.hvdcNgocHang.src,
+  // },
+  // {
+  //   id: 5,
+  //   videoUrl: 'https://www.youtube.com/embed/MAnASob52M0',
+  //   thumbnail: IMAGES.studentAchievements.hvdcTienVu.src,
+  // },
+  // {
+  //   id: 6,
+  //   videoUrl: 'https://www.youtube.com/shorts/MAnASob52M0',
+  //   thumbnail: IMAGES.studentAchievements.hvdcMaiMai.src,
+  // },
 ];
+
+// Hàm hỗ trợ tự động trích xuất ID video từ link ytb/Shorts và trả về link ảnh bìa (thumbnail) mặc định của YouTube.
+function getYouTubeThumbnail(url: string) {
+  const regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|shorts\/)([^#\&\?]*).*/;
+  const match = url.match(regExp);
+  if (match && match[2].length === 11) {
+    return `https://img.youtube.com/vi/${match[2]}/hqdefault.jpg`;
+  }
+  return null;
+}
+
+// Lặp qua mảng video hiện tại và thay thế ảnh thumbnail cũ bằng ảnh lấy tự động từ YouTube.
+// Nếu link không hợp lệ hoặc lỗi, nó sẽ giữ nguyên ảnh cũ (fallback).
+const processedSlides = videoStudentSlides.map(slide => ({
+  ...slide,
+  thumbnail: getYouTubeThumbnail(slide.videoUrl) || slide.thumbnail
+}));
 ---
 
 <section
@@ -79,7 +96,7 @@ const videoStudentSlides = [
     </div>
 
     <div class="-mx-4 mt-[-20px] md:mx-auto md:mt-[16px] md:max-w-[1028px]">
-      <VideoStudentSlide slides={videoStudentSlides} client:visible />
+      <VideoStudentSlide slides={processedSlides} client:visible />
     </div>
   </div>
 </section>

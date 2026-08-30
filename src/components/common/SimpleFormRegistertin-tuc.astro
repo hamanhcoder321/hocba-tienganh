@@ -1,0 +1,244 @@
+---
+import { ArrowIcon, EllipContact, EllipContact2 } from '@/components/common/icons';
+import ContactAdvisorRegistrationForm from '@/components/features/contact/ContactAdvisorRegistrationFormtintuc';
+import { IMAGES } from '@/lib/constants/images';
+import { cn } from '@/lib/utils';
+import { getImage, Image } from 'astro:assets';
+
+import cugaDangky from '@/assets/images/img-hocba-tienganh-optimized/img-cuga-dangky.webp';
+
+const optimizedNoteBook = await getImage({
+  width: 80,
+  height: 80,
+  densities: [1, 2],
+  src: IMAGES.contact.noteBook,
+  format: 'webp',
+});
+
+const { dataInput, isSimpleForm, id = 'simple-register-form' } = Astro.props;
+---
+
+<section
+  id={id}
+  class={cn(
+    'w-full overflow-hidden bg-[linear-gradient(180deg,#04195C,#052284,#072899,#083AD4)] h-auto',
+    isSimpleForm ? 'md:py-8' : 'md:py-16'
+  )}
+>
+  <div class="mx-auto w-full max-w-[1354px]">
+    <div class="relative flex flex-col items-center justify-center gap-2 md:gap-4 pt-8 px-4 md:items-start md:pl-[40px]">
+      <Image
+        src={IMAGES.contact.iconBook}
+        width={90}
+        height={90}
+        alt={'icon-book'}
+        densities={[1, 2]}
+        class={'absolute left-0 top-7 z-20 hidden h-auto w-[55px] object-cover drop-shadow-xl md:top-5 md:block md:w-[100px] -scale-x-100'}
+      />
+      <div class="relative z-10 flex w-full flex-col items-center justify-center gap-2 md:w-max md:items-start md:gap-4 md:pl-[60px]">
+        <div class="relative flex items-center">
+          <svg class="absolute -left-6 h-4 w-4 text-[#A8C7FA] md:hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+          <div
+            class="relative z-0 flex h-8 w-fit items-center justify-center text-nowrap rounded-full bg-gradient-to-r from-[#FFFFFF] via-[#EEF4FF] to-[#DCE8FF] px-6 text-[13px] font-bold text-[#052284] shadow-md sm:text-[14px] md:w-[591px] md:h-[58px] md:rounded-[8px] md:px-[13px] md:py-[18px] md:gap-[10px] md:text-[32px] capitalize md:leading-none md:tracking-normal"
+          >
+            EVERYTHING YOU NEED IN ONE SPACE
+          </div>
+        </div>
+        <h2 class="relative z-10 flex items-center gap-2 text-center text-[22px] font-black uppercase text-white drop-shadow-md md:text-left md:text-[42px]">
+          ĐĂNG KÝ TƯ VẤN NGAY!
+          <svg class="h-5 w-5 text-[#FF7A00] md:hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+        </h2>
+        <div class="absolute bottom-0 -right-[30px] z-10 hidden sm:block md:-bottom-2 md:-right-[80px]">
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 items-center px-4 py-8 md:grid-cols-2 md:gap-8 md:py-0">
+      <div class="order-1 col-span-1 hidden md:block">
+        <div class="relative mx-auto mt-16 flex h-auto w-full items-center justify-center md:mt-4 md:h-[571px] md:w-[571px]">
+
+          <div class="relative z-50 flex w-full items-center justify-center">
+            <Image src={cugaDangky} width={700} height={700} alt={'cuContact'} densities={[1, 2]} class={'z-50 h-auto w-[280px] object-contain md:w-[540px] drop-shadow-[0px_20px_20px_rgba(0,0,0,0.5)]'} />
+            
+            {/* 1. Left Orange Star */}
+            <svg class="absolute top-[38%] left-[5%] md:left-[0%] w-4 h-4 md:w-6 md:h-6 text-[#FF7A00] z-20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            
+            {/* 2. Top-Left White Star */}
+            <svg class="absolute top-[20%] left-[20%] md:left-[15%] w-3 h-3 md:w-5 md:h-5 text-white z-20 opacity-80" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            
+            {/* 3. Bottom-Left White Star */}
+            <svg class="absolute bottom-[7%] left-[24%] md:left-[16%] w-3 h-3 md:w-5 md:h-5 text-white z-20 opacity-80" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            
+            {/* 4. Top-Right Orange Star */}
+            <svg class="absolute top-[10%] right-[25%] md:right-[20%] w-2 h-2 md:w-4 md:h-4 text-[#FF7A00] z-20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            
+            {/* 5. Mid-Right Orange Star */}
+            <svg class="absolute top-[34%] right-[25%] md:right-[20%] w-2 h-2 md:w-4 md:h-4 text-[#FF7A00] z-20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            
+            {/* 6. Far-Right White Star */}
+            <svg class="absolute top-[40%] right-[5%] md:right-[2%] w-4 h-4 md:w-6 md:h-6 text-white z-20 opacity-90" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            
+            {/* 7. Tiny White Star (mid-right) */}
+            <svg class="absolute top-[48%] right-[26%] md:right-[22%] w-2 h-2 md:w-3 md:h-3 text-white z-20 opacity-60" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+          </div>
+        </div>
+      </div>
+      <div class="order-2 col-span-1">
+        <ContactAdvisorRegistrationForm
+          icons={{ noteBook: optimizedNoteBook.src }}
+          client:idle
+          {dataInput}
+          {isSimpleForm}
+        >
+          <div class="relative mx-auto mt-8 mb-4 flex h-auto w-full items-center justify-center md:hidden">
+
+            <div class="relative z-50 flex w-full items-center justify-center">
+              <Image src={cugaDangky} width={700} height={700} alt={'cuContact'} densities={[1, 2]} class={'z-50 h-auto w-[280px] object-contain'} />
+              <svg class="absolute top-[20%] left-[5%] w-5 h-5 text-[#FF7A00] z-20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+              <svg class="absolute top-[35%] right-[5%] w-4 h-4 text-white z-20 opacity-90" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+              <svg class="absolute bottom-[20%] left-[10%] w-4 h-4 text-white z-20 opacity-70" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+              <svg class="absolute bottom-[10%] right-[10%] w-3 h-3 text-[#FF7A00] z-20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
+            </div>
+          </div>
+        </ContactAdvisorRegistrationForm>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes moveBCT {
+    0%,
+    16.67% {
+      top: 2rem;
+      left: -27%;
+      height: 80px;
+      transform: rotate(-12deg);
+    }
+    25%,
+    58.33% {
+      top: 4.5rem;
+      left: -30%;
+      height: 56px;
+      transform: rotate(0deg);
+    }
+    66.67%,
+    100% {
+      top: 2rem;
+      left: -27%;
+      height: 80px;
+      transform: rotate(-12deg);
+    }
+  }
+
+  @keyframes moveHSK {
+    0%,
+    16.67% {
+      bottom: 39%;
+      right: 0;
+      height: 2.5rem;
+      transform: rotate(12deg);
+    }
+    25%,
+    58.33% {
+      bottom: 56%;
+      right: 17px;
+      height: 56px;
+      transform: rotate(0deg);
+    }
+    66.67%,
+    100% {
+      bottom: 39%;
+      right: 0;
+      height: 2.5rem;
+      transform: rotate(12deg);
+    }
+  }
+
+  @keyframes moveCU {
+    0%,
+    16.67%,
+    66.67%,
+    100% {
+      transform: translateX(0);
+    }
+    25%,
+    58.33% {
+      transform: translateX(-1.5rem);
+    }
+  }
+
+  @media (min-width: 768px) {
+    @keyframes moveBCT {
+      0%,
+      16.67% {
+        top: 2rem;
+        left: -27%;
+        height: 137px;
+        transform: rotate(-12deg);
+      }
+      25%,
+      58.33% {
+        top: 9rem;
+        left: -24%;
+        height: 84px;
+        transform: rotate(0deg);
+      }
+      66.67%,
+      100% {
+        top: 2rem;
+        left: -27%;
+        height: 137px;
+        transform: rotate(-12deg);
+      }
+    }
+
+    @keyframes moveHSK {
+      0%,
+      16.67% {
+        bottom: 39%;
+        right: -12px;
+        height: 70px;
+        transform: rotate(12deg);
+      }
+      25%,
+      58.33% {
+        bottom: 56%;
+        right: 17px;
+        height: 100px;
+        transform: rotate(-12deg);
+      }
+      66.67%,
+      100% {
+        bottom: 39%;
+        right: -12px;
+        height: 70px;
+        transform: rotate(12deg);
+      }
+    }
+
+    @keyframes moveCU {
+      0%,
+      16.67%,
+      66.67%,
+      100% {
+        transform: translateX(0);
+      }
+      25%,
+      58.33% {
+        transform: translateX(-2.5rem);
+      }
+    }
+  }
+
+  .icon-bct {
+    animation: moveBCT 12s ease-in-out 3s infinite;
+  }
+
+  .icon-hsk {
+    animation: moveHSK 12s ease-in-out 3s infinite;
+  }
+
+  .icon-cu {
+    animation: moveCU 12s ease-in-out 3s infinite;
+  }
+</style>
