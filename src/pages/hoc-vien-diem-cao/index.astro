@@ -4,7 +4,7 @@ import StudentHero from '@/components/features/home/student-achievements/Student
 import StudentShowcase from '@/components/features/home/student-achievements/StudentShowcase.astro';
 import StudentExperiencesGrid from '@/components/features/home/student-achievements/StudentExperiencesGrid.astro';
 import StudentTestimonials from '@/components/features/home/student-achievements/StudentTestimonials.astro';
-import SimpleFormRegister from '@/components/common/SimpleFormRegister.astro';
+import SimpleFormRegister from '@/components/common/SimpleFormRegisterchitietkhoahoc.astro';
 import JsonLd from '@/components/common/JsonLd.astro';
 import type { Graph } from 'schema-dts';
 
@@ -43,9 +43,9 @@ const jsonLd: Graph = {
     <StudentHero />
 
     <div class="flex flex-col gap-2 pb-0 pt-0 md:gap-10">
-      <div class="order-1"><StudentShowcase /></div>
-      <div class="order-3 md:order-2"><StudentExperiencesGrid /></div>
-      <div class="order-2 md:order-3"><StudentTestimonials /></div>
+      <div><StudentShowcase /></div>
+      <div><StudentExperiencesGrid /></div>
+      <div><StudentTestimonials /></div>
     </div>
 
     <SimpleFormRegister dataInput="Học viên điểm cao" isSimpleForm />

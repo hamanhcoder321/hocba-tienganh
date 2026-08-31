@@ -66,7 +66,7 @@ const icons = {
 >
   {/* Title (Stays on outer wrapper on 3xl, absolute positioned) */}
   <div
-    class="relative z-10 flex h-[44px] flex-col items-center justify-center gap-3 md:h-auto md:flex-row md:-top-[20px] lg:-top-[20px] xl:-top-[20px] 2xl:absolute 2xl:left-0 2xl:right-0 2xl:top-[38px] 2xl:mb-0 3xl:absolute 3xl:left-0 3xl:right-0 3xl:top-[38px] 3xl:mb-0"
+    class="relative z-10 flex h-[44px] flex-col items-center justify-center gap-3 md:-top-[20px] md:h-auto md:flex-row lg:-top-[20px] xl:-top-[20px] 2xl:absolute 2xl:left-0 2xl:right-0 2xl:top-[38px] 2xl:mb-0 3xl:absolute 3xl:left-0 3xl:right-0 3xl:top-[38px] 3xl:mb-0"
   >
     <Image
       src={IMAGES.studentAchievements.muctieu}
@@ -160,7 +160,9 @@ const icons = {
     <p
       class="relative z-20 mx-auto mb-3 mt-3 w-full max-w-[321px] text-center font-gilroy text-[12px] font-[300] italic leading-[1.2] text-[#000000] md:mb-12 md:mt-12 md:max-w-[655px] md:text-[18px]"
     >
-      Đây không chỉ là niềm tự hào của The IELTS Space, mà còn là minh chứng cho chất lượng và hiệu quả đào tạo mà chúng tôi theo đuổi. Mỗi kết quả của học viên tiếp tục là động lực để The IELTS Space đồng hành cùng người Việt trên hành trình chinh phục IELTS, nâng cao năng lực tiếng Anh và mở rộng những cơ hội mới trong tương lai.
+      Đây không chỉ là niềm tự hào của The IELTS Space, mà còn là minh chứng cho chất lượng và hiệu quả đào tạo mà chúng
+      tôi theo đuổi. Mỗi kết quả của học viên tiếp tục là động lực để The IELTS Space đồng hành cùng người Việt trên
+      hành trình chinh phục IELTS, nâng cao năng lực tiếng Anh và mở rộng những cơ hội mới trong tương lai.
     </p>
 
     {/* Mobile-only: 2 Independent Scrolling Rows */}
@@ -172,8 +174,8 @@ const icons = {
       >
         {
           [...students.slice(0, 4), ...students.slice(0, 4), ...students.slice(0, 4)].map((student) => (
-            <div 
-              class="student-card group relative flex h-[256px] w-[248px] shrink-0 flex-col gap-[9.39px] overflow-hidden rounded-[7.83px] border border-[#F0F0F0] bg-[#FAFAFA] p-[7.83px] pb-[13px] cursor-pointer"
+            <div
+              class="student-card group relative flex h-[256px] w-[248px] shrink-0 cursor-pointer flex-col gap-[9.39px] overflow-hidden rounded-[7.83px] border border-[#F0F0F0] bg-[#FAFAFA] p-[7.83px] pb-[13px]"
               data-student={JSON.stringify(student)}
             >
               {/* Image */}
@@ -199,7 +201,7 @@ const icons = {
               <div class="flex flex-col gap-[7.83px]">
                 <div class="flex items-center justify-between">
                   <h3 class="font-gilroy text-[14.1px] font-bold leading-[1.2] text-[#373737]">{student.name}</h3>
-                  <span class="inline-flex h-[20.89px] w-[58.74px] items-center justify-center rounded-[3.26px] bg-[#AF0000] px-[10px] font-gilroy text-[11.75px] font-[1000] leading-none text-[#FFF0CD]">
+                  <span class="inline-flex h-[20.89px] w-[58.74px] items-center justify-center rounded-[3.26px] bg-[#F97316] px-[10px] font-gilroy text-[11.75px] font-[1000] leading-none text-[#FFF0CD]">
                     {student.badge}
                   </span>
                 </div>
@@ -220,8 +222,8 @@ const icons = {
       >
         {
           [...students.slice(4, 8), ...students.slice(4, 8), ...students.slice(4, 8)].map((student) => (
-            <div 
-              class="student-card group relative flex h-[256px] w-[248px] shrink-0 flex-col gap-[9.39px] overflow-hidden rounded-[7.83px] border border-[#F0F0F0] bg-[#FAFAFA] p-[7.83px] pb-[13px] cursor-pointer"
+            <div
+              class="student-card group relative flex h-[256px] w-[248px] shrink-0 cursor-pointer flex-col gap-[9.39px] overflow-hidden rounded-[7.83px] border border-[#F0F0F0] bg-[#FAFAFA] p-[7.83px] pb-[13px]"
               data-student={JSON.stringify(student)}
             >
               {/* Image */}
@@ -247,7 +249,7 @@ const icons = {
               <div class="flex flex-col gap-[7.83px]">
                 <div class="flex items-center justify-between">
                   <h3 class="font-gilroy text-[14.1px] font-bold leading-[1.2] text-[#373737]">{student.name}</h3>
-                  <span class="inline-flex h-[20.89px] w-[58.74px] items-center justify-center rounded-[3.26px] bg-[#AF0000] px-[10px] font-gilroy text-[11.75px] font-[1000] leading-none text-[#FFF0CD]">
+                  <span class="inline-flex h-[20.89px] w-[58.74px] items-center justify-center rounded-[3.26px] bg-[#F97316] px-[10px] font-gilroy text-[11.75px] font-[1000] leading-none text-[#FFF0CD]">
                     {student.badge}
                   </span>
                 </div>
@@ -268,8 +270,8 @@ const icons = {
     >
       {
         students.slice(0, 6).map((student, index) => (
-          <div 
-            class="student-card group relative flex flex-col gap-[12px] overflow-hidden rounded-[12px] border border-[#F0F0F0] bg-[#FAFAFA] px-[12px] py-[20px] md:h-auto md:w-full md:max-w-[380px] 2xl:h-[376px] 2xl:w-[380px] cursor-pointer 3xl:h-[376px] 3xl:w-[380px]"
+          <div
+            class="student-card group relative flex cursor-pointer flex-col gap-[12px] overflow-hidden rounded-[12px] border border-[#F0F0F0] bg-[#FAFAFA] px-[12px] py-[20px] md:h-auto md:w-full md:max-w-[380px] 2xl:h-[376px] 2xl:w-[380px] 3xl:h-[376px] 3xl:w-[380px]"
             data-student={JSON.stringify(student)}
           >
             {/* Image */}
@@ -308,7 +310,7 @@ const icons = {
               */}
               {/* New Hover Overlay for Certificate */}
               <div class="absolute inset-0 z-20 flex items-center justify-center bg-gradient-to-t from-[#D55F0D]/60 via-black/20 to-transparent opacity-0 transition-opacity duration-300 md:group-hover:opacity-100">
-                <span class="font-gilroy text-[22px] md:text-[28px] font-black text-white tracking-widest drop-shadow-lg uppercase text-center px-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <span class="translate-y-4 px-4 text-center font-gilroy text-[22px] font-black uppercase tracking-widest text-white drop-shadow-lg transition-transform duration-300 group-hover:translate-y-0 md:text-[28px]">
                   XEM BẢNG ĐIỂM
                 </span>
               </div>
@@ -316,10 +318,10 @@ const icons = {
 
             <div class="flex flex-col gap-[12px]">
               <div class="flex items-center justify-between">
-                <h3 class="font-gilroy font-bold leading-[1.2] text-[#373737] md:text-[15px] xl:text-[18px] transition-colors duration-300 md:group-hover:text-[#823000]">
+                <h3 class="font-gilroy font-bold leading-[1.2] text-[#373737] transition-colors duration-300 md:text-[15px] md:group-hover:text-[#823000] xl:text-[18px]">
                   {student.name}
                 </h3>
-                <span class="inline-flex h-[28px] w-[75px] items-center justify-center rounded-[5px] bg-[#AF0000] px-[8px] font-gilroy text-[14px] font-[1000] leading-none text-[#FFF0CD] md:h-[28px] md:w-[75px] md:rounded-[5px] md:text-[14px] xl:h-[32px] xl:w-[90px] xl:text-[18px] transition-colors duration-300 md:group-hover:bg-[#C2410C] md:group-hover:text-[#FFEDD5]">
+                <span class="inline-flex h-[28px] w-[75px] items-center justify-center rounded-[5px] bg-[#F97316] px-[8px] font-gilroy text-[14px] font-[1000] leading-none text-[#FFF0CD] transition-colors duration-300 md:h-[28px] md:w-[75px] md:rounded-[5px] md:text-[14px] md:group-hover:bg-[#C2410C] md:group-hover:text-[#FFEDD5] xl:h-[32px] xl:w-[90px] xl:text-[18px]">
                   {student.badge}
                 </span>
               </div>
@@ -360,8 +362,8 @@ const icons = {
     }
     */
     .student-card:hover {
-      background: linear-gradient(180deg, #E97E2E 0%, #D55F0D 100%) !important;
-      border-color: #D55F0D !important;
+      background: linear-gradient(180deg, #e97e2e 0%, #d55f0d 100%) !important;
+      border-color: #d55f0d !important;
       box-shadow: 4px 11px 13.6px 0px rgba(213, 95, 13, 0.25) !important;
     }
   }

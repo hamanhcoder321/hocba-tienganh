@@ -180,12 +180,12 @@ export const StudentShowcaseDialog = ({ icons }: StudentShowcaseDialogProps) => 
     <>
       <button
         onClick={() => setIsDialogOpen(true)}
-        className="group relative flex h-[28px] w-[120px] items-center justify-center gap-[6px] rounded-[55px] border-[0.5px] border-[#AF0000] bg-[#FAFAFA] text-[#AF0000] transition-all duration-300 hover:bg-[#AF0000] hover:text-white md:h-[38px] md:w-[181px]"
+        className="group relative flex h-[28px] w-[120px] items-center justify-center gap-[6px] rounded-[55px] border-[0.5px] border-[#052284] bg-[#FAFAFA] text-[#052284] transition-all duration-300 hover:bg-[#052284] hover:text-white md:h-[38px] md:w-[181px]"
       >
         <span className="font-gilroy text-[14px] font-bold leading-[64px] leading-none md:text-[16px]">Xem tất cả</span>
         <div className="flex items-center justify-center md:absolute md:right-[12px] md:top-1/2 md:-translate-y-1/2">
           <DoubleChevronRight
-            className="h-[9.21px] w-[9.87px] text-[#AF0000] transition-all duration-300 group-hover:text-white md:h-[14px] md:w-[15px]"
+            className="h-[9.21px] w-[9.87px] text-[#052284] transition-all duration-300 group-hover:text-white md:h-[14px] md:w-[15px]"
             aria-hidden="true"
           />
         </div>

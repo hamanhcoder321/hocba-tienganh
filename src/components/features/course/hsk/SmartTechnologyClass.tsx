@@ -95,7 +95,7 @@ export default function SmartTechnologyClass({ icons, slides }: SmartTechnologyC
                       boxShadow: '1.73px 4.85px 8.66px 0px #083AD440',
                     }}
                   >
-                    <LalaIcon className="text-[#F97316] absolute -top-12 right-0 hidden h-auto w-[58px] rotate-45 -scale-x-100 md:-top-16 md:right-20 md:flex md:w-auto md:rotate-0 md:scale-x-100" />
+                    <LalaIcon className="text-[#FFCF5A] absolute -top-12 right-0 hidden h-auto w-[58px] rotate-45 -scale-x-100 md:-top-16 md:right-20 md:flex md:w-auto md:rotate-0 md:scale-x-100" />
                     <LalalaIcon className="text-[#F97316] absolute -bottom-20 left-[68px] hidden md:flex" />
                     <div className="w-full lg:w-[413px]">
                       <h3 className="flex h-auto w-full items-center rounded-[24px] bg-white px-4 text-center text-[15px] font-black uppercase text-[#D16112] lg:h-[92px] lg:rounded-[84px] lg:px-8 lg:text-[20px]">
