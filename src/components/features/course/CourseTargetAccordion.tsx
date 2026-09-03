@@ -13,7 +13,9 @@ export interface CourseTarget {
   id?: number | string;
   title: string;
   description?: string;
+  content?: string;
   SubTarget?: SubTarget[];
+  items?: SubTarget[] | any[];
 }
 
 interface CourseTargetAccordionProps {
@@ -27,9 +29,18 @@ function TargetAccordionItem({ target, index, activeBgClass }: { target: string 
   if (!target) return null;
 
   // Xử lý dữ liệu: trường hợp dữ liệu CMS bị null hoặc thiếu field
-  const title = typeof target === 'string' ? target : (target?.title || '');
-  const description = typeof target === 'string' ? null : target?.description;
-  const subTargets = typeof target === 'string' ? [] : (target?.SubTarget || []);
+  const isLongText = typeof target === 'string' && target.length > 60;
+  const title = typeof target === 'string' ? (isLongText ? 'Chi tiết mục tiêu' : target) : (target?.title || '');
+  const description = typeof target === 'string' ? (isLongText ? target : null) : (target?.description || (target as any)?.content);
+  
+  // Handle both old SubTarget format and new items format
+  const rawSubTargets: any[] = typeof target === 'string' ? [] : (target?.SubTarget || (target as any)?.items || []);
+  const subTargets: SubTarget[] = rawSubTargets.map((item: any) => ({
+    id: item.id || item.label,
+    title: item.title || item.label,
+    description: item.description || item.content
+  }));
+  
   const id = typeof target === 'string' ? index : (target?.id || index);
 
   if (!title) return null; // Nếu không có title thì không render block này để tránh lỗi giao diện
@@ -61,11 +72,11 @@ function TargetAccordionItem({ target, index, activeBgClass }: { target: string 
               {subTargets.length > 0 && (
                 <div className="space-y-4 pl-0">
                   {subTargets.map((subItem, sIdx) => (
-                    <div key={subItem.id || sIdx} className="rounded-xl border bg-blue-200 p-4">
+                    <div key={subItem.id || sIdx} className="rounded-xl border bg-white p-4">
                       <Accordion type="single" collapsible>
                         <AccordionItem value={`subtarget-${subItem.id || sIdx}`} className="!border-none">
                           <div className="w-full gap-2">
-                            <AccordionTrigger className="relative w-full p-0 text-base font-semibold hover:no-underline pr-6">
+                            <AccordionTrigger className="relative w-full p-0 text-base font-semibold hover:no-underline pr-6 [&>svg:last-child]:hidden">
                               <span className="text-left">{subItem.title}</span>
                               <ChevronDown className="absolute right-0 top-0 shrink-0" />
                             </AccordionTrigger>

@@ -14,7 +14,7 @@ export type CategoryItem = {
 export const HOME_CATEGORIES: CategoryItem[] = [
   {
     id: CATEGORY_TYPES.HSK,
-    link: '/khoa-hoc-hsk',
+    link: '/khoa-hoc-ielts',
     image: '/images/hero-hsk.webp',
     title: 'IELTS',
     // title: 'hsk',

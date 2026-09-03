@@ -48,7 +48,7 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
 
   return (
     <div className="w-full">
-      <div className="hidden md:block relative mb-16 md:mb-24 h-[200px] px-4 md:px-10">
+      <div className="hidden md:block relative mb-10 md:mb-12 h-[200px] px-4 md:px-10">
         <div className="absolute inset-x-10 top-1/2 -translate-y-1/2 z-0">
           <svg className="w-full h-[160px]" preserveAspectRatio="none" viewBox="0 0 1000 100" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M50 50 L230 80 L410 20 L590 80 L760 25 L865 80 L970 30" stroke="#E2E8F0" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -158,7 +158,7 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
       </div>
 
       {/* 2. Tabs */}
-      <div className="mb-8">
+      <div className="mb-4 md:mb-6">
         <div className="flex overflow-x-auto gap-4 md:gap-[41px] custom-scrollbar pb-4 px-4 md:px-4 md:flex-nowrap md:justify-center md:bg-white md:rounded-[24px] md:shadow-sm md:border md:border-gray-200 md:max-w-[1266px] md:mx-auto md:h-[161px] md:items-center" role="tablist">
           {data.map((item, index) => {
             const isActive = activeIndex === index;
@@ -286,7 +286,7 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
       {/* (laptop & mobil) */}
       <div className="mt-8 flex justify-center w-full">
         <a
-          href="/khoa-hoc-hsk"
+          href="/khoa-hoc-ielts"
           className="inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full bg-[#F97316] px-8 py-3.5 text-[15px] font-bold text-white uppercase"
         >
           XEM CHI TIẾT KHÓA HỌC

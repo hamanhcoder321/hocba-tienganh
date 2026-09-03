@@ -44,7 +44,6 @@ import { fetchClassesList, fetchCourseDetail , fetchCourseListHeader } from '@/l
 import type { TClasses } from '@/types/schedule';
 import { CalendarCheck, Clock, MonitorSmartphone } from 'lucide-react';
 import type { Graph } from 'schema-dts';
-
 const { slugCourse } = Astro.params;
 
 // Fetch course detail by slug
@@ -57,14 +56,18 @@ if (!slugCourse || !course) {
 }
 
 const baseUrl = import.meta.env.PUBLIC_CLIENT_URL ?? 'https://hoc-ba.edu.vn';
-const url = `${baseUrl}/khoa-hoc-hsk/${course?.slug}`;
+const url = `${baseUrl}/khoa-hoc-ielts/${course?.slug}`;
 
 const title = course?.meta_title || `${course?.name} | Học Bá Education`;
 const description = course?.meta_description || `Khoá học ${course?.name} tại Học Bá Education`;
-const keywords =
-  course && course.meta_keyword
-    ? course.meta_keyword.split(',').map((k) => k.trim())
-    : ['tiếng trung', 'HSK', course ? course.name : ''];
+const metaDescription = course?.meta_description || '';
+const keywords = course && course.meta_keyword
+  ? course.meta_keyword.split(',').map((k) => k.trim())
+  : ['tiếng trung', 'HSK', course ? course.name : ''];
+const targets = formatTargets(course?.targets || '');
+
+const targetSection = course?.content_sections?.find(s => s.title?.toLowerCase().includes('mục tiêu'));
+const programSection = course?.content_sections?.find(s => s.title?.toLowerCase().includes('nội dung'));
 
 // Find theme color based on category
 const themeColor = HOME_CATEGORIES.find((category) => category.id === CATEGORY_TYPES.HSK) || HOME_CATEGORIES[0]; // Default to HSK theme
@@ -123,7 +126,7 @@ const optimizedLecturers = lecturers.map((teacher) => {
   const rawAvatar = teacher?.avatar_url?.file_path || (typeof IMAGES.course?.profilePic === 'string' ? IMAGES.course?.profilePic : IMAGES.course?.profilePic?.src);
 
   const optimizedAlbum = Array.isArray(teacher.album_url)
-    ? teacher.album_url.map((img) => img.file_path)
+    ? teacher.album_url.map((img: any) => img.file_path)
     : [];
 
   let highlights: TLecturer['teacherHighlights'] = [];
@@ -175,7 +178,7 @@ const jsonLd: Graph = {
           '@type': 'ListItem',
           position: 2,
           name: 'Khóa học HSK',
-          item: `${baseUrl}/khoa-hoc-hsk`,
+          item: `${baseUrl}/khoa-hoc-ielts`,
         },
         {
           '@type': 'ListItem',
@@ -211,37 +214,38 @@ const formatCourseTitle = (name: string) => {
 };
 
 const hskHeroImages: Record<string, (typeof IMAGES.khoaHsk)[keyof typeof IMAGES.khoaHsk]> = {
-  'so-0': IMAGES.khoaHsk.heroHskKhoiDongMobile,
-  'hsk-0-2': IMAGES.khoaHsk.heroHskKhoiDongMobile,
-  'hsk-1-2': IMAGES.khoaHsk.heroHskKhoiDongMobile,
-  'hsk-3': IMAGES.khoaHsk.heroHskCatCanhMobile,
-  'hsk-4': IMAGES.khoaHsk.heroHskTangTocMobile,
-  'hsk-5': IMAGES.khoaHsk.heroHskButPhaMobile,
-  'hsk-6': IMAGES.khoaHsk.heroHskVuonXaMobile,
+  // 'so-0': IMAGES.khoaHsk.heroHskKhoiDongMobile,
+  // 'hsk-0-2': IMAGES.khoaHsk.heroHskKhoiDongMobile,
+  // 'hsk-1-2': IMAGES.khoaHsk.heroHskKhoiDongMobile,
+  // 'hsk-3': IMAGES.khoaHsk.heroHskCatCanhMobile,
+  // 'hsk-4': IMAGES.khoaHsk.heroHskTangTocMobile,
+  // 'hsk-5': IMAGES.khoaHsk.heroHskButPhaMobile,
+  // 'hsk-6': IMAGES.khoaHsk.heroHskVuonXaMobile,
+  
   // TODO: Sau này CMS đổ dữ liệu IELTS thì mở comment các dòng dưới đây
-  // 'ielts-0-3': IMAGES.khoaHsk.heroHskKhoiDongMobile,
-  // 'ielts-3-4': IMAGES.khoaHsk.heroHskCatCanhMobile,
-  // 'ielts-4-5': IMAGES.khoaHsk.heroHskTangTocMobile,
-  // 'ielts-5-6': IMAGES.khoaHsk.heroHskButPhaMobile,
-  // 'ielts-6-7': IMAGES.khoaHsk.heroHskVuonXaMobile,
-  // 'ielts-7-8': IMAGES.khoaHsk.heroHskChinhPhucMobile,
+  'khoi-dong-0-3': IMAGES.khoaHsk.heroHskKhoiDongMobile,
+  'cat-canh-3-4': IMAGES.khoaHsk.heroHskCatCanhMobile,
+  'tang-toc-4-5': IMAGES.khoaHsk.heroHskTangTocMobile,
+  'but-pha-5-6': IMAGES.khoaHsk.heroHskButPhaMobile,
+  'vuon-xa-6-7': IMAGES.khoaHsk.heroHskVuonXaMobile,
+  'chinh-phuc-7-8': IMAGES.khoaHsk.heroHskChinhPhucMobile,
 };
 
 const hskHeroImagesDesktop: Record<string, (typeof IMAGES.khoaHsk)[keyof typeof IMAGES.khoaHsk]> = {
-  'so-0': IMAGES.khoaHsk.heroHskKhoiDong,
-  'hsk-0-2': IMAGES.khoaHsk.heroHskKhoiDong,
-  'hsk-1-2': IMAGES.khoaHsk.heroHskKhoiDong,
-  'hsk-3': IMAGES.khoaHsk.heroHskCatCanh,
-  'hsk-4': IMAGES.khoaHsk.heroHskTangToc,
-  'hsk-5': IMAGES.khoaHsk.heroHskButPha,
-  'hsk-6': IMAGES.khoaHsk.heroHskVuonXa,
-  // TODO: Sau này CMS đổ dữ liệu IELTS thì mở comment các dòng dưới đây
   // 'ielts-0-3': IMAGES.khoaHsk.heroHskKhoiDong,
   // 'ielts-3-4': IMAGES.khoaHsk.heroHskCatCanh,
   // 'ielts-4-5': IMAGES.khoaHsk.heroHskTangToc,
   // 'ielts-5-6': IMAGES.khoaHsk.heroHskButPha,
   // 'ielts-6-7': IMAGES.khoaHsk.heroHskVuonXa,
   // 'ielts-7-8': IMAGES.khoaHsk.heroHskChinhPhuc,
+
+  // TODO: Sau này CMS đổ dữ liệu IELTS thì mở comment các dòng dưới đây
+  'khoi-dong-0-3': IMAGES.khoaHsk.heroHskKhoiDong,
+  'cat-canh-30-40-ielts': IMAGES.khoaHsk.heroHskCatCanh,
+  'tang-toc-40-50-ielts': IMAGES.khoaHsk.heroHskTangToc,
+  'but-pha-5-0-6-0-ielts': IMAGES.khoaHsk.heroHskButPha,
+  'vuon-xa-60-70-ielts': IMAGES.khoaHsk.heroHskVuonXa,
+  'chinh-phuc-7-8': IMAGES.khoaHsk.heroHskChinhPhuc,
 };
 
 const courseHeroImage = hskHeroImages[course.slug] || IMAGES.khoaHsk.heroHsk02;
@@ -269,7 +273,7 @@ const courseHeroImageDesktopSrc = typeof courseHeroImageDesktop === 'string' ? c
             </div>
 
             <div class="flex items-center justify-center md:justify-start gap-2 md:mt-0">
-              <h1 class="font-svn-gilroy text-[40px] font-[1000] leading-[43.34px] uppercase md:font-gilroy md:text-[38px] md:font-black md:leading-[42px] lg:text-[54px] lg:leading-[58px] xl:text-[62px] xl:leading-[66px] 2xl:text-[80px] 2xl:leading-[85px] 3xl:text-[80px] 3xl:leading-[85px] text-[#FFD369]">
+              <h1 class="whitespace-nowrap font-svn-gilroy text-[26px] font-[1000] leading-[32px] uppercase md:font-gilroy md:text-[32px] md:font-black md:leading-[36px] lg:text-[42px] lg:leading-[46px] xl:text-[48px] xl:leading-[52px] 2xl:text-[56px] 2xl:leading-[60px] 3xl:text-[64px] 3xl:leading-[68px] text-[#FFD369]">
                 {formatCourseTitle(course?.name || '')}
               </h1>
               <div class="relative w-[35px] h-[35px] shrink-0 self-start mt-[-6px] md:hidden">
@@ -287,8 +291,8 @@ const courseHeroImageDesktopSrc = typeof courseHeroImageDesktop === 'string' ? c
             </div>
             <div class="font-svn-gilroy text-[14px] leading-[140%] text-white text-justify max-w-[350px] mx-auto md:mt-0 md:font-gilroy md:text-[13px] md:leading-[18px] lg:text-[15px] lg:leading-[22px] xl:text-[17px] xl:leading-[24px] 2xl:text-[20px] 2xl:leading-[28px] 3xl:text-[20px] 3xl:leading-[28px] md:text-justify md:max-w-[618px] md:mx-0 w-full h-auto !max-h-[98px] md:!max-h-[90px] lg:!max-h-[110px] xl:!max-h-[120px] 2xl:!max-h-[140px] 3xl:!max-h-[140px] overflow-y-auto custom-scrollbar pr-2 shrink-0" set:html={course?.short_description || ''} />
           </div>
-          <div class="max-w-[350px] mx-auto w-full md:max-w-none md:mx-0">
-            <div class="flex flex-nowrap md:flex-wrap justify-start gap-3 pt-[12px] md:pt-4 lg:pt-4 xl:pt-5 2xl:pt-8 w-full overflow-x-auto md:overflow-x-visible custom-mobile-scrollbar pb-[10px] md:pb-0">
+          <div class="max-w-[350px] mx-auto w-full md:max-w-none md:mx-0 mt-3 md:mt-4">
+            <div class="flex flex-nowrap justify-start gap-3 pt-[12px] md:pt-4 lg:pt-4 xl:pt-5 2xl:pt-8 w-full overflow-x-auto no-scrollbar pb-[10px]">
               {
                 coursesInCategory.map((item) =>
                   item.slug === course?.slug ? (
@@ -448,7 +452,7 @@ const courseHeroImageDesktopSrc = typeof courseHeroImageDesktop === 'string' ? c
               ) : null
             }
             {
-              course?.targets ? (
+              (targetSection || course?.targets) ? (
                 <div>
                   <div class="flex items-center gap-2 pb-2 lg:pb-4">
                     <CourseDetailsTarget className="w-[18.36px] h-[18.36px] lg:w-[36px] lg:h-[36px]" />
@@ -457,14 +461,18 @@ const courseHeroImageDesktopSrc = typeof courseHeroImageDesktop === 'string' ? c
                     </h2>
                   </div>
                   <p class="font-gilroy font-normal text-[14px] lg:text-[16px] leading-[160%] text-[#000000] mb-4">
-                    {course?.target_description || 'Đang cập nhật nội dung'}
+                    {targetSection?.description || course?.target_description || 'Đang cập nhật nội dung'}
                   </p>
-                  <CourseTargetAccordion targets={formatTargets(course?.targets)} client:load />
+                  {targetSection?.options ? (
+                    <CourseTargetAccordion targets={targetSection.options as any} client:load />
+                  ) : (
+                    <CourseTargetAccordion targets={targets} client:load />
+                  )}
                 </div>
               ) : null
             }
             {
-              course?.Section ? (
+              (programSection || course?.content_sections || course?.Section) ? (
                 <div class="space-y-2">
                   <div class="flex items-center gap-2 pb-2 lg:pb-4">
                     <CourseDetailsContentNew className="w-[18.36px] h-[18.36px] lg:w-[36px] lg:h-[36px]" />
@@ -472,7 +480,11 @@ const courseHeroImageDesktopSrc = typeof courseHeroImageDesktop === 'string' ? c
                       Nội dung chương trình
                     </h2>
                   </div>
-                  <CourseSectionAccordion sections={course?.Section} client:load />
+                  {programSection?.options ? (
+                    <CourseSectionAccordion sections={[{id: programSection.id, title: programSection.title, options: programSection.options}] as any} client:load />
+                  ) : (
+                    <CourseSectionAccordion sections={(course?.content_sections || course?.Section) as any} client:load />
+                  )}
                 </div>
               ) : null
             }
@@ -610,6 +622,15 @@ const courseHeroImageDesktopSrc = typeof courseHeroImageDesktop === 'string' ? c
     50% {
       opacity: 0.85;
     }
+  }
+
+  /* Hide scrollbar for elements with no-scrollbar */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
   /* Custom thin gray scrollbar for mobile */

@@ -4,7 +4,7 @@ import { IMAGES } from '@/lib/constants/images';
 import { Image } from 'astro:assets';
 import { ChevronUp } from 'lucide-react';
 
-const isHskPage = Astro.url.pathname.startsWith('/khoa-hoc-hsk');
+const isHskPage = Astro.url.pathname.startsWith('/khoa-hoc-ielts');
 const isChinesePage = Astro.url.pathname.startsWith('/tieng-trung-cho-nguoi-di-lam');
 const shouldShowFacebook = isHskPage || isChinesePage;
 

@@ -103,7 +103,7 @@ export const DATA_INPUT_MAP: Record<string, string> = {
   '/cam-nang-hsk-hskk': DATA_VALUE.GUIDE_HSK,
   '/cam-nang-tieng-trung-cho-nguoi-di-lam': DATA_VALUE.GUIDE_FOR_WORKERS,
   '/cam-nang-tocfl': DATA_VALUE.GUIDE_TOCFL,
-  '/khoa-hoc-hsk': DATA_VALUE.COURSE_HSK,
+  '/khoa-hoc-ielts': DATA_VALUE.COURSE_HSK,
   '/tieng-trung-cho-nguoi-di-lam': DATA_VALUE.COURSE_FOR_WORKERS,
   '/khoa-hoc-tocfl': DATA_VALUE.COURSE_TOCFL,
   '/lich-khai-giang': DATA_VALUE.SCHEDULE,

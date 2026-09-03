@@ -19,15 +19,12 @@ const { logo } = Astro.props;
     <div class="flex items-center gap-2">
       {
         typeof logo === 'string' && logo.startsWith('http') ? (
-          <img src={logo} alt="logo" width="80" height="52" class="h-[38px] w-auto object-cover md:h-[52px]" />
+          <img src={logo} alt="logo" class="h-[38px] w-auto object-contain md:h-[52px]" />
         ) : (
           <Image
-            width={80}
-            height={52}
-            class="h-[38px] w-auto object-cover md:h-[52px]"
+            class="h-[38px] w-auto object-contain md:h-[52px]"
             src={logo || logoHocbaTienganh}
             alt="logo"
-            densities={[1, 2]}
           />
         )
       }
@@ -91,7 +88,7 @@ const { logo } = Astro.props;
               <a href="/gioi-thieu" class="text-sm hover:underline">Giới thiệu</a>
             </li>
             <li class="text-sm">
-              <a href="/khoa-hoc-hsk" class="text-sm hover:underline"> Khóa học </a>
+              <a href="/khoa-hoc-ielts" class="text-sm hover:underline"> Khóa học </a>
             </li>
             <li class="text-sm">
               <a href="#" class="text-sm hover:underline"> Cẩm nang </a>

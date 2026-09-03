@@ -37,22 +37,43 @@ type TCourse = {
   category: TBlogCategory;
   User: TUserBase;
   Section: TCourseSection[];
+  content_sections?: TCourseSection[];
   lession_count?: number;
   average_rating?: number;
 };
 type TCourseSection = {
-  id: number;
+  id: number | string;
   title: string;
-  description: string;
-  course_id: number;
-  createed_at: string;
-  updated_at: string;
-  Lesson: TCourseSectionLesson[];
+  description?: string;
+  order?: number;
+  course_id?: number;
+  createed_at?: string;
+  updated_at?: string;
+  Lesson?: TCourseSectionLesson[];
+  options?: TCourseSectionOption[];
 };
+
+type TCourseSectionOptionItem = {
+  label: string;
+  content: string;
+};
+
 type TCourseSectionLesson = {
-  id: number;
+  id: number | string;
   title: string;
-  description: string;
+  description?: string;
+  content?: string;
+  order?: number;
+};
+
+type TCourseSectionOption = {
+  id: number | string;
+  title: string;
+  description?: string;
+  content?: string;
+  order?: number;
+  type?: 'text' | 'lesson';
+  items?: TCourseSectionOptionItem[];
 };
 
 type TRoadmapCourse = {

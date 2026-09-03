@@ -65,7 +65,7 @@ const RegisterStudyModal = ({
     let defaultDataInput = matchingKey ? DATA_INPUT_MAP[matchingKey] : DATA_INPUT_SOURCE.LANDING_PAGE;
 
     // logic to fetch course name if it's a child course Page
-    const courseKeys = ['/tieng-trung-cho-nguoi-di-lam', '/khoa-hoc-hsk'];
+    const courseKeys = ['/tieng-trung-cho-nguoi-di-lam', '/khoa-hoc-ielts'];
     if (matchingKey && courseKeys.includes(matchingKey)) {
       const slug = cleanPath.replace(matchingKey, '').replace(/^\//, '');
       if (slug) {

@@ -9,14 +9,14 @@ import { Image } from 'astro:assets';
     <div class="flex flex-col gap-12 lg:flex-row lg:items-stretch xl:gap-16">
       {/* leftimages */}
       <div class="relative hidden w-full lg:w-1/2 lg:flex justify-center lg:justify-start">
-        <div class="relative w-full max-w-[550px] lg:max-w-[600px] xl:max-w-[650px] ml-4 md:ml-10 lg:ml-8 lg:h-full group cursor-pointer">
-          <div class="w-full h-auto lg:h-full rounded-[24px] lg:rounded-[32px] overflow-hidden relative shadow-lg transition-shadow duration-500 group-hover:shadow-2xl">
+        <div class="relative w-full max-w-[550px] lg:max-w-[655px] ml-4 md:ml-10 lg:ml-8 lg:h-full group cursor-pointer">
+          <div class="w-full h-auto lg:h-full aspect-[655/694] rounded-[24px] lg:rounded-[30px] overflow-hidden relative shadow-lg transition-shadow duration-500 group-hover:shadow-2xl">
             <Image
               src={IMAGES.home.pvHocba}
-              width={800}
-              height={800}
+              width={655}
+              height={677}
               alt="Phỏng vấn học viên The IELTS Space"
-              class="h-auto lg:h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              class="h-auto lg:h-full w-full object-cover object-[15%_center] transition-transform duration-700 group-hover:scale-110"
               densities={[1, 2]}
             />
           </div>
@@ -33,7 +33,7 @@ import { Image } from 'astro:assets';
       </div>
 
       {/* rght side: content */}
-      <div class="flex w-full flex-col justify-center rounded-[24px] bg-[#EEF2FC] p-8 md:p-10 lg:w-[554px] lg:gap-[20px] lg:shrink-0 lg:p-12 xl:p-14 mt-6 md:mt-10 lg:mt-0">
+      <div class="flex w-full flex-col justify-center rounded-[24px] bg-[#EEF2FC] p-8 md:p-10 lg:w-[615px] lg:gap-[20px] lg:shrink-0 lg:p-12 xl:p-14 mt-6 md:mt-10 lg:mt-0">
         <div class="flex items-center gap-2">
           <HomeIcon className="size-5 md:size-6 text-[#373737]" />
           <span class="flex items-start gap-1 text-[16px] font-bold text-[#373737] lg:text-[26px] lg:leading-tight">

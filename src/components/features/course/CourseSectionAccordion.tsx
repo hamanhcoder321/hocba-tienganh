@@ -3,17 +3,26 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { ChevronDown } from 'lucide-react';
 import { CourseDetailsBookmark } from '@/components/common/icons';
 
+interface OptionItem {
+  label: string;
+  content: string;
+}
+
 interface Lesson {
-  id: number;
+  id: number | string;
   title: string;
-  description: string;
+  description?: string;
+  content?: string;
+  type?: 'text' | 'lesson';
+  items?: OptionItem[];
 }
 
 interface Section {
-  id: number;
+  id: number | string;
   title: string;
-  description: string;
+  description?: string;
   Lesson?: Lesson[];
+  options?: Lesson[];
 }
 
 interface CourseSectionAccordionProps {
@@ -40,21 +49,32 @@ function SectionAccordionItem({ section, activeBgClass }: { section: Section; ac
           <AccordionContent className="pb-0 pt-2">
             <div className="rounded px-4">
               <p className="whitespace-break-spaces text-wrap pb-2 font-gilroy text-[12px] lg:text-base font-normal leading-[140%] text-black">{section.description}</p>
-              {section.Lesson && section.Lesson.length > 0 && (
+              {(section.Lesson?.length || section.options?.length) ? (
                 <div className="space-y-4 pl-0">
-                  {section.Lesson.map((lesson) => (
-                    <div key={lesson.id} className="rounded-xl border bg-blue-200 p-4">
+                  {(section.options || section.Lesson || []).map((lesson) => (
+                    <div key={lesson.id} className="rounded-xl border bg-white p-4">
                       <Accordion type="single" collapsible>
                         <AccordionItem value={`lesson-${lesson.id}`} className="!border-none">
                           <div className="w-full gap-2">
-                            <AccordionTrigger className="relative w-full p-0 text-base font-semibold hover:no-underline">
-                              {lesson.title}
+                            <AccordionTrigger className="relative w-full p-0 text-base font-semibold hover:no-underline pr-6 [&>svg:last-child]:hidden">
+                              <span className="text-left">{lesson.title}</span>
                               <ChevronDown className="absolute right-0 top-0" />
                             </AccordionTrigger>
                           </div>
                           <AccordionContent className="pb-0">
-                            <div className="space-y-2 whitespace-break-spaces text-wrap pt-4 font-gilroy text-[12px] lg:text-base font-normal leading-[140%] text-black">
-                              <p className="whitespace-break-spaces">{lesson.description}</p>
+                            <div className="space-y-4 whitespace-break-spaces text-wrap pt-4 font-gilroy text-[12px] lg:text-base font-normal leading-[140%] text-black">
+                              {lesson.type === 'lesson' && lesson.items && lesson.items.length > 0 ? (
+                                <div className="space-y-4">
+                                  {lesson.items.map((item, idx) => (
+                                    <div key={idx}>
+                                      <span className="font-semibold block">{item.label}</span>
+                                      {item.content && <p className="mt-1 whitespace-break-spaces text-gray-700">{item.content}</p>}
+                                    </div>
+                                  ))}
+                                </div>
+                              ) : (
+                                <p className="whitespace-break-spaces">{lesson.content || lesson.description}</p>
+                              )}
                             </div>
                           </AccordionContent>
                         </AccordionItem>
@@ -62,7 +82,7 @@ function SectionAccordionItem({ section, activeBgClass }: { section: Section; ac
                     </div>
                   ))}
                 </div>
-              )}
+              ) : null}
             </div>
           </AccordionContent>
         </AccordionItem>
