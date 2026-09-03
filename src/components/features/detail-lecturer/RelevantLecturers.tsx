@@ -74,16 +74,16 @@ const RelevantLecturers = ({ relevantLecturers, icons }: RelevantLecturersProps)
                 <div className="relative h-[324px] w-full rounded-lg border bg-white shadow-md md:h-auto xl:min-h-[324px]">
                   <div
                     key={lecturer.id}
-                    className="group relative h-full rounded-md border-2 border-transparent bg-[#FFF8F8] px-2 py-4 transition-all duration-300 ease-in-out hover:border-primary hover:bg-white hover:shadow-redGlow md:h-[475px] md:px-4 md:py-4"
+                    className="group relative h-full rounded-md border-2 border-transparent bg-[#FFF8F8] px-2 py-4 transition-all duration-300 ease-in-out hover:border-[#D46000] hover:bg-white hover:shadow-[0_0_20px_rgba(212,96,0,0.35)] md:h-[475px] md:px-4 md:py-4"
                   >
                     <a
                       href={`/doi-ngu-giang-vien/${lecturer.slug || lecturer.id}`}
-                      className="absolute -bottom-[4%] left-1/2 flex h-7 -translate-x-1/2 cursor-pointer items-center gap-1 rounded-full border-2 border-white bg-primary px-2 text-white opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+                      className="absolute -bottom-[4%] left-1/2 flex h-7 -translate-x-1/2 cursor-pointer items-center gap-1 rounded-full border-2 border-white bg-[#2751C7] px-2 text-white opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
                     >
                       <SearchX size={20} className="rotate-90" />
                       <p className="text-[8px] font-bold md:text-xs">Xem hồ sơ</p>
                     </a>
-                    <div className="relative h-[156px] w-full rounded-md bg-[#6D0100] pt-3 transition-transform duration-300 ease-in-out group-hover:scale-105 md:h-[220px]">
+                    <div className="relative h-[156px] w-full rounded-md bg-[#2751C7] pt-3 transition-transform duration-300 ease-in-out group-hover:scale-105 md:h-[220px]">
                       <img
                         src={lecturer.optimizedAvatar}
                         width={280}
@@ -99,7 +99,7 @@ const RelevantLecturers = ({ relevantLecturers, icons }: RelevantLecturersProps)
                       )}
                     </div>
                     <div className="mt-3 flex flex-col gap-2 transition-all duration-300 ease-in-out group-hover:px-3 md:mt-6">
-                      <h3 className="text-sm font-black uppercase leading-tight text-primary md:text-[22px]">
+                      <h3 className="text-sm font-black uppercase leading-tight text-[#D46000] md:text-[22px]">
                         {lecturer.name}
                       </h3>
                       <div className="flex items-center gap-2">

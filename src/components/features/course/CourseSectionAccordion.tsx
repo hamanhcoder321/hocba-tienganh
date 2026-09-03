@@ -32,6 +32,10 @@ interface CourseSectionAccordionProps {
 
 function SectionAccordionItem({ section, activeBgClass }: { section: Section; activeBgClass?: string }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [showAllLessons, setShowAllLessons] = useState(false);
+
+  const lessons = section.options || section.Lesson || [];
+  const visibleLessons = showAllLessons ? lessons : lessons.slice(0, 3);
 
   return (
     <div className={`w-full rounded-[9.18px] lg:rounded-2xl border-[0.25px] border-black lg:border lg:border-[#e2e8f0] py-[4.08px] pl-[10.2px] pr-[16px] lg:p-4 transition-colors duration-300 ${isOpen && activeBgClass ? activeBgClass : 'bg-transparent'}`}>
@@ -49,9 +53,9 @@ function SectionAccordionItem({ section, activeBgClass }: { section: Section; ac
           <AccordionContent className="pb-0 pt-2">
             <div className="rounded px-4">
               <p className="whitespace-break-spaces text-wrap pb-2 font-gilroy text-[12px] lg:text-base font-normal leading-[140%] text-black">{section.description}</p>
-              {(section.Lesson?.length || section.options?.length) ? (
+              {lessons.length > 0 ? (
                 <div className="space-y-4 pl-0">
-                  {(section.options || section.Lesson || []).map((lesson) => (
+                  {visibleLessons.map((lesson) => (
                     <div key={lesson.id} className="rounded-xl border bg-white p-4">
                       <Accordion type="single" collapsible>
                         <AccordionItem value={`lesson-${lesson.id}`} className="!border-none">
@@ -81,6 +85,17 @@ function SectionAccordionItem({ section, activeBgClass }: { section: Section; ac
                       </Accordion>
                     </div>
                   ))}
+                  {lessons.length > 3 && (
+                    <div className="flex justify-end pt-2 pb-2">
+                      <button
+                        onClick={() => setShowAllLessons(!showAllLessons)}
+                        className="flex items-center gap-1.5 rounded-full border border-[#F97316] px-6 py-2 text-[#F97316] font-gilroy font-semibold text-[14px] lg:text-[16px] hover:bg-[#F97316] hover:text-white transition-colors duration-300"
+                      >
+                        <span>{showAllLessons ? 'Thu gọn' : 'Xem thêm'}</span>
+                        <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${showAllLessons ? 'rotate-180' : ''}`} />
+                      </button>
+                    </div>
+                  )}
                 </div>
               ) : null}
             </div>

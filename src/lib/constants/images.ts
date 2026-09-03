@@ -16,6 +16,9 @@ import chiaseBanner from '@/assets/images/chiase-banner.png';
 import chiase3 from '@/assets/images/chiase3.png';
 import chiased1 from '@/assets/images/chiased1.png';
 import chiased2 from '@/assets/images/chiased2.png';
+import khoiDong from '@/assets/images/detail-lecturer/khoi-dong.png';
+import catCanh from '@/assets/images/detail-lecturer/cat-canh.png';
+import tangToc from '@/assets/images/detail-lecturer/tang-toc.png';
 import adviseCourse from '@/assets/images/course/advise.png';
 import banner2Mobile from '@/assets/images/course/banner-2-mobile.png';
 import damBao from '@/assets/images/DamBao.png';
@@ -282,7 +285,7 @@ import ellipse2 from '@/assets/images/detail-lecturer/ellipse2.svg';
 import heroLeftBg from '@/assets/images/detail-lecturer/hero-left-bg.svg';
 import heroRightBg from '@/assets/images/detail-lecturer/hero-right-bg.png';
 import hsk from '@/assets/images/detail-lecturer/hsk.png';
-import detailLectuterIcon1 from '@/assets/images/detail-lecturer/icon1.png';
+import detailLectuterIcon1 from '@/assets/images/img-hocba-tienganh-optimized/so-sach-new.png';
 import detailLectuterIcon2 from '@/assets/images/detail-lecturer/icon2.png';
 import detailLectuterIcon3 from '@/assets/images/detail-lecturer/icon3.png';
 import outstandingStudent1 from '@/assets/images/detail-lecturer/outstandingStudent1.jpg';
@@ -660,6 +663,9 @@ export const IMAGES = {
   detailLectuter: {
     heroLeftBg,
     heroRightBg,
+    khoiDong,
+    catCanh,
+    tangToc,
     rectangle1,
     rectangle2,
     ellipse1,

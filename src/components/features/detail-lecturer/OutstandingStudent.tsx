@@ -26,7 +26,7 @@ const StudentCard = ({
   icons: OutstandingStudentProps['icons'];
   isPageCourse: boolean;
 }) => (
-  <div className="group relative mx-auto h-full w-[344px] overflow-hidden rounded-lg border bg-white shadow-md transition-all duration-300 hover:bg-[#083AD4]">
+  <div className="group relative mx-auto h-full w-[344px] overflow-hidden rounded-lg border bg-white shadow-md transition-all duration-300 hover:bg-[#E6F0FF]">
     <div className="h-full select-none md:flex md:flex-col md:items-center md:justify-between">
       <div className="absolute left-3 top-3 z-20 h-auto w-fit rounded-md border border-white bg-gradient-to-l from-[#3464F8] to-[#083AD4] px-4 py-2">
         <img
@@ -41,12 +41,12 @@ const StudentCard = ({
       </div>
       <div className="flex-1 px-5 pt-6 md:px-8 md:pt-9">
         <div className="h-[294px] w-full overflow-hidden md:h-[297px] md:w-[282px]">
-          <img src={item.avatar_url || icons.defaultAvatar} alt={item.name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" />
+          <img src={item.avatar_url || icons.defaultAvatar} alt={item.name} className="h-full w-full object-cover transition-transform duration-300" />
         </div>
       </div>
       <div
         className={cn(
-          'relative flex w-full flex-col gap-2 bg-[#083AD4] px-4 py-5 h-full'
+          'relative flex w-full flex-col gap-2 bg-[#083AD4] transition-colors duration-300 group-hover:bg-[#3464F8] px-4 py-5 h-full'
         )}
       >
 

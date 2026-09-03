@@ -2654,8 +2654,8 @@ export const Rectangle1 = (props: React.HTMLAttributes<SVGElement>) => {
           y2="41.6134"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#FF4545" />
-          <stop offset="1" stopColor="#E56565" />
+          <stop stopColor="#F97316" />
+          <stop offset="1" stopColor="#FFCF5A" />
         </linearGradient>
       </defs>
     </svg>
@@ -2677,8 +2677,8 @@ export const Rectangle2 = (props: React.HTMLAttributes<SVGElement>) => {
           y2="22.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#FF4545" />
-          <stop offset="1" stopColor="#E56565" />
+          <stop stopColor="#F97316" />
+          <stop offset="1" stopColor="#FFCF5A" />
         </linearGradient>
       </defs>
     </svg>

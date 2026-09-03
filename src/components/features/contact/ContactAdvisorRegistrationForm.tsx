@@ -303,30 +303,7 @@ export default function ContactAdvisorRegistrationForm({
           {/* slot cho content bổ sung — SimpleFormRegister nhét ảnh cô gái mobile vào đây */}
           {children}
 
-          {/* nút submit có 2 phiên bản tùy isCourseChinese
-              - true:  trang tiếng Trung, không có icon sổ bên trái (legacy, xem TODO bên trên)
-              - false: SimpleFormRegister, có icon sổ absolute bên trái nút
-          */}
-          {isCourseChinese ? (
-            // TODO: xóa block này khi bỏ trang tiếng Trung
-            <div className="relative mx-auto w-full pt-1 text-center">
-              <Button
-                type="submit"
-                disabled={isPending}
-                className="relative mx-auto flex items-center justify-center gap-[10px] min-h-[50px] w-full max-w-[386px] rounded-[24px] border-[3px] border-white bg-[#F97316] py-[6px] px-[16px] text-base font-black uppercase text-white shadow-lg transition-colors hover:opacity-90 disabled:opacity-70 md:min-h-[68px] md:text-2xl"
-              >
-                {isPending ? 'Đang xử lý...' : isSuccess ? 'Thành công!' : (
-                  <span className="flex flex-col items-center leading-tight">
-                    <span>GỬI THÔNG TIN CHO</span>
-                    <span>THE IELTS SPACE</span>
-                  </span>
-                )}
-              </Button>
-              <p className="mt-2 text-right font-normal text-white md:text-[16px] md:leading-[150%]">
-                THE IELTS SPACE sẽ liên hệ lại trong vòng <span className="font-bold">24 giờ</span> làm việc.
-              </p>
-            </div>
-          ) : (
+          
             <div className="relative mx-auto w-full pt-4 text-center">
               <Button
                 type="submit"
@@ -350,11 +327,10 @@ export default function ContactAdvisorRegistrationForm({
                   </span>
                 )}
               </Button>
-              <p className="mt-2 text-right font-normal text-white md:text-[15px] md:leading-[150%]">
+              <p className="mt-2 text-right font-normal text-white whitespace-nowrap text-[11px] sm:text-[12px] md:text-[15px] md:leading-[150%]">
                 THE IELTS SPACE sẽ liên hệ lại trong vòng <span className="font-bold">24 giờ</span> làm việc.
               </p>
             </div>
-          )}
         </form>
       </div>
     </div>

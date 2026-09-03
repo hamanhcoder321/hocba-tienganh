@@ -11,6 +11,7 @@ import {
 } from '@/components/common/icons';
 import JsonLd from '@/components/common/JsonLd.astro';
 import SimpleFormRegister from '@/components/common/SimpleFormRegister.astro';
+import AboutRegisterSection from '@/components/features/about/AboutRegisterSection.astro';
 import AlbumCarousel from '@/components/features/detail-lecturer/AlbumCarousel';
 import OutstandingStudent from '@/components/features/detail-lecturer/OutstandingStudent';
 import RelevantLecturers from '@/components/features/detail-lecturer/RelevantLecturers';
@@ -186,7 +187,7 @@ const jsonLd: Graph = {
 <BaseLayout {title} {description}>
   <JsonLd data={jsonLd} />
   <div class="relative">
-    <section class="relative flex h-[789px] w-full flex-col bg-gradient-to-b from-[#B90E0A] to-[#7D1900] md:h-[800px]">
+    <section class="relative flex h-[976px] w-full flex-col pb-[32px] md:h-[866px] md:pb-0" style="background: linear-gradient(4.61deg, #04195C 0.47%, #072899 51.14%, #083AD4 99.42%);">
       <div class="relative z-10 flex h-full flex-col overflow-x-clip md:px-0">
         <Breadcrumb className="container mt-6 px-4 md:mt-12 md:px-0">
           <BreadcrumbList className="text-xs text-white md:text-lg">
@@ -208,56 +209,58 @@ const jsonLd: Graph = {
           </BreadcrumbList>
         </Breadcrumb>
         <div class="mx-auto grid grid-cols-1 xl:grid-cols-2 2xl:max-w-[1354px]">
-          <div class="relative order-2 col-span-1 h-[378px] md:h-auto xl:order-1">
-            <div class="absolute left-1/2 top-0 h-[830px] w-full -translate-x-1/2 md:w-[830px]">
+          <div class="relative order-2 col-span-1 h-[900px] md:h-auto xl:order-1">
+            <div class="absolute left-1/2 top-0 h-[830px] w-full -translate-x-1/2 md:left-[-37px] md:top-[91px] md:h-[831px] md:w-[830px] md:translate-x-0">
               <Image
                 src={IMAGES.detailLectuter.heroLeftBg}
                 alt={'heroLeftBg'}
                 width={830}
-                height={830}
-                class={'size-[450px] md:size-[830px]'}
+                height={831}
+                class={'size-[450px] md:h-[831px] md:w-[830px]'}
               />
             </div>
             <div
-              class="absolute left-0 top-[14%] h-[340px] w-full select-none overflow-hidden md:mt-0 md:h-[632px] md:w-[632px]"
+              class="absolute left-0 top-[14%] h-[340px] w-full select-none overflow-visible md:left-0 md:top-[80px] md:mt-0 md:h-[632px] md:w-[632px]"
             >
-              <div class="absolute left-0 top-0 h-24 w-20">
-                <Rectangle1 />
-                <Rectangle2 className="ml-auto" />
+              <div class="absolute hidden md:block" style="width: 36.33px; height: 36.33px; top: 37px; left: 487px; transform: rotate(139.78deg); opacity: 0.93;">
+                <Rectangle1 className="w-full h-full" />
+              </div>
+              <div class="absolute hidden md:block" style="width: 12.87px; height: 12.87px; top: 76px; left: 530px; transform: rotate(139.78deg); opacity: 0.93;">
+                <Rectangle2 className="w-full h-full" />
               </div>
               <div
-                class="absolute left-1/2 top-1/2 flex h-[340px] w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center md:h-[632px] md:w-[632px]"
+                class="absolute left-1/2 top-1/2 flex h-[340px] w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center md:left-[-27px] md:top-[-27px] md:h-[632px] md:w-[632px] md:translate-x-0 md:translate-y-0 md:rotate-[80.61deg]"
               >
-                <EllipLecturer className="size-[340px] animate-spin-slow object-cover md:size-[632px]" />
+                <div class="size-[340px] animate-spin-slow rounded-full md:size-[632px]" style="background: radial-gradient(67.98% 64.74% at 72.02% 68.34%, rgba(255, 255, 255, 0) 0%, rgba(37, 85, 232, 0) 62.47%, #2555E8 86.84%)"></div>
               </div>
               <div
-                class="absolute left-1/2 top-1/2 flex size-[378px] -translate-x-1/2 -translate-y-1/2 select-none items-center justify-center"
+                class="absolute left-1/2 top-1/2 flex size-[378px] -translate-x-1/2 -translate-y-1/2 select-none items-center justify-center md:left-[73px] md:top-[73px] md:size-[378.56px] md:translate-x-0 md:translate-y-0 md:rotate-[-124deg]"
               >
-                <EllipLecturer1 className="size-[204px] animate-spin-reverse object-cover md:size-[378px]" />
+                <div class="size-[204px] animate-spin-reverse rounded-full md:size-[378.56px]" style="background: radial-gradient(67.98% 64.74% at 72.02% 68.34%, rgba(255, 255, 255, 0) 0%, rgba(203, 216, 255, 0) 62.47%, #99B2FC 86.84%)"></div>
               </div>
-              <Image
-                src={lecturer.avatar_url?.file_path || ''}
-                alt={'lecturer_avatar_url'}
-                width={700}
-                height={1000}
-                layout="constrained"
-                loading={'eager'}
-                position="top"
-                class={'object-cover object-top w-auto h-[334px] md:h-[618px] absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2'}
-              />
             </div>
+            <Image
+              src={lecturer.avatar_url?.file_path || ''}
+              alt={'lecturer_avatar_url'}
+              width={700}
+              height={1000}
+              layout="constrained"
+              loading={'eager'}
+              position="top"
+              class={'absolute left-1/2 top-[80px] h-[501px] w-[354px] -translate-x-1/2 object-cover object-top md:left-[262px] md:top-[20px] md:h-[618px] md:w-auto md:-translate-x-1/2 md:translate-y-0'}
+            />
           </div>
-          <div class="z-50 order-1 col-span-1 md:mt-16 xl:order-2">
+          <div class="z-50 order-1 col-span-1 flex flex-col md:mt-16 xl:order-2 xl:mt-[140px] xl:h-[440px] xl:w-[641px] xl:gap-[20px] xl:justify-self-end">
             <div
               class="mt-10 text-center text-lg font-black uppercase text-white md:mt-0 md:text-start md:text-[42px] xl:px-[38px]"
             >
               Thông tin giảng viên
             </div>
             <div
-              class="mx-4 mt-4 h-[296px] rounded-[20px] bg-gradient-to-bl from-[#CA0000] to-[#D1000000] p-5 md:mx-0 md:mt-10 md:h-[370px] md:w-[615px] md:p-10"
+              class="mx-4 mt-4 h-[296px] rounded-[20px] bg-gradient-to-bl from-[#2555E8] to-[#2555E800] p-5 md:mx-0 md:mt-10 md:h-[342px] md:w-[615px] md:px-[38px] md:py-[26px] xl:mt-0"
             >
               <div
-                class="custom-scrollbar flex h-full flex-col gap-4 overflow-y-auto whitespace-pre-line text-[15px] font-medium text-white md:gap-6 md:text-[20px]"
+                class="custom-scrollbar flex h-full flex-col gap-4 overflow-y-auto whitespace-pre-line text-[15px] font-medium text-white md:gap-[10px] md:text-[20px]"
               >
                 {lecturer.description}
               </div>
@@ -266,11 +269,11 @@ const jsonLd: Graph = {
         </div>
         <div class="absolute -bottom-[7%] left-0 right-0 z-20 mx-auto w-[94%] xl:w-[1173px] 2xl:w-[1354px]">
           <div
-            class="grid h-auto w-full grid-cols-1 rounded-[18px] border-2 border-[#F67B7B] bg-white px-5 py-4 shadow-[-3px_20px_68.2px_0px_#B90E0A1A;] md:h-[232px] md:grid-cols-3 xl:px-10 xl:py-6 2xl:px-20 2xl:py-4"
+            class="grid h-auto w-full grid-cols-1 rounded-[18px] border-2 border-[#F58220] bg-white px-5 py-4 shadow-[-3px_20px_68.2px_0px_rgba(245,130,32,0.15)] md:h-[232px] md:grid-cols-3 xl:px-10 xl:py-6 2xl:px-20 2xl:py-4"
           >
             <h1 class="col-span-1 my-auto flex items-center justify-center gap-2 md:block md:gap-0">
-              <p class="text-[20px] font-black uppercase text-primary md:text-[42px]">Giảng viên</p>
-              <p class="line-clamp-2 text-[20px] font-black uppercase text-primary md:text-[42px]">
+              <p class="text-[20px] font-black uppercase text-[#04195C] md:text-[42px]">Giảng viên</p>
+              <p class="line-clamp-2 text-[20px] font-black uppercase text-[#04195C] md:text-[42px]">
                 {lecturer.name}
               </p>
             </h1>
@@ -305,7 +308,7 @@ const jsonLd: Graph = {
             </div>
           </div>
         </div>
-        <div
+        <!-- <div
           class="absolute -right-14 top-[56%] z-10 size-[140px] select-none overflow-clip md:right-[2%] md:top-4 2xl:size-[236px]"
         >
           <Image
@@ -315,7 +318,7 @@ const jsonLd: Graph = {
             height={236}
             class={'object-cover w-auto h-[70px] md:h-full'}
           />
-        </div>
+        </div> -->
       </div>
     </section>
     <section class="relative overflow-clip bg-[#F6F6F6] pb-0 pt-24 md:pb-20 md:pt-32">
@@ -385,18 +388,19 @@ const jsonLd: Graph = {
       <div class="container">
         <div class="ml-4 flex items-center gap-3 md:ml-40 md:gap-6">
           <div
-            class="flex h-[30px] w-8 items-center justify-center rounded-[54px] bg-gradient-to-r from-[#7D1900] to-[#B90E0A] shadow-[8.39px_6.71px_45.49px_0px_#B90E0A66;] md:size-14"
+            class="flex h-[30px] w-8 items-center justify-center rounded-[54px] bg-gradient-to-b from-[#083AD4] to-[#3464F8] shadow-[8.39px_6.71px_45.49px_0px_#2751C780] md:size-14"
           >
             <CommaIcon className="md:scale-150" />
           </div>
-          <p class="text-nowrap text-lg font-black uppercase text-primary md:text-[42px]">
+          <p class="text-nowrap text-lg font-black uppercase text-[#072899] md:text-[42px]">
             {`Chia sẻ từ ${lecturer.name}`}
           </p>
         </div>
         <div class="mt-0 flex flex-col-reverse md:mt-10 md:flex-row">
           <div class="w-full md:w-[678px]">
             <div
-              class="scrollbar-hide flex h-full max-h-[571px] flex-col gap-4 overflow-y-auto rounded-[20px] bg-gradient-to-r from-[#FFD3D3] to-[#FFF8F800] px-8 py-7 md:px-20 md:py-14"
+              class="scrollbar-hide flex h-full max-h-[571px] flex-col gap-4 overflow-y-auto rounded-[20px] px-8 py-7 md:px-20 md:py-14"
+              style="background: linear-gradient(283.81deg, rgba(255, 248, 248, 0) -4.25%, #CCD8FB 102.37%);"
             >
               <p class="whitespace-pre-line text-justify text-[15px] font-medium italic md:text-[20px]">
                 {lecturer.share_content?.description}
@@ -424,6 +428,7 @@ const jsonLd: Graph = {
                 alt={'shareQuocHung'}
                 class={'object-contain w-auto md:w-auto h-[354px] md:h-full relative z-50 mx-full'}
               />
+              <div class="pointer-events-none absolute bottom-0 left-0 z-[60] h-[80px] w-full bg-gradient-to-t from-white to-transparent md:h-[120px]"></div>
             </div>
           </div>
         </div>
@@ -432,15 +437,17 @@ const jsonLd: Graph = {
     <section class="container relative md:pt-9">
       <div>
         <div class="flex items-center justify-center gap-4">
-          <Image
-            src={IMAGES.detailLectuter.detailLectuterIcon1}
-            width={90}
-            height={90}
-            alt={'detailLectuterIcon1'}
-            densities={[1, 2]}
-            class={'object-cover w-10 md:w-[90px] h-10 md:h-[90px] scale-x-[-1]'}
-          />
-          <h2 class="text-lg font-black uppercase text-primary md:text-[42px]">Các lớp đang giảng dạy</h2>
+          <div style="transform: rotate(-8deg);" class="flex shrink-0">
+            <Image
+              src={IMAGES.detailLectuter.detailLectuterIcon1}
+              width={90}
+              height={90}
+              alt={'detailLectuterIcon1'}
+              densities={[1, 2]}
+              class={'object-cover w-10 md:w-[90.7px] h-10 md:h-[90.7px]'}
+            />
+          </div>
+          <h2 class="text-lg font-black uppercase text-[#072899] md:text-[42px]">Các lớp đang giảng dạy</h2>
         </div>
         <div class="mt-0 flex items-center justify-center md:-mt-2">
           <p class="px-10 text-center text-[15px] font-bold md:px-56 md:text-[28px]">
@@ -453,78 +460,69 @@ const jsonLd: Graph = {
             }
           </p>
         </div>
-        <div class="flex flex-col gap-y-4 py-4 md:flex-row md:gap-x-7 md:gap-y-0 md:py-12">
-          <div
-            class="group w-full bg-[#FFF8F8] p-5 transition-all duration-300 hover:-translate-y-2 hover:bg-[#AF0000] hover:shadow-[0px_4px_25px_0px_#FF6969] md:w-[558px]"
-          >
-            <Image
-              src={IMAGES.detailLectuter.class1}
-              width={520}
-              height={274}
-              densities={[1, 2]}
-              loading={'lazy'}
-              alt={'detailLectuter-class1'}
-              class={'h-auto w-full object-cover group-hover:opacity-50 md:h-[274px]'}
-            />
-            <div class="relative mt-2 flex flex-col items-center justify-center gap-2">
-              <div class="relative flex h-[28px] w-full items-center justify-center md:h-[36px]">
-                <h3
-                  class="absolute text-[18px] font-black uppercase transition-opacity duration-300 group-hover:opacity-0 md:text-[28px]"
-                >
-                  Học Bá HSK
-                </h3>
-                <button
-                  onclick="document.getElementById('advisor-registration')?.scrollIntoView({ behavior: 'smooth', block: 'start' })"
-                  class="absolute text-[18px] font-black uppercase text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:text-[28px]"
-                >
-                  Đăng ký ngay
-                </button>
+        <div class="flex w-full snap-x snap-mandatory gap-4 overflow-x-auto py-4 scrollbar-hide md:gap-7 md:py-12">
+          {
+            [
+              {
+                title: 'KHỞI ĐỘNG (0-3.0)',
+                desc: 'Xây nền tảng phát âm - từ vựng - ngữ pháp, phát triển 4 kỹ năng cơ bản',
+                img: IMAGES.detailLectuter.khoiDong,
+              },
+              {
+                title: 'CẤT CÁNH (3.0-4.0)',
+                desc: 'Phát triển khả năng diễn đạt mạch lạc và làm quen các dạng bài IELTS.',
+                img: IMAGES.detailLectuter.catCanh,
+              },
+              {
+                title: 'TĂNG TỐC (4.0-5.0)',
+                desc: 'Chủ động tiếp nhận, diễn đạt ý tưởng, nắm rõ phương pháp và phát triển 4 kỹ năng IELTS.',
+                img: IMAGES.detailLectuter.tangToc,
+              },
+              {
+                title: 'KHỐI 4 (Sắp ra mắt)',
+                desc: 'Nội dung chi tiết sẽ được cập nhật sau...',
+                img: IMAGES.detailLectuter.class1,
+              },
+              {
+                title: 'KHỐI 5 (Sắp ra mắt)',
+                desc: 'Nội dung chi tiết sẽ được cập nhật sau...',
+                img: IMAGES.detailLectuter.class1,
+              },
+              {
+                title: 'KHỐI 6 (Sắp ra mắt)',
+                desc: 'Nội dung chi tiết sẽ được cập nhật sau...',
+                img: IMAGES.detailLectuter.class1,
+              },
+            ].map((course) => (
+              <div class="group flex w-[280px] min-w-[280px] shrink-0 snap-center flex-col rounded-[20px] border-[2px] border-transparent bg-[#FFF8F8] px-[19px] pb-[20px] pt-[20px] transition-all duration-300 hover:-translate-y-2 hover:border-[#FDB13E] hover:bg-gradient-to-b hover:from-[#FDB13E] hover:to-[#F47814] hover:shadow-[0px_8px_30px_0px_rgba(244,167,46,0.4)] md:h-[413px] md:w-[451px] md:min-w-[451px]">
+                <Image
+                  src={course.img}
+                  width={413}
+                  densities={[1, 2]}
+                  loading={'lazy'}
+                  alt={course.title}
+                  class={'h-[180px] w-full rounded-[16px] border-[4px] border-white object-cover object-left-top transition-opacity duration-300 md:h-[240px]'}
+                />
+                <div class="relative mt-[16px] flex flex-1 flex-col items-center justify-start gap-[12px] text-center">
+                  <div class="relative flex h-[28px] w-full items-center justify-center md:h-[32px]">
+                    <h3 class="absolute text-[18px] font-black uppercase text-[#333] transition-opacity duration-300 group-hover:opacity-0 md:text-[22px]">
+                      {course.title}
+                    </h3>
+                    <button 
+                      onclick="document.getElementById('advisor-registration')?.scrollIntoView({ behavior: 'smooth', block: 'start' })"
+                      class="absolute text-[20px] font-black uppercase text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:text-[24px]"
+                    >
+                      ĐĂNG KÝ NGAY
+                    </button>
+                  </div>
+                  <div class="h-[2px] w-[50px] bg-[#D1D5DB] transition-all duration-300 group-hover:w-[100px] group-hover:bg-white"></div>
+                  <p class="text-xs font-medium text-[#555] transition-colors duration-300 group-hover:text-white md:text-[15px]">
+                    {course.desc}
+                  </p>
+                </div>
               </div>
-              <div class="h-[2px] w-[200px] scale-x-0 bg-white transition-all duration-300 group-hover:scale-x-100">
-              </div>
-              <p
-                class="text-xs font-medium transition-colors duration-300 group-hover:font-black group-hover:text-[#F3C650] md:text-lg"
-              >
-                Luyện thi HSK chuẩn Format 3.0 mới nhất
-              </p>
-            </div>
-          </div>
-          <div
-            class="group w-full bg-[#FFF8F8] p-5 transition-all duration-300 hover:-translate-y-2 hover:bg-[#AF0000] hover:shadow-[0px_4px_25px_0px_#FF6969] md:w-[558px]"
-          >
-            <Image
-              src={IMAGES.detailLectuter.class2}
-              width={520}
-              height={274}
-              densities={[1, 2]}
-              quality={85}
-              loading={'lazy'}
-              alt={'detailLectuter-class1'}
-              class={'h-auto w-full object-cover group-hover:opacity-50 md:h-[274px]'}
-            />
-            <div class="relative mt-2 flex flex-col items-center justify-center gap-2">
-              <div class="relative flex h-[28px] w-full items-center justify-center md:h-[36px]">
-                <h3
-                  class="absolute text-[18px] font-black uppercase transition-opacity duration-300 group-hover:opacity-0 md:text-[28px]"
-                >
-                  HỌC BÁ chinese
-                </h3>
-                <button
-                  onclick="document.getElementById('advisor-registration')?.scrollIntoView({ behavior: 'smooth', block: 'start' })"
-                  class="absolute text-[18px] font-black uppercase text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:text-[28px]"
-                >
-                  Đăng ký ngay
-                </button>
-              </div>
-              <div class="h-[2px] w-[200px] scale-x-0 bg-white transition-all duration-300 group-hover:scale-x-100">
-              </div>
-              <p
-                class="text-xs font-medium transition-colors duration-300 group-hover:font-black group-hover:text-[#F3C650] md:text-lg"
-              >
-                Tiếng trung giao tiếp thực chiến cho người đi làm
-              </p>
-            </div>
-          </div>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -541,13 +539,14 @@ const jsonLd: Graph = {
                 densities={[1, 2]}
                 class={'h-14 w-14 -rotate-12 object-cover md:h-[90px] md:w-[90px]'}
               />
-              <h2 class="text-lg font-black uppercase text-primary md:text-[42px]">Học viên xuất sắc</h2>
+              <h2 class="text-lg font-black uppercase text-[#072899] md:text-[42px]">Học viên xuất sắc</h2>
             </div>
             <div class="-mt-2 flex items-center justify-center">
               <p class="px-10 text-center text-[15px] font-bold md:px-12 md:text-[28px]">
                 {(() => {
                   const gender = lecturer.gender === 1 ? 'thầy' : 'cô';
-                  return `Cùng Học Bá "Flex" thành tích khủng của học viên trong lớp tiếng trung ${gender} ${lecturer.name} và các thầy cô Học Bá dẫn dắt`;
+                  return `Cùng The IELTS Space "Flex" thành tích khủng của
+                          học viên lớp IELTS ${gender} ${lecturer.name} dẫn dắt`;
                 })()}
               </p>
             </div>
@@ -577,11 +576,12 @@ const jsonLd: Graph = {
             densities={[1, 2]}
             class={'object-cover w-14 h-14 md:w-[90px] md:h-[90px] -rotate-12 scale-75'}
           />
-          <h2 class="text-lg font-black uppercase text-primary md:text-[42px]">Giảng viên liên quan</h2>
+          <h2 class="text-lg font-black uppercase text-[#072899] md:text-[42px]">Giảng viên liên quan</h2>
         </div>
         <div class="-mt-2 flex items-center justify-center">
           <p class="px-10 text-center text-[15px] font-bold md:pl-[25rem] md:pr-[18rem] md:text-[28px]">
-            Tìm hiểu thêm về những giảng viên “chất” chỉ có tại Học Bá Education
+            Tìm hiểu thêm về những giảng viên
+            “chất” chỉ có tại THE IELTS SPACE
           </p>
         </div>
         <div class="">
@@ -596,7 +596,8 @@ const jsonLd: Graph = {
       </div>
     </section>
     <section id="advisor-registration" class="relative">
-      <SimpleFormRegister dataInput={`\${DATA_VALUE.LECTURER_DETAIL} \${lecturer.name}`} isSimpleForm  defaultObjective="Du học, xin học bổng" />
+      <!-- <SimpleFormRegister dataInput={`\${DATA_VALUE.LECTURER_DETAIL} \${lecturer.name}`} isSimpleForm  defaultObjective="Du học, xin học bổng" /> -->
+      <AboutRegisterSection dataInput={`${DATA_VALUE.LECTURER_DETAIL} ${lecturer.name}`}  defaultObjective="Du học, xin học bổng" />
     </section>
   </div>
 </BaseLayout>

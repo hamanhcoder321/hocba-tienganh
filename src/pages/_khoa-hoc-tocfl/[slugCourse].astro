@@ -22,7 +22,7 @@ import {
 } from '@/components/ui/breadcrumb';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { HOME_CATEGORIES } from '@/lib/constants/content';
-import { CATEGORY_TYPES, DATA_INPUT_SOURCE } from '@/lib/constants/enums';
+import { CATEGORY_TYPES } from '@/lib/constants/enums';
 import { IMAGES } from '@/lib/constants/images';
 import { fetchClassesList, fetchCourseDetail, fetchCourseList, fetchTeacherList } from '@/lib/static-data';
 import { getImage, Image } from 'astro:assets';
@@ -41,7 +41,7 @@ if (!slugCourse || !course) {
 }
 
 const baseUrl = import.meta.env.PUBLIC_CLIENT_URL ?? 'https://hoc-ba.edu.vn';
-const url = `${baseUrl}/khoa-hoc-ielts/${course?.slug}`;
+const url = `${baseUrl}/khoa-hoc-hsk/${course?.slug}`;
 
 const title = course?.meta_title || `${course?.name} | Học Bá Education`;
 const description = course?.meta_description || `Khoá học ${course?.name} tại Tiếng Trung Học Bá`;
@@ -434,5 +434,5 @@ const jsonLd: Graph = {
 
   <CourseSchedule client:visible id={course?.id as number} initialData={classesSchedule} />
 
-  <SimpleFormRegister dataInput={`\${DATA_INPUT_SOURCE.COURSE_DETAIL} \${course?.name}`} isSimpleForm  defaultObjective="Xét tuyển vào Đại học" />
+  <SimpleFormRegister dataInput={`Khóa học ${course?.name}`} isSimpleForm />
 </BaseLayout>

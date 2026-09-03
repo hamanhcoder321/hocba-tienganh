@@ -33,14 +33,14 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
   index = 0,
 }) => {
   return (
-    <div className="relative flex h-full select-none flex-col rounded-[24px] border-2 border-[#FFDFDF] bg-white p-6 shadow-[12px_12px_28px_0px_#FFBEBE80] md:p-8">
+    <div className="relative flex h-full select-none flex-col rounded-[24px] border-2 border-[#DCE8FF] bg-white p-6 shadow-[12px_12px_28px_0px_rgba(8,58,212,0.12)] md:p-8">
       <div className="mb-6 flex items-start justify-between">
         <div className="flex items-center gap-4">
           <div className="h-20 w-20 flex-shrink-0 overflow-hidden rounded-full md:h-[110px] md:w-[110px]">
             <img width={150} height={150} src={avatar} alt={name} className="h-full w-full scale-[1.35] object-cover object-center" />
           </div>
           <div>
-            <h3 className="text-lg font-black uppercase leading-tight text-[#B11702] md:text-[32px]">{name}</h3>
+            <h3 className="text-lg font-black uppercase leading-tight text-[#083AD4] md:text-[32px]">{name}</h3>
             <p className="my-2 text-sm font-bold text-[#373737] md:text-[24px]">
               {role}{location ? `, ${location}` : ''}
             </p>
