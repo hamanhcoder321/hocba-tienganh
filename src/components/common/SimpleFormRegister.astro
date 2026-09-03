@@ -15,7 +15,7 @@ const optimizedNoteBook = await getImage({
   format: 'webp',
 });
 
-const { dataInput, isSimpleForm, id = 'simple-register-form' } = Astro.props;
+const { dataInput, isSimpleForm, id = 'simple-register-form' , defaultObjective = '' } = Astro.props;
 ---
 
 <section
@@ -87,7 +87,7 @@ const { dataInput, isSimpleForm, id = 'simple-register-form' } = Astro.props;
           icons={{ noteBook: optimizedNoteBook.src }}
           client:idle
           {dataInput}
-          {isSimpleForm}
+          isSimpleForm={isSimpleForm} defaultObjective={defaultObjective}
         >
           <div class="relative mx-auto mt-8 mb-4 flex h-auto w-full items-center justify-center md:hidden">
 

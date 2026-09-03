@@ -1,4 +1,5 @@
 ---
+import { DATA_VALUE } from '@/lib/constants/enums';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import StudentHero from '@/components/features/home/student-achievements/StudentHero.astro';
 import StudentShowcase from '@/components/features/home/student-achievements/StudentShowcase.astro';
@@ -48,6 +49,6 @@ const jsonLd: Graph = {
       <div><StudentTestimonials /></div>
     </div>
 
-    <SimpleFormRegister dataInput="Học viên điểm cao" isSimpleForm />
+    <SimpleFormRegister dataInput={DATA_VALUE.STUDENT_ACHIEVEMENTS} isSimpleForm  defaultObjective="Xét tuyển vào Đại học" />
   </main>
 </BaseLayout>

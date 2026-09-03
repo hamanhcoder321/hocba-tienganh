@@ -167,7 +167,7 @@ export default function ContactAdvisorRegistrationForm({
             {/* mục tiêu + email — luôn hiện */}
             <div className="space-y-2 md:col-span-1">
               <Label htmlFor="course" className="text-[15px] font-semibold text-white md:text-base">
-                Khóa Học Bạn Quan Tâm
+                Mục Tiêu Của Bạn
               </Label>
               <Select
                 value={form.watch('wishlist_courses')}

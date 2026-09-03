@@ -14,7 +14,7 @@ const TEACHERS = [
     badgeBottom: '8.5',
     image: imgGv1.src,
     name: 'THẠC SĨ LINH PHƯƠNG',
-    slug: 'ths-linh-phuong',
+    slug: 'ths-nguyen-phuong-linh',
     title: '12 Năm Kinh Nghiệm Giảng Dạy',
     description: 'Thạc sĩ Đại học Kinh tế Quốc dân, Cử\nnhân Đại học Khoa học Ứng dụng\nKymenlaakso, Phần Lan (Học bổng)'
   },
@@ -23,7 +23,7 @@ const TEACHERS = [
     badgeBottom: '8.5',
     image: imgGv2.src,
     name: 'GIẢNG VIÊN YẾN CHI',
-    slug: 'giang-vien-yen-chi',
+    slug: 'le-yen-chi',
     title: 'Hơn 10 Năm Kinh Nghiệm Giảng Dạy Chứng Chỉ IELTS Và TOEIC',
     description: '2 lần đạt 8.5 IELTS, Đại sứ bài thi IELTS\ntrên máy tính 2023 của IDP, Cố vấn\nHọc thuật của nhiều đơn vị'
   },
@@ -41,7 +41,7 @@ const TEACHERS = [
     badgeBottom: '8.5',
     image: imgGv4.src,
     name: 'GIẢNG VIÊN THU TRANG',
-    slug: 'giang-vien-thu-trang',
+    slug: 'mai-thu-trang',
     title: '4+ năm kinh nghiệm giảng dạy \n IELTS',
     description: 'Cử nhân xuất sắc Đại học Kinh tế \n Quốc Dân, Thành viên dự án nâng \n cao năng lực ngoại ngữ cho giáo viên \n của Sở Giáo dục Hà Nội, SAT 1430',
   },

@@ -3,7 +3,7 @@ import footerLogo from '@/assets/images/footer.svg';
 // import { default as favIcon } from '@/assets/images/site-logo.png'; // [TAB] favicon cũ - Học Bá
 // import siteLogo from '@/assets/images/img-hocba-tienganh-optimized/logo-hocba-tienganh.webp'; // [HEADER] logo cũ - Học Bá
 // import { default as favIcon } from '@/assets/images/img-hocba-tienganh-optimized/img-logo-header.webp'; // [TAB] favicon cũ - The IELTS Space (webp)
-import { default as favIcon } from '@/assets/images/img-hocba-tienganh-optimized/logo-tab-Favicon-cropped.png'; // [TAB] favicon mới - The IELTS Space
+import { default as favIcon } from '@/assets/images/img-hocba-tienganh-optimized/logo-tab-Favicon-cropped-new.png'; // [TAB] favicon mới - The IELTS Space
 // import siteLogo from '@/assets/images/img-hocba-tienganh-optimized/img-logo-header.webp'; // [HEADER] logo cũ - The IELTS Space (webp)
 import siteLogo from '@/assets/images/img-hocba-tienganh-optimized/img-logo-moi-header.webp'; // [HEADER] logo mới - The IELTS Space màu trắng
 import { IMAGES } from '@/lib/constants/images';

@@ -596,7 +596,7 @@ const jsonLd: Graph = {
       </div>
     </section>
     <section id="advisor-registration" class="relative">
-      <SimpleFormRegister dataInput={`Trang giảng viên ${lecturer.name}`} isSimpleForm />
+      <SimpleFormRegister dataInput={`\${DATA_VALUE.LECTURER_DETAIL} \${lecturer.name}`} isSimpleForm  defaultObjective="Du học, xin học bổng" />
     </section>
   </div>
 </BaseLayout>

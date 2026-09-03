@@ -11,6 +11,7 @@ interface IELTSRegisterFormProps {
   icons?: {
     noteBook?: string;
   };
+  defaultObjective?: string;
   isSimpleForm?: boolean;
   isCourseChinese?: boolean;
   dataInput?: string;
@@ -19,7 +20,7 @@ interface IELTSRegisterFormProps {
 }
 
 const targetOptions = [
-  'Thi HSK để đi du học/đi làm',
+  'Thi IELTS để đi du học/đi làm',
   'Dùng tiếng Trung trong công việc',
   'Giao tiếp tự tin với đối tác/người bản xứ',
   'Mục tiêu khác',
@@ -27,8 +28,8 @@ const targetOptions = [
 
 const levelOptions = [
   'Mất gốc / mới bắt đầu',
-  'Đã học cơ bản (tầm HSK 2-3)',
-  'Đã học trung cấp (tầm HSK 4-5)',
+  'Đã học cơ bản (tầm IELTS 3.0 - 4.5)',
+  'Đã học trung cấp (tầm IELTS 5.0 - 6.0)',
   'Đã có nền, cần ôn thi / dùng cho công việc',
 ];
 
@@ -43,14 +44,15 @@ export default function IELTSRegisterForm({
   dataInput = '',
   className = '',
   children,
+  defaultObjective = '',
 }: IELTSRegisterFormProps) {
-  const { form, isPending, isSuccess, handleRegisterStudy } = useRegisterStudy();
+  const { form, isPending, isSuccess, handleRegisterStudy } = useRegisterStudy({ wishlist_courses: defaultObjective || 'Du học, xin học bổng' });
 
   const onSubmit = async (data: RegisterStudyBodyType) => {
     try {
       await handleRegisterStudy({
         ...data,
-        wishlist_courses: data.wishlist_courses === 'Xét tuyển vào Đại học' ? 'Du học' : data.wishlist_courses || 'Du học',
+        
         data_input: dataInput,
       });
       form.reset();
@@ -116,19 +118,19 @@ export default function IELTSRegisterForm({
                 Mục Tiêu Của Bạn
               </Label>
               <Select
-                defaultValue="Du học"
-                value={form.watch('wishlist_courses') === 'Xét tuyển vào Đại học' ? 'Du học' : form.watch('wishlist_courses') || 'Du học'}
+                
+                value={form.watch('wishlist_courses')}
                 onValueChange={(value) => form.setValue('wishlist_courses', value)}
               >
                 <SelectTrigger id="course" className="h-12 rounded-lg border-0 bg-white text-[#504E4E] focus:ring-white md:h-14">
                   <SelectValue placeholder="Chọn mục tiêu" />
                 </SelectTrigger>
                 <SelectContent className="bg-white">
-                  <SelectItem value="Du học">Du học</SelectItem>
+                  <SelectItem value="Xét tuyển vào Đại học">Xét tuyển vào Đại học</SelectItem>
+                  <SelectItem value="Xét tốt nghiệp Đại học">Xét tốt nghiệp Đại học</SelectItem>
+                  <SelectItem value="Du học, xin học bổng">Du học, xin học bổng</SelectItem>
                   <SelectItem value="Định cư">Định cư</SelectItem>
-                  <SelectItem value="Làm việc">Làm việc</SelectItem>
-                  <SelectItem value="Xét tuyển Đại học">Xét tuyển Đại học</SelectItem>
-                  <SelectItem value="Xét tốt nghiệp">Xét tốt nghiệp</SelectItem>
+                  <SelectItem value="Cơ hội nghề nghiệp">Cơ hội nghề nghiệp</SelectItem>
                   <SelectItem value="Khác">Khác</SelectItem>
                 </SelectContent>
               </Select>

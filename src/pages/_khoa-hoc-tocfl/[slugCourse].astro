@@ -22,7 +22,7 @@ import {
 } from '@/components/ui/breadcrumb';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { HOME_CATEGORIES } from '@/lib/constants/content';
-import { CATEGORY_TYPES } from '@/lib/constants/enums';
+import { CATEGORY_TYPES, DATA_INPUT_SOURCE } from '@/lib/constants/enums';
 import { IMAGES } from '@/lib/constants/images';
 import { fetchClassesList, fetchCourseDetail, fetchCourseList, fetchTeacherList } from '@/lib/static-data';
 import { getImage, Image } from 'astro:assets';
@@ -434,5 +434,5 @@ const jsonLd: Graph = {
 
   <CourseSchedule client:visible id={course?.id as number} initialData={classesSchedule} />
 
-  <SimpleFormRegister dataInput={`Khóa học ${course?.name}`} isSimpleForm />
+  <SimpleFormRegister dataInput={`\${DATA_INPUT_SOURCE.COURSE_DETAIL} \${course?.name}`} isSimpleForm  defaultObjective="Xét tuyển vào Đại học" />
 </BaseLayout>

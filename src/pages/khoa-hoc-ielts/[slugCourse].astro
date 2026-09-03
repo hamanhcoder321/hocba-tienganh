@@ -38,7 +38,7 @@ import {
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { fetchLecturersClient } from '@/lib/api/lecturer';
 import { HOME_CATEGORIES } from '@/lib/constants/content';
-import { CATEGORY_TYPES } from '@/lib/constants/enums';
+import { CATEGORY_TYPES, DATA_INPUT_SOURCE } from '@/lib/constants/enums';
 import { IMAGES } from '@/lib/constants/images';
 import { fetchClassesList, fetchCourseDetail , fetchCourseListHeader } from '@/lib/static-data';
 import type { TClasses } from '@/types/schedule';
@@ -481,7 +481,19 @@ const courseHeroImageDesktopSrc = typeof courseHeroImageDesktop === 'string' ? c
                     </h2>
                   </div>
                   {programSection?.options ? (
-                    <CourseSectionAccordion sections={[{id: programSection.id, title: programSection.title, options: programSection.options}] as any} client:load />
+                    <CourseSectionAccordion 
+                      sections={programSection.options.map((opt: any) => ({
+                        id: opt.id,
+                        title: opt.title,
+                        description: opt.type === 'text' ? opt.content : undefined,
+                        options: opt.items ? opt.items.map((item: any, idx: number) => ({
+                          id: idx,
+                          title: item.label,
+                          content: item.content
+                        })) : undefined
+                      }))} 
+                      client:load 
+                    />
                   ) : (
                     <CourseSectionAccordion sections={(course?.content_sections || course?.Section) as any} client:load />
                   )}
@@ -581,7 +593,7 @@ const courseHeroImageDesktopSrc = typeof courseHeroImageDesktop === 'string' ? c
 
   <ScheduleTableNew client:load courseId={course?.id as number} />
 
-  <SimpleFormRegisterchitietkhoahoc dataInput={`Khóa học ${course?.name}`} isSimpleForm />
+  <SimpleFormRegisterchitietkhoahoc dataInput={`\${DATA_INPUT_SOURCE.COURSE_DETAIL} \${course?.name}`} isSimpleForm  defaultObjective="Xét tuyển vào Đại học" />
 </BaseLayout>
 
 <script define:vars={{ categoryTitle: themeColor.title }}>

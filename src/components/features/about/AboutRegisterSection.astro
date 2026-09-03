@@ -7,7 +7,7 @@ import { DATA_VALUE } from '@/lib/constants/enums';
 import imgDkTuVan from '@/assets/images/dktuvan.png';
 import imgBook from '@/assets/images/book.png';
 
-const { dataInput = DATA_VALUE.ABOUT } = Astro.props;
+const { dataInput = DATA_VALUE.ABOUT , defaultObjective = '' } = Astro.props;
 ---
 
 <div
@@ -25,7 +25,7 @@ const { dataInput = DATA_VALUE.ABOUT } = Astro.props;
           Đăng Ký Nhận<br />Tư Vấn Miễn Phí
         </h2>
       </div>
-      <AboutRegisterForm client:load dataInput={dataInput} />
+      <AboutRegisterForm client:load dataInput=dataInput={dataInput} defaultObjective={defaultObjective} />
     </div>
 
     {/* Paper Plane Boy */}

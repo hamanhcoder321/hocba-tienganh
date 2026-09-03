@@ -1,4 +1,5 @@
 ---
+import { DATA_INPUT_SOURCE } from '@/lib/constants/enums';
 // export const prerender = true;
 
 import SimpleFormRegister from '@/components/common/SimpleFormRegister.astro';
@@ -41,7 +42,7 @@ const optimizedHeroClass = await getImage({
     <QualityExpert />
     <StudentSuccess />
     <Roadmap />
-    <SimpleFormRegister dataInput="Trang chủ" isSimpleForm />
+    <SimpleFormRegister dataInput={DATA_INPUT_SOURCE.LANDING_PAGE} isSimpleForm  defaultObjective="Xét tuyển vào Đại học" />
     <AdvisorQA />
   </main>
 </BaseLayout>

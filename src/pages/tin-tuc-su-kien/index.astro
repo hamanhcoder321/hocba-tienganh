@@ -1,4 +1,5 @@
 ---
+import { DATA_VALUE } from '@/lib/constants/enums';
 import SimpleFormRegister from '@/components/common/SimpleFormRegistertin-tuc.astro';
 import FeaturedEvents from '@/components/features/home/news-events/FeaturedEvents.tsx';
 import NewsHero from '@/components/features/home/news-events/NewsHero.astro';
@@ -48,6 +49,6 @@ const jsonLd: Graph = {
     <FeaturedEvents client:load />
     <WorkshopEvents client:load />
     <OtherNews />
-    <SimpleFormRegister dataInput="Tin tức & sự kiện" isSimpleForm />
+    <SimpleFormRegister dataInput={DATA_VALUE.NEWS} isSimpleForm />
   </main>
 </BaseLayout>

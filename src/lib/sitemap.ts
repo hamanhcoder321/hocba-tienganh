@@ -44,7 +44,7 @@ export const STATIC_PAGES: SitemapUrl[] = [
   { loc: `${BASE_URL}/cam-ket-dau-ra`, priority: '0.6', changefreq: 'monthly' },
   { loc: `${BASE_URL}/chinh-sach-ban-quyen`, priority: '0.6', changefreq: 'monthly' },
   { loc: `${BASE_URL}/chinh-sach-bao-mat`, priority: '0.6', changefreq: 'monthly' },
-  { loc: `${BASE_URL}/chuyen-gia/gs-baozhang-he`, priority: '0.6', changefreq: 'monthly' },
+  { loc: `${BASE_URL}/chuyen-gia/jackson-howard`, priority: '0.6', changefreq: 'monthly' },
   { loc: `${BASE_URL}/dieu-khoan-su-dung`, priority: '0.6', changefreq: 'monthly' },
   { loc: `${BASE_URL}/lien-he`, priority: '0.6', changefreq: 'monthly' },
 ];

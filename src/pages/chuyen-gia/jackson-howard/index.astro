@@ -36,9 +36,9 @@ import { cn } from '@/lib/utils';
 import { Image } from 'astro:assets';
 import type { Graph } from 'schema-dts';
 
-const title = 'Cố Vấn Chuyên Môn | Học Bá Education';
+const title = 'Cố Vấn Chuyên Môn | The IELTS Space';
 const description =
-  'Giáo sư Baozhang He - Cố vấn chuyên môn quốc tế, nguyên Giám đốc Chương trình tiếng Trung tại Đại học Harvard. Chuyên gia hàng đầu về ngữ pháp nhận thức và giảng dạy Hán ngữ.';
+  'Thạc sĩ Jackson Howard - Cố vấn chuyên môn quốc tế, nguyên Giám đốc Chương trình tiếng Trung tại Đại học Harvard. Chuyên gia hàng đầu về ngữ pháp nhận thức và giảng dạy Hán ngữ.';
 
 const baseUrl = import.meta.env.PUBLIC_CLIENT_URL ?? 'https://hoc-ba.edu.vn';
 
@@ -58,27 +58,27 @@ const jsonLd: Graph = {
           '@type': 'ListItem',
           position: 2,
           name: 'Cố vấn chuyên môn',
-          item: `${baseUrl}/chuyen-gia/gs-baozhang-he`,
+          item: `${baseUrl}/chuyen-gia/jackson-howard`,
         },
       ],
     },
     {
       '@type': 'ProfilePage',
-      name: 'GS. Baozhang He - Cố vấn chuyên môn | Học Bá Education',
-      url: `${baseUrl}/chuyen-gia/gs-baozhang-he`,
+      name: 'GS. Jackson Howard - Cố vấn chuyên môn | The IELTS Space',
+      url: `${baseUrl}/chuyen-gia/jackson-howard`,
       dateModified: new Date().toISOString(),
       mainEntity: {
         '@type': 'Person',
-        '@id': `${baseUrl}/chuyen-gia/gs-baozhang-he#person`,
-        name: 'GS. Baozhang He',
+        '@id': `${baseUrl}/chuyen-gia/jackson-howard#person`,
+        name: 'GS. Jackson Howard',
         jobTitle: 'Cố vấn chuyên môn',
         worksFor: {
           '@id': `${baseUrl}/#organization`,
         },
-        url: `${baseUrl}/chuyen-gia/gs-baozhang-he`,
+        url: `${baseUrl}/chuyen-gia/jackson-howard`,
         image: IMAGES.introduce.gs_hbc.src,
         description:
-          'Cố vấn chuyên môn tại Học Bá Education, đồng hành xây dựng định hướng chuyên môn và chất lượng chương trình.',
+          'Cố vấn chuyên môn tại The IELTS Space, đồng hành xây dựng định hướng chuyên môn và chất lượng chương trình.',
       },
     },
   ],
@@ -122,7 +122,7 @@ const expertInformation = [
   //   fromColor: '#FFF3F3',
   //   toColor: '#FFFDF9',
   //   options: [
-  //     '📌  Giáo sư Baozhang He là diễn giả chính tại nhiều hội thảo quốc tế như ACTFL, CLTA, NECLTA, chia sẻ về mô hình ngữ pháp nhận thức trong giảng dạy Hán ngữ',
+  //     '📌  Thạc sĩ Jackson Howard là diễn giả chính tại nhiều hội thảo quốc tế như ACTFL, CLTA, NECLTA, chia sẻ về mô hình ngữ pháp nhận thức trong giảng dạy Hán ngữ',
   //   ],
   //   type: 3,
   //   albums: [
@@ -161,7 +161,7 @@ const expertRoles = [
           </BreadcrumbItem>
           <!-- <BreadcrumbSeparator /> -->
           <!-- <BreadcrumbItem>
-            <BreadcrumbPage> GS. Baozhang He </BreadcrumbPage>
+            <BreadcrumbPage> GS. Jackson Howard </BreadcrumbPage>
           </BreadcrumbItem> -->
         </BreadcrumbList>
       </Breadcrumb>
@@ -673,7 +673,7 @@ const expertRoles = [
       </div>
       <div class="relative z-50 pt-12">
         <!-- <SimpleFormRegister dataInput={DATA_VALUE.CONSULTANT} isSimpleForm /> -->
-        <AboutRegisterSection dataInput={DATA_VALUE.ABOUT} />
+        <AboutRegisterSection dataInput={DATA_VALUE.CONSULTANT}  defaultObjective="Du học, xin học bổng" />
       </div>
     </section>
   </div>

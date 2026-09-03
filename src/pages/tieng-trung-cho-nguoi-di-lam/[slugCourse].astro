@@ -33,7 +33,7 @@ import {
 } from '@/components/ui/breadcrumb';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { HOME_CATEGORIES } from '@/lib/constants/content';
-import { CATEGORY_TYPES } from '@/lib/constants/enums';
+import { CATEGORY_TYPES, DATA_INPUT_SOURCE } from '@/lib/constants/enums';
 import { IMAGES } from '@/lib/constants/images';
 import { fetchClassesList, fetchCourseDetail, fetchTeacherList, fetchCourseListHeader } from '@/lib/static-data';
 import { CalendarCheck, Clock, MonitorSmartphone } from 'lucide-react';
@@ -542,7 +542,7 @@ const courseHeroImageSrc = typeof courseHeroImage === 'string' ? courseHeroImage
 
   <ScheduleTableNew client:load courseId={course?.id as number} bgGradientClass="from-[#F3F3F3] to-[#FFFFFF]" />
 
-  <SimpleFormRegister dataInput={`Khóa học ${course?.name}`} isSimpleForm />
+  <SimpleFormRegister dataInput={`\${DATA_INPUT_SOURCE.COURSE_DETAIL} \${course?.name}`} isSimpleForm  defaultObjective="Xét tuyển vào Đại học" />
 </BaseLayout>
 
 <script define:vars={{ categoryTitle: themeColor.title }}>

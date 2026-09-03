@@ -11,14 +11,15 @@ interface ScheduleRegistrationFormProps {
   icons?: {
     noteBook?: string;
   };
+  defaultObjective?: string;
   dataInput?: string;
   className?: string;
 }
 
 const levelOptions = [
   'Mất gốc / mới bắt đầu',
-  'Đã học cơ bản (tầm HSK 2-3)',
-  'Đã học trung cấp (tầm HSK 4-5)',
+  'Đã học cơ bản (tầm IELTS 3.0 - 4.5)',
+  'Đã học trung cấp (tầm IELTS 5.0 - 6.0)',
   'Đã có nền, cần ôn thi / dùng cho công việc',
 ];
 
@@ -26,8 +27,9 @@ export default function ScheduleRegistrationForm({
   icons,
   dataInput = '',
   className = '',
+  defaultObjective = '',
 }: ScheduleRegistrationFormProps) {
-  const { form, isPending, isSuccess, handleRegisterStudy } = useRegisterStudy();
+  const { form, isPending, isSuccess, handleRegisterStudy } = useRegisterStudy({ wishlist_courses: defaultObjective || 'Du học, xin học bổng' });
 
   const onSubmit = async (data: RegisterStudyBodyType) => {
     try {
@@ -157,7 +159,7 @@ export default function ScheduleRegistrationForm({
                 htmlFor="course"
                 className="font-gilroy text-[16px] font-semibold capitalize leading-[22.03px] text-white"
               >
-                Khóa Học Bạn Quan Tâm
+                Mục Tiêu Của Bạn
               </Label>
               <Select
                 value={form.watch('wishlist_courses')}
@@ -170,11 +172,12 @@ export default function ScheduleRegistrationForm({
                   <SelectValue placeholder="Chọn khóa học" />
                 </SelectTrigger>
                 <SelectContent className="bg-white">
-                  <SelectItem value="HSK 3.0">HSK 3.0</SelectItem>
-                  <SelectItem value="Học tiếng trung dành cho người đi làm">
-                    Khoá học tiếng Trung dành cho người đi làm
-                  </SelectItem>
-                  <SelectItem value="Tiếng Trung Doanh Nghiệp">Tiếng Trung Doanh Nghiệp</SelectItem>
+                  <SelectItem value="Xét tuyển vào Đại học">Xét tuyển vào Đại học</SelectItem>
+                  <SelectItem value="Xét tốt nghiệp Đại học">Xét tốt nghiệp Đại học</SelectItem>
+                  <SelectItem value="Du học, xin học bổng">Du học, xin học bổng</SelectItem>
+                  <SelectItem value="Định cư">Định cư</SelectItem>
+                  <SelectItem value="Cơ hội nghề nghiệp">Cơ hội nghề nghiệp</SelectItem>
+                  <SelectItem value="Khác">Khác</SelectItem>
                 </SelectContent>
               </Select>
             </div>
