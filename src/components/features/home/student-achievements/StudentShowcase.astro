@@ -62,11 +62,11 @@ const icons = {
 ---
 
 <section
-  class="container relative mx-auto mb-0 h-auto w-full max-w-none overflow-hidden rounded-none bg-white px-0 pt-0 md:mb-4 md:h-auto md:max-w-none md:px-4 md:pt-10 lg:rounded-[12px] lg:px-6 lg:pt-8 xl:max-w-[1280px] xl:px-10 2xl:h-[1310px] 2xl:max-w-[1600px] 2xl:rounded-[12px] 2xl:px-0 2xl:pt-0 3xl:h-[1310px] 3xl:w-[1920px] 3xl:max-w-[1920px] 3xl:rounded-[12px] 3xl:px-0 3xl:pt-0"
+  class="container relative mx-auto mb-0 h-auto w-full max-w-none overflow-hidden rounded-none bg-white px-0 pt-0 md:mb-4 md:h-auto md:max-w-none md:px-4 md:pt-10 lg:rounded-[12px] lg:px-6 lg:pt-8 xl:max-w-[1280px] xl:px-10 2xl:h-auto 2xl:max-w-[1600px] 2xl:rounded-[12px] 2xl:px-0 2xl:pt-0 2xl:pb-12 3xl:h-auto 3xl:w-[1920px] 3xl:max-w-[1920px] 3xl:rounded-[12px] 3xl:px-0 3xl:pt-0 3xl:pb-12"
 >
   {/* Title (Stays on outer wrapper on 3xl, absolute positioned) */}
   <div
-    class="relative z-10 flex h-[44px] flex-col items-center justify-center gap-3 md:-top-[20px] md:h-auto md:flex-row lg:-top-[20px] xl:-top-[20px] 2xl:absolute 2xl:left-0 2xl:right-0 2xl:top-[38px] 2xl:mb-0 3xl:absolute 3xl:left-0 3xl:right-0 3xl:top-[38px] 3xl:mb-0"
+    class="relative z-10 flex h-[44px] flex-col items-center justify-center gap-3 md:-top-[20px] md:h-auto md:flex-row lg:-top-[20px] xl:-top-[20px] 2xl:top-0 2xl:mt-[38px] 2xl:mb-[40px] 3xl:top-0 3xl:mt-[38px] 3xl:mb-[40px]"
   >
     <Image
       src={IMAGES.studentAchievements.muctieu}
@@ -92,15 +92,16 @@ const icons = {
 
   {/* Inner Box (Below title, starts at Top 122px on 3xl) */}
   <div
-    class="relative z-10 overflow-visible rounded-none p-6 shadow-none md:rounded-[32px] md:px-4 md:pb-10 md:pt-[24px] md:shadow-[0_0_40px_rgba(0,0,0,0.03)] lg:px-6 lg:pb-12 lg:pt-[32px] xl:px-16 xl:pb-16 xl:pt-[32px] 2xl:absolute 2xl:left-1/2 2xl:top-[122px] 2xl:flex 2xl:h-[1180px] 2xl:w-[1440px] 2xl:-translate-x-1/2 2xl:flex-col 2xl:justify-start 2xl:gap-3 2xl:rounded-[24px] 2xl:p-[32px_80px_16px_80px] 2xl:shadow-none 3xl:absolute 3xl:left-[240px] 3xl:top-[122px] 3xl:flex 3xl:h-[1180px] 3xl:w-[1440px] 3xl:translate-x-0 3xl:flex-col 3xl:justify-start 3xl:gap-3 3xl:rounded-[24px] 3xl:p-[32px_80px_16px_80px] 3xl:shadow-none"
+    class="relative z-10 overflow-visible rounded-none p-6 shadow-none md:rounded-[32px] md:px-4 md:pb-10 md:pt-[24px] md:shadow-[0_0_40px_rgba(0,0,0,0.03)] lg:px-6 lg:pb-12 lg:pt-[32px] xl:px-16 xl:pb-16 xl:pt-[32px] 2xl:mx-auto 2xl:flex 2xl:w-[1440px] 2xl:flex-col 2xl:justify-start 2xl:gap-3 2xl:rounded-[24px] 2xl:p-[32px_80px_32px_80px] 2xl:shadow-none 3xl:mx-auto 3xl:flex 3xl:w-[1440px] 3xl:flex-col 3xl:justify-start 3xl:gap-3 3xl:rounded-[24px] 3xl:p-[32px_80px_32px_80px] 3xl:shadow-none"
   >
-    {/* Background Layer */}
+    {/* Background Layer
     <div
       class="pointer-events-none absolute inset-0 z-0 rounded-none bg-gradient-to-b from-[#FFFBF0] to-[#FFF5E9]/0 md:rounded-[32px] 2xl:rounded-[24px] 3xl:rounded-[24px]"
     >
     </div>
+    */}
 
-    {/* Decorative Frame (Placed inside Inner Box, between z-0 background and z-20 cards for perfect stacking) */}
+    {/* Decorative Frame (Placed inside Inner Box, between z-0 background and z-20 cards for perfect stacking)
     <div
       class="pointer-events-none absolute z-[1] hidden items-center justify-center opacity-40 md:left-[-16px] md:right-[-16px] md:top-[380px] md:flex md:h-[300px] md:w-[calc(100%+32px)] md:max-w-none lg:left-[-24px] lg:right-[-24px] lg:top-[430px] lg:h-[340px] lg:w-[calc(100%+48px)] xl:top-[460px] xl:h-[380px] 2xl:left-1/2 2xl:top-[498px] 2xl:flex 2xl:h-[420px] 2xl:w-[1600px] 2xl:-translate-x-1/2 3xl:left-[-240px] 3xl:top-[440px] 3xl:flex 3xl:h-[505px] 3xl:w-[1920px] 3xl:translate-x-0"
     >
@@ -111,6 +112,7 @@ const icons = {
         style="filter: invert(1) hue-rotate(190deg);"
       />
     </div>
+    */}
     {/* Stats Row */}
     {/* Stats Row */}
     <div

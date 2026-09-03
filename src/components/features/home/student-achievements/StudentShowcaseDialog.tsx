@@ -75,7 +75,7 @@ const StudentCardOld = ({
 const StudentCard = ({ item }: { item: TStudent }) => {
   const avatarUrl = item.avatar_url || '';
   return (
-    <div className="w-[344px] h-[458px] relative flex items-center justify-center bg-[#D9D9D9]/50 rounded-[16px] border border-gray-200 shadow-inner overflow-hidden shrink-0 group hover:shadow-2xl transition-all duration-300">
+    <div className="w-full max-w-[344px] aspect-[344/458] relative flex items-center justify-center bg-[#D9D9D9]/50 rounded-[16px] border border-gray-200 shadow-inner overflow-hidden shrink-0 group hover:shadow-2xl transition-all duration-300 mx-auto">
       <div className="w-full h-full flex flex-col items-center justify-center text-gray-500">
         <span className="font-gilroy text-lg font-bold uppercase tracking-wider text-gray-400">Chưa có dữ liệu</span>
       </div>
@@ -194,7 +194,7 @@ export const StudentShowcaseDialog = ({ icons }: StudentShowcaseDialogProps) => 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <DialogContent
           hideClose
-          className="mx-auto mt-14 w-[512px] max-w-[calc(100%-2rem)] rounded-3xl bg-[#FFF8F8] px-4 pt-6 shadow-lg md:w-[564px] md:px-12 lg:w-[884px] xl:w-[1296px] 3xl:pt-12"
+          className="mx-auto mt-14 w-[512px] max-w-[90vw] rounded-3xl bg-[#FFF8F8] px-4 pt-6 shadow-lg md:w-[564px] md:px-12 lg:w-[884px] xl:w-[1296px] 3xl:pt-12"
         >
           <Button
             variant="outline"
@@ -217,7 +217,7 @@ export const StudentShowcaseDialog = ({ icons }: StudentShowcaseDialogProps) => 
             ))}
             {hasMore && (
               <Button
-                className="col-span-1 mx-auto mb-4 h-14 w-[251px] rounded-[32px] bg-primary text-lg font-bold text-white lg:col-span-2 xl:col-span-3"
+                className="col-span-1 mx-auto mb-4 h-14 w-full max-w-[251px] rounded-[32px] bg-primary text-lg font-bold text-white lg:col-span-2 xl:col-span-3"
                 onClick={handleLoadMore}
                 disabled={loading}
               >

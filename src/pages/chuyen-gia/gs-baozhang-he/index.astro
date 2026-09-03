@@ -2,6 +2,7 @@
 // export const prerender = true;
 
 import ArrowAnimation from '@/components/common/ArrowAnimation.astro';
+import AboutRegisterSection from '@/components/features/about/AboutRegisterSection.astro';
 import ButtonTitle from '@/components/common/ButtonTitle.astro';
 import {
   CommaIcon,
@@ -9,6 +10,7 @@ import {
   EllipseVtcg2,
   FourPointedStar,
   FourPointedStarMini,
+  GraduationCap1,
   GraduationCap,
   StarColorGradient,
   StarColorWhite,
@@ -84,16 +86,14 @@ const jsonLd: Graph = {
 
 const expertInformation = [
   {
-    title: 'Học vấn & vị trí từng nắm giữ',
-    fromColor: '#FFF3F3',
+    title: 'KINH NGHIỆM VÀ VỊ TRÍ TỪNG ĐẢM NHIỆM',
+    fromColor: '#F2F5FF',
     toColor: '#FFFDF9',
     options: [
-      '📌 Phó Giáo sư danh dự (Associate Professor Emeritus) tại Khoa Ngôn ngữ, Văn học và Văn hóa Thế giới, Đại học College of the Holy Cross, Hoa Kỳ.',
-      '📌 Nguyên Giám đốc Chương trình tiếng Trung tại Đại học Harvard trong 7 năm.',
-      '📌 Chủ tịch Hiệp hội Giáo viên Tiếng Trung tại Hoa Kỳ (CLTA) nhiệm kỳ 2019 - 2020.',
-      '📌 Phó Tổng biên tập tạp chí Nghiên cứu Giảng dạy Hán ngữ (thuộc Hiệp hội Giáo viên Trung Quốc Hoa Kỳ).',
-      '📌 Ban biên tập nhiều tạp chí nghiên cứu giảng dạy tiếng Hoa tại Mỹ, Trung Quốc, Đài Loan.',
-      '📌 Chủ tịch Ủy ban Phát triển Chương trình Tiếng Trung & Văn hóa Trung Quốc của   (Hoa Kỳ).',
+      'Quản lý Chương trình Đào tạo Tiếng Anh – Đại học Western Sydney. Hơn 4 năm quản lý và phát triển các chương trình đào tạo tiếng Anh tại Đại học Western Sydney, Úc.',
+      'Quản lý Cơ sở Đào tạo – Đại học Wollongong. Phụ trách quản lý và vận hành cơ sở đào tạo Sydney CBD thuộc Đại học Wollongong, Úc.',
+      'Cựu Giám khảo IELTS Speaking & Writing. Trực tiếp đánh giá năng lực thí sinh ở hai kỹ năng Speaking và Writing theo hệ thống tiêu chí của IELTS.',
+      'Giám đốc Học thuật tại Việt Nam & Malaysia. Từng phụ trách chương trình đào tạo, quản lý đội ngũ giáo viên, phát triển chuyên môn và đảm bảo chất lượng giảng dạy tại các tổ chức Anh ngữ quốc tế.',
     ],
     type: 1,
     albums: [
@@ -104,48 +104,51 @@ const expertInformation = [
     ],
   },
   {
-    title: 'công trình học thuật nổi bật',
-    fromColor: '#FFF3F3',
+    title: 'DẤU ẤN CHUYÊN MÔN NỔI BẬT',
+    fromColor: '#F2F5FF',
     toColor: '#FFFDF9',
     options: [
-      '📌 Đồng biên tập của cuốn Pedagogical Grammar and Grammar Pedagogy in Chinese as a Second Language (2022) – công trình đầu tiên hệ thống hóa lý thuyết và thực tiễn ngữ pháp sư phạm trong giảng dạy tiếng Trung như ngoại ngữ.',
-      '📌 Đồng tác giả giáo trình The Routledge Course in Modern Mandarin Chinese – bộ giáo trình tiêu chuẩn được sử dụng rộng rãi tại nhiều đại học ở Mỹ.',
+      'Chuyên môn sâu về IELTS: Kinh nghiệm từ giảng dạy đến trực tiếp khảo thí IELTS Speaking & Writing, với hiểu biết sâu về tiêu chí đánh giá và năng lực cần thiết ở từng band điểm',
+      'Quản lý học thuật quốc tế: Nhiều năm đảm nhiệm các vị trí quản lý chương trình, đội ngũ giáo viên và chất lượng đào tạo tại các tổ chức giáo dục ở Úc và Châu Á.',
+      'Nghiên cứu phương pháp giảng dạy: Tham gia nghiên cứu về ứng dụng công nghệ và phương pháp phản hồi trong giảng dạy tiếng Anh, được công bố trên Cambridge English Research Notes #64 (2016).',
+      'Đào tạo giáo viên tiếng Anh: Từng tham gia đào tạo chứng chỉ TEFL, hướng dẫn phương pháp giảng dạy và phát triển kỹ năng chuyên môn cho giáo viên.',
+      'Kinh nghiệm giáo dục đa quốc gia: Kinh nghiệm giảng dạy và quản lý giáo dục tại Úc, Việt Nam, Malaysia và Trung Quốc, làm việc với người học thuộc nhiều trình độ và nền tảng khác nhau.',
     ],
     type: 2,
-    albums: [IMAGES.introduce.cthtnb_1, IMAGES.introduce.cthtnb_2],
+    albums: [IMAGES.introduce.cthtnb_1, IMAGES.introduce.cthtnb_2, IMAGES.introduce.cthtnb_3],
   },
-  {
-    title: 'HỘI THẢO HỌC THUẬT TỪNG THAM GIA',
-    fromColor: '#FFF3F3',
-    toColor: '#FFFDF9',
-    options: [
-      '📌  Giáo sư Baozhang He là diễn giả chính tại nhiều hội thảo quốc tế như ACTFL, CLTA, NECLTA, chia sẻ về mô hình ngữ pháp nhận thức trong giảng dạy Hán ngữ',
-    ],
-    type: 3,
-    albums: [
-      IMAGES.introduce.hoi_thao_1,
-      IMAGES.introduce.hoi_thao_2,
-      IMAGES.introduce.hoi_thao_3,
-      IMAGES.introduce.hoi_thao_4,
-    ],
-  },
+  // {
+  //   title: 'HỘI THẢO HỌC THUẬT TỪNG THAM GIA',
+  //   fromColor: '#FFF3F3',
+  //   toColor: '#FFFDF9',
+  //   options: [
+  //     '📌  Giáo sư Baozhang He là diễn giả chính tại nhiều hội thảo quốc tế như ACTFL, CLTA, NECLTA, chia sẻ về mô hình ngữ pháp nhận thức trong giảng dạy Hán ngữ',
+  //   ],
+  //   type: 3,
+  //   albums: [
+  //     IMAGES.introduce.hoi_thao_1,
+  //     IMAGES.introduce.hoi_thao_2,
+  //     IMAGES.introduce.hoi_thao_3,
+  //     IMAGES.introduce.hoi_thao_4,
+  //   ],
+  // },
 ];
 
 const expertRoles = [
-  'Cố vấn chiến lược học thuật phát triển dài hạn cho Học Bá Education: xây dựng chuẩn năng lực giáo viên, chuẩn đầu ra học viên, chuẩn đánh giá và thiết kế chương trình',
-  'Cố vấn & tối ưu hóa giáo trình – chương trình giảng dạy dựa trên Cognitive Grammar và phương pháp sư phạm hiện đại, giúp học viên hiểu bản chất ngôn ngữ và vận dụng hiệu quả',
-  'Định hình tư duy giáo viên tiếng Trung thời đại mới với triết lý “Dạy đúng – Hiểu sâu – Phát triển bền vững”, phù hợp bối cảnh tiếng trung thời đại mới và xu hướng giáo dục toàn cầu',
-  'Đào tạo đội ngũ giáo viên theo chuẩn quốc tế, nâng cao tư duy hệ thống hóa kiến thức, phương pháp tổ chức lớp học và mô hình dạy học lấy người học làm trung tâm',
-  'Tư vấn chuyên môn khẩu ngữ về HSK 3.0, giúp Học Bá xây dựng chương trình chuẩn quốc tế và tối ưu lộ trình học theo chuẩn từ các trường đại học uy tín hàng đầu thế giới',
-  'Truyền cảm hứng cho cộng đồng giáo viên tiếng Trung qua tọa đàm và workshop, giúp họ định hình lại hành trình nghề nghiệp và phát triển bền vững',
+  'Định hướng chiến lược học thuật: Tham gia xây dựng định hướng chuyên môn và tiêu chuẩn đào tạo, đảm bảo chương trình IELTS có mục tiêu rõ ràng và lộ trình phát triển năng lực phù hợp.',
+  'Chuẩn hóa chương trình IELTS: Cố vấn nội dung và phương pháp đào tạo dựa trên tiêu chí đánh giá IELTS, hướng học viên phát triển đúng năng lực cần thiết ở từng band điểm.',
+  'Cố vấn phương pháp giảng dạy: Định hướng phương pháp giúp giáo viên nhận diện điểm yếu, phân tích lỗi sai và đưa ra phản hồi hiệu quả cho từng học viên.',
+  'Phát triển chất lượng đội ngũ: Góp phần định hướng chuyên môn cho giáo viên, nâng cao năng lực giảng dạy, đánh giá và theo sát sự tiến bộ của học viên.',
+  'Kiểm soát chất lượng học thuật: Tham gia xây dựng các tiêu chuẩn nhằm đảm bảo tính nhất quán và chất lượng trong quá trình triển khai chương trình đào tạo.',
+  'Kết nối tiêu chuẩn quốc tế: Vận dụng kinh nghiệm từ khảo thí IELTS, giảng dạy và quản lý giáo dục quốc tế để đưa các chuẩn mực đào tạo phù hợp vào THE IELTS SPACE.',
 ];
 ---
 
 <BaseLayout {title} {description}>
   <JsonLd data={jsonLd} />
   <div class="relative">
-    <section class="relative h-auto w-full overflow-hidden">
-      <Breadcrumb className="container mt-12 px-4 md:px-0">
+    <section class="relative mx-auto h-auto w-full overflow-hidden xl:max-w-[1440px] xl:px-[36px]">
+      <Breadcrumb className="container mt-12 px-4 md:px-0 xl:mx-0 xl:max-w-none xl:px-0">
         <BreadcrumbList className="text-foreground text-xs md:text-lg">
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
@@ -156,75 +159,73 @@ const expertRoles = [
           <BreadcrumbItem>
             <BreadcrumbPage>Cố vấn chuyên môn</BreadcrumbPage>
           </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
+          <!-- <BreadcrumbSeparator /> -->
+          <!-- <BreadcrumbItem>
             <BreadcrumbPage> GS. Baozhang He </BreadcrumbPage>
-          </BreadcrumbItem>
+          </BreadcrumbItem> -->
         </BreadcrumbList>
       </Breadcrumb>
-      <div class="relative z-10 flex h-auto flex-col md:h-[642px] md:px-0">
-        <div class="container z-50 flex h-full bg-transparent px-4">
+      <div class="relative z-10 flex h-auto w-full flex-col md:h-[642px] md:px-0 xl:flex-row xl:justify-between xl:gap-[16px] 2xl:gap-[32px]">
+        <div class="container z-50 flex h-full bg-transparent px-4 xl:mx-0 xl:w-fit xl:min-w-fit xl:px-0">
           <div class="py-5 md:py-14">
             <h1 class="flex flex-col gap-0 text-4xl font-bold leading-normal md:gap-4">
-              <span class="block text-2xl font-black uppercase text-primary md:text-[42px]"
+              <span class="block text-xl font-black uppercase text-[#072899] md:text-[32px] lg:text-[42px]"
                 >Cố vấn chuyên môn quốc tế</span
               >
               <span
-                class="mt-2 flex h-8 w-fit items-center rounded-md bg-primary px-4 text-lg font-black uppercase text-white md:mt-1 md:h-16 md:rounded-xl md:px-8 md:text-3xl"
-                >Của học bá education</span
+                class="mt-2 flex h-8 w-fit items-center rounded-md bg-[#F97316] px-4 text-lg font-black uppercase text-white md:mt-1 md:h-12 md:rounded-xl md:px-6 md:text-2xl lg:h-16 lg:px-8 lg:text-3xl"
+                >CỦA THE IELTS SPACE</span
               >
-              <span class="mt-1 block text-lg font-black uppercase md:text-[32px]">Giáo sư</span>
-              <span class="block text-lg font-black uppercase md:text-[42px]">何宝璋 Baozhang he</span>
+              <span class="mt-1 block text-lg font-black uppercase md:text-[24px] lg:text-[32px]">THẠC SĨ</span>
+              <span class="block text-lg font-black uppercase md:text-[32px] lg:text-[42px]">JACKSON HOWARD</span>
             </h1>
             <div
-              class="relative mt-4 w-[316px] rounded-md bg-gradient-to-r from-[#FFD3D3] to-[#FFF8F800] pb-4 pl-8 pr-2 pt-7 md:mt-16 md:w-[554px] md:rounded-xl md:pb-9 md:pl-14 md:pt-[54px]"
+              class="relative mt-4 w-[316px] rounded-[12px] bg-gradient-to-r from-[#FFF8F8] to-[#C0CFFB] pb-4 pl-8 pr-2 pt-7 md:mt-10 md:w-[35vw] md:max-w-[380px] md:pb-7 md:pl-10 md:pt-[40px] lg:mt-16 lg:w-[30vw] lg:max-w-[450px] lg:pb-9 lg:pl-14 lg:pt-[54px] xl:h-[198px] xl:w-[554px] xl:max-w-none"
             >
               <div
-                class="absolute -top-4 left-7 flex h-[30px] w-8 items-center justify-center rounded-[54px] bg-gradient-to-r from-[#7D1900] to-[#B90E0A] md:-top-7 md:left-10 md:size-14"
+                class="absolute -top-4 left-7 flex h-[30px] w-8 items-center justify-center rounded-[54px] md:-top-5 md:left-8 md:size-10 lg:-top-7 lg:left-10 lg:size-14"
+                style="background-color: #083AD4;"
               >
-                <CommaIcon className="md:scale-150" />
+                <CommaIcon className="md:scale-110 lg:scale-150" />
               </div>
-              <p class="text-sm font-light leading-normal md:text-[26px]">
-                Khẩu ngữ không chỉ là kỹ năng, mà là khả năng sống trong phiên bản tiếng Trung của chính mình – tư duy,
-                kết nối & biểu đạt một cách tự nhiên
+              <p class="text-sm italic font-light leading-[1.3] tracking-normal md:text-[20px] lg:text-[26px]">
+                Học IELTS là cả một quá trình xây dựng năng lực ứng dụng ngôn ngữ bền vững và phát triển tư duy để tiến xa hơn
               </p>
             </div>
           </div>
         </div>
         <div
-          class="relative bottom-0 left-0 z-0 flex w-full flex-col items-end justify-between pl-4 max-sm:h-[331px] md:absolute md:top-0 md:flex-row md:pl-0"
+          class="relative bottom-0 left-0 z-0 flex w-full flex-col items-end justify-end pl-4 max-sm:h-[307px] md:absolute md:top-0 md:flex-row md:pl-0 xl:relative xl:w-auto"
         >
           <div
-            class="flex flex-col gap-6 pb-36 text-7xl font-black uppercase leading-none opacity-0 max-sm:hidden 2xl:pl-4 3xl:pl-10 3xl:opacity-[14%]"
+            class="relative h-[307px] w-full max-sm:translate-x-0 md:-mr-[100px] md:h-[642px] md:w-[848px] md:origin-right md:scale-[0.8] lg:scale-[0.9] xl:-ml-[160px] xl:mr-0 xl:scale-[0.8] 2xl:ml-0 2xl:scale-100 3xl:mr-0"
           >
-            <span class="block bg-gradient-to-r from-primary to-white bg-clip-text text-transparent">Cố</span>
-            <span class="block bg-gradient-to-r from-primary to-white bg-clip-text text-transparent">Vấn</span>
-            <span class="block bg-gradient-to-r from-primary to-white bg-clip-text text-transparent">Chuyên</span>
-            <span class="block bg-gradient-to-r from-primary to-white bg-clip-text text-transparent">Môn</span>
-          </div>
-          <div class="relative h-[463px] w-full max-sm:translate-x-0 md:-mr-[100px] md:w-[848px] 3xl:mr-0">
-            <div class="absolute -bottom-6 left-10 z-50 w-[213px] md:left-16 md:w-[415px]">
+            <div
+              class="absolute -left-[6.55px] top-[26px] z-50 h-[281px] w-[281px] md:-left-[11px] md:bottom-auto md:top-[47px] md:h-[595px] md:w-[595px]"
+            >
               <Image
                 src={IMAGES.introduce.gs_hbc}
                 alt={'gs_hbc'}
-                widths={[213, 415, 830]}
-                sizes={`(max-width: 768px) 213px, 415px`}
-                quality={75}
+                widths={[281, 595, 1200]}
+                sizes={`(max-width: 768px) 281px, 595px`}
+                quality={100}
                 format={'webp'}
-                class={'object-cover w-[213px] md:w-[415px] h-auto'}
+                class={'h-[281px] w-[281px] object-contain md:h-[595px] md:w-[595px]'}
                 loading={'eager'}
                 fetchpriority={'high'}
                 decoding={'sync'}
               />
-              <div class="absolute -right-14 -top-8 md:-right-0 md:top-0">
-                <VectorChatLarge2 className="w-16 md:w-auto" />
-                <p
-                  class="absolute -right-6 top-1/2 -translate-x-1/2 -translate-y-2/3 text-nowrap text-xs font-bold text-white md:-right-7 md:text-lg"
-                >
-                  学 霸 教 育
-                </p>
+              <div class="absolute -top-[20px] left-[160px] md:-top-[20px] md:left-[380px]">
+                <div class="relative flex items-center justify-center">
+                  <VectorChatLarge2 className="h-auto w-[111px] md:w-[238px]" />
+                  <p
+                    class="absolute left-[54%] top-[42%] -translate-x-1/2 -translate-y-1/2 text-nowrap text-[6px] font-bold uppercase leading-[1.08] tracking-[0.16em] text-white md:text-[18.38px]"
+                  >
+                    HỌC GIẢ QUỐC TẾ
+                  </p>
+                </div>
               </div>
-              <div class="absolute -right-6 top-[30%] -translate-y-2/3 scale-50 md:-right-0 md:top-1/3 md:scale-100">
+              <!-- <div class="absolute -right-6 top-[30%] -translate-y-2/3 scale-50 md:-right-0 md:top-1/3 md:scale-100">
                 <TextHBC2 />
               </div>
               <div
@@ -233,22 +234,55 @@ const expertRoles = [
                 <div class="rounded-md bg-gradient-to-b from-[#B90E0A] to-[#A51107] p-4">
                   <TextHBC1 />
                 </div>
+              </div> -->
+            </div>
+            <div
+              class="absolute bottom-0 right-0 z-0 h-[240px] w-full rounded-tl-[50px] bg-[#C0CFFB] md:h-[463px] md:w-[848px] md:rounded-tl-[100px]"
+            >
+            </div>
+            <div
+              class="absolute bottom-0 right-0 z-10 ml-auto h-[270px] w-full rounded-tl-[50px] bg-gradient-to-tl from-[#04195C] via-[#052284] to-[#3464F8] opacity-[28%] max-sm:w-[calc(100%-12px)] md:h-[522px] md:w-[827px] md:rounded-tl-[100px]"
+            >
+            </div>
+            <div
+              class="absolute bottom-0 right-0 z-20 ml-auto h-[263px] w-[339px] rounded-tl-[47px] bg-gradient-to-tl from-[#04195C] via-[#052284] to-[#3464F8] opacity-100 md:h-[522px] md:w-[800px] md:rounded-tl-[100px]"
+            >
+              {/* Inner wrapper for overflow hidden elements */}
+              <div class="absolute inset-0 overflow-hidden rounded-tl-[47px] md:rounded-tl-[100px]">
+                {/* Faded top right star */}
+                <div class="absolute right-2 top-[30%] z-0 max-sm:-right-6 md:right-2 md:top-[25%]">
+                  <FourPointedStar
+                    fromColor="#001F7D"
+                    toColor="#FFFFFF"
+                    className="size-28 opacity-20 md:size-[200px]"
+                  />
+                </div>
               </div>
-            </div>
-            <div
-              class="absolute bottom-0 right-0 z-0 h-[240px] w-full rounded-tl-[50px] bg-[#FFE6E0] md:h-[463px] md:w-[848px] md:rounded-tl-[100px]"
-            >
-            </div>
-            <div
-              class="absolute bottom-0 right-0 z-10 ml-auto h-[270px] w-full rounded-tl-[50px] bg-gradient-to-tl from-[#7D1900] via-[#B90E0A] to-[#ED6253] opacity-[28%] max-sm:translate-x-3 md:h-[522px] md:w-[827px] md:rounded-tl-[100px]"
-            >
-            </div>
-            <div
-              class="absolute bottom-0 right-0 z-20 ml-auto h-[284px] w-full rounded-tl-[50px] bg-gradient-to-tl from-[#7D1900] via-[#B90E0A] to-[#ED6253] opacity-100 max-sm:translate-x-6 md:h-[522px] md:w-[800px] md:rounded-tl-[100px]"
-            >
-              <div class="absolute -top-12 left-4 z-50 flex md:-top-20 md:left-10">
+
+              <!-- <div class="absolute -top-12 left-4 z-50 flex md:-top-20 md:left-10">
                 <FourPointedStar className="size-7 md:size-auto" />
                 <FourPointedStarMini className="mt-auto size-3 md:size-auto" />
+              </div> -->
+
+              {/* White stars on the right */}
+              <div class="absolute bottom-[15%] right-[15%] z-50 md:bottom-[20%] md:right-[22%]">
+                <FourPointedStar fromColor="#FFFFFF" toColor="#001F7D" className="size-14 opacity-90 md:size-[100px]" />
+                <FourPointedStarMini
+                  fromColor="#FFFFFF"
+                  toColor="#001F7D"
+                  className="absolute -bottom-2 -right-4 size-5 opacity-90 md:-bottom-3 md:-right-8 md:size-8"
+                />
+              </div>
+
+              {/* Text on the right */}
+              <div
+                class="absolute right-[5%] top-[5%] z-30 flex items-stretch gap-2 md:right-[15%] md:top-[8%] md:gap-4"
+              >
+                <div class="flex flex-col justify-center font-black uppercase leading-none text-white">
+                  <span class="text-left text-[20px] tracking-wide md:text-[32px] lg:text-[42px]">Jackson</span>
+                  <span class="text-left text-[28px] tracking-tight md:text-[46px] lg:text-[62px]">Howard</span>
+                </div>
+                <div class="w-[3px] bg-white md:w-[5px]"></div>
               </div>
             </div>
           </div>
@@ -257,7 +291,7 @@ const expertRoles = [
     </section>
 
     <section class="container relative h-auto w-full overflow-hidden pt-4 md:pt-0">
-      <ButtonTitle title="Triết lý & Tầm nhìn" icon={GraduationCap} className="ml-4 md:ml-0" />
+      <ButtonTitle title="Triết lý & Tầm nhìn" icon={GraduationCap1} className="ml-4 md:ml-0" iconClassName="size-[36px]" />
       <div class="mt-6 flex flex-col-reverse gap-7 px-4 md:mt-16 md:flex-row md:gap-6 md:gap-[52px]">
         <div class="w-full md:w-3/5">
           <Image
@@ -268,41 +302,35 @@ const expertRoles = [
             loading={'lazy'}
             class={'object-cover object-[50%_10%] md:w-full w-auto md:h-[262px]'}
           />
-          <p class="mt-4 px-2 text-justify text-base font-medium md:mt-12 md:px-0 md:text-lg">
-            Việc giảng dạy tiếng Trung không chỉ dừng ở truyền đạt kiến thức, mà phải giúp người học nắm đúng bản chất
-            ngữ pháp, hiểu sâu ý nghĩa và cơ chế vận hành của ngôn ngữ, từ đó hình thành năng lực sử dụng tiếng Trung
-            một cách tự tin và chính xác.
+          <p class="mt-4 px-2 text-justify text-base font-medium md:mt-12 md:w-4/5 md:px-0 md:text-lg lg:w-[70%]">
+            Với 20 năm kinh nghiệm giảng dạy và đào tạo tiếng Anh, thầy Jackson Howard hướng người học đến việc hiểu bản chất ngôn ngữ, học có hệ thống và biết cách vận dụng - không chỉ để đạt mục tiêu IELTS mà còn tạo nền tảng cho học tập và công việc sau này.
           </p>
         </div>
         <div class="flex w-full flex-col gap-3 md:w-2/5 md:gap-16">
           <div
-            class="relative flex h-10 w-full items-center justify-center gap-2 rounded-tl-[15px] bg-primary px-9 md:h-24 md:gap-0 md:rounded-tl-[30px]"
+            class="flex h-10 w-full items-center justify-start gap-3 rounded-tl-[15px] bg-[#072899] pl-12 pr-4 md:h-24 md:gap-6 md:rounded-tl-[30px] md:pl-16 lg:pl-20"
           >
-            <StarColorWhite className="absolute left-20 top-1/2 size-4 -translate-y-1/2 md:left-16 md:size-8" />
-
-            <h3 class="flex-1 text-center text-[15px] font-black uppercase text-white md:text-2xl">DẠY ĐÚNG . 精教</h3>
+            <StarColorWhite className="size-4 shrink-0 md:size-8" />
+            <h3 class="text-left text-[15px] font-black uppercase text-white md:text-2xl">HIỂU BẢN CHẤT</h3>
           </div>
           <div
-            class="relative flex h-10 w-full items-center justify-center gap-2 rounded-tl-[15px] bg-primary px-9 md:h-24 md:gap-0 md:rounded-tl-[30px]"
+            class="flex h-10 w-full items-center justify-start gap-3 rounded-tl-[15px] bg-[#072899] pl-12 pr-4 md:h-24 md:gap-6 md:rounded-tl-[30px] md:pl-16 lg:pl-20"
           >
-            <StarColorWhite className="absolute left-20 top-1/2 size-4 -translate-y-1/2 md:left-16 md:size-8" />
-
-            <h3 class="flex-1 text-center text-[15px] font-black uppercase text-white md:text-2xl">HIỂU SÂU . 深解</h3>
+            <StarColorWhite className="size-4 shrink-0 md:size-8" />
+            <h3 class="text-left text-[15px] font-black uppercase text-white md:text-2xl"> HỌC CÓ ĐỊNH HƯỚNG</h3>
           </div>
           <div
-            class="relative flex h-12 w-full items-center justify-center gap-2 rounded-tl-[15px] bg-primary px-9 md:h-[106px] md:gap-0 md:rounded-tl-[30px] md:pl-16"
+            class="flex h-12 w-full items-center justify-start gap-3 rounded-tl-[15px] bg-[#072899] pl-12 pr-4 md:h-[106px] md:gap-6 md:rounded-tl-[30px] md:pl-16 lg:pl-20"
           >
-            <StarColorWhite className="absolute left-20 top-1/2 size-4 -translate-y-1/2 md:left-16 md:size-8" />
-
-            <h3 class="flex flex-1 flex-col items-center">
-              <span class="text-[15px] font-black uppercase text-white md:text-2xl"> PHÁT TRIỂN BỀN VỮNG </span>
-              <span class="text-[15px] font-black uppercase text-white md:text-2xl"> 可持续发展 </span>
+            <StarColorWhite className="size-4 shrink-0 md:size-8" />
+            <h3 class="flex flex-col items-start">
+              <span class="text-left text-[15px] font-black uppercase text-white md:text-2xl"> TIẾN BỘ BỀN VỮNG </span>
             </h3>
           </div>
         </div>
       </div>
       <div
-        class="mt-4 flex w-full flex-col gap-4 rounded-tl-[20px] bg-primary px-[34px] py-[14px] md:mt-16 md:flex-row md:gap-6 md:rounded-tl-[60px] md:px-[65px] md:py-9"
+        class="mt-4 flex w-full flex-col gap-4 rounded-tl-[20px] bg-[#083AD4] px-[34px] py-[14px] md:mt-16 md:flex-row md:gap-6 md:rounded-tl-[60px] md:px-[65px] md:py-9"
       >
         <div class="flex flex-1 flex-col gap-3 md:gap-[26px]">
           <svg
@@ -324,9 +352,7 @@ const expertRoles = [
               fill="white"></path>
           </svg>
           <p class="text-justify text-[15px] text-white md:text-lg">
-            <span class="font-semibold">Với tầm nhìn dài hạn,</span> GS. Baozhang He hướng đến xây dựng một thế hệ giáo viên
-            tiếng Trung có nền tảng học thuật vững chắc, biết ứng dụng tư duy sư phạm hiện đại, và có khả năng dẫn dắt người
-            học phát triển bền vững trong bối cảnh giáo dục thay đổi.
+            <span class="font-semibold">Với tầm nhìn dài hạn,</span> Thầy Jackson Howard cùng THE IELTS SPACE hướng tới một môi trường học IELTS chuẩn mực, hiệu quả và lấy người học làm trung tâm và đặt vào không gian phát triển tốt nhất. Không chỉ giúp người học chinh phục band điểm mục tiêu mà còn xây dựng nền tảng tiếng Anh và năng lực sử dụng ngôn ngữ lâu dài. 
           </p>
         </div>
         <div class="h-auto w-full md:w-[612px]">
@@ -344,43 +370,74 @@ const expertRoles = [
 
     <section class="container relative h-auto w-full pb-0 pt-4 md:pb-32 md:pt-0 md:pt-24">
       <div class="flex flex-col justify-center md:flex-row md:gap-4 md:px-0">
-        <div class="w-full md:sticky md:top-[100px] md:w-[488px] md:self-start md:pt-5">
-          <ButtonTitle title="Thông tin chuyên gia" icon={GraduationCap} className="mb-4 ml-4 md:ml-auto md:mr-auto" />
-          <Image
-            src={IMAGES.introduce.bao_zhang_he}
-            alt={'bao_zhang_he'}
-            width={488}
-            height={365}
-            loading={'lazy'}
-            class={'object-cover w-[286px] h-[214px] md:w-[488px] md:h-[365px] mx-auto'}
-          />
+        <div class="w-full md:sticky md:top-[100px] md:w-[488px] md:self-start md:-mt-[22px]">
+          <ButtonTitle title="Thông tin chuyên gia" icon={GraduationCap} className="mb-4 ml-4 md:ml-auto md:mr-auto" iconClassName="size-[36px]" />
+          <div class="relative mx-auto mt-6 w-full max-w-[488px] aspect-[488/385] md:mt-10">
+            <Image
+              src={IMAGES.introduce.imgCoVanProfile}
+              alt={'bao_zhang_he'}
+              width={413}
+              height={369}
+              loading={'lazy'}
+              class={'absolute top-[4.2%] left-[8.2%] w-[84.6%] h-auto object-contain'}
+            />
+            <Image
+              src={IMAGES.introduce.imgGocTraiPhiaTren}
+              alt={'Góc trái phía trên'}
+              width={79}
+              height={67}
+              loading={'lazy'}
+              class={'absolute top-0 left-[22.3%] w-[16.2%] h-auto object-contain rounded-xl'}
+            />
+            <div
+              class="absolute top-[26.8%] left-[8.6%] w-[7.6%] aspect-square rounded-xl bg-gradient-to-b from-[#4E89F0] to-white"
+            ></div>
+            <Image
+              src={IMAGES.introduce.imgCoVanGocTrai}
+              alt={'Góc trái'}
+              width={79}
+              height={67}
+              loading={'lazy'}
+              class={'absolute top-[39.7%] left-[2.7%] w-[16.2%] h-auto object-contain rounded-xl'}
+            />
+            <Image
+              src={IMAGES.introduce.imgGocPhaiIelts}
+              alt={'IELTS'}
+              width={91}
+              height={79}
+              loading={'lazy'}
+              class={'absolute top-[56.9%] left-[84%] w-[18.6%] h-auto object-contain rounded-xl'}
+            />
+            <div
+              class="absolute top-[78.7%] left-[85.2%] w-[7.6%] aspect-square rounded-xl bg-gradient-to-b from-[#4E89F0] to-white"
+            ></div>
+          </div>
           <div
-            class="mx-auto flex h-[60px] w-[250px] flex-col items-center justify-center rounded-[10px] bg-gradient-to-r from-[#7D1900] to-[#B90E0A] font-black uppercase text-white md:h-[108px] md:w-auto"
+            class="mx-auto flex h-[60px] w-full flex-col items-center justify-center rounded-[10px] bg-[#072899] font-black uppercase text-white md:h-[108px] md:max-w-[488px]"
           >
-            <span class="block text-[15px] md:text-[26px]">Giáo sư</span>
-            <span class="block text-[15px] md:text-[32px]">何宝璋 Baozhang he</span>
+            <span class="block text-[15px] md:text-[26px]">THẠC SĨ</span>
+            <span class="block text-[15px] md:text-[32px]">JACKSON HOWARD</span>
           </div>
           <div class="mt-2 flex items-center justify-center gap-2 md:gap-4">
             <StarColorGradient className="size-5 size-9" />
             <div class="text-[15px] md:text-[20px]">
-              <p class="bg-gradient-to-r from-[#8A0101] to-[#C0262C] bg-clip-text font-black text-transparent">
-                Nguyên Giám đốc Chương trình
+              <p class="font-black text-[#F97316]">
+                Cựu Giám khảo IELTS Speaking & Writing
               </p>
-              <p class="bg-gradient-to-r from-[#8A0101] to-[#C0262C] bg-clip-text font-black text-transparent">
+              <!-- <p class="bg-gradient-to-r from-[#8A0101] to-[#C0262C] bg-clip-text font-black text-transparent">
                 tiếng Trung tại Đại học Harvard
-              </p>
+              </p> -->
             </div>
           </div>
           <p class="mt-2 px-4 text-center text-justify text-[15px] italic md:px-10">
-            Chuyên gia trong các lĩnh vực: ngữ pháp tiếng Trung hiện đại, ngữ pháp nhận thức (Cognitive Grammar), động
-            thái ngữ (Aspectuality) & giảng dạy Hán ngữ như ngoại ngữ
+            Chuyên gia đào tạo Anh ngữ, khảo thí IELTS và quản lý học thuật với kinh nghiệm làm việc tại nhiều môi trường giáo dục quốc tế.
           </p>
         </div>
-        <div class="mt-4 flex flex-1 flex-col md:mt-0 md:gap-44">
+        <div class="mt-4 flex flex-1 flex-col md:mt-0 md:w-[686px] md:max-w-[686px] md:gap-[140px]">
           {
             expertInformation.map((item) => (
-              <div class="relative flex flex-col items-center rounded-[18px] bg-gradient-to-b from-[#FFF3F3] to-[#FFFDF9] py-[18px] md:py-[34px]">
-                <h3 class="text[15px] relative flex h-[26px] items-center justify-center gap-2 text-nowrap rounded-md bg-primary px-2 font-black uppercase text-white md:absolute md:-top-[22px] md:left-1/2 md:h-11 md:-translate-x-1/2 md:gap-4 md:rounded-xl md:px-6 md:text-[20px]">
+              <div class="relative flex flex-col items-center rounded-[18px] bg-gradient-to-b from-[#F2F5FF] to-[#FFFDF9] py-[18px] md:py-[34px]">
+                <h3 class="text[15px] relative flex h-[26px] items-center justify-center gap-2 text-nowrap rounded-md bg-[#072899] px-2 font-black uppercase text-white md:absolute md:-top-[22px] md:left-1/2 md:h-11 md:-translate-x-1/2 md:gap-4 md:rounded-xl md:px-6 md:text-[20px]">
                   <span class="block size-2 rounded-full bg-white md:size-[15px]" />
                   {item.title}
                   <span class="block size-2 rounded-full bg-white md:size-[15px]" />
@@ -410,22 +467,48 @@ const expertRoles = [
                   </div>
                 )}
                 {item.type === 2 && (
-                  <div class="mt-6 flex w-full justify-center gap-4 px-8">
-                    {item.albums.map((img) => (
+                  <div class="mt-6 flex w-full flex-col items-center justify-center gap-4 px-0 md:px-8">
+                    <div class="flex w-full justify-center gap-2 md:gap-4">
                       <Image
-                        src={img}
+                        src={item.albums[0]}
                         width={272}
                         height={357}
-                        alt={img.src}
+                        alt={item.albums[0].src}
                         widths={[150, 272, 300, 544]}
                         sizes="(max-width: 768px) 150px, 272px"
                         quality={75}
                         format={'webp'}
                         loading={'lazy'}
                         decoding={'async'}
-                        class={'h-[195px] w-[150px] object-cover md:h-[357px] md:w-[272px]'}
+                        class={'h-auto w-[calc(50%-4px)] object-cover md:w-[calc(50%-8px)]'}
                       />
-                    ))}
+                      <Image
+                        src={item.albums[1]}
+                        width={272}
+                        height={250}
+                        alt={item.albums[1].src}
+                        widths={[150, 272, 300, 544]}
+                        sizes="(max-width: 768px) 150px, 272px"
+                        quality={75}
+                        format={'webp'}
+                        loading={'lazy'}
+                        decoding={'async'}
+                        class={'h-auto w-[calc(50%-4px)] object-cover md:w-[calc(50%-8px)]'}
+                      />
+                    </div>
+                    <Image
+                      src={item.albums[2]}
+                      width={560}
+                      height={300}
+                      alt={item.albums[2].src}
+                      widths={[300, 560, 800]}
+                      sizes="(max-width: 768px) 300px, 560px"
+                      quality={75}
+                      format={'webp'}
+                      loading={'lazy'}
+                      decoding={'async'}
+                      class={'h-auto w-full object-cover'}
+                    />
                   </div>
                 )}
                 {item.type === 3 && (
@@ -458,10 +541,10 @@ const expertRoles = [
       </div>
     </section>
 
-    <section class="relative h-auto w-full from-[#FFF3F3] to-[#FFF8F8] pb-0 md:bg-gradient-to-r md:pb-16">
+    <section class="relative mt-4 h-auto w-full from-[#EDF2FF] to-[#FFFFFF] pb-0 md:bg-gradient-to-b md:pb-16">
       <div class="container py-0 md:py-9">
         <div class="flex flex-col md:flex-row">
-          <div class="flex flex-col items-center">
+          <div class="flex w-full flex-col items-center justify-center md:w-[779px]">
             <Image
               src={IMAGES.introduce.advise}
               width={108}
@@ -475,50 +558,54 @@ const expertRoles = [
               decoding={'async'}
               class={cn('object-cover h-11 w-auto md:size-auto')}
             />
-            <h2 class="mb-0 text-lg font-black uppercase text-primary md:my-6 md:text-[42px]">
-              Vai trò chuyên gia tại học bá
+            <h2 class="mb-0 text-center text-lg font-black uppercase text-[#072899] md:my-6 md:w-[752px] md:text-[30px]">
+              VAI TRÒ CHUYÊN GIA TẠI 
+              <br /> 
+              THE IELTS SPACE
             </h2>
-            <p class="text-[15px] font-bold md:text-[34px]">Cố vấn chuyên môn Quốc tế</p>
-            <p class="text-[15px] font-bold md:text-[34px]">(International Academic Advisor)</p>
+            <div class="flex flex-col text-center md:w-[675px]">
+              <p class="text-[15px] font-bold md:text-[34px]">Cố vấn chuyên môn Quốc tế</p>
+              <p class="text-[15px] font-bold md:text-[34px]">(International Academic Advisor)</p>
+            </div>
             <div
-              class="mt-2 flex h-[26px] w-[211px] items-center justify-center rounded-sm bg-primary text-[15px] font-black uppercase text-white md:mt-6 md:h-16 md:w-[423px] md:rounded-xl md:text-[30px]"
+              class="mt-8 flex h-[26px] w-[211px] items-center justify-center rounded-sm bg-gradient-to-r from-[#F97316] to-[#FFA262] text-[15px] font-black uppercase text-white md:mt-6 md:h-[64px] md:w-[423px] md:rounded-[11.5px] md:text-[30px]"
             >
-              Giáo sư BaoZhang He
+              JACKSON HOWARD
             </div>
           </div>
-          <div class="h-[230px] w-full overflow-hidden md:h-[400px] md:w-auto">
-            <div class="relative size-[280px] overflow-hidden max-sm:w-full md:size-[505px]">
-              <div class="absolute left-1/2 size-[280px] max-sm:-translate-x-1/2 md:bottom-0 md:left-0 md:size-[505px]">
+          <div class="relative h-[230px] w-full max-sm:overflow-hidden md:size-[505px] md:opacity-80 md:-translate-x-8 md:translate-y-[70px]">
+            <div class="absolute inset-0 max-sm:w-full max-sm:overflow-hidden md:h-[462px] md:w-[505px] md:overflow-hidden">
+              <div class="absolute left-1/2 size-[280px] max-sm:-translate-x-1/2 md:top-0 md:left-0 md:size-[505px]">
                 <EllipseVtcg1 className="absolute left-0 top-0 z-10 size-[280px] animate-spin-slow md:size-[505px]" />
                 <EllipseVtcg2
                   className="absolute left-[20%] top-[20%] z-20 size-[168px] animate-spin-reverse md:size-[302px]"
                 />
               </div>
-              <Image
-                src={IMAGES.introduce.gs_hbc}
-                alt={'gs_hbc'}
-                width={400}
-                height={600}
-                widths={[150, 270, 300, 540]}
-                sizes="(max-width: 768px) 150px, 270px"
-                quality={75}
-                format={'webp'}
-                loading={'lazy'}
-                decoding={'async'}
-                class="absolute left-1/2 top-1/2 z-30 h-[222px] w-auto -translate-x-1/2 -translate-y-1/2 object-cover md:h-[400px]"
-              />
             </div>
+            <Image
+              src={IMAGES.introduce.gs_hbc}
+              alt={'gs_hbc'}
+              width={468}
+              height={468}
+              widths={[150, 270, 300, 540]}
+              sizes="(max-width: 768px) 150px, 270px"
+              quality={75}
+              format={'webp'}
+              loading={'lazy'}
+              decoding={'async'}
+              class="absolute left-1/2 top-1/2 z-30 h-[222px] w-auto -translate-x-1/2 -translate-y-1/2 object-contain md:bottom-auto md:-top-[6px] md:left-[28px] md:translate-x-0 md:translate-y-0 md:h-[468px] md:w-[468px]"
+            />
           </div>
         </div>
         <div
-          class="scrollbar-hide grid auto-cols-[298px] grid-flow-col grid-rows-2 gap-6 overflow-x-scroll from-[#FFF3F3] to-[#FFF8F8] px-4 py-7 max-sm:bg-gradient-to-r md:auto-cols-auto md:grid-cols-3 md:gap-[30px] md:overflow-x-visible md:py-0"
+          class="scrollbar-hide relative z-40 grid auto-cols-[298px] grid-flow-col grid-rows-2 gap-6 overflow-x-scroll from-[#EDF2FF] to-[#FFFFFF] px-4 py-7 max-sm:bg-gradient-to-b md:auto-cols-auto md:grid-cols-3 md:grid-flow-row md:gap-[30px] md:overflow-x-visible md:py-0"
         >
           {
             expertRoles.map((item) => (
-              <div class="group flex items-center gap-2 rounded-md bg-white p-5 transition-colors duration-500 ease-in-out hover:bg-primary hover:text-white">
+              <div class="group flex items-center gap-2 rounded-md bg-white p-5 transition-colors duration-500 ease-in-out hover:bg-[#FFF6E5]">
                 <div
-                  class="flex size-6 flex-shrink-0 items-center justify-center rounded-full border-2 border-white bg-gradient-to-l from-[#B90E0A] to-[#7D1900] transition-all duration-500 ease-in-out group-hover:!size-11 md:size-8"
-                  style="box-shadow: 3.84px 3.07px 20.81px 0px #B90E0A66;"
+                  class="flex size-6 flex-shrink-0 items-center justify-center rounded-full border-2 border-white bg-gradient-to-b from-[#F97316] to-[#FFCF5A] transition-all duration-500 ease-in-out group-hover:!size-11 md:size-8"
+                  style="box-shadow: 3.84px 3.07px 20.81px 0px #F9731666;"
                 >
                   <StarColorWhite className="size-3 md:size-4 group-hover:!size-6 transition-all duration-500 ease-in-out" />
                 </div>
@@ -531,42 +618,32 @@ const expertRoles = [
     </section>
 
     <section class="relative h-auto w-full overflow-hidden pb-0 pt-4 md:pt-16">
-      <Image
-        src={IMAGES.introduce.bg_nen}
-        alt={'gs_hbc'}
-        width={993}
-        height={994}
-        quality={60}
-        format={'webp'}
-        loading={'lazy'}
-        decoding={'async'}
-        class={'object-cover w-auto mb-auto absolute scale-75 -top-[18%] -right-[50%] md:-top-[30%] md:-right-[28%] 2xl:-top-[30%] md:-right-[50%] 2xl:-right-[20%] z-0'}
-      />
+      <div class="pointer-events-none absolute -left-[20%] -top-[10%] z-0 h-[347px] w-[376px] bg-[#F97316] opacity-50 blur-[248px] md:-left-[5%] md:-top-[5%]"></div>
       <div class="container relative z-50">
-        <div class="flex items-center gap-2 md:justify-center md:gap-4">
-          <ArrowAnimation />
-          <Image
-            src={IMAGES.introduce.kptt_sk}
-            alt={'gs_hbc'}
-            width={73}
-            height={79}
-            widths={[28, 56, 73, 146]}
-            sizes="(max-width: 768px) 28px, 73px"
-            quality={75}
-            format={'webp'}
-            loading={'lazy'}
-            decoding={'async'}
-            class={'object-cover w-7 md:w-auto h-[30px] md:h-auto mb-auto'}
-          />
-          <h2 class="flex flex-col justify-center">
-            <span class="block text-center text-lg font-black uppercase text-primary md:text-[42px]"
-              >Khám phá tin tức/ sự kiện</span
+        <div class="flex flex-col items-center justify-center gap-2 md:gap-4">
+          <h2 class="flex flex-col items-center justify-center gap-1 md:gap-0">
+            <span class="flex items-center justify-center gap-2 text-center text-lg font-black uppercase text-[#072899] md:text-[42px] md:gap-4"
+              >
+              <Image
+                src={IMAGES.introduce.kptt_sk}
+                alt={'kptt_sk'}
+                width={73}
+                height={79}
+                widths={[28, 56, 73, 146]}
+                sizes="(max-width: 768px) 28px, 73px"
+                quality={75}
+                format={'webp'}
+                loading={'lazy'}
+                decoding={'async'}
+                class={'object-contain w-7 h-[30px] mb-1 md:hidden'}
+              />
+              Khám phá tin tức/ sự kiện</span
             >
             <span class="block text-center text-[15px] font-bold md:mt-4 md:text-[26px]"
               >Từ Cố vấn chuyên môn Quốc tế</span
             >
-            <span class="block text-center text-[15px] font-bold leading-3 md:text-[34px] md:leading-7"
-              >Giáo sư Baozhang He</span
+            <span class="block text-center text-[15px] font-bold leading-3 md:text-[34px] md:leading-7 mt-1 md:mt-0"
+              >Thạc sĩ Jackson Howard</span
             >
           </h2>
         </div>
@@ -595,19 +672,9 @@ const expertRoles = [
         />
       </div>
       <div class="relative z-50 pt-12">
-        <SimpleFormRegister dataInput={DATA_VALUE.CONSULTANT} isSimpleForm />
+        <!-- <SimpleFormRegister dataInput={DATA_VALUE.CONSULTANT} isSimpleForm /> -->
+        <AboutRegisterSection dataInput={DATA_VALUE.ABOUT} />
       </div>
-      <Image
-        src={IMAGES.introduce.bg_nen}
-        alt={'bg_nen'}
-        width={842}
-        height={842}
-        quality={60}
-        format={'webp'}
-        loading={'lazy'}
-        decoding={'async'}
-        class={'object-cover scale-90 w-auto mb-auto absolute z-0 -left-[50%] md:-left-[15%] bottom-[50%] md:bottom-[30%]'}
-      />
     </section>
   </div>
 </BaseLayout>

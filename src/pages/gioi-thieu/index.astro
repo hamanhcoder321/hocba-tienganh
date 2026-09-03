@@ -296,7 +296,7 @@ const cards = [
           
           {/* Features / Icons */}
           <div id="hero-features" class="relative z-20 mt-8 mb-10 px-4 flex flex-col gap-5 md:gap-0 md:justify-between md:absolute md:top-[474px] md:left-[72px] md:w-[284px] md:h-[157px] md:mt-0 md:mb-0 md:px-0 text-white">
-            <div class="flex items-center gap-4 max-md:[animation:none_!important] md:animate-in md:fade-in md:zoom-in-95 md:slide-in-from-bottom-6 md:fill-mode-both" style="animation-duration: 5s; animation-delay: 200ms; animation-iteration-count: infinite; animation-direction: alternate;">
+            <div class="flex items-center gap-4 custom-fade-1">
               {/* Icon 1 */}
               <div class="flex size-10 flex-shrink-0 items-center justify-center rounded-full border border-white">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="size-5">
@@ -306,7 +306,7 @@ const cards = [
               </div>
               <span class="text-sm font-bold uppercase md:text-base">GIÁO VIÊN DẪN DẮT</span>
             </div>
-            <div class="flex items-center gap-4 max-md:[animation:none_!important] md:animate-in md:fade-in md:zoom-in-95 md:slide-in-from-bottom-6 md:fill-mode-both" style="animation-duration: 5s; animation-delay: 500ms; animation-iteration-count: infinite; animation-direction: alternate;">
+            <div class="flex items-center gap-4 custom-fade-2">
               {/* Icon 2 */}
               <div class="flex size-10 flex-shrink-0 items-center justify-center rounded-full border border-white">
                 <svg width="46" height="47" viewBox="0 0 46 47" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -328,7 +328,7 @@ const cards = [
               </div>
               <span class="text-sm font-bold uppercase md:text-base">CÔNG NGHỆ TỐI ƯU</span>
             </div>
-            <div class="flex items-center gap-4 max-md:[animation:none_!important] md:animate-in md:fade-in md:zoom-in-95 md:slide-in-from-bottom-6 md:fill-mode-both" style="animation-duration: 5s; animation-delay: 800ms; animation-iteration-count: infinite; animation-direction: alternate;">
+            <div class="flex items-center gap-4 custom-fade-3">
               {/* Icon 3 */}
               <div class="flex size-10 flex-shrink-0 items-center justify-center rounded-full border border-white">
                 <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -347,13 +347,12 @@ const cards = [
           id="history-header"
           class="relative flex items-center justify-center gap-[12px] py-4 xl:py-0 xl:absolute xl:-top-[120px] xl:left-1/2 xl:-translate-x-1/2 xl:w-[790px] xl:h-[106px] z-20"
         >
-           <AnimatedArrow
+          <VectorArrow
             fromColor="#FF9A3C"
             midColor="#4A72F0"
             toColor="#2751C7"
             stopOffset="0.5"
-            className={'hidden md:block absolute -left-1 top-2 size-4 object-cover md:-top-4 md:left-2 md:size-8'}
-            client:load
+            className={'hidden md:block absolute -left-1 top-2 size-4 object-cover md:-top-1 md:-left-3 md:size-8'}
           />
           <h2 class="text-[#072899] font-black uppercase text-center text-lg md:text-[42px] md:leading-[64px]">CÂU CHUYỆN VỀ THE IELTS SPACE</h2>
           <Image src={imgRocketGioiThieu} alt="Rocket" class="h-10 w-auto md:h-16 object-contain" densities={[1, 2]} quality={95} />
@@ -366,14 +365,14 @@ const cards = [
           />
         </div>
         
-        <div id="history-content" class="flex flex-col xl:flex-row justify-between items-start gap-4 md:gap-[40px] xl:gap-[4%] w-full mt-4 md:mt-[40px] xl:mt-[150px] relative z-10">
-          <div id="history-text-left" class="w-full xl:w-[52%] flex flex-col shrink-0">
+        <div id="history-content" class="flex flex-col xl:flex-row justify-between items-start gap-4 md:gap-[40px] xl:gap-[5%] w-full mt-4 md:mt-[40px] xl:mt-[150px] relative z-10">
+          <div id="history-text-left" class="w-full xl:w-[53%] flex flex-col shrink-0">
             <ButtonTitle 
               title="Lịch sử hình thành" 
               icon={CustomHomeIcon} 
               className="mt-2 md:mt-0 w-max md:w-[275px] px-5 md:px-[13px] h-[60px] gap-[10px] rounded-[20px] border py-[18px] z-10" 
             />
-            <div id="history-text" class="mt-4 xl:mt-[4%] flex flex-col w-full gap-[16px] rounded-[14px] py-[16px] z-10 text-[#4A4A4A] text-base md:text-[19px] md:leading-[1.6] text-left">
+            <div id="history-text" class="mt-4 xl:mt-[5%] flex flex-col w-full gap-[16px] rounded-[14px] py-[16px] z-10 text-[#4A4A4A] text-base md:text-[19px] md:leading-[1.6] text-left">
               <p>
                 Ở mô hình học tập truyền thống, người học thường phải thích nghi với một lộ trình, một tiến độ được thiết kế chung cho tất cả. Trong khi đó, sự phát triển của công nghệ đang mở ra khả năng hiểu người học sâu hơn, phản hồi nhanh hơn và tạo ra những trải nghiệm học tập linh hoạt, phù hợp hơn với từng cá nhân. Nhận ra điều đó, tháng 06/2024, <strong class="text-black">THE IELTS SPACE</strong> – hệ thống đào tạo Anh ngữ trực tuyến được thành lập, nổi bật với hệ sinh thái học tập tích hợp thế hệ<span id="history-dots" class="md:hidden">...</span><span id="history-more-text" class="hidden md:inline"> mới hướng tới việc tái thiết cách học truyền thống bằng tri thức và công nghệ tương lai. Từ đó giúp người học chinh phục mục tiêu tiếng Anh một cách nhanh hơn, dễ dàng hơn, hiệu quả hơn và thú vị hơn.</span>
               </p>
@@ -386,7 +385,7 @@ const cards = [
             </div>
           </div>
           
-          <div id="history-image-right" class="relative w-full xl:w-[44%] aspect-[633/570] rounded-[22px] z-20 shrink-0 mx-auto xl:mx-0 xl:mt-[30px]">
+          <div id="history-image-right" class="relative w-full xl:w-[45%] aspect-[633/570] rounded-[22px] z-20 shrink-0 mx-auto xl:mx-0 xl:mt-[30px]">
             <Image
               src={IMAGES.introduce.lich_su_hinh_thanh2}
               alt="lich_su_hinh_thanh2"
@@ -403,7 +402,7 @@ const cards = [
               height={416}
               quality={95}
               densities={[1, 2]}
-              class="object-cover object-left absolute top-[15.2%] left-[12.6%] w-[73%] aspect-[460/416] rounded-[22px] z-10"
+              class="object-cover object-left absolute top-[15.3%] left-[12.7%] w-[73%] aspect-[460/416] rounded-[22px] z-10"
             />
             <Image
               src={IMAGES.introduce.staff_founder}
@@ -508,9 +507,9 @@ const cards = [
               <Image
                 src={iconTenLua}
                 alt={'Sứ mệnh'}
-                width={68}
-                height={68}
-                class={'object-cover size-[50px] md:size-[70px]'}
+                width={90}
+                height={90}
+                class={'object-cover size-[70px] md:size-[90px]'}
               />
               <p class="text-3xl font-black uppercase text-[#072899] md:text-[48px] leading-none">Sứ mệnh</p>
             </div>
@@ -529,9 +528,14 @@ const cards = [
         <ButtonTitle title="Giá trị cốt lõi" icon={Star} className="mb-6 md:mb-16" />
         <div class="flex flex-col items-center gap-4 md:flex-row md:justify-center md:gap-16">
           {
-            coreValues.map((value) => (
+            coreValues.map((value) => {
+              const cardClass = cn(
+                "group relative flex h-[161px] w-full max-w-[300px] p-2 md:max-w-none md:h-[368px] flex-shrink-0 flex-col items-center justify-center gap-4 rounded-xl bg-[#052284] transition-all duration-300 ease-in-out md:gap-10 md:rounded-[28px] md:hover:bg-gradient-to-b md:hover:from-[#F97316] md:hover:to-[#FFCF5A]",
+                value.width
+              );
+              return (
               <div
-                class={`group relative flex h-[161px] w-full max-w-[300px] p-2 md:max-w-none md:h-[368px] ${value.width} flex-shrink-0 flex-col items-center justify-center gap-4 rounded-xl bg-[#052284] transition-colors duration-300 ease-in-out md:gap-10 md:rounded-[28px] md:hover:bg-[#F97316]`}
+                class={cardClass}
                 style="box-shadow: 4px 4px 37px 0px #FF989840;"
               >
                 <Image
@@ -547,7 +551,8 @@ const cards = [
                   {value.title}
                 </h3>
               </div>
-            ))
+              );
+            })
           }
         </div>
       </div>
@@ -558,13 +563,12 @@ const cards = [
         <div
           class="relative mx-auto flex h-auto w-fit items-center gap-6 px-4 text-[52px] font-black uppercase text-primary md:h-[64px] md:px-10"
         >
-          <AnimatedArrow
+          <VectorArrow
             fromColor="#FF9A3C"
             midColor="#4A72F0"
             toColor="#2751C7"
             stopOffset="0.5"
-            className={'hidden md:block absolute -left-1 top-2 size-4 object-cover md:-top-4 md:left-2 md:size-8'}
-            client:load
+            className={'hidden md:block absolute -left-1 top-2 size-4 object-cover md:-top-1 md:-left-4 md:size-8'}
           />
           <h2 class="text-center text-[24px] leading-snug text-[#072899] md:text-[42px]">ĐỘI NGŨ CHUYÊN GIA TẠI <br class="md:hidden" /> THE IELTS SPACE</h2>
           <VectorArrow
@@ -572,7 +576,7 @@ const cards = [
             midColor="#4A72F0"
             toColor="#2751C7"
             stopOffset="0.5"
-            className={'hidden md:block absolute -right-1 bottom-2 size-4 rotate-180 object-cover md:-bottom-4 md:right-2 md:size-8'}
+            className={'hidden md:block absolute -right-1 bottom-2 size-4 rotate-180 object-cover md:-bottom-1 md:-right-4 md:size-8'}
           />
         </div>
         <div
@@ -612,7 +616,7 @@ const cards = [
           {/* Right Image */}
 
           <div class="relative z-10 w-full md:w-[600px] flex justify-center pointer-events-none md:-mt-16">
-            <svg class="absolute top-[26%] left-[12%] w-4 h-4 text-[#8CA8F9] z-20" viewBox="0 0 24 24" fill="currentColor"> <path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z"></path> </svg>
+            <svg class="absolute top-[27%] left-[13%] w-4 h-4 text-[#8CA8F9] z-20" viewBox="0 0 24 24" fill="currentColor"> <path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z"></path> </svg>
 
             <Image
               src={coVanTiengAnh}
@@ -886,3 +890,44 @@ const cards = [
     });
   </script>
 </BaseLayout>
+
+<style is:global>
+  @media (min-width: 768px) {
+    .custom-fade-1, .custom-fade-2, .custom-fade-3 {
+      animation-duration: 6s;
+      animation-iteration-count: infinite;
+      animation-fill-mode: both;
+      animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+      opacity: 0;
+    }
+    .custom-fade-1 { animation-name: fade1; }
+    .custom-fade-2 { animation-name: fade2; }
+    .custom-fade-3 { animation-name: fade3; }
+    
+    @keyframes fade1 {
+      0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+      3% { opacity: 1; transform: translateY(0) scale(1); }
+      96% { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(20px) scale(0.95); }
+    }
+    @keyframes fade2 {
+      0%, 3% { opacity: 0; transform: translateY(20px) scale(0.95); }
+      5% { opacity: 1; transform: translateY(0) scale(1); }
+      96% { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(20px) scale(0.95); }
+    }
+    @keyframes fade3 {
+      0%, 5% { opacity: 0; transform: translateY(20px) scale(0.95); }
+      7% { opacity: 1; transform: translateY(0) scale(1); }
+      96% { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(20px) scale(0.95); }
+    }
+  }
+  @media (max-width: 767px) {
+    .custom-fade-1, .custom-fade-2, .custom-fade-3 {
+      opacity: 1;
+      transform: none;
+      animation: none !important;
+    }
+  }
+</style>

@@ -14,6 +14,7 @@ const TEACHERS = [
     badgeBottom: '8.5',
     image: imgGv1.src,
     name: 'THẠC SĨ LINH PHƯƠNG',
+    slug: 'ths-linh-phuong',
     title: '12 Năm Kinh Nghiệm Giảng Dạy',
     description: 'Thạc sĩ Đại học Kinh tế Quốc dân, Cử\nnhân Đại học Khoa học Ứng dụng\nKymenlaakso, Phần Lan (Học bổng)'
   },
@@ -22,6 +23,7 @@ const TEACHERS = [
     badgeBottom: '8.5',
     image: imgGv2.src,
     name: 'GIẢNG VIÊN YẾN CHI',
+    slug: 'giang-vien-yen-chi',
     title: 'Hơn 10 Năm Kinh Nghiệm Giảng Dạy Chứng Chỉ IELTS Và TOEIC',
     description: '2 lần đạt 8.5 IELTS, Đại sứ bài thi IELTS\ntrên máy tính 2023 của IDP, Cố vấn\nHọc thuật của nhiều đơn vị'
   },
@@ -30,6 +32,7 @@ const TEACHERS = [
     badgeBottom: 'BẢN XỨ',
     image: imgGv3.src,
     name: 'GIẢNG VIÊN JACKSON HOWARD',
+    slug: 'giang-vien-jackson-howard',
     title: 'Cựu Giám Khảo Bài Thi IELTS',
     description: '20 năm kinh nghiệm giảng dạy và\nluyện thi tiếng Anh cho học sinh thế\ngiới, Cựu Trưởng khoa Tiếng Anh\nTrường Western Sydney University'
   },
@@ -38,6 +41,7 @@ const TEACHERS = [
     badgeBottom: '8.5',
     image: imgGv4.src,
     name: 'GIẢNG VIÊN THU TRANG',
+    slug: 'giang-vien-thu-trang',
     title: '4+ năm kinh nghiệm giảng dạy \n IELTS',
     description: 'Cử nhân xuất sắc Đại học Kinh tế \n Quốc Dân, Thành viên dự án nâng \n cao năng lực ngoại ngữ cho giáo viên \n của Sở Giáo dục Hà Nội, SAT 1430',
   },
@@ -50,7 +54,7 @@ const StaticTeacherCarousel = () => {
         className="relative w-full"
         opts={{
           align: 'start',
-          loop: true,
+          loop: false,
         }}
       >
         <CarouselContent className="-ml-[27.8px] md:-ml-[40px] pb-12 h-full">
@@ -109,9 +113,14 @@ const StaticTeacherCarousel = () => {
 
                 {/* Search / Plus icon button at the bottom */}
                 <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 z-30">
-                  <div className="flex size-10 items-center justify-center rounded-full bg-white shadow-md transition-transform hover:scale-110 cursor-pointer">
-                    <img src={iconSearch.src} alt="Search" className="size-5" />
-                  </div>
+                  <a 
+                    href={teacher.slug ? `/doi-ngu-giang-vien/${teacher.slug}` : "#"} 
+                    className="cursor-pointer flex size-10 items-center justify-center rounded-full bg-white shadow-md transition-all duration-300 hover:scale-110 [&>svg]:hover:-scale-x-100"
+                  >
+                    <svg className="size-5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M17.6346 9.37033H14.0929M14.0929 9.37033H10.5512M14.0929 9.37033V5.82867M14.0929 9.37033V12.912M8.19011 15.2731L1.10678 22.3564M14.0929 17.6342C18.6569 17.6342 22.3568 13.9344 22.3568 9.37033C22.3568 4.80631 18.6569 1.10645 14.0929 1.10645C9.52887 1.10645 5.829 4.80631 5.829 9.37033C5.829 13.9344 9.52887 17.6342 14.0929 17.6342Z" stroke="#0935C4" strokeWidth="2.21354" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </a>
                 </div>
               </div>
             </CarouselItem>

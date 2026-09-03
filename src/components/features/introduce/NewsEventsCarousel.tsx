@@ -92,21 +92,21 @@ const NewsEventsCarousel = ({ events }: NewsEventsCarouselProps) => {
         <Button
           variant="outline"
           size="icon"
-          className="absolute left-2 top-[50%] z-10 size-[30px] -translate-y-1/2 rounded-full bg-white p-0 hover:bg-gray-100 md:-left-20 md:top-1/2 md:size-10"
+          className="absolute left-2 top-[50%] z-10 size-[30px] -translate-y-1/2 rounded-full bg-white p-0 hover:bg-gray-100 md:hidden"
           disabled={!canScrollPrev}
           onClick={() => api?.scrollPrev()}
         >
-          <CarouselButton className="!size-[30px] md:!size-10" />
+          <CarouselButton className="!size-[30px]" />
         </Button>
 
         <Button
           variant="outline"
           size="icon"
-          className="absolute right-2 top-[50%] z-10 size-[30px] -translate-y-1/2 rounded-full bg-white hover:bg-gray-100 md:-right-20 md:top-1/2 md:size-10"
+          className="absolute right-2 top-[50%] z-10 size-[30px] -translate-y-1/2 rounded-full bg-white hover:bg-gray-100 md:hidden"
           disabled={!canScrollNext}
           onClick={() => api?.scrollNext()}
         >
-          <CarouselButton className="!size-[30px] rotate-180 md:!size-10" />
+          <CarouselButton className="!size-[30px] rotate-180" />
         </Button>
       </Carousel>
     </div>

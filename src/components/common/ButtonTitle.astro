@@ -3,17 +3,18 @@ interface Props {
   title: string;
   icon?: any;
   className?: string;
+  iconClassName?: string;
 }
 
-const { title, icon: Icon, className = '' } = Astro.props;
+const { title, icon: Icon, className = '', iconClassName = 'size-4 md:size-6' } = Astro.props;
 ---
 
 <div
   class:list={[
-    'flex h-8 w-fit items-center gap-4 rounded-xl border border-black px-5 md:h-[60px] md:rounded-[20px]',
+    'flex h-[30px] w-fit items-center gap-[5px] rounded-[10px] border-[0.5px] border-black px-[6.5px] md:h-[60px] md:gap-4 md:rounded-[20px] md:border md:px-5',
     className,
   ]}
 >
-  {Icon && <Icon className="size-4 md:size-6" />}
+  {Icon && <Icon className={iconClassName} />}
   <h2 class="text-base md:text-2xl">{title}</h2>
 </div>

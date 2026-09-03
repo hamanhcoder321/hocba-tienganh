@@ -31,22 +31,27 @@ import heroTof from '@/assets/images/hero-tof.webp';
 import herobanner from '@/assets/images/herobanner.webp';
 import herobanner1 from '@/assets/images/herobanner_1.webp';
 import target_3d from '@/assets/images/introduce/3d_target.png';
-import advise from '@/assets/images/introduce/advise.png';
+import advise from '@/assets/images/img-hocba-tienganh-optimized/advise.png';
 import badge from '@/assets/images/introduce/badge.png';
 import bao_zhang_he from '@/assets/images/introduce/bao_zhang_he.webp';
-import baozhang_he from '@/assets/images/introduce/baozhang_he.jpg';
+import baozhang_he from '@/assets/images/img-hocba-tienganh-optimized/JACKSON HOWARD.png';
 import bg_nen from '@/assets/images/introduce/bg_nen.png';
 import book_icon from '@/assets/images/introduce/book_icon.webp';
 import cmmd_vmnt from '@/assets/images/introduce/cmmd_vmnt.png';
 import coin from '@/assets/images/introduce/coin.png';
-import cthtnb_1 from '@/assets/images/introduce/cthtnb_1.webp';
-import cthtnb_2 from '@/assets/images/introduce/cthtnb_2.png';
+import cthtnb_1 from '@/assets/images/img-hocba-tienganh-optimized/img-cthtnb_1.png';
+import cthtnb_2 from '@/assets/images/img-hocba-tienganh-optimized/img-cthtnb_2.png';
+import cthtnb_3 from '@/assets/images/img-hocba-tienganh-optimized/img-cthtnb_3.png';
 import dkb_slide1 from '@/assets/images/introduce/dkb_slide1.jpg';
 import dkb_slide2 from '@/assets/images/introduce/dkb_slide2.jpg';
 import dkb_slide3 from '@/assets/images/introduce/dkb_slide3.jpg';
 import dkb_slide4 from '@/assets/images/introduce/dkb_slide4.jpg';
 import global from '@/assets/images/introduce/global.png';
-import gs_hbc from '@/assets/images/introduce/gs_hbc.webp';
+import imgGocPhaiIelts from '@/assets/images/img-hocba-tienganh-optimized/img-goc-phai-ielts.png';
+import imgCoVanProfile from '@/assets/images/img-hocba-tienganh-optimized/img-co-van-profile.png';
+import imgCoVanGocTrai from '@/assets/images/img-hocba-tienganh-optimized/img-co-van-goc-trai.png';
+import imgGocTraiPhiaTren from '@/assets/images/img-hocba-tienganh-optimized/img-goc-trai-phia-tren.png';
+import gs_hbc from '@/assets/images/img-hocba-tienganh-optimized/image-co-van-chuyen-mon-cvan.png';
 import hocba_education from '@/assets/images/img-hocba-tienganh-optimized/hocba_ielts.webp';
 import hocbachinese from '@/assets/images/introduce/hocbachinese.png';
 import hocbahsk from '@/assets/images/introduce/hocbahsk.png';
@@ -61,10 +66,10 @@ import hoi_thao_4 from '@/assets/images/introduce/hoi_thao_4.webp';
 import ht_dd_ptld from '@/assets/images/introduce/ht_dd_ptld.png';
 import hu_meng_fan from '@/assets/images/introduce/hu_meng_fan.webp';
 import huyen_my from '@/assets/images/introduce/huyen_my.webp';
-import hv_vttng_1 from '@/assets/images/introduce/hv_vttng_1.png';
-import hv_vttng_2 from '@/assets/images/introduce/hv_vttng_2.png';
-import hv_vttng_3 from '@/assets/images/introduce/hv_vttng_3.png';
-import hv_vttng_4 from '@/assets/images/introduce/hv_vttng_4.png';
+import hv_vttng_1 from '@/assets/images/img-hocba-tienganh-optimized/WSU.png';
+import hv_vttng_2 from '@/assets/images/img-hocba-tienganh-optimized/wolong.png';
+import hv_vttng_3 from '@/assets/images/img-hocba-tienganh-optimized/IELTS.png';
+import hv_vttng_4 from '@/assets/images/img-hocba-tienganh-optimized/TEFL.png';
 import instructor from '@/assets/images/introduce/instructor.webp';
 import kptt_sk from '@/assets/images/introduce/kptt_sk.png';
 import lich_su_hinh_thanh1 from '@/assets/images/img-hocba-tienganh-optimized/img-giua-hinh-thanh.webp';
@@ -74,7 +79,7 @@ import minh_chau from '@/assets/images/introduce/minh_chau.webp';
 import quoc_hung from '@/assets/images/introduce/quoc_hung.png';
 import staff_founder from '@/assets/images/img-hocba-tienganh-optimized/staff_founder.webp';
 import su_menh_tam_nhin from '@/assets/images/introduce/su_menh_tam_nhin.webp';
-import tl_tn from '@/assets/images/introduce/tl_tn.webp';
+import tl_tn from '@/assets/images/img-hocba-tienganh-optimized/tl_tn.png';
 import tt_hq_tc from '@/assets/images/introduce/tt_hq_tc.png';
 import viethoang from '@/assets/images/introduce/viethoang.webp';
 import kinhLup from '@/assets/images/KinhLup.png';
@@ -211,6 +216,12 @@ import NhatQuan from '@/assets/images/img-hocba-tienganh-optimized/image-nhat-qu
 import NhatQuanNew from '@/assets/images/img-hocba-tienganh-optimized/img-avatar-nhat-quan.webp';
 import TuanKiet from '@/assets/images/img-hocba-tienganh-optimized/image-tuan-kiet.webp';
 import TuanKietNew from '@/assets/images/img-hocba-tienganh-optimized/img-tuan-kiet.jpg';
+import ThuThuyHvdc from '@/assets/images/img-hocba-tienganh-optimized/img-thu-thuy-hvdc.png';
+import TuanKietHvdc from '@/assets/images/img-hocba-tienganh-optimized/img-tuan-kiet-hvdc.png';
+import NhatQuanHvdc from '@/assets/images/img-hocba-tienganh-optimized/img-nhat-quan-hvdc.png';
+import ThanhHuyenHvdc from '@/assets/images/img-hocba-tienganh-optimized/img-thanh-huyen-hvdc.png';
+import ThuHaHvdc from '@/assets/images/img-hocba-tienganh-optimized/img-thu-ha-hvdc.png';
+import CheckBoxHvdc from '@/assets/images/img-hocba-tienganh-optimized/img-check-box-hvdc.png';
 // Evidence Gallery images
 import imgCot1 from '@/assets/images/img-hocba-tienganh-optimized/img-cot1.webp';
 import imgCot3 from '@/assets/images/img-hocba-tienganh-optimized/img-cot3.webp';
@@ -610,6 +621,12 @@ export const IMAGES = {
     NhatQuanNew,
     TuanKiet,
     TuanKietNew,
+    ThuThuyHvdc,
+    TuanKietHvdc,
+    NhatQuanHvdc,
+    ThanhHuyenHvdc,
+    ThuHaHvdc,
+    CheckBoxHvdc,
     evidenceGallery: {
       col1: [imgCot1],
       col2: [imgCot2Vt1, imgCot2Vt2, imgCot2Vt3, imgCot2Vt4],
@@ -731,6 +748,10 @@ export const IMAGES = {
     cmmd_vmnt,
     global,
     bao_zhang_he,
+    imgGocPhaiIelts,
+    imgCoVanProfile,
+    imgCoVanGocTrai,
+    imgGocTraiPhiaTren,
     book_icon,
     quoc_hung,
     hu_meng_fan,
@@ -758,6 +779,7 @@ export const IMAGES = {
     hv_vttng_4,
     cthtnb_1,
     cthtnb_2,
+    cthtnb_3,
     hoi_thao_1,
     hoi_thao_2,
     hoi_thao_3,
