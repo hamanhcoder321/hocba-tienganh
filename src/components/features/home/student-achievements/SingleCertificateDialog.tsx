@@ -42,10 +42,17 @@ export const SingleCertificateDialog = () => {
         </Button>
         
         <div className="w-full h-full relative flex items-center justify-center bg-[#D9D9D9]/50 rounded-[16px] border border-gray-200 shadow-inner overflow-hidden">
-          {/* Certificate placeholder */}
-          <div className="w-full h-full flex flex-col items-center justify-center text-gray-500">
-            <span className="font-gilroy text-lg md:text-2xl font-bold uppercase tracking-wider text-gray-400">Chưa có dữ liệu chứng chỉ</span>
-          </div>
+          {activeStudent.certificate ? (
+            <img 
+              src={activeStudent.certificate} 
+              alt={`Chứng chỉ của ${activeStudent.name}`} 
+              className="w-full h-full object-contain"
+            />
+          ) : (
+            <div className="w-full h-full flex flex-col items-center justify-center text-gray-500">
+              <span className="font-gilroy text-lg md:text-2xl font-bold uppercase tracking-wider text-gray-400">Chưa có dữ liệu chứng chỉ</span>
+            </div>
+          )}
         </div>
 
         {/* Floating Pill Overlay */}

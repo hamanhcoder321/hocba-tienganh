@@ -2,6 +2,7 @@ type TStudent = {
   id: string;
   name: string;
   avatar_url: string;
+  certificate_url?: string;
   description: string;
   title: string;
   score: number;

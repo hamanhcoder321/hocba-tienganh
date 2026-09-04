@@ -21,15 +21,17 @@ const students =
         name: item.name,
         // role: item.profession,
         badge: item.course,
-        // score: item.score ? `${item.score} điểm` : '',
+        score: item.score,
         image: item.avatar_url || IMAGES.course.profilePic,
+        certificate: item.certificate_url,
       }))
     : Array(8).fill({
         name: 'Nguyễn Văn A',
         // role: 'Sinh viên',
         badge: 'HSK5',
-        // score: '230 điểm',
+        score: 8.0,
         image: IMAGES.home.aboutClass, // Placeholder image matching the study group
+        certificate: null,
       });
 
 const optimizedHsk = await getImage({
@@ -203,8 +205,8 @@ const icons = {
               <div class="flex flex-col gap-[7.83px]">
                 <div class="flex items-center justify-between">
                   <h3 class="font-gilroy text-[14.1px] font-bold leading-[1.2] text-[#373737]">{student.name}</h3>
-                  <span class="inline-flex h-[20.89px] w-[58.74px] items-center justify-center rounded-[3.26px] bg-[#F97316] px-[10px] font-gilroy text-[11.75px] font-[1000] leading-none text-[#FFF0CD]">
-                    {student.badge}
+                  <span class="inline-flex h-[20.89px] w-auto items-center justify-center rounded-[3.26px] bg-[#F97316] px-[8px] font-gilroy text-[11.75px] font-[1000] leading-none text-[#FFF0CD] whitespace-nowrap">
+                    {student.score ? `${student.score} ${student.badge}` : student.badge}
                   </span>
                 </div>
                 {/* <div class="flex items-center justify-between">
@@ -251,13 +253,13 @@ const icons = {
               <div class="flex flex-col gap-[7.83px]">
                 <div class="flex items-center justify-between">
                   <h3 class="font-gilroy text-[14.1px] font-bold leading-[1.2] text-[#373737]">{student.name}</h3>
-                  <span class="inline-flex h-[20.89px] w-[58.74px] items-center justify-center rounded-[3.26px] bg-[#F97316] px-[10px] font-gilroy text-[11.75px] font-[1000] leading-none text-[#FFF0CD]">
-                    {student.badge}
+                  <span class="inline-flex h-[20.89px] w-auto items-center justify-center rounded-[3.26px] bg-[#F97316] px-[8px] font-gilroy text-[11.75px] font-[1000] leading-none text-[#FFF0CD] whitespace-nowrap">
+                    {student.score ? `${student.score} ${student.badge}` : student.badge}
                   </span>
                 </div>
                 <div class="flex items-center justify-between">
                   <p class="font-gilroy text-[12.53px] font-normal leading-[1.2] text-[#373737]">{student.role}</p>
-                  <p class="font-gilroy text-[12.53px] font-normal leading-[1.2] text-[#373737]">{student.score}</p>
+                  {/* <p class="font-gilroy text-[12.53px] font-normal leading-[1.2] text-[#373737]">{student.score}</p> */}
                 </div>
               </div>
             </div>
@@ -323,17 +325,17 @@ const icons = {
                 <h3 class="font-gilroy font-bold leading-[1.2] text-[#373737] transition-colors duration-300 md:text-[15px] md:group-hover:text-[#823000] xl:text-[18px]">
                   {student.name}
                 </h3>
-                <span class="inline-flex h-[28px] w-[75px] items-center justify-center rounded-[5px] bg-[#F97316] px-[8px] font-gilroy text-[14px] font-[1000] leading-none text-[#FFF0CD] transition-colors duration-300 md:h-[28px] md:w-[75px] md:rounded-[5px] md:text-[14px] md:group-hover:bg-[#C2410C] md:group-hover:text-[#FFEDD5] xl:h-[32px] xl:w-[90px] xl:text-[18px]">
-                  {student.badge}
+                <span class="inline-flex h-[28px] w-auto items-center justify-center rounded-[5px] bg-[#F97316] px-[12px] font-gilroy text-[14px] font-[1000] leading-none text-[#FFF0CD] transition-colors duration-300 md:h-[28px] md:w-auto md:rounded-[5px] md:text-[14px] md:group-hover:bg-[#C2410C] md:group-hover:text-[#FFEDD5] xl:h-[32px] xl:text-[18px] whitespace-nowrap">
+                  {student.score ? `${student.score} ${student.badge}` : student.badge}
                 </span>
               </div>
               <div class="flex items-center justify-between">
                 <p class="font-gilroy font-normal leading-[1.2] text-[#373737] md:text-[13px] xl:text-[16px]">
                   {student.role}
                 </p>
-                <p class="font-gilroy font-normal leading-[1.2] text-[#373737] md:text-[13px] xl:text-[16px]">
+                {/* <p class="font-gilroy font-normal leading-[1.2] text-[#373737] md:text-[13px] xl:text-[16px]">
                   {student.score}
-                </p>
+                </p> */}
               </div>
             </div>
           </div>

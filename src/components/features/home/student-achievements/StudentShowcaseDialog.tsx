@@ -76,9 +76,17 @@ const StudentCard = ({ item }: { item: TStudent }) => {
   const avatarUrl = item.avatar_url || '';
   return (
     <div className="w-full max-w-[344px] aspect-[344/458] relative flex items-center justify-center bg-[#D9D9D9]/50 rounded-[16px] border border-gray-200 shadow-inner overflow-hidden shrink-0 group hover:shadow-2xl transition-all duration-300 mx-auto">
-      <div className="w-full h-full flex flex-col items-center justify-center text-gray-500">
-        <span className="font-gilroy text-lg font-bold uppercase tracking-wider text-gray-400">Chưa có dữ liệu</span>
-      </div>
+      {item.certificate_url ? (
+        <img 
+          src={item.certificate_url} 
+          alt={`Chứng chỉ của ${item.name}`} 
+          className="w-full h-full object-contain"
+        />
+      ) : (
+        <div className="w-full h-full flex flex-col items-center justify-center text-gray-500">
+          <span className="font-gilroy text-lg font-bold uppercase tracking-wider text-gray-400">Chưa có dữ liệu</span>
+        </div>
+      )}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-[90%] bg-black/60 backdrop-blur-md rounded-[50px] p-2 flex items-center shadow-xl group-hover:bg-black/80 transition-colors duration-300">
         <div className="shrink-0 rounded-full w-[45px] h-[45px] overflow-hidden border-2 border-white/20 bg-gray-200 relative">
           {avatarUrl && <img src={avatarUrl} alt={item.name} className="w-full h-full object-cover" />}
@@ -88,7 +96,9 @@ const StudentCard = ({ item }: { item: TStudent }) => {
           <p className="text-[#FFCF5A] font-gilroy text-[11px] font-semibold mt-0.5">Lis: 8.0, Read: 8.5</p>
         </div>
         <div className="pr-3 shrink-0 flex items-center justify-end border-l border-white/20 pl-3 py-1">
-          <span className="text-white font-gilroy font-black text-[18px]">{item.course || 'IELTS'}</span>
+          <span className="text-white font-gilroy font-black text-[18px]">
+            {item.score ? `${item.score} ${item.course}` : item.course || 'IELTS'}
+          </span>
         </div>
       </div>
     </div>
