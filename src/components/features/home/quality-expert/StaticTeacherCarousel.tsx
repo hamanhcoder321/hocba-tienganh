@@ -24,7 +24,7 @@ const TEACHERS = [
     image: imgGv2.src,
     name: 'GIẢNG VIÊN YẾN CHI',
     slug: 'le-yen-chi',
-    title: 'Hơn 10 Năm Kinh Nghiệm Giảng Dạy Chứng Chỉ IELTS Và TOEIC',
+    title: 'Hơn 10 Năm Kinh Nghiệm Giảng\nDạy Chứng Chỉ IELTS Và TOEIC',
     description: '2 lần đạt 8.5 IELTS, Đại sứ bài thi IELTS\ntrên máy tính 2023 của IDP, Cố vấn\nHọc thuật của nhiều đơn vị'
   },
   {
@@ -42,7 +42,7 @@ const TEACHERS = [
     image: imgGv4.src,
     name: 'GIẢNG VIÊN THU TRANG',
     slug: 'mai-thu-trang',
-    title: '4+ năm kinh nghiệm giảng dạy \n IELTS',
+    title: '4+ Năm Kinh Nghiệm Giảng Dạy\nIELTS',
     description: 'Cử nhân xuất sắc Đại học Kinh tế \n Quốc Dân, Thành viên dự án nâng \n cao năng lực ngoại ngữ cho giáo viên \n của Sở Giáo dục Hà Nội, SAT 1430',
   },
 ];
@@ -96,11 +96,11 @@ const StaticTeacherCarousel = () => {
                   </div>
 
                 {/* White Info Box */}
-                <div className="relative z-20 -mt-6 w-[192.51px] md:w-[277px] h-[69.5px] md:h-[100px] flex flex-col items-center justify-center gap-[4.17px] md:gap-[6px] rounded-[8.34px] md:rounded-[12px] bg-white px-4 md:py-[12px] py-[8.34px] text-center shadow-md">
+                <div className="relative z-20 -mt-6 w-[210px] md:w-[310px] h-[69.5px] md:h-[100px] flex flex-col items-center justify-center gap-[4.17px] md:gap-[6px] rounded-[8.34px] md:rounded-[12px] bg-white px-2 md:px-4 md:py-[12px] py-[8.34px] text-center shadow-md">
                   <h3 className={`font-[1000] text-[#0935C4] leading-none capitalize text-center m-0 whitespace-nowrap ${teacher.name === 'GIẢNG VIÊN JACKSON HOWARD' ? 'text-[12.5px] md:text-[17.5px] tracking-tight' : 'text-[14.71px] md:text-[21.16px] tracking-normal'}`}>
                     {teacher.name}
                   </h3>
-                  <p className="text-[12.51px] font-bold text-gray-800 md:text-[18px] leading-none capitalize tracking-normal text-center m-0">
+                  <p className="text-[12px] min-[375px]:text-[13px] md:text-[18px] font-bold leading-none capitalize tracking-[0px] text-center m-0 pt-1 whitespace-pre-line">
                     {teacher.title}
                   </p>
                 </div>

@@ -7,21 +7,21 @@ import imgCuonNhatKy from '@/assets/images/img-hocba-tienganh-optimized/img-cuon
 ---
 
 <div
-  class="w-full pb-6 bg-[#E2E9FF] px-0 pt-8 md:pb-12 md:px-4 md:pt-10"
+  class="w-full pb-8 bg-[#E2E9FF] px-0 pt-10 md:pb-12 md:px-4 md:pt-10"
 >
-  <div class="w-full flex flex-col items-center text-center">
-    <div class="mb-4 flex flex-row items-center justify-center gap-2 sm:gap-4 md:mb-6" data-animate="fade-up">
-      <div class="w-[50px] min-[375px]:w-[60px] md:w-32 flex-shrink-0">
-        <Image src={imgCuonNhatKy} alt="Diploma Icon" class="h-auto w-full drop-shadow-lg" />
+  <div class="w-full flex flex-col items-center text-center relative">
+    <div class="mb-4 flex flex-row items-center justify-center w-full md:gap-4 md:mb-6 relative" data-animate="fade-up">
+      <div class="absolute left-[9px] top-[10px] w-[42px] h-[44px] md:static md:w-32 md:h-auto md:translate-y-0 z-10 flex-shrink-0">
+        <Image src={imgCuonNhatKy} alt="Diploma Icon" class="w-full h-full object-contain md:h-auto drop-shadow-lg" />
       </div>
-      <div class="flex flex-col items-start">
+      <div class="flex flex-col items-center justify-center w-full md:w-auto md:items-start z-0">
         <h2
           class="text-[#1336B3] text-[15px] min-[375px]:text-[17px] sm:text-xl font-black uppercase leading-tight md:text-[24px] lg:text-[42px] whitespace-nowrap md:mb-3 lg:mb-5"
         >
           Được tin tưởng & lựa chọn bởi
         </h2>
-        <div class="mt-1.5 w-full max-sm:pr-2">
-          <CommitmentBadge className="text-[11px] min-[375px]:text-[12.5px] sm:text-[15px] font-bold md:text-[32px] md:px-8 !from-[#F97316] !to-[#F59E0B] whitespace-nowrap px-2 py-1 md:py-2 w-full justify-center">
+        <div class="mt-1.5 w-full flex justify-center md:justify-start">
+          <CommitmentBadge className="text-[11px] min-[375px]:text-[12.5px] sm:text-[15px] font-bold md:text-[32px] md:px-8 !from-[#F97316] !to-[#F59E0B] whitespace-nowrap px-4 py-1 md:py-2 w-auto justify-center inline-flex">
             HÀNG NGHÌN HỌC VIÊN TRÊN TOÀN QUỐC
           </CommitmentBadge>
         </div>

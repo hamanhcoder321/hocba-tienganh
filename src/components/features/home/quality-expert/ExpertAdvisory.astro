@@ -81,7 +81,7 @@ const expertBullets = [
 
     <div class="mb-10 md:mb-16">
       <div class="hidden md:grid grid-cols-2 gap-[47px] mb-[36px] w-full max-w-[1311px] mx-auto">
-        <div class="bg-[#F26522] rounded-2xl md:rounded-[20px] py-3.5 px-6 flex items-center justify-center gap-3 shadow-md w-full">
+        <div class="bg-[#F97316] rounded-2xl md:rounded-[20px] py-3.5 px-6 flex items-center justify-center gap-3 shadow-md w-full">
           <div class="w-6 h-6 rounded-full bg-white flex items-center justify-center text-[#F26522]">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"></path></svg>
           </div>
@@ -101,10 +101,10 @@ const expertBullets = [
             
 
             <div class="w-full md:bg-white md:rounded-[20px] p-3 md:p-4 xl:p-5 flex items-center gap-3 xl:gap-4 md:min-h-[88px]">
-              <div class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-[#F26522] flex-shrink-0 flex items-center justify-center shadow-sm">
+              <div class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-gradient-to-b from-[#F97316] to-[#FFA262] flex-shrink-0 flex items-center justify-center shadow-sm">
                 <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"></path></svg>
               </div>
-              <p class="text-[#F26522] font-bold text-[14px] lg:text-[18px] xl:text-[20px] leading-snug xl:leading-[24px] tracking-normal lg:tracking-tight xl:tracking-normal flex-1" set:html={row.problem} />
+              <p class="text-[#EA580C] font-bold text-[14px] lg:text-[18px] xl:text-[20px] leading-snug xl:leading-[24px] tracking-normal lg:tracking-tight xl:tracking-normal flex-1" set:html={row.problem} />
             </div>
 
             <!-- mobile -->
@@ -117,10 +117,10 @@ const expertBullets = [
 
 
             <div class="w-full md:bg-white md:rounded-[20px] p-3 md:p-4 xl:p-5 flex items-center gap-3 xl:gap-4 md:min-h-[88px] m-0">
-              <div class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-[#1241C4] flex-shrink-0 flex items-center justify-center shadow-sm">
+              <div class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-gradient-to-b from-[#083AD4] to-[#3464F8] flex-shrink-0 flex items-center justify-center shadow-sm">
                 <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"></path></svg>
               </div>
-              <p class="text-[#02187B] font-bold text-[14px] lg:text-[18px] xl:text-[20px] leading-snug xl:leading-[24px] tracking-normal lg:tracking-tight xl:tracking-normal flex-1" set:html={row.solution} />
+              <p class="text-[#163299] font-bold text-[14px] lg:text-[18px] xl:text-[20px] leading-snug xl:leading-[24px] tracking-normal lg:tracking-tight xl:tracking-normal flex-1" set:html={row.solution} />
             </div>
 
           </div>
@@ -165,8 +165,12 @@ const expertBullets = [
         <!-- <div class="absolute inset-0 z-0 overflow-hidden" style="background-image: radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px); background-size: 24px 24px;"></div> -->
 
         <!-- mobile (top) -->
-        <div class="md:hidden w-full flex justify-center mb-6 relative z-10 mt-[-20px]">
-          <Image src={coVanTienganh} alt="Mr. Jackson Howard" class="w-full max-w-[280px] h-auto object-contain drop-shadow-xl relative z-10" />
+        <div class="md:hidden w-full flex justify-center mb-0 relative z-10 mt-[-20px]">
+           <!-- Ngôi sao nhỏ phía trên bên trái -->
+            <svg class="absolute top-[26%] left-[15%] w-4 h-4 text-[#8CA8F9] z-20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" />
+            </svg>
+          <Image src={coVanTienganh} alt="Mr. Jackson Howard" class="w-[311px] h-[277px] object-contain object-bottom drop-shadow-xl relative z-10" />
         </div>
 
         <div class="w-full max-w-[358px] md:max-w-none md:w-1/2 xl:w-[546px] flex-shrink-1 xl:flex-shrink-0 h-auto xl:h-[438px] bg-[#2E4387] rounded-[18px] p-[18px] md:px-6 xl:px-8 md:py-6 xl:py-[18px] z-20 relative shadow-2xl flex flex-col items-center justify-start">
@@ -176,7 +180,7 @@ const expertBullets = [
               
               <div class="flex items-center justify-start gap-3 w-full m-0">
                 <svg class="hidden md:block w-7 h-7 md:w-8 md:h-8 text-[#FFC107] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg>
-                <span class="text-[#FFCF5A] font-['Inter'] font-black text-[14px] lg:text-[24px] md:text-[18px] text-left leading-[1.2] tracking-normal">
+                <span class="text-[#FFCF5A] font-['Inter'] font-black text-[16px] md:text-[24px] text-left leading-[1.2] tracking-[0px]">
                   Thạc sĩ TESOL - Đại học Công <br class="hidden sm:block" /> nghệ Sydney
                 </span>
               </div>
@@ -199,13 +203,13 @@ const expertBullets = [
           </div>
         </div>
 
-        <div class="hidden md:flex md:w-1/2 xl:w-[640px] xl:h-[570px] z-10 justify-center items-end">
-          <div class="relative w-full max-w-[300px] lg:max-w-[400px] xl:max-w-[480px]">
+        <div class="hidden md:flex md:w-1/2 xl:w-[640px] xl:h-[570px] z-10 justify-center items-end md:translate-y-[80px]">
+          <div class="relative w-full max-w-[300px] lg:max-w-[500px] xl:max-w-[640px] xl:w-[640px] xl:h-[570px] flex items-end">
             <!-- Ngôi sao nhỏ phía trên bên trái -->
             <svg class="absolute top-[26%] left-[12%] w-4 h-4 text-[#8CA8F9] z-20" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" />
             </svg>
-            <Image src={coVanTienganh} alt="Mr. Jackson Howard" class="w-full h-auto object-contain object-bottom drop-shadow-[0_20px_20px_rgba(0,0,0,0.5)] relative z-10 origin-bottom" />
+            <Image src={coVanTienganh} alt="Mr. Jackson Howard" class="w-full h-auto xl:w-[640px] xl:h-[570px] object-contain object-bottom drop-shadow-[0_20px_20px_rgba(0,0,0,0.5)] relative z-10 origin-bottom" />
           </div>
         </div>
         
