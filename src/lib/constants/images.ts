@@ -87,7 +87,7 @@ import tt_hq_tc from '@/assets/images/introduce/tt_hq_tc.png';
 import viethoang from '@/assets/images/introduce/viethoang.webp';
 import kinhLup from '@/assets/images/KinhLup.png';
 import laptopHocba from '@/assets/images/laptop_hocba.webp';
-import logoMeta from '@/assets/images/logo-meta.jpg';
+import logoMeta from '@/assets/images/img-hocba-tienganh-optimized/img-logo-moi-header.webp';
 // import logo from '@/assets/images/logohocba.webp'; // logo cũ
 import logo from '@/assets/images/img-hocba-tienganh-optimized/logo-hocba-tienganh.webp';
 import logoIeltsSpace from '@/assets/images/img-hocba-tienganh-optimized/img-logo-header.webp'; // logo mới
