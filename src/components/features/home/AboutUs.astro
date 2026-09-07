@@ -5,12 +5,12 @@ import { Image } from 'astro:assets';
 ---
 
 <section id="about-us" class="relative pb-16 pt-10 sm:pb-20 sm:pt-16">
-  <div class="mx-auto max-w-[1380px] px-4 md:px-12 lg:px-8 xl:px-4">
-    <div class="flex flex-col gap-12 lg:flex-row lg:items-stretch xl:gap-16">
+  <div class="mx-auto max-w-[1280px] px-4 md:px-12 lg:px-8 xl:px-4">
+    <div class="flex flex-col gap-12 lg:flex-row lg:items-center 2xl:items-stretch lg:gap-[56px]">
       {/* leftimages */}
-      <div class="relative hidden w-full lg:w-1/2 lg:flex justify-center lg:justify-start">
-        <div class="relative w-full max-w-[550px] lg:max-w-[655px] ml-4 md:ml-10 lg:ml-8 lg:self-center group cursor-pointer">
-          <div class="w-full h-auto aspect-[655/677] rounded-[24px] lg:rounded-[30px] overflow-hidden relative shadow-lg transition-shadow duration-500 group-hover:shadow-2xl">
+      <div class="relative hidden w-full lg:w-1/2 2xl:w-[655px] 2xl:shrink-0 lg:flex justify-center 2xl:justify-start">
+        <div class="relative w-full max-w-[550px] 2xl:max-w-[655px] 2xl:w-[655px] 2xl:h-[694px] ml-4 md:ml-10 lg:ml-0 group cursor-pointer">
+          <div class="w-full h-auto 2xl:h-[677px] aspect-[655/677] 2xl:aspect-auto rounded-[24px] lg:rounded-[30px] overflow-hidden relative shadow-lg transition-shadow duration-500 group-hover:shadow-2xl">
             <Image
               src={IMAGES.home.pvHocba}
               width={655}
@@ -20,41 +20,44 @@ import { Image } from 'astro:assets';
               densities={[1, 2]}
             />
           </div>
-          <div class="absolute -bottom-8 -left-6 md:-bottom-12 md:-left-12 w-[65%] sm:w-[60%] md:w-[55%] max-w-[340px] z-10 pointer-events-none">
+          <div class="absolute -bottom-12 -left-4 md:-bottom-16 md:-left-8 lg:-bottom-[30px] 2xl:-bottom-[40px] lg:-left-[20px] 2xl:-left-[20px] w-[65%] sm:w-[60%] md:w-[55%] lg:w-[253px] lg:h-[148px] z-10 pointer-events-none rounded-[16px] md:rounded-[20px] overflow-hidden">
             <Image
               src={IMAGES.home.thanhvien}
-              width={500}
-              height={400}
+              width={253}
+              height={148}
               alt="Thành viên The IELTS Space"
-              class="h-auto w-full rounded-[16px] md:rounded-[20px]"
+              class="h-full w-full object-cover"
             />
           </div>
         </div>
       </div>
 
       {/* rght side: content */}
-      <div class="flex w-full flex-col justify-center rounded-[24px] bg-[#EEF2FC] p-8 md:p-10 lg:w-[615px] lg:gap-[16px] lg:shrink-0 lg:px-12 lg:py-4 xl:px-14 xl:py-6 mt-6 md:mt-10 lg:mt-0">
-        <div class="flex items-center gap-2">
-          <HomeIcon className="size-5 md:size-6 text-[#373737]" />
-          <span class="flex items-start gap-1 text-[16px] font-bold text-[#373737] lg:text-[26px] lg:leading-tight">
-            Giới thiệu
-            <svg class="w-3 h-3 text-[#F97316] mt-1" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
-            </svg>
-          </span>
+      <div class="flex w-full flex-col justify-center rounded-[24px] bg-[#EEF2FC] p-8 md:p-10 lg:w-1/2 2xl:w-[615px] 2xl:h-[676px] lg:gap-[20px] 2xl:shrink-0 lg:px-[24px] 2xl:px-[30px] lg:py-[24px] 2xl:py-[18px] mt-6 md:mt-10 lg:mt-0">
+        <div class="flex flex-col gap-2 lg:gap-0 w-full 2xl:w-[554px] mb-6 lg:mb-0">
+          <div class="flex items-center gap-2 h-[23px] lg:h-auto">
+            <HomeIcon className="w-[29px] h-[24px] stroke-[2.7px] text-[#373737]" />
+            <span class="flex items-start gap-1 text-[22px] font-[800] leading-[100%] text-[#373737] lg:text-[26px] lg:font-bold lg:leading-[64px]">
+              Giới thiệu
+              <svg class="hidden lg:block w-3 h-3 text-[#F97316] mt-0 lg:mt-[26px]" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+              </svg>
+            </span>
+          </div>
+
+          <h2>
+            <span class="block text-[28px] font-[1000] uppercase text-[#072899] lg:text-[36px] 2xl:text-[42px] lg:leading-[47px]">
+              THE IELTS SPACE
+            </span>
+          </h2>
+          
+          <p class="text-[14px] leading-[100%] font-bold uppercase text-[#111111] lg:text-[18px] 2xl:text-[24px] lg:leading-[47px] lg:font-[800]">
+            KHÔNG GIAN HỌC TẬP TÍCH HỢP THẾ HỆ MỚI
+          </p>
         </div>
 
-        <h2>
-          <span class="block text-[32px] font-black uppercase text-[#0D1F5B] lg:text-[42px] lg:leading-[47px]">
-            THE IELTS SPACE
-          </span>
-        </h2>
-        
-        <p class="text-[15px] font-black lg:font-bold uppercase text-[#373737] lg:text-[20px] lg:whitespace-nowrap">
-          KHÔNG GIAN HỌC TẬP TÍCH HỢP THẾ HỆ MỚI
-        </p>
-
-        <div class="space-y-3 lg:space-y-4 text-justify text-[14px] lg:text-[16px] font-medium lg:leading-[24px] text-[#4a4a4a]">
+        {/* Desktop Text */}
+        <div class="hidden lg:block space-y-4 text-justify text-[16px] font-medium leading-[24px] text-[#373737] w-full">
           <p>
             <strong class="font-bold text-[#373737]">THE IELTS SPACE</strong> tái thiết cách người học chinh phục tiếng Anh bằng một
             không gian sinh thái tích hợp - nơi giáo viên dẫn dắt kỹ càng, công nghệ
@@ -70,6 +73,23 @@ import { Image } from 'astro:assets';
             được xây dựng theo khung năng lực quốc tế, thiết kế riêng cho từng trình
             độ và mục tiêu đầu ra, đồng thời liên tục cập nhật theo yêu cầu mới nhất
             của kỳ thi.
+          </p>
+        </div>
+
+        {/* Mobile Text */}
+        <div class="block lg:hidden space-y-[24px] text-left text-[16px] font-medium leading-[24px] text-[#373737] w-full">
+          <p>
+            <strong class="font-bold text-[#373737]">THE IELTS SPACE</strong> tái thiết cách người học
+            chinh phục tiếng Anh bằng một không gian sinh thái tích hợp. Toàn bộ quá trình
+            học được kết nối trong một hệ trải nghiệm thống nhất, đi theo lộ trình cá nhân rõ
+            ràng. Từ đó giúp người học chinh phục mục tiêu tiếng Anh một cách nhanh hơn, dễ
+            dàng hơn, trực quan hơn và thú vị hơn.
+          </p>
+          <p>
+            <strong class="font-bold text-[#373737]">THE IELTS SPACE</strong> cung cấp các chương
+            trình tiếng Anh từ nền tảng đến nâng cao, tập trung vào IELTS và các chứng chỉ quốc
+            tế. Giáo trình nội bộ được thiết kế riêng cho từng trình độ và mục tiêu đầu ra, đồng
+            thời liên tục cập nhật theo yêu cầu mới nhất của kỳ thi.
           </p>
         </div>
 

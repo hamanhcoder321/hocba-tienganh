@@ -15,7 +15,7 @@ export type SmartTechnologyClassItem = {
   subImages: {
     image: any;
     isMobile?: boolean;
-    position: 'bottom-left' | 'bottom-right' | 'bottom-left-inner' | 'top-right-inner' | 'bottom-center-wide' | 'bottom-center' | 'middle-right';
+    position: 'bottom-left' | 'bottom-right' | 'bottom-left-inner' | 'top-right-inner' | 'bottom-center-wide' | 'bottom-center' | 'middle-right' | 'slide5-top-right' | 'slide5-bottom-right';
   }[];
 };
 
@@ -136,16 +136,18 @@ export default function SmartTechnologyClass({ icons, slides }: SmartTechnologyC
                               'absolute -bottom-[10px] md:-bottom-[30px] lg:-bottom-[40px] left-1/2 -translate-x-1/2 w-[135px] md:w-[200px] lg:w-[240px] h-auto',
                             'middle-right':
                               'absolute top-[60%] -translate-y-1/2 -right-[10px] md:-right-[20px] lg:-right-[76px] w-[95px] md:w-[156px] h-auto',
+                            'slide5-top-right':
+                              'absolute top-[10px] md:top-4 lg:top-4 -right-[10px] md:right-[5%] lg:-right-[117px] w-[105px] md:w-[160px] lg:w-[184px] lg:h-[258px] !rounded-[14px]',
+                            'slide5-bottom-right':
+                              'absolute -bottom-[10px] md:bottom-10 lg:top-[297px] -right-[10px] md:-right-[20px] lg:-right-[104px] w-[95px] md:w-[156px] lg:w-[158px] lg:h-[135px] !rounded-[14px]',
                           };
 
                           return (
                             <img
                               key={index}
                               src={subImage.image}
-                              width={266}
-                              height={200}
                               className={cn(
-                                'rounded-sm object-contain md:rounded-xl',
+                                'rounded-sm md:rounded-xl',
                                 positionClasses[subImage.position],
                                 subImage.isMobile ? 'flex' : 'hidden md:flex',
                               )}
@@ -171,7 +173,7 @@ export default function SmartTechnologyClass({ icons, slides }: SmartTechnologyC
               <button
                 key={index}
                 onClick={() => api?.scrollTo(index)}
-                className={`h-3 w-3 rounded-full transition-all duration-300 md:h-[18px] md:w-[18px] ${index === current ? 'bg-primary' : 'bg-[#D9D9D9]'}`}
+                className={`h-3 w-3 rounded-full transition-all duration-300 md:h-[18px] md:w-[18px] ${index === current ? 'bg-[#163299;]' : 'bg-[#D9D9D9;]'}`}
               />
             ))}
           </div>

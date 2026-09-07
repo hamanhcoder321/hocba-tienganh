@@ -226,8 +226,8 @@ const cards = [
 <BaseLayout {title} {description}>
   <JsonLd data={jsonLd} />
   <div class="relative">
-    <section id="hero-banner" class="w-full overflow-hidden bg-[#083AD4] bg-[linear-gradient(135deg,#042278_0%,#052284_100%)]">
-      <div class="relative mx-auto w-full max-w-[1440px] min-h-[400px] md:min-h-[710px]">
+    <section id="hero-banner" class="w-full overflow-hidden bg-[#083AD4] bg-[linear-gradient(135deg,#042278_0%,#052284_100%)] md:bg-[linear-gradient(180deg,#052284_13.27%,#083AD4_100%)] md:-mt-[2px]">
+      <div class="relative mx-auto w-full max-w-[1440px] min-h-[400px] md:h-[763px]">
         {/* 
           Background Colors and effects to remember:
           - Glow effect: bg-white opacity-20 blur-[150px]
@@ -253,29 +253,29 @@ const cards = [
           </Breadcrumb>
         </div>
 
-        <div id="hero-content" class="relative z-10 w-full min-h-[400px] md:min-h-[710px] flex flex-col md:block">
+        <div id="hero-content" class="relative z-10 w-full min-h-[400px] md:h-[763px] flex flex-col md:block">
           {/* Left Content */}
           <div 
             id="hero-text-left" 
-            class="relative z-20 mt-16 px-4 md:px-0 md:mt-0"
+            class="relative z-20 mt-16 px-4 md:px-0 md:mt-0 md:absolute md:top-[107px] md:left-[-5px] md:w-[636px] md:h-[340.63px]"
           >
-            <h1 class="text-left text-white font-sans">
-              <span class="block md:absolute md:top-[107px] md:left-[53px] md:w-[404px] md:h-[116px] md:text-[70px] md:font-bold md:leading-[1.34] text-[38px] font-black leading-[1.2]">
+            <h1 class="text-left text-white font-gilroy">
+              <span class="block md:absolute md:top-0 md:left-[58px] md:w-[404.16px] md:h-[116.29px] md:text-[70px] md:font-bold md:leading-[1.34] w-[358px] h-[40px] text-[32px] font-bold leading-[40px]">
                 Không gian
               </span>
               <br class="md:hidden" />
-              <span class="text-[#FFC224] inline-block md:absolute md:top-[194px] md:left-[53px] md:w-auto whitespace-nowrap md:h-[116px] md:text-[78px] md:font-bold md:leading-[1.34] text-[38px] font-black leading-[1.2]">
+              <span class="inline-block md:absolute md:top-[86.86px] md:left-[58px] md:w-[576.47px] whitespace-nowrap md:h-[116.28px] md:text-[70px] md:font-bold md:leading-[1.34] bg-[linear-gradient(180deg,#F97316_0%,#FFCF5A_100%)] md:bg-[linear-gradient(179.63deg,#F97316_-53.81%,#FFCF5A_99.68%)] bg-clip-text text-transparent w-[358px] h-[40px] text-[32px] font-bold leading-[40px]">
                 học tập tích hợp
               </span>
               <br class="md:hidden" />
-              <span class="uppercase inline-block mt-4 md:absolute md:top-[310px] md:left-[53px] text-[38px] md:text-[86px] font-black md:leading-[1.34] leading-[1.2]">THẾ HỆ MỚI</span>
+              <span class="uppercase inline-block mt-4 md:absolute md:top-[189.71px] md:left-[58px] md:w-[560.81px] md:h-[150.92px] md:text-[86px] md:leading-[1.34] w-[358px] h-[48px] text-[40px] font-black leading-[48px]">THẾ HỆ MỚI</span>
             </h1>
           </div>
 
           {/* Right Image */}
           <div 
             id="hero-image-right"
-            class="relative z-10 mt-10 flex justify-center md:absolute md:-bottom-10 md:left-[517px] md:w-[931px] md:h-[715px] md:mt-0 pointer-events-none"
+            class="relative z-10 mt-10 mx-auto flex justify-center w-[358px] h-[305px] gap-[10px] md:absolute md:top-0 md:left-[517px] md:w-[931px] md:h-[795px] md:mt-0 md:mx-0 pointer-events-none"
           >
             {/* Sparkle details memory: bg-white rounded-full */}
             <Image
@@ -283,14 +283,14 @@ const cards = [
               alt={'Banner Học Bá'}
               densities={[1, 2]}
               quality={95}
-              class="hidden md:block w-full h-full object-contain object-bottom"
+              class="hidden md:block w-full h-full object-cover object-bottom"
             />
             <Image
               src={bannerGioiThieuMobile}
               alt={'Banner Học Bá Mobile'}
               densities={[1, 2]}
               quality={95}
-              class="md:hidden w-[358px] h-[305px] object-contain mt-[10px]"
+              class="md:hidden w-[333px] h-[305px] object-contain"
             />
           </div>
           
@@ -341,42 +341,44 @@ const cards = [
         </div>
     </section>
 
-    <section id="history-section" class="w-full relative bg-white pt-10 xl:pt-0 pb-10 md:pb-[100px] overflow-x-clip">
-      <div class="relative mx-auto w-full max-w-[1440px] px-4 xl:pl-10 xl:pr-0 2xl:px-0">
+    <section id="history-section" class="w-full relative bg-white pt-4 xl:pt-0 pb-6 md:pb-[40px] overflow-x-clip">
+      <div class="relative mx-auto w-full max-w-[1440px] px-4 xl:px-[94px]">
         <div 
           id="history-header"
-          class="relative flex items-center justify-center gap-[12px] py-4 xl:py-0 xl:absolute xl:-top-[120px] xl:left-1/2 xl:-translate-x-1/2 xl:w-[790px] xl:h-[106px] z-20"
+          class="relative flex items-center justify-center gap-[3px] xl:gap-[12px] xl:mt-[24px] mx-auto w-[358px] h-[54px] xl:w-[790px] xl:h-[106px] z-20"
         >
           <VectorArrow
             fromColor="#FF9A3C"
             midColor="#4A72F0"
             toColor="#2751C7"
             stopOffset="0.5"
-            className={'hidden md:block absolute -left-1 top-2 size-4 object-cover md:-top-1 md:-left-3 md:size-8'}
+            className={'md:block absolute -left-1 top-2 size-4 object-cover md:-top-1 md:-left-3 md:size-8'}
           />
-          <h2 class="text-[#072899] font-black uppercase text-center text-lg md:text-[42px] md:leading-[64px]">CÂU CHUYỆN VỀ THE IELTS SPACE</h2>
-          <Image src={imgRocketGioiThieu} alt="Rocket" class="h-10 w-auto md:h-16 object-contain" densities={[1, 2]} quality={95} />
+          <h2 class="text-[#072899] font-gilroy font-black uppercase text-center text-lg md:w-[671px] md:h-[64px] md:text-[42px] md:leading-[64px]">CÂU CHUYỆN VỀ THE IELTS SPACE</h2>
+          <Image src={imgRocketGioiThieu} alt="Rocket" class="h-10 w-auto md:w-[70px] md:h-[69px] object-contain" densities={[1, 2]} quality={95} />
           <VectorArrow
             fromColor="#FF9A3C"
             midColor="#4A72F0"
             toColor="#2751C7"
             stopOffset="0.5"
-            className={'hidden md:block absolute -right-1 bottom-2 size-4 rotate-180 object-cover md:bottom-5 md:-right-2 md:size-8'}
+            className={'md:block absolute -right-0 bottom-2 size-4 rotate-180 object-cover md:bottom-5 md:-right-6 md:size-8'}
           />
         </div>
         
-        <div id="history-content" class="flex flex-col xl:flex-row justify-between items-start gap-4 md:gap-[40px] xl:gap-[5%] w-full mt-4 md:mt-[40px] xl:mt-[150px] relative z-10">
+        <div id="history-content" class="flex flex-col xl:flex-row justify-between items-start gap-4 md:gap-[40px] xl:gap-[5%] w-full mt-4 md:mt-[40px] xl:mt-[18px] relative z-10">
           <div id="history-text-left" class="w-full xl:w-[53%] flex flex-col shrink-0">
-            <ButtonTitle 
-              title="Lịch sử hình thành" 
-              icon={CustomHomeIcon} 
-              className="mt-2 md:mt-0 w-max md:w-[275px] px-5 md:px-[13px] h-[60px] gap-[10px] rounded-[20px] border py-[18px] z-10" 
-            />
-            <div id="history-text" class="mt-4 xl:mt-[5%] flex flex-col w-full gap-[16px] rounded-[14px] py-[16px] z-10 text-[#4A4A4A] text-base md:text-[19px] md:leading-[1.6] text-left">
-              <p>
+            <div class="flex items-center w-[358px] xl:w-auto h-[34px] xl:h-auto px-[16px] xl:px-0 gap-[12px] xl:gap-0 rounded-[16px] xl:rounded-none mt-2 xl:mt-0">
+              <ButtonTitle 
+                title="Lịch sử hình thành" 
+                icon={CustomHomeIcon} 
+                className="w-[187px] md:w-[275px] h-[34px] md:h-[60px] px-[7px] md:px-[13px] py-[10px] md:py-[18px] gap-[6px] md:gap-[10px] rounded-[11px] md:rounded-[20px] border-[0.57px] md:border z-10" 
+              />
+            </div>
+            <div id="history-text" class="mt-4 xl:-mt-[7px] xl:-ml-[31px] flex flex-col w-[358px] xl:w-[657px] h-fit gap-[12px] xl:gap-[28px] rounded-[16px] xl:rounded-[14px] p-[16px] xl:p-[34px] z-10 text-[#4A4A4A] text-left">
+              <p class="font-gilroy font-medium text-[16px] leading-[27px]">
                 Ở mô hình học tập truyền thống, người học thường phải thích nghi với một lộ trình, một tiến độ được thiết kế chung cho tất cả. Trong khi đó, sự phát triển của công nghệ đang mở ra khả năng hiểu người học sâu hơn, phản hồi nhanh hơn và tạo ra những trải nghiệm học tập linh hoạt, phù hợp hơn với từng cá nhân. Nhận ra điều đó, tháng 06/2024, <strong class="text-black">THE IELTS SPACE</strong> – hệ thống đào tạo Anh ngữ trực tuyến được thành lập, nổi bật với hệ sinh thái học tập tích hợp thế hệ<span id="history-dots" class="md:hidden">...</span><span id="history-more-text" class="hidden md:inline"> mới hướng tới việc tái thiết cách học truyền thống bằng tri thức và công nghệ tương lai. Từ đó giúp người học chinh phục mục tiêu tiếng Anh một cách nhanh hơn, dễ dàng hơn, hiệu quả hơn và thú vị hơn.</span>
               </p>
-              <p id="history-more-p" class="hidden md:block">
+              <p id="history-more-p" class="hidden md:block font-gilroy font-medium text-[16px] leading-[27px]">
                 <strong class="text-black">THE IELTS SPACE</strong> cung cấp các chương trình tiếng Anh từ nền tảng đến nâng cao, tập trung vào IELTS và các chứng chỉ tiếng Anh quốc tế, được triển khai trên nền tảng số với hệ thống LMS E-Power, học liệu số hóa và lộ trình học cá nhân hóa. Chúng tôi tin rằng, khi chiều sâu chuyên môn của con người kết hợp với sức mạnh của công nghệ tương lai, người học có thể tiếp cận tiếng Anh dễ dàng hơn, đưa chứng chỉ tiếng Anh quốc tế trở nên phổ biến và trẻ hoá, từ đó xây dựng năng lực sử dụng tiếng Anh bền vững và ứng dụng hiệu quả trong thực tế, gia tăng cơ hội học tập và nghề nghiệp trong tương lai.
               </p>
             </div>
@@ -385,7 +387,7 @@ const cards = [
             </div>
           </div>
           
-          <div id="history-image-right" class="relative w-full xl:w-[45%] aspect-[633/570] rounded-[22px] z-20 shrink-0 mx-auto xl:mx-0 xl:mt-[30px]">
+          <div id="history-image-right" class="relative w-[368.69px] h-[332px] xl:w-[633px] xl:h-[570px] aspect-[633/570] rounded-[22px] z-20 shrink-0 mx-auto xl:mx-0 xl:mt-0 xl:-mr-[31px]">
             <Image
               src={IMAGES.introduce.lich_su_hinh_thanh2}
               alt="lich_su_hinh_thanh2"
@@ -393,7 +395,7 @@ const cards = [
               height={420}
               quality={95}
               densities={[1, 2]}
-              class="object-cover absolute top-0 right-0 w-[33.3%] aspect-square rounded-[22px] z-0 opacity-70"
+              class="object-cover absolute top-0 right-0 w-[33.3%] xl:w-[211px] xl:h-[211px] aspect-square rounded-[22px] z-0 opacity-50"
             />
             <Image
               src={IMAGES.introduce.lich_su_hinh_thanh1}
@@ -402,7 +404,7 @@ const cards = [
               height={416}
               quality={95}
               densities={[1, 2]}
-              class="object-cover object-left absolute top-[15.3%] left-[12.7%] w-[73%] aspect-[460/416] rounded-[22px] z-10"
+              class="object-cover object-left absolute top-[15.3%] left-[12.7%] w-[73%] xl:w-[453px] xl:h-[416px] xl:top-[87px] xl:left-[80px] aspect-[460/416] rounded-[22px] z-10"
             />
             <Image
               src={IMAGES.introduce.staff_founder}
@@ -411,33 +413,33 @@ const cards = [
               height={243}
               quality={95}
               densities={[1, 2]}
-              class="object-cover object-top absolute bottom-0 left-0 w-[38.3%] aspect-square rounded-[22px] z-20 shadow-xl translate-y-[20px]"
+              class="object-cover object-top absolute bottom-0 left-0 w-[38.3%] xl:w-[243px] xl:h-[243px] xl:top-[327px] xl:left-0 aspect-square rounded-[13px] xl:rounded-[22px] z-20 shadow-xl"
             />
           </div>
         </div>
       </div>
     </section>
 
-    <section class="relative w-full overflow-hidden bg-[#F1F4FE] px-4 py-6 md:mt-[60px] md:px-0 md:py-16">
-      <div class="container relative z-10 flex w-full flex-col">
-        <ButtonTitle title="Cột mốc phát triển" icon={MapPin} className="mb-6 md:mb-16" />
+    <section class="relative w-full overflow-hidden bg-[#F1F4FE] px-4 py-6 md:mt-[20px] md:px-0 md:pt-[55px] md:pb-16">
+      <div class="relative z-10 flex w-full flex-col md:max-w-[1440px] md:mx-auto px-4 md:px-0">
+        <ButtonTitle title="Cột mốc phát triển" icon={MapPin} className="mb-6 md:mb-16 md:w-[335px] md:h-[60px] md:gap-[10px] md:px-[13px] md:py-[18px] md:rounded-[20px]" textClassName="text-base font-medium md:text-[28px] md:leading-[64px]" />
         <Image 
           src={trophyIcon} 
           alt="Trophy Icon" 
-          width={200}
-          height={200}
+          width={295}
+          height={295}
           quality={95}
-          class="relative mx-auto mt-2 mb-8 w-[200px] md:absolute md:right-0 md:-top-8 md:w-[280px] md:mt-0 md:mb-0 h-auto object-contain drop-shadow-xl" 
+          class="relative mx-auto mt-2 mb-8 w-[200px] h-[200px] md:absolute md:right-[13px] md:-top-[56px] md:w-[295px] md:h-[295px] md:mt-0 md:mb-0 object-contain drop-shadow-xl" 
         />
       </div>
-      <div class="relative flex text-[#373737] md:flex-col 3xl:px-[240px]">
-        <div class="container hidden grid-cols-12 border-b border-black md:grid">
+      <div class="relative z-20 flex text-[#373737] md:flex-col md:w-full md:h-[660px]">
+        <div class="hidden border-b border-black md:flex md:absolute md:w-full md:h-[290px] md:top-[47px] md:left-0 md:gap-[55px] md:px-[159px]">
           {
             timeline
               .filter((item) => item.position === 'top')
               .map((item) => (
                 <div
-                  class={`relative col-span-3 flex flex-col gap-4 border-l border-black px-6 py-4 ${item.colStart || ''}`}
+                  class="relative flex-1 flex flex-col gap-[15px] border-l border-black px-6 pt-0 pb-4"
                 >
                   <div class="absolute -left-2 top-0 size-4 rounded-full bg-black" />
                   <h3 class="text-base font-black md:text-[28px]">{item.date}</h3>
@@ -446,13 +448,13 @@ const cards = [
               ))
           }
         </div>
-        <div class="container hidden grid-cols-12 md:grid">
+        <div class="hidden md:flex md:absolute md:w-[675px] md:h-[275px] md:top-[337px] md:left-[423px] md:gap-[55px]">
           {
             timeline
               .filter((item) => item.position === 'bottom')
               .map((item) => (
                 <div
-                  class={`relative col-span-3 flex flex-col gap-4 border-l border-black px-6 py-4 ${item.colStart || ''}`}
+                  class="relative flex-1 flex flex-col gap-[15px] border-l border-black px-6 pt-4 pb-0"
                 >
                   <div class="absolute -left-2 bottom-0 size-4 rounded-full bg-black" />
                   <h3 class="text-base font-black md:text-[28px]">{item.date}</h3>
@@ -467,17 +469,17 @@ const cards = [
       </div>
     </section>
 
-    <section class="relative w-full overflow-hidden px-4 py-4 md:px-0 md:py-10">
+    <section class="relative w-full overflow-hidden px-4 py-4 md:px-0 md:pt-[36px] md:pb-10">
       <Image
         src={imgAnhMo}
         alt={'su_menh_tam_nhin_bg'}
-        width={1920}
-        height={470}
-        class={'object-cover w-full h-full absolute top-0 left-0 z-0'}
+        width={1438}
+        height={441}
+        class="absolute top-0 left-0 z-0 h-full w-full object-cover object-center"
       />
       <div class="container relative z-10">
-        <ButtonTitle title="Sứ mệnh & Tầm nhìn" icon={Globe} className="mb-6 md:mb-16" />
-        <div class="flex flex-col items-start justify-center gap-16 px-4 md:flex-row md:gap-16 lg:gap-32 md:px-0 md:px-6 md:mt-24">
+        <ButtonTitle title="Sứ mệnh & Tầm nhìn" icon={Globe} className="mb-6 md:mb-6 md:w-[336px] md:h-[60px] md:gap-[10px] md:px-[13px] md:py-[18px] md:rounded-[20px] md:border" textClassName="text-base font-medium md:text-[28px] md:leading-[64px]" />
+        <div class="flex flex-col items-start justify-center gap-16 px-4 md:flex-row md:gap-16 lg:gap-32 md:px-0 md:px-6 md:mt-4">
           <div class="flex w-full flex-col md:w-[500px]">
             <div class="flex items-center justify-center gap-4 mb-4 md:mb-6">
               <Image
@@ -490,12 +492,12 @@ const cards = [
               <p class="text-3xl font-black uppercase text-[#072899] md:text-[48px] leading-none">Tầm nhìn</p>
             </div>
             <div class="pl-0 md:pl-[86px]">
-              <p class="text-left text-base font-medium text-[#373737]">
-                <span class="whitespace-nowrap text-base font-black text-[#072899] md:text-[20px]">Trung hạn: </span>
+              <p class="font-gilroy font-medium text-[16px] leading-[128%] tracking-normal text-justify text-[#373737]">
+                <span class="whitespace-nowrap font-gilroy font-black text-[26px] leading-[124%] tracking-normal text-[#072899]">Trung hạn: </span>
                 Trở thành đơn vị dẫn đầu về trải nghiệm và chất lượng học IELTS tại Việt Nam.
               </p>
-              <p class="mt-4 text-left text-base font-medium text-[#373737]">
-                <span class="whitespace-nowrap text-base font-black text-[#072899] md:text-[20px]">Dài hạn: </span>
+              <p class="font-gilroy font-medium text-[16px] leading-[128%] tracking-normal text-justify text-[#373737]">
+                <span class="whitespace-nowrap font-gilroy font-black text-[26px] leading-[124%] tracking-normal text-[#072899]">Dài hạn: </span>
                 <span>
                   Mở rộng THE IELTS SPACE thành hệ sinh thái học tập đa chứng chỉ mang tầm quốc tế và hiện diện tại nhiều quốc gia, cung cấp những trải nghiệm giáo dục hiện đại dẫn đầu xu hướng công nghệ và dễ tiếp cận cho người học trên toàn cầu.
                 </span>
@@ -503,7 +505,7 @@ const cards = [
             </div>
           </div>
           <div class="flex w-full flex-col md:w-[500px]">
-            <div class="flex items-center justify-center gap-4 mb-4 md:mb-6">
+            <div class="flex items-center justify-center gap-4 mb-2 md:mb-2">
               <Image
                 src={iconTenLua}
                 alt={'Sứ mệnh'}
@@ -514,7 +516,7 @@ const cards = [
               <p class="text-3xl font-black uppercase text-[#072899] md:text-[48px] leading-none">Sứ mệnh</p>
             </div>
             <div class="pl-0 md:pl-[86px]">
-              <p class="text-left text-base font-medium text-[#373737]">
+              <p class="font-gilroy font-medium text-[16px] leading-[128%] tracking-normal text-justify text-[#373737]">
                 THE IELTS SPACE ra đời mang sứ mệnh tái thiết cách người học chinh phục tiếng Anh và kiến tạo trải nghiệm học tập vượt trội. Tại đây, mỗi học viên được phát huy tối đa năng lực và học tập dễ dàng hơn thông qua mô hình đào tạo chuẩn quốc tế, phương pháp học hiện đại kết hợp với sức mạnh của công nghệ. Chúng tôi sẽ đồng hành toàn diện cùng người học trên hành trình làm chủ tiếng Anh, giúp người học mở rộng cơ hội học tập, du học, nghề nghiệp và tự tin hội nhập trong môi trường toàn cầu.
               </p>
             </div>
@@ -558,8 +560,8 @@ const cards = [
       </div>
     </section>
 
-    <section class="relative bg-[#E4EAFD] w-full overflow-hidden px-4 py-4 md:px-0 md:pt-10">
-      <div class="container relative z-10">
+    <section class="relative w-full overflow-hidden px-[16px] py-[48px] bg-[#F5F8FF] md:bg-transparent md:bg-[image:linear-gradient(180.22deg,rgba(122,151,248,0.2)_40.65%,rgba(255,255,255,0.2)_99.81%)] md:px-0 md:py-0 md:pt-10 md:h-[755px] md:-left-[2px]">
+      <div class="container relative z-10 flex flex-col gap-[20px] md:block md:gap-0">
         <div
           class="relative mx-auto flex h-auto w-fit items-center gap-6 px-4 text-[52px] font-black uppercase text-primary md:h-[64px] md:px-10"
         >
@@ -580,25 +582,26 @@ const cards = [
           />
         </div>
         <div
-          class="relative mx-auto mt-1 flex h-auto w-fit items-center gap-1 px-0 text-[52px] font-black uppercase text-primary md:mt-0 md:h-[64px] md:gap-3 md:gap-6 md:px-10"
+          class="relative mx-auto flex h-auto w-fit items-center gap-1 px-0 text-[52px] font-black uppercase text-primary md:mt-0 md:h-[64px] md:gap-3 md:gap-6 md:px-10"
         >
           <div
-            class="flex h-7 items-center rounded-md bg-gradient-to-r from-[#F89C1E] to-[#F97316] px-2 text-[15px] font-black uppercase text-white md:h-[52px] md:rounded-full md:px-6 md:text-[28px]"
+            class="flex h-7 items-center rounded-md px-2 text-[15px] font-black uppercase text-white md:h-[52px] md:rounded-full md:px-6 md:text-[28px]"
+            style="background: linear-gradient(90deg, #F97316 62.41%, #F3C650 100%);"
           >
             CỐ VẤN CHUYÊN MÔN QUỐC TẾ
           </div>
         </div>
-        <div class="mt-8 md:mt-24 w-full max-w-[1100px] px-3 md:px-8 mx-auto relative flex flex-col-reverse md:flex-row items-center md:items-center justify-center gap-4 md:gap-16">
+        <div class="w-full md:max-w-[1424px] md:h-[472px] px-3 md:px-0 mx-auto relative flex flex-col-reverse md:flex-row items-center justify-center gap-5 md:mt-[60px] md:gap-[98px]">
           
           {/* Left Content (Blue Box) */}
-          <div class="flex w-full flex-col items-start z-20 md:w-[460px] shrink-0 bg-[#0935C4] rounded-[11px] md:rounded-[24px] px-[15px] py-[8px] md:px-8 md:py-8 gap-[14px] md:gap-0 shadow-lg">
+          <div class="flex w-full flex-col items-start z-20 md:w-[460px] shrink-0 rounded-[11px] md:rounded-[24px] px-[15px] py-[8px] md:px-8 md:py-8 gap-[14px] md:gap-0 shadow-lg" style="background: linear-gradient(180deg, #052284 13.27%, #083AD4 100%);">
             <h3 class="w-full text-[22px] text-center font-black uppercase text-white md:text-[32px] tracking-tight">MR. JACKSON HOWARD</h3>
             <div class="flex items-start justify-center gap-2 md:mt-2">
               <Star className="size-5 text-[#F3C650] mt-0.5 shrink-0 ml-3" />
-              <p class="text-left text-[14px] md:text-[20px] font-bold text-[#F3C650] leading-snug">
-                Thạc sĩ TESOL - Đại học Công nghệ Sydney
-              </p>
-            </div>
+                <p class="text-left text-[14px] md:text-[20px] font-bold text-[#F3C650] leading-snug">
+                  Thạc sĩ TESOL - Đại học Công nghệ Sydney
+                </p>
+              </div>
             <ul
               class="space-y-[10px] md:mt-3 md:space-y-1.5 list-disc pl-5 text-justify text-[13px] font-medium text-white md:text-[15px] leading-snug w-full"
             >
@@ -614,20 +617,23 @@ const cards = [
           </div>
 
           {/* Right Image */}
-
-          <div class="relative z-10 w-full md:w-[600px] flex justify-center pointer-events-none md:-mt-16">
-            <svg class="absolute top-[27%] left-[13%] w-4 h-4 text-[#8CA8F9] z-20" viewBox="0 0 24 24" fill="currentColor"> <path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z"></path> </svg>
+          <div class="relative z-10 w-full md:w-[640px] flex justify-end pointer-events-none md:mt-4 md:translate-x-10">
+            <svg class="hidden md:block absolute top-[20%] left-[18%] w-4 h-4 text-[#8CA8F9] z-20" viewBox="0 0 24 24" fill="currentColor"> <path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z"></path> </svg>
 
             <Image
               src={coVanTiengAnh}
               alt={'Jackson Howard'}
-              width={992}
-              height={883}
-              class={'relative z-10 object-contain w-full md:w-full h-auto drop-shadow-xl'}
+              width={640}
+              height={570}
+              class={'relative z-10 object-contain w-full md:w-full md:h-full'}
             />
           </div>
         </div>
+      </div>
+    </section>
 
+    <section class="relative w-full">
+      <div class="container relative z-10">
         <div class="flex flex-col justify-center gap-2 pt-16 md:gap-10 md:pt-24 mb-10">
           <div
             class="relative mx-auto flex h-[64px] w-fit items-center gap-4 text-[52px] font-black uppercase text-primary md:gap-6 md:px-10"
@@ -640,7 +646,8 @@ const cards = [
               class={'hidden md:block object-cover size-11 md:size-[80px] relative z-10 -mr-2 mt-2 md:-mr-5 md:mt-4'}
             />
             <h2
-              class="flex h-7 items-center rounded-md bg-gradient-to-r from-[#F89C1E] to-[#E97607] px-4 text-base font-black uppercase text-white md:h-[52px] md:rounded-full md:px-6 md:text-[28px] shadow-sm"
+              class="flex h-7 items-center rounded-md px-4 text-base font-black uppercase text-white md:h-[52px] md:rounded-full md:px-6 md:text-[28px] shadow-sm"
+              style="background: linear-gradient(90deg, #F97316 62.41%, #F3C650 100%);"
             >
               ĐỘI NGŨ GIẢNG VIÊN
             </h2>
@@ -735,7 +742,7 @@ const cards = [
       </div>
     </section> -->
 
-    <section class="relative w-full overflow-hidden bg-gradient-to-b from-[#F5F8FF] to-[#FFFFFF00] py-4 md:py-10">
+    <section class="relative w-full overflow-hidden py-4 md:py-10 md:h-[790px]" style="background: linear-gradient(360deg, #FFFFFF -3.42%, #FEFEFF 45.85%, #F3F7FF 95.13%);">
       <div class="container relative z-10 flex flex-col gap-8">
         <div class="flex flex-col gap-4 px-9 md:flex-row md:gap-0 md:px-0">
           <div class="w-full text-[#373737] md:w-1/2">
@@ -758,7 +765,7 @@ const cards = [
             />
           </div>
         </div>
-        <div class="grid grid-cols-2 gap-x-2 gap-y-8 px-4 md:grid-cols-3 md:gap-x-12 md:gap-y-16 md:px-0">
+        <div class="grid grid-cols-2 gap-x-2 gap-y-8 px-4 md:grid-cols-3 md:gap-x-12 md:gap-y-16 md:px-0 md:translate-x-8">
           {
             statistics.map((stat) => (
               <div class="col-span-1 flex flex-col border-l-[3px] border-[#6D6D6D] pl-[10px] pr-1 md:px-5 md:border-l-4">

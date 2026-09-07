@@ -4,6 +4,7 @@ import { SITE_SETTINGS } from "@/lib/constants/site-config";
 import Footer from '@/components/common/footer/Footer.astro';
 import ToasterProvider from '@/components/common/ToasterProvider';
 import Header from '@/components/common/header/Header.astro';
+import GoogleAnalytics from '@/components/common/GoogleAnalytics.astro';
 
 interface Props {
   title?: string;
@@ -31,10 +32,11 @@ const {
 
 const title = propTitle || `${breadcrumbName || 'Khóa học'} - ${SITE_SETTINGS.site_name}`;
 const description = propDescription || SITE_SETTINGS.meta_description;
-const keywords = propKeywords || SITE_SETTINGS.meta_keywords;
-const ogImage = propImage || SITE_SETTINGS.site_logo_meta;
+const keywords = propKeywords || [SITE_SETTINGS.seo.primary_keyword, ...SITE_SETTINGS.seo.secondary_keywords];
+const siteLogoMeta = typeof SITE_SETTINGS.site_logo_meta === "string" ? SITE_SETTINGS.site_logo_meta : SITE_SETTINGS.site_logo_meta.src;
+const ogImage = propImage || siteLogoMeta;
 
-const { site_name, site_url, google_analytics_tracking_id } = SITE_SETTINGS;
+const { site_name, site_url } = SITE_SETTINGS;
 
 const normalizedPath =
   Astro.url.pathname.replace(/(.+)\/$/, "$1") || "/";
@@ -92,17 +94,7 @@ const courseSchema = breadcrumbName ? {
       <script type="application/ld+json" set:html={JSON.stringify(courseSchema)} />
     )}
     
-    {google_analytics_tracking_id && (
-      <>
-        <script is:inline type="text/partytown" src={`https://www.googletagmanager.com/gtag/js?id=${google_analytics_tracking_id}`}></script>
-        <script is:inline type="text/partytown" define:vars={{ gaId: google_analytics_tracking_id }}>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', gaId);
-        </script>
-      </>
-    )}
+    <GoogleAnalytics />
   </head>
   <body class="antialiased font-gilroy">
     <div class="flex flex-col min-h-screen">

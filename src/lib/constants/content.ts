@@ -49,18 +49,19 @@ export const HOME_CATEGORIES: CategoryItem[] = [
 ];
 
 export const PROGRAM_OPTIONS = {
-  HSK: {
-    label: 'HSK',
-    options: ['HSK 1-2', 'HSK 3-4', 'HSK 5-6'],
-  },
+  // HSK: {
+  //   label: 'HSK',
+  //   options: ['HSK 1-2', 'HSK 3-4', 'HSK 5-6'],
+  // },
   CHINESE: {
-    label: 'Chinese - Tiếng Trung cho người đi làm',
+    label: 'IELTS',
     options: [
-      'Tiếng Trung Giao Tiếp Cơ Bản',
-      'Tiếng Trung Văn Phòng & Công Sở',
-      'Tiếng Trung Thương mại',
-      'Tiếng Trung Thương Mại Chuyên Sâu',
-      'Tiếng Trung Doanh Nhân',
+      'IELTS Khởi động (0-3.0+)',
+      'IELTS Cất cánh (3.0-4.0+)',
+      'IELTS Tăng tốc (4.0-5.0+)',
+      'IELTS Bứt phá (5.0-6.0+)',
+      'IELTS Vươn xa (6.0-7.0+)',
+      'IELTS Chinh phục (7.0-8.0+)'
     ],
   },
 } as const;
@@ -100,48 +101,55 @@ const SlugCourseMap = {
 
 export const input: TRoadmapCourse[] = [
   {
-    id: 'inp_hsk_0',
+    id: 'inp_band_0',
     name: 'Số 0',
     slug: SlugCourseMap.SO_0,
     content:
-      'Không yêu cầu kiến thức tiếng Trung đầu vào; dành cho người mới bắt đầu hoặc học viên mất gốc cần xây dựng lại nền tảng từ đầu.',
+      'Chưa có nền tảng hoặc mới bắt đầu làm quen với tiếng Anh, cần xây dựng từ những kiến thức cốt lõi đầu tiên.',
   },
   {
-    id: 'inp_hsk_2',
-    name: 'HSK 2',
+    id: 'inp_band_3',
+    name: 'Band 3.0',
     slug: SlugCourseMap.HSK_2,
     content:
-      'Học viên sở hữu nền tảng vững chắc, có khả năng trao đổi linh hoạt về các chủ đề quen thuộc và xử lý tốt những tình huống phát sinh trong đời sống thường nhật.',
+      'Có nền tảng từ vựng và ngữ pháp cơ bản, hiểu được những nội dung đơn giản.',
   },
   {
-    id: 'inp_hsk_3',
-    name: 'HSK 3',
+    id: 'inp_band_4',
+    name: 'Band 4.0',
     slug: SlugCourseMap.HSK_3,
     content:
-      'Đã chương trình HSK 3 hoặc  tương đương, có thể nghe – nói – đọc các nội dung quen thuộc, sử dụng được các cấu trúc ngữ pháp phổ biến và xử lý những tình huống cơ bản',
+      'Có thể hiểu và diễn đạt những ý quen thuộc, đã biết cách xử lý một số dạng bài nhưng thiếu sự linh hoạt và ổn định.',
   },
   {
-    id: 'inp_hsk_4',
-    name: 'HSK 4',
+    id: 'inp_band_5',
+    name: 'Band 5.0',
     slug: SlugCourseMap.HSK_4,
     content:
-      'Đạt trình độ HSK 4 hoặc tương đương, có thể nghe – nói – đọc các nội dung phổ biến, diễn đạt ý kiến tương đối mạch lạc và ứng phó hiệu quả với các tình huống thường gặp.',
+      'Có khả năng sử dụng tiếng Anh tương đối độc lập và xử lý các dạng bài IELTS phổ biến, nhưng còn hạn chế với nội dung phức tạp và học thuật.',
   },
   {
-    id: 'inp_hsk_5',
-    name: 'HSK 5',
+    id: 'inp_band_6',
+    name: 'Band 6.0',
     slug: SlugCourseMap.HSK_5,
     content:
-      'Đạt trình độ HSK 5 hoặc tương đương, có thể nghe – nói – đọc – viết các nội dung đa dạng, diễn đạt ý kiến mạch lạc, hiểu được văn bản có độ dài và mức độ trừu tượng',
+      'Có thể sử dụng tiếng Anh khá hiệu quả, diễn đạt tương đối rõ ràng và xử lý phần lớn yêu cầu của bài thi với độ chính xác khá tốt trong các tình huống quen thuộc.',
+  },
+  {
+    id: 'inp_band_7',
+    name: 'Band 7.0',
+    slug: SlugCourseMap.HSK_6,
+    content:
+      'Sử dụng tiếng Anh tốt và linh hoạt, xử lý hiệu quả nội dung quen thuộc, diễn đạt mạch lạc và duy trì độ chính xác cao ở cả 4 kỹ năng.',
   },
 ];
 export const output: TRoadmapCourse[] = [
   {
-    id: 'out_hsk_2',
-    name: 'HSK 2',
+    id: 'out_band_3',
+    name: 'Band 3.0',
     slug: SlugCourseMap.HSK_2,
     content:
-      'Có khả năng giao tiếp cơ bản trong sinh hoạt thường nhật, hiểu và sử dụng được các mẫu câu, từ vựng thông dụng; nghe – nói các nội dung quen thuộc và đọc hiểu đơn giản.',
+      'Có nền tảng từ vựng và ngữ pháp cơ bản, hiểu được những nội dung đơn giản.',
     dataResults: [
       {
         slug: SlugCourseMap.SO_0,
@@ -168,11 +176,11 @@ export const output: TRoadmapCourse[] = [
     ],
   },
   {
-    id: 'out_hsk_3',
-    name: 'HSK 3',
+    id: 'out_band_4',
+    name: 'Band 4.0',
     slug: SlugCourseMap.HSK_3,
     content:
-      'Sử dụng tiếng Trung để giao tiếp tương đối linh hoạt trong các tình huống quen thuộc; có thể trao đổi thông tin, trình bày ý kiến đơn giản và đọc hiểu các văn bản ngắn',
+      'Có thể hiểu và diễn đạt những ý quen thuộc, đã biết cách xử lý một số dạng bài nhưng thiếu sự linh hoạt và ổn định.',
     dataResults: [
       {
         slug: SlugCourseMap.SO_0,
@@ -220,11 +228,11 @@ export const output: TRoadmapCourse[] = [
     ],
   },
   {
-    id: 'out_hsk_4',
-    name: 'HSK 4',
+    id: 'out_band_5',
+    name: 'Band 5.0',
     slug: SlugCourseMap.HSK_4,
     content:
-      'Có thể sử dụng tiếng Trung tương đối độc lập, giao tiếp mạch lạc về nhiều chủ đề trong học tập, công việc và đời sống; hiểu và vận dụng các cấu trúc ngữ pháp trung cấp',
+      'Có khả năng sử dụng tiếng Anh tương đối độc lập và xử lý các dạng bài IELTS phổ biến, nhưng còn hạn chế với nội dung phức tạp và học thuật.',
     dataResults: [
       {
         slug: SlugCourseMap.SO_0,
@@ -297,11 +305,11 @@ export const output: TRoadmapCourse[] = [
     ],
   },
   {
-    id: 'out_hsk_5',
-    name: 'HSK 5',
+    id: 'out_band_6',
+    name: 'Band 6.0',
     slug: SlugCourseMap.HSK_5,
     content:
-      'Có năng lực sử dụng tiếng Trung khá thành thạo, có thể nghe – nói – đọc – viết các nội dung đa dạng; trình bày quan điểm, tham gia thảo luận, nghiên cứu học thuật nâng cao',
+      'Có thể sử dụng tiếng Anh khá hiệu quả, diễn đạt tương đối rõ ràng và xử lý phần lớn yêu cầu của bài thi với độ chính xác khá tốt trong các tình huống quen thuộc.',
     dataResults: [
       {
         slug: SlugCourseMap.SO_0,
@@ -394,11 +402,11 @@ export const output: TRoadmapCourse[] = [
     ],
   },
   {
-    id: 'out_hsk_6',
-    name: 'HSK 6',
+    id: 'out_band_7',
+    name: 'Band 7.0',
     slug: SlugCourseMap.HSK_6,
     content:
-      'Sử dụng tiếng Trung linh hoạt & hiệu quả trong hầu hết các bối cảnh; hiểu và phân tích văn bản có độ dài, mức độ trừu tượng cao; diễn đạt ý kiến sâu, logic, đáp ứng tốt yêu cầu học tập, nghiên cứu & chuyên môn',
+      'Sử dụng tiếng Anh tốt và linh hoạt, xử lý hiệu quả nội dung quen thuộc, diễn đạt mạch lạc và duy trì độ chính xác cao ở cả 4 kỹ năng.',
     dataResults: [
       {
         slug: SlugCourseMap.SO_0,
@@ -516,6 +524,14 @@ export const output: TRoadmapCourse[] = [
         <br/>Là nền tảng để phát triển chuyên môn, nghiên cứu và làm việc trong môi trường quốc tế bằng tiếng Trung.`,
       },
     ],
+  },
+  {
+    id: 'out_band_8',
+    name: 'Band 8.0',
+    slug: SlugCourseMap.HSK_6,
+    content:
+      'Làm chủ tiếng Anh ở trình độ cao, sử dụng ngôn ngữ linh hoạt, chính xác và tự nhiên trong những tình huống học thuật phức tạp.',
+    dataResults: [],
   },
 ];
 

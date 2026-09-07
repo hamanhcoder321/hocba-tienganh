@@ -38,7 +38,7 @@ import advise from '@/assets/images/img-hocba-tienganh-optimized/advise.png';
 import badge from '@/assets/images/introduce/badge.png';
 import bao_zhang_he from '@/assets/images/introduce/bao_zhang_he.webp';
 import baozhang_he from '@/assets/images/img-hocba-tienganh-optimized/JACKSON HOWARD.png';
-import bg_nen from '@/assets/images/introduce/bg_nen.png';
+import bg_nen from '@/assets/images/introduce/Vector.png';
 import book_icon from '@/assets/images/introduce/book_icon.webp';
 import cmmd_vmnt from '@/assets/images/introduce/cmmd_vmnt.png';
 import coin from '@/assets/images/introduce/coin.png';

@@ -5,6 +5,7 @@ import Header from '@/components/common/header/Header.astro';
 import Footer from '@/components/common/footer/Footer.astro';
 import ToasterProvider from '@/components/common/ToasterProvider';
 import JsonLd from '@/components/common/JsonLd.astro';
+import GoogleAnalytics from '@/components/common/GoogleAnalytics.astro';
 import type { Graph } from "schema-dts";
 import commonApi from "@/lib/api/common";
 
@@ -44,17 +45,11 @@ const title = propTitle
   : SITE_SETTINGS.meta_title;
 
 const description = propDescription || apiSettings?.meta_description || SITE_SETTINGS.meta_description;
-const keywords = propKeywords || (apiSettings?.meta_keywords ? apiSettings.meta_keywords.split(',').map((k: any) => k.trim()) : SITE_SETTINGS.meta_keywords);
+const keywords = propKeywords || (apiSettings?.meta_keywords ? apiSettings.meta_keywords.split(',').map((k: any) => k.trim()) : [SITE_SETTINGS.seo.primary_keyword, ...SITE_SETTINGS.seo.secondary_keywords]);
 const siteLogoMeta = typeof SITE_SETTINGS.site_logo_meta === "string" ? SITE_SETTINGS.site_logo_meta : SITE_SETTINGS.site_logo_meta.src;
 const ogImage = new URL(propImage || siteLogoMeta, SITE_SETTINGS.site_url).href;
 const canonicalURL = new URL(Astro.url.pathname, SITE_SETTINGS.site_url).href;
 const keywordsString = Array.isArray(keywords) ? keywords.join(", ") : keywords;
-
-const googleAnalyticsId = (apiSettings?.google_analytics_tracking_id && apiSettings.google_analytics_tracking_id !== "null") 
-  ? apiSettings.google_analytics_tracking_id 
-  : SITE_SETTINGS.google_analytics_tracking_id;
-
-const gaId = (googleAnalyticsId && googleAnalyticsId !== "null") ? googleAnalyticsId : null;
 
 const baseJsonLd: Graph = {
   "@context": "https://schema.org",
@@ -128,23 +123,7 @@ const favIcon = typeof SITE_SETTINGS.site_fav_icon === 'string' ? SITE_SETTINGS.
     
     {!disableDefaultSchema && <JsonLd data={baseJsonLd} />}
     
-    {gaId && (
-      <>
-        <script 
-          type="text/partytown" 
-          src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-        ></script>
-
-        <script type="text/partytown" define:vars={{ gaId }}>
-          window.dataLayer = window.dataLayer || [];
-          function gtag() {
-            dataLayer.push(arguments);
-          }
-          gtag('js', new Date());
-          gtag('config', gaId);
-        </script>
-      </>
-    )}
+    <GoogleAnalytics apiTrackingId={apiSettings?.google_analytics_tracking_id} />
   </head>
   <body class="antialiased font-gilroy overflow-hidden h-screen">
     <div id="main-scroll-container" class="custom-scrollbar overflow-y-auto h-screen">

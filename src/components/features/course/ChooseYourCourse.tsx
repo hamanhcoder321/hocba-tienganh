@@ -22,7 +22,7 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
   const [outputLevel, setOutputLevel] = useState<TRoadmapCourse | null>(null);
   const [outputMobileList, setOutputMobileList] = useState<TRoadmapCourse[] | []>(output);
 
-  const levels = ['Số 0', 'HSK 2', 'HSK 3', 'HSK 4', 'HSK 5', 'HSK 6'];
+  const levels = ['Số 0', 'Band 3.0', 'Band 4.0', 'Band 5.0', 'Band 6.0', 'Band 7.0', 'Band 8.0'];
 
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
@@ -159,16 +159,16 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
     const arrow = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
     arrow.setAttribute('points', `${x},${y} ${midX},${y} ${midX},${midY} ${x_2},${y_2}`);
     arrow.setAttribute('fill', 'none');
-    arrow.setAttribute('stroke', '#052284');
-    arrow.setAttribute('strokeWidth', '1');
+    arrow.setAttribute('stroke', '#F97316');
+    arrow.setAttribute('strokeWidth', '1.5');
     arrow.setAttribute('stroke-dasharray', '2.5');
     arrow.setAttribute('marker-end', 'url(#arrowhead)');
     svg.appendChild(arrow);
     const arrow_2 = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
     arrow_2.setAttribute('points', `${x_3},${y_2} ${midX_2},${y_2} ${midX_2},${midY_2} ${x_4},${y_4}`);
     arrow_2.setAttribute('fill', 'none');
-    arrow_2.setAttribute('stroke', '#052284');
-    arrow_2.setAttribute('strokeWidth', '1');
+    arrow_2.setAttribute('stroke', '#F97316');
+    arrow_2.setAttribute('strokeWidth', '1.5');
     arrow_2.setAttribute('stroke-dasharray', '2.5');
     arrow_2.setAttribute('marker-end', 'url(#arrowhead)');
     svg_2.appendChild(arrow_2);
@@ -195,7 +195,7 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
       marker.setAttribute('refX', '6');
       marker.setAttribute('refY', '2');
       marker.setAttribute('orient', 'auto');
-      marker.innerHTML = `<polygon points="0 0, 6 2, 0 6" fill="#052284"/>`;
+      marker.innerHTML = `<polygon points="0 0, 6 2, 0 6" fill="#F97316"/>`;
 
       defs.appendChild(marker);
     }
@@ -451,15 +451,7 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
               className="relative flex h-full w-full flex-col space-y-4 rounded-[10px] bg-gradient-to-b from-[#052284] to-[#083AD4] px-6 py-6 xl:space-y-4 xl:px-4"
             >
               <div className="flex flex-wrap gap-2">
-                <div className="w-fit rounded-[7px] bg-white px-2 py-1 text-base font-bold tracking-[0]">
-                  #ĐẦU VÀO {inputLevel?.name || '...'}
-                </div>
-                <div className="w-fit rounded-[7px] bg-white px-2 py-1 text-base font-bold tracking-[0]">
-                  #ĐẦU RA {outputLevel?.name || '...'}
-                </div>
-                <div className="w-fit rounded-[7px] bg-white px-2 py-1 text-base font-bold tracking-[0]">
-                  LỘ TRÌNH GỢI Ý
-                </div>
+                <p className="text-base font-black uppercase text-white">CHI TIẾT LỘ TRÌNH</p>
               </div>
               <div className="w-full flex-1 flex-grow rounded-[11px] bg-white p-6 py-4 xl:px-7">
                 {inputLevel && outputLevel ? (

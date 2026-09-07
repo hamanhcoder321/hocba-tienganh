@@ -71,9 +71,9 @@ const teacherLists = teachers.map((teacher: TLecturer) => {
   });
 
 // --- Metadata cho SEO ---
-const title = 'Lịch Khai Giảng Tiếng Trung Học Bá | Học Bá Education';
+const title = 'Lịch Khai Giảng Các Khóa IELTS | The IELTS Space';
 const description =
-  'Cập nhật lịch khai giảng các khóa học tiếng Trung mới nhất tại Học Bá Education. Lịch học linh hoạt, cá nhân hóa, cam kết đầu ra HSK/HSKK. Đăng ký nhận tư vấn ngay!';
+  'Cập nhật lịch khai giảng các khóa IELTS theo trình độ tại The IELTS Space và lựa chọn lớp học phù hợp với mục tiêu, thời gian của bạn.';
 
 const jsonLd: Graph = {
   '@context': 'https://schema.org',
@@ -98,11 +98,11 @@ const jsonLd: Graph = {
     ...scheduleResults.flatMap((result) =>
       result.data.map((item: any) => ({
         '@type': 'Course' as const,
-        name: item.Course?.name || 'Khóa học tiếng Trung',
-        description: item.Course?.description || 'Khóa học tiếng Trung tại Học Bá Education',
+        name: item.Course?.name || 'Khóa học IELTS',
+        description: item.Course?.description || 'Khóa học IELTS tại The IELTS Space',
         provider: {
           '@type': 'Organization' as const,
-          name: 'Học Bá Education',
+          name: 'The IELTS Space',
           url: baseUrl,
         },
       })),
@@ -216,7 +216,7 @@ const formatAISmart = aiSmartSlide.map((item) => {
                     <h1
                       class="bg-gradient-to-r from-[#7D1900] to-[#B90E0A] bg-clip-text py-2 font-gilroy text-[24px] font-[1000] uppercase leading-[1.2] text-transparent md:text-[36px] md:leading-[1.2] lg:whitespace-nowrap lg:text-[32px] lg:leading-[1.2] xl:text-[42px] xl:leading-[50px] 2xl:text-[52px] 2xl:leading-[64px]"
                     >
-                      LỊCH KHAI GIẢNG <span class="sr-only">CÁC LỚP TIẾNG TRUNG</span>
+                      LỊCH KHAI GIẢNG <span class="sr-only">CÁC LỚP IELTS</span>
                     </h1>
                   </div>
 

@@ -122,7 +122,7 @@ const { logo, siteName = 'Học Bá Education' } = Astro.props;
 
 <header
   id="header-nav"
-  class="bg-white lg:bg-[#052284] sticky left-0 top-0 z-[99] w-full shadow-[0px_5px_18px_0px_rgba(0,0,0,0.25)] transition-transform duration-300"
+  class="bg-white lg:bg-[#3252BC] sticky left-0 top-0 z-[99] w-full shadow-[0px_5px_18px_0px_rgba(0,0,0,0.25)] transition-transform duration-300"
   role="banner"
 >
   <div class="relative">
@@ -178,6 +178,7 @@ const { logo, siteName = 'Học Bá Education' } = Astro.props;
             {
               INITIAL_NAVBARS.map((nav) => {
                 const isActive = isNavActive(nav, currentPath);
+                const fontClasses = nav.name === TitleMenu.INTRODUCE ? 'font-[800] leading-[28px]' : 'font-bold leading-[27px]';
                 return (
                   <li role="none" class="group relative flex h-full items-center px-1 xl:px-3 md:py-5">
                     {nav.href ? (
@@ -188,7 +189,7 @@ const { logo, siteName = 'Học Bá Education' } = Astro.props;
                       >
                         {/* {nav.icon && <nav.icon isActive={isActive} className={cn('mr-2 h-[18px] w-[18px]')} />} */}
                         <span
-                          class="text-nowrap text-sm font-bold xl:text-lg text-white"
+                          class={`text-nowrap text-sm xl:text-lg text-white ${fontClasses}`}
                         >
                           {nav.name}
                         </span>
@@ -208,7 +209,7 @@ const { logo, siteName = 'Học Bá Education' } = Astro.props;
                       <div role="menuitem" class="flex h-full cursor-pointer items-center justify-center pt-2">
                         {/* {nav.icon && <nav.icon isActive={isActive} className="h-[18px] w-[18px] mr-2" />} */}
                         <span
-                          class="text-nowrap text-sm font-bold xl:text-lg text-white"
+                          class={`text-nowrap text-sm xl:text-lg text-white ${fontClasses}`}
                         >
                           {nav.name}
                         </span>

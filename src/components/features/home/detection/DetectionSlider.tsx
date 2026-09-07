@@ -221,7 +221,10 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
       </div>
 
       {/* 3. Content Box */}
-      <div className="bg-[#0B328F] rounded-[24px] md:rounded-[32px] p-8 md:p-12 relative overflow-hidden transition-all duration-500 min-h-[300px]">
+      <div 
+        className="rounded-[20px] md:rounded-[24px] p-[20px] md:p-12 relative overflow-hidden transition-all duration-500 w-full min-h-[314px] md:min-h-[446px]"
+        style={{ background: 'linear-gradient(180deg, #052284 13.27%, #083AD4 100%)' }}
+      >
         <div className="absolute top-0 right-0 w-64 h-64 bg-[#3B82F6]/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#06B6D4]/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
 
@@ -287,7 +290,7 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
       <div className="mt-8 flex justify-center w-full">
         <a
           href="/khoa-hoc-ielts"
-          className="inline-flex w-full md:w-auto items-center justify-center gap-2 rounded-full bg-[#F97316] px-8 py-3.5 text-[15px] font-bold text-white uppercase"
+          className="inline-flex w-[245px] md:w-auto h-[42px] md:h-[60px] items-center justify-center gap-[8px] md:gap-[12px] rounded-full bg-[#F97316] px-[24px] md:px-[40px] py-[14px] md:py-[16px] text-[14px] md:text-[18px] leading-tight md:leading-[28px] font-bold text-white uppercase"
         >
           XEM CHI TIẾT KHÓA HỌC
           <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

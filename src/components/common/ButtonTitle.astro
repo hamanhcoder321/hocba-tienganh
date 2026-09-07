@@ -4,9 +4,10 @@ interface Props {
   icon?: any;
   className?: string;
   iconClassName?: string;
+  textClassName?: string;
 }
 
-const { title, icon: Icon, className = '', iconClassName = 'size-4 md:size-6' } = Astro.props;
+const { title, icon: Icon, className = '', iconClassName = 'size-4 md:size-6', textClassName = 'text-base font-medium md:text-2xl' } = Astro.props;
 ---
 
 <div
@@ -16,5 +17,5 @@ const { title, icon: Icon, className = '', iconClassName = 'size-4 md:size-6' } 
   ]}
 >
   {Icon && <Icon className={iconClassName} />}
-  <h2 class="text-base md:text-2xl">{title}</h2>
+  <h2 class:list={[textClassName, "whitespace-nowrap"]}>{title}</h2>
 </div>

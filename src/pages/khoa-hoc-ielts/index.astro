@@ -251,8 +251,8 @@ const smartTechnologyClass: SmartTechnologyClassItem[] = [
     ],
     mainImage: IMAGES.khoaHsk.imgScroll5,
     subImages: [
-      { image: IMAGES.khoaHsk.imgScrollGocPhaiTren5, position: 'top-right-inner', isMobile: true },
-      { image: IMAGES.khoaHsk.imgScrollGocPhaiDuoi5, position: 'bottom-right', isMobile: true },
+      { image: IMAGES.khoaHsk.imgScrollGocPhaiTren5, position: 'slide5-top-right', isMobile: true },
+      { image: IMAGES.khoaHsk.imgScrollGocPhaiDuoi5, position: 'slide5-bottom-right', isMobile: true },
     ],
   },
 ];
@@ -517,19 +517,20 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
     </section>
     <section class="w-full bg-gradient-to-r from-[#083AD4] to-[#3464F8]">
       <div class="flex w-full md:max-w-[1440px] md:h-[122px] mx-auto items-center justify-center px-4 py-[24px] md:px-0">
-        <p class="w-full md:max-w-[1137px] md:h-[74px] flex flex-wrap items-center justify-center text-center text-[15px] font-bold capitalize leading-none text-white md:text-[28px]">
-          THE IELTS SPACE đã giúp <span
-            class="mx-2 inline-block origin-bottom text-[15px] font-black text-[#F3C650] md:mx-3 md:text-[32px]"
-            >6.200+</span
-          > học viên Chinh phục thành công mục tiêu IELTS
-        </p>
+        <div class="mx-auto flex h-[60px] w-[342px] items-center justify-center text-center font-gilroy text-[16px] font-bold leading-[1.4] text-white md:h-auto md:w-full md:max-w-[1137px] md:text-[28px] md:whitespace-nowrap md:block">
+          <p>
+            <span class="align-middle">THE IELTS SPACE Đã Giúp</span>
+            <span class="align-middle mx-[6px] font-gilroy text-[32px] font-black leading-[1.4] text-[#F3C650] md:mx-4">6.200+</span>
+            <span class="align-middle">Học Viên Chinh Phục Thành Công Mục Tiêu IELTS</span>
+          </p>
+        </div>
       </div>
       <div class="h-auto w-full overflow-hidden bg-white pb-10 pt-4 md:min-h-[836px] md:pb-24 md:pt-14">
         <div class="mx-auto w-full max-w-[1440px] h-full">
         <h2 class="sr-only">CÀY IELTS MÃI KHÔNG TĂNG BAND?</h2>
         <div class="mx-auto flex w-fit items-center">
           <div class="relative mx-auto ml-4 flex items-center">
-            <p class="relative w-fit text-center text-lg font-black uppercase leading-normal md:text-[42px] md:w-[948px] md:h-[67px] flex items-center justify-center">
+            <p class="relative text-center font-gilroy font-black uppercase text-[20px] leading-[28px] w-[358px] h-[28px] gap-[8px] md:text-[42px] md:leading-[64px] md:w-[948px] md:h-[67px] flex items-center justify-center">
               <VectorArrow
                 fromColor="#FFA500"
                 toColor="#4A72F0"
@@ -539,17 +540,17 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
               <span class="text-[#D16112]">
                 CÀY IELTS MÃI
               </span>
-              <span class="text-[#D16112] ml-2">KHÔNG TĂNG BAND?</span>
+              <span class="text-[#D16112]">KHÔNG TĂNG BAND?</span>
             </p>
           </div>
         </div>
         <div
-          class="mx-auto mt-2 flex w-[90%] md:max-w-[969px] items-center justify-center rounded-sm border-[1.6px] border-[#373737] px-4 py-2 text-center text-[13px] whitespace-nowrap font-black uppercase text-[#373737] md:min-h-[64px] md:rounded-[11.5px] md:border-[4px] md:p-[11.5px] md:text-[42px] md:whitespace-normal"
+          class="mx-auto mt-2 flex w-[90%] md:max-w-[969px] items-center justify-center rounded-sm border-[1.6px] border-[#373737] px-4 py-2 text-center text-[13px] whitespace-nowrap font-gilroy font-black uppercase leading-none text-[#373737] md:h-[64px] md:rounded-[11.5px] md:border-[4px] md:p-[11.5px] md:text-[42px] md:leading-none md:whitespace-normal"
         >
           CÓ THỂ BẠN ĐANG RƠI VÀO VÒNG LẶP NÀY
         </div>
         <div class="mt-10 flex w-full flex-col md:flex-row items-center md:items-end justify-center gap-6 md:gap-10 px-4 md:mt-20 xl:px-0">
-          <div class="flex w-full md:w-[40%] max-w-[537px] items-center justify-center">
+          <div class="flex w-full md:w-[537px] md:h-[477px] max-w-[537px] items-center justify-center">
             <Image
               src={imgBannerCayIelts}
               width={537}
@@ -559,19 +560,19 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
             />
           </div>
           <div
-            class="flex-1 w-full md:max-w-[700px] flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-x-7 md:gap-y-8"
+            class="flex-1 w-full md:max-w-none xl:max-w-[720px] flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-x-[28px] md:gap-y-[32px] justify-items-center"
           >
             {
               swimmingNoHopeData.map((item) => (
-                <div class:list={["w-full h-full rounded-xl bg-white px-[14px] py-[10px] shadow-[0px_4px_4px_0px_#00000026] transition-colors duration-500 ease-in-out", item.id <= 2 ? "group" : ""]}>
-                  <div class="mb-2 h-1.5 w-[38px] rounded-full bg-[#4D5756] transition-all duration-300 ease-in-out group-hover:w-[106px] group-hover:bg-[#083AD4]"></div>
-                  <div class="mt-[10px] flex w-full md:min-h-[72px] items-center gap-[8px] rounded-[6px] bg-[#4D5756] px-4 py-2 transition-all duration-300 ease-in-out group-hover:bg-[#083AD4]">
+                <div class:list={["flex w-full flex-col gap-[12px] rounded-[12px] bg-white px-[14px] py-[10px] shadow-[0px_4px_4px_0px_#00000026] transition-colors duration-500 ease-in-out md:h-[225px] md:w-[345px]", item.id <= 2 ? "group" : ""]}>
+                  <div class="h-1.5 w-[38px] rounded-full bg-[#4D5756] transition-all duration-300 ease-in-out group-hover:w-[106px] group-hover:bg-[#083AD4]"></div>
+                  <div class="flex w-full items-center gap-[8px] rounded-[6px] bg-[#4D5756] px-4 py-2 transition-all duration-300 ease-in-out group-hover:bg-[#083AD4] md:min-h-[72px]">
                     <p class="origin-left text-[30px] font-black text-white transition-all duration-300 ease-in-out group-hover:scale-110 md:text-[42px]">
                       {`#${item.id}`}
                     </p>
                     <h3 class="text-sm font-medium leading-tight text-white md:text-[20px]" set:html={item.title}></h3>
                   </div>
-                  <div class="mt-1 text-[11px] font-normal text-[#373737] transition-all duration-300 ease-in-out group-hover:font-bold group-hover:text-black md:text-[14px]">
+                  <div class="text-[11px] font-normal text-[#373737] transition-all duration-300 ease-in-out group-hover:font-bold group-hover:text-black md:text-[14px]">
                     {item.content}
                   </div>
                 </div>
@@ -585,9 +586,9 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
     </section>
 
     
-    <section class="relative w-full h-auto xl:h-[783px] overflow-hidden bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#FFD0AF] via-[#083AD4] to-[#052284]">
-      <div class="relative w-full max-w-[1440px] h-auto xl:h-full mx-auto xl:pb-0">
-        <div class="relative mx-auto flex w-[95%] flex-col items-center gap-[10px] mt-4 xl:mt-0 xl:absolute xl:top-[55px] xl:left-[389px] xl:w-fit xl:max-w-[691px] xl:h-fit z-20">
+    <section class="relative w-full h-[672px] xl:h-[783px] py-[40px] px-[16px] xl:p-0 overflow-hidden bg-[radial-gradient(462.27%_57.63%_at_50%_53.87%,_#FFD0AF_0%,_#083AD4_52.69%,_#052284_100%)] xl:bg-[radial-gradient(45.03%_143.29%_at_48.26%_69.46%,_#FFD0AF_0%,_#083AD4_52.69%,_#052284_100%)]">
+      <div class="relative w-full max-w-[1440px] h-full mx-auto xl:pb-0">
+        <div class="relative mx-auto flex w-full flex-col items-center gap-[14px] xl:gap-[10px] xl:mt-0 xl:absolute xl:top-[55px] xl:left-[389px] xl:w-fit xl:max-w-[691px] xl:h-fit z-20">
           <!-- <Image
             src={IMAGES.introduce.book_icon}
             alt={'book_icon'}
@@ -596,13 +597,13 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
             densities={[1, 2]}
             class={'absolute top-6 md:top-10 -left-4 md:-left-20'}
           /> -->
-          <div class="bg-white text-center text-[11px] md:text-[28px] font-black leading-[1.3] text-[#EA580C] w-[284px] md:w-full md:max-w-[500px] xl:max-w-none rounded-[5px] py-[8px] px-[16px] md:px-2">
-            Học nhiều hơn chưa chắc đã hiệu quả hơn.
+          <div class="bg-white flex items-center justify-center text-center font-gilroy text-[11px] font-black leading-[1.3] text-[#EA580C] w-[284px] h-[30px] md:w-[691px] md:h-[50px] md:text-[28px] rounded-[5px] py-[8px] px-[16px] md:px-0">
+            <span class="md:w-[616px] md:h-[34px] flex items-center justify-center">Học nhiều hơn chưa chắc đã hiệu quả hơn.</span>
           </div>
-          <h2 class="w-[358px] md:w-full h-auto text-[24px] md:text-[42px] font-black leading-[32px] md:leading-[1.3] text-center uppercase text-white">
+          <h2 class="w-[358px] md:w-[691px] md:h-[110px] text-[24px] md:text-[42px] font-gilroy font-black leading-[32px] md:leading-[1.3] text-center uppercase text-white">
             GẠT MỌI NỖI LO <br /> ĐẠT AIM KHÔNG KHÓ!
           </h2>
-          <p class="text-center text-[12px] md:text-[16px] font-medium leading-[1.3] text-white w-full max-w-[555px]">
+          <p class="text-center text-[12px] md:text-[16px] font-gilroy font-medium leading-[18px] md:leading-[1.3] text-white w-[358px] h-[72px] md:w-[555px] md:h-[79px] flex items-center justify-center">
             Giải pháp luyện thi IELTS đột phá với hệ sinh thái học tập tích hợp thế hệ mới! Đây là "Chìa khoá vàng" giúp bạn chinh phục tấm chứng chỉ IELTS dễ dàng, nhanh chóng và hiệu quả gấp 3 lần phương pháp học truyền thống!
           </p>
           <div class="absolute right-[15%] top-[50px] md:-right-[5rem] md:top-4 xl:-right-[6rem] z-50 flex w-fit">
@@ -617,12 +618,12 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
         <div class="flex flex-col items-center w-full">
           <div class="relative flex flex-col items-center h-auto w-full xl:w-auto xl:h-auto mt-8 xl:mt-0 px-4 md:px-6 xl:px-0 xl:static">
             <div
-              class="grid h-auto w-full max-w-2xl grid-cols-2 gap-[10px] xl:block relative xl:static z-10 xl:z-auto"
+              class="grid h-[160.43px] w-[364.33px] max-w-2xl grid-cols-2 gap-[12px] relative z-10 md:h-auto md:w-full md:gap-[10px] xl:block xl:static xl:z-auto"
             >
-              <div class="col-span-1 h-auto xl:absolute xl:top-[342px] xl:left-[30px] min-[1400px]:left-[111px] w-full xl:w-[333px] xl:h-[81px]">
-                <div class="group flex h-full w-full cursor-pointer items-center justify-center rounded-[12px] bg-white p-[4px] md:p-[6px] transition-all duration-300 hover:scale-105 hover:p-[8px] hover:shadow-[0_0_20px_rgba(249,115,22,0.4)]">
-                  <div class="flex w-full h-full min-h-[50px] items-center gap-[4px] xl:gap-[8px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
-                    <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px]">
+              <div class="col-span-1 h-auto xl:absolute xl:top-[342px] xl:left-[111px] w-full xl:w-[333px] xl:h-[81px]">
+                <div class="group flex h-full w-full cursor-pointer items-center justify-center rounded-[12px] bg-white p-[4px] md:p-[6px] xl:py-[10px] xl:px-[10px] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_0_4px_rgba(255,255,255,1),0_0_20px_rgba(249,115,22,0.4)]">
+                  <div class="flex w-full h-full min-h-[50px] items-center gap-[4px] xl:gap-[10px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
+                    <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px] transition-transform duration-300 group-hover:scale-125">
                       <FourPointedStar
                         className="flex-shrink-0 w-[32px] h-[32px]"
                         toColor="#FFFFFF"
@@ -635,10 +636,10 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
                   </div>
                 </div>
               </div>
-              <div class="col-span-1 h-auto xl:absolute xl:top-[600px] xl:left-auto xl:right-[10px] min-[1400px]:right-[136px] w-full xl:w-[333px] xl:h-[81px]">
-                <div class="group flex h-full w-full cursor-pointer items-center justify-center rounded-[12px] bg-white p-[4px] md:p-[6px] transition-all duration-300 hover:scale-105 hover:p-[8px] hover:shadow-[0_0_20px_rgba(249,115,22,0.4)]">
-                  <div class="flex w-full h-full min-h-[50px] items-center gap-[4px] xl:gap-[8px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
-                    <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px]">
+              <div class="col-span-1 h-auto xl:absolute xl:top-[600px] xl:left-[1001px] w-full xl:w-[333px] xl:h-[81px]">
+                <div class="group flex h-full w-full cursor-pointer items-center justify-center rounded-[12px] bg-white p-[4px] md:p-[6px] xl:py-[10px] xl:px-[10px] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_0_4px_rgba(255,255,255,1),0_0_20px_rgba(249,115,22,0.4)]">
+                  <div class="flex w-full h-full min-h-[50px] items-center gap-[4px] xl:gap-[10px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
+                    <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px] transition-transform duration-300 group-hover:scale-125">
                       <FourPointedStar
                         className="flex-shrink-0 w-[32px] h-[32px]"
                         toColor="#FFFFFF"
@@ -651,10 +652,10 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
                   </div>
                 </div>
               </div>
-              <div class="col-span-1 h-auto xl:absolute xl:top-[342px] xl:left-auto xl:right-[10px] min-[1400px]:right-[136px] w-full xl:w-[333px] xl:h-[81px]">
-                <div class="group flex h-full w-full cursor-pointer items-center justify-center rounded-[12px] bg-white p-[4px] md:p-[6px] transition-all duration-300 hover:scale-105 hover:p-[8px] hover:shadow-[0_0_20px_rgba(249,115,22,0.4)]">
-                  <div class="flex w-full h-full min-h-[50px] items-center gap-[4px] xl:gap-[8px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
-                    <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px]">
+              <div class="col-span-1 h-auto xl:absolute xl:top-[342px] xl:left-[1001px] w-full xl:w-[333px] xl:h-[81px]">
+                <div class="group flex h-full w-full cursor-pointer items-center justify-center rounded-[12px] bg-white p-[4px] md:p-[6px] xl:py-[10px] xl:px-[10px] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_0_4px_rgba(255,255,255,1),0_0_20px_rgba(249,115,22,0.4)]">
+                  <div class="flex w-full h-full min-h-[50px] items-center gap-[4px] xl:gap-[10px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
+                    <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px] transition-transform duration-300 group-hover:scale-125">
                       <FourPointedStar
                         className="flex-shrink-0 w-[32px] h-[32px]"
                         toColor="#FFFFFF"
@@ -667,10 +668,10 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
                   </div>
                 </div>
               </div>
-              <div class="col-span-1 h-auto xl:absolute xl:top-[471px] xl:left-[10px] min-[1400px]:left-[75px] w-full xl:w-[333px] xl:h-[81px]">
-                <div class="group flex h-full w-full cursor-pointer items-center justify-center rounded-[12px] bg-white p-[4px] md:p-[6px] transition-all duration-300 hover:scale-105 hover:p-[8px] hover:shadow-[0_0_20px_rgba(249,115,22,0.4)]">
-                  <div class="flex w-full h-full min-h-[50px] items-center gap-[4px] xl:gap-[8px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
-                    <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px]">
+              <div class="col-span-1 h-auto xl:absolute xl:top-[471px] xl:left-[75px] w-full xl:w-[333px] xl:h-[81px]">
+                <div class="group flex h-full w-full cursor-pointer items-center justify-center rounded-[12px] bg-white p-[4px] md:p-[6px] xl:py-[10px] xl:px-[10px] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_0_4px_rgba(255,255,255,1),0_0_20px_rgba(249,115,22,0.4)]">
+                  <div class="flex w-full h-full min-h-[50px] items-center gap-[4px] xl:gap-[10px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
+                    <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px] transition-transform duration-300 group-hover:scale-125">
                       <FourPointedStar
                         className="flex-shrink-0 w-[32px] h-[32px]"
                         toColor="#FFFFFF"
@@ -683,10 +684,10 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
                   </div>
                 </div>
               </div>
-              <div class="col-span-1 h-auto xl:absolute xl:top-[600px] xl:left-[30px] min-[1400px]:left-[111px] w-full xl:w-[333px] xl:h-[81px]">
-                <div class="group flex h-full w-full cursor-pointer items-center justify-center rounded-[12px] bg-white p-[4px] md:p-[6px] transition-all duration-300 hover:scale-105 hover:p-[8px] hover:shadow-[0_0_20px_rgba(249,115,22,0.4)]">
-                  <div class="flex w-full h-full min-h-[50px] items-center gap-[4px] xl:gap-[8px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
-                    <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px]">
+              <div class="col-span-1 h-auto xl:absolute xl:top-[600px] xl:left-[111px] w-full xl:w-[333px] xl:h-[81px]">
+                <div class="group flex h-full w-full cursor-pointer items-center justify-center rounded-[12px] bg-white p-[4px] md:p-[6px] xl:py-[10px] xl:px-[10px] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_0_4px_rgba(255,255,255,1),0_0_20px_rgba(249,115,22,0.4)]">
+                  <div class="flex w-full h-full min-h-[50px] items-center gap-[4px] xl:gap-[10px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
+                    <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px] transition-transform duration-300 group-hover:scale-125">
                       <FourPointedStar
                         className="flex-shrink-0 w-[32px] h-[32px]"
                         toColor="#FFFFFF"
@@ -699,10 +700,10 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
                   </div>
                 </div>
               </div>
-              <div class="col-span-1 h-auto xl:absolute xl:top-[471px] xl:left-auto xl:-right-[10px] min-[1400px]:right-[103px] w-full xl:w-[333px] xl:h-[81px]">
-                <div class="group flex h-full w-full cursor-pointer items-center justify-center rounded-[12px] bg-white p-[4px] md:p-[6px] transition-all duration-300 hover:scale-105 hover:p-[8px] hover:shadow-[0_0_20px_rgba(249,115,22,0.4)]">
-                  <div class="flex w-full h-full min-h-[50px] items-center gap-[4px] xl:gap-[8px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
-                    <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px]">
+              <div class="col-span-1 h-auto xl:absolute xl:top-[471px] xl:left-[1034px] w-full xl:w-[333px] xl:h-[81px]">
+                <div class="group flex h-full w-full cursor-pointer items-center justify-center rounded-[12px] bg-white p-[4px] md:p-[6px] xl:py-[10px] xl:px-[10px] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_0_4px_rgba(255,255,255,1),0_0_20px_rgba(249,115,22,0.4)]">
+                  <div class="flex w-full h-full min-h-[50px] items-center gap-[4px] xl:gap-[10px] rounded-[6px] bg-gradient-to-r from-[#F97316] to-[#FFCF5A] px-2 py-1 xl:py-0 xl:px-0 xl:pl-[8px]">
+                    <div class="flex items-center justify-center flex-shrink-0 w-[24px] h-[24px] md:w-[36px] md:h-[36px] xl:w-[52px] xl:h-[52px] transition-transform duration-300 group-hover:scale-125">
                       <FourPointedStar
                         className="flex-shrink-0 w-[32px] h-[32px]"
                         toColor="#FFFFFF"
@@ -723,7 +724,7 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
               alt={'imgBanner3'}
               densities={[1, 2]}
               loading={'lazy'}
-              class={'relative xl:absolute -mt-6 md:-mt-10 xl:mt-0 xl:top-[60px] xl:left-[310px] w-[550px] md:w-[650px] max-w-none xl:max-w-[750px] xl:w-[750px] h-auto xl:h-[738px] opacity-100 rotate-0 flex object-contain object-bottom z-0'}
+              class={'relative xl:absolute -mt-6 md:-mt-10 xl:mt-0 xl:top-[80px] xl:left-[345px] w-[365px] h-[273px] md:w-[650px] md:h-auto max-w-none xl:max-w-[750px] xl:w-[750px] xl:h-[738px] opacity-100 rotate-0 flex object-contain object-bottom z-0'}
             />
           </div>
         </div>
@@ -806,7 +807,7 @@ const linkFbRedirect = 'https://www.facebook.com/groups/hocbahsk/';
               className={'hidden md:block absolute -left-6 -top-2 size-4 object-cover transition-opacity duration-500 md:-left-[40px] md:-top-[10px] md:size-8'}
             />
             <div
-              class="from-[#D16112] to-[#E71600] text-lg font-black uppercase leading-normal text-[#373737] md:bg-gradient-to-l md:bg-clip-text md:text-[42px] md:text-transparent"
+              class="text-[#D16112] text-lg font-black uppercase leading-normal md:text-[42px]"
             >
               Xây dựng lộ trình học toàn diện
             </div>

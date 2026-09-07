@@ -15,19 +15,22 @@ export const SITE_SETTINGS = {
   site_email: 'kiennt.edu8@gmail.com',
   site_phone: '+84888861786',
 
-  // SEO & Meta
-  // meta_title: 'Tiếng Trung Học Bá - Học Tiếng Trung cá nhân hóa & luyện thi chứng chỉ', // cũ
-  // meta_description: 'Luyện thi TOCFL, HSK, Giao Tiếp Phiên Biên Dịch, Luyện Thi Đại Học cam kết đầu ra với phương pháp học và lộ trình rõ ràng và chi tiết.', // cũ
-  // meta_keywords: ['Tiếng Trung Học Bá', 'Học tiếng trung', 'Luyện thi HSK', 'Luyện thi TOCFL'], // cũ
-  // site_url: import.meta.env.PUBLIC_CLIENT_URL || 'https://hoc-ba.edu.vn', // cũ
-  meta_title: 'The IELTS Space | Hệ Sinh Thái Học IELTS Cá Nhân Hóa',
+  meta_title: 'Luyện Thi IELTS Online Cá Nhân Hóa | The IELTS Space',
   meta_description:
-    'The IELTS Space - Hệ sinh thái học IELTS cá nhân hóa, cam kết đầu ra với phương pháp học và lộ trình rõ ràng, chi tiết.',
-  meta_keywords: ['The IELTS Space', 'Học tiếng Anh', 'Luyện thi IELTS', 'IELTS cá nhân hóa'],
+    'The IELTS Space cung cấp khóa học luyện thi IELTS online 0 đến 8.0+ với lộ trình cá nhân hóa, giáo viên chuyên môn cao, LMS thông minh và cam kết đầu ra.',
+  seo: {
+    primary_keyword: 'luyện thi IELTS online',
+    secondary_keywords: [
+      'luyện thi IELTS',
+      'học IELTS online',
+      'khóa học IELTS',
+      'lộ trình IELTS cá nhân hóa'
+    ]
+  },
   site_url: import.meta.env.PUBLIC_CLIENT_URL || 'https://the-ielts-space.edu.vn',
 
   // Analytics
-  google_analytics_tracking_id: 'G-YJJT3GGKZL',
+  google_analytics_tracking_id: 'G-5F3JLXHQV3',
 
   // Branding
   // site_name: 'Tiếng Trung Học Bá', // cũ

@@ -327,7 +327,7 @@ export default function ContactAdvisorRegistrationForm({
                   </span>
                 )}
               </Button>
-              <p className="mt-2 text-right font-normal text-white whitespace-nowrap text-[11px] sm:text-[12px] md:text-[15px] md:leading-[150%]">
+              <p className="mt-2 text-center md:text-right font-normal text-white whitespace-nowrap text-[12px] leading-[20px] md:text-[15px] md:leading-[150%]">
                 THE IELTS SPACE sẽ liên hệ lại trong vòng <span className="font-bold">24 giờ</span> làm việc.
               </p>
             </div>

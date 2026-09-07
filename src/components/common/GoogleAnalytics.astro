@@ -1,0 +1,34 @@
+---
+import { SITE_SETTINGS } from "@/lib/constants/site-config";
+import commonApi from "@/lib/api/common";
+
+interface Props {
+  apiTrackingId?: string | null;
+}
+
+const { apiTrackingId } = Astro.props;
+
+let trackingIdFromApi = apiTrackingId;
+if (trackingIdFromApi === undefined) {
+  const { data: settingsData } = (await commonApi.getSettings()) || {};
+  trackingIdFromApi = settingsData?.settings?.google_analytics_tracking_id;
+}
+
+const googleAnalyticsId = (trackingIdFromApi && trackingIdFromApi !== "null")
+  ? trackingIdFromApi
+  : SITE_SETTINGS.google_analytics_tracking_id;
+
+const gaId = (googleAnalyticsId && googleAnalyticsId !== "null") ? googleAnalyticsId : null;
+---
+
+{gaId && (
+  <>
+    <script is:inline type="text/partytown" src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+    <script is:inline type="text/partytown" define:vars={{ gaId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', gaId);
+    </script>
+  </>
+)}

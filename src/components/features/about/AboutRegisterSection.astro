@@ -14,13 +14,13 @@ const { dataInput = DATA_VALUE.ABOUT , defaultObjective = '' } = Astro.props;
   id="form-register-about"
   class="relative z-10 flex w-full items-center justify-center bg-[#0935C4] md:bg-[#E4EAFD] px-4 py-8 md:pt-10 md:pb-20 sm:p-8 sm:py-[80px]"
 >
-  <div class="relative h-fit w-full sm:w-fit md:mt-10 lg:mt-20">
+  <div class="relative h-fit w-full sm:w-fit md:mt-10 lg:mt-[82px]">
     <div
-      class="w-full bg-[#0935C4] text-white shadow-none md:shadow-lg sm:w-[620px] rounded-none sm:rounded-[20px] md:rounded-lg md:p-8 lg:w-[600px] lg:rounded-[28px] lg:p-10 xl:w-[700px] 3xl:w-[750px] 3xl:py-12"
+      class="w-full bg-[linear-gradient(180deg,#052284_13.27%,#083AD4_100%)] text-white shadow-none md:shadow-lg sm:w-[620px] rounded-none sm:rounded-[20px] md:rounded-lg md:p-8 lg:w-[681px] lg:min-h-[751px] lg:rounded-[28px] lg:p-10 3xl:py-12"
     >
-      <div class="w-full pb-6 pt-5 text-left pr-[110px] md:pr-0 sm:w-[450px]">
+      <div class="w-full pb-6 pt-5 text-left pr-[110px] md:pr-0 sm:w-[450px] lg:w-full lg:pt-[16px] lg:pl-[32px]">
         <h2
-          class="mb-2 text-[24px] font-extrabold capitalize leading-[1.3] sm:text-4xl lg:text-[46px] lg:leading-[55px]"
+          class="mb-2 text-[24px] font-[800] capitalize leading-[1.3] sm:text-4xl lg:w-[297px] lg:text-[40px] lg:leading-[47.21px]"
         >
           Đăng Ký Nhận<br />Tư Vấn Miễn Phí
         </h2>
@@ -29,12 +29,12 @@ const { dataInput = DATA_VALUE.ABOUT , defaultObjective = '' } = Astro.props;
     </div>
 
     {/* Paper Plane Boy */}
-    <div class="absolute right-0 top-0 md:-translate-y-[26%] md:translate-x-[35%] xl:translate-x-[45%] z-20 pointer-events-none">
+    <div class="absolute right-0 top-0 md:-translate-y-[26%] md:translate-x-[35%] lg:translate-y-0 lg:translate-x-0 lg:top-[-100px] lg:right-[-160px] lg:left-auto z-20 pointer-events-none">
       <Image
-        width={350}
-        height={350}
-        sizes="(max-width: 768px) 120px, 350px"
-        class="h-auto w-[120px] sm:w-[250px] xl:w-[320px] drop-shadow-xl"
+        width={338}
+        height={337}
+        sizes="(max-width: 768px) 120px, 338px"
+        class="h-auto w-[120px] sm:w-[250px] xl:w-[338px] xl:h-[337px] drop-shadow-xl"
         src={imgDkTuVan}
         alt={'Register advise boy'}
         loading="lazy"

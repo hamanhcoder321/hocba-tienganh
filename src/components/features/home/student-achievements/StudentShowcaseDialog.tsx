@@ -93,7 +93,7 @@ const StudentCard = ({ item }: { item: TStudent }) => {
         </div>
         <div className="flex-1 px-3 flex flex-col justify-center">
           <h3 className="text-white font-gilroy font-bold uppercase text-[13px] leading-tight line-clamp-1">{item.name}</h3>
-          <p className="text-[#FFCF5A] font-gilroy text-[11px] font-semibold mt-0.5">Lis: 8.0, Read: 8.5</p>
+          {/* <p className="text-[#FFCF5A] font-gilroy text-[11px] font-semibold mt-0.5">Lis: 8.0, Read: 8.5</p> */}
         </div>
         <div className="pr-3 shrink-0 flex items-center justify-end border-l border-white/20 pl-3 py-1">
           <span className="text-white font-gilroy font-black text-[18px]">

@@ -117,7 +117,7 @@ export default function LecturerFilterSidebar({
             </div>
 
             {/* HSK Programs */}
-            <div className="flex flex-col items-start gap-2">
+            {/* <div className="flex flex-col items-start gap-2">
               <div className="flex items-center gap-2">
                 <div className="size-[18px] rounded-full bg-primary"></div>
                 <p className="text-[15px] font-bold md:text-base">HSK</p>
@@ -137,7 +137,7 @@ export default function LecturerFilterSidebar({
                   </button>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* Chinese Programs */}
             <div className="flex flex-col items-start gap-2">
