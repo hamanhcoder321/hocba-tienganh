@@ -41,7 +41,7 @@ const expertBullets = [
       <!-- badge -->
       <div class="bg-white rounded-full px-5 py-2 mb-4 md:mb-6 shadow-md hidden md:inline-flex items-center justify-center gap-2">
         <svg class="w-4 h-4 md:w-5 md:h-5 text-[#4E7DFF] -mt-[1px]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-        <span class="text-[#0B2C9E] text-[11px] md:text-[14px] font-bold uppercase tracking-wider">VÌ SAO NÊN CHỌN THE IELTS SPACE?</span>
+        <span class="text-[#072899] text-[11px] md:text-[14px] font-semibold uppercase tracking-normal leading-[20px]">VÌ SAO NÊN CHỌN THE IELTS SPACE?</span>
       </div>
 
       <!-- Main title block -->
@@ -59,7 +59,7 @@ const expertBullets = [
             </div>
           </span> <br class="hidden md:block" />
           <span class="inline-block md:whitespace-nowrap relative">
-            <span class="hidden md:inline">CHẮT LỌC</span> <span class="text-[#FF7A00]">TINH HOA GIÁO DỤC NGHÌN NĂM</span>
+            <span class="hidden md:inline">CHẮT LỌC</span> <span class="text-[#F97316]">TINH HOA GIÁO DỤC NGHÌN NĂM</span>
           </span>
         </h2>
       </div>
@@ -81,13 +81,13 @@ const expertBullets = [
 
     <div class="mb-10 md:mb-16">
       <div class="hidden md:grid grid-cols-2 gap-[47px] mb-[36px] w-full max-w-[1311px] mx-auto">
-        <div class="bg-[#F97316] rounded-2xl md:rounded-[20px] py-3.5 px-6 flex items-center justify-center gap-3 shadow-md w-full">
+        <div class="bg-[#F97316] rounded-2xl md:rounded-[24px] h-[69px] px-6 flex items-center justify-center gap-3 shadow-md w-full">
           <div class="w-6 h-6 rounded-full bg-white flex items-center justify-center text-[#F26522]">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"></path></svg>
           </div>
           <span class="text-white font-bold text-[20px] leading-[24px] tracking-normal">NHỮNG VẤN ĐỀ NGƯỜI HỌC GẶP PHẢI</span>
         </div>
-        <div class="bg-[#1241C4] rounded-2xl md:rounded-[20px] py-3.5 px-6 flex items-center justify-center gap-3 shadow-md w-full m-0">
+        <div class="bg-[#083AD4] rounded-2xl md:rounded-[24px] h-[69px] px-6 flex items-center justify-center gap-3 shadow-md w-full m-0">
           <div class="w-6 h-6 rounded-full bg-white flex items-center justify-center text-[#1241C4]">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"></path></svg>
           </div>
@@ -100,11 +100,13 @@ const expertBullets = [
           <div class="relative bg-white md:bg-transparent rounded-2xl md:rounded-none p-4 md:p-0 flex flex-col md:grid md:grid-cols-2 gap-3 md:gap-[47px] items-center shadow-sm md:shadow-none m-0">
             
 
-            <div class="w-full md:bg-white md:rounded-[20px] p-3 md:p-4 xl:p-5 flex items-center gap-3 xl:gap-4 md:min-h-[88px]">
+            <div class="w-full bg-transparent md:bg-white md:border md:border-[#FFEDD5] md:shadow-[0px_3px_5px_0px_#0000001A] rounded-[16px] md:p-[16px] flex items-center md:min-h-[106px] h-full">
               <div class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-gradient-to-b from-[#F97316] to-[#FFA262] flex-shrink-0 flex items-center justify-center shadow-sm">
                 <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"></path></svg>
               </div>
-              <p class="text-[#EA580C] font-bold text-[14px] lg:text-[18px] xl:text-[20px] leading-snug xl:leading-[24px] tracking-normal lg:tracking-tight xl:tracking-normal flex-1" set:html={row.problem} />
+              <div class="flex-1 flex flex-col justify-center pl-[16px]">
+                <p class="text-[#EA580C] font-bold text-[14px] lg:text-[18px] xl:text-[20px] leading-snug xl:leading-[24px] tracking-normal lg:tracking-tight xl:tracking-tight w-full" set:html={row.problem} />
+              </div>
             </div>
 
             <!-- mobile -->
@@ -112,15 +114,17 @@ const expertBullets = [
 
             <!-- laptip -->
             <div class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center justify-center z-10 text-white/60">
-              <Image src={imgMuiten} alt="Arrow" aria-hidden="true" class="w-[30px] h-auto animate-blink-delay" />
+              <Image src={imgMuiten} alt="Arrow" aria-hidden="true" class="h-[19px] w-auto animate-blink-delay" />
             </div>
 
 
-            <div class="w-full md:bg-white md:rounded-[20px] p-3 md:p-4 xl:p-5 flex items-center gap-3 xl:gap-4 md:min-h-[88px] m-0">
+            <div class="w-full bg-transparent md:bg-white md:border md:border-[#E5E7EB] md:shadow-[0px_3px_5px_0px_#0000001A] rounded-[16px] md:p-[16px] flex items-center md:min-h-[106px] h-full m-0">
               <div class="w-7 h-7 md:w-8 md:h-8 rounded-full bg-gradient-to-b from-[#083AD4] to-[#3464F8] flex-shrink-0 flex items-center justify-center shadow-sm">
                 <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6L9 17l-5-5"></path></svg>
               </div>
-              <p class="text-[#163299] font-bold text-[14px] lg:text-[18px] xl:text-[20px] leading-snug xl:leading-[24px] tracking-normal lg:tracking-tight xl:tracking-normal flex-1" set:html={row.solution} />
+              <div class="flex-1 flex flex-col justify-center pl-[16px]">
+                <p class="text-[#163299] font-bold text-[14px] lg:text-[18px] xl:text-[20px] leading-snug xl:leading-[24px] tracking-normal lg:tracking-tight xl:tracking-tight w-full" set:html={row.solution} />
+              </div>
             </div>
 
           </div>
@@ -133,11 +137,11 @@ const expertBullets = [
       <div class="absolute left-2 translate-x-0 md:left-[30px] lg:left-[40px] md:translate-x-0 top-1/2 -translate-y-1/2 w-[44px] h-[44px] md:w-[84px] md:h-[84px] bg-[#224BC9] rounded-full flex items-center justify-center z-20 shadow-lg">
         <svg class="w-5 h-5 md:w-[44px] md:h-[44px] text-white -mt-[1px] md:-mt-[2px] animate-blink-delay" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
       </div>
-      <p class="text-center text-[#1E3A8A] text-[11px] sm:text-[10px] md:text-[26px] font-medium w-full leading-[1.3] md:leading-[28px] tracking-normal relative z-10">
+      <p class="text-center text-[#072899] text-[11px] sm:text-[10px] md:text-[26px] font-medium w-full leading-[1.3] md:leading-[28px] tracking-normal relative z-10">
         <span class="hidden md:block">
           Khác biệt của IELTS Space là tái thiết hoàn toàn cách người học chinh phục <br />
           tiếng Anh để giải quyết triệt để những vấn đề cố hữu. Hiệu quả không đến từ <br />
-          may mắn, mà đến từ <span class="text-[#F26522] font-bold">phương pháp và con đường!</span>
+          may mắn, mà đến từ <span class="text-[#F97316] font-bold">phương pháp và con đường!</span>
         </span>
         <span class="md:hidden">
           Khác biệt của IELTS Space là tái thiết hoàn toàn cách người học chinh phục tiếng Anh để giải quyết triệt để những vấn đề cố hữu. Hiệu quả không đến từ may mắn, mà đến <br />từ <span class="text-[#F26522] font-bold">phương pháp và con đường!</span>
@@ -152,7 +156,9 @@ const expertBullets = [
     </div> <!-- Close top container -->
 
     <div id="xem-ho-so" class="w-full max-w-[1424px] mx-auto px-4 md:px-8 relative z-10 scroll-mt-20">
-      <div class="flex flex-col items-center">
+      {/* Background Glow Effect */}
+      <div class="hidden md:block absolute top-[-150px] left-[-50px] xl:left-[-150px] w-[400px] h-[400px] rounded-full pointer-events-none z-0" style="background: radial-gradient(70.71% 70.71% at 50% 50%, rgba(8, 58, 212, 0.69) 0%, rgba(8, 58, 212, 0) 70%);"></div>
+      <div class="flex flex-col items-center relative z-10">
       <CommitmentBadge className="rounded-md md:rounded-[20px] px-2 py-1.5 sm:px-5 sm:py-2 md:py-4 md:px-10 mb-3 md:mb-4 inline-flex shadow-md max-w-full overflow-hidden text-center text-[11px] min-[375px]:text-[12.5px] sm:text-[16px] md:text-[34px] font-[1000] md:leading-[64px] tracking-normal whitespace-nowrap">
         THE IELTS SPACE HÂN HẠNH GIỚI THIỆU
       </CommitmentBadge>
@@ -176,20 +182,24 @@ const expertBullets = [
         <div class="w-full max-w-[358px] md:max-w-none md:w-1/2 xl:w-[546px] flex-shrink-1 xl:flex-shrink-0 h-auto xl:h-[438px] bg-[#2E4387] rounded-[18px] p-[18px] md:px-6 xl:px-8 md:py-6 xl:py-[18px] z-20 relative shadow-2xl flex flex-col items-center justify-start">
           <div class="w-full xl:w-[500px] h-auto xl:h-[304px] flex flex-col gap-[12px] md:gap-[20px] xl:gap-[28px] items-center">
             <div class="w-full xl:w-[410px] h-auto xl:h-[118px] flex flex-col gap-[4px] md:gap-[12px] m-0">
-              <h4 class="text-white font-['Inter'] font-black text-[24px] lg:text-[34px] text-center md:text-left leading-none uppercase drop-shadow-sm tracking-normal m-0">Mr. Jackson Howard</h4>
+              <h4 class="text-white font-['Inter'] font-black text-[24px] lg:text-[34px] text-center md:text-left leading-[100%] uppercase drop-shadow-sm tracking-normal m-0"
+              style="font-weight: 900;">
+              Mr. Jackson Howard</h4>
               
               <div class="flex items-center justify-start gap-3 w-full m-0">
                 <svg class="hidden md:block w-7 h-7 md:w-8 md:h-8 text-[#FFC107] flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"></path></svg>
-                <span class="text-[#FFCF5A] font-['Inter'] font-black text-[16px] md:text-[24px] text-left leading-[1.2] tracking-[0px]">
+                <span class="text-[#FFCF5A] font-['Inter'] font-black text-[16px] md:text-[24px] text-left leading-[1.2] tracking-[0px]"
+                  style="font-weight: 900;"
+                >
                   Thạc sĩ TESOL - Đại học Công <br class="hidden sm:block" /> nghệ Sydney
                 </span>
               </div>
             </div>
 
-            <ul class="text-white space-y-1.5 md:space-y-3 text-justify text-[13px] md:text-[16px] lg:text-[20px] font-normal md:font-semibold leading-[20px] md:leading-[1.12] tracking-normal m-0 w-full">
+            <ul class="text-white space-y-2 md:space-y-2 text-justify text-[13px] md:text-[16px] lg:text-[20px] font-normal md:font-semibold leading-[24px] md:leading-[28px] lg:leading-[32px] tracking-normal m-0 w-full">
               {expertBullets.map(bullet => (
                 <li class="flex items-start gap-1.5 md:gap-3">
-                  <span class="text-white font-bold flex-shrink-0 text-[14px] lg:text-[24px] md:text-[18px] leading-none">•</span>
+                  <span class="text-white font-bold flex-shrink-0 text-[14px] lg:text-[24px] md:text-[18px] leading-[16px]">•</span>
                   <span set:html={bullet} />
                 </li>
               ))}

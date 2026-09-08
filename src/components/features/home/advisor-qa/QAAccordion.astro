@@ -11,7 +11,7 @@ interface Props {
 const { qaData } = Astro.props;
 ---
 
-<div class="flex select-none flex-col gap-0 pb-10 pt-2 md:gap-5 md:pt-5 w-full">
+<div class="flex select-none flex-col gap-0 pb-10 pt-2 md:gap-[24px] md:pt-5 w-full">
   {
     qaData.map((item, index) => (
       <details
@@ -20,7 +20,7 @@ const { qaData } = Astro.props;
       >
         <summary class="flex cursor-pointer list-none items-center justify-between p-0 md:px-6 md:py-4 text-left outline-none transition-all duration-300">
           <h3 
-            class="max-w-[93%] text-[15px] font-bold tracking-tight text-[#373737] transition-colors md:text-[22px] md:leading-none md:tracking-normal capitalize md:pl-[1.2em] md:-indent-[1.2em]" 
+            class="max-w-[93%] text-[15px] font-bold tracking-tight text-[#373737] transition-colors md:text-[20px] md:leading-none md:tracking-tight capitalize md:pl-[1.2em] md:-indent-[1.2em]" 
             set:html={item.question}
           >
           </h3>

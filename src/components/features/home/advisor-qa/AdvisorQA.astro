@@ -44,10 +44,14 @@ const qaData = [
 
 <section
   id="advisor-qa"
-  class="relative mx-auto min-h-[900px] w-full max-w-[1493px] bg-[linear-gradient(180deg,rgba(255,251,247,0)_0%,#FFF7EF_31.25%,rgba(255,249,249,0)_100%)] md:min-h-0"
+  class="relative w-full min-h-[900px] overflow-hidden bg-[linear-gradient(180deg,rgba(255,251,247,0)_0%,#FFF7EF_31.25%,rgba(255,249,249,0)_100%)] md:min-h-[895px]"
 >
+  {/* Background Glow Effects */}
+  <div class="hidden md:block absolute top-0 right-[-50px] w-[269px] h-[248px] rounded-[200px] pointer-events-none z-0" style="background: radial-gradient(70.71% 70.71% at 50% 50%, rgba(8, 58, 212, 0.4) 0%, rgba(8, 58, 212, 0) 70%);"></div>
+  <div class="hidden md:block absolute bottom-0 left-[-50px] w-[269px] h-[248px] rounded-[200px] pointer-events-none z-0" style="background: radial-gradient(70.71% 70.71% at 50% 50%, rgba(8, 58, 212, 0.4) 0%, rgba(8, 58, 212, 0) 70%);"></div>
+
   <div class="relative z-10 mx-auto w-full px-[16px] py-[24px] md:max-w-[1212px] md:px-9 md:py-0 lg:px-0">
-    <div class="mb-[28px] md:mb-7">
+    <div class="mb-[28px] md:mb-7 lg:mt-[120px]">
       <div class="flex items-center gap-1 md:gap-2">
         <Image src={iconHoiCham} alt="?" class="h-16 w-16 translate-y-[6px] object-contain md:h-24 md:w-24" />
         <div>
@@ -55,18 +59,18 @@ const qaData = [
             GIẢI ĐÁP 1:1
           </h2>
           <CommitmentBadge
-            className="mt-1 inline-block rounded-md !from-[#F97316] !to-[#F59E0B] px-3 py-1 text-[16px] font-bold sm:px-4 md:mt-2 md:text-[32px]"
+            className="mt-1 inline-block rounded-md !from-[#F97316] !to-[#FFCF5A] px-3 py-1 text-[16px] font-bold sm:px-4 md:mt-2 md:text-[32px]"
           >
             CÙNG CỐ VẤN HỌC TẬP
           </CommitmentBadge>
         </div>
       </div>
     </div>
-    <div class="flex flex-col items-center gap-[28px] md:gap-8 lg:flex-row">
-      <div class="w-full lg:w-[55%]">
+    <div class="flex flex-col items-center gap-[28px] md:gap-8 lg:flex-row lg:items-start">
+      <div class="w-full lg:w-[646px] lg:flex-shrink-0">
         <QAAccordion {qaData} />
       </div>
-      <div class="relative w-full lg:w-[45%]">
+      <div class="relative w-full lg:w-[755px] lg:h-[899px] lg:flex-shrink-0 lg:-mt-[120px]">
         <!-- <div class="absolute top-0 translate-x-1/2 lg:-top-20 lg:right-1/2">
           <Image
             src={IconMb}

@@ -226,7 +226,8 @@ const features = [
         <div class="relative z-10 flex flex-col gap-2 md:gap-3 max-sm:!h-auto">
           <h3
             id="mentor-title"
-            class="rounded-xl md:rounded-[18px] border-[2px] border-white/60 md:border-white/90 py-3 px-1 md:py-4 md:px-4 text-center text-[14px] md:text-[26px] font-black uppercase text-white leading-[1.3] shadow-sm transition-all duration-500 md:bg-[#F97316]"
+            class="rounded-xl md:rounded-[18px] border-[2px] border-white/60 md:border-white/90 py-3 px-1 md:py-4 md:px-4 text-center text-[14px] md:text-[28px] font-black uppercase text-white leading-[1.3] shadow-sm transition-all duration-500 md:bg-[#F97316]"
+            style="font-weight: 900;"
           >
             Mentor học thuật 1-1 <br /> BỔ TRỢ 24/7
           </h3>
@@ -299,9 +300,21 @@ const features = [
   @media (min-width: 768px) {
     #mentor-card {
       background: linear-gradient(to bottom, #F48220, #FDC959);
+      transition: all 0.5s ease;
     }
     #mentor-title {
       background: #F97316;
+      transition: all 0.5s ease;
+    }
+  }
+  /* Hover trên Desktop (lg+) */
+  @media (min-width: 1024px) {
+    .group:hover #mentor-card {
+      background: linear-gradient(289.25deg, #F97316 2.88%, #FFCF5A 98.4%) !important;
+    }
+    .group:hover #mentor-title {
+      background: transparent !important;
+      border-color: rgba(255, 255, 255, 0.9) !important;
     }
   }
 </style>

@@ -11,27 +11,28 @@ import imgCuonNhatKy from '@/assets/images/img-hocba-tienganh-optimized/img-cuon
 >
   <div class="w-full flex flex-col items-center text-center relative">
     <div class="mb-4 flex flex-row items-center justify-center w-full md:gap-4 md:mb-6 relative" data-animate="fade-up">
-      <div class="absolute left-[9px] top-[10px] w-[42px] h-[44px] md:static md:w-32 md:h-auto md:translate-y-0 z-10 flex-shrink-0">
+      <div class="absolute left-[9px] -top-[3px] w-[42px] h-[44px] md:static md:w-32 md:h-auto md:-translate-y-10 z-10 flex-shrink-0">
         <Image src={imgCuonNhatKy} alt="Diploma Icon" class="w-full h-full object-contain md:h-auto drop-shadow-lg" />
       </div>
-      <div class="flex flex-col items-center justify-center w-full md:w-auto md:items-start z-0">
-        <h2
-          class="text-[#1336B3] text-[15px] min-[375px]:text-[17px] sm:text-xl font-black uppercase leading-tight md:text-[24px] lg:text-[42px] whitespace-nowrap md:mb-3 lg:mb-5"
-        >
-          Được tin tưởng & lựa chọn bởi
-        </h2>
-        <div class="mt-1.5 w-full flex justify-center md:justify-start">
-          <CommitmentBadge className="text-[11px] min-[375px]:text-[12.5px] sm:text-[15px] font-bold md:text-[32px] md:px-8 !from-[#F97316] !to-[#F59E0B] whitespace-nowrap px-4 py-1 md:py-2 w-auto justify-center inline-flex">
-            HÀNG NGHÌN HỌC VIÊN TRÊN TOÀN QUỐC
-          </CommitmentBadge>
+      <div class="flex flex-col items-center justify-center w-full md:w-fit md:items-start z-0 md:mt-4">
+        <div class="flex flex-col items-center justify-center w-full md:w-fit md:gap-[12px] md:items-start z-0">
+          <h2
+            class="text-[#1336B3] text-[15px] min-[375px]:text-[17px] sm:text-xl font-black uppercase leading-tight whitespace-nowrap md:w-fit md:h-fit text-center md:text-left md:text-[46px] md:leading-[64px] md:tracking-normal"
+          >
+            Được tin tưởng & lựa chọn bởi
+          </h2>
+          <div class="mt-0 w-full flex justify-center md:justify-start">
+            <CommitmentBadge className="text-[11px] min-[375px]:text-[12.5px] sm:text-[15px] font-bold md:text-[32px] md:leading-none !from-[#F97316] !to-[#FFCF5A] whitespace-nowrap px-4 py-1 md:w-[721px] md:h-[59px] md:gap-[10px] md:px-[13px] md:py-[18px] md:rounded-[8px] justify-center inline-flex items-center">
+              HÀNG NGHÌN HỌC VIÊN TRÊN TOÀN QUỐC
+            </CommitmentBadge>
+          </div>
+        </div>
+
+        <div class="mt-2 md:mt-4 max-w-3xl px-4 md:px-0 flex justify-center md:justify-start w-full">
+          <p class="mx-auto md:mx-0 max-w-[692px] md:max-w-[721px] w-full text-[9px] font-medium leading-[1.2] tracking-normal text-[#373737] md:text-[20px] md:leading-[1.2] text-center font-['SVN-Gilroy']">
+            <Star className="inline-block mr-1.5 sm:mr-2 size-4 sm:size-5 text-[#373737] md:size-6 align-text-bottom mb-[2px] md:mb-[3px]" strokeWidth={3} />Sự tiến bộ và kết quả thực tế của người học là minh chứng rõ ràng nhất <br class="hidden md:block" />cho chất lượng đào tạo của THE IELTS SPACE. Đó cũng là động lực để <br class="hidden md:block" />chúng tôi không ngừng nâng chuẩn chương trình, cải tiến phương pháp và <br class="hidden md:block" />hoàn thiện trải nghiệm học tập mỗi ngày.
+          </p>
         </div>
       </div>
-    </div>
-
-    <div class="max-w-3xl px-4 md:px-0 mx-auto" data-animate="fade-up">
-      <p class="mx-auto max-w-[692px] text-[9px] font-medium leading-[1.2] tracking-normal text-[#373737] md:text-xl md:leading-relaxed text-center translate-x-0 md:translate-x-12">
-        <Star className="inline-block mr-1.5 sm:mr-2 size-4 sm:size-5 text-[#373737] md:size-6 align-text-bottom mb-[2px] md:mb-[3px]" strokeWidth={3} />Sự tiến bộ và kết quả thực tế của người học là minh chứng rõ ràng nhất<br class="block md:hidden" /> cho chất lượng đào tạo của THE IELTS SPACE. Đó cũng là động lực để<br class="block md:hidden" /> chúng tôi không ngừng nâng chuẩn chương trình, cải tiến phương pháp<br class="block md:hidden" /> và hoàn thiện trải nghiệm học tập mỗi ngày.
-      </p>
-    </div>
   </div>
 </div>

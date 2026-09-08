@@ -73,7 +73,7 @@ const StaticTeacherCarousel = () => {
                 </div>
 
                 {/* Badge */}
-                <div className={`absolute z-30 flex flex-col items-center justify-center rounded-[8px] md:rounded-[12.5px] border-[1.5px] md:border-[1.04px] border-white/90 bg-gradient-to-b from-[#FFA73A] to-[#FF8C00] px-2 py-1 md:px-[12.66px] md:py-[12px] shadow-md ${teacher.badgeBottom === 'BẢN XỨ' ? 'left-3 md:left-[14px] top-4 md:top-[34.5px] md:w-[83px] md:h-[54px]' : 'left-3 md:left-[27px] top-4 md:top-[31.5px] md:w-[57px] md:h-[59px]'}`}>
+                <div className={`absolute z-30 flex flex-col items-center justify-center rounded-[8px] md:rounded-[12.5px] border-[1.5px] md:border-[1.04px] border-white/90 bg-gradient-to-b from-[#F97316] to-[#FFAA6F] px-2 py-1 md:px-[12.66px] md:py-[12px] shadow-md ${teacher.badgeBottom === 'BẢN XỨ' ? 'left-3 md:left-[14px] top-4 md:top-[34.5px] md:w-[83px] md:h-[54px]' : 'left-3 md:left-[27px] top-4 md:top-[31.5px] md:w-[57px] md:h-[59px]'}`}>
                   <span className={`text-white whitespace-nowrap ${teacher.badgeBottom === 'BẢN XỨ' ? 'text-[8px] font-black md:text-[11px] md:leading-[12.5px] tracking-normal text-center' : 'text-[7px] font-bold md:text-[9px] tracking-wide'}`}>
                     {teacher.badgeTop}
                   </span>
@@ -96,11 +96,11 @@ const StaticTeacherCarousel = () => {
                   </div>
 
                 {/* White Info Box */}
-                <div className="relative z-20 -mt-6 w-[210px] md:w-[310px] h-[69.5px] md:h-[100px] flex flex-col items-center justify-center gap-[4.17px] md:gap-[6px] rounded-[8.34px] md:rounded-[12px] bg-white px-2 md:px-4 md:py-[12px] py-[8.34px] text-center shadow-md">
+                <div className="relative z-20 -mt-6 w-[210px] md:w-[277px] h-[69.5px] md:h-[100px] flex flex-col items-center justify-center gap-[4.17px] md:gap-[6px] rounded-[8.34px] md:rounded-[12px] bg-white px-2 md:px-4 md:py-[12px] py-[8.34px] text-center shadow-md">
                   <h3 className={`font-[1000] text-[#0935C4] leading-none capitalize text-center m-0 whitespace-nowrap ${teacher.name === 'GIẢNG VIÊN JACKSON HOWARD' ? 'text-[12.5px] md:text-[17.5px] tracking-tight' : 'text-[14.71px] md:text-[21.16px] tracking-normal'}`}>
                     {teacher.name}
                   </h3>
-                  <p className="text-[12px] min-[375px]:text-[13px] md:text-[18px] font-bold leading-none capitalize tracking-[0px] text-center m-0 pt-1 whitespace-pre-line">
+                  <p className="text-[12px] min-[375px]:text-[13px] md:text-[18px] md:w-[277px] font-bold leading-tight capitalize tracking-[0px] text-center m-0 pt-1 whitespace-pre-line">
                     {teacher.title}
                   </p>
                 </div>
@@ -113,12 +113,22 @@ const StaticTeacherCarousel = () => {
 
                 {/* Search / Plus icon button at the bottom */}
                 <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 z-30">
+                  {/* Tạm thời bỏ hiệu ứng hover:
                   <a 
                     href={teacher.slug ? `/doi-ngu-giang-vien/${teacher.slug}` : "#"} 
                     className="cursor-pointer flex size-10 items-center justify-center rounded-full bg-white shadow-md transition-all duration-300 hover:scale-110 [&>svg]:hover:-scale-x-100"
                   >
                     <svg className="size-5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M17.6346 9.37033H14.0929M14.0929 9.37033H10.5512M14.0929 9.37033V5.82867M14.0929 9.37033V12.912M8.19011 15.2731L1.10678 22.3564M14.0929 17.6342C18.6569 17.6342 22.3568 13.9344 22.3568 9.37033C22.3568 4.80631 18.6569 1.10645 14.0929 1.10645C9.52887 1.10645 5.829 4.80631 5.829 9.37033C5.829 13.9344 9.52887 17.6342 14.0929 17.6342Z" stroke="#0935C4" strokeWidth="2.21354" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </a>
+                  */}
+                  <a 
+                    href={teacher.slug ? `/doi-ngu-giang-vien/${teacher.slug}` : "#"} 
+                    className="cursor-pointer flex size-10 items-center justify-center rounded-full bg-white shadow-md"
+                  >
+                    <svg className="size-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M17.6346 9.37033H14.0929M14.0929 9.37033H10.5512M14.0929 9.37033V5.82867M14.0929 9.37033V12.912M8.19011 15.2731L1.10678 22.3564M14.0929 17.6342C18.6569 17.6342 22.3568 13.9344 22.3568 9.37033C22.3568 4.80631 18.6569 1.10645 14.0929 1.10645C9.52887 1.10645 5.829 4.80631 5.829 9.37033C5.829 13.9344 9.52887 17.6342 14.0929 17.6342Z" stroke="#9A9A9A" strokeWidth="2.21354" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </a>
                 </div>

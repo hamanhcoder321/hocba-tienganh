@@ -38,7 +38,14 @@ const IconMap: Record<string, string> = {
   Trophy: getImgSrc(trophyIcon),
 };
 
-
+const titleBackgrounds: Record<string, string> = {
+  'khoi-dong': 'linear-gradient(180deg, #2144A7 0%, #2751C7 100%)',
+  'cat-canh': '#5585F7',
+  'tang-toc': '#38BCEE',
+  'but-pha': '#F9BC32',
+  'vuon-xa': '#FF6E09',
+  'chinh-phuc': '#FD4A06',
+};
 
 export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
   // index của mốc lộ trình đang được click chọn (Mặc định: 0)
@@ -148,8 +155,8 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
       </div>
 
       {/* 2. Tabs */}
-      <div className="mb-4 md:mb-6">
-        <div className="flex overflow-x-auto gap-4 md:gap-[41px] custom-scrollbar pb-4 px-4 md:px-4 md:flex-nowrap md:justify-center md:bg-white md:rounded-[24px] md:shadow-sm md:border md:border-gray-200 md:max-w-[1266px] md:mx-auto md:h-[161px] md:items-center" role="tablist">
+      <div className="mb-4 md:mb-6 w-full px-4 md:px-0 flex justify-center">
+        <div className="flex overflow-x-auto md:overflow-hidden gap-4 md:gap-0 custom-scrollbar pb-4 px-4 md:p-0 md:flex-nowrap md:justify-center md:bg-white md:rounded-[24px] md:border md:border-[#E2E8F0] md:max-w-[1266px] md:w-full md:mx-auto md:h-[161px] md:items-center" role="tablist">
           {data.map((item, index) => {
             const isActive = activeIndex === index;
             return (
@@ -164,7 +171,9 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 className={cn(
-                  "flex-shrink-0 flex items-center p-3 pr-6 md:flex-col md:justify-center md:px-2 md:py-4 min-w-[170px] md:min-w-0 md:flex-1 transition-all duration-300 outline-none rounded-xl md:rounded-none",
+                  "flex-shrink-0 flex items-center p-3 pr-6",
+                  "md:flex-col md:justify-center md:items-start md:w-[188px] md:h-[146px] md:gap-[23px] md:px-[12px] md:py-[32px]",
+                  "min-w-[170px] md:min-w-0 transition-all duration-300 outline-none rounded-xl md:rounded-none",
                   isActive ? "bg-[#21409A] md:bg-transparent shadow-md md:shadow-none" : "bg-[#5E87F9] md:bg-transparent",
                   index !== data.length - 1 && "md:border-r md:border-gray-100"
                 )}
@@ -175,33 +184,44 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                 )}>
                   {index + 1}
                 </div>
-                <div className="flex flex-col items-center text-center w-full px-1 md:px-2 lg:px-4">
-                  <span 
-                    className={cn(
-                      "text-[14px] md:text-[22px] font-bold uppercase transition-all duration-300 mb-0.5 md:mb-1 md:leading-[24px] whitespace-nowrap text-white md:text-[var(--active-color)] opacity-100"
-                    )}
-                    style={{ '--active-color': item.color } as React.CSSProperties}
-                  >
-                    {item.title}
-                  </span>
-                  <span 
-                    className={cn(
-                      "text-[12px] md:text-[13px] font-medium mb-0 md:mb-3 whitespace-nowrap transition-all duration-300 text-white/90 md:text-[#555555] opacity-100"
-                    )}
-                  >
-                    {item.subtitle}
-                  </span>
-                  
-                  {/* Progress(hiển thị trên laptop) */}
-                  <div className="hidden md:flex w-full justify-start">
-                    <div 
-                      className={cn(
-                        "h-1.5 lg:h-2 rounded-full transition-all duration-500 ease-out",
-                        // (từ trái sang phải)
-                        (isActive || hoveredIndex === index) ? "w-full" : "w-10 md:w-12"
-                      )}
-                      style={{ backgroundColor: item.color }}
-                    ></div>
+                
+                {/* Inner layout for Title + Subtitle + Progress */}
+                <div className="flex flex-col items-start w-full px-1 md:px-0">
+                  <div className="flex flex-col items-start w-full md:w-[169px] md:gap-[23px]">
+                    <div className="flex flex-col items-start w-full md:w-[169px] md:gap-[10px]">
+                      <span 
+                        className={cn(
+                          "block w-full md:w-[169px] md:h-[24px] text-left text-[14px] md:text-[22px] font-bold uppercase transition-all duration-300 mb-0.5 md:mb-0 md:leading-[24px] md:tracking-[0px] md:align-middle whitespace-nowrap text-white md:text-transparent md:bg-clip-text opacity-100"
+                        )}
+                        style={{ 
+                          fontFamily: '"SVN-Gilroy", sans-serif',
+                          background: titleBackgrounds[item.id] || item.color,
+                          WebkitBackgroundClip: 'text',
+                          backgroundClip: 'text'
+                        }}
+                      >
+                        {item.title}
+                      </span>
+                      <span 
+                        className={cn(
+                          "block w-full md:w-[169px] md:h-[24px] text-left text-[12px] md:text-[20px] font-medium mb-0 md:mb-0 whitespace-nowrap transition-all duration-300 text-white/90 md:text-[#373737] md:leading-[24px] md:tracking-[0px] md:align-middle opacity-100"
+                        )}
+                        style={{ fontFamily: '"SVN-Gilroy", sans-serif' }}
+                      >
+                        {item.subtitle}
+                      </span>
+                    </div>
+
+                    {/* Progress(hiển thị trên laptop) */}
+                    <div className="hidden md:flex w-full md:w-[169px] justify-start mt-1 md:mt-0">
+                      <div 
+                        className={cn(
+                          "h-1.5 lg:h-2 rounded-full transition-all duration-500 ease-out",
+                          (isActive || hoveredIndex === index) ? "w-full" : "w-10 md:w-12"
+                        )}
+                        style={{ backgroundColor: item.color }}
+                      ></div>
+                    </div>
                   </div>
                 </div>
               </button>
