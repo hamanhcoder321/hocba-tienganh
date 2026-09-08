@@ -19,31 +19,34 @@ const commitments = [
   {
     id: '03',
     title: 'Học đủ - Đúng cấp độ với Mock<br class="hidden lg:block" /> Test chuẩn IELTS',
-    description: 'Bài thi đầu vào được mô phỏng theo cấu trúc, thời<br class="hidden lg:block" /> lượng và tiêu chí chấm điểm của kỳ thi IELTS chính<br class="hidden lg:block" /> thức, giúp đánh giá chính xác năng lực hiện tại, xác<br class="hidden lg:block" /> định điểm mạnh - điểm yếu và làm cơ sở xây dựng lộ<br class="hidden lg:block" /> trình học phù hợp.',
+    description:
+      'Bài thi đầu vào được mô phỏng theo cấu trúc, thời<br class="hidden lg:block" /> lượng và tiêu chí chấm điểm của kỳ thi IELTS chính<br class="hidden lg:block" /> thức, giúp đánh giá chính xác năng lực hiện tại, xác<br class="hidden lg:block" /> định điểm mạnh - điểm yếu và làm cơ sở xây dựng lộ<br class="hidden lg:block" /> trình học phù hợp.',
   },
 ];
 ---
 
 <section class="relative bg-[#F4F7FF] py-12 md:py-20">
-  <div class="container relative mx-auto px-4 lg:px-8 max-w-[1300px]">
+  <div class="container relative mx-auto max-w-[1300px] px-4 lg:px-8">
     <!-- tiêu đề -->
-    <div class="relative flex flex-col items-center mb-10 md:mb-16">
-      <div class="relative mb-4 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+    <div class="relative mb-10 flex flex-col items-center md:mb-16">
+      <div class="relative mb-4 flex flex-col items-center justify-center gap-4 md:flex-row md:gap-8">
         <Image
           src={IMAGES.home.iconMuiTenXanh}
           alt="Biểu tượng giá trị cốt lõi The IELTS Space"
           width={124}
           height={124}
-          class="hidden md:block h-auto w-20 md:w-28"
+          class="hidden h-auto w-20 md:block md:w-28"
         />
-        <div class="flex flex-col items-center justify-center gap-2 sm:gap-4 text-center">
+        <div class="flex flex-col items-center justify-center gap-2 text-center sm:gap-4">
           <h2
-            class="text-[#072899] py-1 text-[28px] sm:py-2 md:text-[38px] font-black uppercase md:leading-[64px] text-center tracking-normal"
+            class="py-1 text-center text-[28px] font-black uppercase tracking-normal text-[#072899] sm:py-2 md:text-[38px] md:leading-[64px]"
             style="font-weight: 1000;"
           >
             LẤY CHẤT LƯỢNG LÀM GIÁ TRỊ CỐT LÕI
           </h2>
-          <CommitmentBadge className="font-[1000] uppercase tracking-[1px] md:tracking-[2px] lg:tracking-[3px] w-fit max-w-full px-4 md:px-6 lg:px-10 py-2 md:py-3 lg:py-0 md:text-[24px] lg:text-[38px] md:leading-normal lg:leading-[64px] h-auto lg:h-[64px] text-center">
+          <CommitmentBadge
+            className="h-auto w-fit max-w-full px-4 py-2 text-center font-[1000] uppercase tracking-[1px] md:px-6 md:py-3 md:text-[24px] md:leading-normal md:tracking-[2px] lg:h-[64px] lg:px-10 lg:py-0 lg:text-[38px] lg:leading-[64px] lg:tracking-[3px]"
+          >
             <span class="hidden md:inline">THE IELTS SPACE </span>CAM KẾT 100% ĐẦU RA
           </CommitmentBadge>
         </div>
@@ -51,28 +54,34 @@ const commitments = [
     </div>
 
     <!-- Bố cục 2 cột -->
-    <div class="relative z-50 grid grid-cols-1 items-center lg:grid-cols-[55%_45%] xl:gap-10">
-      
+    <div class="relative z-50 grid grid-cols-1 items-center lg:grid-cols-[55%_45%] lg:items-end xl:gap-10">
       <!--keft: 3 thẻ -->
-      <div class="flex flex-col gap-4 sm:gap-6 order-2 lg:order-1 mt-8 lg:mt-0">
+      <div class="order-2 mt-8 flex w-full flex-col gap-[16px] lg:order-1 lg:mt-0 lg:max-w-[558px]">
         {
           commitments.map((item) => (
-            <div class="flex flex-col overflow-hidden rounded-[16px] bg-[#1132B4] text-white transition-all duration-300 hover:translate-x-2 sm:rounded-[20px] shadow-lg border border-[#2b4cda]">
-              <div class="p-5 md:p-7">
-                <div class="flex items-start gap-4 sm:gap-6">
-                  <div class="flex flex-col items-center min-w-[50px] md:min-w-[70px] lg:min-w-[90px]">
-                    <Image src={IMAGES.home.QuoteIcon} alt="Biểu tượng cam kết chất lượng" class="mb-2 w-8 md:w-10 lg:w-12 opacity-90" />
-                    <span class="text-[#F3C650] text-[32px] font-black leading-none md:text-[48px] lg:text-[60px]">
+            <div
+              class="flex flex-col overflow-hidden rounded-[18px] text-white shadow-lg transition-all duration-300 hover:translate-x-2"
+              style="background: linear-gradient(180deg, #052284 13.27%, #083AD4 100%); min-height: 163px;"
+            >
+              <div class="flex flex-col gap-[18px] p-[24px]">
+                <div class="flex items-start gap-3 sm:gap-4">
+                  <div class="flex min-w-[44px] flex-col items-center md:min-w-[60px] lg:min-w-[64px]">
+                    <Image
+                      src={IMAGES.home.QuoteIcon}
+                      alt="Biểu tượng cam kết chất lượng"
+                      class="mb-2 w-8 opacity-90 md:w-10 lg:w-12"
+                    />
+                    <span class="text-[32px] font-black leading-none text-[#F3C650] md:text-[48px] lg:text-[60px]">
                       {item.id}
                     </span>
                   </div>
                   <div class="flex-1">
                     <h3
-                      class="mb-2 text-[16px] font-[1000] uppercase leading-[1.2] text-[#F3C650] md:text-[24px]"
+                      class="font-svn-gilroy mb-2 text-[24px] font-[1000] uppercase leading-[120%] tracking-[0%] text-[#FFCF5A]"
                       set:html={item.title}
                     />
                     <p
-                      class="text-[15px] font-bold leading-[1.22] tracking-[0.01em] text-gray-100 md:text-[16px]"
+                      class="font-svn-gilroy text-[16px] font-bold leading-[122%] tracking-[0.01em] text-gray-100"
                       set:html={item.description}
                     />
                   </div>
@@ -84,13 +93,17 @@ const commitments = [
       </div>
 
       <!-- phải: hình ảnh -->
-      <div class="relative flex order-1 lg:order-2 justify-center lg:justify-end">
-        <div class="relative w-full max-w-[650px] flex justify-center">
+      <div class="relative order-1 flex h-full items-end justify-center lg:order-2 lg:justify-end">
+        <div
+          class="relative mt-auto flex w-full max-w-[600px] justify-center lg:w-[669px] lg:max-w-[669px]"
+        >
           <Image
             src={IMAGES.home.bannerThongBao}
             alt="The IELTS Space Quality"
-            class="h-auto w-full object-contain relative z-10 [mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_85%,transparent_100%)]"
+            class="relative z-10 h-auto w-full origin-bottom lg:-translate-x-6 scale-[1.12] object-contain object-bottom [-webkit-mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)] [mask-image:linear-gradient(to_bottom,black_80%,transparent_100%)] lg:h-[585px] lg:w-[669px]"
           />
+          <!-- Hiệu ứng mờ trắng (fade vào nền) ở đáy ảnh -->
+          <div class="pointer-events-none absolute bottom-0 left-0 z-20 h-[15%] w-full bg-gradient-to-t from-[#F4F7FF] to-transparent"></div>
         </div>
       </div>
     </div>

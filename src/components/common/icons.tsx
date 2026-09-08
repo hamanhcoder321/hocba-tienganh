@@ -389,12 +389,14 @@ export const ShareReviewIcon = (props: React.SVGProps<SVGSVGElement>) => {
 export const FourPointedStar = ({
   fromColor = '#F97316',
   toColor = '#FFCF5A',
+  middleColor,
   ...props
 }: React.HTMLAttributes<SVGElement> & {
   fromColor?: string;
+  middleColor?: string;
   toColor?: string;
 }) => {
-  const gradientId = `fourPointedStar-${(fromColor + toColor).replace(/#/g, '').toLowerCase()}`;
+  const gradientId = `fourPointedStar-${(fromColor + (middleColor || '') + toColor).replace(/#/g, '').toLowerCase()}`;
   return (
     <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
@@ -404,14 +406,24 @@ export const FourPointedStar = ({
       <defs>
         <linearGradient
           id={gradientId}
-          x1="18.4948"
-          y1="9.24742"
-          x2="-1.47244"
-          y2="39.3812"
-          gradientUnits="userSpaceOnUse"
+          x1={middleColor ? "50%" : "18.4948"}
+          y1={middleColor ? "0%" : "9.24742"}
+          x2={middleColor ? "50%" : "-1.47244"}
+          y2={middleColor ? "100%" : "39.3812"}
+          gradientUnits={middleColor ? undefined : "userSpaceOnUse"}
         >
-          <stop stopColor={fromColor} />
-          <stop offset="0.971154" stopColor={toColor} />
+          {middleColor ? (
+            <>
+              <stop offset="0%" stopColor={fromColor} />
+              <stop offset="50%" stopColor={middleColor} />
+              <stop offset="100%" stopColor={toColor} />
+            </>
+          ) : (
+            <>
+              <stop stopColor={fromColor} />
+              <stop offset="0.971154" stopColor={toColor} />
+            </>
+          )}
         </linearGradient>
       </defs>
     </svg>
@@ -421,12 +433,14 @@ export const FourPointedStar = ({
 export const FourPointedStarMini = ({
   fromColor = '#F97316',
   toColor = '#FFCF5A',
+  middleColor,
   ...props
 }: React.HTMLAttributes<SVGElement> & {
   fromColor?: string;
+  middleColor?: string;
   toColor?: string;
 }) => {
-  const gradientId = `fourPointedStarMini-${(fromColor + toColor).replace(/#/g, '').toLowerCase()}`;
+  const gradientId = `fourPointedStarMini-${(fromColor + (middleColor || '') + toColor).replace(/#/g, '').toLowerCase()}`;
   return (
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
@@ -436,14 +450,24 @@ export const FourPointedStarMini = ({
       <defs>
         <linearGradient
           id={gradientId}
-          x1="5.69072"
-          y1="2.84537"
-          x2="-0.453059"
-          y2="12.1173"
-          gradientUnits="userSpaceOnUse"
+          x1={middleColor ? "50%" : "5.69072"}
+          y1={middleColor ? "0%" : "2.84537"}
+          x2={middleColor ? "50%" : "-0.453059"}
+          y2={middleColor ? "100%" : "12.1173"}
+          gradientUnits={middleColor ? undefined : "userSpaceOnUse"}
         >
-          <stop stopColor={fromColor} />
-          <stop offset="0.971154" stopColor={toColor} />
+          {middleColor ? (
+            <>
+              <stop offset="0%" stopColor={fromColor} />
+              <stop offset="50%" stopColor={middleColor} />
+              <stop offset="100%" stopColor={toColor} />
+            </>
+          ) : (
+            <>
+              <stop stopColor={fromColor} />
+              <stop offset="0.971154" stopColor={toColor} />
+            </>
+          )}
         </linearGradient>
       </defs>
     </svg>

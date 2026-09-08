@@ -84,16 +84,6 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                   className="absolute left-0 md:left-2 -top-2 md:-top-4 transition-all duration-300 z-20 flex items-center justify-center pointer-events-none"
                   style={(isActive || hoveredIndex === index) ? { filter: `drop-shadow(0 4px 6px ${item.color}40)` } : undefined}
                 >
-                  {/* Lớp viền trắng (Halo) - Luôn đặc để che đường kẻ */}
-                  <span 
-                    className="absolute font-black italic text-[24px] md:text-[32px] tracking-[-0.05em] leading-none select-none block text-[#F8FAFC]"
-                    style={{ 
-                      transform: 'rotate(-30deg)',
-                      textShadow: '-2px -2px 0 #F8FAFC, 2px -2px 0 #F8FAFC, -2px 2px 0 #F8FAFC, 2px 2px 0 #F8FAFC, 0px 2px 0 #F8FAFC, 0px -2px 0 #F8FAFC, 2px 0px 0 #F8FAFC, -2px 0px 0 #F8FAFC'
-                    }}
-                  >
-                    {item.score}
-                  </span>
                   {/* Lớp chữ màu - Có hiệu ứng mờ khi không active */}
                   <span 
                     className={cn(
@@ -126,7 +116,7 @@ export const IeltsRoadmap: React.FC<IeltsRoadmapProps> = ({ data }) => {
                   <div 
                     className={cn(
                       "absolute inset-0 rounded-[14px] md:rounded-[22px] transition-all duration-300",
-                      isActive ? "opacity-70 blur-xl md:blur-[24px]" : "opacity-30 blur-lg md:blur-xl"
+                      isActive ? "opacity-100 blur-xl md:blur-[24px]" : "opacity-75 blur-lg md:blur-[20px] group-hover:opacity-90"
                     )}
                     style={{ 
                       backgroundColor: item.color,

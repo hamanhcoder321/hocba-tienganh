@@ -1,4 +1,4 @@
-import { FourPointedStar, FourPointedStarMini, Union } from '@/components/common/icons';
+﻿import { FourPointedStar, FourPointedStarMini, Union } from '@/components/common/icons';
 import { SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { input, output } from '@/lib/constants/content';
 import { Select } from '@radix-ui/react-select';
@@ -319,23 +319,16 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
               </div>
               {inputLevel && outputLevel ? (
                 <div>
-                  <p className="text-[15px] font-bold text-primary">LỘ TRÌNH GỢI Ý...</p>
+                  
                   <div className="flex gap-4 pt-4">
-                    {/* <img
-                      className="h-[23px] w-[23px] sm:h-9 sm:w-9"
-                      width={0}
-                      height={0}
-                      src={icons.lotrinh}
-                      alt={'lotrinh'}
-                    /> */}
-                    <p className="whitespace-pre-line text-xs font-medium">
+                    <div className="whitespace-pre-line text-xs font-medium">
                       {parse(resultSelectCourse(inputLevel.slug)?.sugges ?? '')}
-                    </p>
+                    </div>
                   </div>
-                  <p className="mt-6 text-[15px] font-bold text-primary">Mục tiêu khóa học ....</p>
-                  <p className="whitespace-pre-line text-xs font-medium">
+                  
+                  <div className="whitespace-pre-line text-xs font-medium">
                     {parse(resultSelectCourse(inputLevel.slug)?.knowledg ?? '')}
-                  </p>
+                  </div>
                 </div>
               ) : (
                 <div className="mx-auto w-fit p-5">
@@ -445,38 +438,27 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
             </div>
           </div>
           {/* B3 - Trả kết quả */}
-          <div className="flex w-[40%] justify-center pt-4 2xl:w-[468px]">
+          <div className="flex w-[40%] justify-center pt-4 xl:w-[468px] xl:flex-none">
             <div
               id="course-results"
-              className="relative flex h-full w-full flex-col space-y-4 rounded-[10px] bg-gradient-to-b from-[#052284] to-[#083AD4] px-6 py-6 xl:space-y-4 xl:px-4"
+              className="relative flex h-full w-full xl:h-[820px] flex-col space-y-4 rounded-[9.33px] bg-gradient-to-b from-[#052284] to-[#083AD4] px-6 py-6 xl:space-y-4 xl:px-4"
             >
               <div className="flex flex-wrap gap-2">
                 <p className="text-base font-black uppercase text-white">CHI TIẾT LỘ TRÌNH</p>
               </div>
-              <div className="w-full flex-1 flex-grow rounded-[11px] bg-white p-6 py-4 xl:px-7">
+              <div className="w-full flex-1 flex-grow rounded-[10.67px] bg-white p-6 py-4 xl:flex-none xl:h-[691.5px] xl:w-[413px] xl:px-7 xl:py-4">
                 {inputLevel && outputLevel ? (
                   <div>
-                    <p className="text-2xl font-bold uppercase tracking-[0] text-[#052284] xl:text-3xl">
-                      Lộ trình gợi ý
-                    </p>
-                    <div className="flex gap-4 pt-4">
-                      {/* <img
-                        className="h-9 w-9 xl:h-[42px] xl:w-[42px]"
-                        width={0}
-                        height={0}
-                        src={icons.lotrinh}
-                        alt={'lotrinh'}
-                      /> */}
-                      <p className="custom-scrollbar h-[200px] overflow-y-scroll text-sm font-medium tracking-normal text-black">
+                    
+                    <div className="flex gap-4">
+                      <div className="w-full pb-2 text-[14px] font-medium leading-tight tracking-normal text-black">
                         {parse(resultSelectCourse(inputLevel.slug)?.sugges || '...')}
-                      </p>
+                      </div>
                     </div>
-                    <p className="pt-3 text-2xl font-bold uppercase tracking-[0] text-[#052284] xl:pt-6 xl:text-3xl">
-                      Kiến thức đạt được
-                    </p>
-                    <p className="custom-scrollbar mt-4 h-[200px] overflow-y-scroll text-sm font-medium tracking-normal text-black">
+                    
+                    <div className="w-full text-[14px] font-medium leading-tight tracking-normal text-black">
                       {parse(resultSelectCourse(inputLevel.slug)?.knowledg || '...')}
-                    </p>
+                    </div>
                   </div>
                 ) : (
                   <p className="text-base font-medium leading-[20.94px] tracking-[0] text-black">
@@ -498,17 +480,13 @@ const ChooseYourCourse = ({ listCourses, icons }: ChooseYourCourseProps) => {
         </div>
       </div>
       <div className="relative mx-auto mt-4 mb-[20px] md:mb-0 flex w-fit items-center justify-center md:mt-12">
-        <div className="absolute -left-10 top-1 z-50 flex w-fit md:-left-28 md:-top-8">
-          <FourPointedStarMini
-            className="absolute bottom-6 right-7 mt-auto size-4 md:-bottom-3 md:-right-6 md:size-6"
-            fromColor="#FFC247"
-            toColor="#FFE9A6"
-          />
-          <FourPointedStar className="size-8 md:size-[60px]" fromColor="#FFC247" toColor="#FFE9A6" />
-        </div>
+        {/* Stars (Responsive: Figma Mobile + Desktop) */}
+        <FourPointedStar className="absolute z-50 pointer-events-none -left-[32px] -top-[12px] w-[21px] h-[21px] md:-left-[89px] md:-top-[34px] md:w-[59px] md:h-[59px] md:rotate-0" fromColor="#FFC247" middleColor="#FFD77A" toColor="#FFE9A6" />
+        <FourPointedStarMini className="absolute z-50 pointer-events-none -left-[16px] top-[6px] w-[15px] h-[15px] md:-left-[36px] md:top-[14px] md:w-[24px] md:h-[23px]" fromColor="#FFC247" middleColor="#FFD77A" toColor="#FFE9A6" />
+
         <button
           onClick={() => document.getElementById('dang-ki-tu-van')?.scrollIntoView({ behavior: 'smooth' })}
-          className="mx-auto h-10 cursor-pointer rounded-[20px] bg-[#F97316] px-5 text-[15px] font-black uppercase text-white transition-all duration-700 ease-in-out hover:from-[#B90E0A] hover:to-[#F3C650] md:h-[60px] md:rounded-[28px] md:px-10 md:text-2xl"
+          className="mx-auto h-10 w-fit cursor-pointer rounded-[20px] bg-[#F97316] px-5 text-[15px] font-black uppercase text-white transition-all duration-700 ease-in-out hover:from-[#B90E0A] hover:to-[#F3C650] md:h-[60px] md:w-[410px] md:rounded-[28px] md:px-0 md:text-2xl"
         >
           Nhận tư vấn lộ trình chi tiết
         </button>
@@ -532,3 +510,5 @@ const Thang = ({ icon }: { icon?: string }) => {
     </div>
   );
 };
+
+

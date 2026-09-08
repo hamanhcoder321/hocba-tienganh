@@ -56,8 +56,8 @@ const features = [
           <h2 class="mb-4 text-[26px] md:text-[42px] uppercase leading-tight md:leading-[64px] text-[#373737]" style="font-weight: 1000;">
             TỐI ƯU HÀNH TRÌNH HỌC
             <span
-              class="mt-2 md:mt-4 inline-block rounded-[16px] md:rounded-[20px] bg-gradient-to-r from-[#F97316] to-[#F59E0B] px-6 md:px-24 py-1 md:py-2 text-white text-[22px] md:text-[38px] md:leading-[64px] shadow-lg relative"
-              style="font-weight: 1000;"
+              class="mt-2 md:mt-4 inline-block rounded-[16px] md:rounded-[20px] px-6 md:px-24 py-1 md:py-2 text-white text-[22px] md:text-[38px] md:leading-[64px] shadow-lg relative"
+              style="font-weight: 1000; background: linear-gradient(90.35deg, #F97316 4.83%, #FFCF5A 114.24%);"
             >
               & LUYỆN THI IELTS
             </span>
@@ -118,7 +118,7 @@ const features = [
   </div>
 
   <!-- layout laptop: vòng tròn 4 thẻ xoay quanh chú cú gaatrang -->
-  <div class="hidden md:block relative w-full max-w-[1100px] mx-auto h-[600px] mt-10 mb-10">
+  <div class="hidden md:block relative w-full max-w-[1100px] mx-auto h-[600px] mt-20 mb-10">
     <!-- SVG đường quỹ đạo nền và trang trí -->
     <div class="absolute inset-0 w-full h-full z-0 flex items-center justify-center pointer-events-none">
        <svg viewBox="0 0 1100 600" class="w-full h-full overflow-visible">
@@ -129,42 +129,43 @@ const features = [
            </linearGradient>
          </defs>
          <!-- Ellipse quỹ đạo -->
-         <ellipse cx="550" cy="300" rx="480" ry="220" fill="none" stroke="url(#orbitGradient)" stroke-width="3" opacity="1" />
-         
-         <!-- Top Node (đỉnh ellipse, giữa 2 card trên) -->
-         <!-- <circle cx="550" cy="80" r="14" fill="none" stroke="#6886E6" stroke-width="3" opacity="0.5" /> -->
-         <circle cx="481" cy="82" r="10" fill="url(#orbitGradient)" opacity="0.9" />
-
-         <!-- Bottom Node (cạnh phải card dưới-trái) -->
-         <circle cx="330" cy="496" r="7" fill="#083AD4" opacity="0.6" />
+          <svg width="1149" height="451" viewBox="0 0 1149 451" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path opacity="0.62" d="M718.081 0.00665797C738.671 -0.272111 749.707 8.07206 752.617 22.4057C753.947 22.4127 755.277 22.4343 756.606 22.4698C773.8 22.9855 793.922 24.5607 811.437 26.2167C910.911 35.6216 1029.58 57.1185 1102.64 111.661C1130.39 132.591 1150.54 161.977 1148.5 191.132C1142.86 271.986 1024.24 330.503 934.452 361.583C778.045 415.712 588.952 440.246 414.624 434.178C411.819 439.996 410.222 441.768 404.438 445.947C391.658 453.081 374.233 452.868 362.572 443.856C357.565 439.984 355.374 435.46 352.359 430.746C347.427 430.049 342.259 435.777 336.327 436.882C327.123 438.593 321.682 434.239 319.345 427.815C239.367 419.018 154.229 402.974 86.1721 368.88C46.4282 348.971 11.7558 320.689 2.29777 285.57C-6.24786 253.837 10.0114 219.597 35.0379 194.221C124.364 103.648 334.522 50.7427 481.903 33.4357C482.897 29.5169 484.343 26.3237 489.295 24.0785C492.235 22.7536 495.813 22.3568 499.225 22.9779C505.252 24.0536 507.874 26.6211 511 30.081C523.791 28.2747 541.341 26.8847 554.422 25.8425C583.2 23.5308 612.106 21.9624 641.085 21.1401C655.695 20.7596 677.704 21.2759 690.87 20.4343C692.886 8.69638 701.978 1.75822 718.081 0.00665797ZM691.188 25.7381C679.416 26.218 665.983 26.0005 654.036 26.1591C636.768 26.4441 619.528 27.0313 602.32 27.9196C582.544 28.9816 562.821 30.3754 543.158 32.0994C533.323 32.9756 520.982 34.5043 511.583 35.1078C507.697 41.4311 505.767 42.7078 496.42 44.1174C490.947 42.773 489.207 42.4704 485.223 39.2899L484.52 38.7381C484.382 38.6262 484.244 38.5137 484.107 38.4013C335.015 56.8897 129.968 106.325 39.374 199.039C15.9353 224.168 1.05793 254.694 9.70987 285.697C19.0034 318.997 53.3438 346.062 91.3641 364.721C152.485 394.714 225.335 410.163 296.683 419.731C304.064 420.722 312.795 421.146 319.888 422.507C325.005 416.555 331.607 413.884 340.775 417.935C345.344 419.955 347.613 424.909 352.649 424.976C356.91 418.83 357.335 415.406 365.058 410.756C373.013 406.956 380.434 405.148 390.316 406.697C398.204 407.928 405.162 411.391 409.641 416.308C413.796 420.845 414.448 424.154 415.326 429.238C427.895 428.969 441.057 429.822 453.721 429.865C484.208 429.999 514.666 429.329 545.032 427.859C682.424 420.319 821.876 397.329 944.843 352.1C1029.36 321.013 1144.52 261.979 1141.2 182.903C1140.01 154.35 1115.14 126.502 1086.36 107.763C1015.42 61.6565 910.526 41.8634 819.435 32.264C797.236 29.924 774.022 28.6886 751.936 27.3748C748.939 33.9862 745.267 38.7638 736.163 42.1047C728.548 44.8721 719.623 45.2248 711.476 43.0806C703.399 40.8909 696.856 36.3843 693.419 30.6382C692.548 29.1769 691.806 27.2812 691.188 25.7381Z" fill="url(#paint0_linear_1_973)"/>
+            <defs>
+            <linearGradient id="paint0_linear_1_973" x1="582.836" y1="-5.03718" x2="565.887" y2="457.652" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#083AD4"/>
+            <stop offset="1" stop-color="#3464F8"/>
+            </linearGradient>
+            </defs>
+          </svg>
 
          <!-- Sparkle 1: Giữa-trái (ngoài cạnh trái card, trong gap giữa 2 card) -->
-         <svg x="-30" y="200" width="40" height="40" viewBox="0 0 24 24" fill="#8CA8F9">
+         <svg x="-30" y="150" width="40" height="40" viewBox="0 0 24 24" fill="#8CA8F9">
            <path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" />
          </svg>
 
          <!-- Sparkle 2: Dưới-trái (dưới card Học Đúng Cách, bên trái ellipse) -->
-         <svg x="-30" y="500" width="36" height="36" viewBox="0 0 24 24" fill="#8CA8F9">
+         <svg x="40" y="400" width="36" height="36" viewBox="0 0 24 24" fill="#8CA8F9">
            <path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" />
          </svg>
          <!-- Sparkle 4: Trên-phải lớn (ngoài góc trên-phải card HỌC HIỆU QUẢ) -->
-         <svg x="1100" y="-10" width="52" height="52" viewBox="0 0 24 24" fill="#8CA8F9">
+         <svg x="1020" y="-80" width="52" height="52" viewBox="0 0 24 24" fill="#8CA8F9">
            <path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" />
          </svg>
          <!-- Sparkle 5: Trên-phải nhỏ (cạnh sparkle lớn) -->
-         <svg x="1140" y="12" width="24" height="24" viewBox="0 0 24 24" fill="#8CA8F9" opacity="0.85">
+         <svg x="1050" y="-50" width="24" height="24" viewBox="0 0 24 24" fill="#8CA8F9" opacity="0.85">
            <path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" />
          </svg>
 
          <!-- Sparkle 6: Giữa-phải (trên arc phải, trong gap giữa 2 card phải y=220-380) -->
-         <svg x="900" y="290" width="34" height="34" viewBox="0 0 24 24" fill="#8CA8F9">
+         <svg x="1050" y="260" width="34" height="34" viewBox="0 0 24 24" fill="#8CA8F9">
            <path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" />
          </svg>
        </svg>
     </div>
 
     <!-- Chú cú ở trung tâm -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-[300px] flex justify-center">
+    <div class="absolute top-[33%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-[300px] flex justify-center">
        <!-- Bóng đổ dưới chân (Giả lập độ mờ và đậm của Figma) -->
        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 flex justify-center items-center z-0">
          <div class="absolute w-[222px] h-[21px] bg-[#6F7BA1] rounded-[100%] blur-[10px]"></div>
@@ -175,19 +176,21 @@ const features = [
 
     {
       [
-        { feature: features[0], classes: "top-[30px] left-[20px]" },
-        { feature: features[2], classes: "bottom-[30px] left-[20px]" },
-        { feature: features[1], classes: "top-[30px] right-[20px]" },
-        { feature: features[3], classes: "bottom-[30px] right-[20px]" }
+        { feature: features[0], classes: "-top-[20px] left-[70px]" },
+        { feature: features[2], classes: "bottom-[120px] left-[90px]" },
+        { feature: features[1], classes: "-top-[50px] right-[110px]" },
+        { feature: features[3], classes: "bottom-[110px] right-[90px]" }
       ].map(({ feature, classes }) => (
         <div class={`absolute w-[310px] h-[188px] z-20 group ${classes}`}>
           <div class="relative w-full transition-transform duration-700 group-hover:scale-105">
             
             <!-- Mặt trước (Nội dung) -->
             <div class="relative w-full h-full flex flex-col overflow-hidden rounded-[18px] shadow-[0_15px_40px_rgba(0,0,0,0.06)] bg-white border border-gray-100 transition-opacity duration-700 group-hover:opacity-0">
-              <div class="flex flex-col items-center justify-center bg-[#1336B3] py-4 text-center">
-                 <h3 class="text-[24px] font-extrabold uppercase text-white leading-[147%]">{feature.title}</h3>
-                 <p class="text-[#FFCF5A] font-extrabold text-[16px] mt-1 leading-[147%] uppercase tracking-[0px]">{feature.subtitle}</p>
+              <div class="relative w-full h-[88px] bg-[#1336B3]">
+                 <div class="absolute top-[19.5px] left-[19.5px] w-[272px] h-[49px] flex flex-col items-center justify-center">
+                   <h3 class="text-[24px] font-['SVN-Gilroy'] font-extrabold uppercase text-white leading-[25px] text-center tracking-normal">{feature.title}</h3>
+                   <p class="text-[#FFCF5A] font-['SVN-Gilroy'] font-extrabold text-[16px] mt-1 leading-[25px] uppercase tracking-normal text-center">{feature.subtitle}</p>
+                 </div>
               </div>
               <div class="flex min-h-[120px] flex-grow items-center justify-center p-5 text-center bg-white">
                  <p class="text-[15px] font-medium leading-relaxed text-[#373737]" set:html={feature.description}></p>
@@ -207,7 +210,7 @@ const features = [
 </section>
 
 <!-- Khối Mentor (Căn giữa - full with) -->
-<section class="w-full bg-[#0835C3] mt-12 py-16 overflow-hidden flex flex-col items-center">
+<section class="w-full mt-12 py-16 overflow-hidden flex flex-col items-center" style="background: linear-gradient(140.56deg, #072899 32.97%, #083AD4 57.51%, #04195C 82.05%);">
   <div class="mb-10 px-1 sm:px-4 text-center w-full overflow-visible">
     <h2 class="relative inline-block text-[15.5px] sm:text-[20px] tracking-tight md:tracking-normal whitespace-nowrap md:whitespace-normal font-black uppercase text-white md:text-[42px] md:leading-[64px] drop-shadow-md text-center" style="font-weight: 1000;">
       MỖI BƯỚC ĐI ĐỀU CÓ NGƯỜI ĐỒNG HÀNH
@@ -217,15 +220,17 @@ const features = [
   <div id="mentor-content" class="px-2 sm:px-4 flex justify-center w-full overflow-visible">
     <div class="group relative w-[55%] sm:w-[65%] md:w-full max-w-[550px] mt-4 md:mt-0">
       <div
-        class="relative z-10 overflow-hidden rounded-[16px] md:rounded-[24px] bg-gradient-to-b from-[#F69A45] to-[#FDD375] shadow-[0_20px_40px_rgba(244,130,32,0.4)] p-2 md:p-5 transition-all duration-500 lg:from-[#F48220] lg:to-[#FDC959] lg:shadow-xl lg:group-hover:from-[#F69A45] lg:group-hover:to-[#FDD375] lg:group-hover:shadow-[0_20px_40px_rgba(244,130,32,0.4)]"
+        id="mentor-card"
+        class="relative z-10 overflow-hidden rounded-[16px] md:rounded-[24px] shadow-[0_20px_40px_rgba(244,130,32,0.4)] p-2 md:p-5 transition-all duration-500 lg:from-[#F48220] lg:to-[#FDC959] lg:shadow-xl lg:group-hover:shadow-[0_20px_40px_rgba(244,130,32,0.4)]"
       >
-        <div class="relative z-10 overflow-hidden flex flex-col rounded-xl md:rounded-2xl border-[2px] border-white/90 max-sm:!h-auto">
+        <div class="relative z-10 flex flex-col gap-2 md:gap-3 max-sm:!h-auto">
           <h3
-            class="py-3 px-1 md:py-4 md:px-4 text-center text-[14px] md:text-[26px] font-black uppercase text-white leading-[1.3] shadow-sm transition-all duration-500"
+            id="mentor-title"
+            class="rounded-xl md:rounded-[18px] border-[2px] border-white/60 md:border-white/90 py-3 px-1 md:py-4 md:px-4 text-center text-[14px] md:text-[26px] font-black uppercase text-white leading-[1.3] shadow-sm transition-all duration-500 md:bg-[#F97316]"
           >
             Mentor học thuật 1-1 <br /> BỔ TRỢ 24/7
           </h3>
-          <div class="overflow-hidden bg-white pt-2 md:pt-4 px-1 md:px-2 shadow-inner border-t-[2px] border-white/90">
+          <div class="overflow-hidden bg-white pt-2 md:pt-4 px-1 md:px-2 shadow-inner rounded-xl md:rounded-[18px] border-[2px] border-white/90">
             <Image
               src={IMAGES.home.mentorImg}
               alt="Academic Mentor"
@@ -283,3 +288,20 @@ const features = [
     }
   });
 </script>
+
+<style>
+  /* Mobile: gradient cam vàng từ Figma */
+  #mentor-card,
+  #mentor-title {
+    background: linear-gradient(270deg, #F97316 15.86%, #F3C650 100%);
+  }
+  /* Desktop (md+): giữ lại màu cũ */
+  @media (min-width: 768px) {
+    #mentor-card {
+      background: linear-gradient(to bottom, #F48220, #FDC959);
+    }
+    #mentor-title {
+      background: #F97316;
+    }
+  }
+</style>

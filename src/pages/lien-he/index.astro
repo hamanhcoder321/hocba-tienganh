@@ -15,7 +15,7 @@ import {
   YtbIcon,
 } from '@/components/common/icons';
 import JsonLd from '@/components/common/JsonLd.astro';
-import SimpleFormRegister from '@/components/common/SimpleFormRegister.astro';
+import SimpleFormRegister from '@/components/common/SimpleFormRegister-lien-he.astro';
 import QAAccordion from '@/components/features/home/advisor-qa/QAAccordion.astro';
 import {
   Breadcrumb,
@@ -27,6 +27,7 @@ import {
 } from '@/components/ui/breadcrumb';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { CONTACTS, DATA_VALUE } from '@/lib/constants';
+import imgQaccNewKhoaHoc from '@/assets/images/img-hocba-tienganh-optimized/img-Qacc-new-khoa-hoc.webp';
 import { IMAGES } from '@/lib/constants/images';
 import { getImage, Image } from 'astro:assets';
 import { CalendarClock, Globe, Mail, MapPinned, Phone } from 'lucide-react';
@@ -65,27 +66,29 @@ const jsonLd: Graph = {
 const qaData = [
   {
     id: 'item-1',
-    question: 'Sau khi gửi form, bao lâu Học Bá liên hệ lại?',
+    question: '1. Lộ trình học tại THE IELTS SPACE như thế nào?',
     answer:
-      'Sau khi nhận được form đăng ký, đội ngũ tư vấn của Học Bá sẽ liên hệ với bạn trong vòng 24 giờ làm việc qua kênh bạn đã lựa chọn (Gọi điện/Zalo/Email). Trường hợp gửi form ngoài giờ hành chính, Học Bá sẽ phản hồi vào khung giờ làm việc gần nhất.',
+      'Lộ trình tại THE IELTS SPACE được xây dựng theo năng lực đầu vào và mục tiêu band của từng học viên, tập trung vào đúng kiến thức, kỹ năng và dạng bài còn yếu. Kết hợp giữa giảng dạy trên lớp, luyện tập trên LMS E-Power, AI phân tích dữ liệu và mentor theo sát, THE IELTS SPACE giúp học viên học đúng trọng tâm, cải thiện liên tục và rút ngắn thời gian chinh phục mục tiêu IELTS.',
   },
   {
     id: 'item-2',
-    question: 'Em chưa biết mình phù hợp khoá nào, có cần chọn sẵn không?',
-    answer:
-      'Không bắt buộc. Bạn có thể chọn “Chưa rõ – Cần Học Bá tư vấn giúp”, đội ngũ tư vấn sẽ trao đổi thêm và gợi ý lộ trình phù hợp nhất với mục tiêu và trình độ hiện tại của bạn.',
+    question: '2. THE IELTS SPACE có cam kết chất lượng đầu ra không?',
+    answer: 'Nội dung đang cập nhật...',
   },
   {
     id: 'item-3',
-    question: 'Em đi làm giờ hành chính, có thể tư vấn buổi tối được không?',
-    answer:
-      'Hoàn toàn được. Bạn chỉ cần chọn khung giờ “Buổi tối” trong form đăng ký, Học Bá sẽ sắp xếp tư vấn viên phù hợp để hỗ trợ bạn.',
+    question: '3. Một lớp tại THE IELTS SPACE có bao nhiêu học viên?',
+    answer: 'Nội dung đang cập nhật...',
   },
   {
     id: 'item-4',
-    question: 'Học Bá có dạy thử/giờ trải nghiệm không?',
-    answer:
-      'Tùy theo từng giai đoạn và từng khóa học. Bạn có thể để lại thông tin, đội ngũ tư vấn của Học Bá sẽ cập nhật chính xác các chương trình học thử & ưu đãi đang áp dụng tại thời điểm đăng ký.',
+    question: '4. Không theo kịp lớp học thì sao?',
+    answer: 'Nội dung đang cập nhật...',
+  },
+  {
+    id: 'item-5',
+    question: '5. AI có đảm bảo chính xác không?',
+    answer: 'Nội dung đang cập nhật...',
   },
 ];
 ---
@@ -133,7 +136,7 @@ const qaData = [
               className="absolute -left-1 top-2 size-4 object-cover md:-top-4 md:left-2 md:size-8"
               client:load
             />
-            <h1>Liên hệ với học bá</h1>
+            <h1>LIÊN HỆ VỚI THE IELTS SPACE</h1>
             <VectorArrow
               toColor="#FFF8F8"
               fromColor="#FFDF89"
@@ -162,7 +165,7 @@ const qaData = [
             <div class="col-span-1 space-y-5">
               <div class="flex h-8 items-center gap-2 md:h-16">
                 <div
-                  class="flex size-[30px] items-center justify-center rounded-full bg-primary text-white md:size-[50px]"
+                  class="flex size-[30px] items-center justify-center rounded-full bg-[#072899] text-white md:size-[50px]"
                 >
                   <Phone className="size-4 md:size-6" />
                 </div>
@@ -170,7 +173,7 @@ const qaData = [
                   <p class="text-[15px] font-black uppercase text-black md:text-2xl">HOTLINE HỖ TRỢ</p>
                   <a
                     href={`tel:${CONTACTS.hotline}`}
-                    class="text-[15px] font-black uppercase text-primary hover:underline md:text-[31px]"
+                    class="text-[15px] font-black uppercase text-[#072899] hover:underline md:text-[31px]"
                   >
                     {CONTACTS.hotline}
                   </a>
@@ -178,7 +181,7 @@ const qaData = [
               </div>
               <div class="flex h-8 items-center gap-2 md:h-16">
                 <div
-                  class="flex size-[30px] items-center justify-center rounded-full bg-primary text-white md:size-[50px]"
+                  class="flex size-[30px] items-center justify-center rounded-full bg-[#072899] text-white md:size-[50px]"
                 >
                   <Mail className="size-4 md:size-6" />
                 </div>
@@ -190,7 +193,7 @@ const qaData = [
               </div>
               <div class="flex h-8 items-center gap-2 md:h-16">
                 <div
-                  class="flex size-[30px] flex-shrink-0 items-center justify-center rounded-full bg-primary text-white md:size-[50px]"
+                  class="flex size-[30px] flex-shrink-0 items-center justify-center rounded-full bg-[#072899] text-white md:size-[50px]"
                 >
                   <MapPinned className="size-4 md:size-6" />
                 </div>
@@ -206,7 +209,7 @@ const qaData = [
               </div>
               <div class="flex h-8 items-center gap-2 md:h-16">
                 <div
-                  class="flex size-[30px] flex-shrink-0 items-center justify-center rounded-full bg-primary text-white md:size-[50px]"
+                  class="flex size-[30px] flex-shrink-0 items-center justify-center rounded-full bg-[#072899] text-white md:size-[50px]"
                 >
                   <Globe className="size-4 md:size-6" />
                 </div>
@@ -222,7 +225,7 @@ const qaData = [
                 </div>
               </div>
               <button
-                class="h-8 rounded-[19px] bg-primary from-[#B90E0A] to-[#F3C650] px-10 text-[15px] font-black uppercase text-white transition-all duration-1000 hover:bg-gradient-to-l hover:shadow-[0px_4.66px_37.87px_0px_#FFCE46] md:h-14 md:text-2xl"
+                class="h-8 rounded-[19px] bg-[#F97316] px-10 text-[15px] font-black uppercase text-white transition-all duration-1000 hover:bg-gradient-to-l hover:shadow-[0px_4.66px_37.87px_0px_#FFCE46] md:h-14 md:text-2xl"
                 onclick="document.getElementById('lien-he-hop-tac').scrollIntoView({ behavior: 'smooth' })"
               >
                 Đối tác / Yêu cầu hợp tác
@@ -231,7 +234,7 @@ const qaData = [
             <div class="col-span-1 mt-[30px] space-y-5 md:mt-0">
               <div class="flex h-8 items-center gap-2 md:h-16">
                 <div
-                  class="flex size-[30px] flex-shrink-0 items-center justify-center rounded-full bg-primary text-white md:size-[50px]"
+                  class="flex size-[30px] flex-shrink-0 items-center justify-center rounded-full bg-[#072899] text-white md:size-[50px]"
                 >
                   <CalendarClock className="size-4 md:size-6" />
                 </div>
@@ -251,11 +254,11 @@ const qaData = [
                     href={CONTACTS.facebookEducationUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Fanpage Học Bá Education"
-                    title="Fanpage Học Bá Education"
+                    aria-label="Fanpage The English Space"
+                    title="Fanpage The English Space"
                     class="text-[15px] font-black hover:underline md:text-2xl"
                   >
-                    Fanpage Học Bá Education
+                    Fanpage The English Space
                   </a>
                 </div>
               </div>
@@ -270,11 +273,11 @@ const qaData = [
                     href={CONTACTS.facebookHskUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Facebook của Học Bá"
-                    title="Facebook của Học Bá"
+                    aria-label="Fanpage The English Space"
+                    title="Fanpage The English Space"
                     class="text-[15px] font-black hover:underline md:text-2xl"
                   >
-                    Fanpage Học Bá HSK
+                    Fanpage The English Space
                   </a>
                 </div>
               </div>
@@ -289,11 +292,11 @@ const qaData = [
                     href={CONTACTS.facebookChineseUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="Facebook của Học Bá"
-                    title="Facebook của Học Bá"
+                    aria-label="Fanpage The English Space"
+                    title="Fanpage The English Space"
                     class="text-[15px] font-black hover:underline md:text-2xl"
                   >
-                    Fanpage Học Bá Chinese
+                    Fanpage The English Space
                   </a>
                 </div>
               </div>
@@ -348,22 +351,10 @@ const qaData = [
             id="lien-he-hop-tac"
             class="relative flex h-full scroll-mt-[80px] overflow-hidden bg-[#F6F6F6] pb-[30px] pl-0 pt-8 md:h-[536px] md:pb-0 md:pl-[52px]"
           >
-            <div
-              class="absolute left-0 top-[152px] z-50 w-[159px] flex-shrink-0 md:relative md:top-0 md:z-10 md:w-[498px]"
-            >
-              <Image
-                src={IMAGES.contact.hopTac}
-                width={498}
-                height={520}
-                alt={'hopTac'}
-                densities={[1, 2]}
-                class={'object-cover w-full h-auto scale-90 object-top'}
-              />
-            </div>
             <div class="pt-0 md:pt-5">
-              <div class="flex items-center justify-start gap-4 md:justify-center">
-                <ArrowAnimation />
-                <h2 class="ml-10 mr-0 text-2xl font-black uppercase text-primary md:ml-0 md:mr-28 md:text-[42px]">
+              <div class="flex items-center justify-center gap-4 md:justify-center">
+                <!-- <ArrowAnimation /> -->
+                <h2 class="text-2xl font-black uppercase text-[#072899] md:ml-0 md:mr-28 md:text-[42px]">
                   Liên hệ hợp tác
                 </h2>
               </div>
@@ -371,16 +362,16 @@ const qaData = [
                 Nếu bạn là đối tác, doanh nghiệp, trường học muốn hợp tác về đào tạo - workshop - sự kiện
               </p>
               <div
-                class="relative mx-4 mt-16 w-auto rounded-xl bg-white py-4 pl-36 md:mx-auto md:w-[630px] md:pl-[42px] md:pr-[42px]"
+                class="relative mx-4 mt-16 w-auto rounded-xl bg-white p-4 md:py-4 md:mx-auto md:w-[630px] md:px-[42px]"
               >
                 <button
-                  class="absolute -top-5 left-40 h-7 rounded-xl bg-primary px-4 text-[15px] font-black text-white md:left-10 md:h-10 md:px-10 md:text-2xl"
+                  class="absolute -top-5 left-4 h-7 rounded-xl bg-[#072899] px-4 text-[15px] font-black whitespace-nowrap text-white md:left-10 md:h-10 md:px-10 md:text-2xl"
                 >
                   Vui lòng gửi email đến
                 </button>
-                <div class="mt-0 flex h-10 items-center gap-2 md:mt-4 md:h-16">
+                <div class="mt-0 flex h-10 items-center justify-start text-left gap-2 md:mt-4 md:h-16">
                   <div
-                    class="flex size-[30px] items-center justify-center rounded-full bg-primary text-white md:size-[50px]"
+                    class="flex size-[30px] items-center justify-center rounded-full bg-[#072899] text-white md:size-[50px]"
                   >
                     <Mail className="size-4 md:size-6" />
                   </div>
@@ -388,8 +379,8 @@ const qaData = [
                     <p class="text-[15px] font-medium text-[#373737] md:text-2xl md:font-bold">{CONTACTS.email}</p>
                   </div>
                 </div>
-                <p class="text-xs font-bold italic text-[#373737] md:text-lg">
-                  Tiêu đề email ghi rõ : <br /> “Hợp tác - [Tên đơn vị] x <br class="block md:hidden" /> Học Bá Education”
+                <p class="mt-2 text-left text-xs font-bold italic text-[#373737] md:text-lg">
+                  Tiêu đề email ghi rõ : <br /> “Hợp tác - [Tên đơn vị] x <br class="block md:hidden" /> The English Space”
                 </p>
                 <Image
                   src={IMAGES.contact.emailContact}
@@ -401,6 +392,18 @@ const qaData = [
                 />
               </div>
             </div>
+            <div
+              class="absolute right-0 top-[152px] z-50 w-[159px] flex-shrink-0 md:relative md:top-0 md:z-10 md:w-[498px]"
+            >
+              <Image
+                src={IMAGES.contact.hopTac}
+                width={498}
+                height={520}
+                alt={'hopTac'}
+                densities={[1, 2]}
+                class={'object-cover w-full h-auto scale-90 object-top'}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -408,7 +411,7 @@ const qaData = [
 
     <SimpleFormRegister dataInput={DATA_VALUE.CONTACT} />
 
-    <section
+    <!-- <section
       class="h-auto w-full overflow-hidden bg-gradient-to-t from-[#FFF8F800] to-[#FFD3D3] px-4 md:h-[690px] md:px-0"
     >
       <div class="mx-auto grid w-full max-w-[1354px] grid-cols-1 md:grid-cols-2">
@@ -447,6 +450,35 @@ const qaData = [
               densities={[1, 2]}
               class={'object-cover h-[349px] md:h-auto w-auto md:w-[614px] z-50 relative'}
             />
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <section id="advisor-qa" class="" style="background: linear-gradient(180deg, #D7E0FF 0%, #DCE8FF 100%);">
+      <div class="mx-auto w-full max-w-[1354px]">
+        <div class="flex flex-col gap-8 lg:flex-row">
+          <div class="order-last lg:order-none lg:w-[614px]">
+            <div class="sticky top-24">
+              <div class="relative md:h-[748px] md:w-[614px]">
+                <Image
+                  src={imgQaccNewKhoaHoc}
+                  width={610}
+                  height={748}
+                  alt={'fdBook'}
+                  densities={[1, 2]}
+                  class={'object-cover w-auto h-full'}
+                  loading={'lazy'}
+                />
+              </div>
+            </div>
+          </div>
+          <div class="w-full px-7 md:px-0 lg:w-[646px]">
+            <div class="flex h-24 items-center justify-center md:h-[129px] md:justify-start">
+              <div class="text-[58px] font-black text-[#D16112] md:text-[108px]">?</div>
+              <h2 class="text-lg font-black uppercase text-[#D16112] md:text-[42px]">Câu hỏi thường gặp</h2>
+            </div>
+            <QAAccordion {qaData} />
           </div>
         </div>
       </div>

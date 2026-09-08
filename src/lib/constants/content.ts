@@ -1,4 +1,4 @@
-import { CATEGORY_TYPES } from './enums';
+﻿import { CATEGORY_TYPES } from './enums';
 
 export type CategoryItem = {
   id: number;
@@ -153,25 +153,25 @@ export const output: TRoadmapCourse[] = [
     dataResults: [
       {
         slug: SlugCourseMap.SO_0,
-        sugges: `Lộ trình dành cho người chưa từng học tiếng Trung hoặc mới bắt đầu, chưa có nền tảng về phát âm, từ vựng và ngữ pháp. Học viên sẽ bắt đầu từ hệ thống ngữ âm chuẩn (pinyin, thanh điệu), sau đó từng bước xây dựng nền tảng từ vựng - ngữ pháp - chữ Hán theo chuẩn HSK.
+        sugges: `Đầu vào: IELTS 0<br/>Đầu ra: IELTS 3.0<br/>Thời gian dự kiến: 4 tháng
 
-        <br/><br/>Trong quá trình học, học viên được rèn luyện nghe - nói qua các tình huống giao tiếp quen thuộc như chào hỏi, giới thiệu bản thân, mua sắm, ăn uống, hỏi đường… Đồng thời phát triển kỹ năng đọc - viết cơ bản và hình thành phản xạ sử dụng tiếng Trung ngay từ giai đoạn đầu.
+        <br/><p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">LỘ TRÌNH NÀY DÀNH CHO AI?</p>
 
-        <br/><br/>👉 Lộ trình: Số 0 ➡  HSK1 ➡  HSK2
+        <br/>Dành cho người mất gốc, nền tảng tiếng Anh còn yếu hoặc chưa từng học IELTS, cần xây chắc kiến thức cơ bản trước khi bước vào giai đoạn luyện thi.
 
-        <br/><br/>Phù hợp để xây nền bài bản từ đầu, vừa giao tiếp cơ bản vừa định hướng thi HSK1–2 và HSKK sơ cấp.`,
-        knowledg: `Sau khóa học, học viên xây dựng được nền tảng tiếng Trung sơ cấp vững chắc, có thể sử dụng trong các tình huống giao tiếp hằng ngày.<br/><br/>
+        <br/><strong>Lộ trình học tập:</strong> 01 khóa IELTS Khởi động (4 tháng)`,
+        knowledg: `<p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">ĐÍCH ĐẾN LỘ TRÌNH</p>
+
+        <br/>Xây dựng nền tảng phát âm, từ vựng và ngữ pháp; hình thành khả năng nghe, nói, đọc, viết tiếng Anh cơ bản và làm quen với cấu trúc bài thi IELTS.
 
         <ul style="margin-left: 16px; padding-left: 18px; list-style: disc;">
-          <li>~1.200 từ vựng | ~92 ngữ pháp | 100+ mẫu câu</li>
-          <li>Nghe - hiểu câu nói đơn giản trong giao tiếp quen thuộc</li>
-          <li>Giao tiếp cơ bản: giới thiệu, mua sắm, hỏi đường, trao đổi thông tin</li>
-          <li>Đọc hiểu câu ngắn, hội thoại đơn giản</li>
-          <li>Viết đoạn 50–80 chữ với cấu trúc rõ ràng</li>
-          <li>Đủ năng lực thi HSK1–2 &amp; HSKK sơ cấp</li>
-        </ul>
-
-        <br/>Là bước đệm vững chắc để học lên HSK3 và các cấp độ cao hơn.`,
+          <li><strong>Listening:</strong> Nghe và nhận diện được các thông tin cụ thể như tên, số, thời gian, địa điểm trong hội thoại ngắn, quen thuộc.</li>
+          <li><strong>Speaking:</strong> Trả lời được các câu hỏi đơn giản về bản thân và chủ đề quen thuộc bằng câu tương đối đầy đủ.</li>
+          <li><strong>Reading:</strong> Đọc hiểu đoạn văn ngắn 100–150 từ, xác định được ý chính và thông tin trực tiếp.</li>
+          <li><strong>Writing:</strong> Viết được đoạn văn 5–7 câu có liên kết đơn giản về các chủ đề cá nhân và quen thuộc.</li>
+          <li><strong>Vocabulary &amp; Grammar:</strong> Nắm các cấu trúc ngữ pháp cốt lõi, hệ thống 44 âm tiếng Anh và vốn từ theo các chủ đề đời sống phổ biến.</li>
+          <li><strong>IELTS Skills:</strong> Làm quen cấu trúc bài thi và một số dạng bài IELTS cơ bản.</li>
+        </ul>`,
       },
     ],
   },
@@ -184,46 +184,47 @@ export const output: TRoadmapCourse[] = [
     dataResults: [
       {
         slug: SlugCourseMap.SO_0,
-        sugges: `Lộ trình dành cho người chưa từng học tiếng Trung hoặc mới bắt đầu, muốn xây dựng nền tảng vững chắc và nâng lên trình độ sơ - trung cấp. Học viên bắt đầu từ hệ thống phát âm chuẩn (pinyin, thanh điệu), sau đó từng bước phát triển từ vựng - ngữ pháp - chữ Hán theo chuẩn HSK.
+        sugges: `Đầu vào: IELTS 0<br/>Đầu ra: IELTS 4.0<br/>Thời gian dự kiến: 8 tháng
 
-        <br/><br/>Trong quá trình học, học viên được rèn luyện nghe - nói qua các tình huống đời sống thực tế, đồng thời nâng cao dần khả năng giao tiếp, đọc - viết và hình thành phản xạ sử dụng tiếng Trung một cách tự nhiên.
-        <br/><br/>👉 Lộ trình: Số 0 ➡ HSK2 ➡ HSK3
-        <br/><br/>Phù hợp cho người muốn không chỉ giao tiếp cơ bản mà còn sử dụng tiếng Trung trong học tập và công việc ở mức nền tảng.`,
+        <br/><p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">LỘ TRÌNH NÀY DÀNH CHO AI?</p>
 
-        knowledg: `Sau khóa học, học viên đạt trình độ sơ - trung cấp, có thể sử dụng tiếng Trung linh hoạt trong các tình huống quen thuộc.<br/><br/>
+        <br/>Dành cho người mất gốc hoặc nền tảng tiếng Anh còn yếu, muốn xây chắc kiến thức cơ bản và từng bước phát triển năng lực làm bài IELTS.
+
+        <br/><strong>Lộ trình học tập:</strong> IELTS Khởi động → Cất cánh`,
+        knowledg: `<p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">ĐÍCH ĐẾN LỘ TRÌNH</p>
+
+        <br/>Xây chắc nền tảng tiếng Anh và phát triển đồng đều 4 kỹ năng; từ làm quen với IELTS đến có thể xử lý những dạng bài cơ bản ở mức band 4.0.
+
         <ul style="margin-left: 16px; padding-left: 18px; list-style: disc;">
-          <li>~2.200 từ vựng | ~210 ngữ pháp</li>
-          <li>Giao tiếp tự nhiên trong đời sống và học tập</li>
-          <li>Nghe - hiểu hội thoại cơ bản và nắm được ý chính</li>
-          <li>Đọc hiểu đoạn văn ngắn, tin nhắn và nội dung đơn giản</li>
-          <li>Viết đoạn 100–150 chữ với cấu trúc rõ ràng</li>
-          <li>Đủ năng lực thi HSK3 &amp; HSKK sơ cấp</li>
-        </ul>
-        <br/>Là nền tảng vững chắc để học lên HSK4 và các cấp độ cao hơn.`,
+          <li><strong>Listening:</strong> Nghe hiểu hội thoại quen thuộc, xác định được thông tin chi tiết và ý chính đơn giản.</li>
+          <li><strong>Speaking:</strong> Hoàn thành Speaking Part 1 và bước đầu Part 2; trình bày được ý tương đối rõ về các chủ đề quen thuộc.</li>
+          <li><strong>Reading:</strong> Đọc hiểu đoạn văn 150–200 từ và xử lý được các dạng bài cơ bản như Matching Information.</li>
+          <li><strong>Writing:</strong> Viết được Task 2 rút gọn khoảng 180 từ với bố cục mở bài – thân bài – kết bài và ý tưởng liên quan đến đề.</li>
+          <li><strong>Vocabulary &amp; Grammar:</strong> Mở rộng vốn từ theo các chủ đề IELTS phổ biến; sử dụng chắc hơn các cấu trúc ngữ pháp nền tảng và một số cấu trúc mở rộng.</li>
+          <li><strong>IELTS Skills:</strong> Làm quen và thực hành các dạng bài IELTS cơ bản ở cả 4 kỹ năng, hình thành những chiến lược làm bài ban đầu.</li>
+        </ul>`,
       },
       {
         slug: SlugCourseMap.HSK_2,
-        sugges: `Lộ trình dành cho học viên đã hoàn thành HSK2 hoặc có nền tảng tiếng Trung cơ bản, muốn nâng cấp lên trình độ sơ – trung cấp. Học viên tiếp tục mở rộng hệ thống từ vựng - ngữ pháp - chữ Hán theo chuẩn HSK, đồng thời phát triển khả năng giao tiếp và sử dụng tiếng Trung trong thực tế.
+        sugges: `Đầu vào: IELTS 3.0<br/>Đầu ra: IELTS 4.0<br/>Thời gian dự kiến: 3 tháng
 
-        <br/><br/>Trong quá trình học, học viên được rèn luyện nghe – nói qua các tình huống đời sống quen thuộc, kết hợp nâng cao khả năng đọc – viết và hình thành phản xạ sử dụng tiếng Trung một cách tự nhiên.
+        <br/><p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">LỘ TRÌNH NÀY DÀNH CHO AI?</p>
 
-        <br/><br/>👉 Lộ trình: HSK2 ➡  HSK3
+        <br/>Dành cho người đã có nền tảng tiếng Anh cơ bản nhưng kỹ năng IELTS còn hạn chế, cần củng cố kiến thức và làm quen sâu hơn với các dạng bài cơ bản.
 
-        <br/><br/>Phù hợp cho người muốn giao tiếp tự nhiên hơn và sử dụng tiếng Trung trong học tập, công việc ở mức nền tảng.`,
-        knowledg: `Sau khóa học, học viên đạt trình độ sơ – trung cấp, có thể sử dụng tiếng Trung linh hoạt trong các tình huống quen thuộc.<br/><br/>
+        <br/><strong>Lộ trình học tập:</strong> 01 khoá Cất cánh`,
+        knowledg: `<p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">ĐÍCH ĐẾN LỘ TRÌNH</p>
+
+        <br/>Củng cố nền tảng và phát triển đồng đều 4 kỹ năng; từ khả năng sử dụng tiếng Anh cơ bản đến bước đầu xử lý được các dạng bài IELTS ở mức band 4.0.
 
         <ul style="margin-left: 16px; padding-left: 18px; list-style: disc;">
-          <li>~2.200 từ vựng | ~210 ngữ pháp</li>
-          <li>Giao tiếp tự nhiên trong đời sống và học tập</li>
-          <li>Nghe - hiểu hội thoại cơ bản, nắm được ý chính</li>
-          <li>Đọc hiểu đoạn văn ngắn, tin nhắn và nội dung đơn giản</li>
-          <li>Viết đoạn 100–150 chữ với cấu trúc rõ ràng</li>
-          <li>Đủ năng lực thi HSK3 &amp; HSKK sơ cấp</li>
-        </ul>
-
-        <br/>👉 Bắt đầu sử dụng tiếng Trung trong học tập và công việc cơ bản
-
-        <br/><br/>Là nền tảng vững chắc để học lên HSK4 và các cấp độ cao hơn.`,
+          <li><strong>Listening:</strong> Nghe hiểu hội thoại quen thuộc, xác định được thông tin chi tiết và ý chính đơn giản.</li>
+          <li><strong>Speaking:</strong> Hoàn thành Speaking Part 1 và bước đầu Part 2; trình bày được ý tương đối rõ về các chủ đề quen thuộc.</li>
+          <li><strong>Reading:</strong> Đọc hiểu đoạn văn 150–200 từ và xử lý được các dạng bài cơ bản như Matching Information.</li>
+          <li><strong>Writing:</strong> Viết được Task 2 rút gọn khoảng 180 từ với bố cục mở bài – thân bài – kết bài và ý tưởng liên quan đến đề.</li>
+          <li><strong>Vocabulary &amp; Grammar:</strong> Mở rộng vốn từ theo các chủ đề IELTS phổ biến; sử dụng chắc hơn các cấu trúc ngữ pháp nền tảng và một số cấu trúc mở rộng.</li>
+          <li><strong>IELTS Skills:</strong> Thực hành các dạng bài IELTS cơ bản ở cả 4 kỹ năng và hình thành những chiến lược làm bài ban đầu.</li>
+        </ul>`,
       },
     ],
   },
@@ -236,71 +237,69 @@ export const output: TRoadmapCourse[] = [
     dataResults: [
       {
         slug: SlugCourseMap.SO_0,
-        sugges: `Lộ trình dành cho người chưa từng học tiếng Trung, bắt đầu từ nền tảng phát âm (pinyin, thanh điệu) và từng bước xây dựng hệ thống từ vựng - ngữ pháp - chữ Hán theo chuẩn HSK.
+        sugges: `Đầu vào: IELTS 0<br/>Đầu ra: IELTS 5.0<br/>Thời gian dự kiến: 11 tháng
 
-        <br/><br/>Học viên được phát triển theo từng giai đoạn: từ giao tiếp cơ bản đến khả năng sử dụng tiếng Trung trong học tập và công việc. Kết hợp rèn luyện toàn diện nghe - nói - đọc - viết và hình thành phản xạ ngôn ngữ một cách tự nhiên.
+        <br/><p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">LỘ TRÌNH NÀY DÀNH CHO AI?</p>
 
-        <br/><br/>👉 Lộ trình: Số 0 ➡  HSK2 ➡  HSK3 ➡  HSK4
+        <br/>Dành cho người mất gốc hoặc nền tảng còn yếu, muốn xây chắc tiếng Anh từ đầu và phát triển từng bước đến khả năng làm bài IELTS ở mức band 5.0.
 
-        <br/><br/>Phù hợp cho người muốn sử dụng tiếng Trung tương đối thành thạo trong học tập và công việc, bắt đầu ứng dụng vào thực tế.`,
-        knowledg: `Sau khóa học, học viên đạt trình độ trung cấp, có thể sử dụng tiếng Trung linh hoạt trong nhiều tình huống thực tế.<br/><br/>
+        <br/><strong>Lộ trình học tập:</strong> IELTS Khởi động → Cất cánh → Tăng tốc`,
+        knowledg: `<p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">ĐÍCH ĐẾN LỘ TRÌNH</p>
+
+        <br/>Từ nền tảng tiếng Anh cơ bản đến khả năng xử lý tương đối đầy đủ 4 kỹ năng IELTS; biết vận dụng kiến thức ngôn ngữ và chiến lược làm bài vào các dạng bài phổ biến.
 
         <ul style="margin-left: 16px; padding-left: 18px; list-style: disc;">
-          <li>~3.200 từ vựng | ~286 ngữ pháp</li>
-          <li>Giao tiếp trôi chảy trong đời sống và công việc</li>
-          <li>Nghe - hiểu hội thoại và nội dung trung cấp, nắm được ý chính</li>
-          <li>Đọc hiểu email, tin tức và văn bản công việc cơ bản</li>
-          <li>Viết đoạn 200-300 chữ với bố cục rõ ràng</li>
-          <li>Đủ năng lực thi HSK4 &amp; HSKK trung cấp</li>
-        </ul>
-
-        <br/>👉 Bắt đầu sử dụng tiếng Trung trong công việc thực tế
-
-        <br/><br/>Là nền tảng vững chắc để học lên HSK5 và các cấp độ cao hơn.`,
+          <li><strong>Listening:</strong> Nghe hiểu các bài hội thoại, thảo luận và bài nói ngắn; xác định được ý chính, thông tin chi tiết và một số thông tin cần suy luận.</li>
+          <li><strong>Speaking:</strong> Hoàn thành Speaking Part 1–3; biết mở rộng câu trả lời và trình bày quan điểm ở mức cơ bản.</li>
+          <li><strong>Reading:</strong> Đọc hiểu đoạn văn 200–250 từ, xác định ý chính và xử lý các dạng bài như Matching Heading và câu hỏi suy luận cơ bản.</li>
+          <li><strong>Writing:</strong> Viết được Task 1 mô tả biểu đồ đơn giản và Task 2 khoảng 230 từ với bố cục đầy đủ, lập luận tương đối rõ ràng.</li>
+          <li><strong>Vocabulary &amp; Grammar:</strong> Mở rộng vốn từ theo các chủ đề IELTS và sử dụng các cấu trúc ngữ pháp đa dạng hơn để diễn đạt ý rõ ràng, chính xác.</li>
+          <li><strong>IELTS Skills:</strong> Làm quen và thực hành tương đối đầy đủ các phần của 4 kỹ năng, từng bước hình thành chiến lược xử lý các dạng bài IELTS phổ biến.</li>
+        </ul>`,
       },
       {
         slug: SlugCourseMap.HSK_2,
-        sugges: `Lộ trình dành cho học viên đã hoàn thành HSK2 hoặc có nền tảng cơ bản, muốn nâng cấp lên trình độ trung cấp để sử dụng tiếng Trung trong học tập và công việc. Học viên tiếp tục mở rộng hệ thống từ vựng - ngữ pháp - chữ Hán theo chuẩn HSK, đồng thời phát triển toàn diện kỹ năng giao tiếp, đọc – viết và phản xạ ngôn ngữ.
+        sugges: `Đầu vào: IELTS 3.0<br/>Đầu ra: IELTS 5.0<br/>Thời gian dự kiến: 6,5 tháng
 
-        <br/><br/>Quá trình học được nâng cấp theo từng giai đoạn từ sơ - trung cấp đến trung cấp, giúp học viên sử dụng tiếng Trung rõ ràng, mạch lạc và tự nhiên hơn trong nhiều bối cảnh thực tế.
+        <br/><p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">LỘ TRÌNH NÀY DÀNH CHO AI?</p>
 
-        <br/><br/>👉 Lộ trình: HSK2 ➡  HSK3 ➡  HSK4
+        <br/>Dành cho người đã có nền tảng tiếng Anh cơ bản, muốn phát triển đầy đủ 4 kỹ năng và nâng dần khả năng làm bài IELTS đến mức band 5.0.
 
-        <br/><br/>Phù hợp cho người muốn sử dụng tiếng Trung tương đối thành thạo trong môi trường học tập và công việc.`,
-        knowledg: `Sau khóa học, học viên đạt trình độ trung cấp, có thể sử dụng tiếng Trung linh hoạt trong nhiều tình huống thực tế.<br/><br/>
+        <br/><strong>Lộ trình học tập:</strong> IELTS Cất cánh → IELTS Tăng tốc`,
+        knowledg: `<p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">ĐÍCH ĐẾN LỘ TRÌNH</p>
+
+        <br/>Từ khả năng xử lý các dạng bài IELTS cơ bản đến hoàn thiện cấu trúc 4 kỹ năng, biết vận dụng kiến thức ngôn ngữ và chiến lược làm bài ở mức band 5.0.
 
         <ul style="margin-left: 16px; padding-left: 18px; list-style: disc;">
-          <li>~3.200 từ vựng | ~286 ngữ pháp</li>
-          <li>Giao tiếp trôi chảy trong đời sống và công việc</li>
-          <li>Nghe - hiểu hội thoại và nội dung trung cấp, nắm được ý chính</li>
-          <li>Đọc hiểu email, tin tức và văn bản công việc cơ bản</li>
-          <li>Viết đoạn 200–300 chữ với bố cục rõ ràng</li>
-          <li>Đủ năng lực thi HSK4 &amp; HSKK trung cấp</li>
-        </ul>
-
-        <br/>Là nền tảng vững chắc để học lên HSK5 và các cấp độ cao hơn.`,
+          <li><strong>Listening:</strong> Nghe hiểu hội thoại, bài giảng và bài nói ngắn; xác định được ý chính, thông tin chi tiết và một số thông tin cần suy luận.</li>
+          <li><strong>Speaking:</strong> Hoàn thành Speaking Part 1–3; biết mở rộng câu trả lời và trình bày quan điểm ở mức cơ bản.</li>
+          <li><strong>Reading:</strong> Đọc hiểu đoạn văn 200–250 từ, xác định ý chính và xử lý được Matching Heading cùng một số câu hỏi suy luận.</li>
+          <li><strong>Writing:</strong> Viết được Task 1 mô tả biểu đồ đơn giản và Task 2 khoảng 230 từ với bố cục đầy đủ, lập luận tương đối rõ ràng.</li>
+          <li><strong>Vocabulary &amp; Grammar:</strong> Mở rộng vốn từ theo các chủ đề IELTS và sử dụng đa dạng hơn các cấu trúc ngữ pháp để diễn đạt ý rõ ràng, chính xác.</li>
+          <li><strong>IELTS Skills:</strong> Thực hành tương đối đầy đủ các phần của 4 kỹ năng và hình thành chiến lược xử lý các dạng bài IELTS phổ biến.</li>
+        </ul>`,
       },
       {
         slug: SlugCourseMap.HSK_3,
-        sugges: `Lộ trình dành cho học viên đã hoàn thành HSK3 hoặc có nền tảng sơ – trung cấp, muốn nâng cấp lên trình độ trung cấp để sử dụng tiếng Trung trong học tập và công việc. Học viên tiếp tục mở rộng hệ thống từ vựng - ngữ pháp - chữ Hán theo chuẩn HSK, đồng thời phát triển toàn diện kỹ năng giao tiếp, đọc – viết và phản xạ ngôn ngữ.
+        sugges: `Đầu vào: IELTS 4.0<br/>Đầu ra: IELTS 5.0<br/>Thời gian dự kiến: 3 tháng
 
-        <br/><br/>Quá trình học tập trung nâng cao khả năng diễn đạt, giúp học viên sử dụng tiếng Trung rõ ràng, mạch lạc và tự nhiên hơn trong nhiều tình huống thực tế.
+        <br/><p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">LỘ TRÌNH NÀY DÀNH CHO AI?</p>
 
-        <br/><br/>👉 Lộ trình: HSK3 ➡  HSK4
+        <br/>Dành cho người đã có nền tảng IELTS cơ bản, muốn hoàn thiện dần 4 kỹ năng và nâng khả năng xử lý các dạng bài lên mức band 5.0.
 
-        <br/><br/>Phù hợp cho người muốn sử dụng tiếng Trung tương đối thành thạo trong môi trường học tập và công việc.`,
-        knowledg: `Sau khóa học, học viên đạt trình độ trung cấp, có thể sử dụng tiếng Trung linh hoạt trong nhiều bối cảnh thực tế.<br/><br/>
+        <br/><strong>Lộ trình học tập:</strong> 01 khóa IELTS Tăng tốc`,
+        knowledg: `<p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">ĐÍCH ĐẾN LỘ TRÌNH</p>
+
+        <br/>Phát triển từ khả năng làm các dạng bài cơ bản đến xử lý tương đối đầy đủ 4 kỹ năng IELTS; nâng khả năng phân tích, phát triển ý và vận dụng chiến lược làm bài.
 
         <ul style="margin-left: 16px; padding-left: 18px; list-style: disc;">
-          <li>~3.200 từ vựng | ~286 ngữ pháp</li>
-          <li>Giao tiếp trôi chảy trong đời sống và công việc</li>
-          <li>Nghe - hiểu hội thoại và nội dung trung cấp, nắm được ý chính</li>
-          <li>Đọc hiểu email, tin tức và văn bản công việc cơ bản</li>
-          <li>Viết đoạn 200–300 chữ với bố cục rõ ràng</li>
-          <li>Đủ năng lực thi HSK4 &amp; HSKK trung cấp</li>
-        </ul>
-
-        <br/>Là nền tảng vững chắc để học lên HSK5 và các cấp độ cao hơn.`,
+          <li><strong>Listening:</strong> Nghe hiểu bài giảng và bài nói ngắn, xác định được ý chính, thông tin chi tiết và một số thông tin cần suy luận.</li>
+          <li><strong>Speaking:</strong> Hoàn thành Speaking Part 1–3; biết mở rộng câu trả lời và trình bày quan điểm ở mức cơ bản.</li>
+          <li><strong>Reading:</strong> Đọc hiểu đoạn văn 200–250 từ, xử lý được Matching Heading và một số câu hỏi suy luận.</li>
+          <li><strong>Writing:</strong> Viết được Task 1 mô tả biểu đồ đơn giản và Task 2 khoảng 230 từ với bố cục đầy đủ, lập luận tương đối rõ ràng.</li>
+          <li><strong>Vocabulary &amp; Grammar:</strong> Mở rộng vốn từ học thuật và sử dụng đa dạng hơn các cấu trúc ngữ pháp để diễn đạt ý rõ ràng, chính xác.</li>
+          <li><strong>IELTS Skills:</strong> Thực hành tương đối đầy đủ các phần của 4 kỹ năng và phát triển chiến lược xử lý những dạng bài IELTS phổ biến.</li>
+        </ul>`,
       },
     ],
   },
@@ -313,91 +312,91 @@ export const output: TRoadmapCourse[] = [
     dataResults: [
       {
         slug: SlugCourseMap.SO_0,
-        sugges: `Lộ trình dành cho người chưa từng học tiếng Trung nhưng có mục tiêu dài hạn, muốn sử dụng tiếng Trung trong học tập, công việc hoặc định hướng du học. Học viên bắt đầu từ nền tảng phát âm (pinyin, thanh điệu), sau đó từng bước phát triển hệ thống từ vựng - ngữ pháp - chữ Hán theo chuẩn HSK.
+        sugges: `Đầu vào: IELTS 0<br/>Đầu ra: IELTS 6.0<br/>Thời gian dự kiến: 15 tháng
 
-        <br/><br/>Quá trình học được nâng cấp theo từng giai đoạn từ cơ bản đến trung - cao cấp, kết hợp rèn luyện toàn diện nghe - nói - đọc - viết và phát triển khả năng diễn đạt, lập luận bằng tiếng Trung.
+        <br/><p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">LỘ TRÌNH NÀY DÀNH CHO AI?</p>
 
-        <br/><br/>👉 Lộ trình: Số 0 ➡  HSK2 ➡  HSK3 ➡  HSK4 ➡  HSK5
+        <br/>Dành cho người mất gốc hoặc nền tảng còn yếu, muốn xây dựng tiếng Anh từ đầu và phát triển toàn diện 4 kỹ năng để đạt năng lực IELTS 6.0.
 
-        <br/><br/>Phù hợp cho người muốn phát triển tiếng Trung ở mức chuyên sâu, phục vụ học thuật và công việc.`,
-        knowledg: `Sau khóa học, học viên đạt trình độ trung - cao cấp, có thể sử dụng tiếng Trung linh hoạt trong nhiều bối cảnh.<br/><br/>
+        <br/><strong>Lộ trình học tập:</strong> IELTS Khởi động → Cất cánh → Tăng tốc → Bứt phá`,
+        knowledg: `<p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">ĐÍCH ĐẾN LỘ TRÌNH</p>
+
+        <br/>Từ mất gốc đến khả năng xử lý đầy đủ 4 kỹ năng IELTS; sử dụng tiếng Anh tương đối linh hoạt và biết vận dụng các chiến lược làm bài trong điều kiện gần với bài thi thực tế.
 
         <ul style="margin-left: 16px; padding-left: 18px; list-style: disc;">
-          <li>~4.300 từ vựng | ~350 ngữ pháp</li>
-          <li>Giao tiếp, thuyết trình và trình bày ý kiến rõ ràng</li>
-          <li>Nghe - hiểu hội thoại dài và nội dung học thuật cơ bản</li>
-          <li>Đọc hiểu báo chí, văn bản chuyên sâu</li>
-          <li>Viết bài 300-400 chữ, nội dung có lập luận</li>
-          <li>Đủ năng lực thi HSK5 &amp; HSKK cao cấp</li>
-        </ul>
-
-        <br/>Là nền tảng để học lên <strong>HSK6 và phát triển chuyên môn bằng tiếng Trung.</strong>`,
+          <li><strong>Listening:</strong> Nghe hiểu bài thi đầy đủ 4 phần, nhận diện được ý chính, thông tin chi tiết, ý ngầm định và nhiều giọng nói khác nhau.</li>
+          <li><strong>Speaking:</strong> Hoàn thành Speaking Part 1–3 tương đối trôi chảy; biết phát triển ý và sử dụng từ vựng đủ linh hoạt với cả những chủ đề ít quen thuộc.</li>
+          <li><strong>Reading:</strong> Đọc và xử lý 3 bài Reading đầy đủ; hiểu ý chính, thông tin chi tiết, câu hỏi suy luận và từ vựng học thuật ở mức trung bình.</li>
+          <li><strong>Writing:</strong> Hoàn thành Task 1 khoảng 150 từ và Task 2 khoảng 250 từ với bố cục rõ ràng, lập luận hợp lý và vốn từ tương đối đa dạng.</li>
+          <li><strong>Vocabulary &amp; Grammar:</strong> Sử dụng vốn từ học thuật và các cấu trúc ngữ pháp đa dạng hơn, kiểm soát lỗi tốt hơn khi diễn đạt những ý phức tạp.</li>
+          <li><strong>IELTS Skills:</strong> Thực hành đầy đủ cấu trúc bài thi 4 kỹ năng, biết phân bổ thời gian và áp dụng chiến lược phù hợp với từng dạng bài.</li>
+        </ul>`,
       },
       {
         slug: SlugCourseMap.HSK_2,
-        sugges: `Lộ trình dành cho học viên đã hoàn thành HSK2 hoặc có nền tảng cơ bản, muốn phát triển tiếng Trung lên trình độ trung – cao cấp để phục vụ học tập, công việc hoặc định hướng du học. Học viên tiếp tục mở rộng hệ thống từ vựng - ngữ pháp - chữ Hán theo chuẩn HSK, đồng thời nâng cao khả năng giao tiếp, đọc – viết và diễn đạt.
+        sugges: `Đầu vào: IELTS 3.0<br/>Đầu ra: IELTS 6.0<br/>Thời gian dự kiến: 10 tháng
 
-        <br/><br/>Quá trình học được nâng cấp theo từng giai đoạn từ sơ – trung cấp đến trung – cao cấp, giúp học viên sử dụng tiếng Trung linh hoạt, mạch lạc và có khả năng lập luận, trình bày ý kiến rõ ràng.
+        <br/><p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">LỘ TRÌNH NÀY DÀNH CHO AI?</p>
 
-        <br/><br/>👉 Lộ trình: HSK2 ➡  HSK3 ➡  HSK4 ➡  HSK5
+        <br/>Dành cho người đã có nền tảng tiếng Anh cơ bản, muốn phát triển toàn diện 4 kỹ năng và nâng năng lực làm bài IELTS đến mức band 6.0.
 
-        <br/><br/>Phù hợp cho người muốn sử dụng tiếng Trung trong học thuật và công việc chuyên sâu.`,
-        knowledg: `Sau khóa học, học viên đạt trình độ trung – cao cấp, có thể sử dụng tiếng Trung linh hoạt trong nhiều bối cảnh học tập và công việc.<br/><br/>
+        <br/><strong>Lộ trình học tập:</strong> IELTS Cất cánh → IELTS Tăng tốc → IELTS Bứt phá`,
+        knowledg: `<p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">ĐÍCH ĐẾN LỘ TRÌNH</p>
+
+        <br/>Từ khả năng xử lý các dạng bài IELTS cơ bản đến hoàn thành đầy đủ 4 kỹ năng; biết vận dụng chiến lược làm bài, quản lý thời gian và sử dụng tiếng Anh tương đối linh hoạt.
 
         <ul style="margin-left: 16px; padding-left: 18px; list-style: disc;">
-          <li>~4.300 từ vựng | ~350 ngữ pháp</li>
-          <li>Giao tiếp, thuyết trình và trình bày ý kiến rõ ràng</li>
-          <li>Nghe - hiểu hội thoại dài và nội dung học thuật, nắm được ý chính</li>
-          <li>Đọc hiểu báo chí, văn bản chuyên sâu</li>
-          <li>Viết bài 300–400 chữ với nội dung có lập luận rõ ràng</li>
-          <li>Đủ năng lực thi HSK5 &amp; HSKK cao cấp</li>
-        </ul>
-
-        <br/>Là nền tảng vững chắc để học lên HSK6 và phát triển sự nghiệp bằng tiếng Trung.`,
+          <li><strong>Listening:</strong> Nghe hiểu bài thi đầy đủ 4 phần, nhận diện ý chính, thông tin chi tiết, ý ngầm định và nhiều giọng nói khác nhau.</li>
+          <li><strong>Speaking:</strong> Hoàn thành Speaking Part 1–3 tương đối trôi chảy; biết phát triển ý và diễn đạt cả những chủ đề ít quen thuộc.</li>
+          <li><strong>Reading:</strong> Xử lý 3 bài Reading đầy đủ; hiểu ý chính, thông tin chi tiết, câu hỏi suy luận và từ vựng học thuật ở mức trung bình.</li>
+          <li><strong>Writing:</strong> Hoàn thành Task 1 khoảng 150 từ và Task 2 khoảng 250 từ với bố cục rõ ràng, lập luận hợp lý và vốn từ tương đối đa dạng.</li>
+          <li><strong>Vocabulary &amp; Grammar:</strong> Sử dụng vốn từ học thuật và các cấu trúc ngữ pháp đa dạng hơn, kiểm soát lỗi tốt hơn khi diễn đạt ý phức tạp.</li>
+          <li><strong>IELTS Skills:</strong> Thực hành đầy đủ cấu trúc bài thi 4 kỹ năng, biết phân bổ thời gian và áp dụng chiến lược phù hợp với từng dạng bài.</li>
+        </ul>`,
       },
       {
         slug: SlugCourseMap.HSK_3,
-        sugges: `Lộ trình dành cho học viên đã hoàn thành HSK3 hoặc có nền tảng sơ - trung cấp, muốn nâng cấp lên trình độ trung - cao cấp để sử dụng tiếng Trung trong học tập, công việc hoặc định hướng du học. Học viên tiếp tục mở rộng hệ thống từ vựng - ngữ pháp - chữ Hán theo chuẩn HSK, đồng thời nâng cao khả năng giao tiếp, đọc – viết và diễn đạt.
+        sugges: `Đầu vào: IELTS 4.0<br/>Đầu ra: IELTS 6.0<br/>Thời gian dự kiến: 6,5 tháng
 
-        <br/><br/>Quá trình học được nâng cấp theo từng giai đoạn từ trung cấp đến trung - cao cấp, giúp học viên sử dụng tiếng Trung linh hoạt, mạch lạc và có khả năng lập luận, trình bày ý kiến rõ ràng.
+        <br/><p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">LỘ TRÌNH NÀY DÀNH CHO AI?</p>
 
-        <br/><br/>👉 Lộ trình: HSK3 ➡  HSK4 ➡  HSK5
+        <br/>Dành cho người đã có nền tảng IELTS cơ bản, muốn hoàn thiện toàn diện 4 kỹ năng và nâng năng lực làm bài lên mức band 6.0.
 
-        <br/><br/>Phù hợp cho người muốn sử dụng tiếng Trung trong học thuật và công việc chuyên sâu.`,
-        knowledg: `Sau khóa học, học viên đạt trình độ trung - cao cấp, có thể sử dụng tiếng Trung linh hoạt trong nhiều bối cảnh học tập và công việc.<br/><br/>
+        <br/><strong>Lộ trình học tập:</strong> IELTS Tăng tốc → IELTS Bứt phá`,
+        knowledg: `<p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">ĐÍCH ĐẾN LỘ TRÌNH</p>
+
+        <br/>Từ khả năng xử lý các dạng bài IELTS cơ bản đến hoàn thành đầy đủ 4 kỹ năng; nâng khả năng phân tích, phát triển ý và vận dụng chiến lược làm bài trong điều kiện gần với bài thi thực tế.
 
         <ul style="margin-left: 16px; padding-left: 18px; list-style: disc;">
-          <li>~4.300 từ vựng | ~350 ngữ pháp</li>
-          <li>Giao tiếp, thuyết trình và trình bày ý kiến rõ ràng</li>
-          <li>Nghe - hiểu hội thoại dài và nội dung học thuật, nắm được ý chính</li>
-          <li>Đọc hiểu báo chí, văn bản chuyên sâu</li>
-          <li>Viết bài 300–400 chữ với nội dung có lập luận rõ ràng</li>
-          <li>Đủ năng lực thi HSK5 &amp; HSKK cao cấp</li>
-        </ul>
-
-        <br/>Là nền tảng vững chắc để học lên HSK6 và phát triển sự nghiệp bằng tiếng Trung.`,
+          <li><strong>Listening:</strong> Nghe hiểu bài thi đầy đủ 4 phần, nhận diện được ý chính, thông tin chi tiết, ý ngầm định và nhiều giọng nói khác nhau.</li>
+          <li><strong>Speaking:</strong> Hoàn thành Speaking Part 1–3 tương đối trôi chảy; biết phát triển ý và diễn đạt cả những chủ đề ít quen thuộc.</li>
+          <li><strong>Reading:</strong> Xử lý 3 bài Reading đầy đủ; hiểu ý chính, thông tin chi tiết, câu hỏi suy luận và từ vựng học thuật ở mức trung bình.</li>
+          <li><strong>Writing:</strong> Hoàn thành Task 1 khoảng 150 từ và Task 2 khoảng 250 từ với bố cục rõ ràng, lập luận hợp lý và vốn từ tương đối đa dạng.</li>
+          <li><strong>Vocabulary &amp; Grammar:</strong> Sử dụng vốn từ học thuật và các cấu trúc ngữ pháp đa dạng hơn, kiểm soát lỗi tốt hơn khi diễn đạt ý phức tạp.</li>
+          <li><strong>IELTS Skills:</strong> Thực hành đầy đủ cấu trúc bài thi 4 kỹ năng, biết phân bổ thời gian và áp dụng chiến lược phù hợp với từng dạng bài.</li>
+        </ul>`,
       },
       {
         slug: SlugCourseMap.HSK_4,
-        sugges: `Lộ trình dành cho học viên đã hoàn thành HSK4 hoặc có nền tảng trung cấp, muốn nâng cấp lên trình độ trung – cao cấp để sử dụng tiếng Trung trong học thuật và công việc chuyên sâu. Học viên tiếp tục mở rộng hệ thống từ vựng - ngữ pháp - chữ Hán theo chuẩn HSK, đồng thời phát triển khả năng diễn đạt, lập luận và giao tiếp nâng cao.
+        sugges: `Đầu vào: IELTS 5.0<br/>Đầu ra: IELTS 6.0<br/>Thời gian dự kiến: 3 tháng
 
-        <br/><br/>Quá trình học tập trung nâng cao khả năng sử dụng tiếng Trung linh hoạt, giúp học viên trình bày ý kiến rõ ràng, tham gia trao đổi, thuyết trình và xử lý hiệu quả các nội dung phức tạp.
+        <br/><p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">LỘ TRÌNH NÀY DÀNH CHO AI?</p>
 
-        <br/><br/>👉 Lộ trình: HSK4 ➡  HSK5
+        <br/>Dành cho người đã có nền tảng IELTS tương đối vững, muốn hoàn thiện 4 kỹ năng và nâng khả năng làm bài lên mức band 6.0.
 
-        <br/><br/>Phù hợp cho người muốn sử dụng tiếng Trung trong môi trường học thuật và công việc chuyên nghiệp.`,
-        knowledg: `Sau khóa học, học viên đạt trình độ trung – cao cấp, có thể sử dụng tiếng Trung linh hoạt trong nhiều bối cảnh học tập và công việc.<br/><br/>
+        <br/><strong>Lộ trình học tập:</strong> 01 khóa IELTS Bứt phá`,
+        knowledg: `<p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">ĐÍCH ĐẾN LỘ TRÌNH</p>
+
+        <br/>Hoàn thiện khả năng xử lý đầy đủ 4 kỹ năng IELTS; nâng độ chính xác, khả năng phát triển ý và vận dụng chiến lược làm bài trong điều kiện gần với bài thi thực tế.
 
         <ul style="margin-left: 16px; padding-left: 18px; list-style: disc;">
-          <li>~4.300 từ vựng | ~350 ngữ pháp</li>
-          <li>Giao tiếp, thuyết trình và trình bày ý kiến rõ ràng</li>
-          <li>Nghe - hiểu hội thoại dài và nội dung học thuật, nắm được ý chính</li>
-          <li>Đọc hiểu báo chí, văn bản chuyên sâu</li>
-          <li>Viết bài 300–400 chữ với nội dung có lập luận rõ ràng</li>
-          <li>Đủ năng lực thi HSK5 &amp; HSKK cao cấp</li>
-        </ul>
-
-        <br/>Là nền tảng vững chắc để học lên HSK6 và phát triển sự nghiệp bằng tiếng Trung.`,
+          <li><strong>Listening:</strong> Nghe hiểu bài thi đầy đủ 4 phần, nhận diện được ý chính, thông tin chi tiết, ý ngầm định và nhiều giọng nói khác nhau.</li>
+          <li><strong>Speaking:</strong> Hoàn thành Speaking Part 1–3 tương đối trôi chảy; biết phát triển ý và diễn đạt cả những chủ đề ít quen thuộc.</li>
+          <li><strong>Reading:</strong> Xử lý 3 bài Reading đầy đủ; hiểu ý chính, thông tin chi tiết, câu hỏi suy luận và từ vựng học thuật ở mức trung bình.</li>
+          <li><strong>Writing:</strong> Hoàn thành Task 1 khoảng 150 từ và Task 2 khoảng 250 từ với bố cục rõ ràng, lập luận hợp lý và vốn từ tương đối đa dạng.</li>
+          <li><strong>Vocabulary &amp; Grammar:</strong> Sử dụng vốn từ học thuật và các cấu trúc ngữ pháp đa dạng hơn, kiểm soát lỗi tốt hơn khi diễn đạt ý phức tạp.</li>
+          <li><strong>IELTS Skills:</strong> Thực hành đầy đủ cấu trúc bài thi 4 kỹ năng, biết phân bổ thời gian và áp dụng chiến lược phù hợp với từng dạng bài.</li>
+        </ul>`,
       },
     ],
   },
@@ -410,118 +409,113 @@ export const output: TRoadmapCourse[] = [
     dataResults: [
       {
         slug: SlugCourseMap.SO_0,
-        sugges: `Lộ trình dành cho người bắt đầu từ con số 0 nhưng có mục tiêu dài hạn, định hướng sử dụng tiếng Trung trong học thuật, nghiên cứu hoặc môi trường làm việc quốc tế. Học viên bắt đầu từ nền tảng phát âm (pinyin, thanh điệu), sau đó từng bước phát triển toàn diện hệ thống từ vựng - ngữ pháp - chữ Hán theo chuẩn HSK.
+        sugges: `Đầu vào: IELTS 0<br/>Đầu ra: IELTS 7.0<br/>Thời gian dự kiến: 19 tháng
 
-        <br/><br/>Quá trình học được nâng cấp theo từng giai đoạn từ cơ bản đến cao cấp, kết hợp rèn luyện toàn diện 5 kỹ năng nghe - nói - đọc - viết - dịch và phát triển khả năng diễn đạt, lập luận, phản biện bằng tiếng Trung.
+        <br/><p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">LỘ TRÌNH NÀY DÀNH CHO AI?</p>
 
-        <br/><br/>👉 Lộ trình: Số 0 ➡  HSK2 ➡  HSK3 ➡  HSK4 ➡  HSK5 ➡  HSK6
+        <br/>Dành cho người mất gốc hoặc nền tảng còn yếu, muốn xây dựng tiếng Anh từ đầu và phát triển toàn diện năng lực IELTS đến mức band 7.0.
 
-        <br/><br/>Phù hợp cho người muốn chinh phục trình độ tiếng Trung cao cấp, phục vụ học thuật, nghiên cứu và phát triển sự nghiệp quốc tế.`,
-        knowledg: `Sau khóa học, học viên đạt trình độ tiếng Trung cao cấp, có thể sử dụng linh hoạt trong học thuật và công việc chuyên môn.<br/><br/>
+        <br/><strong>Lộ trình học tập:</strong> IELTS Khởi động → Cất cánh → Tăng tốc → Bứt phá → Vươn xa`,
+        knowledg: `<p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">ĐÍCH ĐẾN LỘ TRÌNH</p>
+
+        <br/>Từ mất gốc đến khả năng sử dụng tiếng Anh khá thành thạo và xử lý bài thi IELTS ở mức độ cao; phát triển tư duy học thuật, độ chính xác và khả năng diễn đạt linh hoạt trong cả 4 kỹ năng.
 
         <ul style="margin-left: 16px; padding-left: 18px; list-style: disc;">
-          <li>~5.500 từ vựng | ~424 ngữ pháp</li>
-          <li>Thành thạo 5 kỹ năng Nghe - Nói - Đọc - Viết - Dịch</li>
-          <li>Nghe - hiểu bài giảng, hội thảo, nội dung học thuật chuyên sâu</li>
-          <li>Giao tiếp, thuyết trình, tranh luận và phản biện chuyên nghiệp</li>
-          <li>Đọc hiểu tài liệu nghiên cứu, văn bản chuyên ngành</li>
-          <li>Viết bài 400-600 chữ, nội dung học thuật và phân tích</li>
-          <li>Đủ năng lực thi HSK6 &amp; HSKK cao cấp</li>
-        </ul>
-
-        <br/>Là nền tảng để phát triển chuyên môn, nghiên cứu và làm việc trong môi trường quốc tế bằng tiếng Trung.`,
+          <li><strong>Listening:</strong> Nghe hiểu bài nói tốc độ nhanh, xử lý được nhiều giọng khác nhau và nhận diện thái độ, quan điểm của người nói.</li>
+          <li><strong>Speaking:</strong> Trình bày tương đối tự nhiên và trôi chảy; phát triển ý tốt, sử dụng collocation và idiom phù hợp, phát âm rõ ràng, dễ hiểu.</li>
+          <li><strong>Reading:</strong> Xử lý bài đọc học thuật đầy đủ trong thời gian quy định; hiểu từ vựng nâng cao và xử lý được các câu hỏi suy luận phức tạp.</li>
+          <li><strong>Writing:</strong> Hoàn thành Task 1 và Task 2 với lập luận rõ ràng, ý tưởng được phát triển đầy đủ, vốn từ linh hoạt và lỗi ngữ pháp không ảnh hưởng đến việc truyền đạt.</li>
+          <li><strong>Vocabulary &amp; Grammar:</strong> Sử dụng linh hoạt hơn từ vựng học thuật, collocation và các cấu trúc ngữ pháp nâng cao để diễn đạt những ý tưởng phức tạp.</li>
+          <li><strong>IELTS Skills:</strong> Làm chủ cấu trúc bài thi 4 kỹ năng, nâng cao tốc độ xử lý, quản lý thời gian và lựa chọn chiến lược phù hợp với từng dạng bài.</li>
+        </ul>`,
       },
       {
         slug: SlugCourseMap.HSK_2,
-        sugges: `Lộ trình dành cho học viên đã hoàn thành HSK2 hoặc có nền tảng cơ bản, muốn phát triển tiếng Trung lên trình độ cao cấp để phục vụ học thuật, nghiên cứu hoặc làm việc trong môi trường quốc tế. Học viên tiếp tục mở rộng hệ thống từ vựng - ngữ pháp - chữ Hán theo chuẩn HSK, đồng thời phát triển toàn diện 5 kỹ năng.
+        sugges: `Đầu vào: IELTS 3.0<br/>Đầu ra: IELTS 7.0<br/>Thời gian dự kiến: 14 tháng
 
-        <br/><br/>Quá trình học được nâng cấp theo từng giai đoạn từ sơ - trung cấp đến cao cấp, giúp học viên sử dụng tiếng Trung linh hoạt, mạch lạc và có khả năng diễn đạt, lập luận, phản biện chuyên sâu.
+        <br/><p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">LỘ TRÌNH NÀY DÀNH CHO AI?</p>
 
-        <br/><br/>👉 Lộ trình: HSK2 ➡  HSK3 ➡  HSK4 ➡  HSK5 ➡  HSK6
+        <br/>Dành cho người đã có nền tảng tiếng Anh cơ bản, muốn phát triển toàn diện 4 kỹ năng và nâng năng lực IELTS lên mức band 7.0.
 
-        <br/><br/>Phù hợp cho người muốn chinh phục trình độ tiếng Trung cao cấp và phát triển sự nghiệp bằng ngôn ngữ này.`,
-        knowledg: `Sau khóa học, học viên đạt trình độ tiếng Trung cao cấp, có thể sử dụng linh hoạt trong học thuật và công việc chuyên môn.<br/><br/>
+        <br/><strong>Lộ trình học tập:</strong> IELTS Cất cánh → IELTS Tăng tốc → IELTS Bứt phá → IELTS Vươn xa`,
+        knowledg: `<p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">ĐÍCH ĐẾN LỘ TRÌNH</p>
+
+        <br/>Từ nền tảng IELTS cơ bản đến khả năng xử lý bài thi ở mức độ cao; phát triển tư duy học thuật, độ chính xác và khả năng diễn đạt linh hoạt trong cả 4 kỹ năng.
 
         <ul style="margin-left: 16px; padding-left: 18px; list-style: disc;">
-          <li>~5.500 từ vựng | ~424 ngữ pháp</li>
-          <li>Thành thạo 5 kỹ năng Nghe - Nói - Đọc - Viết - Dịch</li>
-          <li>Nghe - hiểu bài giảng, hội thảo và nội dung học thuật</li>
-          <li>Giao tiếp, thuyết trình, tranh luận và phản biện rõ ràng, logic</li>
-          <li>Đọc hiểu tài liệu chuyên ngành, văn bản chuyên sâu</li>
-          <li>Viết bài 400–600 chữ với nội dung học thuật, phân tích rõ ràng</li>
-          <li>Đủ năng lực thi HSK6 &amp; HSKK cao cấp</li>
-        </ul>
-
-        <br/>Là nền tảng để phát triển chuyên môn, nghiên cứu và làm việc trong môi trường quốc tế bằng tiếng Trung.`,
+          <li><strong>Listening:</strong> Nghe hiểu bài nói tốc độ nhanh, xử lý được nhiều giọng khác nhau và nhận diện thái độ, quan điểm của người nói.</li>
+          <li><strong>Speaking:</strong> Trình bày tương đối tự nhiên và trôi chảy; phát triển ý tốt, sử dụng collocation và idiom phù hợp, phát âm rõ ràng, dễ hiểu.</li>
+          <li><strong>Reading:</strong> Xử lý bài đọc học thuật đầy đủ trong thời gian quy định; hiểu từ vựng nâng cao và xử lý được các câu hỏi suy luận phức tạp.</li>
+          <li><strong>Writing:</strong> Hoàn thành Task 1 và Task 2 với lập luận rõ ràng, ý tưởng phát triển đầy đủ, vốn từ linh hoạt và lỗi ngữ pháp không ảnh hưởng đến việc truyền đạt.</li>
+          <li><strong>Vocabulary &amp; Grammar:</strong> Sử dụng linh hoạt hơn từ vựng học thuật, collocation và các cấu trúc ngữ pháp nâng cao để diễn đạt những ý tưởng phức tạp.</li>
+          <li><strong>IELTS Skills:</strong> Làm chủ cấu trúc bài thi 4 kỹ năng, nâng cao tốc độ xử lý, quản lý thời gian và lựa chọn chiến lược phù hợp với từng dạng bài.</li>
+        </ul>`,
       },
       {
         slug: SlugCourseMap.HSK_3,
-        sugges: `Lộ trình dành cho học viên đã hoàn thành HSK3 hoặc có nền tảng sơ – trung cấp, muốn nâng cấp toàn diện lên trình độ cao cấp để phục vụ học thuật, nghiên cứu hoặc làm việc trong môi trường quốc tế. Học viên tiếp tục mở rộng hệ thống từ vựng - ngữ pháp - chữ Hán theo chuẩn HSK, đồng thời phát triển toàn diện 5 kỹ năng.
+        sugges: `Đầu vào: IELTS 4.0<br/>Đầu ra: IELTS 7.0<br/>Thời gian dự kiến: 11 tháng
 
-        <br/><br/>Quá trình học được nâng cấp theo từng giai đoạn từ trung cấp đến cao cấp, giúp học viên sử dụng tiếng Trung linh hoạt, mạch lạc và có khả năng diễn đạt, lập luận, phản biện chuyên sâu.
+        <br/><p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">LỘ TRÌNH NÀY DÀNH CHO AI?</p>
 
-        <br/><br/>👉 Lộ trình: HSK3 ➡  HSK4 ➡  HSK5 ➡  HSK6
+        <br/>Dành cho người đã có nền tảng IELTS cơ bản, muốn phát triển toàn diện 4 kỹ năng và nâng năng lực lên mức band 7.0.
 
-        <br/><br/>Phù hợp cho người muốn chinh phục trình độ tiếng Trung cao cấp và phát triển sự nghiệp bằng tiếng Trung.`,
-        knowledg: `Sau khóa học, học viên đạt trình độ tiếng Trung cao cấp, có thể sử dụng linh hoạt trong học thuật và công việc chuyên môn.<br/><br/>
+        <br/><strong>Lộ trình học tập:</strong> IELTS Tăng tốc → IELTS Bứt phá → IELTS Vươn xa`,
+        knowledg: `<p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">ĐÍCH ĐẾN LỘ TRÌNH</p>
+
+        <br/>Từ nền tảng IELTS cơ bản đến khả năng xử lý bài thi ở mức độ cao; phát triển tư duy học thuật, độ chính xác và khả năng diễn đạt linh hoạt trong cả 4 kỹ năng.
 
         <ul style="margin-left: 16px; padding-left: 18px; list-style: disc;">
-          <li>~5.500 từ vựng | ~424 ngữ pháp</li>
-          <li>Thành thạo 5 kỹ năng Nghe - Nói - Đọc - Viết - Dịch</li>
-          <li>Nghe - hiểu bài giảng, hội thảo và nội dung học thuật</li>
-          <li>Giao tiếp, thuyết trình, tranh luận và phản biện chuyên sâu</li>
-          <li>Đọc hiểu tài liệu chuyên ngành, văn bản chuyên sâu</li>
-          <li>Viết bài 400–600 chữ với nội dung học thuật, phân tích rõ ràng</li>
-          <li>Đủ năng lực thi HSK6 &amp; HSKK cao cấp</li>
-        </ul>
-
-        <br/>Là nền tảng để phát triển chuyên môn, nghiên cứu và làm việc trong môi trường quốc tế bằng tiếng Trung.`,
+          <li><strong>Listening:</strong> Nghe hiểu bài nói tốc độ nhanh, xử lý được nhiều giọng khác nhau và nhận diện thái độ, quan điểm của người nói.</li>
+          <li><strong>Speaking:</strong> Trình bày tương đối tự nhiên và trôi chảy; phát triển ý tốt, sử dụng collocation và idiom phù hợp, phát âm rõ ràng, dễ hiểu.</li>
+          <li><strong>Reading:</strong> Xử lý bài đọc học thuật đầy đủ trong thời gian quy định; hiểu từ vựng nâng cao và xử lý được các câu hỏi suy luận phức tạp.</li>
+          <li><strong>Writing:</strong> Hoàn thành Task 1 và Task 2 với lập luận rõ ràng, ý tưởng phát triển đầy đủ, vốn từ linh hoạt và lỗi ngữ pháp không ảnh hưởng đến việc truyền đạt.</li>
+          <li><strong>Vocabulary &amp; Grammar:</strong> Sử dụng linh hoạt từ vựng học thuật, collocation và các cấu trúc ngữ pháp nâng cao để diễn đạt những ý tưởng phức tạp.</li>
+          <li><strong>IELTS Skills:</strong> Làm chủ cấu trúc bài thi 4 kỹ năng, nâng cao tốc độ xử lý, quản lý thời gian và lựa chọn chiến lược phù hợp với từng dạng bài.</li>
+        </ul>`,
       },
       {
         slug: SlugCourseMap.HSK_4,
-        sugges: `Lộ trình dành cho học viên đã hoàn thành HSK4 hoặc có nền tảng trung cấp, muốn nâng cấp toàn diện lên trình độ cao cấp để phục vụ học thuật, nghiên cứu hoặc làm việc trong môi trường quốc tế. Học viên tiếp tục mở rộng hệ thống từ vựng - ngữ pháp - chữ Hán theo chuẩn HSK, đồng thời phát triển toàn diện 5 kỹ năng.
+        sugges: `Đầu vào: IELTS 5.0<br/>Đầu ra: IELTS 7.0<br/>Thời gian dự kiến: 7 tháng
 
-        <br/><br/>Quá trình học được nâng cấp theo từng giai đoạn từ trung cấp đến cao cấp, giúp học viên sử dụng tiếng Trung linh hoạt, mạch lạc và có khả năng diễn đạt, lập luận, phản biện chuyên sâu.
+        <br/><p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">LỘ TRÌNH NÀY DÀNH CHO AI?</p>
 
-        <br/><br/>👉 Lộ trình: HSK4 ➡  HSK5 ➡  HSK6
+        <br/>Dành cho người đã có nền tảng IELTS tương đối vững, muốn nâng cao toàn diện 4 kỹ năng và phát triển năng lực học thuật đến mức band 7.0.
 
-        <br/><br/>Phù hợp cho người muốn chinh phục trình độ tiếng Trung cao cấp và phát triển sự nghiệp bằng tiếng Trung.`,
-        knowledg: `Sau khóa học, học viên đạt trình độ tiếng Trung cao cấp, có thể sử dụng linh hoạt trong học thuật và công việc chuyên môn.<br/><br/>
+        <br/><strong>Lộ trình học tập:</strong> IELTS Bứt phá → IELTS Vươn xa`,
+        knowledg: `<p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">ĐÍCH ĐẾN LỘ TRÌNH</p>
+
+        <br/>Từ khả năng hoàn thành đầy đủ bài thi IELTS đến mức xử lý bài ở độ khó cao hơn; nâng độ chính xác, tốc độ xử lý và khả năng diễn đạt linh hoạt trong cả 4 kỹ năng.
 
         <ul style="margin-left: 16px; padding-left: 18px; list-style: disc;">
-          <li>~5.500 từ vựng | ~424 ngữ pháp</li>
-          <li>Thành thạo 5 kỹ năng Nghe - Nói - Đọc - Viết - Dịch</li>
-          <li>Nghe - hiểu bài giảng, hội thảo và nội dung học thuật</li>
-          <li>Giao tiếp, thuyết trình, tranh luận và phản biện chuyên sâu</li>
-          <li>Đọc hiểu tài liệu chuyên ngành, văn bản chuyên sâu</li>
-          <li>Viết bài 400–600 chữ với nội dung học thuật, phân tích rõ ràng</li>
-          <li>Đủ năng lực thi HSK6 &amp; HSKK cao cấp</li>
-        </ul>
-
-        <br/>Là nền tảng để phát triển chuyên môn, nghiên cứu và làm việc trong môi trường quốc tế bằng tiếng Trung.`,
+          <li><strong>Listening:</strong> Nghe hiểu bài nói tốc độ nhanh, xử lý được nhiều giọng khác nhau và nhận diện thái độ, quan điểm của người nói.</li>
+          <li><strong>Speaking:</strong> Trình bày tương đối tự nhiên và trôi chảy; phát triển ý tốt, sử dụng collocation và idiom phù hợp, phát âm rõ ràng, dễ hiểu.</li>
+          <li><strong>Reading:</strong> Xử lý bài đọc học thuật đầy đủ trong thời gian quy định; hiểu từ vựng nâng cao và xử lý được các câu hỏi suy luận phức tạp.</li>
+          <li><strong>Writing:</strong> Hoàn thành Task 1 và Task 2 với lập luận rõ ràng, ý tưởng phát triển đầy đủ, vốn từ linh hoạt và lỗi ngữ pháp không ảnh hưởng đến việc truyền đạt.</li>
+          <li><strong>Vocabulary &amp; Grammar:</strong> Sử dụng linh hoạt từ vựng học thuật, collocation và các cấu trúc ngữ pháp nâng cao để diễn đạt những ý tưởng phức tạp.</li>
+          <li><strong>IELTS Skills:</strong> Làm chủ cấu trúc bài thi 4 kỹ năng, nâng cao tốc độ xử lý, quản lý thời gian và lựa chọn chiến lược phù hợp với từng dạng bài.</li>
+        </ul>`,
       },
       {
         slug: SlugCourseMap.HSK_5,
-        sugges: `Lộ trình dành cho học viên đã hoàn thành HSK5 hoặc có nền tảng trung – cao cấp, muốn nâng cấp lên trình độ cao cấp để phục vụ học thuật, nghiên cứu hoặc làm việc trong môi trường quốc tế. Học viên tiếp tục mở rộng hệ thống từ vựng - ngữ pháp - chữ Hán theo chuẩn HSK, đồng thời phát triển toàn diện 5 kỹ năng.
+        sugges: `Đầu vào: IELTS 6.0<br/>Đầu ra: IELTS 7.0<br/>Thời gian dự kiến: 4 tháng
 
-        <br/><br/>Quá trình học tập trung nâng cao khả năng sử dụng tiếng Trung ở mức chuyên sâu, giúp học viên diễn đạt mạch lạc, lập luận chặt chẽ và phản biện hiệu quả trong các bối cảnh học thuật và công việc.
+        <br/><p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">LỘ TRÌNH NÀY DÀNH CHO AI?</p>
 
-        <br/><br/>👉 Lộ trình: HSK5 ➡  HSK6
+        <br/>Dành cho người đã có nền tảng IELTS khá vững, muốn nâng cao độ chính xác, khả năng xử lý ngôn ngữ học thuật và phát triển 4 kỹ năng lên mức band 7.0.
 
-        <br/><br/>Phù hợp cho người muốn chinh phục trình độ tiếng Trung cao cấp và phát triển sự nghiệp bằng tiếng Trung.`,
-        knowledg: `Sau khóa học, học viên đạt trình độ tiếng Trung cao cấp, có thể sử dụng linh hoạt trong học thuật và công việc chuyên môn.<br/><br/>
+        <br/><strong>Lộ trình học tập:</strong> 01 khóa IELTS Vươn xa`,
+        knowledg: `<p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">ĐÍCH ĐẾN LỘ TRÌNH</p>
+
+        <br/>Nâng năng lực từ mức hoàn thành tốt bài thi IELTS đến khả năng xử lý các nội dung khó hơn; tăng tốc độ, độ chính xác và khả năng diễn đạt linh hoạt trong cả 4 kỹ năng.
 
         <ul style="margin-left: 16px; padding-left: 18px; list-style: disc;">
-          <li>~5.500 từ vựng | ~424 ngữ pháp</li>
-          <li>Thành thạo 5 kỹ năng Nghe - Nói - Đọc - Viết - Dịch</li>
-          <li>Nghe - hiểu bài giảng, hội thảo và nội dung học thuật</li>
-          <li>Giao tiếp, thuyết trình, tranh luận và phản biện chuyên sâu</li>
-          <li>Đọc hiểu tài liệu chuyên ngành, văn bản chuyên sâu</li>
-          <li>Viết bài 400–600 chữ với nội dung học thuật, phân tích rõ ràng</li>
-          <li>Đủ năng lực thi HSK6 &amp; HSKK cao cấp</li>
-        </ul>
-
-        <br/>Là nền tảng để phát triển chuyên môn, nghiên cứu và làm việc trong môi trường quốc tế bằng tiếng Trung.`,
+          <li><strong>Listening:</strong> Nghe hiểu bài nói tốc độ nhanh, xử lý được nhiều giọng khác nhau và nhận diện thái độ, quan điểm của người nói.</li>
+          <li><strong>Speaking:</strong> Trình bày tương đối tự nhiên và trôi chảy; phát triển ý tốt, sử dụng collocation và idiom phù hợp, phát âm rõ ràng, dễ hiểu.</li>
+          <li><strong>Reading:</strong> Xử lý bài đọc học thuật đầy đủ trong thời gian quy định; hiểu từ vựng nâng cao và xử lý được các câu hỏi suy luận phức tạp.</li>
+          <li><strong>Writing:</strong> Hoàn thành Task 1 và Task 2 với lập luận rõ ràng, ý tưởng phát triển đầy đủ, vốn từ linh hoạt và lỗi ngữ pháp không ảnh hưởng đến việc truyền đạt.</li>
+          <li><strong>Vocabulary &amp; Grammar:</strong> Sử dụng linh hoạt từ vựng học thuật, collocation và các cấu trúc ngữ pháp nâng cao để diễn đạt những ý tưởng phức tạp.</li>
+          <li><strong>IELTS Skills:</strong> Nâng cao tốc độ xử lý, quản lý thời gian và lựa chọn chiến lược phù hợp với từng dạng bài ở mức độ khó cao hơn.</li>
+        </ul>`,
       },
     ],
   },
@@ -531,11 +525,147 @@ export const output: TRoadmapCourse[] = [
     slug: SlugCourseMap.HSK_6,
     content:
       'Làm chủ tiếng Anh ở trình độ cao, sử dụng ngôn ngữ linh hoạt, chính xác và tự nhiên trong những tình huống học thuật phức tạp.',
-    dataResults: [],
+    dataResults: [
+      {
+        slug: SlugCourseMap.SO_0,
+        sugges: `Đầu vào: IELTS 0<br/>Đầu ra: IELTS 8.0<br/>Thời gian dự kiến: 23 tháng
+
+        <br/><p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">LỘ TRÌNH NÀY DÀNH CHO AI?</p>
+
+        <br/>Lộ trình toàn diện từ con số 0 đến trình độ tiếng Anh cao cấp, dành cho người mất gốc hoặc nền tảng còn yếu, muốn xây dựng tiếng Anh từ đầu và phát triển năng lực IELTS toàn diện đến mức band 8.0.
+
+        <br/><strong>Lộ trình học tập:</strong> IELTS Khởi động → Cất cánh → Tăng tốc → Bứt phá → Vươn xa → Chinh phục`,
+        knowledg: `<p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">ĐÍCH ĐẾN LỘ TRÌNH</p>
+
+        <br/>Từ mất gốc đến khả năng sử dụng tiếng Anh ở mức thành thạo cao; xử lý chính xác các nội dung học thuật phức tạp và diễn đạt linh hoạt, tự nhiên trong cả 4 kỹ năng IELTS.
+
+        <ul style="margin-left: 16px; padding-left: 18px; list-style: disc;">
+          <li><strong>Listening:</strong> Nghe hiểu chính xác các bài nói có mật độ thông tin cao, nhiều giọng khác nhau và phân biệt được những sắc thái nghĩa tinh tế.</li>
+          <li><strong>Speaking:</strong> Giao tiếp trôi chảy, tự nhiên; sử dụng ngôn ngữ linh hoạt để phát triển và diễn đạt những ý tưởng phức tạp, trừu tượng.</li>
+          <li><strong>Reading:</strong> Xử lý chính xác các văn bản học thuật phức tạp trong thời gian quy định, kể cả nội dung trừu tượng và câu hỏi suy luận khó.</li>
+          <li><strong>Writing:</strong> Hoàn thành Task 1 và Task 2 với lập luận sâu, tổ chức bài mạch lạc tự nhiên, vốn từ chính xác, linh hoạt và độ chính xác ngữ pháp cao.</li>
+          <li><strong>Vocabulary &amp; Grammar:</strong> Sử dụng vốn từ học thuật giàu sắc thái và các cấu trúc ngữ pháp phức tạp với độ chính xác cao, hạn chế tối đa lỗi diễn đạt.</li>
+          <li><strong>IELTS Skills:</strong> Làm chủ toàn bộ cấu trúc bài thi, tối ưu chiến lược và quản lý thời gian, đồng thời duy trì độ chính xác cao ở các dạng bài khó.</li>
+        </ul>`,
+      },
+      {
+        slug: SlugCourseMap.HSK_2,
+        sugges: `Đầu vào: IELTS 3.0<br/>Đầu ra: IELTS 8.0<br/>Thời gian dự kiến: 18,5 tháng
+
+        <br/><p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">LỘ TRÌNH NÀY DÀNH CHO AI?</p>
+
+        <br/>Dành cho người đã có nền tảng tiếng Anh cơ bản, muốn phát triển toàn diện năng lực IELTS và tiến tới mức sử dụng tiếng Anh thành thạo cao ở band 8.0.
+
+        <br/><strong>Lộ trình học tập:</strong> IELTS Cất cánh → IELTS Tăng tốc → IELTS Bứt phá → IELTS Vươn xa → IELTS Chinh phục`,
+        knowledg: `<p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">ĐÍCH ĐẾN LỘ TRÌNH</p>
+
+        <br/>Từ nền tảng IELTS cơ bản đến khả năng xử lý chính xác các nội dung học thuật phức tạp và diễn đạt linh hoạt, tự nhiên trong cả 4 kỹ năng.
+
+        <ul style="margin-left: 16px; padding-left: 18px; list-style: disc;">
+          <li><strong>Listening:</strong> Nghe hiểu chính xác các bài nói có mật độ thông tin cao, nhiều giọng khác nhau và phân biệt được những sắc thái nghĩa tinh tế.</li>
+          <li><strong>Speaking:</strong> Giao tiếp trôi chảy, tự nhiên; sử dụng ngôn ngữ linh hoạt để phát triển và diễn đạt những ý tưởng phức tạp, trừu tượng.</li>
+          <li><strong>Reading:</strong> Xử lý chính xác các văn bản học thuật phức tạp trong thời gian quy định, kể cả nội dung trừu tượng và câu hỏi suy luận khó.</li>
+          <li><strong>Writing:</strong> Hoàn thành Task 1 và Task 2 với lập luận sâu, tổ chức bài mạch lạc tự nhiên, vốn từ chính xác, linh hoạt và độ chính xác ngữ pháp cao.</li>
+          <li><strong>Vocabulary &amp; Grammar:</strong> Sử dụng vốn từ học thuật giàu sắc thái và các cấu trúc ngữ pháp phức tạp với độ chính xác cao, hạn chế tối đa lỗi diễn đạt.</li>
+          <li><strong>IELTS Skills:</strong> Làm chủ toàn bộ cấu trúc bài thi, tối ưu chiến lược và quản lý thời gian, đồng thời duy trì độ chính xác cao ở các dạng bài khó.</li>
+        </ul>`,
+      },
+      {
+        slug: SlugCourseMap.HSK_3,
+        sugges: `Đầu vào: IELTS 4.0<br/>Đầu ra: IELTS 8.0<br/>Thời gian dự kiến: 15 tháng
+
+        <br/><p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">LỘ TRÌNH NÀY DÀNH CHO AI?</p>
+
+        <br/>Dành cho người đã có nền tảng IELTS cơ bản, muốn phát triển toàn diện 4 kỹ năng và tiến tới khả năng sử dụng tiếng Anh thành thạo ở mức band 8.0.
+
+        <br/><strong>Lộ trình học tập:</strong> IELTS Tăng tốc → IELTS Bứt phá → IELTS Vươn xa → IELTS Chinh phục`,
+        knowledg: `<p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">ĐÍCH ĐẾN LỘ TRÌNH</p>
+
+        <br/>Từ nền tảng IELTS cơ bản đến khả năng xử lý chính xác các nội dung học thuật phức tạp và diễn đạt linh hoạt, tự nhiên trong cả 4 kỹ năng.
+
+        <ul style="margin-left: 16px; padding-left: 18px; list-style: disc;">
+          <li><strong>Listening:</strong> Nghe hiểu chính xác các bài nói có mật độ thông tin cao, nhiều giọng khác nhau và phân biệt được những sắc thái nghĩa tinh tế.</li>
+          <li><strong>Speaking:</strong> Giao tiếp trôi chảy, tự nhiên; sử dụng ngôn ngữ linh hoạt để phát triển và diễn đạt những ý tưởng phức tạp, trừu tượng.</li>
+          <li><strong>Reading:</strong> Xử lý chính xác các văn bản học thuật phức tạp trong thời gian quy định, kể cả nội dung trừu tượng và câu hỏi suy luận khó.</li>
+          <li><strong>Writing:</strong> Hoàn thành Task 1 và Task 2 với lập luận sâu, tổ chức bài mạch lạc tự nhiên, vốn từ chính xác, linh hoạt và độ chính xác ngữ pháp cao.</li>
+          <li><strong>Vocabulary &amp; Grammar:</strong> Sử dụng vốn từ học thuật giàu sắc thái và các cấu trúc ngữ pháp phức tạp với độ chính xác cao, hạn chế tối đa lỗi diễn đạt.</li>
+          <li><strong>IELTS Skills:</strong> Làm chủ toàn bộ cấu trúc bài thi, tối ưu chiến lược và quản lý thời gian, đồng thời duy trì độ chính xác cao ở các dạng bài khó.</li>
+        </ul>`,
+      },
+      {
+        slug: SlugCourseMap.HSK_4,
+        sugges: `Đầu vào: IELTS 5.0<br/>Đầu ra: IELTS 8.0<br/>Thời gian dự kiến: 11,5 tháng
+
+        <br/><p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">LỘ TRÌNH NÀY DÀNH CHO AI?</p>
+
+        <br/>Dành cho người đã có nền tảng IELTS tương đối vững, muốn nâng cao toàn diện 4 kỹ năng và phát triển năng lực tiếng Anh học thuật đến mức band 8.0.
+
+        <br/><strong>Lộ trình học tập:</strong> IELTS Bứt phá → IELTS Vươn xa → IELTS Chinh phục`,
+        knowledg: `<p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">ĐÍCH ĐẾN LỘ TRÌNH</p>
+
+        <br/>Từ khả năng hoàn thành đầy đủ bài thi IELTS đến mức xử lý chính xác các nội dung học thuật phức tạp; nâng cao độ chính xác, tư duy lập luận và khả năng diễn đạt linh hoạt, tự nhiên.
+
+        <ul style="margin-left: 16px; padding-left: 18px; list-style: disc;">
+          <li><strong>Listening:</strong> Nghe hiểu chính xác các bài nói có mật độ thông tin cao, nhiều giọng khác nhau và phân biệt được những sắc thái nghĩa tinh tế.</li>
+          <li><strong>Speaking:</strong> Giao tiếp trôi chảy, tự nhiên; sử dụng ngôn ngữ linh hoạt để phát triển và diễn đạt những ý tưởng phức tạp, trừu tượng.</li>
+          <li><strong>Reading:</strong> Xử lý chính xác các văn bản học thuật phức tạp trong thời gian quy định, kể cả nội dung trừu tượng và câu hỏi suy luận khó.</li>
+          <li><strong>Writing:</strong> Hoàn thành Task 1 và Task 2 với lập luận sâu, tổ chức bài mạch lạc tự nhiên, vốn từ chính xác, linh hoạt và độ chính xác ngữ pháp cao.</li>
+          <li><strong>Vocabulary &amp; Grammar:</strong> Sử dụng vốn từ học thuật giàu sắc thái và các cấu trúc ngữ pháp phức tạp với độ chính xác cao, hạn chế tối đa lỗi diễn đạt.</li>
+          <li><strong>IELTS Skills:</strong> Làm chủ toàn bộ cấu trúc bài thi, tối ưu chiến lược và quản lý thời gian, đồng thời duy trì độ chính xác cao ở các dạng bài khó.</li>
+        </ul>`,
+      },
+      {
+        slug: SlugCourseMap.HSK_5,
+        sugges: `Đầu vào: IELTS 6.0<br/>Đầu ra: IELTS 8.0<br/>Thời gian dự kiến: 8 tháng
+
+        <br/><p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">LỘ TRÌNH NÀY DÀNH CHO AI?</p>
+
+        <br/>Dành cho người đã có nền tảng IELTS khá vững, muốn nâng cao toàn diện 4 kỹ năng và phát triển năng lực tiếng Anh học thuật đến mức band 8.0.
+
+        <br/><strong>Lộ trình học tập:</strong> IELTS Vươn xa → IELTS Chinh phục`,
+        knowledg: `<p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">ĐÍCH ĐẾN LỘ TRÌNH</p>
+
+        <br/>Từ khả năng xử lý tốt bài thi IELTS đến mức sử dụng tiếng Anh thành thạo cao; nâng độ chính xác, tư duy lập luận và khả năng xử lý những nội dung học thuật phức tạp.
+
+        <ul style="margin-left: 16px; padding-left: 18px; list-style: disc;">
+          <li><strong>Listening:</strong> Nghe hiểu chính xác các bài nói có mật độ thông tin cao, nhiều giọng khác nhau và phân biệt được những sắc thái nghĩa tinh tế.</li>
+          <li><strong>Speaking:</strong> Giao tiếp trôi chảy, tự nhiên; sử dụng ngôn ngữ linh hoạt để phát triển và diễn đạt những ý tưởng phức tạp, trừu tượng.</li>
+          <li><strong>Reading:</strong> Xử lý chính xác các văn bản học thuật phức tạp trong thời gian quy định, kể cả nội dung trừu tượng và câu hỏi suy luận khó.</li>
+          <li><strong>Writing:</strong> Hoàn thành Task 1 và Task 2 với lập luận sâu, tổ chức bài mạch lạc tự nhiên, vốn từ chính xác, linh hoạt và độ chính xác ngữ pháp cao.</li>
+          <li><strong>Vocabulary &amp; Grammar:</strong> Sử dụng vốn từ học thuật giàu sắc thái và các cấu trúc ngữ pháp phức tạp với độ chính xác cao, hạn chế tối đa lỗi diễn đạt.</li>
+          <li><strong>IELTS Skills:</strong> Làm chủ cấu trúc bài thi, tối ưu chiến lược và quản lý thời gian, đồng thời duy trì độ chính xác cao ở các dạng bài khó.</li>
+        </ul>`,
+      },
+      {
+        slug: SlugCourseMap.HSK_6,
+        sugges: `Đầu vào: IELTS 7.0<br/>Đầu ra: IELTS 8.0<br/>Thời gian dự kiến: 4 tháng
+
+        <br/><p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">LỘ TRÌNH NÀY DÀNH CHO AI?</p>
+
+        <br/>Dành cho người đã có nền tảng IELTS tốt, muốn tinh chỉnh độ chính xác, nâng chiều sâu tư duy và hoàn thiện 4 kỹ năng ở mức band 8.0.
+
+        <br/><strong>Lộ trình học tập:</strong> 01 khóa IELTS Chinh phục`,
+        knowledg: `<p className="text-[18px] font-bold uppercase tracking-[0] text-[#052284] xl:text-[24px]">ĐÍCH ĐẾN LỘ TRÌNH</p>
+
+        <br/>Từ năng lực IELTS tốt đến khả năng sử dụng tiếng Anh ở mức thành thạo cao; tập trung vào độ chính xác, sự tự nhiên và khả năng xử lý những nội dung học thuật phức tạp.
+
+        <ul style="margin-left: 16px; padding-left: 18px; list-style: disc;">
+          <li><strong>Listening:</strong> Nghe hiểu chính xác các bài nói có mật độ thông tin cao, nhiều giọng khác nhau và phân biệt được những sắc thái nghĩa tinh tế.</li>
+          <li><strong>Speaking:</strong> Giao tiếp trôi chảy, tự nhiên; sử dụng ngôn ngữ linh hoạt để diễn đạt những ý tưởng phức tạp và trừu tượng.</li>
+          <li><strong>Reading:</strong> Xử lý chính xác các văn bản học thuật phức tạp trong thời gian quy định, kể cả nội dung trừu tượng và câu hỏi suy luận khó.</li>
+          <li><strong>Writing:</strong> Hoàn thành Task 1 và Task 2 với lập luận sâu, tổ chức bài mạch lạc tự nhiên, vốn từ chính xác, linh hoạt và độ chính xác ngữ pháp cao.</li>
+          <li><strong>Vocabulary &amp; Grammar:</strong> Tinh chỉnh vốn từ học thuật theo sắc thái nghĩa và sử dụng các cấu trúc ngữ pháp phức tạp với độ chính xác cao.</li>
+          <li><strong>IELTS Skills:</strong> Tối ưu chiến lược làm bài, quản lý thời gian và duy trì độ chính xác cao ở các dạng bài khó.</li>
+        </ul>`,
+      },
+    ],
   },
 ];
+
 
 export const HOC_VIEN_DIEM_CAO_SLUG = 'hoc-vien-diem-cao';
 export const NEWS_SLUGS = ['tong-hop-tin-tuc', 'tong-hop-su-kien'];
 export const EXCLUDED_FROM_CAM_NANG = [...NEWS_SLUGS, HOC_VIEN_DIEM_CAO_SLUG];
+
+
 

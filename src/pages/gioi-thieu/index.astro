@@ -33,6 +33,7 @@ import iconMuiTenXanh from '@/assets/images/img-hocba-tienganh-optimized/icon-mu
 import imgAnhMo from '@/assets/images/img-hocba-tienganh-optimized/img-anh-mo.webp';
 import iconGroupNhom from '@/assets/images/img-hocba-tienganh-optimized/icon-group-nhom.webp';
 import iconLike from '@/assets/images/img-hocba-tienganh-optimized/icon-like.webp';
+import glowLine from '@/assets/images/img-hocba-tienganh-optimized/AZ-W5nTPXEeuvozzTnjihQ-AZ-W5pChxt7bl9mteJvacQ 1.png';
 import iconBanCung from '@/assets/images/img-hocba-tienganh-optimized/icon-ban-cung.webp';
 import coVanTiengAnh from '@/assets/images/img-hocba-tienganh-optimized/co-van-tienganh.webp';
 import iconSach from '@/assets/images/img-hocba-tienganh-optimized/so-sach-2.webp';
@@ -239,15 +240,15 @@ const cards = [
           class="absolute z-20 flex items-center gap-1 md:left-[57px] md:top-[38px] left-4 top-4 opacity-100"
         >
           <Breadcrumb>
-            <BreadcrumbList className="flex gap-1 text-white/80 text-sm">
+            <BreadcrumbList className="flex gap-1 text-white/80 font-['Inter'] text-[18px] font-normal leading-[150%] tracking-[0%] text-center items-center">
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <a href="/" class="hover:text-white transition-colors">Trang chủ</a>
+                  <a href="/" class="hover:text-white transition-colors font-['Inter'] text-[18px] font-normal leading-[150%]">Trang chủ</a>
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator className="text-white/80" />
               <BreadcrumbItem>
-                <BreadcrumbPage className="text-white font-semibold">Về chúng tôi</BreadcrumbPage>
+                <BreadcrumbPage className="text-white font-['Inter'] text-[18px] font-normal leading-[150%]">Về chúng tôi</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
@@ -269,6 +270,10 @@ const cards = [
               </span>
               <br class="md:hidden" />
               <span class="uppercase inline-block mt-4 md:absolute md:top-[189.71px] md:left-[58px] md:w-[560.81px] md:h-[150.92px] md:text-[86px] md:leading-[1.34] w-[358px] h-[48px] text-[40px] font-black leading-[48px]">THẾ HỆ MỚI</span>
+              {/* Glow line below THẾ HỆ MỚI */}
+              <span class="block md:absolute md:top-[340px] md:left-0 md:w-[636px] w-full mt-2 md:mt-0 pointer-events-none" aria-hidden="true">
+                <Image src={glowLine} alt="" class="w-full h-auto object-contain" />
+              </span>
             </h1>
           </div>
 
@@ -304,7 +309,7 @@ const cards = [
                   <path d="M6 12v5c3 3 9 3 12 0v-5" />
                 </svg>
               </div>
-              <span class="text-sm font-bold uppercase md:text-base">GIÁO VIÊN DẪN DẮT</span>
+              <span class="font-svn-gilroy font-semibold text-[24px] leading-[134%] tracking-[0%] uppercase">GIÁO VIÊN DẪN DẮT</span>
             </div>
             <div class="flex items-center gap-4 custom-fade-2">
               {/* Icon 2 */}
@@ -326,7 +331,7 @@ const cards = [
                   </defs>
                 </svg>
               </div>
-              <span class="text-sm font-bold uppercase md:text-base">CÔNG NGHỆ TỐI ƯU</span>
+              <span class="font-svn-gilroy font-semibold text-[24px] leading-[134%] tracking-[0%] uppercase">CÔNG NGHỆ TỐI ƯU</span>
             </div>
             <div class="flex items-center gap-4 custom-fade-3">
               {/* Icon 3 */}
@@ -335,7 +340,7 @@ const cards = [
                   <path d="M12.6875 29.0104V26.7292L17.151 22.2656C17.4583 22.4115 17.7969 22.5 18.1562 22.5C18.5156 22.5 18.8542 22.4115 19.1615 22.2656L20.2135 23.3177C20.0677 23.625 19.9792 23.9635 19.9792 24.3229C19.9792 25.6146 21.0312 26.6667 22.3229 26.6667C23.6146 26.6667 24.6667 25.6146 24.6667 24.3229C24.6667 23.9635 24.5781 23.625 24.4323 23.3177L27.0469 20.7031C27.3542 20.849 27.6927 20.9375 28.0521 20.9375C29.3437 20.9375 30.3958 19.8854 30.3958 18.5938C30.3958 17.3021 29.3437 16.25 28.0521 16.25C26.7604 16.25 25.7083 17.3021 25.7083 18.5938C25.7083 18.9531 25.7969 19.2917 25.9427 19.599L23.3281 22.2135C23.0147 22.0614 22.6713 21.9813 22.3229 21.9792C21.9635 21.9792 21.625 22.0677 21.3177 22.2135L20.2656 21.1615C20.4115 20.8542 20.5 20.5156 20.5 20.1562C20.5 18.8646 19.4479 17.8125 18.1562 17.8125C16.8646 17.8125 15.8125 18.8646 15.8125 20.1562C15.8125 20.5156 15.901 20.8542 16.0469 21.1615L12.6875 24.5208V13.125H11.125V29.0104C11.1264 29.7697 11.4286 30.4975 11.9655 31.0345C12.5025 31.5714 13.2303 31.8736 13.9896 31.875H29.875V30.3125H13.9896C13.2708 30.3125 12.6875 29.7292 12.6875 29.0104ZM28.0521 17.8125C28.2593 17.8125 28.458 17.8948 28.6045 18.0413C28.751 18.1878 28.8333 18.3865 28.8333 18.5938C28.8333 18.801 28.751 18.9997 28.6045 19.1462C28.458 19.2927 28.2593 19.375 28.0521 19.375C27.8449 19.375 27.6462 19.2927 27.4996 19.1462C27.3531 18.9997 27.2708 18.801 27.2708 18.5938C27.2708 18.3865 27.3531 18.1878 27.4996 18.0413C27.6462 17.8948 27.8449 17.8125 28.0521 17.8125ZM23.1042 24.3229C23.1042 24.5301 23.0219 24.7288 22.8753 24.8753C22.7288 25.0219 22.5301 25.1042 22.3229 25.1042C22.1157 25.1042 21.917 25.0219 21.7705 24.8753C21.624 24.7288 21.5417 24.5301 21.5417 24.3229C21.5417 24.1157 21.624 23.917 21.7705 23.7705C21.917 23.624 22.1157 23.5417 22.3229 23.5417C22.5301 23.5417 22.7288 23.624 22.8753 23.7705C23.0219 23.917 23.1042 24.1157 23.1042 24.3229ZM18.1562 19.375C18.3634 19.375 18.5622 19.4573 18.7087 19.6038C18.8552 19.7503 18.9375 19.949 18.9375 20.1562C18.9375 20.3635 18.8552 20.5622 18.7087 20.7087C18.5622 20.8552 18.3634 20.9375 18.1562 20.9375C17.949 20.9375 17.7503 20.8552 17.6038 20.7087C17.4573 20.5622 17.375 20.3635 17.375 20.1562C17.375 19.949 17.4573 19.7503 17.6038 19.6038C17.7503 19.4573 17.949 19.375 18.1562 19.375Z" fill="white"/>
                 </svg>
               </div>
-              <span class="text-sm font-bold uppercase md:text-base">DỮ LIỆU THỰC TẾ</span>
+              <span class="font-svn-gilroy font-semibold text-[24px] leading-[134%] tracking-[0%] uppercase">DỮ LIỆU THỰC TẾ</span>
             </div>
           </div>
         </div>
@@ -345,7 +350,7 @@ const cards = [
       <div class="relative mx-auto w-full max-w-[1440px] px-4 xl:px-[94px]">
         <div 
           id="history-header"
-          class="relative flex items-center justify-center gap-[3px] xl:gap-[12px] xl:mt-[24px] mx-auto w-[358px] h-[54px] xl:w-[790px] xl:h-[106px] z-20"
+          class="relative flex items-center justify-center gap-[3px] xl:gap-[12px] mt-8 xl:mt-[56px] mx-auto w-[358px] h-[54px] xl:w-[790px] xl:h-[106px] z-20"
         >
           <VectorArrow
             fromColor="#FF9A3C"
@@ -432,7 +437,7 @@ const cards = [
           class="relative mx-auto mt-2 mb-8 w-[200px] h-[200px] md:absolute md:right-[13px] md:-top-[56px] md:w-[295px] md:h-[295px] md:mt-0 md:mb-0 object-contain drop-shadow-xl" 
         />
       </div>
-      <div class="relative z-20 flex text-[#373737] md:flex-col md:w-full md:h-[660px]">
+      <div class="relative z-20 flex text-[#373737] md:flex-col md:w-full md:max-w-[1440px] md:mx-auto md:h-[660px]">
         <div class="hidden border-b border-black md:flex md:absolute md:w-full md:h-[290px] md:top-[47px] md:left-0 md:gap-[55px] md:px-[159px]">
           {
             timeline

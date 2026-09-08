@@ -241,14 +241,14 @@ import iconLotrinhImg from '@/assets/images/home/roadmap/icon-lotrinh.webp';
 import luyenThiHskImg from '@/assets/images/home/roadmap/luyen-thi-hsk.webp';
 
 // contact
-import bgContact from '@/assets/images/contact/bg-lien-he.jpg';
-import bgGvContact from '@/assets/images/contact/bgGv.png';
+import bgContact from '@/assets/images/contact/head-banner.jpg';
+import bgGvContact from '@/assets/images/contact/banner-lien-he.png';
 import btcContact from '@/assets/images/contact/btc.png';
 import cuContact from '@/assets/images/contact/cuContact.png';
 import emailContact from '@/assets/images/contact/email.png';
 import fdBook from '@/assets/images/contact/fd.png';
 import hskContact from '@/assets/images/contact/hsk.png';
-import hopTac from '@/assets/images/contact/loi-moi-hop-tac.png';
+import hopTac from '@/assets/images/contact/loi-moi-hop-tac-new.png';
 import noteBook from '@/assets/images/contact/note.png';
 import qaBook from '@/assets/images/contact/qa.png';
 import iconBook from '@/assets/images/registration/icon2.png';
