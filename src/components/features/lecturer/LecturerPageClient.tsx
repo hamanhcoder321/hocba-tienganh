@@ -76,7 +76,7 @@ export default function LecturerPageClient({ initialLecturers }: LecturerPageCli
       {/* Lecturer List */}
       {isLoading ? (
         <div className="flex flex-1 items-center justify-center py-20 md:mt-14 md:pb-14">
-          <div className="h-12 w-12 animate-spin rounded-full border-b-2 border-primary"></div>
+          <div className="h-12 w-12 animate-spin rounded-full border-b-2 border-navy"></div>
         </div>
       ) : (
         <LecturerList lecturers={lecturers} />

@@ -1,5 +1,6 @@
 import { EllipseDngv } from '@/components/common/icons';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
+import { LECTURER_BASE_PATH } from '@/lib/constants/content';
 import { SearchX } from 'lucide-react';
 
 interface Teacher {
@@ -60,7 +61,7 @@ const TeacherCarousel = ({ teachers }: TeacherCarouselProps) => {
                 </div>
                 <div className="px-4 text-center text-xs text-white md:px-10 md:text-base">{teacher.title}</div>
                 <div className="absolute -bottom-6 left-0 flex h-[42px] w-full justify-center">
-                  <a href={`/doi-ngu-giang-vien/${teacher.slug}`} className="cursor-pointer group flex size-[42px] items-center justify-center rounded-full bg-white shadow-gold transition-all duration-300 [perspective:800px] [transition-timing-function:cubic-bezier(.34,1.56,.64,1)] hover:scale-110 hover:shadow-gold-hover">
+                  <a href={`${LECTURER_BASE_PATH}/${teacher.slug}`} className="cursor-pointer group flex size-[42px] items-center justify-center rounded-full bg-white shadow-gold transition-all duration-300 [perspective:800px] [transition-timing-function:cubic-bezier(.34,1.56,.64,1)] hover:scale-110 hover:shadow-gold-hover">
                     <div className="relative size-full transition-transform duration-500 ease-out [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                       <SearchX className="absolute inset-0 m-auto rotate-90 text-gray-400 [backface-visibility:hidden]" />
                       <SearchX className="absolute inset-0 m-auto text-primary [backface-visibility:hidden] [transform:rotateY(180deg)]" />

@@ -50,7 +50,7 @@ export default function AboutRegisterForm({
               type="text"
               {...form.register('name')}
               placeholder="Robot fox"
-              className={`h-12 rounded-[8px] border-0 bg-white text-[#504E4E] focus-visible:ring-white w-full md:w-[257px] md:h-[70px] md:px-[16px] md:py-[20px] ${
+              className={`h-10 rounded-[8px] border-0 bg-white text-[#504E4E] focus-visible:ring-white w-full md:w-[257px] md:h-[70px] md:px-[16px] md:py-[20px] ${
                 form.formState.errors.name ? 'ring-2 ring-red-500' : ''
               }`}
             />
@@ -68,7 +68,7 @@ export default function AboutRegisterForm({
               type="email"
               {...form.register('email')}
               placeholder="info@example.com"
-              className={`h-12 rounded-[8px] border-0 bg-white text-[#504E4E] focus-visible:ring-white w-full md:w-[257px] md:h-[70px] md:px-[16px] md:py-[20px] ${
+              className={`h-10 rounded-[8px] border-0 bg-white text-[#504E4E] focus-visible:ring-white w-full md:w-[257px] md:h-[70px] md:px-[16px] md:py-[20px] ${
                 form.formState.errors.email ? 'ring-2 ring-red-500' : ''
               }`}
             />
@@ -87,7 +87,7 @@ export default function AboutRegisterForm({
               value={form.watch('wishlist_courses')}
               onValueChange={(value) => form.setValue('wishlist_courses', value)}
             >
-              <SelectTrigger id="course" className="h-12 rounded-[8px] border-0 bg-white text-[#504E4E] focus:ring-white w-full md:w-[257px] md:h-[70px] md:px-[16px] md:py-[20px]">
+              <SelectTrigger id="course" className="h-10 rounded-[8px] border-0 bg-white text-[#504E4E] focus:ring-white w-full md:w-[257px] md:h-[70px] md:px-[16px] md:py-[20px]">
                 <SelectValue placeholder="Chọn mục tiêu" />
               </SelectTrigger>
               <SelectContent className="bg-white">
@@ -116,7 +116,7 @@ export default function AboutRegisterForm({
                   },
                 })}
                 placeholder="+1253 457 7840"
-                className={`h-12 rounded-[8px] border-0 bg-white text-[#504E4E] focus-visible:ring-white w-full md:w-[257px] md:h-[70px] md:px-[16px] md:py-[20px] ${
+                className={`h-10 rounded-[8px] border-0 bg-white text-[#504E4E] focus-visible:ring-white w-full md:w-[257px] md:h-[70px] md:px-[16px] md:py-[20px] ${
                   form.formState.errors.phone ? 'ring-2 ring-red-500' : ''
                 }`}
                 maxLength={10}

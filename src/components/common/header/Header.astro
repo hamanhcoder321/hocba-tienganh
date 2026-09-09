@@ -18,8 +18,9 @@ import { NewsCategoryMenuDesktop, NewsCategoryMenuMobile } from './NewsCategoryM
 import type { JSX } from 'astro/jsx-runtime';
 import { Image } from 'astro:assets';
 // import imgLogoHeaderMobile from '@/assets/images/img-hocba-tienganh-optimized/img-logo-header.webp'; // logo cũ webp
-import imgLogoHeaderMobile from '@/assets/images/img-hocba-tienganh-optimized/img-logo-moi-header.webp'; // logo mới - desktop màu trắng
-import imgLogoHeaderMobileOld from '@/assets/images/img-hocba-tienganh-optimized/img-logo-header.webp'; // logo cũ - dùng cho mobile
+// import imgLogoHeaderMobile from '@/assets/images/img-hocba-tienganh-optimized/img-logo-moi-header.webp'; // logo cũ - desktop màu trắng
+// import imgLogoHeaderMobileOld from '@/assets/images/img-hocba-tienganh-optimized/img-logo-header.webp'; // logo cũ - dùng cho mobile
+import imgLogoHeaderMobileBlue from '@/assets/images/img-hocba-tienganh-optimized/logo-mobile-blue.png'; // logo màu xanh, bản rút gọn - dùng cho mobile (top bar + drawer menu)
 import { AlignJustify, ChevronDown } from 'lucide-react';
 import SearchTrigger from '@/components/common/search/SearchTrigger';
 
@@ -81,7 +82,7 @@ const INITIAL_NAVBARS: NavbarUiItem[] = [
     ddMenu: [
       { href: 'gioi-thieu', title: 'The IELTS Space' },
       { href: 'chuyen-gia/jackson-howard', title: 'Cố vấn chuyên môn' },
-      { href: 'doi-ngu-giang-vien', title: 'Đội ngũ giảng viên' },
+      { href: 'giao-vien-ielts', title: 'Đội ngũ giảng viên' },
       { href: 'tin-tuc-su-kien', title: 'Tin tức & Sự kiện' },
       { href: 'hoc-vien-diem-cao', title: 'Kết quả học viên' },
     ],
@@ -117,7 +118,7 @@ interface Props {
   siteName?: string;
 }
 
-const { logo, siteName = 'Học Bá Education' } = Astro.props;
+const { logo, siteName = 'The IELTS Space' } = Astro.props;
 ---
 
 <header
@@ -135,25 +136,20 @@ const { logo, siteName = 'Học Bá Education' } = Astro.props;
         {/* Logo Section */}
         <div class="flex items-center gap-2">
           <a href="/" class="flex-shrink-0 lg:-ml-6" aria-label="Trang chủ Học Bá">
-            {
-              typeof logo === 'string' && logo.startsWith('http') ? (
-                <img src={logo} alt={siteName} width="120" height="48" class="hidden lg:block h-14 w-auto object-contain" loading="eager" />
-              ) : (
-                <Image
-                  width={120}
-                  height={48}
-                  class="hidden lg:block h-14 w-auto object-contain"
-                  src={logo || IMAGES.logo}
-                  alt={siteName}
-                  densities={[1, 2]}
-                />
-              )
-            }
             <Image
-              width={73}
-              height={48}
-              class="block lg:hidden h-6 w-auto"
-              src={imgLogoHeaderMobileOld}
+              width={116}
+              height={49}
+              class="hidden h-[49px] lg:block object-contain"
+              src={logo || IMAGES.logo}
+              alt={siteName}
+              densities={[1, 2]}
+              loading="eager"
+            />
+            <Image
+              width={57}
+              height={24}
+              class="block lg:hidden"
+              src={imgLogoHeaderMobileBlue}
               alt={siteName}
               densities={[1, 2]}
             />
@@ -178,7 +174,8 @@ const { logo, siteName = 'Học Bá Education' } = Astro.props;
             {
               INITIAL_NAVBARS.map((nav) => {
                 const isActive = isNavActive(nav, currentPath);
-                const fontClasses = nav.name === TitleMenu.INTRODUCE ? 'font-[800] leading-[28px]' : 'font-bold leading-[27px]';
+                const leadingClass = nav.name === TitleMenu.INTRODUCE ? 'leading-[28px]' : 'leading-[27px]';
+                const activeTextClasses = isActive ? 'text-white font-extrabold' : 'text-white/80 font-bold';
                 return (
                   <li role="none" class="group relative flex h-full items-center px-1 xl:px-3 md:py-5">
                     {nav.href ? (
@@ -189,7 +186,7 @@ const { logo, siteName = 'Học Bá Education' } = Astro.props;
                       >
                         {/* {nav.icon && <nav.icon isActive={isActive} className={cn('mr-2 h-[18px] w-[18px]')} />} */}
                         <span
-                          class={`text-nowrap text-sm xl:text-lg text-white ${fontClasses}`}
+                          class={`text-nowrap text-sm xl:text-lg ${activeTextClasses} ${leadingClass}`}
                         >
                           {nav.name}
                         </span>
@@ -209,7 +206,7 @@ const { logo, siteName = 'Học Bá Education' } = Astro.props;
                       <div role="menuitem" class="flex h-full cursor-pointer items-center justify-center pt-2">
                         {/* {nav.icon && <nav.icon isActive={isActive} className="h-[18px] w-[18px] mr-2" />} */}
                         <span
-                          class={`text-nowrap text-sm xl:text-lg text-white ${fontClasses}`}
+                          class={`text-nowrap text-sm xl:text-lg ${activeTextClasses} ${leadingClass}`}
                         >
                           {nav.name}
                         </span>
@@ -307,7 +304,7 @@ const { logo, siteName = 'Học Bá Education' } = Astro.props;
               width={73}
               height={48}
               class="h-8 w-auto"
-              src={imgLogoHeaderMobile}
+              src={imgLogoHeaderMobileBlue}
               alt={siteName}
               densities={[1, 2]}
             />

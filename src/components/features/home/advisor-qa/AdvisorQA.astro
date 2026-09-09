@@ -44,11 +44,19 @@ const qaData = [
 
 <section
   id="advisor-qa"
-  class="relative w-full min-h-[900px] overflow-hidden bg-[linear-gradient(180deg,rgba(255,251,247,0)_0%,#FFF7EF_31.25%,rgba(255,249,249,0)_100%)] md:min-h-[895px]"
+  class="relative min-h-[900px] w-full overflow-hidden bg-[linear-gradient(180deg,rgba(255,251,247,0)_0%,#FFF7EF_31.25%,rgba(255,249,249,0)_100%)] md:min-h-[895px]"
 >
   {/* Background Glow Effects */}
-  <div class="hidden md:block absolute top-0 right-[-50px] w-[269px] h-[248px] rounded-[200px] pointer-events-none z-0" style="background: radial-gradient(70.71% 70.71% at 50% 50%, rgba(8, 58, 212, 0.4) 0%, rgba(8, 58, 212, 0) 70%);"></div>
-  <div class="hidden md:block absolute bottom-0 left-[-50px] w-[269px] h-[248px] rounded-[200px] pointer-events-none z-0" style="background: radial-gradient(70.71% 70.71% at 50% 50%, rgba(8, 58, 212, 0.4) 0%, rgba(8, 58, 212, 0) 70%);"></div>
+  <div
+    class="pointer-events-none absolute -right-[50px] top-0 z-0 h-[248px] w-[269px] rounded-full"
+    style="background: radial-gradient(70.71% 70.71% at 50% 50%, rgba(8, 58, 212, 0.4) 0%, rgba(8, 58, 212, 0) 70%);"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute bottom-0 -left-[50px] z-0 h-[248px] w-[269px] rounded-full"
+    style="background: radial-gradient(70.71% 70.71% at 50% 50%, rgba(8, 58, 212, 0.4) 0%, rgba(8, 58, 212, 0) 70%);"
+  >
+  </div>
 
   <div class="relative z-10 mx-auto w-full px-[16px] py-[24px] md:max-w-[1212px] md:px-9 md:py-0 lg:px-0">
     <div class="mb-[28px] md:mb-7 lg:mt-[120px]">
@@ -70,7 +78,7 @@ const qaData = [
       <div class="w-full lg:w-[646px] lg:flex-shrink-0">
         <QAAccordion {qaData} />
       </div>
-      <div class="relative w-full lg:w-[755px] lg:h-[899px] lg:flex-shrink-0 lg:-mt-[120px]">
+      <div class="relative w-full lg:-mt-[120px] lg:h-[899px] lg:w-[755px] lg:flex-shrink-0">
         <!-- <div class="absolute top-0 translate-x-1/2 lg:-top-20 lg:right-1/2">
           <Image
             src={IconMb}

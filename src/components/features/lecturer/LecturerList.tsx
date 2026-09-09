@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { LECTURER_BASE_PATH } from '@/lib/constants/content';
 import { IMAGES } from '@/lib/constants/images';
 import { ArrowLeft, ArrowRight, SearchX } from 'lucide-react';
 import { useMemo, useRef, useState } from 'react';
@@ -77,39 +78,41 @@ export default function LecturerList({ lecturers }: LecturerListProps) {
         {currentLecturers.map((lecturer) => (
           <div
             key={lecturer.id}
-            className="group relative h-auto rounded-md border-2 border-transparent bg-[#FFF8F8] px-2 py-4 transition-all duration-300 ease-in-out hover:border-primary hover:bg-white hover:shadow-redGlow md:h-[475px] md:px-4 md:py-6"
+            className="group relative h-auto rounded-[4px] border-2 border-transparent bg-navy-50 px-2 py-4 transition-all duration-300 ease-in-out hover:shadow-navyGlow md:h-[475px] md:px-4 md:py-6"
           >
             <a
-              href={`/doi-ngu-giang-vien/${lecturer.slug}`}
-              className="absolute -bottom-[4%] left-1/2 flex h-7 -translate-x-1/2 cursor-pointer items-center gap-1 rounded-full border-2 border-white bg-primary px-2 text-white opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+              href={`${LECTURER_BASE_PATH}/${lecturer.slug}`}
+              className="absolute -bottom-[4%] left-1/2 flex h-7 -translate-x-1/2 cursor-pointer items-center gap-1 rounded-full border-2 border-white bg-navy px-2 text-white opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
             >
               <SearchX size={20} className="rotate-90" />
               <p className="text-[8px] font-bold md:text-xs">Xem hồ sơ</p>
             </a>
-            <div className="relative h-[156px] w-full rounded-md bg-[#6D0100] pt-3 transition-transform duration-300 ease-in-out group-hover:scale-105 md:h-[220px]">
+            <div className="relative h-[156px] w-full rounded-md bg-navy pt-3 transition-transform duration-300 ease-in-out group-hover:scale-105 md:h-[220px]">
               <img
                 src={lecturer.avatar_url?.file_path}
                 width={280}
                 height={220}
                 alt={lecturer.name}
-                className="h-full w-full rounded-md object-contain object-top"
+                className="h-full w-full rounded-[3px] object-contain object-top"
               />
               {lecturer.label && (
-                <div className="absolute left-2 top-3 flex h-8 w-10 flex-col items-center justify-center rounded-sm bg-gradient-to-b from-[#F3C650] to-[#B90E0A] text-white md:h-14 md:w-[74px]">
+                <div className="absolute left-2 top-3 flex h-8 w-10 flex-col items-center justify-center rounded-sm bg-gradient-to-b from-gold to-primary-700 text-white md:h-14 md:w-[74px]">
                   <p className="text-[6px] font-black uppercase md:text-[10px]">Giảng viên</p>
                   <p className="text-[10px] font-black uppercase md:text-base">{lecturer.label}</p>
                 </div>
               )}
             </div>
             <div className="mt-3 flex flex-col gap-2 transition-all duration-300 ease-in-out group-hover:px-3 md:mt-6">
-              <h2 className="text-sm font-black uppercase leading-tight text-primary md:text-[22px]">
+              <h2 className="text-xs font-black uppercase leading-tight text-navy md:text-[22px]">
                 {lecturer.name}
               </h2>
-              <div className="flex items-center gap-2">
-                <div className="size-2 flex-shrink-0 rounded-full bg-black md:size-[10px]" />
-                <p className="text-[8px] font-bold text-black md:text-sm">{lecturer.title}</p>
+              <div className="flex items-start gap-2">
+                <div className="mt-1 size-2 flex-shrink-0 rounded-full bg-ielts-gray md:size-[10px]" />
+                <p className="line-clamp-3 min-h-[30px] text-[8px] font-bold leading-tight text-ielts-gray md:min-h-[53px] md:text-sm">
+                  {lecturer.title}
+                </p>
               </div>
-              <div className="grid grid-cols-3 border-t border-black pt-[10px]">
+              <div className="grid grid-cols-3 border-t border-ielts-gray-200 pt-[10px]">
                 <div className="col-span-2 flex items-center gap-2">
                   <img
                     src={IMAGES.lectuter.card1.src}
@@ -118,7 +121,7 @@ export default function LecturerList({ lecturers }: LecturerListProps) {
                     alt="card1"
                     className="size-[18px] object-cover md:size-8"
                   />
-                  <p className="text-[7px] italic text-black md:text-xs">{lecturer.tags?.qualification.join(', ')}</p>
+                  <p className="text-[7px] italic text-ielts-gray md:text-xs">{lecturer.tags?.qualification.join(', ')}</p>
                 </div>
                 <div className="col-span-1 ml-auto flex items-center gap-2">
                   <img
@@ -128,7 +131,7 @@ export default function LecturerList({ lecturers }: LecturerListProps) {
                     alt="card2"
                     className="size-[18px] object-cover md:size-8"
                   />
-                  <p className="text-[7px] italic text-black md:text-xs">{lecturer.tags?.scope.join(', ')}</p>
+                  <p className="text-[7px] italic text-ielts-gray md:text-xs">{lecturer.tags?.scope.join(', ')}</p>
                 </div>
               </div>
             </div>
@@ -138,11 +141,11 @@ export default function LecturerList({ lecturers }: LecturerListProps) {
       {/* Pagination */}
       {
         <div className="w-full">
-          <div className="mb-4 mt-10 flex justify-end gap-2 md:mb-0">
+          <div className="mb-4 mt-10 flex md:justify-end justify-center gap-2 md:mb-0">
             <button
               onClick={handlePrevPage}
               disabled={currentPage === 1}
-              className={`flex size-8 cursor-pointer items-center justify-center rounded-full bg-white p-0 font-bold text-[#373737] transition-opacity ${
+              className={`flex size-8 cursor-pointer items-center justify-center rounded-full bg-white p-0 font-bold text-ielts-gray transition-opacity ${
                 currentPage === 1 ? 'cursor-not-allowed opacity-50' : 'hover:opacity-80'
               }`}
             >
@@ -155,7 +158,7 @@ export default function LecturerList({ lecturers }: LecturerListProps) {
                     key={index}
                     variant={'ghost'}
                     onClick={() => handlePageClick(page)}
-                    className={`size-7 text-base font-bold text-[#373737] ${
+                    className={`size-7 text-base font-bold text-ielts-gray ${
                       currentPage === page ? 'opacity-100' : 'opacity-50'
                     }`}
                   >
@@ -164,7 +167,7 @@ export default function LecturerList({ lecturers }: LecturerListProps) {
                 ) : (
                   <span
                     key={index}
-                    className="flex size-7 items-center justify-center text-base font-bold text-[#373737] opacity-50"
+                    className="flex size-7 items-center justify-center text-base font-bold text-ielts-gray opacity-50"
                   >
                     {page}
                   </span>
@@ -174,7 +177,7 @@ export default function LecturerList({ lecturers }: LecturerListProps) {
             <button
               onClick={handleNextPage}
               disabled={currentPage === totalPages}
-              className={`flex size-8 cursor-pointer items-center justify-center rounded-full bg-white p-0 font-bold text-[#373737] transition-opacity ${
+              className={`flex size-8 cursor-pointer items-center justify-center rounded-full bg-white p-0 font-bold text-ielts-gray transition-opacity ${
                 currentPage === totalPages ? 'cursor-not-allowed opacity-50' : 'hover:opacity-80'
               }`}
             >

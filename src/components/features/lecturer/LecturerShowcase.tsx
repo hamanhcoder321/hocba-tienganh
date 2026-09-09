@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { LECTURER_BASE_PATH } from '@/lib/constants/content';
 import { IMAGES } from '@/lib/constants/images';
 import { Chinesetag, CertificateIcon, GraduationCapIcon, LecturerBadgeIcon, VectorArrow } from '@/components/common/icons';
 
@@ -61,7 +62,7 @@ export default function LecturerShowcase({ lecturers = [], bgClass = 'bg-[#F9F9F
 
   const handleViewDetail = () => {
     if (currentLecturer?.slug) {
-      window.location.href = `/doi-ngu-giang-vien/${currentLecturer.slug}`;
+      window.location.href = `${LECTURER_BASE_PATH}/${currentLecturer.slug}`;
     }
   };
 
@@ -79,11 +80,11 @@ export default function LecturerShowcase({ lecturers = [], bgClass = 'bg-[#F9F9F
               stopOffset="0.2"
               className="absolute -left-6 -top-2 h-[20.75px] w-[21.68px] md:-left-12 md:-top-2 md:h-[31px] md:w-[31px]"
             />
-            <h2 className="text-[#072899] text-center font-gilroy text-[18px] font-[1000] uppercase leading-[23.48px] md:text-[36px] md:leading-tight lg:text-[42px] lg:leading-[64px]">
+            <h2 className="text-navy text-center font-gilroy text-[18px] font-[1000] uppercase leading-[23.48px] md:text-[36px] md:leading-tight lg:text-[42px] lg:leading-[64px]">
               HỌC VỚI NGƯỜI GIỎI NHẤT
             </h2>
           </div>
-          <p className="font-gilroy text-[16px] font-bold leading-[1.2] text-[#373737] md:text-[24px] md:leading-none lg:text-[28px]">
+          <p className="font-gilroy text-[16px] font-bold leading-[1.2] text-ielts-gray md:text-[24px] md:leading-none lg:text-[28px]">
             THE IELTS SPACE Tự Hào Quy Tụ Đội Ngũ Giáo Viên Hàng Đầu
           </p>
         </div>
@@ -92,7 +93,7 @@ export default function LecturerShowcase({ lecturers = [], bgClass = 'bg-[#F9F9F
           {/* Left Column: Featured Card (becomes bottom on mobile) */}
           <div className="flex w-full justify-center flex-shrink-0 md:w-[390px] md:justify-start lg:w-[480px] xl:w-[600px] xl:justify-start [@media(min-width:900px)_and_(max-width:1023px)]:w-[460px]">
             <div
-              className="relative flex h-auto min-h-[388px] w-full max-w-[353px] flex-col rounded-[6.99px] border-[0.7px] border-[#FFC7C7] bg-white md:h-[410px] md:w-full md:max-w-full md:rounded-[9.94px] md:border lg:h-[440px] xl:h-[532px] xl:max-w-full xl:origin-top [@media(min-width:900px)_and_(max-width:1023px)]:h-[440px]"
+              className="relative flex h-auto min-h-[388px] w-full max-w-[353px] flex-col rounded-[6.99px] border-[0.7px] border-primary-200 bg-white md:h-[410px] md:w-full md:max-w-full md:rounded-[9.94px] md:border lg:h-[440px] xl:h-[532px] xl:max-w-full xl:origin-top [@media(min-width:900px)_and_(max-width:1023px)]:h-[440px]"
               style={{ boxShadow: '2px 4px 15px 0px #DBDBDB' }}
             >
               <div className="relative mb-2 mx-auto self-center mt-[18.98px] flex h-[210px] w-[240px] flex-shrink-0 items-center justify-center rounded-[4.22px] border-[0.5px] border-[#C7C7C7] bg-white shadow-[inset_0_4px_4px_rgba(0,0,0,0.25)] md:mt-3 md:h-[210px] md:w-[280px] lg:h-[230px] lg:w-[380px] xl:h-[260px] xl:w-[440px]">
@@ -112,10 +113,10 @@ export default function LecturerShowcase({ lecturers = [], bgClass = 'bg-[#F9F9F
 
               <div className="flex flex-1 min-h-0 flex-col space-y-3 px-6 pb-10 lg:px-[30px] lg:pb-10">
                 <div className="flex-shrink-0 text-center">
-                  <h3 className="font-svn-gilroy text-[26px] font-bold leading-none text-[#072899]">
+                  <h3 className="font-svn-gilroy text-[26px] font-bold leading-none text-navy">
                     {currentLecturer?.name}
                   </h3>
-                  <p className="font-svn-gilroy pt-1 text-[14px] font-bold leading-[1.3] text-[#072899] lg:text-[16px]">
+                  <p className="font-svn-gilroy pt-1 text-[14px] font-bold leading-[1.3] text-navy lg:text-[16px]">
                     {currentLecturer?.title || 'Giáo viên lớp HSK & Chinese'}
                   </p>
                 </div>
@@ -125,14 +126,14 @@ export default function LecturerShowcase({ lecturers = [], bgClass = 'bg-[#F9F9F
                     <li key={idx} className="flex items-start gap-2 xl:w-[418px] xl:gap-[12px]">
                       <div className="flex h-[18px] w-[18px] flex-shrink-0 items-center justify-center mt-0.5 md:mt-1 md:h-6 md:w-6">
                         {idx === 0 ? (
-                          <CertificateIcon className="size-[18px] text-[#373737] md:size-6" />
+                          <CertificateIcon className="size-[18px] text-ielts-gray md:size-6" />
                         ) : idx === 1 ? (
-                          <GraduationCapIcon className="size-[18px] text-[#373737] md:size-6" />
+                          <GraduationCapIcon className="size-[18px] text-ielts-gray md:size-6" />
                         ) : (
-                          <LecturerBadgeIcon className="size-[18px] text-[#373737] md:size-6" />
+                          <LecturerBadgeIcon className="size-[18px] text-ielts-gray md:size-6" />
                         )}
                       </div>
-                      <span className="font-svn-gilroy text-[16px] font-normal leading-tight text-[#373737]">
+                      <span className="font-svn-gilroy text-[16px] font-normal leading-tight text-ielts-gray">
                         {highlight.content}
                       </span>
                     </li>
@@ -142,10 +143,10 @@ export default function LecturerShowcase({ lecturers = [], bgClass = 'bg-[#F9F9F
                 <div className="absolute bottom-0 left-[118px] flex translate-y-1/2 md:left-1/2 md:-translate-x-1/2">
                   <Button
                     onClick={handleViewDetail}
-                    className="hover:animate-outline-pulse-btn font-svn-gilroy group relative h-[28.1px] w-[117px] overflow-hidden rounded-[14.76px] bg-gradient-to-r from-[#F97316] to-[#F3C650] px-[14.76px] py-[6.32px] text-[10.54px] font-[700] uppercase leading-[1.5] text-white shadow-[0px_4px_15px_rgba(249,115,22,0.35)] transition-all hover:shadow-[0_0_20px_rgba(243,198,80,0.5)] md:h-[54px] md:w-[222px] md:rounded-[28px] md:text-[20px]"
+                    className="hover:animate-outline-pulse-btn font-svn-gilroy group relative h-[28.1px] w-[117px] overflow-hidden rounded-[14.76px] bg-gradient-to-r from-orange to-gold px-[14.76px] py-[6.32px] text-[10.54px] font-[700] uppercase leading-[1.5] text-white shadow-[0px_4px_15px_rgba(249,115,22,0.35)] transition-all hover:shadow-[0_0_20px_rgba(243,198,80,0.5)] md:h-[54px] md:w-[222px] md:rounded-[28px] md:text-[20px]"
                   >
                     {/* Pulsing gradient overlay */}
-                    <div className="group-hover:animate-pulse-custom-btn absolute left-0 top-0 z-0 h-full w-full bg-gradient-to-r from-[#F3C650] to-[#F97316] opacity-0 transition-opacity duration-1000 group-hover:opacity-100"></div>
+                    <div className="group-hover:animate-pulse-custom-btn absolute left-0 top-0 z-0 h-full w-full bg-gradient-to-r from-gold to-orange opacity-0 transition-opacity duration-1000 group-hover:opacity-100"></div>
 
                     <span className="relative z-10">XEM CHI TIẾT</span>
                   </Button>
@@ -194,8 +195,8 @@ export default function LecturerShowcase({ lecturers = [], bgClass = 'bg-[#F9F9F
                     className={cn(
                       'group relative flex h-[128px] w-[140px] shrink-0 cursor-pointer flex-col items-center rounded-[9.94px] transition-all duration-500 md:h-[125px] md:w-[120px] lg:h-[135px] lg:w-[140px] xl:h-[164px] xl:w-[180px] [@media(min-width:900px)_and_(max-width:1023px)]:h-[135px] [@media(min-width:900px)_and_(max-width:1023px)]:w-[140px]',
                       isSelected
-                        ? 'bg-[#072899] shadow-[2px_3.38px_29.3px_rgba(243,198,80,0.3)]'
-                        : 'border border-[#DCE5FF] bg-white shadow-[0px_3.38px_3.38px_rgba(0,0,0,0.25)] hover:bg-[#072899] hover:shadow-[2px_3.38px_29.3px_rgba(243,198,80,0.2)]',
+                        ? 'bg-navy shadow-[2px_3.38px_29.3px_rgba(243,198,80,0.3)]'
+                        : 'border border-navy-100 bg-white shadow-[0px_3.38px_3.38px_rgba(0,0,0,0.25)] hover:bg-navy hover:shadow-[2px_3.38px_29.3px_rgba(243,198,80,0.2)]',
                     )}
                   >
                     <div
@@ -216,7 +217,7 @@ export default function LecturerShowcase({ lecturers = [], bgClass = 'bg-[#F9F9F
                     <h3
                       className={cn(
                         'font-svn-gilroy mt-[10px] px-2 text-center text-[16px] font-bold leading-tight transition-all duration-300',
-                        isSelected ? 'text-[#F3C650]' : 'text-[#373737]/60 group-hover:text-[#F3C650]',
+                        isSelected ? 'text-gold' : 'text-ielts-gray/60 group-hover:text-gold',
                       )}
                     >
                       {lecturer.name}
@@ -260,7 +261,7 @@ export default function LecturerShowcase({ lecturers = [], bgClass = 'bg-[#F9F9F
                 <button
                   onClick={prevPage}
                   disabled={currentPage === 1}
-                  className="text-[#373737] transition-all hover:opacity-70 disabled:opacity-20"
+                  className="text-ielts-gray transition-all hover:opacity-70 disabled:opacity-20"
                 >
                   <ArrowLeft size={24} strokeWidth={2} />
                 </button>
@@ -288,7 +289,7 @@ export default function LecturerShowcase({ lecturers = [], bgClass = 'bg-[#F9F9F
                         onClick={() => setCurrentPage(pageNum)}
                         className={cn(
                           'transition-colors duration-300',
-                          isActive ? 'text-[#373737]' : 'text-[#D9D9D9] hover:text-[#373737]',
+                          isActive ? 'text-ielts-gray' : 'text-[#D9D9D9] hover:text-ielts-gray',
                         )}
                       >
                         {pageNum}
@@ -300,7 +301,7 @@ export default function LecturerShowcase({ lecturers = [], bgClass = 'bg-[#F9F9F
                 <button
                   onClick={nextPage}
                   disabled={currentPage === totalPages}
-                  className="text-[#373737] transition-all hover:opacity-70 disabled:opacity-20"
+                  className="text-ielts-gray transition-all hover:opacity-70 disabled:opacity-20"
                 >
                   <ArrowRight size={24} strokeWidth={2} />
                 </button>

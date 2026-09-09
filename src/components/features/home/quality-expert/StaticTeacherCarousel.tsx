@@ -1,4 +1,5 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { LECTURER_BASE_PATH } from '@/lib/constants/content';
 import { Plus } from 'lucide-react';
 
 import imgGv1 from '/src/assets/images/img-hocba-tienganh-optimized/gv-1.webp';
@@ -115,7 +116,7 @@ const StaticTeacherCarousel = () => {
                 <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 z-30">
                   {/* Tạm thời bỏ hiệu ứng hover:
                   <a 
-                    href={teacher.slug ? `/doi-ngu-giang-vien/${teacher.slug}` : "#"} 
+                    href={teacher.slug ? `${LECTURER_BASE_PATH}/${teacher.slug}` : "#"}
                     className="cursor-pointer flex size-10 items-center justify-center rounded-full bg-white shadow-md transition-all duration-300 hover:scale-110 [&>svg]:hover:-scale-x-100"
                   >
                     <svg className="size-5 transition-transform duration-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

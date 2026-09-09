@@ -77,7 +77,7 @@ export const CONTACTS = {
     label: 'Toà Nhà Hoà Phát, 257 Giải Phóng, Bạch Mai, Hà Nội',
     value: 'https://maps.app.goo.gl/kMGiEXyvfdGzYEVB8',
   },
-  linkWeb: import.meta.env.PUBLIC_CLIENT_URL ?? 'https://hoc-ba.edu.vn',
+  linkWeb: import.meta.env.PUBLIC_CLIENT_URL ?? 'https://thespace.edu.vn',
   hotline: '0888.861.786',
   email: 'theenglishspace01@gmail.com',
   facebookHskUrl: 'https://www.facebook.com/hocbahsk',
@@ -663,6 +663,7 @@ export const output: TRoadmapCourse[] = [
 ];
 
 
+export const LECTURER_BASE_PATH = '/giao-vien-ielts';
 export const HOC_VIEN_DIEM_CAO_SLUG = 'hoc-vien-diem-cao';
 export const NEWS_SLUGS = ['tong-hop-tin-tuc', 'tong-hop-su-kien'];
 export const EXCLUDED_FROM_CAM_NANG = [...NEWS_SLUGS, HOC_VIEN_DIEM_CAO_SLUG];

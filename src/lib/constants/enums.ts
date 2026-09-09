@@ -99,7 +99,7 @@ export const DATA_VALUE = {
 
 export const DATA_INPUT_MAP: Record<string, string> = {
   '/chuyen-gia/jackson-howard': DATA_VALUE.CONSULTANT,
-  '/doi-ngu-giang-vien': DATA_VALUE.LECTURER,
+  '/giao-vien-ielts': DATA_VALUE.LECTURER,
   '/cam-nang-hsk-hskk': DATA_VALUE.GUIDE_HSK,
   '/cam-nang-tieng-trung-cho-nguoi-di-lam': DATA_VALUE.GUIDE_FOR_WORKERS,
   '/cam-nang-tocfl': DATA_VALUE.GUIDE_TOCFL,

@@ -55,12 +55,12 @@ const features = [
         <div>
           <h2 class="mb-4 text-[26px] md:text-[42px] uppercase leading-tight md:leading-[64px] text-[#373737]" style="font-weight: 1000;">
             TỐI ƯU HÀNH TRÌNH HỌC
-            <span
+              <span
               class="mt-2 md:mt-4 inline-block rounded-[16px] md:rounded-[20px] px-6 md:px-24 py-1 md:py-2 text-white text-[22px] md:text-[38px] md:leading-[64px] shadow-lg relative"
-              style="font-weight: 1000; background: linear-gradient(90.35deg, #F97316 4.83%, #FFCF5A 114.24%);"
-            >
-              & LUYỆN THI IELTS
-            </span>
+                style="font-weight: 1000; background: linear-gradient(90.35deg, #F97316 4.83%, #FFCF5A 114.24%);"
+              >
+                & LUYỆN THI IELTS
+              </span>
           </h2>
           <div class="mt-6 md:mt-8 flex items-center justify-center px-1 sm:px-2 md:px-0 w-full relative">
             <div class="relative inline-block text-center max-w-[850px] md:translate-x-6">
@@ -76,7 +76,7 @@ const features = [
                   cách riêng của mình
                 </span>
                 {/* Mobile 2 lines */}
-                <span class="inline md:hidden whitespace-nowrap">
+                <span class="inline md:hidden whitespace-nowrap relative -left-2">
                   Một hệ sinh thái học tập được nghiên cứu và thiết kế hoàn toàn mới.<br />
                   Giúp mỗi người học tiến bộ theo cách riêng của mình
                 </span>
@@ -89,7 +89,7 @@ const features = [
   </div>
 
   <!-- layout mobil: trượt ngang các khối -->
-  <div class="md:hidden no-scrollbar relative flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-8 sm:px-9">
+  <div class="md:hidden no-scrollbar relative flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-8 sm:px-9 bg-[#F5F6FE]">
     {
       features.map((feature, index) => (
         <>
@@ -210,23 +210,23 @@ const features = [
 </section>
 
 <!-- Khối Mentor (Căn giữa - full with) -->
-<section class="w-full mt-12 py-16 overflow-hidden flex flex-col items-center" style="background: linear-gradient(140.56deg, #072899 32.97%, #083AD4 57.51%, #04195C 82.05%);">
-  <div class="mb-10 px-1 sm:px-4 text-center w-full overflow-visible">
+<section class="w-full mt-12 py-10 px-4 md:px-0 md:py-16 overflow-hidden flex flex-col items-center bg-[linear-gradient(180deg,#072899_0%,#083AD4_50%,#04195C_100%)] md:bg-[linear-gradient(140.56deg,#072899_32.97%,#083AD4_57.51%,#04195C_82.05%)]">
+  <div class="mb-6 md:mb-10 px-1 sm:px-4 text-center w-full overflow-visible">
     <h2 class="relative inline-block text-[15.5px] sm:text-[20px] tracking-tight md:tracking-normal whitespace-nowrap md:whitespace-normal font-black uppercase text-white md:text-[42px] md:leading-[64px] drop-shadow-md text-center" style="font-weight: 1000;">
       MỖI BƯỚC ĐI ĐỀU CÓ NGƯỜI ĐỒNG HÀNH
       <svg class="absolute -top-2 md:-top-4 -right-4 sm:-right-5 md:-right-8 w-4 h-4 sm:w-5 sm:h-5 md:w-8 md:h-8 text-[#FF7A00]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L13.1 9.9L21 11L13.1 12.1L12 20L10.9 12.1L3 11L10.9 9.9L12 2Z" /></svg>
     </h2>
   </div>
   <div id="mentor-content" class="px-2 sm:px-4 flex justify-center w-full overflow-visible">
-    <div class="group relative w-[55%] sm:w-[65%] md:w-full max-w-[550px] mt-4 md:mt-0">
+    <div class="group relative w-[192px] sm:w-[65%] md:w-full max-w-[550px]">
       <div
         id="mentor-card"
-        class="relative z-10 overflow-hidden rounded-[16px] md:rounded-[24px] shadow-[0_20px_40px_rgba(244,130,32,0.4)] p-2 md:p-5 transition-all duration-500 lg:from-[#F48220] lg:to-[#FDC959] lg:shadow-xl lg:group-hover:shadow-[0_20px_40px_rgba(244,130,32,0.4)]"
+        class="relative z-10 overflow-hidden rounded-[6px] md:rounded-[24px] shadow-[0_20px_40px_rgba(244,130,32,0.4)] p-[6px] md:p-5 transition-all duration-500 lg:from-[#F48220] lg:to-[#FDC959] lg:shadow-xl lg:group-hover:shadow-[0_20px_40px_rgba(244,130,32,0.4)]"
       >
         <div class="relative z-10 flex flex-col gap-2 md:gap-3 max-sm:!h-auto">
           <h3
             id="mentor-title"
-            class="rounded-xl md:rounded-[18px] border-[2px] border-white/60 md:border-white/90 py-3 px-1 md:py-4 md:px-4 text-center text-[14px] md:text-[28px] font-black uppercase text-white leading-[1.3] shadow-sm transition-all duration-500 md:bg-[#F97316]"
+            class="rounded-xl md:rounded-[18px] border-[2px] border-white/60 md:border-white/90 py-3 px-1 md:py-4 md:px-4 text-center text-[9.35px] md:text-[28px] font-black uppercase text-white leading-[1.3] shadow-sm transition-all duration-500 md:bg-[#F97316]"
             style="font-weight: 900;"
           >
             Mentor học thuật 1-1 <br /> BỔ TRỢ 24/7
@@ -243,7 +243,7 @@ const features = [
 
       {/* Owl on the left */}
       <div
-        class="pointer-events-none absolute -bottom-1 -left-[15%] sm:-left-[10%] md:-left-[50px] z-20 block transition-all delay-100 duration-700 lg:-bottom-8 lg:-left-[140px] lg:opacity-0 lg:group-hover:opacity-100"
+        class="pointer-events-none absolute -bottom-1 -left-[25px] sm:-left-[10%] md:-left-[50px] z-20 block transition-all delay-100 duration-700 lg:-bottom-8 lg:-left-[140px] lg:opacity-0 lg:group-hover:opacity-100"
       >
         <Image
           src={imgChugaMentor}
@@ -252,22 +252,62 @@ const features = [
         />
       </div>
 
-      {/* Large feedback on top right */}
+      {/* Large feedback on top right - HTML/CSS frame */}
       <div
-        class="pointer-events-none absolute -right-[40%] sm:-right-[35%] md:-right-[70px] top-[20%] md:top-[25%] z-20 block transition-all delay-100 duration-700 lg:top-[40px] lg:-right-[200px] lg:opacity-0 lg:group-hover:opacity-100 xl:top-[50px] xl:-right-[300px]"
+        class="pointer-events-none absolute -right-[102px] top-[35px] sm:-right-[35%] md:-right-[70px] md:top-[25%] z-20 block transition-all delay-100 duration-700 lg:top-[77px] lg:-right-[230px] lg:opacity-0 lg:group-hover:opacity-100 xl:top-[77px] xl:-right-[230px]"
       >
-        <Image
-          src={imgLoiNhanMentor}
-          alt="Mentor Feedback"
-          class="h-auto w-[135px] sm:w-[160px] drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)] md:w-[240px] lg:w-[350px] xl:w-[400px]"
-        />
+
+        <div
+          class="bg-white drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)] w-[145px] h-[100px] rounded-[10px] border-[1.67px] border-[#072899] lg:w-[345px] lg:h-[245px] lg:rounded-[24px] lg:border-[5px]"
+        >
+        <div class="relative w-full h-full p-[6px] lg:p-[14px] flex flex-col gap-[3px] lg:gap-[10px] overflow-hidden">
+            <!-- Header: icon + label -->
+            <div class="flex items-center gap-[3px] lg:gap-[6px]">
+              <!-- Icon with badge -->
+              <div class="relative flex-shrink-0 -ml-[1px] lg:-ml-[6px]">
+                <svg class="w-[22px] h-[22px] lg:w-[44px] lg:h-[44px]" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.6058 38.0462L22.7937 45.234C22.3247 45.7196 21.7638 46.1068 21.1436 46.3732C20.5235 46.6396 19.8564 46.7799 19.1815 46.7857C18.5065 46.7916 17.8371 46.663 17.2124 46.4074C16.5877 46.1518 16.0201 45.7743 15.5428 45.2971C15.0655 44.8198 14.6881 44.2522 14.4325 43.6275C14.1769 43.0028 14.0483 42.3334 14.0541 41.6584C14.06 40.9835 14.2002 40.3164 14.4667 39.6962C14.7331 39.076 15.1203 38.5151 15.6058 38.0462ZM38.1428 51.5806L36.3484 53.375L7.625 24.6516L9.41942 22.8572L12.2203 23.2562C14.1368 23.5307 16.5132 22.9462 17.4994 21.96L27.3738 12.0882C30.2395 9.27636 34.0994 7.70963 38.1141 7.72869C42.1289 7.74774 45.9737 9.35104 48.8126 12.1899C51.6515 15.0288 53.2548 18.8737 53.2739 22.8884C53.2929 26.9032 51.7262 30.7631 48.9144 33.6288L39.04 43.5032C38.0538 44.4893 37.4693 46.8658 37.7438 48.7822L38.1428 51.5806Z" fill="#FFCF5A"/>
+                  <circle cx="53.5" cy="19.5" r="7.5" fill="#D71B1B"/>
+                  <path d="M52.088 16.92L53.56 16.4H54.52V22H53.416V17.568L52.36 17.864L52.088 16.92Z" fill="white"/>
+                </svg>
+              </div>
+              <!-- Label -->
+              <span
+                class="text-[4px] lg:text-[12px] font-normal lg:font-semibold leading-[100%] tracking-normal"
+                style="font-family: 'SVN-Gilroy', sans-serif;"
+              >Nhận xét của giáo viên</span>
+            </div>
+            <!-- Feedback text -->
+            <div class="absolute top-[24px] left-[20px] w-[108px] h-[60px] lg:top-[63px] lg:left-[54px] lg:w-[281px] lg:h-[169px] overflow-hidden">
+              <p
+                class="text-[4.5px] lg:text-[9px] text-gray-700 font-normal leading-[110%] lg:leading-[120%]"
+                style="font-family: 'SVN-Gilroy', sans-serif;"
+              >
+                Đang có một lỗi lặp lại khá rõ là em thường chọn <br class="hidden lg:block" />đáp án ngay khi thấy từ khóa giống trong bài mà <br class="hidden lg:block" />chưa kiểm tra kỹ nghĩa của cả câu. Ví dụ ở câu 7 <br class="hidden lg:block" />và câu 11, em tìm đúng đoạn chứa thông tin rồi <br class="hidden lg:block" />nhưng bị distractor đánh lừa nên chọn hơi vội. Lần <br class="hidden lg:block" />sau gặp dạng này em thử đọc thêm 1 - 2 câu trước <br class="hidden lg:block" />sau nhé!<br /><br />
+                Phần từ vựng thì c thấy em đang tiến bộ hơn rồi nè <br class="hidden lg:block" />😄 Có mấy từ buổi trước em hay nhầm nhưng hôm <br class="hidden lg:block" />nay đã dùng đúng. Tuy nhiên nhóm từ increase/<br class="hidden lg:block" />rise/grow em vẫn chưa phân biệt chắc cách dùng <br class="hidden lg:block" />c đã note riêng 3 câu luyện thêm cho em rồi nhé
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Small reminder on bottom right */}
+      {/* Small reminder on bottom right - HTML/CSS frame */}
       <div
-        class="pointer-events-none absolute bottom-4 sm:bottom-6 -right-[30%] sm:-right-[25%] md:-right-[40px] z-20 block transition-all delay-200 duration-500 lg:bottom-[20px] lg:-right-[100px] lg:opacity-0 lg:group-hover:opacity-100 xl:-right-[290px]"
+        class="pointer-events-none absolute -right-[65px] top-[145px] md:top-auto md:bottom-10 sm:-right-[35%] md:-right-[40px] z-20 block transition-all delay-200 duration-500 lg:bottom-[60px] lg:-right-[210px] lg:opacity-0 lg:group-hover:opacity-100 xl:-right-[210px]"
       >
-        <Image src={imgNhacNho} alt="Reminder" class="h-auto w-[90px] sm:w-[115px] drop-shadow-xl md:w-[150px] lg:w-[190px] xl:w-[350px]" />
+        <div
+          class="bg-white/90 drop-shadow-lg w-[90px] h-auto min-h-[26px] py-[3px] rounded-[3px] lg:py-0 lg:w-[269px] lg:h-[77px] lg:rounded-[8px]"
+        >
+          <div class="w-full h-full flex items-center justify-center px-[4px] lg:px-[12px]">
+            <p
+              class="text-center text-[7px] lg:text-[20px] font-medium leading-[130%] tracking-normal"
+              style="font-family: 'SVN-Gilroy', sans-serif; letter-spacing: 0%;"
+            >
+              <span class="text-[#3D3D3D]">Chữa bài, nhắc lịch</span><br />
+              <span class="inline-flex items-center justify-center mr-1"><svg class="w-[8px] lg:w-[18px] h-auto text-[#000000]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M13 5l7 7-7 7"/></svg></span><span class="font-bold text-[#072899]" style="font-family: 'SVN-Gilroy', sans-serif;"> đồng hành đến khi<br class="block lg:hidden" /> đỗ</span>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

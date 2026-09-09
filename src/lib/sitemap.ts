@@ -1,7 +1,7 @@
-import { HOME_CATEGORIES } from '@/lib/constants/content';
-import { fetchBlogCategoryList, fetchBlogList, fetchCourseList } from '@/lib/static-data';
+import { HOME_CATEGORIES, LECTURER_BASE_PATH } from '@/lib/constants/content';
+import { fetchBlogCategoryList, fetchBlogList, fetchCourseList, fetchTeacherListV2 } from '@/lib/static-data';
 
-const BASE_URL = 'https://hoc-ba.edu.vn';
+const BASE_URL = 'https://thespace.edu.vn';
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -47,6 +47,7 @@ export const STATIC_PAGES: SitemapUrl[] = [
   { loc: `${BASE_URL}/chuyen-gia/jackson-howard`, priority: '0.6', changefreq: 'monthly' },
   { loc: `${BASE_URL}/dieu-khoan-su-dung`, priority: '0.6', changefreq: 'monthly' },
   { loc: `${BASE_URL}/lien-he`, priority: '0.6', changefreq: 'monthly' },
+  { loc: `${BASE_URL}${LECTURER_BASE_PATH}`, priority: '0.8', changefreq: 'weekly' },
 ];
 
 // ─── Sitemap index entries ────────────────────────────────────────────────────
@@ -57,6 +58,7 @@ export const SITEMAP_INDEX_URLS: SitemapUrl[] = [
   { loc: `${BASE_URL}/danh-muc-cam-nang.xml`, priority: '0.6', changefreq: 'monthly' },
   { loc: `${BASE_URL}/danh-sach-khoa-hoc.xml`, priority: '1.0', changefreq: 'daily' },
   { loc: `${BASE_URL}/cam-nang.xml`, priority: '1.0', changefreq: 'daily' },
+  { loc: `${BASE_URL}/giao-vien-ielts.xml`, priority: '0.8', changefreq: 'weekly' },
 ];
 
 // ─── Data fetchers ────────────────────────────────────────────────────────────
@@ -90,6 +92,27 @@ export async function getCourseSitemapUrls(): Promise<SitemapUrl[]> {
   });
 
   return urls;
+}
+
+export async function getLecturerSitemapUrls(): Promise<SitemapUrl[]> {
+  const now = new Date().toISOString();
+  let lecturers: any[] = [];
+
+  try {
+    const data = await fetchTeacherListV2({ page: 1, limit: 1000 });
+    lecturers = data?.list || [];
+  } catch (error) {
+    console.error('Sitemap: Failed to fetch lecturers', error);
+  }
+
+  return lecturers
+    .filter((lecturer: any) => lecturer.slug)
+    .map((lecturer: any) => ({
+      loc: `${BASE_URL}${LECTURER_BASE_PATH}/${lecturer.slug}`,
+      lastmod: lecturer.updated_at || lecturer.created_at || now,
+      changefreq: 'weekly',
+      priority: '0.7',
+    }));
 }
 
 export async function getBlogCategorySitemapUrls(): Promise<SitemapUrl[]> {

@@ -51,7 +51,7 @@ if (!slugCourse || !course) {
   return Astro.rewrite('/404');
 }
 
-const baseUrl = import.meta.env.PUBLIC_CLIENT_URL ?? 'https://hoc-ba.edu.vn';
+const baseUrl = import.meta.env.PUBLIC_CLIENT_URL ?? 'https://thespace.edu.vn';
 const url = `${baseUrl}/khoa-hoc-hsk/${course?.slug}`;
 
 const title = course?.meta_title || `${course?.name} | Học Bá Education`;

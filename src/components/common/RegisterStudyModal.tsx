@@ -77,7 +77,7 @@ const RegisterStudyModal = ({
     }
 
     // logic to fetch lecturer name if it's a lecturer detail Page
-    if (matchingKey === '/doi-ngu-giang-vien') {
+    if (matchingKey === '/giao-vien-ielts') {
       const slug = cleanPath.replace(matchingKey, '').replace(/^\//, '');
       if (slug) {
         const teacherData = await fetchTeacherDetail(slug);

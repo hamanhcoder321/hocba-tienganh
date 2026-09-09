@@ -24,7 +24,7 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { PROGRAM_OPTIONS } from '@/lib/constants/content';
+import { LECTURER_BASE_PATH, PROGRAM_OPTIONS } from '@/lib/constants/content';
 import { DATA_VALUE } from '@/lib/constants/enums';
 import { IMAGES } from '@/lib/constants/images';
 import { fetchTeacherDetail, fetchRelatedTeachers, fetchStudents } from '@/lib/static-data';
@@ -77,7 +77,7 @@ const students = await fetchStudents({
 });
 
 // --- Metadata cho SEO ---
-const title = `${lecturer.name} | Đội ngũ giảng viên | Học Bá Education`;
+const title = `${lecturer.name} | Đội ngũ giảng viên`;
 const description = lecturer.description;
 
 const optimizedHsk = await getImage({
@@ -133,7 +133,7 @@ const optimizedTeachers = await Promise.all(
   }),
 );
 
-const baseUrl = import.meta.env.PUBLIC_CLIENT_URL ?? 'https://hoc-ba.edu.vn';
+const baseUrl = import.meta.env.PUBLIC_CLIENT_URL ?? 'https://thespace.edu.vn';
 
 const jsonLd: Graph = {
   '@context': 'https://schema.org',
@@ -151,30 +151,30 @@ const jsonLd: Graph = {
           '@type': 'ListItem',
           position: 2,
           name: 'Đội ngũ giảng viên',
-          item: `${baseUrl}/doi-ngu-giang-vien`,
+          item: `${baseUrl}${LECTURER_BASE_PATH}`,
         },
         {
           '@type': 'ListItem',
           position: 2,
           name: lecturer.name,
-          item: `${baseUrl}/doi-ngu-giang-vien/${lecturer.slug}`,
+          item: `${baseUrl}${LECTURER_BASE_PATH}/${lecturer.slug}`,
         },
       ],
     },
     {
       '@type': 'ProfilePage',
       name: `${lecturer.name} - Giảng viên | Học Bá Education`,
-      url: `${baseUrl}/doi-ngu-giang-vien/${lecturer.slug}`,
+      url: `${baseUrl}${LECTURER_BASE_PATH}/${lecturer.slug}`,
       dateModified: new Date().toISOString(),
       mainEntity: {
         '@type': 'Person',
-        '@id': `${baseUrl}/doi-ngu-giang-vien/${lecturer.slug}#person`,
+        '@id': `${baseUrl}${LECTURER_BASE_PATH}/${lecturer.slug}#person`,
         name: lecturer.name,
         jobTitle: 'Giảng viên',
         worksFor: {
           '@id': `${baseUrl}/#organization`,
         },
-        url: `${baseUrl}/doi-ngu-giang-vien/${lecturer.slug}`,
+        url: `${baseUrl}${LECTURER_BASE_PATH}/${lecturer.slug}`,
         image: lecturer.avatar_url?.file_path,
         description:
           'Giảng viên tại Học Bá Education, chuyên đào tạo và giảng dạy tiếng Trung theo lộ trình bài bản, thực tiễn.',
@@ -199,7 +199,7 @@ const jsonLd: Graph = {
             <BreadcrumbSeparator />
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <a href="/doi-ngu-giang-vien">Đội ngũ giảng viên</a>
+                <a href={LECTURER_BASE_PATH}>Đội ngũ giảng viên</a>
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
@@ -321,7 +321,7 @@ const jsonLd: Graph = {
         </div> -->
       </div>
     </section>
-    <section class="relative overflow-clip bg-[#F6F6F6] pb-0 pt-24 md:pb-20 md:pt-32">
+    <section class="relative overflow-clip bg-ielts-gray-50 pb-0 pt-24 md:pb-20 md:pt-32">
       <div class="absolute top-[4%] hidden h-[740px] w-[740px] xl:-left-[30%] xl:block 2xl:-left-[20%]">
         <Image
           src={IMAGES.introduce.bg_nen}
@@ -388,11 +388,11 @@ const jsonLd: Graph = {
       <div class="container">
         <div class="ml-4 flex items-center gap-3 md:ml-40 md:gap-6">
           <div
-            class="flex h-[30px] w-8 items-center justify-center rounded-[54px] bg-gradient-to-b from-[#083AD4] to-[#3464F8] shadow-[8.39px_6.71px_45.49px_0px_#2751C780] md:size-14"
+            class="flex h-[30px] w-8 items-center justify-center rounded-[54px] bg-gradient-to-b from-navy-600 to-[#3464F8] shadow-[8.39px_6.71px_45.49px_0px_#2751C780] md:size-14"
           >
             <CommaIcon className="md:scale-150" />
           </div>
-          <p class="text-nowrap text-lg font-black uppercase text-[#072899] md:text-[42px]">
+          <p class="text-nowrap text-lg font-black uppercase text-navy md:text-[42px]">
             {`Chia sẻ từ ${lecturer.name}`}
           </p>
         </div>
@@ -447,7 +447,7 @@ const jsonLd: Graph = {
               class={'object-cover w-10 md:w-[90.7px] h-10 md:h-[90.7px]'}
             />
           </div>
-          <h2 class="text-lg font-black uppercase text-[#072899] md:text-[42px]">Các lớp đang giảng dạy</h2>
+          <h2 class="text-lg font-black uppercase text-navy md:text-[42px]">Các lớp đang giảng dạy</h2>
         </div>
         <div class="mt-0 flex items-center justify-center md:-mt-2">
           <p class="px-10 text-center text-[15px] font-bold md:px-56 md:text-[28px]">
@@ -494,7 +494,7 @@ const jsonLd: Graph = {
                 img: IMAGES.detailLectuter.class1,
               },
             ].map((course) => (
-              <div class="group flex w-[280px] min-w-[280px] shrink-0 snap-center flex-col rounded-[20px] border-[2px] border-transparent bg-[#FFF8F8] px-[19px] pb-[20px] pt-[20px] transition-all duration-300 hover:-translate-y-2 hover:border-[#FDB13E] hover:bg-gradient-to-b hover:from-[#FDB13E] hover:to-[#F47814] hover:shadow-[0px_8px_30px_0px_rgba(244,167,46,0.4)] md:h-[413px] md:w-[451px] md:min-w-[451px]">
+              <div class="group flex w-[280px] min-w-[280px] shrink-0 snap-center flex-col rounded-[20px] border-[2px] border-transparent bg-primary-50 px-[19px] pb-[20px] pt-[20px] transition-all duration-300 hover:-translate-y-2 hover:border-[#FDB13E] hover:bg-gradient-to-b hover:from-[#FDB13E] hover:to-[#F47814] hover:shadow-[0px_8px_30px_0px_rgba(244,167,46,0.4)] md:h-[413px] md:w-[451px] md:min-w-[451px]">
                 <Image
                   src={course.img}
                   width={413}
@@ -528,7 +528,7 @@ const jsonLd: Graph = {
     </section>
     {
       students?.list && students?.list.length > 0 && (
-        <section class="relative bg-[#FFF8F8] md:pt-9">
+        <section class="relative bg-primary-50 md:pt-9">
           <div class="container">
             <div class="flex items-center justify-center gap-2 md:gap-4">
               <Image
@@ -539,7 +539,7 @@ const jsonLd: Graph = {
                 densities={[1, 2]}
                 class={'h-14 w-14 -rotate-12 object-cover md:h-[90px] md:w-[90px]'}
               />
-              <h2 class="text-lg font-black uppercase text-[#072899] md:text-[42px]">Học viên xuất sắc</h2>
+              <h2 class="text-lg font-black uppercase text-navy md:text-[42px]">Học viên xuất sắc</h2>
             </div>
             <div class="-mt-2 flex items-center justify-center">
               <p class="px-10 text-center text-[15px] font-bold md:px-12 md:text-[28px]">
@@ -565,7 +565,7 @@ const jsonLd: Graph = {
         </section>
       )
     }
-    <section class="relative bg-gradient-to-t from-[#FFF8F8] to-[#FFFFFF00] md:pt-9">
+    <section class="relative bg-gradient-to-t from-primary-50 to-white/0 md:pt-9">
       <div class="container">
         <div class="flex items-center justify-center gap-2 md:gap-4">
           <Image
@@ -576,7 +576,7 @@ const jsonLd: Graph = {
             densities={[1, 2]}
             class={'object-cover w-14 h-14 md:w-[90px] md:h-[90px] -rotate-12 scale-75'}
           />
-          <h2 class="text-lg font-black uppercase text-[#072899] md:text-[42px]">Giảng viên liên quan</h2>
+          <h2 class="text-lg font-black uppercase text-navy md:text-[42px]">Giảng viên liên quan</h2>
         </div>
         <div class="-mt-2 flex items-center justify-center">
           <p class="px-10 text-center text-[15px] font-bold md:pl-[25rem] md:pr-[18rem] md:text-[28px]">

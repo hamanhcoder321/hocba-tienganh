@@ -1,6 +1,7 @@
 import { CarouselButton } from '@/components/common/icons';
 import { Button } from '@/components/ui/button';
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
+import { LECTURER_BASE_PATH } from '@/lib/constants/content';
 import { IMAGES } from '@/lib/constants/images';
 import { SearchX } from 'lucide-react';
 import { useEffect, useState } from 'react';
@@ -77,7 +78,7 @@ const RelevantLecturers = ({ relevantLecturers, icons }: RelevantLecturersProps)
                     className="group relative h-full rounded-md border-2 border-transparent bg-[#FFF8F8] px-2 py-4 transition-all duration-300 ease-in-out hover:border-[#D46000] hover:bg-white hover:shadow-[0_0_20px_rgba(212,96,0,0.35)] md:h-[475px] md:px-4 md:py-4"
                   >
                     <a
-                      href={`/doi-ngu-giang-vien/${lecturer.slug || lecturer.id}`}
+                      href={`${LECTURER_BASE_PATH}/${lecturer.slug || lecturer.id}`}
                       className="absolute -bottom-[4%] left-1/2 flex h-7 -translate-x-1/2 cursor-pointer items-center gap-1 rounded-full border-2 border-white bg-[#2751C7] px-2 text-white opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
                     >
                       <SearchX size={20} className="rotate-90" />

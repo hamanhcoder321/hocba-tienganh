@@ -104,7 +104,7 @@ export default function LecturerFilterSidebar({
       >
         <div className="p-4 md:p-0">
           {/* Filter Title - Mobile only */}
-          <p className="mx-auto mb-4 flex h-[38px] w-fit items-center justify-center rounded-lg border border-black px-4 text-[15px] font-bold text-black md:hidden md:text-xl">
+          <p className="mx-auto mb-4 flex h-[38px] w-fit items-center justify-center rounded-lg border border-black px-4 text-[15px] font-bold text-ielts-gray md:hidden md:text-xl">
             <Funnel className="mr-4 size-4 md:size-6" />
             Bộ lọc giảng viên
           </p>
@@ -142,7 +142,7 @@ export default function LecturerFilterSidebar({
             {/* Chinese Programs */}
             <div className="flex flex-col items-start gap-2">
               <div className="flex items-center gap-2">
-                <div className="size-[18px] rounded-full bg-primary"></div>
+                <div className="size-[18px] rounded-full bg-navy md:bg-orange-500"></div>
                 <p className="text-base font-bold">{PROGRAM_OPTIONS.CHINESE.label}</p>
               </div>
               <div className="ml-10 flex flex-col gap-2">
@@ -150,10 +150,10 @@ export default function LecturerFilterSidebar({
                   <button
                     key={program}
                     onClick={() => handleProgramToggle(program)}
-                    className="flex cursor-pointer items-center gap-2 transition-colors hover:text-primary"
+                    className="flex cursor-pointer items-center gap-2 transition-colors hover:text-navy"
                   >
                     <div
-                      className={`size-[10px] rounded-full border border-black transition-colors ${filters.selectedPrograms.includes(program) ? 'border-primary bg-primary' : ''
+                      className={`size-[10px] rounded-full border border-black transition-colors ${filters.selectedPrograms.includes(program) ? 'border-navy bg-navy' : ''
                         }`}
                     ></div>
                     <p className="text-[13px] md:text-base">{program}</p>
@@ -209,7 +209,7 @@ export default function LecturerFilterSidebar({
           <div className="mt-6 flex flex-col gap-3 pb-2 md:hidden">
             <Button
               onClick={handleApply}
-              className="mx-auto h-8 w-fit rounded-full border border-black bg-primary text-[13px] font-bold uppercase text-white"
+              className="mx-auto h-8 w-fit rounded-full border border-white bg-navy text-[13px] font-bold uppercase text-white"
             >
               Lọc giảng viên
             </Button>

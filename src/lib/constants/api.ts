@@ -1,5 +1,5 @@
 export const API_BASE_URL = import.meta.env.PUBLIC_API_URL || 'http://localhost:3007/api';
-export const baseUrl = import.meta.env.PUBLIC_CLIENT_URL ?? 'https://hoc-ba.edu.vn';
+export const baseUrl = import.meta.env.PUBLIC_CLIENT_URL ?? 'https://thespace.edu.vn';
 
 export const API_TIMEOUT = 10000;
 

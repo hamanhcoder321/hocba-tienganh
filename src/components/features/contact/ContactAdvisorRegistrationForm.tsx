@@ -308,7 +308,7 @@ export default function ContactAdvisorRegistrationForm({
               <Button
                 type="submit"
                 disabled={isPending}
-                className="relative mx-auto flex items-center justify-center gap-[10px] min-h-[50px] w-full max-w-[386px] translate-x-2 md:translate-x-4 rounded-[24px] border-[3px] border-white bg-[#F97316] py-[6px] px-[16px] text-base font-black uppercase text-white shadow-lg transition-colors hover:opacity-90 disabled:opacity-70 md:min-h-[68px] md:text-2xl"
+                className="relative mx-auto flex items-center justify-center gap-[10px] min-h-[50px] w-[calc(100%-40px)] md:w-full max-w-[386px] translate-x-2 md:translate-x-4 rounded-[24px] border-[3px] border-white bg-[#F97316] py-[6px] px-[16px] text-base font-black uppercase text-white shadow-lg transition-colors hover:opacity-90 disabled:opacity-70 md:min-h-[68px] md:text-2xl"
               >
                 {/* icon sổ nằm absolute, trôi ra ngoài bên trái nút */}
                 {icons?.noteBook && (
@@ -317,7 +317,7 @@ export default function ContactAdvisorRegistrationForm({
                     alt={'noteBook'}
                     width={80}
                     height={80}
-                    className="absolute -left-9 top-1/2 z-20 h-[54px] w-auto -translate-y-1/2 rotate-12 object-cover md:-left-12 md:h-[80px]"
+                    className="absolute -left-2 top-[20%] md:top-1/2 z-20 h-[54px] w-auto -translate-y-1/2 rotate-12 object-cover md:-left-12 md:h-[80px]"
                   />
                 )}
                 {isPending ? 'Đang xử lý...' : isSuccess ? 'Thành công!' : (
